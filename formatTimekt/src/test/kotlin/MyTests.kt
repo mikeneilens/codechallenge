@@ -1,5 +1,6 @@
 import junit.framework.TestCase.assertEquals
 import mike.UnitTime
+import mike.Unit
 import mike.formatTime
 import org.junit.Test
 
@@ -23,8 +24,8 @@ class MyTests {
     }
     @Test
     fun unitTime() {
-        assertEquals("1 second", UnitTime("second",1).toString())
-        assertEquals("2 seconds", UnitTime("second",2).toString())
+        assertEquals("1 second", UnitTime(Unit.second,1).toString())
+        assertEquals("2 seconds", UnitTime(Unit.second,2).toString())
 
     }
     @Test
