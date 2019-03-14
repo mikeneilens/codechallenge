@@ -7,12 +7,27 @@ fun main(args: Array<String>) {
     println(formatTime(86400))
     println(formatTime(3156000))
 }
-fun formatTime(timeInSeconds:Int)  = when (timeInSeconds) {
-    0 -> "none"
-    1,2 -> UnitTime("second", timeInSeconds).toString()
-    60,120 -> UnitTime("minute", timeInSeconds/60).toString()
-    3600,7200 -> UnitTime("hour", timeInSeconds/3600).toString()
-    86400,172800 -> UnitTime("day", timeInSeconds/86400).toString()
-    31536000,63072000 -> UnitTime("year",timeInSeconds/31536000).toString()
-    else -> "none"
-}
+val conversions = listOf(
+      UnitTime("year",31536000)
+    , UnitTime("day", 86400)
+    , UnitTime("hour",3600)
+    , UnitTime("minute", 60)
+    , UnitTime("second",1)
+    )
+
+fun formatTime(timeInSeconds:Int): String {
+    if (timeInSeconds == 0) return "none"
+
+    var remainingTime = timeInSeconds
+
+    val convertUnit = fun  (unitTime:UnitTime):UnitTime {
+        val newValue = remainingTime / unitTime.value
+        remainingTime = remainingTime % unitTime.value
+        return UnitTime(unitTime.unit, timeInSeconds / unitTime.value)
+    }
+    val listOfUnitTimes:List<UnitTime> = conversions.map(convertUnit)
+
+    val nonZeroUnitTImes = listOfUnitTimes.filter { unitTime:UnitTime -> unitTime.value > 0 }
+
+    return nonZeroUnitTImes[0].toString()
+ }
