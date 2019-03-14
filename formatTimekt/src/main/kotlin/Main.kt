@@ -5,7 +5,7 @@ fun main(args: Array<String>) {
     println(formatTime(60))
     println(formatTime(3600))
     println(formatTime(86400))
-    println(formatTime(3156000))
+    println(formatTime(31536000))
 }
 val quantitiesInEachUnit = listOf(
       UnitTime("year",31536000)
@@ -23,7 +23,10 @@ fun formatTime(timeInSeconds:Int): String {
 
     val nonZeroUnitTImes = listOfUnitTimes.filter { unitTime:UnitTime -> unitTime.value > 0 }
 
-    return nonZeroUnitTImes[0].toString()
+    val trailingValue = nonZeroUnitTImes.last()
+    val leadingValue = nonZeroUnitTImes.dropLast(1).lastOrNull()
+
+    return if (leadingValue != null) "${leadingValue} and ${trailingValue}" else "${trailingValue}"
 }
 
 fun createListOfUnitTimes(timeInSeconds: Int):List<UnitTime> {
@@ -32,7 +35,7 @@ fun createListOfUnitTimes(timeInSeconds: Int):List<UnitTime> {
     val calcValueForEachUnit = fun  (unitTime:UnitTime):UnitTime {
         val newValue = remainingTime / unitTime.value
         remainingTime = remainingTime % unitTime.value
-        return UnitTime(unitTime.unit, timeInSeconds / unitTime.value)
+        return UnitTime(unitTime.unit, newValue)
     }
 
     return quantitiesInEachUnit.map(calcValueForEachUnit)

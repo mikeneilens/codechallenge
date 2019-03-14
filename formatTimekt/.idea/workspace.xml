@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="63f01730-1720-4a3c-b0ba-a66b4ba2ba3d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/MyTests.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/MyTests.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -20,11 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="38" column="2" lean-forward="true" selection-start-line="38" selection-start-column="2" selection-end-line="38" selection-end-column="2" />
+            <state relative-caret-position="452">
+              <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
             </state>
           </provider>
         </entry>
@@ -38,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/MyTests.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="480">
-              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
               <folding>
                 <element signature="e#0#89#0" expanded="true" />
               </folding>
@@ -76,8 +77,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/src/test/kotlin/MyTests.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/UnitTime.kt" />
+        <option value="$PROJECT_DIR$/src/test/kotlin/MyTests.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/Main.kt" />
       </list>
     </option>
@@ -133,7 +134,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552588232751" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552589382070" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -174,11 +175,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MyTests.pluralValues" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MyTests.moreThanOneUnit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mike.formatTimekt.test" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MyTests" />
-      <option name="METHOD_NAME" value="pluralValues" />
+      <option name="METHOD_NAME" value="moreThanOneUnit" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
@@ -248,9 +249,9 @@
       <list>
         <item itemvalue="JUnit.MyTests" />
         <item itemvalue="Kotlin.mike.MainKt" />
+        <item itemvalue="JUnit.MyTests.moreThanOneUnit" />
         <item itemvalue="JUnit.MyTests.singleValues" />
         <item itemvalue="JUnit.MyTests.unitTime" />
-        <item itemvalue="JUnit.MyTests.pluralValues" />
       </list>
     </recent_temporary>
   </component>
@@ -275,18 +276,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MyTests_unitTime - 2019.03.14 at 08h 36m 17s.xml">
-      <configuration name="MyTests.unitTime" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MyTests_singleValues - 2019.03.14 at 08h 36m 23s.xml">
-      <configuration name="MyTests.singleValues" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MyTests_unitTime - 2019.03.14 at 08h 37m 19s.xml">
-      <configuration name="MyTests.unitTime" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MyTests_singleValues - 2019.03.14 at 08h 37m 26s.xml">
-      <configuration name="MyTests.singleValues" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="MyTests - 2019.03.14 at 08h 38m 24s.xml">
       <configuration name="MyTests" configurationId="JUnit" />
     </history-entry>
@@ -305,6 +294,18 @@
     <history-entry file="MyTests - 2019.03.14 at 09h 06m 35s.xml">
       <configuration name="MyTests" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="MyTests - 2019.03.14 at 18h 30m 30s.xml">
+      <configuration name="MyTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyTests - 2019.03.14 at 18h 32m 59s.xml">
+      <configuration name="MyTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyTests_moreThanOneUnit - 2019.03.14 at 18h 33m 40s.xml">
+      <configuration name="MyTests.moreThanOneUnit" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyTests - 2019.03.14 at 18h 38m 18s.xml">
+      <configuration name="MyTests" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
@@ -315,17 +316,17 @@
       <window_info id="UI Designer" />
       <window_info id="Capture Tool" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1875" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1875" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Build" weight="0.32933334" />
-      <window_info anchor="bottom" id="Messages" weight="0.32933334" />
+      <window_info anchor="bottom" id="Messages" weight="0.328807" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.23957323" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.23957323" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39961204" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -355,20 +356,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" column="2" lean-forward="true" selection-start-line="38" selection-start-column="2" selection-end-line="38" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/kotlin/MyTests.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
-          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
           <folding>
             <element signature="e#0#89#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
         </state>
       </provider>
     </entry>

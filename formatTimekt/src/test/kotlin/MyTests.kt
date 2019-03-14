@@ -27,6 +27,11 @@ class MyTests {
         assertEquals("2 seconds", UnitTime("second",2).toString())
 
     }
+    @Test
+    fun moreThanOneUnit() {
+        assertEquals("1 minute and 1 second", formatTime(61))
+        assertEquals("1 hour and 2 seconds", formatTime(3602))
+    }
 }
 
 
