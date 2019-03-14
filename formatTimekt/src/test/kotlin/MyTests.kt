@@ -31,6 +31,8 @@ class MyTests {
     fun moreThanOneUnit() {
         assertEquals("1 minute and 1 second", formatTime(61))
         assertEquals("1 hour and 2 seconds", formatTime(3602))
+        assertEquals("9 days, 23 hours, 53 minutes and 22 seconds", formatTime(863602))
+        assertEquals("1 year, 2 hours, 52 minutes and 10 seconds", formatTime(31546330))
     }
 }
 

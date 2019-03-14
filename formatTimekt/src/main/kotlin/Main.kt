@@ -1,5 +1,6 @@
 package mike
 fun main(args: Array<String>) {
+    println(formatTime(3662))
     println(formatTime(0))
     println(formatTime(1))
     println(formatTime(60))
@@ -23,10 +24,7 @@ fun formatTime(timeInSeconds:Int): String {
 
     val nonZeroUnitTImes = listOfUnitTimes.filter { unitTime:UnitTime -> unitTime.value > 0 }
 
-    val trailingValue = nonZeroUnitTImes.last()
-    val leadingValue = nonZeroUnitTImes.dropLast(1).lastOrNull()
-
-    return if (leadingValue != null) "${leadingValue} and ${trailingValue}" else "${trailingValue}"
+    return convertListOfUnitTimes(nonZeroUnitTImes)
 }
 
 fun createListOfUnitTimes(timeInSeconds: Int):List<UnitTime> {
@@ -39,4 +37,15 @@ fun createListOfUnitTimes(timeInSeconds: Int):List<UnitTime> {
     }
 
     return quantitiesInEachUnit.map(calcValueForEachUnit)
+}
+
+fun convertListOfUnitTimes(unitTimes:List<UnitTime>):String  = when (unitTimes.size) {
+    1 -> "${unitTimes[0]}"
+    2 ->  "${unitTimes[0]} and ${unitTimes[1]}"
+    else -> {
+        val firstValues = unitTimes.dropLast(2).map { "${it}, " }.fold("") { acc, value -> acc + value }
+        val lastValue = unitTimes.last()
+        val nextToLastValue = unitTimes[unitTimes.size - 2]
+        firstValues + "${nextToLastValue} and ${lastValue}"
+    }
 }
