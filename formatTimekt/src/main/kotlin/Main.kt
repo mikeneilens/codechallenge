@@ -10,12 +10,12 @@ fun main(args: Array<String>) {
     println(formatTime(31536000))
 }
 
-enum class Unit(val secondsPerUnit: Int) {
-    second(1),
-    minute(60),
-    hour(3600),
-    day(86400),
-    year(31536000)
+enum class Unit(val secondsPerUnit: Int, val maxSize:Int) {
+    second(1,60),
+    minute(60,60),
+    hour(3600,24),
+    day(86400,365),
+    year(31536000,100)
 }
 
 class UnitTime(private val unit:Unit, val value:Int) {
@@ -30,18 +30,15 @@ fun formatTime(timeInSeconds:Int): String {
     if (timeInSeconds == 0) return "none"
 
     val listOfUnitTimes = createListOfUnitTimes(timeInSeconds)
-
     val nonZeroUnitTimes = listOfUnitTimes.filter { unitTime:UnitTime -> unitTime.value > 0 }
 
     return convertListOfUnitTimesToString(nonZeroUnitTimes)
 }
 
-fun createListOfUnitTimes(timeInSeconds: Int):List<UnitTime> {
-    var remainingTime = timeInSeconds
 
+fun createListOfUnitTimes(timeInSeconds: Int):List<UnitTime> {
     val calcValueForEachUnit = fun  (unit:Unit):UnitTime {
-        val newValue = remainingTime / unit.secondsPerUnit
-        remainingTime = remainingTime % unit.secondsPerUnit
+        val newValue = timeInSeconds / unit.secondsPerUnit % unit.maxSize
         return UnitTime(unit, newValue)
     }
 
