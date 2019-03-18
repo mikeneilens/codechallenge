@@ -12,9 +12,12 @@ formatText [(u1,d1), (u2,d2), (u3,d3)] = show d1 ++ " " ++ u1 ++ ", " ++ show d2
 formatText [(u1,d1), (u2,d2)] = show d1 ++ " " ++ u1 ++ " and " ++ show d2 ++ " " ++ u2 
 formatText [(u1,d1)] = show d1 ++ " " ++ u1 
 
+durationGtZero :: (String, Integer) -> Bool
+durationGtZero (_, duration) = duration /= 0
+
 
 formatTime :: Integer -> String
-formatTime timeInSeconds = formatText( filter (\(_,duration) -> duration  /= 0)  ( map(addSuffixToPlural) (createListOfTimes timeInSeconds) ) )
+formatTime timeInSeconds = formatText( filter (durationGtZero)  ( map(addSuffixToPlural) (createListOfTimes timeInSeconds) ) )
 
 
 test :: [String]
