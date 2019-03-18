@@ -1,5 +1,9 @@
+
+calcDuration :: (Integer, Integer, Integer) -> Integer
+calcDuration (timeInSeconds, secondsPerUnit, maxValue) = mod (div timeInSeconds  secondsPerUnit) maxValue
+
 createListOfTimes :: Integer -> [(String, Integer)]
-createListOfTimes timeInSeconds = [(unit, mod (div timeInSeconds  secondsPerUnit) maxValue )  | (unit, secondsPerUnit, maxValue) <- [("year",31536000,1000),("day",86400,365),("hour",3600,24),("minute",60,60),("second",1 ,60)] ]
+createListOfTimes timeInSeconds = [(unit, calcDuration (timeInSeconds, secondsPerUnit, maxValue ))  | (unit, secondsPerUnit, maxValue) <- [("year",31536000,1000),("day",86400,365),("hour",3600,24),("minute",60,60),("second",1 ,60)] ]
 
 addSuffixToPlural :: (String, Integer) -> (String, Integer)
 addSuffixToPlural (unit, duration) = if duration > 1 then (unit ++ "s", duration) else (unit, duration)

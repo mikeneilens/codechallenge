@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="63f01730-1720-4a3c-b0ba-a66b4ba2ba3d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../formatTimeHaskell/formatTime.hs" beforeDir="false" afterPath="$PROJECT_DIR$/../formatTimeHaskell/formatTime.hs" afterDir="false" />
-    </list>
+    <list default="true" id="63f01730-1720-4a3c-b0ba-a66b4ba2ba3d" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -116,7 +114,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552936427407" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552942926330" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
