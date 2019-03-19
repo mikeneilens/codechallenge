@@ -15,7 +15,11 @@ enum class Unit(val secondsPerUnit: Int, val maxSize:Int) {
     day(86400, 365),
     hour(3600, 24),
     minute(60, 60),
-    second(1, 60)
+    second(1, 60);
+
+    companion object {
+        val toList:List<Unit> get() = Unit.values().toList()
+    }
 }
 
 class UnitTime(private val unit:Unit, val value:Int) {
@@ -40,7 +44,7 @@ fun createListOfUnitTimes(timeInSeconds: Int):List<UnitTime> {
         return UnitTime(unit, newValue)
     }
 
-    return enumValues<Unit>().map(calcValueForEachUnit)
+    return Unit.toList.map(calcValueForEachUnit)
 }
 
 fun convertListOfUnitTimesToString(unitTimes:List<UnitTime>)  = when (unitTimes.size) {
