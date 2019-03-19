@@ -11,11 +11,11 @@ fun main(args: Array<String>) {
 }
 
 enum class Unit(val secondsPerUnit: Int, val maxSize:Int) {
-    second(1,60),
-    minute(60,60),
-    hour(3600,24),
-    day(86400,365),
-    year(31536000,100)
+    year(31536000, 100),
+    day(86400, 365),
+    hour(3600, 24),
+    minute(60, 60),
+    second(1, 60)
 }
 
 class UnitTime(private val unit:Unit, val value:Int) {
@@ -23,8 +23,6 @@ class UnitTime(private val unit:Unit, val value:Int) {
         return  if (value == 1) "$value $unit" else "$value ${unit}s"
     }
 }
-
-val units = listOf(Unit.year, Unit.day, Unit.hour, Unit.minute, Unit.second)
 
 fun formatTime(timeInSeconds:Int): String {
     if (timeInSeconds == 0) return "none"
@@ -42,7 +40,7 @@ fun createListOfUnitTimes(timeInSeconds: Int):List<UnitTime> {
         return UnitTime(unit, newValue)
     }
 
-    return units.map(calcValueForEachUnit)
+    return enumValues<Unit>().map(calcValueForEachUnit)
 }
 
 fun convertListOfUnitTimesToString(unitTimes:List<UnitTime>)  = when (unitTimes.size) {
