@@ -23,9 +23,7 @@ enum class Unit(val secondsPerUnit: Int, val maxSize:Int) {
 }
 
 class UnitTime(private val unit:Unit, val value:Int) {
-    override fun toString(): String {
-        return  if (value == 1) "$value $unit" else "$value ${unit}s"
-    }
+    override fun toString(): String = if (value == 1) "$value $unit" else "$value ${unit}s"
 }
 
 fun formatTime(timeInSeconds:Int): String {
@@ -54,6 +52,6 @@ fun convertListOfUnitTimesToString(unitTimes:List<UnitTime>)  = when (unitTimes.
         val firstValues = unitTimes.dropLast(2).map {unitTime ->  "$unitTime, " }.fold("") { acc, value -> acc + value }
         val lastValue = unitTimes.last()
         val nextToLastValue = unitTimes[unitTimes.size - 2]
-        firstValues + "$nextToLastValue and $lastValue"
+        "$firstValues$nextToLastValue and $lastValue"
     }
 }
