@@ -17,8 +17,9 @@ enum class Unit(val secondsPerUnit: Int, val maxSize:Int) {
     minute(60, 60),
     second(1, 60);
 
-    companion object {
-        val toList:List<Unit> get() = Unit.values().toList()
+    fun toUnitTime(timeInSeconds: Int):UnitTime {
+        val value = timeInSeconds / this.secondsPerUnit % this.maxSize
+        return UnitTime(this, value)
     }
 }
 
@@ -37,12 +38,7 @@ fun formatTime(timeInSeconds:Int): String {
 
 
 fun createListOfUnitTimes(timeInSeconds: Int):List<UnitTime> {
-    val calcValueForEachUnit = fun  (unit:Unit):UnitTime {
-        val newValue = timeInSeconds / unit.secondsPerUnit % unit.maxSize
-        return UnitTime(unit, newValue)
-    }
-
-    return Unit.toList.map(calcValueForEachUnit)
+    return Unit.values().map{unit -> unit.toUnitTime(timeInSeconds)}
 }
 
 fun convertListOfUnitTimesToString(unitTimes:List<UnitTime>)  = when (unitTimes.size) {
