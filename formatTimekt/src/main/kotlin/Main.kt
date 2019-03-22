@@ -45,7 +45,7 @@ fun convertUnitAndQuantitiesToString(unitAndQuantities:List<UnitAndQuantity>)  =
     1 -> "${unitAndQuantities[0]}"
     2 ->  "${unitAndQuantities[0]} and ${unitAndQuantities[1]}"
     else -> {
-        val firstValues = unitAndQuantities.dropLast(2).map { unitTime ->  "$unitTime, " }.fold("") { acc, value -> acc + value }
+        val firstValues = unitAndQuantities.dropLast(2).map { unitAndQuantity ->  "$unitAndQuantity, " }.fold("") { acc, value -> acc + value }
         val lastValue = unitAndQuantities.last()
         val nextToLastValue = unitAndQuantities[unitAndQuantities.size - 2]
         "$firstValues$nextToLastValue and $lastValue"
