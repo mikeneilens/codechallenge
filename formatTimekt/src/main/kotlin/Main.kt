@@ -10,44 +10,44 @@ fun main(args: Array<String>) {
     println(formatTime(31536000))
 }
 
-enum class Unit(val secondsPerUnit: Int, val maxSize:Int) {
+enum class UnitOfTime(val secondsPerUnit: Int, val maxSize:Int) {
     year(31536000, 100),
     day(86400, 365),
     hour(3600, 24),
     minute(60, 60),
     second(1, 60);
 
-    fun toUnitTime(timeInSeconds: Int):UnitTime {
+    fun toUnitAndQuantity(timeInSeconds: Int):UnitAndQuantity {
         val value = timeInSeconds / this.secondsPerUnit % this.maxSize
-        return UnitTime(this, value)
+        return UnitAndQuantity(this, value)
     }
 }
 
-class UnitTime(private val unit:Unit, val value:Int) {
+class UnitAndQuantity(private val unit:UnitOfTime, val value:Int) {
     override fun toString(): String = if (value == 1) "$value $unit" else "$value ${unit}s"
 }
 
 fun formatTime(timeInSeconds:Int): String {
     if (timeInSeconds == 0) return "none"
 
-    val listOfUnitTimes = createListOfUnitTimes(timeInSeconds)
-    val nonZeroUnitTimes = listOfUnitTimes.filter { unitTime:UnitTime -> unitTime.value > 0 }
+    val unitAndQuantities = createUnitAndQuantities(timeInSeconds)
+    val nonZeroUnitAndQuantities = unitAndQuantities.filter { unitAndQuantity:UnitAndQuantity -> unitAndQuantity.value > 0 }
 
-    return convertListOfUnitTimesToString(nonZeroUnitTimes)
+    return convertUnitAndQuantitiesToString(nonZeroUnitAndQuantities)
 }
 
 
-fun createListOfUnitTimes(timeInSeconds: Int):List<UnitTime> {
-    return Unit.values().map{unit -> unit.toUnitTime(timeInSeconds)}
+fun createUnitAndQuantities(timeInSeconds: Int):List<UnitAndQuantity> {
+    return UnitOfTime.values().map{ unit -> unit.toUnitAndQuantity(timeInSeconds)}
 }
 
-fun convertListOfUnitTimesToString(unitTimes:List<UnitTime>)  = when (unitTimes.size) {
-    1 -> "${unitTimes[0]}"
-    2 ->  "${unitTimes[0]} and ${unitTimes[1]}"
+fun convertUnitAndQuantitiesToString(unitAndQuantities:List<UnitAndQuantity>)  = when (unitAndQuantities.size) {
+    1 -> "${unitAndQuantities[0]}"
+    2 ->  "${unitAndQuantities[0]} and ${unitAndQuantities[1]}"
     else -> {
-        val firstValues = unitTimes.dropLast(2).map {unitTime ->  "$unitTime, " }.fold("") { acc, value -> acc + value }
-        val lastValue = unitTimes.last()
-        val nextToLastValue = unitTimes[unitTimes.size - 2]
+        val firstValues = unitAndQuantities.dropLast(2).map { unitTime ->  "$unitTime, " }.fold("") { acc, value -> acc + value }
+        val lastValue = unitAndQuantities.last()
+        val nextToLastValue = unitAndQuantities[unitAndQuantities.size - 2]
         "$firstValues$nextToLastValue and $lastValue"
     }
 }
