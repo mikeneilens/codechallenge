@@ -30,6 +30,10 @@ class MyTests {
     fun `Then price is lower than the now price`() {
         assertEquals("Was £200, now £150",fixPriceLabel("Was £200, then £100, now £150"))
     }
+    @Test
+    fun `Then price is higher than the was price`() {
+        assertEquals("Was £250, now £150",fixPriceLabel("Was £200, then £250, now £150"))
+    }
  }
 
 

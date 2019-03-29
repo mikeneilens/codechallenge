@@ -26,7 +26,11 @@ fun fixPriceLabel(priceLabel:String):String {
             val secondPriceLabel = priceLabel(listOfPrices[1])
             val thirdPriceLabel = priceLabel(listOfPrices[2])
             if (secondPriceLabel.value > thirdPriceLabel.value) {
-                return priceLabel
+                if (secondPriceLabel.value < firstPriceLabel.value) {
+                    return priceLabel
+                } else {
+                    return "Was ${secondPriceLabel.price}, now ${thirdPriceLabel.price}"
+                }
             } else {
                 return "Was ${firstPriceLabel.price}, now ${thirdPriceLabel.price}"
             }
