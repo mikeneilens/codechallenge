@@ -24,7 +24,11 @@ class MyTests {
     }
     @Test
     fun `Now price is higher than the Was price`() {
-        assertEquals("Was £200, now £250",fixPriceLabel("now £2500"))
+        assertEquals("now £250",fixPriceLabel("Was £200, now £250"))
+    }
+    @Test
+    fun `Then price is lower than the now price`() {
+        assertEquals("Was £200, now £150",fixPriceLabel("Was £200, then £100, now £150"))
     }
  }
 
