@@ -11,15 +11,28 @@ fun fixPriceLabel(priceLabel:String):String {
         var value = price.removePrefix("£").toDouble()
     }
 
-    if (listOfPrices.size == 2) {
-        val firstPriceLabel = priceLabel(listOfPrices[0])
-        val secondPriceLabel = priceLabel(listOfPrices[1])
-        if (firstPriceLabel.value > secondPriceLabel.value) {
-            return priceLabel
-        } else {
-            return "now ${secondPriceLabel.price}"
+    when {
+        (listOfPrices.size == 2) -> {
+            val firstPriceLabel = priceLabel(listOfPrices[0])
+            val secondPriceLabel = priceLabel(listOfPrices[1])
+            if (firstPriceLabel.value > secondPriceLabel.value) {
+                return priceLabel
+            } else {
+                return "now ${secondPriceLabel.price}"
+            }
         }
-    } else {
-        return priceLabel
+        (listOfPrices.size == 3) -> {
+            val firstPriceLabel = priceLabel(listOfPrices[0])
+            val secondPriceLabel = priceLabel(listOfPrices[1])
+            val thirdPriceLabel = priceLabel(listOfPrices[2])
+            if (secondPriceLabel.value > thirdPriceLabel.value) {
+                return priceLabel
+            } else {
+                return "Was ${firstPriceLabel.price}, now ${thirdPriceLabel.price}"
+            }
+        }
+        else -> {
+            return priceLabel
+        }
     }
 }
