@@ -34,6 +34,19 @@ class MyTests {
     fun `Then price is higher than the was price`() {
         assertEquals("Was £250, now £150",fixPriceLabel("Was £200, then £250, now £150"))
     }
+    @Test
+    fun `First example from the challenge`() {
+        assertEquals("Was £11, now £6",fixPriceLabel("Was £10, then £8, then £11, now £6"))
+    }
+    @Test
+    fun `Second example from the challenge`() {
+        assertEquals("Was £10, then £8, now £6",fixPriceLabel("Was £10, then £8, then £8, now £6"))
+    }
+    @Test
+    fun `Third example from the challenge`() {
+        assertEquals("Was £10, now £8",fixPriceLabel("Was £10, then £6, then £4, now £8"))
+    }
+
  }
 
 

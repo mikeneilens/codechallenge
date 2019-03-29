@@ -28,7 +28,7 @@ fun fixPriceLabel(priceLabelString:String):String {
         val nextPriceLabel = listOfLabels.first()
         val remainingPriceLabels = listOfLabels.drop(1)
 
-        return if (remainingPriceLabels.filter{ nextPriceLabel.value < it.value }.isEmpty()) {
+        return if (remainingPriceLabels.filter{ nextPriceLabel.value <= it.value }.isEmpty()) {
             removeInvalidLabels(listOfLabels.drop(1),output + nextPriceLabel)
         } else {
             removeInvalidLabels(remainingPriceLabels,output )
