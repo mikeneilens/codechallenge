@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6fed56cf-9f27-4c90-92af-fc94d82023db" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/Tests.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/Tests.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../formatTimekt/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../formatTimekt/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -42,8 +41,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/Tests.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="6" lean-forward="true" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+            <state relative-caret-position="330">
+              <caret line="22" column="109" selection-start-line="22" selection-start-column="109" selection-end-line="22" selection-end-column="109" />
               <folding>
                 <element signature="e#0#140#0" expanded="true" />
               </folding>
@@ -116,7 +115,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553880615454" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553880889108" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -235,6 +234,12 @@
     <history-entry file="MyTests - 2019.03.29 at 08h 44m 16s.xml">
       <configuration name="MyTests" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="MyTests - 2019.03.29 at 17h 33m 21s.xml">
+      <configuration name="MyTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyTests - 2019.03.29 at 17h 34m 03s.xml">
+      <configuration name="MyTests" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
@@ -287,8 +292,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/kotlin/Tests.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="6" lean-forward="true" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        <state relative-caret-position="330">
+          <caret line="22" column="109" selection-start-line="22" selection-start-column="109" selection-end-line="22" selection-end-column="109" />
           <folding>
             <element signature="e#0#140#0" expanded="true" />
           </folding>
