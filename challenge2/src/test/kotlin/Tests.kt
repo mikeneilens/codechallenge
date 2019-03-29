@@ -4,7 +4,7 @@ import org.junit.Test
 class MyTests {
     @Test
     fun `Single valid price on input`() {
-        assertEquals("Now £100",fixPriceLabel("Now £100"))
+        assertEquals("now £100",fixPriceLabel("now £100"))
      }
     fun `Two valid prices on input`() {
         assertEquals("Was £200, now £100",fixPriceLabel("Now £100"))
