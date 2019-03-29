@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6fed56cf-9f27-4c90-92af-fc94d82023db" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/MainKt$fixPriceLabel$priceLabel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/MainKt$fixPriceLabel$priceLabel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/MainKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/MainKt.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -23,8 +26,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" column="1" lean-forward="true" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
+            <state relative-caret-position="556">
+              <caret line="38" column="1" lean-forward="true" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -32,8 +35,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/Tests.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="27" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
+            <state relative-caret-position="209">
+              <caret line="14" column="99" selection-start-line="14" selection-start-column="53" selection-end-line="14" selection-end-column="99" />
               <folding>
                 <element signature="e#0#140#0" expanded="true" />
               </folding>
@@ -106,7 +109,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553884748468" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553887668429" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -224,34 +227,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MyTests - 2019.03.29 at 08h 44m 16s.xml">
+    <history-entry file="MyTests - 2019.03.29 at 18h 39m 11s.xml">
       <configuration name="MyTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MyTests - 2019.03.29 at 17h 33m 21s.xml">
+    <history-entry file="MyTests - 2019.03.29 at 19h 01m 04s.xml">
       <configuration name="MyTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MyTests - 2019.03.29 at 17h 34m 03s.xml">
+    <history-entry file="MyTests - 2019.03.29 at 19h 08m 48s.xml">
       <configuration name="MyTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MyTests - 2019.03.29 at 17h 34m 52s.xml">
+    <history-entry file="MyTests - 2019.03.29 at 19h 09m 32s.xml">
       <configuration name="MyTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MyTests - 2019.03.29 at 18h 02m 48s.xml">
+    <history-entry file="MyTests - 2019.03.29 at 19h 15m 33s.xml">
       <configuration name="MyTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MyTests - 2019.03.29 at 18h 04m 10s.xml">
+    <history-entry file="MyTests - 2019.03.29 at 19h 18m 16s.xml">
       <configuration name="MyTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MyTests - 2019.03.29 at 18h 04m 46s.xml">
+    <history-entry file="MyTests - 2019.03.29 at 19h 19m 24s.xml">
       <configuration name="MyTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MyTests - 2019.03.29 at 18h 05m 43s.xml">
+    <history-entry file="MyTests - 2019.03.29 at 19h 19m 26s.xml">
       <configuration name="MyTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MyTests - 2019.03.29 at 18h 05m 51s.xml">
+    <history-entry file="MyTests - 2019.03.29 at 19h 22m 27s.xml">
       <configuration name="MyTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MyTests - 2019.03.29 at 18h 31m 53s.xml">
+    <history-entry file="MyTests - 2019.03.29 at 19h 22m 59s.xml">
       <configuration name="MyTests" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -274,7 +277,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3297769" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39961204" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -297,17 +300,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/runners/model/FrameworkMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
+          <folding>
+            <element signature="e#1657#1658#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/internal/runners/model/ReflectiveCallable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="1" lean-forward="true" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
+        <state relative-caret-position="556">
+          <caret line="38" column="1" lean-forward="true" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/kotlin/Tests.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="27" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
+        <state relative-caret-position="209">
+          <caret line="14" column="99" selection-start-line="14" selection-start-column="53" selection-end-line="14" selection-end-column="99" />
           <folding>
             <element signature="e#0#140#0" expanded="true" />
           </folding>
