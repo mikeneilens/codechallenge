@@ -13,9 +13,9 @@ fun fixPriceLabel(priceLabelString:String):String {
             price  = (original.removePrefix("Was ").removePrefix("then ").removePrefix("now "))
             value = price.removePrefix("£").toDouble()
         }
-        fun addPrefix(index:Int, lastIndex:Int) = when(index) {
-            lastIndex -> "now $price"
-            0 -> "Was $price, "
+        fun addPrefix(lastPrice:PriceLabel, firstPrice:PriceLabel) = when {
+            this == lastPrice -> "now $price"
+            this == firstPrice -> "Was $price, "
             else -> "then $price, "
         }
     }
@@ -30,12 +30,12 @@ fun fixPriceLabel(priceLabelString:String):String {
             val remainingLabels = foldData.remainingLabels.drop(1)
             val resultingLabels = foldData.resultingLabels
             if (remainingLabels.filter{ remainingPrice -> priceLabel.value <= remainingPrice.value }.isEmpty()) FoldData(resultingLabels + priceLabel, remainingLabels)
-             else FoldData(resultingLabels, remainingLabels)
+            else FoldData(resultingLabels, remainingLabels)
         }
 
         return resultOfFold.resultingLabels
     }
 
     val validLabels = removeInvalidLabels(ListOfLabels)
-    return validLabels.mapIndexed { index, priceLabel -> priceLabel.addPrefix(index, validLabels.size-1) }.joinToString("")
+    return validLabels.map { priceLabel -> priceLabel.addPrefix(validLabels.last(), validLabels.first()) }.joinToString("")
 }
