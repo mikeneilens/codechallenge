@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6fed56cf-9f27-4c90-92af-fc94d82023db" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/Tests.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/Tests.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/MainKt$fixPriceLabel$priceLabel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/MainKt$fixPriceLabel$priceLabel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/MainKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/MainKt.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -19,12 +25,12 @@
     </projectState>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="556">
-              <caret line="38" column="1" lean-forward="true" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
+            <state relative-caret-position="555">
+              <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
             </state>
           </provider>
         </entry>
@@ -34,9 +40,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="671">
               <caret line="46" column="31" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
-              <folding>
-                <element signature="e#0#140#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -57,12 +60,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/Main.kt" />
         <option value="$PROJECT_DIR$/src/test/kotlin/Tests.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/Main.kt" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="y" value="203" />
     <option name="width" value="1440" />
     <option name="height" value="821" />
@@ -80,33 +83,16 @@
               <item name="challenge2" type="b2602c69:ProjectViewProjectNode" />
               <item name="challenge2" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
-            <path>
-              <item name="challenge2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="challenge2" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="challenge2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="challenge2" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="challenge2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="challenge2" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553887962273" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554046380728" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -224,69 +210,69 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MyTests - 2019.03.29 at 19h 08m 48s.xml">
-      <configuration name="MyTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MyTests - 2019.03.29 at 19h 09m 32s.xml">
-      <configuration name="MyTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MyTests - 2019.03.29 at 19h 15m 33s.xml">
-      <configuration name="MyTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MyTests - 2019.03.29 at 19h 18m 16s.xml">
-      <configuration name="MyTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MyTests - 2019.03.29 at 19h 19m 24s.xml">
-      <configuration name="MyTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MyTests - 2019.03.29 at 19h 19m 26s.xml">
-      <configuration name="MyTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MyTests - 2019.03.29 at 19h 22m 27s.xml">
-      <configuration name="MyTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MyTests - 2019.03.29 at 19h 22m 59s.xml">
-      <configuration name="MyTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MyTests - 2019.03.29 at 19h 27m 51s.xml">
-      <configuration name="MyTests" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="MyTests - 2019.03.29 at 19h 30m 15s.xml">
+      <configuration name="MyTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyTests - 2019.03.29 at 19h 32m 00s.xml">
+      <configuration name="MyTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyTests - 2019.03.29 at 19h 32m 45s.xml">
+      <configuration name="MyTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyTests - 2019.03.30 at 12h 32m 09s.xml">
+      <configuration name="MyTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyTests - 2019.03.31 at 15h 51m 24s.xml">
+      <configuration name="MyTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyTests - 2019.03.31 at 15h 51m 41s.xml">
+      <configuration name="MyTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyTests - 2019.03.31 at 16h 14m 14s.xml">
+      <configuration name="MyTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyTests - 2019.03.31 at 16h 21m 05s.xml">
+      <configuration name="MyTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyTests - 2019.03.31 at 16h 27m 31s.xml">
+      <configuration name="MyTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyTests - 2019.03.31 at 16h 31m 18s.xml">
       <configuration name="MyTests" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
+    <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1875" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1640625" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Build" weight="0.23957323" />
-      <window_info anchor="bottom" id="Messages" weight="0.3297769" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3297769" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3200776" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39961204" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Gradle" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Maven" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Build" order="10" weight="0.23957323" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.3297769" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Maven" order="4" />
+      <window_info anchor="right" id="Gradle" order="5" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
     </layout>
   </component>
   <component name="editorHistoryManager">
@@ -316,8 +302,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="556">
-          <caret line="38" column="1" lean-forward="true" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
+        <state relative-caret-position="555">
+          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
         </state>
       </provider>
     </entry>
@@ -325,9 +311,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="671">
           <caret line="46" column="31" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#140#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
