@@ -16,7 +16,7 @@ class MyTests {
     }
     @Test
     fun `Four valid prices on input`() {
-        assertEquals("Was £200, then £150, now £100",fixPriceLabel("Was £200, then £150, now £100"))
+        assertEquals("Was £200, then £150, then £120, now £100",fixPriceLabel("Was £200, then £150, then £120, now £100"))
     }
     @Test
     fun `Three valid prices with some decimal`() {
