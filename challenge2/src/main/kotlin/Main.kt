@@ -21,18 +21,12 @@ fun List<PriceLabel>.allPricesAreLessThan(priceLabel:PriceLabel):Boolean {
     return this.filter{ priceInList -> priceLabel.value <= priceInList.value }.isEmpty()
 }
 
-fun removeInvalidLabels(listOfLabels:List<PriceLabel>): List<PriceLabel> {
+fun List<PriceLabel>.removeInvalidLabels(): List<PriceLabel> {
 
-    data class FoldData(val resultingLabels:List<PriceLabel>, val remainingLabels:List<PriceLabel>)
-
-    val resultOfFold:FoldData = listOfLabels.fold(FoldData(listOf(),listOfLabels)){ foldData, priceLabel ->
-        val remainingLabels = foldData.remainingLabels.drop(1)
-        val resultingLabels = foldData.resultingLabels
-        if (remainingLabels.allPricesAreLessThan(priceLabel)) FoldData(resultingLabels + priceLabel, remainingLabels)
-        else FoldData(resultingLabels, remainingLabels)
+    return this.filterIndexed{index, priceLabel ->
+        val remainingLabels = this.drop(index + 1)
+        remainingLabels.allPricesAreLessThan(priceLabel)
     }
-
-    return resultOfFold.resultingLabels
 }
 
 fun List<PriceLabel>.toPriceLabelString():String {
@@ -40,8 +34,7 @@ fun List<PriceLabel>.toPriceLabelString():String {
 }
 
 fun fixPriceLabel(priceLabelString:String):String {
-
     val ListOfLabels = priceLabelString.split(", ").map{PriceLabel(it)}
-    val validLabels = removeInvalidLabels(ListOfLabels)
+    val validLabels = ListOfLabels.removeInvalidLabels()
     return validLabels.toPriceLabelString()
 }
