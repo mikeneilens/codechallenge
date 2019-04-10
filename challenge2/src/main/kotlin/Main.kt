@@ -3,11 +3,10 @@ fun main(args: Array<String>) {
 }
 
 class PriceLabel(original: String) {
-    val price:String
+    private val price:String = (original.removePrefix("Was ").removePrefix("then ").removePrefix("now "))
     val value:Double
 
     init {
-        price  = (original.removePrefix("Was ").removePrefix("then ").removePrefix("now "))
         value = price.removePrefix("£").toDouble()
     }
     fun addPrefix(lastPrice:PriceLabel, firstPrice:PriceLabel) = when {
@@ -18,7 +17,7 @@ class PriceLabel(original: String) {
 }
 
 fun List<PriceLabel>.allPricesAreLessThan(priceLabel:PriceLabel):Boolean {
-    return this.filter{ priceInList -> priceLabel.value <= priceInList.value }.isEmpty()
+    return this.none { priceInList -> priceLabel.value <= priceInList.value }
 }
 
 fun List<PriceLabel>.removeInvalidLabels(): List<PriceLabel> {
@@ -30,11 +29,11 @@ fun List<PriceLabel>.removeInvalidLabels(): List<PriceLabel> {
 }
 
 fun List<PriceLabel>.toPriceLabelString():String {
-    return this.map { priceLabel -> priceLabel.addPrefix(this.last(), this.first()) }.joinToString("")
+    return this.joinToString(separator = "") { priceLabel -> priceLabel.addPrefix(this.last(), this.first()) }
 }
 
 fun fixPriceLabel(priceLabelString:String):String {
-    val ListOfLabels = priceLabelString.split(", ").map{PriceLabel(it)}
-    val validLabels = ListOfLabels.removeInvalidLabels()
+    val listOfLabels = priceLabelString.split(", ").map{PriceLabel(it)}
+    val validLabels = listOfLabels.removeInvalidLabels()
     return validLabels.toPriceLabelString()
 }
