@@ -16,9 +16,9 @@ class MainTest {
     @Test
     fun `Test MutableMap fromString`() {
         val map1 = mutableMapOf<Position, MapTile>()
-        map1.fromString(1,"p")
+        map1.fromStringForRow(1,"p")
         TestCase.assertEquals(map1[Position(1,0)],MapTile.Person)
-        map1.fromString(1,"# pb*PB")
+        map1.fromStringForRow(1,"# pb*PB")
         TestCase.assertEquals(map1[Position(1,0)],MapTile.Wall)
         TestCase.assertEquals(map1[Position(1,1)],MapTile.Empty)
         TestCase.assertEquals(map1[Position(1,2)],MapTile.Person)
@@ -50,7 +50,7 @@ class MainTest {
     }
     @Test
     fun `Test List of String toMap`() {
-        val listOfStrings = listOf<String>("# p #", "B*Ppb")
+        val listOfStrings = listOf("# p #", "B*Ppb")
         val map = listOfStrings.toMap()
         TestCase.assertEquals(map[Position(0,0)],MapTile.Wall)
         TestCase.assertEquals(map[Position(0,1)],MapTile.Empty)
@@ -177,8 +177,8 @@ class MainTest {
         map[Position(1,4)] = MapTile.Wall
 
         val positionToMoveFrom = Position(1, 2)
-        val postionToMoveTo = Position(1,3)
-        map.movePerson(postionToMoveTo,positionToMoveFrom)
+        val positionToMoveTo = Position(1,3)
+        map.movePerson(positionToMoveTo,positionToMoveFrom)
         TestCase.assertEquals(MapTile.Empty, map[Position(1,2)])
         TestCase.assertEquals(MapTile.Person, map[Position(1,3)])
     }
@@ -193,14 +193,14 @@ class MainTest {
         map[Position(1,4)] = MapTile.Wall
 
         val positionToMoveFrom = Position(1, 2)
-        val postionToMoveTo = Position(1,3)
-        map.movePerson(postionToMoveTo,positionToMoveFrom)
+        val positionToMoveTo = Position(1,3)
+        map.movePerson(positionToMoveTo,positionToMoveFrom)
         TestCase.assertEquals(MapTile.Empty, map[Position(1,2)])
         TestCase.assertEquals(MapTile.PersonOnStorage, map[Position(1,3)])
     }
 
     @Test
-    fun `Test moving a person frorm a storage square on the map`() {
+    fun `Test moving a person form a storage square on the map`() {
         val map = mutableMapOf<Position, MapTile>()
         map[Position(1,0)] = MapTile.Wall
         map[Position(1,1)] = MapTile.Empty
@@ -209,8 +209,8 @@ class MainTest {
         map[Position(1,4)] = MapTile.Wall
 
         val positionToMoveFrom = Position(1, 2)
-        val postionToMoveTo = Position(1,3)
-        map.movePerson(postionToMoveTo,positionToMoveFrom)
+        val positionToMoveTo = Position(1,3)
+        map.movePerson(positionToMoveTo,positionToMoveFrom)
         TestCase.assertEquals(MapTile.Storage, map[Position(1,2)])
         TestCase.assertEquals(MapTile.Person, map[Position(1,3)])
     }
@@ -225,8 +225,8 @@ class MainTest {
         map[Position(1,4)] = MapTile.Wall
 
         val positionToMoveFrom = Position(1, 2)
-        val postionToMoveTo = Position(1,3)
-        map.moveBlock(postionToMoveTo,positionToMoveFrom)
+        val positionToMoveTo = Position(1,3)
+        map.moveBlock(positionToMoveTo,positionToMoveFrom)
         TestCase.assertEquals(MapTile.Empty, map[Position(1,2)])
         TestCase.assertEquals(MapTile.Block, map[Position(1,3)])
     }
@@ -241,8 +241,8 @@ class MainTest {
         map[Position(1,4)] = MapTile.Wall
 
         val positionToMoveFrom = Position(1, 2)
-        val postionToMoveTo = Position(1,3)
-        map.moveBlock(postionToMoveTo,positionToMoveFrom)
+        val positionToMoveTo = Position(1,3)
+        map.moveBlock(positionToMoveTo,positionToMoveFrom)
         TestCase.assertEquals(MapTile.Empty, map[Position(1,2)])
         TestCase.assertEquals(MapTile.BlockOnStorage, map[Position(1,3)])
     }
@@ -257,8 +257,8 @@ class MainTest {
         map[Position(1,4)] = MapTile.Wall
 
         val positionToMoveFrom = Position(1, 2)
-        val postionToMoveTo = Position(1,3)
-        map.moveBlock(postionToMoveTo,positionToMoveFrom)
+        val positionToMoveTo = Position(1,3)
+        map.moveBlock(positionToMoveTo,positionToMoveFrom)
         TestCase.assertEquals(MapTile.Storage, map[Position(1,2)])
         TestCase.assertEquals(MapTile.Block, map[Position(1,3)])
     }
@@ -396,13 +396,13 @@ class MainTest {
             "#     b  b  #",
             "# *         #",
             "#############")
-        val aftermoveRight = listOf(
+        val afterMoveRight = listOf(
             "#############",
             "# p       * #",
             "#     b  b  #",
             "# *         #",
             "#############")
-        TestCase.assertEquals(aftermoveRight, processSokobanMove(inputList,"R"))
+        TestCase.assertEquals(afterMoveRight, processSokobanMove(inputList,"R"))
     }
     @Test
     fun `Test processSokabanMove with simple move down` () {
@@ -412,13 +412,13 @@ class MainTest {
             "#     b  b  #",
             "# *         #",
             "#############")
-        val aftermoveDown = listOf(
+        val afterMoveDown = listOf(
             "#############",
             "#         * #",
             "#p    b  b  #",
             "# *         #",
             "#############")
-        TestCase.assertEquals(aftermoveDown, processSokobanMove(inputList,"D"))
+        TestCase.assertEquals(afterMoveDown, processSokobanMove(inputList,"D"))
     }
     @Test
     fun `Test processSokabanMove move block` () {
@@ -428,13 +428,13 @@ class MainTest {
             "#     b  b  #",
             "# *   p     #",
             "#############")
-        val aftermoveUp = listOf(
+        val afterMoveUp = listOf(
             "#############",
             "#     b   * #",
             "#     p  b  #",
             "# *         #",
             "#############")
-        TestCase.assertEquals(aftermoveUp, processSokobanMove(inputList,"U"))
+        TestCase.assertEquals(afterMoveUp, processSokobanMove(inputList,"U"))
     }
     @Test
     fun `Test processSokabanMove move block onto storage` () {
@@ -444,13 +444,13 @@ class MainTest {
             "#    *bp b  #",
             "# *         #",
             "#############")
-        val aftermoveLeft = listOf(
+        val afterMoveLeft = listOf(
             "#############",
             "#         * #",
             "#    Bp  b  #",
             "# *         #",
             "#############")
-        TestCase.assertEquals(aftermoveLeft, processSokobanMove(inputList,"L"))
+        TestCase.assertEquals(afterMoveLeft, processSokobanMove(inputList,"L"))
     }
     @Test
     fun `Test processSokabanMove move block off storage` () {
@@ -460,12 +460,28 @@ class MainTest {
             "#    Bp  b  #",
             "# *         #",
             "#############")
-        val aftermoveLeft = listOf(
+        val afterMoveLeft = listOf(
             "#############",
             "#         * #",
             "#   bP   b  #",
             "# *         #",
             "#############")
-        TestCase.assertEquals(aftermoveLeft, processSokobanMove(inputList,"L"))
+        TestCase.assertEquals(afterMoveLeft, processSokobanMove(inputList,"L"))
+    }
+    @Test
+    fun `Test processSokabanMove cannot move person off the board` () {
+        val inputList = listOf(
+            "#############",
+            "#         * #",
+            "#    *   b  p",
+            "# *         #",
+            "#############")
+        val afterMoveRight = listOf(
+            "#############",
+            "#         * #",
+            "#    *   b  p",
+            "# *         #",
+            "#############")
+        TestCase.assertEquals(afterMoveRight, processSokobanMove(inputList,"R"))
     }
 }
