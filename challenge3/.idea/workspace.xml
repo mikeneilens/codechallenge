@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a32b85ce-12dd-4d86-8b0b-3874804fb39e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../challenge2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge2/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -20,20 +22,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="566">
-              <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+            <state>
+              <caret lean-forward="true" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1245">
-              <caret line="83" column="57" selection-start-line="83" selection-start-column="57" selection-end-line="83" selection-end-column="57" />
+            <state relative-caret-position="103">
+              <caret line="440" column="8" selection-start-line="440" selection-start-column="8" selection-end-line="440" selection-end-column="8" />
               <folding>
                 <element signature="e#0#98#0" expanded="true" />
               </folding>
@@ -50,6 +52,17 @@
         <option value="Kotlin Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>pl</find>
+      <find>player</find>
+      <find>Player</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>person</replace>
+      <replace>Person</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -115,7 +128,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555099999171" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555106476753" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -156,44 +169,44 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainTest.Test List of String toMap" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MainTest.Test adding positions together" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mike.challenge3.test" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MainTest" />
-      <option name="METHOD_NAME" value="Test List of String toMap" />
+      <option name="METHOD_NAME" value="Test adding positions together" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainTest.Test Map to ListOfString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MainTest.Test processSokabanMove move block off storage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mike.challenge3.test" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MainTest" />
-      <option name="METHOD_NAME" value="Test Map to ListOfString" />
+      <option name="METHOD_NAME" value="Test processSokabanMove move block off storage" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainTest.Test MutableMap fromString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MainTest.Test processSokabanMove move block onto storage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mike.challenge3.test" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MainTest" />
-      <option name="METHOD_NAME" value="Test MutableMap fromString" />
+      <option name="METHOD_NAME" value="Test processSokabanMove move block onto storage" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainTest.Test MutableMap toString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MainTest.Test processSokabanMove move block" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mike.challenge3.test" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MainTest" />
-      <option name="METHOD_NAME" value="Test MutableMap toString" />
+      <option name="METHOD_NAME" value="Test processSokabanMove move block" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
@@ -228,10 +241,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.MainTest" />
-        <item itemvalue="JUnit.MainTest.Test Map to ListOfString" />
-        <item itemvalue="JUnit.MainTest.Test List of String toMap" />
-        <item itemvalue="JUnit.MainTest.Test MutableMap toString" />
-        <item itemvalue="JUnit.MainTest.Test MutableMap fromString" />
+        <item itemvalue="JUnit.MainTest.Test adding positions together" />
+        <item itemvalue="JUnit.MainTest.Test processSokabanMove move block off storage" />
+        <item itemvalue="JUnit.MainTest.Test processSokabanMove move block onto storage" />
+        <item itemvalue="JUnit.MainTest.Test processSokabanMove move block" />
       </list>
     </recent_temporary>
   </component>
@@ -256,34 +269,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MainTest_Test_MutableMap_toString - 2019.04.12 at 20h 35m 32s.xml">
-      <configuration name="MainTest.Test MutableMap toString" configurationId="JUnit" />
+    <history-entry file="MainTest_Test_moving_a_person_right - 2019.04.12 at 22h 40m 28s.xml">
+      <configuration name="MainTest.Test moving a person right" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MainTest_Test_MutableMap_toString - 2019.04.12 at 20h 37m 18s.xml">
-      <configuration name="MainTest.Test MutableMap toString" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainTest_Test_List_of_String_toMap - 2019.04.12 at 20h 47m 22s.xml">
-      <configuration name="MainTest.Test List of String toMap" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainTest_Test_List_of_String_toMap - 2019.04.12 at 20h 47m 44s.xml">
-      <configuration name="MainTest.Test List of String toMap" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainTest_Test_List_of_String_toMap - 2019.04.12 at 20h 48m 39s.xml">
-      <configuration name="MainTest.Test List of String toMap" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainTest_Test_List_of_String_toMap - 2019.04.12 at 20h 49m 40s.xml">
-      <configuration name="MainTest.Test List of String toMap" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainTest_Test_Map_to_ListOfString - 2019.04.12 at 21h 02m 22s.xml">
-      <configuration name="MainTest.Test Map to ListOfString" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainTest_Test_Map_to_ListOfString - 2019.04.12 at 21h 05m 24s.xml">
-      <configuration name="MainTest.Test Map to ListOfString" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainTest - 2019.04.12 at 21h 05m 30s.xml">
+    <history-entry file="MainTest - 2019.04.12 at 22h 40m 34s.xml">
       <configuration name="MainTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MainTest - 2019.04.12 at 21h 09m 12s.xml">
+    <history-entry file="MainTest_Test_processSokabanMove_with_simple_move_right - 2019.04.12 at 22h 51m 51s.xml">
+      <configuration name="MainTest.Test processSokabanMove with simple move right" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest_Test_processSokabanMove_with_simple_move_down - 2019.04.12 at 22h 53m 32s.xml">
+      <configuration name="MainTest.Test processSokabanMove with simple move down" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest_Test_processSokabanMove_move_block - 2019.04.12 at 22h 54m 46s.xml">
+      <configuration name="MainTest.Test processSokabanMove move block" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest_Test_processSokabanMove_move_block - 2019.04.12 at 22h 55m 08s.xml">
+      <configuration name="MainTest.Test processSokabanMove move block" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest_Test_processSokabanMove_move_block_onto_storage - 2019.04.12 at 22h 56m 50s.xml">
+      <configuration name="MainTest.Test processSokabanMove move block onto storage" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest_Test_processSokabanMove_move_block_off_storage - 2019.04.12 at 22h 57m 43s.xml">
+      <configuration name="MainTest.Test processSokabanMove move block off storage" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest_Test_adding_positions_together - 2019.04.12 at 23h 01m 10s.xml">
+      <configuration name="MainTest.Test adding positions together" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest - 2019.04.12 at 23h 01m 18s.xml">
       <configuration name="MainTest" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -329,20 +342,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="566">
-          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1245">
-          <caret line="83" column="57" selection-start-line="83" selection-start-column="57" selection-end-line="83" selection-end-column="57" />
+        <state relative-caret-position="103">
+          <caret line="440" column="8" selection-start-line="440" selection-start-column="8" selection-end-line="440" selection-end-column="8" />
           <folding>
             <element signature="e#0#98#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
         </state>
       </provider>
     </entry>
