@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a32b85ce-12dd-4d86-8b0b-3874804fb39e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../challenge2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge2/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -25,8 +23,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="597">
-              <caret line="49" column="1" lean-forward="true" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
+            <state relative-caret-position="566">
+              <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
             </state>
           </provider>
         </entry>
@@ -34,7 +32,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="581">
+            <state relative-caret-position="1245">
               <caret line="83" column="57" selection-start-line="83" selection-start-column="57" selection-end-line="83" selection-end-column="57" />
               <folding>
                 <element signature="e#0#98#0" expanded="true" />
@@ -60,8 +58,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/Main.kt" />
         <option value="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/Main.kt" />
       </list>
     </option>
   </component>
@@ -117,7 +115,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555099529458" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555099999171" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -258,18 +256,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MainTest_Test_MutableMap_toString - 2019.04.12 at 20h 33m 18s.xml">
-      <configuration name="MainTest.Test MutableMap toString" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainTest_Test_MutableMap_toString - 2019.04.12 at 20h 33m 54s.xml">
-      <configuration name="MainTest.Test MutableMap toString" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainTest_Test_MutableMap_toString - 2019.04.12 at 20h 35m 02s.xml">
-      <configuration name="MainTest.Test MutableMap toString" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainTest_Test_MutableMap_toString - 2019.04.12 at 20h 35m 30s.xml">
-      <configuration name="MainTest.Test MutableMap toString" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="MainTest_Test_MutableMap_toString - 2019.04.12 at 20h 35m 32s.xml">
       <configuration name="MainTest.Test MutableMap toString" configurationId="JUnit" />
     </history-entry>
@@ -287,6 +273,18 @@
     </history-entry>
     <history-entry file="MainTest_Test_List_of_String_toMap - 2019.04.12 at 20h 49m 40s.xml">
       <configuration name="MainTest.Test List of String toMap" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest_Test_Map_to_ListOfString - 2019.04.12 at 21h 02m 22s.xml">
+      <configuration name="MainTest.Test Map to ListOfString" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest_Test_Map_to_ListOfString - 2019.04.12 at 21h 05m 24s.xml">
+      <configuration name="MainTest.Test Map to ListOfString" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest - 2019.04.12 at 21h 05m 30s.xml">
+      <configuration name="MainTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest - 2019.04.12 at 21h 09m 12s.xml">
+      <configuration name="MainTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -333,14 +331,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
-          <caret line="49" column="1" lean-forward="true" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
+        <state relative-caret-position="566">
+          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="581">
+        <state relative-caret-position="1245">
           <caret line="83" column="57" selection-start-line="83" selection-start-column="57" selection-end-line="83" selection-end-column="57" />
           <folding>
             <element signature="e#0#98#0" expanded="true" />
