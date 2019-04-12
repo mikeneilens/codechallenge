@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a32b85ce-12dd-4d86-8b0b-3874804fb39e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../challenge2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -26,8 +25,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="9" selection-start-column="9" selection-end-column="9" />
+            <state relative-caret-position="597">
+              <caret line="49" column="1" lean-forward="true" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -35,8 +34,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+            <state relative-caret-position="581">
+              <caret line="83" column="57" selection-start-line="83" selection-start-column="57" selection-end-line="83" selection-end-column="57" />
               <folding>
                 <element signature="e#0#98#0" expanded="true" />
               </folding>
@@ -61,8 +60,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/Main.kt" />
+        <option value="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" />
       </list>
     </option>
   </component>
@@ -118,7 +117,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555092085118" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555099529458" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -136,7 +135,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.MainTest.Test convert string to MapTile">
+  <component name="RunManager" selected="JUnit.MainTest">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -159,11 +158,44 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainTest.Test convert string to MapTile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MainTest.Test List of String toMap" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mike.challenge3.test" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MainTest" />
-      <option name="METHOD_NAME" value="Test convert string to MapTile" />
+      <option name="METHOD_NAME" value="Test List of String toMap" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainTest.Test Map to ListOfString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mike.challenge3.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MainTest" />
+      <option name="METHOD_NAME" value="Test Map to ListOfString" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainTest.Test MutableMap fromString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mike.challenge3.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MainTest" />
+      <option name="METHOD_NAME" value="Test MutableMap fromString" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainTest.Test MutableMap toString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mike.challenge3.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MainTest" />
+      <option name="METHOD_NAME" value="Test MutableMap toString" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
@@ -173,19 +205,6 @@
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainKt" type="JetRunConfigurationType" factoryName="Kotlin" temporary="true" nameIsGenerated="true">
-      <module name="mike.challenge3.main" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" value="MainKt" />
-      <option name="WORKING_DIRECTORY" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -210,9 +229,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MainTest.Test convert string to MapTile" />
         <item itemvalue="JUnit.MainTest" />
-        <item itemvalue="Kotlin.MainKt" />
+        <item itemvalue="JUnit.MainTest.Test Map to ListOfString" />
+        <item itemvalue="JUnit.MainTest.Test List of String toMap" />
+        <item itemvalue="JUnit.MainTest.Test MutableMap toString" />
+        <item itemvalue="JUnit.MainTest.Test MutableMap fromString" />
       </list>
     </recent_temporary>
   </component>
@@ -237,14 +258,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MainTest_Test_convert_string_to_MapTile - 2019.04.12 at 18h 55m 20s.xml">
-      <configuration name="MainTest.Test convert string to MapTile" configurationId="JUnit" />
+    <history-entry file="MainTest_Test_MutableMap_toString - 2019.04.12 at 20h 33m 18s.xml">
+      <configuration name="MainTest.Test MutableMap toString" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MainTest_Test_convert_string_to_MapTile - 2019.04.12 at 18h 57m 16s.xml">
-      <configuration name="MainTest.Test convert string to MapTile" configurationId="JUnit" />
+    <history-entry file="MainTest_Test_MutableMap_toString - 2019.04.12 at 20h 33m 54s.xml">
+      <configuration name="MainTest.Test MutableMap toString" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MainTest - 2019.04.12 at 18h 57m 35s.xml">
-      <configuration name="MainTest" configurationId="JUnit" />
+    <history-entry file="MainTest_Test_MutableMap_toString - 2019.04.12 at 20h 35m 02s.xml">
+      <configuration name="MainTest.Test MutableMap toString" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest_Test_MutableMap_toString - 2019.04.12 at 20h 35m 30s.xml">
+      <configuration name="MainTest.Test MutableMap toString" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest_Test_MutableMap_toString - 2019.04.12 at 20h 35m 32s.xml">
+      <configuration name="MainTest.Test MutableMap toString" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest_Test_MutableMap_toString - 2019.04.12 at 20h 37m 18s.xml">
+      <configuration name="MainTest.Test MutableMap toString" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest_Test_List_of_String_toMap - 2019.04.12 at 20h 47m 22s.xml">
+      <configuration name="MainTest.Test List of String toMap" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest_Test_List_of_String_toMap - 2019.04.12 at 20h 47m 44s.xml">
+      <configuration name="MainTest.Test List of String toMap" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest_Test_List_of_String_toMap - 2019.04.12 at 20h 48m 39s.xml">
+      <configuration name="MainTest.Test List of String toMap" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest_Test_List_of_String_toMap - 2019.04.12 at 20h 49m 40s.xml">
+      <configuration name="MainTest.Test List of String toMap" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -266,7 +308,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3297769" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39961204" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -291,15 +333,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="9" selection-start-column="9" selection-end-column="9" />
+        <state relative-caret-position="597">
+          <caret line="49" column="1" lean-forward="true" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        <state relative-caret-position="581">
+          <caret line="83" column="57" selection-start-line="83" selection-start-column="57" selection-end-line="83" selection-end-column="57" />
           <folding>
             <element signature="e#0#98#0" expanded="true" />
           </folding>
