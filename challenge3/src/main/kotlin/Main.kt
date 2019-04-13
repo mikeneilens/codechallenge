@@ -33,9 +33,10 @@ data class Position(val row:Int, val column:Int) {
 }
 
 typealias GameMap = MutableMap<Position, MapTile>
+fun newGameMap():GameMap = mutableMapOf<Position,MapTile>()
 
-fun List<String>.toMap():GameMap {
-    val gameMap= mutableMapOf<Position,MapTile>()
+fun List<String>.toGameMap():GameMap {
+    val gameMap= newGameMap()
     this.forEachIndexed{ row, string ->
         gameMap.fromStringForRow(row, string)
     }
@@ -71,7 +72,7 @@ enum class Direction(val move:Position) {
 }
 
 fun processSokobanMove(listOfString:List<String>, direction:String):List<String> {
-    val gameMap = listOfString.toMap()
+    val gameMap = listOfString.toGameMap()
     val directionToMove = Direction.valueOf(direction)
     gameMap.movePerson(directionToMove)
     return gameMap.toListOfString()
