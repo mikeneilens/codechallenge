@@ -178,7 +178,7 @@ class MainTest {
 
         val positionToMoveFrom = Position(1, 2)
         val positionToMoveTo = Position(1,3)
-        gameMap.movePerson(positionToMoveTo,positionToMoveFrom)
+        gameMap.moveMapTile(positionToMoveTo,positionToMoveFrom, MapTile.Person, MapTile.PersonOnStorage)
         TestCase.assertEquals(MapTile.Empty, gameMap[Position(1,2)])
         TestCase.assertEquals(MapTile.Person, gameMap[Position(1,3)])
     }
@@ -194,7 +194,7 @@ class MainTest {
 
         val positionToMoveFrom = Position(1, 2)
         val positionToMoveTo = Position(1,3)
-        gameMap.movePerson(positionToMoveTo,positionToMoveFrom)
+        gameMap.moveMapTile(positionToMoveTo,positionToMoveFrom, MapTile.Person, MapTile.PersonOnStorage)
         TestCase.assertEquals(MapTile.Empty, gameMap[Position(1,2)])
         TestCase.assertEquals(MapTile.PersonOnStorage, gameMap[Position(1,3)])
     }
@@ -210,57 +210,9 @@ class MainTest {
 
         val positionToMoveFrom = Position(1, 2)
         val positionToMoveTo = Position(1,3)
-        gameMap.movePerson(positionToMoveTo,positionToMoveFrom)
+        gameMap.moveMapTile(positionToMoveTo,positionToMoveFrom, MapTile.Person, MapTile.PersonOnStorage)
         TestCase.assertEquals(MapTile.Storage, gameMap[Position(1,2)])
         TestCase.assertEquals(MapTile.Person, gameMap[Position(1,3)])
-    }
-
-    @Test
-    fun `Test moving a block to an empty square on the gameMap`() {
-        val gameMap = newGameMap()
-        gameMap[Position(1,0)] = MapTile.Wall
-        gameMap[Position(1,1)] = MapTile.Empty
-        gameMap[Position(1,2)] = MapTile.Block
-        gameMap[Position(1,3)] = MapTile.Empty
-        gameMap[Position(1,4)] = MapTile.Wall
-
-        val positionToMoveFrom = Position(1, 2)
-        val positionToMoveTo = Position(1,3)
-        gameMap.moveBlock(positionToMoveTo,positionToMoveFrom)
-        TestCase.assertEquals(MapTile.Empty, gameMap[Position(1,2)])
-        TestCase.assertEquals(MapTile.Block, gameMap[Position(1,3)])
-    }
-
-    @Test
-    fun `Test moving a block to an storage square on the gameMap`() {
-        val gameMap = newGameMap()
-        gameMap[Position(1,0)] = MapTile.Wall
-        gameMap[Position(1,1)] = MapTile.Empty
-        gameMap[Position(1,2)] = MapTile.Block
-        gameMap[Position(1,3)] = MapTile.Storage
-        gameMap[Position(1,4)] = MapTile.Wall
-
-        val positionToMoveFrom = Position(1, 2)
-        val positionToMoveTo = Position(1,3)
-        gameMap.moveBlock(positionToMoveTo,positionToMoveFrom)
-        TestCase.assertEquals(MapTile.Empty, gameMap[Position(1,2)])
-        TestCase.assertEquals(MapTile.BlockOnStorage, gameMap[Position(1,3)])
-    }
-
-    @Test
-    fun `Test moving a block from a storage square on the gameMap`() {
-        val gameMap = newGameMap()
-        gameMap[Position(1,0)] = MapTile.Wall
-        gameMap[Position(1,1)] = MapTile.Empty
-        gameMap[Position(1,2)] = MapTile.BlockOnStorage
-        gameMap[Position(1,3)] = MapTile.Empty
-        gameMap[Position(1,4)] = MapTile.Wall
-
-        val positionToMoveFrom = Position(1, 2)
-        val positionToMoveTo = Position(1,3)
-        gameMap.moveBlock(positionToMoveTo,positionToMoveFrom)
-        TestCase.assertEquals(MapTile.Storage, gameMap[Position(1,2)])
-        TestCase.assertEquals(MapTile.Block, gameMap[Position(1,3)])
     }
 
     @Test
@@ -272,7 +224,7 @@ class MainTest {
         gameMap[Position(1,3)] = MapTile.Empty
         gameMap[Position(1,4)] = MapTile.Wall
 
-        gameMap.movePerson(Direction.L)
+        gameMap.moveMapTile(Direction.L)
         TestCase.assertEquals(MapTile.Wall, gameMap[Position(1,0)])
         TestCase.assertEquals(MapTile.Person, gameMap[Position(1,1)])
         TestCase.assertEquals(MapTile.Empty, gameMap[Position(1,2)])
@@ -288,7 +240,7 @@ class MainTest {
         gameMap[Position(1,3)] = MapTile.Empty
         gameMap[Position(1,4)] = MapTile.Wall
 
-        gameMap.movePerson(Direction.R)
+        gameMap.moveMapTile(Direction.R)
         TestCase.assertEquals(MapTile.Wall, gameMap[Position(1,0)])
         TestCase.assertEquals(MapTile.Empty, gameMap[Position(1,1)])
         TestCase.assertEquals(MapTile.Empty, gameMap[Position(1,2)])
@@ -310,7 +262,7 @@ class MainTest {
         gameMap[Position(1,3)] = MapTile.Empty
         gameMap[Position(1,4)] = MapTile.Wall
 
-        gameMap.movePerson(Direction.U)
+        gameMap.moveMapTile(Direction.U)
         TestCase.assertEquals(MapTile.Wall, gameMap[Position(0,0)])
         TestCase.assertEquals(MapTile.Empty, gameMap[Position(0,1)])
         TestCase.assertEquals(MapTile.PersonOnStorage, gameMap[Position(0,2)])
@@ -340,7 +292,7 @@ class MainTest {
         gameMap[Position(2,2)] = MapTile.Empty
         gameMap[Position(2,3)] = MapTile.Empty
         gameMap[Position(2,4)] = MapTile.Wall
-        gameMap.movePerson(Direction.D)
+        gameMap.moveMapTile(Direction.D)
         TestCase.assertEquals(MapTile.Wall, gameMap[Position(0,0)])
         TestCase.assertEquals(MapTile.Empty, gameMap[Position(0,1)])
         TestCase.assertEquals(MapTile.Storage, gameMap[Position(0,2)])
@@ -367,7 +319,7 @@ class MainTest {
         gameMap[Position(1,3)] = MapTile.Empty
         gameMap[Position(1,4)] = MapTile.Wall
 
-        gameMap.movePerson(Direction.R)
+        gameMap.moveMapTile(Direction.R)
         TestCase.assertEquals(MapTile.Empty, gameMap[Position(1,1)])
         TestCase.assertEquals(MapTile.Person, gameMap[Position(1,2)])
         TestCase.assertEquals(MapTile.Block, gameMap[Position(1,3)])
@@ -382,7 +334,7 @@ class MainTest {
         gameMap[Position(1,3)] = MapTile.Block
         gameMap[Position(1,4)] = MapTile.Wall
 
-        gameMap.movePerson(Direction.R)
+        gameMap.moveMapTile(Direction.R)
         TestCase.assertEquals(MapTile.Person, gameMap[Position(1,1)])
         TestCase.assertEquals(MapTile.Block, gameMap[Position(1,2)])
         TestCase.assertEquals(MapTile.Block, gameMap[Position(1,3)])

@@ -74,16 +74,16 @@ enum class Direction(val move:Position) {
 fun processSokobanMove(listOfString:List<String>, direction:String):List<String> {
     val gameMap = listOfString.toGameMap()
     val directionToMove = Direction.valueOf(direction)
-    gameMap.movePerson(directionToMove)
+    gameMap.moveMapTile(directionToMove)
     return gameMap.toListOfString()
 }
 
-fun GameMap.movePerson(direction: Direction) {
+fun GameMap.moveMapTile(direction: Direction) {
     val positionOfPerson = this.positionOfPerson()
     val positionToMoveTo = positionOfPerson + direction.move
 
     when {
-        this.canMoveOnto(positionToMoveTo) -> movePerson(positionToMoveTo, positionOfPerson)
+        this.canMoveOnto(positionToMoveTo) -> moveMapTile(positionToMoveTo, positionOfPerson, MapTile.Person, MapTile.PersonOnStorage)
         this.containsBlock(positionToMoveTo) -> tryAndMoveBlock(positionToMoveTo, direction, positionOfPerson)
     }
 }
@@ -103,21 +103,14 @@ fun GameMap.containsBlock(position:Position):Boolean {
 fun GameMap.tryAndMoveBlock(positionOfBlock:Position, direction: Direction, positionOfPerson: Position) {
     val positionAdjacentToBlock = positionOfBlock + direction.move
     if (this.canMoveOnto(positionAdjacentToBlock)) {
-        moveBlock(positionAdjacentToBlock, positionOfBlock)
-        movePerson(positionOfBlock, positionOfPerson)
+        moveMapTile(positionAdjacentToBlock, positionOfBlock, MapTile.Block, MapTile.BlockOnStorage)
+        moveMapTile(positionOfBlock, positionOfPerson, MapTile.Person, MapTile.PersonOnStorage)
     }
 }
 
-fun GameMap.movePerson(positionToMoveTo: Position, positionToMoveFrom: Position) {
-    val mapTileForOldPosition = if (this[positionToMoveFrom] == MapTile.Person) MapTile.Empty else MapTile.Storage
-    val mapTileForNewPosition = if (this[positionToMoveTo] == MapTile.Empty) MapTile.Person else MapTile.PersonOnStorage
-    this[positionToMoveFrom] = mapTileForOldPosition
-    this[positionToMoveTo] = mapTileForNewPosition
-}
-
-fun GameMap.moveBlock(positionToMoveTo: Position, positionToMoveFrom: Position) {
-    val mapTileForOldPosition = if (this[positionToMoveFrom] == MapTile.Block) MapTile.Empty else MapTile.Storage
-    val mapTileForNewPosition = if (this[positionToMoveTo] == MapTile.Empty) MapTile.Block else MapTile.BlockOnStorage
+fun GameMap.moveMapTile(positionToMoveTo: Position, positionToMoveFrom: Position, mapTile:MapTile, mapTileOnStorage:MapTile) {
+    val mapTileForOldPosition = if (this[positionToMoveFrom] == mapTile) MapTile.Empty else MapTile.Storage
+    val mapTileForNewPosition = if (this[positionToMoveTo] == MapTile.Empty) mapTile else mapTileOnStorage
     this[positionToMoveFrom] = mapTileForOldPosition
     this[positionToMoveTo] = mapTileForNewPosition
 }
