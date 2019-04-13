@@ -33,7 +33,7 @@ data class Position(val row:Int, val column:Int) {
 }
 
 typealias GameMap = MutableMap<Position, MapTile>
-fun newGameMap():GameMap = mutableMapOf<Position,MapTile>()
+fun newGameMap():GameMap = mutableMapOf()
 
 fun List<String>.toGameMap():GameMap {
     val gameMap= newGameMap()
