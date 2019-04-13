@@ -49,12 +49,18 @@ fun GameMap.fromStringForRow(row:Int, string:String) {
 }
 
 fun GameMap.toListOfString():List<String> {
-    return this.keys.map{it.row }.distinct().sorted().map{row -> this.toStringForRow(row)}
+    return this.keys
+            .map(Position::row)
+            .distinct().sorted()
+            .map{row -> this.toStringForRow(row)}
 }
 
 fun GameMap.toStringForRow(row:Int):String {
-    val listOfPositionMapTile = this.filter { mapTile -> mapTile.key.row == row }.toSortedMap(compareBy { position ->  position.column }).toList()
-    return listOfPositionMapTile.fold("") { acc, pair -> acc + pair.second.text}
+    val listOfTextForEachPosition = this.filter { mapTile -> mapTile.key.row == row }
+        .toSortedMap(compareBy { position ->  position.column })
+        .toList()
+        .map{it.second.text}
+    return listOfTextForEachPosition.reduce { acc, text -> acc + text}
 }
 
 enum class Direction(val move:Position) {
