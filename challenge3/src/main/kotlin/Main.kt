@@ -32,25 +32,27 @@ data class Position(val row:Int, val column:Int) {
     }
 }
 
-fun List<String>.toMap():MutableMap<Position,MapTile> {
-    val mutableMap= mutableMapOf<Position,MapTile>()
+typealias GameMap = MutableMap<Position, MapTile>
+
+fun List<String>.toMap():GameMap {
+    val gameMap= mutableMapOf<Position,MapTile>()
     this.forEachIndexed{ row, string ->
-        mutableMap.fromStringForRow(row, string)
+        gameMap.fromStringForRow(row, string)
     }
-    return mutableMap
+    return gameMap
 }
 
-fun MutableMap<Position, MapTile>.fromStringForRow(row:Int, string:String) {
+fun GameMap.fromStringForRow(row:Int, string:String) {
     string.forEachIndexed{ column, character ->
         this[Position(row, column)] = MapTile.fromChar(character)
     }
 }
 
-fun Map<Position, MapTile>.toListOfString():List<String> {
+fun GameMap.toListOfString():List<String> {
     return this.keys.map{it.row }.distinct().sorted().map{row -> this.toStringForRow(row)}
 }
 
-fun Map<Position, MapTile>.toStringForRow(row:Int):String {
+fun GameMap.toStringForRow(row:Int):String {
     val listOfPositionMapTile = this.filter { mapTile -> mapTile.key.row == row }.toSortedMap(compareBy { position ->  position.column }).toList()
     return listOfPositionMapTile.fold("") { acc, pair -> acc + pair.second.text}
 }
@@ -69,7 +71,7 @@ fun processSokobanMove(listOfString:List<String>, direction:String):List<String>
     return gameMap.toListOfString()
 }
 
-fun MutableMap<Position, MapTile>.movePerson(direction: Direction) {
+fun GameMap.movePerson(direction: Direction) {
     val positionOfPerson = this.positionOfPerson()
     val positionToMoveTo = positionOfPerson + direction.move
 
@@ -79,19 +81,19 @@ fun MutableMap<Position, MapTile>.movePerson(direction: Direction) {
     }
 }
 
-fun Map<Position, MapTile>.positionOfPerson():Position {
+fun GameMap.positionOfPerson():Position {
     return this.filterValues{it == MapTile.Person || it == MapTile.PersonOnStorage  }.keys.first()
 }
 
-fun Map<Position, MapTile>.canMoveOnto(position:Position):Boolean {
+fun GameMap.canMoveOnto(position:Position):Boolean {
     return this[position] == MapTile.Empty || this[position] == MapTile.Storage
 }
 
-fun Map<Position, MapTile>.containsBlock(position:Position):Boolean {
+fun GameMap.containsBlock(position:Position):Boolean {
     return this[position] == MapTile.Block || this[position] == MapTile.BlockOnStorage
 }
 
-private fun MutableMap<Position, MapTile>.tryAndMoveBlock(positionOfBlock:Position, direction: Direction, positionOfPerson: Position) {
+fun GameMap.tryAndMoveBlock(positionOfBlock:Position, direction: Direction, positionOfPerson: Position) {
     val positionAdjacentToBlock = positionOfBlock + direction.move
     if (this.canMoveOnto(positionAdjacentToBlock)) {
         moveBlock(positionAdjacentToBlock, positionOfBlock)
@@ -99,14 +101,14 @@ private fun MutableMap<Position, MapTile>.tryAndMoveBlock(positionOfBlock:Positi
     }
 }
 
-fun MutableMap<Position, MapTile>.movePerson(positionToMoveTo: Position, positionToMoveFrom: Position) {
+fun GameMap.movePerson(positionToMoveTo: Position, positionToMoveFrom: Position) {
     val mapTileForOldPosition = if (this[positionToMoveFrom] == MapTile.Person) MapTile.Empty else MapTile.Storage
     val mapTileForNewPosition = if (this[positionToMoveTo] == MapTile.Empty) MapTile.Person else MapTile.PersonOnStorage
     this[positionToMoveFrom] = mapTileForOldPosition
     this[positionToMoveTo] = mapTileForNewPosition
 }
 
-fun MutableMap<Position, MapTile>.moveBlock(positionToMoveTo: Position, positionToMoveFrom: Position) {
+fun GameMap.moveBlock(positionToMoveTo: Position, positionToMoveFrom: Position) {
     val mapTileForOldPosition = if (this[positionToMoveFrom] == MapTile.Block) MapTile.Empty else MapTile.Storage
     val mapTileForNewPosition = if (this[positionToMoveTo] == MapTile.Empty) MapTile.Block else MapTile.BlockOnStorage
     this[positionToMoveFrom] = mapTileForOldPosition

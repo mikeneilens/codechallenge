@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6fed56cf-9f27-4c90-92af-fc94d82023db" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../challenge3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge3/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../challenge3/src/test/kotlin/MainTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge3/src/test/kotlin/MainTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge3/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge3/src/main/kotlin/Main.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -118,7 +118,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555106892799" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555167628390" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />

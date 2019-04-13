@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a32b85ce-12dd-4d86-8b0b-3874804fb39e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -23,8 +24,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1168">
-              <caret lean-forward="true" />
+            <state relative-caret-position="485">
+              <caret line="34" column="49" lean-forward="true" selection-start-line="34" selection-start-column="49" selection-end-line="34" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -32,7 +33,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="581">
+            <state relative-caret-position="7260">
               <caret line="484" column="80" selection-start-line="484" selection-start-column="80" selection-end-line="484" selection-end-column="80" />
               <folding>
                 <element signature="e#0#98#0" expanded="true" />
@@ -56,6 +57,8 @@
       <find>pl</find>
       <find>player</find>
       <find>Player</find>
+      <find>Mutable</find>
+      <find>&lt;Posit</find>
     </findStrings>
     <replaceStrings>
       <replace>person</replace>
@@ -69,8 +72,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/Main.kt" />
         <option value="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/Main.kt" />
       </list>
     </option>
   </component>
@@ -126,7 +129,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555107654663" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555168029183" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -267,12 +270,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MainTest_Test_moving_a_person_right - 2019.04.12 at 22h 40m 28s.xml">
-      <configuration name="MainTest.Test moving a person right" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainTest - 2019.04.12 at 22h 40m 34s.xml">
-      <configuration name="MainTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="MainTest_Test_processSokabanMove_with_simple_move_right - 2019.04.12 at 22h 51m 51s.xml">
       <configuration name="MainTest.Test processSokabanMove with simple move right" configurationId="JUnit" />
     </history-entry>
@@ -295,6 +292,12 @@
       <configuration name="MainTest.Test adding positions together" configurationId="JUnit" />
     </history-entry>
     <history-entry file="MainTest - 2019.04.12 at 23h 01m 18s.xml">
+      <configuration name="MainTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest_Test_processSokabanMove_cannot_move_person_off_the_board - 2019.04.12 at 23h 20m 19s.xml">
+      <configuration name="MainTest.Test processSokabanMove cannot move person off the board" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest - 2019.04.12 at 23h 20m 56s.xml">
       <configuration name="MainTest" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -342,14 +345,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1168">
-          <caret lean-forward="true" />
+        <state relative-caret-position="485">
+          <caret line="34" column="49" lean-forward="true" selection-start-line="34" selection-start-column="49" selection-end-line="34" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="581">
+        <state relative-caret-position="7260">
           <caret line="484" column="80" selection-start-line="484" selection-start-column="80" selection-end-line="484" selection-end-column="80" />
           <folding>
             <element signature="e#0#98#0" expanded="true" />
