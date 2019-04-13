@@ -14,9 +14,6 @@ enum MapTile:String {
     static func from(string:String) -> MapTile {
         return MapTile(rawValue:string) ?? MapTile.empty
     }
-    static func from(char:Character) ->MapTile {
-        return from(string:(String(char)))
-    }
 }
 
 struct Position:Hashable {
