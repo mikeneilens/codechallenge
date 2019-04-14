@@ -11,25 +11,31 @@ enum class MapTile(val text:String) {
     BlockOnStorage("B"),
     Empty(" ");
 
+    val onStorage:MapTile by lazy {
+        when (this) {
+            Person -> PersonOnStorage
+            Block -> BlockOnStorage
+            else -> this
+        }
+    }
+
     companion object {
         fun fromString(string:String):MapTile {
             values().firstOrNull { it.text == string }?.let{return it}
             return Empty
         }
-        fun fromChar(char:Char):MapTile {
-            return this.fromString(char.toString())
-        }
+
+        fun fromChar(char:Char):MapTile = MapTile.fromString(char.toString())
     }
 }
 
 data class Position(val row:Int, val column:Int) {
     override fun hashCode(): Int = column * 10000 + row
-    override fun equals(other: Any?): Boolean {
-        return other is Position && this.column == other.column && this.row == other.row
-    }
-    infix operator fun plus(other:Position):Position {
-        return Position(this.row + other.row, this.column + other.column)
-    }
+
+    override fun equals(other: Any?): Boolean =  other is Position && this.column == other.column && this.row == other.row
+
+    infix operator fun plus(other:Position):Position = Position(this.row + other.row, this.column + other.column)
+
 }
 
 typealias GameMap = MutableMap<Position, MapTile>
@@ -83,7 +89,7 @@ fun GameMap.moveMapTile(direction: Direction) {
     val positionToMoveTo = positionOfPerson + direction.move
 
     when {
-        this.canMoveOnto(positionToMoveTo) -> moveMapTile(positionToMoveTo, positionOfPerson, MapTile.Person, MapTile.PersonOnStorage)
+        this.canMoveOnto(positionToMoveTo) -> moveMapTile(positionToMoveTo, positionOfPerson, MapTile.Person)
         this.containsBlock(positionToMoveTo) -> tryAndMoveBlock(positionToMoveTo, direction, positionOfPerson)
     }
 }
@@ -92,25 +98,21 @@ fun GameMap.positionOfPerson():Position {
     return this.filterValues{it == MapTile.Person || it == MapTile.PersonOnStorage  }.keys.first()
 }
 
-fun GameMap.canMoveOnto(position:Position):Boolean {
-    return this[position] == MapTile.Empty || this[position] == MapTile.Storage
-}
+fun GameMap.canMoveOnto(position:Position):Boolean = this[position] == MapTile.Empty || this[position] == MapTile.Storage
 
-fun GameMap.containsBlock(position:Position):Boolean {
-    return this[position] == MapTile.Block || this[position] == MapTile.BlockOnStorage
-}
+fun GameMap.containsBlock(position:Position):Boolean = this[position] == MapTile.Block || this[position] == MapTile.BlockOnStorage
 
 fun GameMap.tryAndMoveBlock(positionOfBlock:Position, direction: Direction, positionOfPerson: Position) {
     val positionAdjacentToBlock = positionOfBlock + direction.move
     if (this.canMoveOnto(positionAdjacentToBlock)) {
-        moveMapTile(positionAdjacentToBlock, positionOfBlock, MapTile.Block, MapTile.BlockOnStorage)
-        moveMapTile(positionOfBlock, positionOfPerson, MapTile.Person, MapTile.PersonOnStorage)
+        moveMapTile(positionAdjacentToBlock, positionOfBlock, MapTile.Block)
+        moveMapTile(positionOfBlock, positionOfPerson, MapTile.Person)
     }
 }
 
-fun GameMap.moveMapTile(positionToMoveTo: Position, positionToMoveFrom: Position, mapTile:MapTile, mapTileOnStorage:MapTile) {
+fun GameMap.moveMapTile(positionToMoveTo: Position, positionToMoveFrom: Position, mapTile:MapTile) {
     val mapTileForOldPosition = if (this[positionToMoveFrom] == mapTile) MapTile.Empty else MapTile.Storage
-    val mapTileForNewPosition = if (this[positionToMoveTo] == MapTile.Empty) mapTile else mapTileOnStorage
+    val mapTileForNewPosition = if (this[positionToMoveTo] == MapTile.Empty) mapTile else mapTile.onStorage
     this[positionToMoveFrom] = mapTileForOldPosition
     this[positionToMoveTo] = mapTileForNewPosition
 }
