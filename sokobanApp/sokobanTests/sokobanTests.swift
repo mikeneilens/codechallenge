@@ -1,155 +1,30 @@
+//
+//  sokobanTests.swift
+//  sokobanTests
+//
+//  Created by Michael Neilens on 14/04/2019.
+//  Copyright © 2019 Michael Neilens. All rights reserved.
+//
+
 import XCTest
+@testable import sokoban
 
+class sokobanTests: XCTestCase {
 
+    override func setUp() {
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+    }
 
-enum MapTile:String {
-    case person = "p"
-    case wall = "#"
-    case block = "b"
-    case storage = "*"
-    case personOnStorage = "P"
-    case blockOnStorage = "B"
-    case empty = " "
+    override func tearDown() {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+
+    func testExample() {
+        // This is an example of a functional test case.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+
     
-    static func from(string:String) -> MapTile {
-        return MapTile(rawValue:string) ?? MapTile.empty
-    }
-    var onStorage:MapTile {
-        switch self {
-            case .person: return .personOnStorage
-            case .block: return .blockOnStorage
-            default: return self
-        }
-    }
-}
-
-struct Position:Hashable {
-    let row:Int
-    let column:Int
-    init (_ row:Int, _ column:Int) {
-        self.row = row
-        self.column = column
-    }
-    static func +(left:Position, right:Position) -> Position {
-        return Position(left.row + right.row, left.column + right.column)
-    }
-}
-
-enum Direction {
-    case left
-    case right
-    case up
-    case down
-    
-    var move:Position {
-        switch self {
-            case .left: return Position(0,-1)
-            case .right: return Position(0,1)
-            case .up: return Position(-1,0)
-            case .down: return Position(1,0)
-        }
-    }
-    static func from(string:String) -> Direction {
-        switch string {
-            case "U" :return Direction.up
-            case "D" :return Direction.down
-            case "L" :return Direction.left
-            case "R" :return Direction.right
-            default: return Direction.right
-        }
-    }
-}
-
-typealias GameMap = Dictionary<Position, MapTile>
-typealias GameArray = Array<String>
-
-extension GameArray {
-    func toGameMap() -> GameMap {
-        var gameMap = GameMap()
-        for (row, string) in self.enumerated() {
-            gameMap.update(atRow: row, using: string)
-        }
-        return gameMap
-    }
-}
-
-extension GameMap {
-    mutating func update(atRow row:Int, using string:String) {
-        let stringChars = string.map{String($0)}
-        for (column, stringChar) in stringChars.enumerated() {
-            self[Position(row,column )] = MapTile.from(string: stringChar)
-        }
-    }
-    
-    func toGameArray() -> GameArray {
-        let rows = self.keys.map{$0.row}
-        let uniqueRows = Array(Set(rows)).sorted()
-        return uniqueRows.map{self.toString(forRow: $0)}
-    }
-    
-    func toString(forRow row:Int) -> String {
-        return self.filter{position, value in position.row == row}
-            .map{position, mapTile in (position, mapTile)}
-            .sorted(by: { $0.0.column < $1.0.column})
-            .map{(position, mapTile) in return mapTile.rawValue}
-            .reduce("",+)
-    }
-    
-    func positionOfPerson() -> Position {
-        let position = self.first{(position, mapTile) in mapTile == MapTile.person || mapTile == MapTile.personOnStorage }?.key
-        return position ?? Position(0,0)
-    }
-    
-    func canMoveOnto(position:Position) -> Bool {
-        return self[position] == MapTile.empty || self[position] == MapTile.storage
-    }
-    
-    func containsBlock(atPosition position:Position) -> Bool {
-        return self[position] == MapTile.block || self[position] == MapTile.blockOnStorage
-    }
-
-    mutating func moveMapTile(direction: Direction) {
-        let positionOfPerson = self.positionOfPerson()
-        let positionToMoveTo = positionOfPerson + direction.move
-    
-        if canMoveOnto(position:positionToMoveTo) {
-            moveMapTile(toPostion: positionToMoveTo, fromPosition: positionOfPerson, mapTile: MapTile.person)
-        } else {
-            if containsBlock(atPosition:positionToMoveTo) {
-                tryAndMoveBlock(positionOfBlock:positionToMoveTo, direction:direction, positionOfPerson:positionOfPerson)
-            }
-        }
-    }
-
-    mutating func moveMapTile(toPostion positionToMoveTo: Position, fromPosition positionToMoveFrom: Position, mapTile:MapTile) {
-        let mapTileForOldPosition = (self[positionToMoveFrom] == mapTile) ? MapTile.empty : MapTile.storage
-        let mapTileForNewPosition = (self[positionToMoveTo] == MapTile.empty) ? mapTile : mapTile.onStorage
-        self[positionToMoveFrom] = mapTileForOldPosition
-        self[positionToMoveTo] = mapTileForNewPosition
-    }
-    
-    mutating func tryAndMoveBlock(positionOfBlock:Position, direction: Direction, positionOfPerson: Position) {
-        let positionAdjacentToBlock = positionOfBlock + direction.move
-        if canMoveOnto(position:positionAdjacentToBlock) {
-            moveMapTile(toPostion: positionAdjacentToBlock, fromPosition: positionOfBlock, mapTile: MapTile.block)
-            moveMapTile(toPostion: positionOfBlock, fromPosition: positionOfPerson, mapTile: MapTile.person)
-        }
-    }
-
-}
-
-func processSokobanMove(_ listOfStrings:GameArray, _ direction:String) -> GameArray {
-    var gameMap = listOfStrings.toGameMap()
-    let directionToMove = Direction.from(string: direction)
-    gameMap.moveMapTile(direction:directionToMove)
-    return gameMap.toGameArray()
-}
-
-func puzzleIsSolved(_ listOfStrings:GameArray) -> Bool {
-    return listOfStrings.map{!($0.contains(MapTile.block.rawValue))}.reduce(true){ acc,value in value && acc}
-}
-
-class CodeChallenge3Tests: XCTestCase {
     func test_convertString_to_MapTile() {
         let person = MapTile.from(string:"p")
         let wall = MapTile.from(string:"#")
@@ -258,47 +133,47 @@ class CodeChallenge3Tests: XCTestCase {
         XCTAssertEqual(Position(0,-1),Position(1,1) + Position(-1,-2))
         XCTAssertEqual(Position(4,6),Position(1,2) + Position(3,4))
     }
-
+    
     func testCanMoveOntoASquareIfItIsEmptyOrIsStorage(){
         var gameMap = GameMap()
         gameMap[Position(1,0)] = MapTile.person
         XCTAssertEqual(false,gameMap.canMoveOnto(position:Position(1,0)) )
-    
+        
         gameMap[Position(1,1)] = MapTile.personOnStorage
         XCTAssertEqual(false,gameMap.canMoveOnto(position:Position(1,1)) )
-    
+        
         gameMap[Position(1,2)] = MapTile.block
         XCTAssertEqual(false,gameMap.canMoveOnto(position:Position(1,2)) )
-    
+        
         gameMap[Position(1,3)] = MapTile.blockOnStorage
         XCTAssertEqual(false,gameMap.canMoveOnto(position:Position(1,3)))
-    
+        
         gameMap[Position(1,4)] = MapTile.wall
         XCTAssertEqual(false,gameMap.canMoveOnto(position:Position(1,4)) )
-    
+        
         gameMap[Position(1,5)] = MapTile.storage
         XCTAssertEqual(true,gameMap.canMoveOnto(position:Position(1,5)) )
-    
+        
         gameMap[Position(1,6)] = MapTile.empty
         XCTAssertEqual(true,gameMap.canMoveOnto(position:Position(1,6)) )
-    
+        
     }
     func testIfPositionOnGameMapContainsABlock(){
         var gameMap = GameMap()
         gameMap[Position(1,0)] = MapTile.person
         XCTAssertEqual(false,gameMap.containsBlock(atPosition:Position(1,0)) )
-    
+        
         gameMap[Position(1,2)] = MapTile.block
         XCTAssertEqual(true,gameMap.containsBlock(atPosition:Position(1,2)) )
-    
+        
         gameMap[Position(1,3)] = MapTile.blockOnStorage
         XCTAssertEqual(true,gameMap.containsBlock(atPosition:Position(1,3)))
-    
+        
         gameMap[Position(1,4)] = MapTile.wall
         XCTAssertEqual(false,gameMap.containsBlock(atPosition:Position(1,4)) )
-    
+        
     }
-
+    
     func testMovingAPersonToAnEmptySquareOnTheGameMap() {
         var gameMap = GameMap()
         gameMap[Position(1,0)] = MapTile.wall
@@ -322,15 +197,15 @@ class CodeChallenge3Tests: XCTestCase {
         gameMap[Position(1,2)] = MapTile.person
         gameMap[Position(1,3)] = MapTile.storage
         gameMap[Position(1,4)] = MapTile.wall
-    
+        
         let positionToMoveFrom = Position(1, 2)
         let positionToMoveTo = Position(1,3)
         gameMap.moveMapTile(toPostion:positionToMoveTo, fromPosition:positionToMoveFrom, mapTile:MapTile.person)
-
+        
         XCTAssertEqual(MapTile.empty, gameMap[Position(1,2)])
         XCTAssertEqual(MapTile.personOnStorage, gameMap[Position(1,3)])
     }
-
+    
     func testMovingAPersonFromAStorageSquareOnTheGameMap() {
         var gameMap = GameMap()
         gameMap[Position(1,0)] = MapTile.wall
@@ -342,7 +217,7 @@ class CodeChallenge3Tests: XCTestCase {
         let positionToMoveFrom = Position(1, 2)
         let positionToMoveTo = Position(1,3)
         gameMap.moveMapTile(toPostion:positionToMoveTo, fromPosition:positionToMoveFrom, mapTile:MapTile.person)
-
+        
         XCTAssertEqual(MapTile.storage, gameMap[Position(1,2)])
         XCTAssertEqual(MapTile.person, gameMap[Position(1,3)])
     }
@@ -354,7 +229,7 @@ class CodeChallenge3Tests: XCTestCase {
         gameMap[Position(1,2)] = MapTile.person
         gameMap[Position(1,3)] = MapTile.empty
         gameMap[Position(1,4)] = MapTile.wall
-    
+        
         gameMap.moveMapTile(direction:Direction.left)
         XCTAssertEqual(MapTile.wall, gameMap[Position(1,0)])
         XCTAssertEqual(MapTile.person, gameMap[Position(1,1)])
@@ -370,7 +245,7 @@ class CodeChallenge3Tests: XCTestCase {
         gameMap[Position(1,2)] = MapTile.person
         gameMap[Position(1,3)] = MapTile.empty
         gameMap[Position(1,4)] = MapTile.wall
-    
+        
         gameMap.moveMapTile(direction:Direction.right)
         XCTAssertEqual(MapTile.wall, gameMap[Position(1,0)])
         XCTAssertEqual(MapTile.empty, gameMap[Position(1,1)])
@@ -391,7 +266,7 @@ class CodeChallenge3Tests: XCTestCase {
         gameMap[Position(1,2)] = MapTile.person
         gameMap[Position(1,3)] = MapTile.empty
         gameMap[Position(1,4)] = MapTile.wall
-    
+        
         gameMap.moveMapTile(direction:Direction.up)
         XCTAssertEqual(MapTile.wall, gameMap[Position(0,0)])
         XCTAssertEqual(MapTile.empty, gameMap[Position(0,1)])
@@ -438,7 +313,7 @@ class CodeChallenge3Tests: XCTestCase {
         XCTAssertEqual(MapTile.empty, gameMap[Position(2,3)])
         XCTAssertEqual(MapTile.wall, gameMap[Position(2,4)])
     }
-
+    
     func testMovingAPersonIntoABlockThatCanMove() {
         var gameMap = GameMap()
         gameMap[Position(1,0)] = MapTile.wall
@@ -446,7 +321,7 @@ class CodeChallenge3Tests: XCTestCase {
         gameMap[Position(1,2)] = MapTile.block
         gameMap[Position(1,3)] = MapTile.empty
         gameMap[Position(1,4)] = MapTile.wall
-    
+        
         gameMap.moveMapTile(direction:Direction.right)
         XCTAssertEqual(MapTile.empty, gameMap[Position(1,1)])
         XCTAssertEqual(MapTile.person, gameMap[Position(1,2)])
@@ -460,106 +335,106 @@ class CodeChallenge3Tests: XCTestCase {
         gameMap[Position(1,2)] = MapTile.block
         gameMap[Position(1,3)] = MapTile.block
         gameMap[Position(1,4)] = MapTile.wall
-    
+        
         gameMap.moveMapTile(direction:Direction.right)
         XCTAssertEqual(MapTile.person, gameMap[Position(1,1)])
         XCTAssertEqual(MapTile.block, gameMap[Position(1,2)])
         XCTAssertEqual(MapTile.block, gameMap[Position(1,3)])
     }
-
+    
     func testProcessSokabanMoveWithSimpleMoveRight() {
         let inputList = [
-    "#############",
-    "#p        * #",
-    "#     b  b  #",
-    "# *         #",
-    "#############"]
+            "#############",
+            "#p        * #",
+            "#     b  b  #",
+            "# *         #",
+            "#############"]
         let afterMoveRight = [
-    "#############",
-    "# p       * #",
-    "#     b  b  #",
-    "# *         #",
-    "#############"]
+            "#############",
+            "# p       * #",
+            "#     b  b  #",
+            "# *         #",
+            "#############"]
         XCTAssertEqual(afterMoveRight, processSokobanMove(inputList,"R"))
     }
-
+    
     func testProcessSokabanMoveWithSimpleMoveDown() {
         let inputList = [
-    "#############",
-    "#p        * #",
-    "#     b  b  #",
-    "# *         #",
-    "#############"]
-    let afterMoveDown = [
-    "#############",
-    "#         * #",
-    "#p    b  b  #",
-    "# *         #",
-    "#############"]
+            "#############",
+            "#p        * #",
+            "#     b  b  #",
+            "# *         #",
+            "#############"]
+        let afterMoveDown = [
+            "#############",
+            "#         * #",
+            "#p    b  b  #",
+            "# *         #",
+            "#############"]
         XCTAssertEqual(afterMoveDown, processSokobanMove(inputList,"D"))
     }
     
     func testProcessSokabanMoveMoveBlock () {
         let inputList = [
-    "#############",
-    "#         * #",
-    "#     b  b  #",
-    "# *   p     #",
-    "#############"]
+            "#############",
+            "#         * #",
+            "#     b  b  #",
+            "# *   p     #",
+            "#############"]
         let afterMoveUp = [
-    "#############",
-    "#     b   * #",
-    "#     p  b  #",
-    "# *         #",
-    "#############"]
+            "#############",
+            "#     b   * #",
+            "#     p  b  #",
+            "# *         #",
+            "#############"]
         XCTAssertEqual(afterMoveUp, processSokobanMove(inputList,"U"))
     }
     
     func testProcessSokabanMovMoveBlockOntoStorage() {
         let inputList = [
-    "#############",
-    "#         * #",
-    "#    *bp b  #",
-    "# *         #",
-    "#############"]
+            "#############",
+            "#         * #",
+            "#    *bp b  #",
+            "# *         #",
+            "#############"]
         let afterMoveLeft = [
-    "#############",
-    "#         * #",
-    "#    Bp  b  #",
-    "# *         #",
-    "#############"]
+            "#############",
+            "#         * #",
+            "#    Bp  b  #",
+            "# *         #",
+            "#############"]
         XCTAssertEqual(afterMoveLeft, processSokobanMove(inputList,"L"))
     }
-
+    
     func testProcessSokabanMoveMoveBlockOffStorage() {
         let inputList = [
-    "#############",
-    "#         * #",
-    "#    Bp  b  #",
-    "# *         #",
-    "#############"]
+            "#############",
+            "#         * #",
+            "#    Bp  b  #",
+            "# *         #",
+            "#############"]
         let afterMoveLeft = [
-    "#############",
-    "#         * #",
-    "#   bP   b  #",
-    "# *         #",
-    "#############"]
+            "#############",
+            "#         * #",
+            "#   bP   b  #",
+            "# *         #",
+            "#############"]
         XCTAssertEqual(afterMoveLeft, processSokobanMove(inputList,"L"))
     }
-
+    
     func testProcessSokabanMoveCannotMovePersonOffTheBoard() {
         let inputList = [
-    "#############",
-    "#         * #",
-    "#    *   b  p",
-    "# *         #",
-    "#############"]
+            "#############",
+            "#         * #",
+            "#    *   b  p",
+            "# *         #",
+            "#############"]
         let afterMoveRight = [
-    "#############",
-    "#         * #",
-    "#    *   b  p",
-    "# *         #",
-    "#############"]
+            "#############",
+            "#         * #",
+            "#    *   b  p",
+            "# *         #",
+            "#############"]
         XCTAssertEqual(afterMoveRight, processSokobanMove(inputList,"R"))
     }
     
@@ -572,7 +447,7 @@ class CodeChallenge3Tests: XCTestCase {
             "#############"]
         XCTAssertEqual(false, puzzleIsSolved(inputList))
     }
-
+    
     func testPuzzelIsNotSolvedManyBlock() {
         let inputList = [
             "#############",
@@ -582,7 +457,7 @@ class CodeChallenge3Tests: XCTestCase {
             "#############"]
         XCTAssertEqual(false, puzzleIsSolved(inputList))
     }
-
+    
     func testPuzzelIsSolvedManyBlock() {
         let inputList = [
             "#############",
@@ -592,7 +467,12 @@ class CodeChallenge3Tests: XCTestCase {
             "#############"]
         XCTAssertEqual(true, puzzleIsSolved(inputList))
     }
+    
+    func testPerformanceExample() {
+        // This is an example of a performance test case.
+        self.measure {
+            // Put the code you want to measure the time of here.
+        }
+    }
 
 }
-
-CodeChallenge3Tests.defaultTestSuite.run()

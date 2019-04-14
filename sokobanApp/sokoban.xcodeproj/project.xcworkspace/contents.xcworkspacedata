@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:../sokoban/Images/person-29.png">
+   </FileRef>
+   <FileRef
+      location = "group:../sokoban/Images/person-58.png">
+   </FileRef>
+   <FileRef
+      location = "group:../sokoban/Images/person-87.png">
+   </FileRef>
+   <FileRef
+      location = "self:sokoban.xcodeproj">
+   </FileRef>
+</Workspace>
