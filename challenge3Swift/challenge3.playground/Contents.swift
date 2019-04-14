@@ -14,6 +14,13 @@ enum MapTile:String {
     static func from(string:String) -> MapTile {
         return MapTile(rawValue:string) ?? MapTile.empty
     }
+    var onStorage:MapTile {
+        switch self {
+            case .person: return .personOnStorage
+            case .block: return .blockOnStorage
+            default: return self
+        }
+    }
 }
 
 struct Position:Hashable {
@@ -101,31 +108,31 @@ extension GameMap {
         return self[position] == MapTile.block || self[position] == MapTile.blockOnStorage
     }
 
-    mutating func moveMapTile(toPostion positionToMoveTo: Position, fromPosition positionToMoveFrom: Position, mapTile:MapTile, mapTileOnStorage:MapTile) {
-        let mapTileForOldPosition = (self[positionToMoveFrom] == mapTile) ? MapTile.empty : MapTile.storage
-        let mapTileForNewPosition = (self[positionToMoveTo] == MapTile.empty) ? mapTile : mapTileOnStorage
-        self[positionToMoveFrom] = mapTileForOldPosition
-        self[positionToMoveTo] = mapTileForNewPosition
-    }
-    
     mutating func moveMapTile(direction: Direction) {
         let positionOfPerson = self.positionOfPerson()
         let positionToMoveTo = positionOfPerson + direction.move
     
-        if self.canMoveOnto(position:positionToMoveTo) {
-            moveMapTile(toPostion: positionToMoveTo, fromPosition: positionOfPerson, mapTile: MapTile.person, mapTileOnStorage: MapTile.personOnStorage)
+        if canMoveOnto(position:positionToMoveTo) {
+            moveMapTile(toPostion: positionToMoveTo, fromPosition: positionOfPerson, mapTile: MapTile.person)
         } else {
-            if self.containsBlock(atPosition:positionToMoveTo) {
+            if containsBlock(atPosition:positionToMoveTo) {
                 tryAndMoveBlock(positionOfBlock:positionToMoveTo, direction:direction, positionOfPerson:positionOfPerson)
             }
         }
     }
+
+    mutating func moveMapTile(toPostion positionToMoveTo: Position, fromPosition positionToMoveFrom: Position, mapTile:MapTile) {
+        let mapTileForOldPosition = (self[positionToMoveFrom] == mapTile) ? MapTile.empty : MapTile.storage
+        let mapTileForNewPosition = (self[positionToMoveTo] == MapTile.empty) ? mapTile : mapTile.onStorage
+        self[positionToMoveFrom] = mapTileForOldPosition
+        self[positionToMoveTo] = mapTileForNewPosition
+    }
     
     mutating func tryAndMoveBlock(positionOfBlock:Position, direction: Direction, positionOfPerson: Position) {
-    let positionAdjacentToBlock = positionOfBlock + direction.move
-        if (self.canMoveOnto(position:positionAdjacentToBlock)) {
-            moveMapTile(toPostion: positionAdjacentToBlock, fromPosition: positionOfBlock, mapTile: MapTile.block, mapTileOnStorage: MapTile.blockOnStorage)
-            moveMapTile(toPostion: positionOfBlock, fromPosition: positionOfPerson, mapTile: MapTile.person, mapTileOnStorage: MapTile.personOnStorage)
+        let positionAdjacentToBlock = positionOfBlock + direction.move
+        if canMoveOnto(position:positionAdjacentToBlock) {
+            moveMapTile(toPostion: positionAdjacentToBlock, fromPosition: positionOfBlock, mapTile: MapTile.block)
+            moveMapTile(toPostion: positionOfBlock, fromPosition: positionOfPerson, mapTile: MapTile.person)
         }
     }
 
@@ -299,7 +306,7 @@ class CodeChallenge3Tests: XCTestCase {
         
         let positionToMoveFrom = Position(1, 2)
         let positionToMoveTo = Position(1,3)
-        gameMap.moveMapTile(toPostion:positionToMoveTo, fromPosition:positionToMoveFrom, mapTile:MapTile.person, mapTileOnStorage:MapTile.personOnStorage)
+        gameMap.moveMapTile(toPostion:positionToMoveTo, fromPosition:positionToMoveFrom, mapTile:MapTile.person)
         
         XCTAssertEqual(MapTile.empty, gameMap[Position(1,2)])
         XCTAssertEqual(MapTile.person, gameMap[Position(1,3)])
@@ -315,7 +322,7 @@ class CodeChallenge3Tests: XCTestCase {
     
         let positionToMoveFrom = Position(1, 2)
         let positionToMoveTo = Position(1,3)
-        gameMap.moveMapTile(toPostion:positionToMoveTo, fromPosition:positionToMoveFrom, mapTile:MapTile.person, mapTileOnStorage:MapTile.personOnStorage)
+        gameMap.moveMapTile(toPostion:positionToMoveTo, fromPosition:positionToMoveFrom, mapTile:MapTile.person)
 
         XCTAssertEqual(MapTile.empty, gameMap[Position(1,2)])
         XCTAssertEqual(MapTile.personOnStorage, gameMap[Position(1,3)])
@@ -331,7 +338,7 @@ class CodeChallenge3Tests: XCTestCase {
         
         let positionToMoveFrom = Position(1, 2)
         let positionToMoveTo = Position(1,3)
-        gameMap.moveMapTile(toPostion:positionToMoveTo, fromPosition:positionToMoveFrom, mapTile:MapTile.person, mapTileOnStorage:MapTile.personOnStorage)
+        gameMap.moveMapTile(toPostion:positionToMoveTo, fromPosition:positionToMoveFrom, mapTile:MapTile.person)
 
         XCTAssertEqual(MapTile.storage, gameMap[Position(1,2)])
         XCTAssertEqual(MapTile.person, gameMap[Position(1,3)])
