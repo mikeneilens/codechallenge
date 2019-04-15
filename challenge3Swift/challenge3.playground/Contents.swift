@@ -11,14 +11,21 @@ enum MapTile:String {
     case blockOnStorage = "B"
     case empty = " "
     
-    static func from(string:String) -> MapTile {
-        return MapTile(rawValue:string) ?? MapTile.empty
+    init(string:String) {
+        self =  MapTile(rawValue:string) ?? MapTile.empty
     }
     var onStorage:MapTile {
         switch self {
             case .person: return .personOnStorage
             case .block: return .blockOnStorage
             default: return self
+        }
+    }
+    var notOnStorage:MapTile {
+        switch self {
+        case .personOnStorage: return .person
+        case .blockOnStorage: return .block
+        default: return self
         }
     }
 }
@@ -49,13 +56,13 @@ enum Direction {
             case .down: return Position(1,0)
         }
     }
-    static func from(string:String) -> Direction {
+    init(string:String) {
         switch string {
-            case "U" :return Direction.up
-            case "D" :return Direction.down
-            case "L" :return Direction.left
-            case "R" :return Direction.right
-            default: return Direction.right
+            case "U" : self = Direction.up
+            case "D" : self = Direction.down
+            case "L" : self = Direction.left
+            case "R" : self = Direction.right
+            default:  self = Direction.right
         }
     }
 }
@@ -77,7 +84,7 @@ extension GameMap {
     mutating func update(atRow row:Int, using string:String) {
         let stringChars = string.map{String($0)}
         for (column, stringChar) in stringChars.enumerated() {
-            self[Position(row,column )] = MapTile.from(string: stringChar)
+            self[Position(row,column )] = MapTile(string: stringChar)
         }
     }
     
@@ -113,26 +120,27 @@ extension GameMap {
         let positionToMoveTo = positionOfPerson + direction.move
     
         if canMoveOnto(position:positionToMoveTo) {
-            moveMapTile(toPostion: positionToMoveTo, fromPosition: positionOfPerson, mapTile: MapTile.person)
+            moveMapTile(fromPosition: positionOfPerson, toPostion: positionToMoveTo)
         } else {
             if containsBlock(atPosition:positionToMoveTo) {
-                tryAndMoveBlock(positionOfBlock:positionToMoveTo, direction:direction, positionOfPerson:positionOfPerson)
+                tryAndMoveBlock(fromPosition:positionToMoveTo, direction:direction, positionOfPerson:positionOfPerson)
             }
         }
     }
 
-    mutating func moveMapTile(toPostion positionToMoveTo: Position, fromPosition positionToMoveFrom: Position, mapTile:MapTile) {
+    mutating func moveMapTile(fromPosition positionToMoveFrom: Position, toPostion positionToMoveTo: Position) {
+        let mapTile = self[positionToMoveFrom]?.notOnStorage ?? MapTile.empty
         let mapTileForOldPosition = (self[positionToMoveFrom] == mapTile) ? MapTile.empty : MapTile.storage
         let mapTileForNewPosition = (self[positionToMoveTo] == MapTile.empty) ? mapTile : mapTile.onStorage
         self[positionToMoveFrom] = mapTileForOldPosition
         self[positionToMoveTo] = mapTileForNewPosition
     }
     
-    mutating func tryAndMoveBlock(positionOfBlock:Position, direction: Direction, positionOfPerson: Position) {
+    mutating func tryAndMoveBlock(fromPosition positionOfBlock:Position, direction: Direction, positionOfPerson: Position) {
         let positionAdjacentToBlock = positionOfBlock + direction.move
         if canMoveOnto(position:positionAdjacentToBlock) {
-            moveMapTile(toPostion: positionAdjacentToBlock, fromPosition: positionOfBlock, mapTile: MapTile.block)
-            moveMapTile(toPostion: positionOfBlock, fromPosition: positionOfPerson, mapTile: MapTile.person)
+            moveMapTile(fromPosition: positionOfBlock, toPostion: positionAdjacentToBlock)
+            moveMapTile(fromPosition: positionOfPerson, toPostion: positionOfBlock)
         }
     }
 
@@ -140,7 +148,7 @@ extension GameMap {
 
 func processSokobanMove(_ listOfStrings:GameArray, _ direction:String) -> GameArray {
     var gameMap = listOfStrings.toGameMap()
-    let directionToMove = Direction.from(string: direction)
+    let directionToMove = Direction(string: direction)
     gameMap.moveMapTile(direction:directionToMove)
     return gameMap.toGameArray()
 }
@@ -151,14 +159,14 @@ func puzzleIsSolved(_ listOfStrings:GameArray) -> Bool {
 
 class CodeChallenge3Tests: XCTestCase {
     func test_convertString_to_MapTile() {
-        let person = MapTile.from(string:"p")
-        let wall = MapTile.from(string:"#")
-        let block = MapTile.from(string:"b")
-        let storage = MapTile.from(string:"*")
-        let personOnStorage = MapTile.from(string:"P")
-        let blockOnStorage = MapTile.from(string:"B")
-        let empty = MapTile.from(string:" ")
-        let empty2 = MapTile.from(string:"some bad data")
+        let person = MapTile(string:"p")
+        let wall = MapTile(string:"#")
+        let block = MapTile(string:"b")
+        let storage = MapTile(string:"*")
+        let personOnStorage = MapTile(string:"P")
+        let blockOnStorage = MapTile(string:"B")
+        let empty = MapTile(string:" ")
+        let empty2 = MapTile(string:"some bad data")
         XCTAssertEqual(MapTile.person,person)
         XCTAssertEqual(MapTile.wall,wall)
         XCTAssertEqual(MapTile.block,block)
@@ -309,7 +317,7 @@ class CodeChallenge3Tests: XCTestCase {
         
         let positionToMoveFrom = Position(1, 2)
         let positionToMoveTo = Position(1,3)
-        gameMap.moveMapTile(toPostion:positionToMoveTo, fromPosition:positionToMoveFrom, mapTile:MapTile.person)
+        gameMap.moveMapTile(fromPosition:positionToMoveFrom, toPostion:positionToMoveTo)
         
         XCTAssertEqual(MapTile.empty, gameMap[Position(1,2)])
         XCTAssertEqual(MapTile.person, gameMap[Position(1,3)])
@@ -325,7 +333,7 @@ class CodeChallenge3Tests: XCTestCase {
     
         let positionToMoveFrom = Position(1, 2)
         let positionToMoveTo = Position(1,3)
-        gameMap.moveMapTile(toPostion:positionToMoveTo, fromPosition:positionToMoveFrom, mapTile:MapTile.person)
+        gameMap.moveMapTile(fromPosition:positionToMoveFrom, toPostion:positionToMoveTo)
 
         XCTAssertEqual(MapTile.empty, gameMap[Position(1,2)])
         XCTAssertEqual(MapTile.personOnStorage, gameMap[Position(1,3)])
@@ -341,7 +349,7 @@ class CodeChallenge3Tests: XCTestCase {
         
         let positionToMoveFrom = Position(1, 2)
         let positionToMoveTo = Position(1,3)
-        gameMap.moveMapTile(toPostion:positionToMoveTo, fromPosition:positionToMoveFrom, mapTile:MapTile.person)
+        gameMap.moveMapTile(fromPosition:positionToMoveFrom, toPostion:positionToMoveTo)
 
         XCTAssertEqual(MapTile.storage, gameMap[Position(1,2)])
         XCTAssertEqual(MapTile.person, gameMap[Position(1,3)])
