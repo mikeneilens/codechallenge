@@ -178,7 +178,7 @@ class MainTest {
 
         val positionToMoveFrom = Position(1, 2)
         val positionToMoveTo = Position(1,3)
-        gameMap.moveMapTile(positionToMoveTo,positionToMoveFrom, MapTile.Person)
+        gameMap.moveMapTile(positionToMoveFrom, positionToMoveTo)
         TestCase.assertEquals(MapTile.Empty, gameMap[Position(1,2)])
         TestCase.assertEquals(MapTile.Person, gameMap[Position(1,3)])
     }
@@ -194,7 +194,7 @@ class MainTest {
 
         val positionToMoveFrom = Position(1, 2)
         val positionToMoveTo = Position(1,3)
-        gameMap.moveMapTile(positionToMoveTo,positionToMoveFrom, MapTile.Person)
+        gameMap.moveMapTile(positionToMoveFrom, positionToMoveTo)
         TestCase.assertEquals(MapTile.Empty, gameMap[Position(1,2)])
         TestCase.assertEquals(MapTile.PersonOnStorage, gameMap[Position(1,3)])
     }
@@ -210,7 +210,7 @@ class MainTest {
 
         val positionToMoveFrom = Position(1, 2)
         val positionToMoveTo = Position(1,3)
-        gameMap.moveMapTile(positionToMoveTo,positionToMoveFrom, MapTile.Person)
+        gameMap.moveMapTile(positionToMoveFrom, positionToMoveTo)
         TestCase.assertEquals(MapTile.Storage, gameMap[Position(1,2)])
         TestCase.assertEquals(MapTile.Person, gameMap[Position(1,3)])
     }

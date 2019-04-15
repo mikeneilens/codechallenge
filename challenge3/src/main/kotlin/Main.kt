@@ -18,6 +18,13 @@ enum class MapTile(val text:String) {
             else -> this
         }
     }
+    val notOnStorage:MapTile by lazy {
+        when (this) {
+            PersonOnStorage -> Person
+            BlockOnStorage -> Block
+            else -> this
+        }
+    }
 
     companion object {
         fun fromString(string:String):MapTile {
@@ -89,7 +96,7 @@ fun GameMap.moveMapTile(direction: Direction) {
     val positionToMoveTo = positionOfPerson + direction.move
 
     when {
-        this.canMoveOnto(positionToMoveTo) -> moveMapTile(positionToMoveTo, positionOfPerson, MapTile.Person)
+        this.canMoveOnto(positionToMoveTo) -> moveMapTile(positionOfPerson, positionToMoveTo)
         this.containsBlock(positionToMoveTo) -> tryAndMoveBlock(positionToMoveTo, direction, positionOfPerson)
     }
 }
@@ -105,15 +112,17 @@ fun GameMap.containsBlock(position:Position):Boolean = this[position] == MapTile
 fun GameMap.tryAndMoveBlock(positionOfBlock:Position, direction: Direction, positionOfPerson: Position) {
     val positionAdjacentToBlock = positionOfBlock + direction.move
     if (this.canMoveOnto(positionAdjacentToBlock)) {
-        moveMapTile(positionAdjacentToBlock, positionOfBlock, MapTile.Block)
-        moveMapTile(positionOfBlock, positionOfPerson, MapTile.Person)
+        moveMapTile(positionOfBlock, positionAdjacentToBlock)
+        moveMapTile(positionOfPerson, positionOfBlock)
     }
 }
 
-fun GameMap.moveMapTile(positionToMoveTo: Position, positionToMoveFrom: Position, mapTile:MapTile) {
-    val mapTileForOldPosition = if (this[positionToMoveFrom] == mapTile) MapTile.Empty else MapTile.Storage
-    val mapTileForNewPosition = if (this[positionToMoveTo] == MapTile.Empty) mapTile else mapTile.onStorage
-    this[positionToMoveFrom] = mapTileForOldPosition
-    this[positionToMoveTo] = mapTileForNewPosition
+fun GameMap.moveMapTile(positionToMoveFrom: Position, positionToMoveTo: Position) {
+    this[positionToMoveFrom]?.let {mapTile ->
+        val mapTileForOldPosition = if (this[positionToMoveFrom] == mapTile.notOnStorage) MapTile.Empty else MapTile.Storage
+        val mapTileForNewPosition = if (this[positionToMoveTo] == MapTile.Empty) mapTile.notOnStorage else mapTile.onStorage
+        this[positionToMoveFrom] = mapTileForOldPosition
+        this[positionToMoveTo] = mapTileForNewPosition
+    }
 }
 
