@@ -130,7 +130,8 @@ extension GameMap {
     }
 
     mutating func moveMapTile(fromPosition positionToMoveFrom: Position, toPostion positionToMoveTo: Position) {
-        let mapTile = self[positionToMoveFrom]?.notOnStorage ?? MapTile.empty
+        guard let mapTile = self[positionToMoveFrom]?.notOnStorage else { return }
+        
         let mapTileForOldPosition = (self[positionToMoveFrom] == mapTile) ? MapTile.empty : MapTile.storage
         let mapTileForNewPosition = (self[positionToMoveTo] == MapTile.empty) ? mapTile : mapTile.onStorage
         self[positionToMoveFrom] = mapTileForOldPosition
