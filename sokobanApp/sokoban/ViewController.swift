@@ -16,18 +16,29 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         gameArray = puzzleText
-        refreshMainView()
     }
 
-    var widthOfTile:Double {
+    override func viewDidAppear(_ animated: Bool) {
+        refreshMainView()
+    }
+    
+    var minWidthOfTile:Double {
         let puzzleWidth = Double(puzzleText[0].count)
         let mainViewWidth = Double(mainView.frame.width)
         return mainViewWidth / puzzleWidth
     }
-    var heightOfTile:Double {
+    var minHeightOfTile:Double {
         let puzzleHeight = Double(puzzleText.count)
         let mainViewHieght = Double(mainView.frame.height)
         return mainViewHieght / puzzleHeight
+    }
+    var sizeOfTile:Double {
+        return (minWidthOfTile < minHeightOfTile) ? minWidthOfTile : minHeightOfTile
+    }
+    var margin:Double {
+        let puzzleWidth = Double(puzzleText[0].count)
+        let mainViewWidth = Double(mainView.frame.width)
+        return (mainViewWidth - puzzleWidth * sizeOfTile) / 2
     }
     
     func addTilesToMainView(usingGameArray gameArray:GameArray) {
@@ -40,20 +51,18 @@ class ViewController: UIViewController {
     }
     
     func refreshMainView(){
+        mainView.subviews.forEach { $0.removeFromSuperview() }
+        addTilesToMainView(usingGameArray: gameArray)
         if puzzleIsSolved(gameArray) {
             let winningTile = createPuzzleCompleteMessage()
             mainView.addSubview(winningTile)
-        } else {
-            mainView.subviews.forEach { $0.removeFromSuperview() }
-            addTilesToMainView(usingGameArray: gameArray)
         }
     }
     
     func createTile(atPosition position:Position, usingText text:String) -> UIView {
-        let x = Double(position.column) * widthOfTile
-        let y = Double(position.row) * heightOfTile
-        let cgRect = CGRect(x: x, y: y, width: widthOfTile, height: heightOfTile)
-
+        let x = Double(position.column) * sizeOfTile + margin
+        let y = Double(position.row) * sizeOfTile
+        let cgRect = CGRect(x: x, y: y, width: sizeOfTile, height: sizeOfTile)
         let uiImageView = UIImageView(frame: cgRect)
         let mapTile = MapTile(string: text)
         if mapTile.image != "" { uiImageView.image = UIImage(named: mapTile.image ) }
