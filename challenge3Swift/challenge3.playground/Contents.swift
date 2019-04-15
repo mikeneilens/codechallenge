@@ -14,6 +14,7 @@ enum MapTile:String {
     init(string:String) {
         self =  MapTile(rawValue:string) ?? MapTile.empty
     }
+    var text:String { return self.rawValue}
     var onStorage:MapTile {
         switch self {
             case .person: return .personOnStorage
@@ -98,7 +99,7 @@ extension GameMap {
         return self.filter{position, value in position.row == row}
             .map{position, mapTile in (position, mapTile)}
             .sorted(by: { $0.0.column < $1.0.column})
-            .map{(position, mapTile) in return mapTile.rawValue}
+            .map{(position, mapTile) in return mapTile.text}
             .reduce("",+)
     }
     
@@ -154,7 +155,7 @@ func processSokobanMove(_ listOfStrings:GameArray, _ direction:String) -> GameAr
 }
 
 func puzzleIsSolved(_ listOfStrings:GameArray) -> Bool {
-    return listOfStrings.map{!($0.contains(MapTile.block.rawValue))}.reduce(true){ acc,value in value && acc}
+    return listOfStrings.map{!($0.contains(MapTile.block.text))}.reduce(true){ acc,value in value && acc}
 }
 
 class CodeChallenge3Tests: XCTestCase {
