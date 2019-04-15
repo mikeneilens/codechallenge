@@ -10,7 +10,7 @@ import Foundation
 
 func processSokobanMove(_ listOfStrings:GameArray, _ direction:String) -> GameArray {
     var gameMap = listOfStrings.toGameMap()
-    let directionToMove = Direction.from(string: direction)
+    let directionToMove = Direction(string: direction)
     gameMap.moveMapTile(direction:directionToMove)
     return gameMap.toGameArray()
 }

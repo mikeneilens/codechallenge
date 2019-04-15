@@ -26,14 +26,14 @@ class sokobanTests: XCTestCase {
 
     
     func test_convertString_to_MapTile() {
-        let person = MapTile.from(string:"p")
-        let wall = MapTile.from(string:"#")
-        let block = MapTile.from(string:"b")
-        let storage = MapTile.from(string:"*")
-        let personOnStorage = MapTile.from(string:"P")
-        let blockOnStorage = MapTile.from(string:"B")
-        let empty = MapTile.from(string:" ")
-        let empty2 = MapTile.from(string:"some bad data")
+        let person = MapTile(string:"p")
+        let wall = MapTile(string:"#")
+        let block = MapTile(string:"b")
+        let storage = MapTile(string:"*")
+        let personOnStorage = MapTile(string:"P")
+        let blockOnStorage = MapTile(string:"B")
+        let empty = MapTile(string:" ")
+        let empty2 = MapTile(string:"some bad data")
         XCTAssertEqual(MapTile.person,person)
         XCTAssertEqual(MapTile.wall,wall)
         XCTAssertEqual(MapTile.block,block)
@@ -184,7 +184,7 @@ class sokobanTests: XCTestCase {
         
         let positionToMoveFrom = Position(1, 2)
         let positionToMoveTo = Position(1,3)
-        gameMap.moveMapTile(toPostion:positionToMoveTo, fromPosition:positionToMoveFrom, mapTile:MapTile.person)
+        gameMap.moveMapTile(fromPosition:positionToMoveFrom, toPostion:positionToMoveTo)
         
         XCTAssertEqual(MapTile.empty, gameMap[Position(1,2)])
         XCTAssertEqual(MapTile.person, gameMap[Position(1,3)])
@@ -200,7 +200,7 @@ class sokobanTests: XCTestCase {
         
         let positionToMoveFrom = Position(1, 2)
         let positionToMoveTo = Position(1,3)
-        gameMap.moveMapTile(toPostion:positionToMoveTo, fromPosition:positionToMoveFrom, mapTile:MapTile.person)
+        gameMap.moveMapTile(fromPosition:positionToMoveFrom, toPostion:positionToMoveTo)
         
         XCTAssertEqual(MapTile.empty, gameMap[Position(1,2)])
         XCTAssertEqual(MapTile.personOnStorage, gameMap[Position(1,3)])
@@ -216,7 +216,7 @@ class sokobanTests: XCTestCase {
         
         let positionToMoveFrom = Position(1, 2)
         let positionToMoveTo = Position(1,3)
-        gameMap.moveMapTile(toPostion:positionToMoveTo, fromPosition:positionToMoveFrom, mapTile:MapTile.person)
+        gameMap.moveMapTile(fromPosition:positionToMoveFrom, toPostion:positionToMoveTo)
         
         XCTAssertEqual(MapTile.storage, gameMap[Position(1,2)])
         XCTAssertEqual(MapTile.person, gameMap[Position(1,3)])

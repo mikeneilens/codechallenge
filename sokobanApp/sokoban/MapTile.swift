@@ -17,9 +17,10 @@ enum MapTile:String {
     case blockOnStorage = "B"
     case empty = " "
     
-    static func from(string:String) -> MapTile {
-        return MapTile(rawValue:string) ?? MapTile.empty
+    init(string:String) {
+        self =  MapTile(rawValue:string) ?? MapTile.empty
     }
+    var text:String { return self.rawValue}
     var onStorage:MapTile {
         switch self {
         case .person: return .personOnStorage
@@ -27,7 +28,15 @@ enum MapTile:String {
         default: return self
         }
     }
+    var notOnStorage:MapTile {
+        switch self {
+        case .personOnStorage: return .person
+        case .blockOnStorage: return .block
+        default: return self
+        }
+    }
 }
+
 extension MapTile {
     var image:String {
         switch self {

@@ -14,7 +14,7 @@ extension GameMap {
     mutating func update(atRow row:Int, using string:String) {
         let stringChars = string.map{String($0)}
         for (column, stringChar) in stringChars.enumerated() {
-            self[Position(row,column )] = MapTile.from(string: stringChar)
+            self[Position(row,column )] = MapTile(string: stringChar)
         }
     }
     
@@ -28,7 +28,7 @@ extension GameMap {
         return self.filter{position, value in position.row == row}
             .map{position, mapTile in (position, mapTile)}
             .sorted(by: { $0.0.column < $1.0.column})
-            .map{(position, mapTile) in return mapTile.rawValue}
+            .map{(position, mapTile) in return mapTile.text}
             .reduce("",+)
     }
     
@@ -50,26 +50,27 @@ extension GameMap {
         let positionToMoveTo = positionOfPerson + direction.move
         
         if canMoveOnto(position:positionToMoveTo) {
-            moveMapTile(toPostion: positionToMoveTo, fromPosition: positionOfPerson, mapTile: MapTile.person)
+            moveMapTile(fromPosition: positionOfPerson, toPostion: positionToMoveTo)
         } else {
             if containsBlock(atPosition:positionToMoveTo) {
-                tryAndMoveBlock(positionOfBlock:positionToMoveTo, direction:direction, positionOfPerson:positionOfPerson)
+                tryAndMoveBlock(fromPosition:positionToMoveTo, direction:direction, positionOfPerson:positionOfPerson)
             }
         }
     }
     
-    mutating func moveMapTile(toPostion positionToMoveTo: Position, fromPosition positionToMoveFrom: Position, mapTile:MapTile) {
+    mutating func moveMapTile(fromPosition positionToMoveFrom: Position, toPostion positionToMoveTo: Position) {
+        let mapTile = self[positionToMoveFrom]?.notOnStorage ?? MapTile.empty
         let mapTileForOldPosition = (self[positionToMoveFrom] == mapTile) ? MapTile.empty : MapTile.storage
         let mapTileForNewPosition = (self[positionToMoveTo] == MapTile.empty) ? mapTile : mapTile.onStorage
         self[positionToMoveFrom] = mapTileForOldPosition
         self[positionToMoveTo] = mapTileForNewPosition
     }
     
-    mutating func tryAndMoveBlock(positionOfBlock:Position, direction: Direction, positionOfPerson: Position) {
+    mutating func tryAndMoveBlock(fromPosition positionOfBlock:Position, direction: Direction, positionOfPerson: Position) {
         let positionAdjacentToBlock = positionOfBlock + direction.move
         if canMoveOnto(position:positionAdjacentToBlock) {
-            moveMapTile(toPostion: positionAdjacentToBlock, fromPosition: positionOfBlock, mapTile: MapTile.block)
-            moveMapTile(toPostion: positionOfBlock, fromPosition: positionOfPerson, mapTile: MapTile.person)
+            moveMapTile(fromPosition: positionOfBlock, toPostion: positionAdjacentToBlock)
+            moveMapTile(fromPosition: positionOfPerson, toPostion: positionOfBlock)
         }
     }
     

@@ -22,13 +22,13 @@ enum Direction {
         case .down: return Position(1,0)
         }
     }
-    static func from(string:String) -> Direction {
+    init(string:String) {
         switch string {
-        case "U" :return Direction.up
-        case "D" :return Direction.down
-        case "L" :return Direction.left
-        case "R" :return Direction.right
-        default: return Direction.right
+        case "U" : self = Direction.up
+        case "D" : self = Direction.down
+        case "L" : self = Direction.left
+        case "R" : self = Direction.right
+        default:  self = Direction.right
         }
     }
 }

@@ -55,9 +55,9 @@ class ViewController: UIViewController {
         let cgRect = CGRect(x: x, y: y, width: widthOfTile, height: heightOfTile)
 
         let uiImageView = UIImageView(frame: cgRect)
-        let mapTile = MapTile.from(string: text)
+        let mapTile = MapTile(string: text)
         if mapTile.image != "" { uiImageView.image = UIImage(named: mapTile.image ) }
-        uiImageView.backgroundColor = MapTile.from(string: text).backgroundColor
+        uiImageView.backgroundColor = MapTile(string: text).backgroundColor
         return uiImageView
     }
     
