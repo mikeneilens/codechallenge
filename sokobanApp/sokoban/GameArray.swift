@@ -13,8 +13,8 @@ typealias GameArray = Array<String>
 extension GameArray {
     func toGameMap() -> GameMap {
         var gameMap = GameMap()
-        for (row, string) in self.enumerated() {
-            gameMap.update(atRow: row, using: string)
+        for string in self {
+            gameMap.add(string: string)
         }
         return gameMap
     }

@@ -45,17 +45,17 @@ class sokobanTests: XCTestCase {
     }
     
     func testUpdatingMapFromAString() {
-        var gameMap1 = GameMap()
-        gameMap1.update(atRow:1,using:"p")
-        XCTAssertEqual(gameMap1[Position(1,0)],MapTile.person)
-        gameMap1.update(atRow:1,using:"# pb*PB")
-        XCTAssertEqual(gameMap1[Position(1,0)],MapTile.wall)
-        XCTAssertEqual(gameMap1[Position(1,1)],MapTile.empty)
-        XCTAssertEqual(gameMap1[Position(1,2)],MapTile.person)
-        XCTAssertEqual(gameMap1[Position(1,3)],MapTile.block)
-        XCTAssertEqual(gameMap1[Position(1,4)],MapTile.storage)
-        XCTAssertEqual(gameMap1[Position(1,5)],MapTile.personOnStorage)
-        XCTAssertEqual(gameMap1[Position(1,6)],MapTile.blockOnStorage)
+        var gameMap = GameMap()
+        gameMap.add(string:"p")
+        XCTAssertEqual(gameMap[Position(0,0)],MapTile.person)
+        gameMap.add(string:"# pb*PB")
+        XCTAssertEqual(gameMap[Position(1,0)],MapTile.wall)
+        XCTAssertEqual(gameMap[Position(1,1)],MapTile.empty)
+        XCTAssertEqual(gameMap[Position(1,2)],MapTile.person)
+        XCTAssertEqual(gameMap[Position(1,3)],MapTile.block)
+        XCTAssertEqual(gameMap[Position(1,4)],MapTile.storage)
+        XCTAssertEqual(gameMap[Position(1,5)],MapTile.personOnStorage)
+        XCTAssertEqual(gameMap[Position(1,6)],MapTile.blockOnStorage)
     }
     
     func testArrayOfStringtoGameMap() {
@@ -75,57 +75,20 @@ class sokobanTests: XCTestCase {
     
     func testGameMapToStringAtRow() {
         var gameMap = GameMap()
-        gameMap[Position(1,0)] = MapTile.person
-        gameMap[Position(1,1)] = MapTile.personOnStorage
-        gameMap[Position(1,2)] = MapTile.block
-        gameMap[Position(1,3)] = MapTile.blockOnStorage
-        gameMap[Position(1,4)] = MapTile.wall
-        gameMap[Position(1,5)] = MapTile.storage
-        gameMap[Position(1,6)] = MapTile.empty
-        gameMap[Position(2,0)] = MapTile.empty
-        gameMap[Position(2,1)] = MapTile.person
-        gameMap[Position(2,2)] = MapTile.block
-        gameMap[Position(2,3)] = MapTile.personOnStorage
-        gameMap[Position(2,4)] = MapTile.blockOnStorage
-        gameMap[Position(2,5)] = MapTile.storage
-        gameMap[Position(2,6)] = MapTile.wall
-        XCTAssertEqual("pPbB#* ", gameMap.toString(forRow: 1))
+        gameMap.add(string: "pPbB#* ")
+        gameMap.add(string: " pbPB*#")
         XCTAssertEqual(["pPbB#* "," pbPB*#"],gameMap.toGameArray())
     }
     
     func testPositionOfPersonInGameMap () {
         var gameMap = GameMap()
-        gameMap[Position(1,0)] = MapTile.wall
-        gameMap[Position(1,1)] = MapTile.block
-        gameMap[Position(1,2)] = MapTile.block
-        gameMap[Position(1,3)] = MapTile.blockOnStorage
-        gameMap[Position(1,4)] = MapTile.wall
-        gameMap[Position(1,5)] = MapTile.storage
-        gameMap[Position(1,6)] = MapTile.empty
-        gameMap[Position(2,0)] = MapTile.empty
-        gameMap[Position(2,1)] = MapTile.person
-        gameMap[Position(2,2)] = MapTile.block
-        gameMap[Position(2,3)] = MapTile.block
-        gameMap[Position(2,4)] = MapTile.blockOnStorage
-        gameMap[Position(2,5)] = MapTile.storage
-        gameMap[Position(2,6)] = MapTile.wall
-        XCTAssertEqual(Position(2,1),gameMap.positionOfPerson())
+        gameMap.add(string: "#bbB#* ")
+        gameMap.add(string: " pbbB*#")
+        XCTAssertEqual(Position(1,1),gameMap.positionOfPerson())
         var gameMap2 = GameMap()
-        gameMap2[Position(1,0)] = MapTile.wall
-        gameMap2[Position(1,1)] = MapTile.block
-        gameMap2[Position(1,2)] = MapTile.block
-        gameMap2[Position(1,3)] = MapTile.blockOnStorage
-        gameMap2[Position(1,4)] = MapTile.personOnStorage
-        gameMap2[Position(1,5)] = MapTile.storage
-        gameMap2[Position(1,6)] = MapTile.empty
-        gameMap2[Position(2,0)] = MapTile.empty
-        gameMap2[Position(2,1)] = MapTile.empty
-        gameMap2[Position(2,2)] = MapTile.block
-        gameMap2[Position(2,3)] = MapTile.block
-        gameMap2[Position(2,4)] = MapTile.blockOnStorage
-        gameMap2[Position(2,5)] = MapTile.storage
-        gameMap2[Position(2,6)] = MapTile.wall
-        XCTAssertEqual(Position(1,4),gameMap2.positionOfPerson())
+        gameMap2.add(string: "#bbBP* ")
+        gameMap2.add(string: "  bbB*#")
+        XCTAssertEqual(Position(0,4),gameMap2.positionOfPerson())
     }
     
     func testAddingPositionsTogether() {
@@ -134,138 +97,60 @@ class sokobanTests: XCTestCase {
         XCTAssertEqual(Position(4,6),Position(1,2) + Position(3,4))
     }
     
-    func testCanMoveOntoASquareIfItIsEmptyOrIsStorage(){
-        var gameMap = GameMap()
-        gameMap[Position(1,0)] = MapTile.person
-        XCTAssertEqual(false,gameMap.canMoveOnto(position:Position(1,0)) )
-        
-        gameMap[Position(1,1)] = MapTile.personOnStorage
-        XCTAssertEqual(false,gameMap.canMoveOnto(position:Position(1,1)) )
-        
-        gameMap[Position(1,2)] = MapTile.block
-        XCTAssertEqual(false,gameMap.canMoveOnto(position:Position(1,2)) )
-        
-        gameMap[Position(1,3)] = MapTile.blockOnStorage
-        XCTAssertEqual(false,gameMap.canMoveOnto(position:Position(1,3)))
-        
-        gameMap[Position(1,4)] = MapTile.wall
-        XCTAssertEqual(false,gameMap.canMoveOnto(position:Position(1,4)) )
-        
-        gameMap[Position(1,5)] = MapTile.storage
-        XCTAssertEqual(true,gameMap.canMoveOnto(position:Position(1,5)) )
-        
-        gameMap[Position(1,6)] = MapTile.empty
-        XCTAssertEqual(true,gameMap.canMoveOnto(position:Position(1,6)) )
-        
-    }
-    func testIfPositionOnGameMapContainsABlock(){
-        var gameMap = GameMap()
-        gameMap[Position(1,0)] = MapTile.person
-        XCTAssertEqual(false,gameMap.containsBlock(atPosition:Position(1,0)) )
-        
-        gameMap[Position(1,2)] = MapTile.block
-        XCTAssertEqual(true,gameMap.containsBlock(atPosition:Position(1,2)) )
-        
-        gameMap[Position(1,3)] = MapTile.blockOnStorage
-        XCTAssertEqual(true,gameMap.containsBlock(atPosition:Position(1,3)))
-        
-        gameMap[Position(1,4)] = MapTile.wall
-        XCTAssertEqual(false,gameMap.containsBlock(atPosition:Position(1,4)) )
-        
-    }
-    
     func testMovingAPersonToAnEmptySquareOnTheGameMap() {
         var gameMap = GameMap()
-        gameMap[Position(1,0)] = MapTile.wall
-        gameMap[Position(1,1)] = MapTile.empty
-        gameMap[Position(1,2)] = MapTile.person
-        gameMap[Position(1,3)] = MapTile.empty
-        gameMap[Position(1,4)] = MapTile.wall
+        gameMap.add(string: "# p #")
+        gameMap.moveMapTile(direction: Direction.right)
         
-        let positionToMoveFrom = Position(1, 2)
-        let positionToMoveTo = Position(1,3)
-        gameMap.moveMapTile(fromPosition:positionToMoveFrom, toPostion:positionToMoveTo)
-        
-        XCTAssertEqual(MapTile.empty, gameMap[Position(1,2)])
-        XCTAssertEqual(MapTile.person, gameMap[Position(1,3)])
+        XCTAssertEqual(MapTile.empty, gameMap[Position(0,2)])
+        XCTAssertEqual(MapTile.person, gameMap[Position(0,3)])
     }
     
     func testMovingAPersonToAStorageSquareOnTheGameMap() {
         var gameMap = GameMap()
-        gameMap[Position(1,0)] = MapTile.wall
-        gameMap[Position(1,1)] = MapTile.empty
-        gameMap[Position(1,2)] = MapTile.person
-        gameMap[Position(1,3)] = MapTile.storage
-        gameMap[Position(1,4)] = MapTile.wall
+        gameMap.add(string: "# p*#")
+        gameMap.moveMapTile(direction: Direction.right)
         
-        let positionToMoveFrom = Position(1, 2)
-        let positionToMoveTo = Position(1,3)
-        gameMap.moveMapTile(fromPosition:positionToMoveFrom, toPostion:positionToMoveTo)
-        
-        XCTAssertEqual(MapTile.empty, gameMap[Position(1,2)])
-        XCTAssertEqual(MapTile.personOnStorage, gameMap[Position(1,3)])
+        XCTAssertEqual(MapTile.empty, gameMap[Position(0,2)])
+        XCTAssertEqual(MapTile.personOnStorage, gameMap[Position(0,3)])
     }
     
     func testMovingAPersonFromAStorageSquareOnTheGameMap() {
         var gameMap = GameMap()
-        gameMap[Position(1,0)] = MapTile.wall
-        gameMap[Position(1,1)] = MapTile.empty
-        gameMap[Position(1,2)] = MapTile.personOnStorage
-        gameMap[Position(1,3)] = MapTile.empty
-        gameMap[Position(1,4)] = MapTile.wall
+        gameMap.add(string: "# P #")
+        gameMap.moveMapTile(direction: Direction.right)
         
-        let positionToMoveFrom = Position(1, 2)
-        let positionToMoveTo = Position(1,3)
-        gameMap.moveMapTile(fromPosition:positionToMoveFrom, toPostion:positionToMoveTo)
-        
-        XCTAssertEqual(MapTile.storage, gameMap[Position(1,2)])
-        XCTAssertEqual(MapTile.person, gameMap[Position(1,3)])
+        XCTAssertEqual(MapTile.storage, gameMap[Position(0,2)])
+        XCTAssertEqual(MapTile.person, gameMap[Position(0,3)])
     }
     
     func testMovingAPersonLeft() {
         var gameMap = GameMap()
-        gameMap[Position(1,0)] = MapTile.wall
-        gameMap[Position(1,1)] = MapTile.empty
-        gameMap[Position(1,2)] = MapTile.person
-        gameMap[Position(1,3)] = MapTile.empty
-        gameMap[Position(1,4)] = MapTile.wall
-        
-        gameMap.moveMapTile(direction:Direction.left)
-        XCTAssertEqual(MapTile.wall, gameMap[Position(1,0)])
-        XCTAssertEqual(MapTile.person, gameMap[Position(1,1)])
-        XCTAssertEqual(MapTile.empty, gameMap[Position(1,2)])
-        XCTAssertEqual(MapTile.empty, gameMap[Position(1,3)])
-        XCTAssertEqual(MapTile.wall, gameMap[Position(1,4)])
+        gameMap.add(string: "# p #")
+        gameMap.moveMapTile(direction: Direction.left)
+
+        XCTAssertEqual(MapTile.wall, gameMap[Position(0,0)])
+        XCTAssertEqual(MapTile.person, gameMap[Position(0,1)])
+        XCTAssertEqual(MapTile.empty, gameMap[Position(0,2)])
+        XCTAssertEqual(MapTile.empty, gameMap[Position(0,3)])
+        XCTAssertEqual(MapTile.wall, gameMap[Position(0,4)])
     }
     
     func testMovingAPersonRight() {
         var gameMap = GameMap()
-        gameMap[Position(1,0)] = MapTile.wall
-        gameMap[Position(1,1)] = MapTile.empty
-        gameMap[Position(1,2)] = MapTile.person
-        gameMap[Position(1,3)] = MapTile.empty
-        gameMap[Position(1,4)] = MapTile.wall
-        
+        gameMap.add(string: "# p #")
         gameMap.moveMapTile(direction:Direction.right)
-        XCTAssertEqual(MapTile.wall, gameMap[Position(1,0)])
-        XCTAssertEqual(MapTile.empty, gameMap[Position(1,1)])
-        XCTAssertEqual(MapTile.empty, gameMap[Position(1,2)])
-        XCTAssertEqual(MapTile.person, gameMap[Position(1,3)])
-        XCTAssertEqual(MapTile.wall, gameMap[Position(1,4)])
+        XCTAssertEqual(MapTile.wall, gameMap[Position(0,0)])
+        XCTAssertEqual(MapTile.empty, gameMap[Position(0,1)])
+        XCTAssertEqual(MapTile.empty, gameMap[Position(0,2)])
+        XCTAssertEqual(MapTile.person, gameMap[Position(0,3)])
+        XCTAssertEqual(MapTile.wall, gameMap[Position(0,4)])
     }
     
     func testMovingAPersonUp() {
         var gameMap = GameMap()
-        gameMap[Position(0,0)] = MapTile.wall
-        gameMap[Position(0,1)] = MapTile.empty
-        gameMap[Position(0,2)] = MapTile.storage
-        gameMap[Position(0,3)] = MapTile.empty
-        gameMap[Position(0,4)] = MapTile.wall
-        gameMap[Position(1,0)] = MapTile.wall
-        gameMap[Position(1,1)] = MapTile.empty
-        gameMap[Position(1,2)] = MapTile.person
-        gameMap[Position(1,3)] = MapTile.empty
-        gameMap[Position(1,4)] = MapTile.wall
+        gameMap.add(string: "# * #")
+        gameMap.add(string: "# p #")
         
         gameMap.moveMapTile(direction:Direction.up)
         XCTAssertEqual(MapTile.wall, gameMap[Position(0,0)])
@@ -281,21 +166,10 @@ class sokobanTests: XCTestCase {
     }
     func testMovingAPersonDown() {
         var gameMap = GameMap()
-        gameMap[Position(0,0)] = MapTile.wall
-        gameMap[Position(0,1)] = MapTile.empty
-        gameMap[Position(0,2)] = MapTile.storage
-        gameMap[Position(0,3)] = MapTile.empty
-        gameMap[Position(0,4)] = MapTile.wall
-        gameMap[Position(1,0)] = MapTile.wall
-        gameMap[Position(1,1)] = MapTile.empty
-        gameMap[Position(1,2)] = MapTile.person
-        gameMap[Position(1,3)] = MapTile.empty
-        gameMap[Position(1,4)] = MapTile.wall
-        gameMap[Position(2,0)] = MapTile.wall
-        gameMap[Position(2,1)] = MapTile.empty
-        gameMap[Position(2,2)] = MapTile.empty
-        gameMap[Position(2,3)] = MapTile.empty
-        gameMap[Position(2,4)] = MapTile.wall
+        gameMap.add(string: "# * #")
+        gameMap.add(string: "# p #")
+        gameMap.add(string: "#   #")
+
         gameMap.moveMapTile(direction:Direction.down)
         XCTAssertEqual(MapTile.wall, gameMap[Position(0,0)])
         XCTAssertEqual(MapTile.empty, gameMap[Position(0,1)])
@@ -316,30 +190,22 @@ class sokobanTests: XCTestCase {
     
     func testMovingAPersonIntoABlockThatCanMove() {
         var gameMap = GameMap()
-        gameMap[Position(1,0)] = MapTile.wall
-        gameMap[Position(1,1)] = MapTile.person
-        gameMap[Position(1,2)] = MapTile.block
-        gameMap[Position(1,3)] = MapTile.empty
-        gameMap[Position(1,4)] = MapTile.wall
-        
+        gameMap.add(string: "#pb #")
+
         gameMap.moveMapTile(direction:Direction.right)
-        XCTAssertEqual(MapTile.empty, gameMap[Position(1,1)])
-        XCTAssertEqual(MapTile.person, gameMap[Position(1,2)])
-        XCTAssertEqual(MapTile.block, gameMap[Position(1,3)])
+        XCTAssertEqual(MapTile.empty, gameMap[Position(0,1)])
+        XCTAssertEqual(MapTile.person, gameMap[Position(0,2)])
+        XCTAssertEqual(MapTile.block, gameMap[Position(0,3)])
     }
     
     func testMovingAPersonIntoABlockThatCannotMove() {
         var gameMap = GameMap()
-        gameMap[Position(1,0)] = MapTile.wall
-        gameMap[Position(1,1)] = MapTile.person
-        gameMap[Position(1,2)] = MapTile.block
-        gameMap[Position(1,3)] = MapTile.block
-        gameMap[Position(1,4)] = MapTile.wall
+        gameMap.add(string: "#pbb ")
         
         gameMap.moveMapTile(direction:Direction.right)
-        XCTAssertEqual(MapTile.person, gameMap[Position(1,1)])
-        XCTAssertEqual(MapTile.block, gameMap[Position(1,2)])
-        XCTAssertEqual(MapTile.block, gameMap[Position(1,3)])
+        XCTAssertEqual(MapTile.person, gameMap[Position(0,1)])
+        XCTAssertEqual(MapTile.block, gameMap[Position(0,2)])
+        XCTAssertEqual(MapTile.block, gameMap[Position(0,3)])
     }
     
     func testProcessSokabanMoveWithSimpleMoveRight() {
