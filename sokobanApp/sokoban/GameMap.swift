@@ -54,13 +54,13 @@ struct GameMap {
         let positionOfPerson = self.positionOfPerson()
         let positionToMoveTo = positionOfPerson + direction.move
         
-        if canMoveOnto(position:positionToMoveTo) {
-            moveMapTile(fromPosition: positionOfPerson, toPostion: positionToMoveTo)
-        } else {
-            if containsBlock(atPosition:positionToMoveTo) {
-                tryAndMoveBlock(fromPosition:positionToMoveTo, direction:direction, positionOfPerson:positionOfPerson)
-            }
-        }
+        switch (true) {
+            case canMoveOnto(position: positionToMoveTo) :
+                moveMapTile(fromPosition: positionOfPerson, toPostion: positionToMoveTo)
+            case containsBlock(atPosition: positionToMoveTo) :
+                tryAndMoveBlock(fromPosition: positionToMoveTo, direction: direction, positionOfPerson: positionOfPerson)
+            default: break
+        }        
     }
     
     private mutating func moveMapTile(fromPosition positionToMoveFrom: Position, toPostion positionToMoveTo: Position) {
