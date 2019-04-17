@@ -8,21 +8,40 @@
 
 import Foundation
 
-struct GameMap {
-    private var grid = Dictionary<Position, MapTile>()
+typealias Grid  = Dictionary<Position, MapTile>
 
-    subscript(position:Position) -> MapTile? {
-        return grid[position]
+protocol GameMapType {
+    init (gameArray:GameArray, mapTileMover:MapTileMover)
+    subscript(row:Int, column:Int) -> MapTile? { get }
+    func toGameArray() -> GameArray
+    func moveMapTile(direction: Direction) -> GameMap
+}
+
+struct GameMap:GameMapType {
+    private let grid:Grid
+    private let mapTileMover:MapTileMover
+    
+    subscript(row:Int, column:Int) -> MapTile? {
+        return grid[Position(row,column)]
+    }
+        
+    init (gameArray:GameArray, mapTileMover:MapTileMover){
+        var newGrid = Grid()
+        for (row, gameString) in gameArray.enumerated() {
+            let stringChars = gameString.map{String($0)}
+            for (column, stringChar) in stringChars.enumerated() {
+                newGrid[Position(row, column)] = MapTile(string: stringChar)
+            }
+        }
+        self.mapTileMover = mapTileMover
+        self.grid = newGrid
     }
     
-    mutating func add(string:String) {
-        let lastRow = grid.keys.map{$0.row}.sorted().last ?? -1
-        let stringChars = string.map{String($0)}
-        for (column, stringChar) in stringChars.enumerated() {
-            grid[Position(lastRow + 1,column )] = MapTile(string: stringChar)
-        }
+    private init(grid newGrid:Grid, mapTileMover:MapTileMover) {
+        self.mapTileMover = mapTileMover
+        self.grid = newGrid
     }
-
+    
     func toGameArray() -> GameArray {
         let rows = grid.keys.map{$0.row}
         let uniqueRows = Array(Set(rows)).sorted()
@@ -37,47 +56,8 @@ struct GameMap {
             .reduce("",+)
     }
     
-    func positionOfPerson() -> Position {
-        let position = grid.first{(position, mapTile) in mapTile == MapTile.person || mapTile == MapTile.personOnStorage }?.key
-        return position ?? Position(0,0)
+    func moveMapTile(direction: Direction) -> GameMap {
+        return GameMap(grid: mapTileMover.moveMapTile(grid: grid, direction: direction), mapTileMover: mapTileMover)
     }
-    
-    private func canMoveOnto(position:Position) -> Bool {
-        return grid[position] == MapTile.empty || grid[position] == MapTile.storage
-    }
-    
-    private func containsBlock(atPosition position:Position) -> Bool {
-        return grid[position] == MapTile.block || grid[position] == MapTile.blockOnStorage
-    }
-    
-    mutating func moveMapTile(direction: Direction)  {
-        let positionOfPerson = self.positionOfPerson()
-        let positionToMoveTo = positionOfPerson + direction.move
-        
-        switch (true) {
-            case canMoveOnto(position: positionToMoveTo) :
-                moveMapTile(fromPosition: positionOfPerson, toPostion: positionToMoveTo)
-            case containsBlock(atPosition: positionToMoveTo) :
-                tryAndMoveBlock(fromPosition: positionToMoveTo, direction: direction, positionOfPerson: positionOfPerson)
-            default: break
-        }        
-    }
-    
-    private mutating func moveMapTile(fromPosition positionToMoveFrom: Position, toPostion positionToMoveTo: Position) {
-        guard let mapTile = grid[positionToMoveFrom] else { return }
-        
-        let mapTileForOldPosition = (grid[positionToMoveFrom] == mapTile.notOnStorage) ? MapTile.empty : MapTile.storage
-        let mapTileForNewPosition = (grid[positionToMoveTo] == MapTile.empty) ? mapTile.notOnStorage : mapTile.onStorage
-        grid[positionToMoveFrom] = mapTileForOldPosition
-        grid[positionToMoveTo] = mapTileForNewPosition
-    }
-    
-    private mutating func tryAndMoveBlock(fromPosition positionOfBlock:Position, direction: Direction, positionOfPerson: Position) {
-        let positionAdjacentToBlock = positionOfBlock + direction.move
-        if canMoveOnto(position:positionAdjacentToBlock) {
-            moveMapTile(fromPosition: positionOfBlock, toPostion: positionAdjacentToBlock)
-            moveMapTile(fromPosition: positionOfPerson, toPostion: positionOfBlock)
-        }
-    }
-    
 }
+

@@ -10,12 +10,3 @@ import Foundation
 
 typealias GameArray = Array<String>
 
-extension GameArray {
-    func toGameMap() -> GameMap {
-        var gameMap = GameMap()
-        for string in self {
-            gameMap.add(string: string)
-        }
-        return gameMap
-    }
-}

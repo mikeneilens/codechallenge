@@ -45,167 +45,146 @@ class sokobanTests: XCTestCase {
     }
     
     func testUpdatingMapFromAString() {
-        var gameMap = GameMap()
-        gameMap.add(string:"p")
-        XCTAssertEqual(gameMap[Position(0,0)],MapTile.person)
-        gameMap.add(string:"# pb*PB")
-        XCTAssertEqual(gameMap[Position(1,0)],MapTile.wall)
-        XCTAssertEqual(gameMap[Position(1,1)],MapTile.empty)
-        XCTAssertEqual(gameMap[Position(1,2)],MapTile.person)
-        XCTAssertEqual(gameMap[Position(1,3)],MapTile.block)
-        XCTAssertEqual(gameMap[Position(1,4)],MapTile.storage)
-        XCTAssertEqual(gameMap[Position(1,5)],MapTile.personOnStorage)
-        XCTAssertEqual(gameMap[Position(1,6)],MapTile.blockOnStorage)
+        let gameMap = GameMap(gameArray: ["p",
+                                          "# pb*PB"], mapTileMover: PlayerMover())
+        XCTAssertEqual(gameMap[1,0],MapTile.wall)
+        XCTAssertEqual(gameMap[1,1],MapTile.empty)
+        XCTAssertEqual(gameMap[1,2],MapTile.person)
+        XCTAssertEqual(gameMap[1,3],MapTile.block)
+        XCTAssertEqual(gameMap[1,4],MapTile.storage)
+        XCTAssertEqual(gameMap[1,5],MapTile.personOnStorage)
+        XCTAssertEqual(gameMap[1,6],MapTile.blockOnStorage)
     }
-    
-    func testArrayOfStringtoGameMap() {
-        let arrayOfStrings = ["# p #", "B*Ppb"]
-        let gameMap = arrayOfStrings.toGameMap()
-        XCTAssertEqual(gameMap[Position(0,0)],MapTile.wall)
-        XCTAssertEqual(gameMap[Position(0,1)],MapTile.empty)
-        XCTAssertEqual(gameMap[Position(0,2)],MapTile.person)
-        XCTAssertEqual(gameMap[Position(0,3)],MapTile.empty)
-        XCTAssertEqual(gameMap[Position(0,4)],MapTile.wall)
-        XCTAssertEqual(gameMap[Position(1,0)],MapTile.blockOnStorage)
-        XCTAssertEqual(gameMap[Position(1,1)],MapTile.storage)
-        XCTAssertEqual(gameMap[Position(1,2)],MapTile.personOnStorage)
-        XCTAssertEqual(gameMap[Position(1,3)],MapTile.person)
-        XCTAssertEqual(gameMap[Position(1,4)],MapTile.block)
+
+    func testInitialisingGameMapWithArrayofStrings() {
+        let arrayOfStrings = ["# p #",
+                              "B*Ppb"]
+        let gameMap = GameMap(gameArray: arrayOfStrings, mapTileMover: PlayerMover() )
+        XCTAssertEqual(gameMap[0,0],MapTile.wall)
+        XCTAssertEqual(gameMap[0,1],MapTile.empty)
+        XCTAssertEqual(gameMap[0,2],MapTile.person)
+        XCTAssertEqual(gameMap[0,3],MapTile.empty)
+        XCTAssertEqual(gameMap[0,4],MapTile.wall)
+        XCTAssertEqual(gameMap[1,0],MapTile.blockOnStorage)
+        XCTAssertEqual(gameMap[1,1],MapTile.storage)
+        XCTAssertEqual(gameMap[1,2],MapTile.personOnStorage)
+        XCTAssertEqual(gameMap[1,3],MapTile.person)
+        XCTAssertEqual(gameMap[1,4],MapTile.block)
     }
+
     
     func testGameMapToStringAtRow() {
-        var gameMap = GameMap()
-        gameMap.add(string: "pPbB#* ")
-        gameMap.add(string: " pbPB*#")
+        let gameMap = GameMap(gameArray: ["pPbB#* ",
+                                          " pbPB*#"], mapTileMover: PlayerMover())
         XCTAssertEqual(["pPbB#* "," pbPB*#"],gameMap.toGameArray())
     }
     
-    func testPositionOfPersonInGameMap () {
-        var gameMap = GameMap()
-        gameMap.add(string: "#bbB#* ")
-        gameMap.add(string: " pbbB*#")
-        XCTAssertEqual(Position(1,1),gameMap.positionOfPerson())
-        var gameMap2 = GameMap()
-        gameMap2.add(string: "#bbBP* ")
-        gameMap2.add(string: "  bbB*#")
-        XCTAssertEqual(Position(0,4),gameMap2.positionOfPerson())
-    }
-    
-    func testAddingPositionsTogether() {
+    func testAddingsTogetherPosition() {
         XCTAssertEqual(Position(2,3),Position(1,1) + Position(1,2))
         XCTAssertEqual(Position(0,-1),Position(1,1) + Position(-1,-2))
         XCTAssertEqual(Position(4,6),Position(1,2) + Position(3,4))
     }
     
     func testMovingAPersonToAnEmptySquareOnTheGameMap() {
-        var gameMap = GameMap()
-        gameMap.add(string: "# p #")
-        gameMap.moveMapTile(direction: Direction.right)
+        let gameMap = GameMap(gameArray: ["# p #"], mapTileMover: PlayerMover())
+        let updatedGameMap = gameMap.moveMapTile(direction: Direction.right)
         
-        XCTAssertEqual(MapTile.empty, gameMap[Position(0,2)])
-        XCTAssertEqual(MapTile.person, gameMap[Position(0,3)])
+        XCTAssertEqual(MapTile.empty, updatedGameMap[0,2])
+        XCTAssertEqual(MapTile.person, updatedGameMap[0,3])
     }
     
     func testMovingAPersonToAStorageSquareOnTheGameMap() {
-        var gameMap = GameMap()
-        gameMap.add(string: "# p*#")
-        gameMap.moveMapTile(direction: Direction.right)
+        let gameMap = GameMap(gameArray:["# p*#"] , mapTileMover: PlayerMover())
+        let updatedGameMap = gameMap.moveMapTile(direction: Direction.right)
         
-        XCTAssertEqual(MapTile.empty, gameMap[Position(0,2)])
-        XCTAssertEqual(MapTile.personOnStorage, gameMap[Position(0,3)])
+        XCTAssertEqual(MapTile.empty, updatedGameMap[0,2])
+        XCTAssertEqual(MapTile.personOnStorage, updatedGameMap[0,3])
     }
     
     func testMovingAPersonFromAStorageSquareOnTheGameMap() {
-        var gameMap = GameMap()
-        gameMap.add(string: "# P #")
-        gameMap.moveMapTile(direction: Direction.right)
+        let gameMap = GameMap(gameArray: ["# P #"], mapTileMover: PlayerMover())
+        let updatedGameMap = gameMap.moveMapTile(direction: Direction.right)
         
-        XCTAssertEqual(MapTile.storage, gameMap[Position(0,2)])
-        XCTAssertEqual(MapTile.person, gameMap[Position(0,3)])
+        XCTAssertEqual(MapTile.storage, updatedGameMap[0,2])
+        XCTAssertEqual(MapTile.person, updatedGameMap[0,3])
     }
     
     func testMovingAPersonLeft() {
-        var gameMap = GameMap()
-        gameMap.add(string: "# p #")
-        gameMap.moveMapTile(direction: Direction.left)
+        let gameMap = GameMap(gameArray: ["# p #"], mapTileMover: PlayerMover())
+        let updatedGameMap = gameMap.moveMapTile(direction: Direction.left)
 
-        XCTAssertEqual(MapTile.wall, gameMap[Position(0,0)])
-        XCTAssertEqual(MapTile.person, gameMap[Position(0,1)])
-        XCTAssertEqual(MapTile.empty, gameMap[Position(0,2)])
-        XCTAssertEqual(MapTile.empty, gameMap[Position(0,3)])
-        XCTAssertEqual(MapTile.wall, gameMap[Position(0,4)])
+        XCTAssertEqual(MapTile.wall, updatedGameMap[0,0])
+        XCTAssertEqual(MapTile.person, updatedGameMap[0,1])
+        XCTAssertEqual(MapTile.empty, updatedGameMap[0,2])
+        XCTAssertEqual(MapTile.empty, updatedGameMap[0,3])
+        XCTAssertEqual(MapTile.wall, updatedGameMap[0,4])
     }
     
     func testMovingAPersonRight() {
-        var gameMap = GameMap()
-        gameMap.add(string: "# p #")
-        gameMap.moveMapTile(direction:Direction.right)
-        XCTAssertEqual(MapTile.wall, gameMap[Position(0,0)])
-        XCTAssertEqual(MapTile.empty, gameMap[Position(0,1)])
-        XCTAssertEqual(MapTile.empty, gameMap[Position(0,2)])
-        XCTAssertEqual(MapTile.person, gameMap[Position(0,3)])
-        XCTAssertEqual(MapTile.wall, gameMap[Position(0,4)])
+        let gameMap = GameMap(gameArray: ["# p #"], mapTileMover: PlayerMover())
+        let updatedGameMap = gameMap.moveMapTile(direction:Direction.right)
+        XCTAssertEqual(MapTile.wall, updatedGameMap[0,0])
+        XCTAssertEqual(MapTile.empty, updatedGameMap[0,1])
+        XCTAssertEqual(MapTile.empty, updatedGameMap[0,2])
+        XCTAssertEqual(MapTile.person, updatedGameMap[0,3])
+        XCTAssertEqual(MapTile.wall, updatedGameMap[0,4])
     }
     
     func testMovingAPersonUp() {
-        var gameMap = GameMap()
-        gameMap.add(string: "# * #")
-        gameMap.add(string: "# p #")
+        let gameMap = GameMap(gameArray: ["# * #",
+                                          "# p #"], mapTileMover: PlayerMover())
         
-        gameMap.moveMapTile(direction:Direction.up)
-        XCTAssertEqual(MapTile.wall, gameMap[Position(0,0)])
-        XCTAssertEqual(MapTile.empty, gameMap[Position(0,1)])
-        XCTAssertEqual(MapTile.personOnStorage, gameMap[Position(0,2)])
-        XCTAssertEqual(MapTile.empty, gameMap[Position(0,3)])
-        XCTAssertEqual(MapTile.wall, gameMap[Position(0,4)])
-        XCTAssertEqual(MapTile.wall, gameMap[Position(1,0)])
-        XCTAssertEqual(MapTile.empty, gameMap[Position(1,1)])
-        XCTAssertEqual(MapTile.empty, gameMap[Position(1,2)])
-        XCTAssertEqual(MapTile.empty, gameMap[Position(1,3)])
-        XCTAssertEqual(MapTile.wall, gameMap[Position(1,4)])
+        let updatedGameMap = gameMap.moveMapTile(direction:Direction.up)
+        XCTAssertEqual(MapTile.wall, updatedGameMap[0,0])
+        XCTAssertEqual(MapTile.empty, updatedGameMap[0,1])
+        XCTAssertEqual(MapTile.personOnStorage, updatedGameMap[0,2])
+        XCTAssertEqual(MapTile.empty, updatedGameMap[0,3])
+        XCTAssertEqual(MapTile.wall, updatedGameMap[0,4])
+        XCTAssertEqual(MapTile.wall, updatedGameMap[1,0])
+        XCTAssertEqual(MapTile.empty, updatedGameMap[1,1])
+        XCTAssertEqual(MapTile.empty, updatedGameMap[1,2])
+        XCTAssertEqual(MapTile.empty, updatedGameMap[1,3])
+        XCTAssertEqual(MapTile.wall, updatedGameMap[1,4])
     }
     func testMovingAPersonDown() {
-        var gameMap = GameMap()
-        gameMap.add(string: "# * #")
-        gameMap.add(string: "# p #")
-        gameMap.add(string: "#   #")
+        let gameMap = GameMap(gameArray: ["# * #",
+                                          "# p #",
+                                          "#   #"], mapTileMover: PlayerMover())
 
-        gameMap.moveMapTile(direction:Direction.down)
-        XCTAssertEqual(MapTile.wall, gameMap[Position(0,0)])
-        XCTAssertEqual(MapTile.empty, gameMap[Position(0,1)])
-        XCTAssertEqual(MapTile.storage, gameMap[Position(0,2)])
-        XCTAssertEqual(MapTile.empty, gameMap[Position(0,3)])
-        XCTAssertEqual(MapTile.wall, gameMap[Position(0,4)])
-        XCTAssertEqual(MapTile.wall, gameMap[Position(1,0)])
-        XCTAssertEqual(MapTile.empty, gameMap[Position(1,1)])
-        XCTAssertEqual(MapTile.empty, gameMap[Position(1,2)])
-        XCTAssertEqual(MapTile.empty, gameMap[Position(1,3)])
-        XCTAssertEqual(MapTile.wall, gameMap[Position(1,4)])
-        XCTAssertEqual(MapTile.wall, gameMap[Position(2,0)])
-        XCTAssertEqual(MapTile.empty, gameMap[Position(2,1)])
-        XCTAssertEqual(MapTile.person, gameMap[Position(2,2)])
-        XCTAssertEqual(MapTile.empty, gameMap[Position(2,3)])
-        XCTAssertEqual(MapTile.wall, gameMap[Position(2,4)])
+        let updatedGameMap = gameMap.moveMapTile(direction:Direction.down)
+        XCTAssertEqual(MapTile.wall, updatedGameMap[0,0])
+        XCTAssertEqual(MapTile.empty, updatedGameMap[0,1])
+        XCTAssertEqual(MapTile.storage, updatedGameMap[0,2])
+        XCTAssertEqual(MapTile.empty, updatedGameMap[0,3])
+        XCTAssertEqual(MapTile.wall, updatedGameMap[0,4])
+        XCTAssertEqual(MapTile.wall, updatedGameMap[1,0])
+        XCTAssertEqual(MapTile.empty, updatedGameMap[1,1])
+        XCTAssertEqual(MapTile.empty, updatedGameMap[1,2])
+        XCTAssertEqual(MapTile.empty, updatedGameMap[1,3])
+        XCTAssertEqual(MapTile.wall, updatedGameMap[1,4])
+        XCTAssertEqual(MapTile.wall, updatedGameMap[2,0])
+        XCTAssertEqual(MapTile.empty, updatedGameMap[2,1])
+        XCTAssertEqual(MapTile.person, updatedGameMap[2,2])
+        XCTAssertEqual(MapTile.empty, updatedGameMap[2,3])
+        XCTAssertEqual(MapTile.wall, updatedGameMap[2,4])
     }
     
     func testMovingAPersonIntoABlockThatCanMove() {
-        var gameMap = GameMap()
-        gameMap.add(string: "#pb #")
+        let gameMap = GameMap(gameArray: ["#pb #"], mapTileMover: PlayerMover())
 
-        gameMap.moveMapTile(direction:Direction.right)
-        XCTAssertEqual(MapTile.empty, gameMap[Position(0,1)])
-        XCTAssertEqual(MapTile.person, gameMap[Position(0,2)])
-        XCTAssertEqual(MapTile.block, gameMap[Position(0,3)])
+        let updatedGameMap = gameMap.moveMapTile(direction:Direction.right)
+        XCTAssertEqual(MapTile.empty, updatedGameMap[0,1])
+        XCTAssertEqual(MapTile.person, updatedGameMap[0,2])
+        XCTAssertEqual(MapTile.block, updatedGameMap[0,3])
     }
     
     func testMovingAPersonIntoABlockThatCannotMove() {
-        var gameMap = GameMap()
-        gameMap.add(string: "#pbb ")
+        let gameMap = GameMap(gameArray: ["#pbb "], mapTileMover: PlayerMover())
         
-        gameMap.moveMapTile(direction:Direction.right)
-        XCTAssertEqual(MapTile.person, gameMap[Position(0,1)])
-        XCTAssertEqual(MapTile.block, gameMap[Position(0,2)])
-        XCTAssertEqual(MapTile.block, gameMap[Position(0,3)])
+        let updatedGameMap = gameMap.moveMapTile(direction:Direction.right)
+        XCTAssertEqual(MapTile.person, updatedGameMap[0,1])
+        XCTAssertEqual(MapTile.block, updatedGameMap[0,2])
+        XCTAssertEqual(MapTile.block, updatedGameMap[0,3])
     }
     
     func testProcessSokabanMoveWithSimpleMoveRight() {

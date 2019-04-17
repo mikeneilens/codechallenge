@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+
 enum MapTile:String {
     case person = "p"
     case wall = "#"
