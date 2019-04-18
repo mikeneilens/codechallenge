@@ -23,7 +23,7 @@ struct PlayerMover:MapTileMover {
         switch (true) {
             case updatedGrid != grid: return updatedGrid
             case containsBlock(atPosition: positionAdjacentToPlayer, grid:grid):
-                let updatedGrid = tryAndMoveBlockAndPerson(positionOfBlock:positionAdjacentToPlayer, direction: direction, positionOfPerson: positionOfPerson, onGrid:grid)
+                let updatedGrid = tryAndMoveBlockAndPerson(positionOfPerson: positionOfPerson, direction: direction, onGrid:grid)
                 return updatedGrid
             default: return grid
         }
@@ -42,7 +42,8 @@ struct PlayerMover:MapTileMover {
         return grid[position] == MapTile.block || grid[position] == MapTile.blockOnStorage
     }
     
-    private func tryAndMoveBlockAndPerson(positionOfBlock:Position, direction: Direction, positionOfPerson: Position, onGrid grid:Grid) -> Grid{
+    private func tryAndMoveBlockAndPerson(positionOfPerson: Position,direction: Direction, onGrid grid:Grid) -> Grid{
+        let positionOfBlock = positionOfPerson + direction.move
         let newGrid = tryAndMoveTile(fromPosition: positionOfBlock, direction: direction, onGrid:grid)
         if newGrid != grid {
             let updatedGrid = moveMapTile(from: positionOfPerson, to: positionOfBlock, onGrid:newGrid)
