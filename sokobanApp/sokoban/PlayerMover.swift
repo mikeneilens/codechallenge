@@ -1,8 +1,8 @@
 //
-//  MapTileMover.swift
+//  PlayerMover2.swift
 //  sokoban
 //
-//  Created by Michael Neilens on 17/04/2019.
+//  Created by Michael Neilens on 19/04/2019.
 //  Copyright © 2019 Michael Neilens. All rights reserved.
 //
 
@@ -21,25 +21,29 @@ struct PlayerMover:MapTileMover {
         let updatedGrid = tryAndMoveTile(fromPosition: positionOfPerson, direction: direction, onGrid: grid)
         
         switch (true) {
-            case updatedGrid != grid: return updatedGrid
-            case containsBlock(atPosition: positionAdjacentToPlayer, grid:grid):
-                let updatedGrid = tryAndMoveBlockAndPerson(positionOfPerson: positionOfPerson, direction: direction, onGrid:grid)
-                return updatedGrid
-            default: return grid
+        case updatedGrid != grid: return updatedGrid
+        case containsBlock(atPosition: positionAdjacentToPlayer, grid:grid):
+            let updatedGrid = tryAndMoveBlockAndPerson(positionOfPerson: positionOfPerson, direction: direction, onGrid:grid)
+            return updatedGrid
+        default: return grid
         }
     }
-
+    
     private func positionOfPerson(grid:Grid) -> Position {
-        let position = grid.first{(position, mapTile) in mapTile == MapTile.person || mapTile == MapTile.personOnStorage }?.key
+        let position = grid.first{(position, mapTile) in return (mapTile is Person)}?.key
         return position ?? Position(0,0)
     }
     
     private func canMoveOnto(position:Position, grid:Grid) -> Bool {
-        return grid[position] == MapTile.empty || grid[position] == MapTile.storage
+        switch grid[position] {
+            case is Empty:return true
+            case is Storage:return true
+            default: return false
+        }
     }
     
     private func containsBlock(atPosition position:Position, grid:Grid) -> Bool {
-        return grid[position] == MapTile.block || grid[position] == MapTile.blockOnStorage
+        return grid[position] is Block
     }
     
     private func tryAndMoveBlockAndPerson(positionOfPerson: Position,direction: Direction, onGrid grid:Grid) -> Grid{
@@ -64,10 +68,10 @@ struct PlayerMover:MapTileMover {
     }
     
     private func moveMapTile(from positionToMoveFrom: Position, to positionToMoveTo: Position, onGrid grid:Grid) -> Grid {
-        guard let mapTile = grid[positionToMoveFrom] else { return grid }
+        guard let mapTile = grid[positionToMoveFrom], let mapTileToMoveTo = grid[positionToMoveTo] else { return grid }
         
-        let mapTileForOldPosition = (grid[positionToMoveFrom] == mapTile.notOnStorage) ? MapTile.empty : MapTile.storage
-        let mapTileForNewPosition = (grid[positionToMoveTo] == MapTile.empty) ? mapTile.notOnStorage : mapTile.onStorage
+        let mapTileForOldPosition = mapTile.mapTileUnderneath
+        let mapTileForNewPosition = mapTile.place(onMapTile: mapTileToMoveTo)
         
         var resultingGrid = grid
         resultingGrid[positionToMoveFrom] = mapTileForOldPosition

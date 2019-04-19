@@ -9,5 +9,5 @@
 import Foundation
 
 func puzzleIsSolved(_ listOfStrings:GameArray) -> Bool {
-    return listOfStrings.map{!($0.contains(MapTile.block.rawValue))}.reduce(true){ acc,value in value && acc}
+    return listOfStrings.map{!($0.contains("b"))}.reduce(true){ acc,value in value && acc}
 }

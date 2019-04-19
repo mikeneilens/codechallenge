@@ -1,81 +1,95 @@
 //
-//  sokobanTests.swift
+//  sokonanTests2.swift
 //  sokobanTests
 //
-//  Created by Michael Neilens on 14/04/2019.
+//  Created by Michael Neilens on 19/04/2019.
 //  Copyright © 2019 Michael Neilens. All rights reserved.
 //
 
+import Foundation
 import XCTest
 @testable import sokoban
 
-class testsOnGameMap: XCTestCase {
+class testsOnGameMap2: XCTestCase {
     
     func test_convertString_to_MapTile() {
-        let person = MapTile(string:"p")
-        let wall = MapTile(string:"#")
-        let block = MapTile(string:"b")
-        let storage = MapTile(string:"*")
-        let personOnStorage = MapTile(string:"P")
-        let blockOnStorage = MapTile(string:"B")
-        let empty = MapTile(string:" ")
-        let empty2 = MapTile(string:"some bad data")
-        XCTAssertEqual(MapTile.person,person)
-        XCTAssertEqual(MapTile.wall,wall)
-        XCTAssertEqual(MapTile.block,block)
-        XCTAssertEqual(MapTile.storage,storage)
-        XCTAssertEqual(MapTile.personOnStorage,personOnStorage)
-        XCTAssertEqual(MapTile.blockOnStorage,blockOnStorage)
-        XCTAssertEqual(MapTile.empty,empty)
-        XCTAssertEqual(MapTile.empty,empty2)
+        let person = MapTileBuilder.create(string:"p")
+        let wall = MapTileBuilder.create(string:"#")
+        let block = MapTileBuilder.create(string:"b")
+        let storage = MapTileBuilder.create(string:"*")
+        let personOnStorageSquare = MapTileBuilder.create(string:"P")
+        let blockOnStorageSquare = MapTileBuilder.create(string:"B")
+        let empty = MapTileBuilder.create(string:" ")
+        let empty2 = MapTileBuilder.create(string:"some bad data")
+        XCTAssertEqual(Person(), person)
+        XCTAssertEqual(Wall(), wall)
+        XCTAssertEqual(Block(), block)
+        XCTAssertEqual(Empty(), block.mapTileUnderneath)
+        XCTAssertEqual(Storage(), storage)
+        XCTAssertEqual(Person(), personOnStorageSquare)
+        XCTAssertEqual(Storage(), personOnStorageSquare.mapTileUnderneath)
+        XCTAssertEqual(Block(), blockOnStorageSquare)
+        XCTAssertEqual(Storage(), blockOnStorageSquare.mapTileUnderneath)
+        XCTAssertEqual(Empty(),empty)
+        XCTAssertEqual(Empty(),empty2)
     }
-    
+  
     func testUpdatingMapFromAString() {
         let gameMap = GameMap(gameArray: ["p",
                                           "# pb*PB"], mapTileMover: PlayerMover())
-        XCTAssertEqual(gameMap[1,0],MapTile.wall)
-        XCTAssertEqual(gameMap[1,1],MapTile.empty)
-        XCTAssertEqual(gameMap[1,2],MapTile.person)
-        XCTAssertEqual(gameMap[1,3],MapTile.block)
-        XCTAssertEqual(gameMap[1,4],MapTile.storage)
-        XCTAssertEqual(gameMap[1,5],MapTile.personOnStorage)
-        XCTAssertEqual(gameMap[1,6],MapTile.blockOnStorage)
-    }
+        XCTAssertEqual(gameMap[1,0], Wall())
+        XCTAssertEqual(gameMap[1,1], Empty())
+        XCTAssertEqual(gameMap[1,2], Person())
+        XCTAssertEqual(gameMap[1,2]?.mapTileUnderneath, Empty())
+        XCTAssertEqual(gameMap[1,3], Block())
+        XCTAssertEqual(gameMap[1,3]?.mapTileUnderneath, Empty())
+        XCTAssertEqual(gameMap[1,4], Storage())
+        XCTAssertEqual(gameMap[1,5], Person())
+        XCTAssertEqual(gameMap[1,5]?.mapTileUnderneath, Storage())
+        XCTAssertEqual(gameMap[1,6], Block())
+        XCTAssertEqual(gameMap[1,6]?.mapTileUnderneath, Storage())
 
-    func testInitialisingGameMapWithArrayofStrings() {
+    }
+  
+    func testInitialisingGameMap2WithArrayofStrings() {
         let arrayOfStrings = ["# p #",
                               "B*Ppb"]
         let gameMap = GameMap(gameArray: arrayOfStrings, mapTileMover: PlayerMover() )
-        XCTAssertEqual(gameMap[0,0],MapTile.wall)
-        XCTAssertEqual(gameMap[0,1],MapTile.empty)
-        XCTAssertEqual(gameMap[0,2],MapTile.person)
-        XCTAssertEqual(gameMap[0,3],MapTile.empty)
-        XCTAssertEqual(gameMap[0,4],MapTile.wall)
-        XCTAssertEqual(gameMap[1,0],MapTile.blockOnStorage)
-        XCTAssertEqual(gameMap[1,1],MapTile.storage)
-        XCTAssertEqual(gameMap[1,2],MapTile.personOnStorage)
-        XCTAssertEqual(gameMap[1,3],MapTile.person)
-        XCTAssertEqual(gameMap[1,4],MapTile.block)
+        XCTAssertEqual(gameMap[0,0], Wall())
+        XCTAssertEqual(gameMap[0,1], Empty())
+        XCTAssertEqual(gameMap[0,2], Person())
+        XCTAssertEqual(gameMap[0,2]?.mapTileUnderneath, Empty())
+        XCTAssertEqual(gameMap[0,3], Empty())
+        XCTAssertEqual(gameMap[0,4], Wall())
+        XCTAssertEqual(gameMap[1,0], Block())
+        XCTAssertEqual(gameMap[1,0]?.mapTileUnderneath, Storage())
+        XCTAssertEqual(gameMap[1,1], Storage())
+        XCTAssertEqual(gameMap[1,2], Person())
+        XCTAssertEqual(gameMap[1,2]?.mapTileUnderneath, Storage())
+        XCTAssertEqual(gameMap[1,3], Person())
+        XCTAssertEqual(gameMap[1,3]?.mapTileUnderneath, Empty())
+        XCTAssertEqual(gameMap[1,4], Block())
+        XCTAssertEqual(gameMap[1,4]?.mapTileUnderneath, Empty())
     }
-
     
-    func testGameMapToStringAtRow() {
+  
+    func testGameMap2ToStringAtRow() {
         let gameMap = GameMap(gameArray: ["pPbB#* ",
                                           " pbPB*#"], mapTileMover: PlayerMover())
         XCTAssertEqual(["pPbB#* "," pbPB*#"],gameMap.toGameArray())
     }
     
-    func testMovingAPersonToAnEmptySquareOnGameMapUsungPlayerMover() {
+    func testMovingAPersonToAnEmptySquareOnGameMap2UsungPlayerMover() {
         let gameMap = GameMap(gameArray:["# p #"], mapTileMover: PlayerMover())
-        let updatedGameMap = gameMap.moveMapTile(direction: Direction.right)
+        let updatedGameMap2 = gameMap.moveMapTile(direction: Direction.right)
         
-        XCTAssertEqual(MapTile.empty, updatedGameMap[0,2])
-        XCTAssertEqual(MapTile.person, updatedGameMap[0,3])
+        XCTAssertEqual(Empty(), updatedGameMap2[0,2])
+        XCTAssertEqual(Person(), updatedGameMap2[0,3])
+        XCTAssertEqual(Empty(), updatedGameMap2[0,3]?.mapTileUnderneath)
     }
-    
 }
 
-class processSokobanMoveTests:XCTestCase {
+class processSokobanMoveTests2:XCTestCase {
     func testProcessSokabanMoveWithSimpleMoveRight() {
         let inputList = [
             "#############",
@@ -171,10 +185,10 @@ class processSokobanMoveTests:XCTestCase {
             "#############"]
         XCTAssertEqual(afterMoveRight, processSokobanMove(inputList,"R"))
     }
-
+    
 }
 
-class testPuzzleIsSolved:XCTestCase {
+class testPuzzleIsSolved2:XCTestCase {
     func testPuzzelIsNotSolvedOneBlock() {
         let inputList = [
             "#############",
@@ -206,7 +220,7 @@ class testPuzzleIsSolved:XCTestCase {
     }
 }
 
-class testsOnPosition:XCTestCase {
+class testsOnPosition2:XCTestCase {
     func testAddingsTogetherPosition() {
         XCTAssertEqual(Position(2,3),Position(1,1) + Position(1,2))
         XCTAssertEqual(Position(0,-1),Position(1,1) + Position(-1,-2))
@@ -214,165 +228,179 @@ class testsOnPosition:XCTestCase {
     }
 }
 
-class testsOnPlayerMover: XCTestCase {
-    func testMovingAPersonToAnEmptySquareOnGrid() {
+class testsOnPlayerMover2: XCTestCase {
+    func testMovingAPersonToAnEmptySquareOnGrid2() {
         var grid = Grid()
-        grid[Position(0,0)] = MapTile.wall
-        grid[Position(0,1)] = MapTile.empty
-        grid[Position(0,2)] = MapTile.person
-        grid[Position(0,3)] = MapTile.empty
-        grid[Position(0,4)] = MapTile.wall
+        grid[Position(0,0)] = Wall()
+        grid[Position(0,1)] = Empty()
+        grid[Position(0,2)] = Person(Empty())
+        grid[Position(0,3)] = Empty()
+        grid[Position(0,4)] = Wall()
         let updatedGrid = PlayerMover().moveMapTile(grid: grid, direction: Direction.right)
         
-        XCTAssertEqual(MapTile.empty, updatedGrid[Position(0,2)])
-        XCTAssertEqual(MapTile.person, updatedGrid[Position(0,3)])
+        XCTAssertEqual(Empty(), updatedGrid[Position(0,2)])
+        XCTAssertEqual(Person(), updatedGrid[Position(0,3)])
+        XCTAssertEqual(Empty(), updatedGrid[Position(0,3)]?.mapTileUnderneath)
     }
-    
-    func testMovingAPersonToAStorageSquareOnGrid() {
+
+    func testMovingAPersonToAStorageSquareOnGrid2() {
         var grid = Grid()
-        grid[Position(0,0)] = MapTile.wall
-        grid[Position(0,1)] = MapTile.empty
-        grid[Position(0,2)] = MapTile.person
-        grid[Position(0,3)] = MapTile.storage
-        grid[Position(0,4)] = MapTile.wall
+        grid[Position(0,0)] = Wall()
+        grid[Position(0,1)] = Empty()
+        grid[Position(0,2)] = Person(Empty())
+        grid[Position(0,3)] = Storage(Empty())
+        grid[Position(0,4)] = Wall()
         let updatedGrid = PlayerMover().moveMapTile(grid: grid, direction: Direction.right)
         
-        XCTAssertEqual(MapTile.empty, updatedGrid[Position(0,2)])
-        XCTAssertEqual(MapTile.personOnStorage, updatedGrid[Position(0,3)])
+        XCTAssertEqual(Empty(), updatedGrid[Position(0,2)])
+        XCTAssertEqual(Person(), updatedGrid[Position(0,3)])
+        XCTAssertEqual(Storage(), updatedGrid[Position(0,3)]?.mapTileUnderneath)
     }
-    
-    func testMovingAPersonFromAStorageSquareOnGrid() {
+
+    func testMovingAPersonFromAStorageSquareOnGrid2() {
         var grid = Grid()
-        grid[Position(0,0)] = MapTile.wall
-        grid[Position(0,1)] = MapTile.empty
-        grid[Position(0,2)] = MapTile.personOnStorage
-        grid[Position(0,3)] = MapTile.empty
-        grid[Position(0,4)] = MapTile.wall
+        grid[Position(0,0)] = Wall()
+        grid[Position(0,1)] = Empty()
+        grid[Position(0,2)] = Person(Storage())
+        grid[Position(0,3)] = Empty()
+        grid[Position(0,4)] = Wall()
         let updatedGrid = PlayerMover().moveMapTile(grid: grid, direction: Direction.right)
-        
-        XCTAssertEqual(MapTile.storage, updatedGrid[Position(0,2)])
-        XCTAssertEqual(MapTile.person, updatedGrid[Position(0,3)])
+
+        XCTAssertEqual(Storage(), updatedGrid[Position(0,2)])
+        XCTAssertEqual(Person(), updatedGrid[Position(0,3)])
+        XCTAssertEqual(Empty(), updatedGrid[Position(0,3)]?.mapTileUnderneath)
+
     }
-    
+
     func testMovingAPersonLeft() {
         var grid = Grid()
-        grid[Position(0,0)] = MapTile.wall
-        grid[Position(0,1)] = MapTile.empty
-        grid[Position(0,2)] = MapTile.person
-        grid[Position(0,3)] = MapTile.storage
-        grid[Position(0,4)] = MapTile.wall
+        grid[Position(0,0)] = Wall()
+        grid[Position(0,1)] = Empty()
+        grid[Position(0,2)] = Person(Empty())
+        grid[Position(0,3)] = Storage()
+        grid[Position(0,4)] = Wall()
         let updatedGrid = PlayerMover().moveMapTile(grid: grid, direction: Direction.left)
         
-        XCTAssertEqual(MapTile.person, updatedGrid[Position(0,1)])
-        XCTAssertEqual(MapTile.empty, updatedGrid[Position(0,2)])
+        XCTAssertEqual(Person(), updatedGrid[Position(0,1)])
+        XCTAssertEqual(Empty(), updatedGrid[Position(0,1)]?.mapTileUnderneath)
+        XCTAssertEqual(Empty(), updatedGrid[Position(0,2)])
     }
-    
+
     func testMovingAPersonRight() {
-        var grid = Grid()
-        grid[Position(0,0)] = MapTile.wall
-        grid[Position(0,1)] = MapTile.empty
-        grid[Position(0,2)] = MapTile.person
-        grid[Position(0,3)] = MapTile.empty
-        grid[Position(0,4)] = MapTile.wall
-        let updatedGrid = PlayerMover().moveMapTile(grid: grid, direction: Direction.right)
-        
-        XCTAssertEqual(MapTile.empty, updatedGrid[Position(0,2)])
-        XCTAssertEqual(MapTile.person, updatedGrid[Position(0,3)])
-        
+     var grid = Grid()
+     grid[Position(0,0)] = Wall()
+     grid[Position(0,1)] = Empty()
+     grid[Position(0,2)] = Person(Empty())
+     grid[Position(0,3)] = Empty()
+     grid[Position(0,4)] = Wall()
+     let updatedGrid = PlayerMover().moveMapTile(grid: grid, direction: Direction.right)
+     
+     XCTAssertEqual(Empty(), updatedGrid[Position(0,2)])
+     XCTAssertEqual(Person(), updatedGrid[Position(0,3)])
+     XCTAssertEqual(Empty(), updatedGrid[Position(0,3)]?.mapTileUnderneath)
+
     }
-    
+
     func testMovingAPersonUp() {
         var grid = Grid()
-        grid[Position(0,0)] = MapTile.wall
-        grid[Position(0,1)] = MapTile.empty
-        grid[Position(0,2)] = MapTile.storage
-        grid[Position(0,3)] = MapTile.empty
-        grid[Position(0,4)] = MapTile.wall
-        grid[Position(1,0)] = MapTile.wall
-        grid[Position(1,1)] = MapTile.empty
-        grid[Position(1,2)] = MapTile.person
-        grid[Position(1,3)] = MapTile.empty
-        grid[Position(1,4)] = MapTile.wall
+        grid[Position(0,0)] = Wall()
+        grid[Position(0,1)] = Empty()
+        grid[Position(0,2)] = Storage()
+        grid[Position(0,3)] = Empty()
+        grid[Position(0,4)] = Wall()
+        grid[Position(1,0)] = Wall()
+        grid[Position(1,1)] = Empty()
+        grid[Position(1,2)] = Person(Empty())
+        grid[Position(1,3)] = Empty()
+        grid[Position(1,4)] = Wall()
         
         let updatedGrid = PlayerMover().moveMapTile(grid: grid, direction: Direction.up)
-        
-        XCTAssertEqual(MapTile.wall, updatedGrid[Position(0,0)])
-        XCTAssertEqual(MapTile.empty, updatedGrid[Position(0,1)])
-        XCTAssertEqual(MapTile.personOnStorage, updatedGrid[Position(0,2)])
-        XCTAssertEqual(MapTile.empty, updatedGrid[Position(0,3)])
-        XCTAssertEqual(MapTile.wall, updatedGrid[Position(0,4)])
-        XCTAssertEqual(MapTile.wall, updatedGrid[Position(1,0)])
-        XCTAssertEqual(MapTile.empty, updatedGrid[Position(1,1)])
-        XCTAssertEqual(MapTile.empty, updatedGrid[Position(1,2)])
-        XCTAssertEqual(MapTile.empty, updatedGrid[Position(1,3)])
-        XCTAssertEqual(MapTile.wall, updatedGrid[Position(1,4)])
+
+        XCTAssertEqual(Wall(), updatedGrid[Position(0,0)])
+        XCTAssertEqual(Empty(), updatedGrid[Position(0,1)])
+        XCTAssertEqual(Person(), updatedGrid[Position(0,2)])
+        XCTAssertEqual(Storage(), updatedGrid[Position(0,2)]?.mapTileUnderneath)
+        XCTAssertEqual(Empty(), updatedGrid[Position(0,3)])
+        XCTAssertEqual(Wall(), updatedGrid[Position(0,4)])
+        XCTAssertEqual(Wall(), updatedGrid[Position(1,0)])
+        XCTAssertEqual(Empty(), updatedGrid[Position(1,1)])
+        XCTAssertEqual(Empty(), updatedGrid[Position(1,2)])
+        XCTAssertEqual(Empty(), updatedGrid[Position(1,3)])
+        XCTAssertEqual(Wall(), updatedGrid[Position(1,4)])
     }
+ 
+ 
     func testMovingAPersonDown() {
         var grid = Grid()
-        grid[Position(0,0)] = MapTile.wall
-        grid[Position(0,1)] = MapTile.empty
-        grid[Position(0,2)] = MapTile.storage
-        grid[Position(0,3)] = MapTile.empty
-        grid[Position(0,4)] = MapTile.wall
-        grid[Position(1,0)] = MapTile.wall
-        grid[Position(1,1)] = MapTile.empty
-        grid[Position(1,2)] = MapTile.person
-        grid[Position(1,3)] = MapTile.empty
-        grid[Position(1,4)] = MapTile.wall
-        grid[Position(2,0)] = MapTile.wall
-        grid[Position(2,1)] = MapTile.empty
-        grid[Position(2,2)] = MapTile.empty
-        grid[Position(2,3)] = MapTile.empty
-        grid[Position(2,4)] = MapTile.wall
-        
+        grid[Position(0,0)] = Wall()
+        grid[Position(0,1)] = Empty()
+        grid[Position(0,2)] = Storage()
+        grid[Position(0,3)] = Empty()
+        grid[Position(0,4)] = Wall()
+        grid[Position(1,0)] = Wall()
+        grid[Position(1,1)] = Empty()
+        grid[Position(1,2)] = Person(Empty())
+        grid[Position(1,3)] = Empty()
+        grid[Position(1,4)] = Wall()
+        grid[Position(2,0)] = Wall()
+        grid[Position(2,1)] = Empty()
+        grid[Position(2,2)] = Empty()
+        grid[Position(2,3)] = Empty()
+        grid[Position(2,4)] = Wall()
+
         let updatedGrid = PlayerMover().moveMapTile(grid: grid, direction: Direction.down)
         
-        XCTAssertEqual(MapTile.wall, updatedGrid[Position(0,0)])
-        XCTAssertEqual(MapTile.empty, updatedGrid[Position(0,1)])
-        XCTAssertEqual(MapTile.storage, updatedGrid[Position(0,2)])
-        XCTAssertEqual(MapTile.empty, updatedGrid[Position(0,3)])
-        XCTAssertEqual(MapTile.wall, updatedGrid[Position(0,4)])
-        XCTAssertEqual(MapTile.wall, updatedGrid[Position(1,0)])
-        XCTAssertEqual(MapTile.empty, updatedGrid[Position(1,1)])
-        XCTAssertEqual(MapTile.empty, updatedGrid[Position(1,2)])
-        XCTAssertEqual(MapTile.empty, updatedGrid[Position(1,3)])
-        XCTAssertEqual(MapTile.wall, updatedGrid[Position(1,4)])
-        XCTAssertEqual(MapTile.wall, updatedGrid[Position(2,0)])
-        XCTAssertEqual(MapTile.empty, updatedGrid[Position(2,1)])
-        XCTAssertEqual(MapTile.person, updatedGrid[Position(2,2)])
-        XCTAssertEqual(MapTile.empty, updatedGrid[Position(2,3)])
-        XCTAssertEqual(MapTile.wall, updatedGrid[Position(2,4)])
+        XCTAssertEqual(Wall(), updatedGrid[Position(0,0)])
+        XCTAssertEqual(Empty(), updatedGrid[Position(0,1)])
+        XCTAssertEqual(Storage(), updatedGrid[Position(0,2)])
+        XCTAssertEqual(Empty(), updatedGrid[Position(0,3)])
+        XCTAssertEqual(Wall(), updatedGrid[Position(0,4)])
+        XCTAssertEqual(Wall(), updatedGrid[Position(1,0)])
+        XCTAssertEqual(Empty(), updatedGrid[Position(1,1)])
+        XCTAssertEqual(Empty(), updatedGrid[Position(1,2)])
+        XCTAssertEqual(Empty(), updatedGrid[Position(1,3)])
+        XCTAssertEqual(Wall(), updatedGrid[Position(1,4)])
+        XCTAssertEqual(Wall(), updatedGrid[Position(2,0)])
+        XCTAssertEqual(Empty(), updatedGrid[Position(2,1)])
+        XCTAssertEqual(Person(), updatedGrid[Position(2,2)])
+        XCTAssertEqual(Empty(), updatedGrid[Position(2,2)]?.mapTileUnderneath)
+        XCTAssertEqual(Empty(), updatedGrid[Position(2,3)])
+        XCTAssertEqual(Wall(), updatedGrid[Position(2,4)])
         
     }
-    
+ 
     func testMovingAPersonIntoABlockThatCanMove() {
         var grid = Grid()
-        grid[Position(0,0)] = MapTile.wall
-        grid[Position(0,1)] = MapTile.person
-        grid[Position(0,2)] = MapTile.block
-        grid[Position(0,3)] = MapTile.empty
-        grid[Position(0,4)] = MapTile.wall
+        grid[Position(0,0)] = Wall()
+        grid[Position(0,1)] = Person(Empty())
+        grid[Position(0,2)] = Block(Empty())
+        grid[Position(0,3)] = Empty()
+        grid[Position(0,4)] = Wall()
         
         let updatedGrid = PlayerMover().moveMapTile(grid: grid, direction: Direction.right)
         
-        XCTAssertEqual(MapTile.empty, updatedGrid[Position(0,1)])
-        XCTAssertEqual(MapTile.person, updatedGrid[Position(0,2)])
-        XCTAssertEqual(MapTile.block, updatedGrid[Position(0,3)])
+        XCTAssertEqual(Empty(), updatedGrid[Position(0,1)])
+        XCTAssertEqual(Person(), updatedGrid[Position(0,2)])
+        XCTAssertEqual(Empty(), updatedGrid[Position(0,2)]?.mapTileUnderneath)
+        XCTAssertEqual(Block(), updatedGrid[Position(0,3)])
+        XCTAssertEqual(Empty(), updatedGrid[Position(0,3)]?.mapTileUnderneath)
     }
     
     func testMovingAPersonIntoABlockThatCannotMove() {
         var grid = Grid()
-        grid[Position(0,0)] = MapTile.wall
-        grid[Position(0,1)] = MapTile.person
-        grid[Position(0,2)] = MapTile.block
-        grid[Position(0,3)] = MapTile.block
-        grid[Position(0,4)] = MapTile.empty
-        grid[Position(0,5)] = MapTile.wall
+        grid[Position(0,0)] = Wall()
+        grid[Position(0,1)] = Person(Empty())
+        grid[Position(0,2)] = Block(Empty())
+        grid[Position(0,3)] = Block(Empty())
+        grid[Position(0,4)] = Empty()
+        grid[Position(0,5)] = Wall()
         
         let updatedGrid = PlayerMover().moveMapTile(grid: grid, direction: Direction.right)
         
-        XCTAssertEqual(MapTile.person, updatedGrid[Position(0,1)])
-        XCTAssertEqual(MapTile.block, updatedGrid[Position(0,2)])
-        XCTAssertEqual(MapTile.block, updatedGrid[Position(0,3)])
-    }
+        XCTAssertEqual(Person(), updatedGrid[Position(0,1)])
+        XCTAssertEqual(Empty(), updatedGrid[Position(0,1)]?.mapTileUnderneath)
+        XCTAssertEqual(Block(), updatedGrid[Position(0,2)])
+        XCTAssertEqual(Empty(), updatedGrid[Position(0,2)]?.mapTileUnderneath)
+        XCTAssertEqual(Block(), updatedGrid[Position(0,3)])
+        XCTAssertEqual(Empty(), updatedGrid[Position(0,3)]?.mapTileUnderneath)    }
 }

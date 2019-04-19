@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB3B7E5F2269B0AC0097F4B5 /* MapTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3B7E5E2269B0AC0097F4B5 /* MapTile.swift */; };
+		FB3B7E612269B7150097F4B5 /* GameMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3B7E602269B7150097F4B5 /* GameMap.swift */; };
+		FB3B7E632269B8190097F4B5 /* PlayerMover.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3B7E622269B8190097F4B5 /* PlayerMover.swift */; };
+		FB3B7E652269BE900097F4B5 /* sokobanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3B7E642269BE900097F4B5 /* sokobanTests.swift */; };
 		FB5851C422636B1A0077A037 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5851C322636B1A0077A037 /* AppDelegate.swift */; };
 		FB5851C622636B1A0077A037 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5851C522636B1A0077A037 /* ViewController.swift */; };
 		FB5851C922636B1A0077A037 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB5851C722636B1A0077A037 /* Main.storyboard */; };
 		FB5851CB22636B1C0077A037 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB5851CA22636B1C0077A037 /* Assets.xcassets */; };
 		FB5851CE22636B1C0077A037 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB5851CC22636B1C0077A037 /* LaunchScreen.storyboard */; };
-		FB5851D922636B1C0077A037 /* sokobanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5851D822636B1C0077A037 /* sokobanTests.swift */; };
-		FB5851E422636EE70077A037 /* MapTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5851E322636EE70077A037 /* MapTile.swift */; };
 		FB5851E622636F0C0077A037 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5851E522636F0C0077A037 /* Direction.swift */; };
 		FB5851E822636F320077A037 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5851E722636F320077A037 /* Position.swift */; };
 		FB5851EA22636F690077A037 /* GameArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5851E922636F690077A037 /* GameArray.swift */; };
@@ -47,8 +49,7 @@
 		FB58528422639A090077A037 /* cat-87.png in Resources */ = {isa = PBXBuildFile; fileRef = FB58526922639A090077A037 /* cat-87.png */; };
 		FB58529622639A090077A037 /* cat-29.png in Resources */ = {isa = PBXBuildFile; fileRef = FB58527B22639A090077A037 /* cat-29.png */; };
 		FB58529822639A090077A037 /* cat-58.png in Resources */ = {isa = PBXBuildFile; fileRef = FB58527D22639A090077A037 /* cat-58.png */; };
-		FBD7CA27226649B800280E94 /* GameMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD7CA26226649B800280E94 /* GameMap.swift */; };
-		FBD7CA292267DBC300280E94 /* PlayerMover.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD7CA282267DBC300280E94 /* PlayerMover.swift */; };
+		FBD1BE072269EEC2002CE860 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1BE062269EEC2002CE860 /* constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FB3B7E5E2269B0AC0097F4B5 /* MapTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTile.swift; sourceTree = "<group>"; };
+		FB3B7E602269B7150097F4B5 /* GameMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMap.swift; sourceTree = "<group>"; };
+		FB3B7E622269B8190097F4B5 /* PlayerMover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerMover.swift; sourceTree = "<group>"; };
+		FB3B7E642269BE900097F4B5 /* sokobanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sokobanTests.swift; sourceTree = "<group>"; };
 		FB5851C022636B1A0077A037 /* sokoban.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sokoban.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB5851C322636B1A0077A037 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB5851C522636B1A0077A037 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -70,9 +75,7 @@
 		FB5851CD22636B1C0077A037 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB5851CF22636B1C0077A037 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB5851D422636B1C0077A037 /* sokobanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sokobanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FB5851D822636B1C0077A037 /* sokobanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sokobanTests.swift; sourceTree = "<group>"; };
 		FB5851DA22636B1C0077A037 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FB5851E322636EE70077A037 /* MapTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTile.swift; sourceTree = "<group>"; };
 		FB5851E522636F0C0077A037 /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		FB5851E722636F320077A037 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		FB5851E922636F690077A037 /* GameArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameArray.swift; sourceTree = "<group>"; };
@@ -106,8 +109,7 @@
 		FB58526922639A090077A037 /* cat-87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cat-87.png"; sourceTree = "<group>"; };
 		FB58527B22639A090077A037 /* cat-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cat-29.png"; sourceTree = "<group>"; };
 		FB58527D22639A090077A037 /* cat-58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cat-58.png"; sourceTree = "<group>"; };
-		FBD7CA26226649B800280E94 /* GameMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMap.swift; sourceTree = "<group>"; };
-		FBD7CA282267DBC300280E94 /* PlayerMover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerMover.swift; sourceTree = "<group>"; };
+		FBD1BE062269EEC2002CE860 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,12 +158,13 @@
 				FB5851CA22636B1C0077A037 /* Assets.xcassets */,
 				FB5851CC22636B1C0077A037 /* LaunchScreen.storyboard */,
 				FB5851CF22636B1C0077A037 /* Info.plist */,
-				FB5851E322636EE70077A037 /* MapTile.swift */,
+				FBD1BE062269EEC2002CE860 /* constants.swift */,
+				FB3B7E5E2269B0AC0097F4B5 /* MapTile.swift */,
 				FB5851E722636F320077A037 /* Position.swift */,
 				FB5851E522636F0C0077A037 /* Direction.swift */,
 				FB5851E922636F690077A037 /* GameArray.swift */,
-				FBD7CA26226649B800280E94 /* GameMap.swift */,
-				FBD7CA282267DBC300280E94 /* PlayerMover.swift */,
+				FB3B7E602269B7150097F4B5 /* GameMap.swift */,
+				FB3B7E622269B8190097F4B5 /* PlayerMover.swift */,
 				FB5851ED22636FF70077A037 /* ProcessSokobanMove.swift */,
 				FB5851EF226370450077A037 /* PuzzleIsSolved.swift */,
 				FB5851F1226374D80077A037 /* PuzzleText.swift */,
@@ -172,7 +175,7 @@
 		FB5851D722636B1C0077A037 /* sokobanTests */ = {
 			isa = PBXGroup;
 			children = (
-				FB5851D822636B1C0077A037 /* sokobanTests.swift */,
+				FB3B7E642269BE900097F4B5 /* sokobanTests.swift */,
 				FB5851DA22636B1C0077A037 /* Info.plist */,
 			);
 			path = sokobanTests;
@@ -340,17 +343,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB5851E422636EE70077A037 /* MapTile.swift in Sources */,
 				FB5851C622636B1A0077A037 /* ViewController.swift in Sources */,
-				FBD7CA292267DBC300280E94 /* PlayerMover.swift in Sources */,
 				FB5851C422636B1A0077A037 /* AppDelegate.swift in Sources */,
 				FB5851F0226370450077A037 /* PuzzleIsSolved.swift in Sources */,
 				FB5851EA22636F690077A037 /* GameArray.swift in Sources */,
 				FB5851E822636F320077A037 /* Position.swift in Sources */,
+				FB3B7E612269B7150097F4B5 /* GameMap.swift in Sources */,
 				FB5851EE22636FF70077A037 /* ProcessSokobanMove.swift in Sources */,
 				FB5851F2226374D80077A037 /* PuzzleText.swift in Sources */,
-				FBD7CA27226649B800280E94 /* GameMap.swift in Sources */,
+				FB3B7E632269B8190097F4B5 /* PlayerMover.swift in Sources */,
 				FB5851E622636F0C0077A037 /* Direction.swift in Sources */,
+				FB3B7E5F2269B0AC0097F4B5 /* MapTile.swift in Sources */,
+				FBD1BE072269EEC2002CE860 /* constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,7 +362,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB5851D922636B1C0077A037 /* sokobanTests.swift in Sources */,
+				FB3B7E652269BE900097F4B5 /* sokobanTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
