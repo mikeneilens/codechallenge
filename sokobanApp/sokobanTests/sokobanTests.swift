@@ -13,14 +13,14 @@ import XCTest
 class testsOnGameMap2: XCTestCase {
     
     func test_convertString_to_MapTile() {
-        let person = MapTileBuilder.create(string:"p")
-        let wall = MapTileBuilder.create(string:"#")
-        let block = MapTileBuilder.create(string:"b")
-        let storage = MapTileBuilder.create(string:"*")
-        let personOnStorageSquare = MapTileBuilder.create(string:"P")
-        let blockOnStorageSquare = MapTileBuilder.create(string:"B")
-        let empty = MapTileBuilder.create(string:" ")
-        let empty2 = MapTileBuilder.create(string:"some bad data")
+        let person = MapTileCreator.create(string:"p")
+        let wall = MapTileCreator.create(string:"#")
+        let block = MapTileCreator.create(string:"b")
+        let storage = MapTileCreator.create(string:"*")
+        let personOnStorageSquare = MapTileCreator.create(string:"P")
+        let blockOnStorageSquare = MapTileCreator.create(string:"B")
+        let empty = MapTileCreator.create(string:" ")
+        let empty2 = MapTileCreator.create(string:"some bad data")
         XCTAssertEqual(Person(), person)
         XCTAssertEqual(Wall(), wall)
         XCTAssertEqual(Block(), block)

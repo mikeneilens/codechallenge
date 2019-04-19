@@ -23,7 +23,7 @@ struct GameMap {
         for (row, gameString) in gameArray.enumerated() {
             let stringChars = gameString.map{String($0)}
             for (column, stringChar) in stringChars.enumerated() {
-                newGrid[Position(row, column)] = MapTileBuilder.create(string: stringChar)
+                newGrid[Position(row, column)] = MapTileCreator.create(string: stringChar)
             }
         }
         self.mapTileMover = mapTileMover
