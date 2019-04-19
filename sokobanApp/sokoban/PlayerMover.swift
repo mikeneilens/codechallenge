@@ -1,5 +1,5 @@
 //
-//  PlayerMover2.swift
+//  PlayerMover.swift
 //  sokoban
 //
 //  Created by Michael Neilens on 19/04/2019.
@@ -15,35 +15,22 @@ protocol MapTileMover {
 struct PlayerMover:MapTileMover {
     
     func moveMapTile(grid:Grid, direction: Direction) -> Grid {
-        let positionOfPerson = self.positionOfPerson(grid:grid)
+        let positionOfPerson = self.positionOfPerson(onGrid:grid)
         let positionAdjacentToPlayer = positionOfPerson + direction.move
         
         let updatedGrid = tryAndMoveTile(fromPosition: positionOfPerson, direction: direction, onGrid: grid)
         
         switch (true) {
-        case updatedGrid != grid: return updatedGrid
-        case containsBlock(atPosition: positionAdjacentToPlayer, grid:grid):
-            let updatedGrid = tryAndMoveBlockAndPerson(positionOfPerson: positionOfPerson, direction: direction, onGrid:grid)
-            return updatedGrid
-        default: return grid
+            case updatedGrid != grid: return updatedGrid
+            case grid[positionAdjacentToPlayer] is Block:
+                return tryAndMoveBlockAndPerson(positionOfPerson: positionOfPerson, direction: direction, onGrid:grid)
+            default: return grid
         }
     }
     
-    private func positionOfPerson(grid:Grid) -> Position {
+    private func positionOfPerson(onGrid grid:Grid) -> Position {
         let position = grid.first{(position, mapTile) in return (mapTile is Person)}?.key
         return position ?? Position(0,0)
-    }
-    
-    private func canMoveOnto(position:Position, grid:Grid) -> Bool {
-        switch grid[position] {
-            case is Empty:return true
-            case is Storage:return true
-            default: return false
-        }
-    }
-    
-    private func containsBlock(atPosition position:Position, grid:Grid) -> Bool {
-        return grid[position] is Block
     }
     
     private func tryAndMoveBlockAndPerson(positionOfPerson: Position,direction: Direction, onGrid grid:Grid) -> Grid{
@@ -60,11 +47,16 @@ struct PlayerMover:MapTileMover {
     
     private func tryAndMoveTile(fromPosition: Position, direction: Direction, onGrid grid:Grid) -> Grid {
         let adjacentPosition = fromPosition + direction.move
-        if canMoveOnto(position:adjacentPosition, grid:grid) {
+        if canMoveOnto(position:adjacentPosition, onGrid:grid) {
             return moveMapTile(from: fromPosition, to: adjacentPosition, onGrid: grid)
         } else {
             return grid
         }
+    }
+    
+    private func canMoveOnto(position:Position, onGrid grid:Grid) -> Bool {
+        guard let mapTile = grid[position] else {return false}
+        return (mapTile is Empty) || (mapTile is Storage)
     }
     
     private func moveMapTile(from positionToMoveFrom: Position, to positionToMoveTo: Position, onGrid grid:Grid) -> Grid {

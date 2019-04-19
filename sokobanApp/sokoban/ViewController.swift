@@ -64,7 +64,7 @@ class ViewController: UIViewController {
         let y = Double(position.row) * sizeOfTile
         let cgRect = CGRect(x: x, y: y, width: sizeOfTile, height: sizeOfTile)
         let uiImageView = UIImageView(frame: cgRect)
-        let mapTile = MapTileCreator.create(string: text)
+        let mapTile = MapTileCreator.create(using:text)
         if mapTile.image != "" { uiImageView.image = UIImage(named: mapTile.image ) }
         uiImageView.backgroundColor = mapTile.backgroundColor
         return uiImageView

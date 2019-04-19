@@ -1,5 +1,5 @@
 //
-//  MapTile2.swift
+//  MapTile.swift
 //  sokoban
 //
 //  Created by Michael Neilens on 19/04/2019.
@@ -55,25 +55,6 @@ class Block:MapTile {
 class Wall:MapTile {
     static let identifier = "#"
     override var toString: String { return Wall.identifier}
-}
-
-class MapTileCreator{
-    static let emptyFloor = MapTileCreator.create(string:Empty.identifier)
-    static let storage = MapTileCreator.create(string:Storage.identifier)
-    static let wall = MapTileCreator.create(string:Wall.identifier)
-
-    static func create(string:String) -> MapTile {
-        switch string {
-        case Empty.identifier: return Empty()
-        case Wall.identifier: return Wall()
-        case Storage.identifier: return Storage()
-        case Person.identifier: return Person(emptyFloor)
-        case Person.onStorageIdentifier: return Person(storage)
-        case Block.identifier: return Block(emptyFloor)
-        case Block.onStorageIdentifier: return Block(storage)
-        default: return Empty()
-        }
-    }
 }
 
 extension MapTile {

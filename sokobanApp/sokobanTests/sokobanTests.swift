@@ -1,5 +1,5 @@
 //
-//  sokonanTests2.swift
+//  sokonanTests.swift
 //  sokobanTests
 //
 //  Created by Michael Neilens on 19/04/2019.
@@ -10,17 +10,17 @@ import Foundation
 import XCTest
 @testable import sokoban
 
-class testsOnGameMap2: XCTestCase {
+class testsOnGameMap: XCTestCase {
     
     func test_convertString_to_MapTile() {
-        let person = MapTileCreator.create(string:"p")
-        let wall = MapTileCreator.create(string:"#")
-        let block = MapTileCreator.create(string:"b")
-        let storage = MapTileCreator.create(string:"*")
-        let personOnStorageSquare = MapTileCreator.create(string:"P")
-        let blockOnStorageSquare = MapTileCreator.create(string:"B")
-        let empty = MapTileCreator.create(string:" ")
-        let empty2 = MapTileCreator.create(string:"some bad data")
+        let person = MapTileCreator.create(using:"p")
+        let wall = MapTileCreator.create(using:"#")
+        let block = MapTileCreator.create(using:"b")
+        let storage = MapTileCreator.create(using:"*")
+        let personOnStorageSquare = MapTileCreator.create(using:"P")
+        let blockOnStorageSquare = MapTileCreator.create(using:"B")
+        let empty = MapTileCreator.create(using:" ")
+        let empty2 = MapTileCreator.create(using:"some bad data")
         XCTAssertEqual(Person(), person)
         XCTAssertEqual(Wall(), wall)
         XCTAssertEqual(Block(), block)
@@ -89,7 +89,7 @@ class testsOnGameMap2: XCTestCase {
     }
 }
 
-class processSokobanMoveTests2:XCTestCase {
+class processSokobanMoveTests:XCTestCase {
     func testProcessSokabanMoveWithSimpleMoveRight() {
         let inputList = [
             "#############",
@@ -188,7 +188,7 @@ class processSokobanMoveTests2:XCTestCase {
     
 }
 
-class testPuzzleIsSolved2:XCTestCase {
+class testPuzzleIsSolved:XCTestCase {
     func testPuzzelIsNotSolvedOneBlock() {
         let inputList = [
             "#############",
@@ -220,7 +220,7 @@ class testPuzzleIsSolved2:XCTestCase {
     }
 }
 
-class testsOnPosition2:XCTestCase {
+class testsOnPosition:XCTestCase {
     func testAddingsTogetherPosition() {
         XCTAssertEqual(Position(2,3),Position(1,1) + Position(1,2))
         XCTAssertEqual(Position(0,-1),Position(1,1) + Position(-1,-2))
@@ -228,7 +228,7 @@ class testsOnPosition2:XCTestCase {
     }
 }
 
-class testsOnPlayerMover2: XCTestCase {
+class testsOnPlayerMover: XCTestCase {
     func testMovingAPersonToAnEmptySquareOnGrid2() {
         var grid = Grid()
         grid[Position(0,0)] = Wall()

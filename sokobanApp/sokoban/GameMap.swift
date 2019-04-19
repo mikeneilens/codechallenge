@@ -1,5 +1,5 @@
 //
-//  GameMap2.swift
+//  GameMap.swift
 //  sokoban
 //
 //  Created by Michael Neilens on 19/04/2019.
@@ -23,7 +23,7 @@ struct GameMap {
         for (row, gameString) in gameArray.enumerated() {
             let stringChars = gameString.map{String($0)}
             for (column, stringChar) in stringChars.enumerated() {
-                newGrid[Position(row, column)] = MapTileCreator.create(string: stringChar)
+                newGrid[Position(row, column)] = MapTileCreator.create(using: stringChar)
             }
         }
         self.mapTileMover = mapTileMover
