@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a32b85ce-12dd-4d86-8b0b-3874804fb39e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../challenge3Swift/challenge3.playground/Contents.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge3Swift/challenge3.playground/Contents.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../challenge3Swift/challenge3.playground/playground.xcworkspace/xcuserdata/michaelneilens.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge3Swift/challenge3.playground/playground.xcworkspace/xcuserdata/michaelneilens.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sokobanApp/sokoban.xcodeproj/project.xcworkspace/xcuserdata/michaelneilens.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../sokobanApp/sokoban.xcodeproj/project.xcworkspace/xcuserdata/michaelneilens.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
     </list>
@@ -24,7 +25,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="491">
+            <state relative-caret-position="504">
               <caret line="124" column="54" lean-forward="true" selection-start-line="124" selection-start-column="54" selection-end-line="124" selection-end-column="54" />
             </state>
           </provider>
@@ -133,7 +134,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555669540175" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555675767817" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -359,7 +360,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
+        <state relative-caret-position="504">
           <caret line="124" column="54" lean-forward="true" selection-start-line="124" selection-start-column="54" selection-end-line="124" selection-end-column="54" />
         </state>
       </provider>
