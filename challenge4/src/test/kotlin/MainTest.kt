@@ -21,4 +21,9 @@ class MainTest {
     fun `Test two vouchers in the incorrect status sequence return the same two vouchers in the correct status sequence`() {
         TestCase.assertEquals("190112:Activated:bbbb;190112:Available:aaaa",sortVouchers("190112:Available:aaaa;190112:Activated:bbbb"))
     }
+
+    @Test
+    fun `Test two vouchers in the incorrect status group sequence return the same two vouchers in the correct status group sequence`() {
+        TestCase.assertEquals("190112:Available:bbbb;190112:Expired:aaaa",sortVouchers("190112:Expired:aaaa;190112:Available:bbbb"))
+    }
 }
