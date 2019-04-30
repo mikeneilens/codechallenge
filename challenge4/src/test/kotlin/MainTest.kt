@@ -11,10 +11,10 @@ class MainTest {
     fun `Test two vouchers in the correct sequence return the same two vouchers in the correct sequence`() {
         TestCase.assertEquals("190112:Activated:aaaa;190113:Activated:bbbb",sortVouchers("190112:Activated:aaaa;190113:Activated:bbbb"))
     }
-    
+
     @Test
     fun `Test two vouchers in the incorrect date sequence return the same two vouchers in the correct date sequence`() {
-        TestCase.assertEquals("190112:Activated:aaaa;190113:Activated:bbbb",sortVouchers("190113:Activated:aaaa;190112:Activated:bbbb"))
+        TestCase.assertEquals("190112:Activated:bbbb;190113:Activated:aaaa",sortVouchers("190113:Activated:aaaa;190112:Activated:bbbb"))
     }
 
 }
