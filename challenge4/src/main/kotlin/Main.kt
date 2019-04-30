@@ -7,7 +7,7 @@ fun sortVouchers(vouchers: String): String {
 
     if (listOfVouchers.size < 2) return vouchers
 
-    return if (listOfVouchers[0].rank() < listOfVouchers[1].rank()) vouchers else listOfVouchers[1] + ";" + listOfVouchers[0]
+    return listOfVouchers.sortedBy { it.rank() }.joinToString(";")
 
 }
 

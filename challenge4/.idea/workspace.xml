@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6fa552a4-b615-4ff0-911b-5be54d507861" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -23,8 +25,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+            <state relative-caret-position="150">
+              <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -32,8 +34,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="124" selection-start-line="26" selection-start-column="124" selection-end-line="26" selection-end-column="124" />
+            <state relative-caret-position="465">
+              <caret line="31" column="178" selection-start-line="31" selection-start-column="178" selection-end-line="31" selection-end-column="178" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
               </folding>
@@ -105,7 +107,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556654294171" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556654958918" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -212,27 +214,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MainTest - 2019.04.30 at 20h 44m 35s.xml">
-      <configuration name="MainTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainTest - 2019.04.30 at 20h 45m 07s.xml">
-      <configuration name="MainTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainTest - 2019.04.30 at 20h 46m 33s.xml">
-      <configuration name="MainTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainTest - 2019.04.30 at 20h 47m 23s.xml">
-      <configuration name="MainTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainTest - 2019.04.30 at 20h 48m 41s.xml">
-      <configuration name="MainTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainTest - 2019.04.30 at 20h 49m 17s.xml">
-      <configuration name="MainTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainTest - 2019.04.30 at 20h 49m 32s.xml">
-      <configuration name="MainTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="MainTest - 2019.04.30 at 20h 50m 49s.xml">
       <configuration name="MainTest" configurationId="JUnit" />
     </history-entry>
@@ -240,6 +221,27 @@
       <configuration name="MainTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="MainTest - 2019.04.30 at 20h 54m 22s.xml">
+      <configuration name="MainTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest - 2019.04.30 at 20h 58m 19s.xml">
+      <configuration name="MainTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest - 2019.04.30 at 21h 01m 02s.xml">
+      <configuration name="MainTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest - 2019.04.30 at 21h 02m 55s.xml">
+      <configuration name="MainTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest - 2019.04.30 at 21h 03m 33s.xml">
+      <configuration name="MainTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest - 2019.04.30 at 21h 04m 37s.xml">
+      <configuration name="MainTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest - 2019.04.30 at 21h 06m 26s.xml">
+      <configuration name="MainTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest - 2019.04.30 at 21h 06m 54s.xml">
       <configuration name="MainTest" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -287,15 +289,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+        <state relative-caret-position="150">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="124" selection-start-line="26" selection-start-column="124" selection-end-line="26" selection-end-column="124" />
+        <state relative-caret-position="465">
+          <caret line="31" column="178" selection-start-line="31" selection-start-column="178" selection-end-line="31" selection-end-column="178" />
           <folding>
             <element signature="e#0#53#0" expanded="true" />
           </folding>
