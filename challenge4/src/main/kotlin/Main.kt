@@ -3,12 +3,10 @@ fun main(args: Array<String>) {
 }
 
 fun sortVouchers(vouchers: String): String {
-    val listOfVouchers = vouchers.split(";")
-
-    if (listOfVouchers.size < 2) return vouchers
-
-    return listOfVouchers.sortedBy { it.rank() }.joinToString(";")
-
+    return vouchers
+        .split(";")
+        .sortedBy { voucher -> voucher.rank() }
+        .joinToString(";")
 }
 
 fun String.rank():Int {

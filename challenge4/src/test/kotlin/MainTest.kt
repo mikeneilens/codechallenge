@@ -32,4 +32,8 @@ class MainTest {
         TestCase.assertEquals("190112:Activated:cccc;190113:Activated:bbbb;190114:Activated:aaaa",sortVouchers("190114:Activated:aaaa;190113:Activated:bbbb;190112:Activated:cccc"))
     }
 
+    @Test
+    fun `Test empty string`() {
+        TestCase.assertEquals("",sortVouchers(""))
+    }
 }
