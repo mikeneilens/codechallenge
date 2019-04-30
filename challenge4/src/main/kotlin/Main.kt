@@ -9,9 +9,12 @@ fun sortVouchers(vouchers: String): String {
         .joinToString(";")
 }
 
+//rank is an 8 digit number used to rank vouchers
 fun String.rank():Int {
-    val voucherStatusGroup = if (this.contains("Activated") || this.contains("Available") ) 0 else 10000000
-    val voucherDate = if (this.contains("Activated") || this.contains("Available") ) this.substring(0,6).toInt() * 10 else 9999999 - this.substring(0,6).toInt() * 10
+    val isCurrentReward = (this.contains("Activated") || this.contains("Available") )
+
+    val voucherStatusGroup = if (isCurrentReward)  0 else 10000000
+    val voucherDate = if (isCurrentReward) this.substring(0,6).toInt() * 10 else 9999999 - this.substring(0,6).toInt() * 10
     val voucherstatusValue = if (this.contains("Activated") || this.contains("Expired")) 0 else 1
 
     return voucherStatusGroup + voucherDate + voucherstatusValue
