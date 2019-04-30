@@ -10,6 +10,14 @@ fun sortVouchers(vouchers: String): String {
     val voucherDate0 = listOfVouchers[0].substring(0,6).toInt()
     val voucherDate1 = listOfVouchers[1].substring(0,6).toInt()
 
-    return  if (voucherDate0 < voucherDate1) listOfVouchers[0] + ";" + listOfVouchers[1]
-            else listOfVouchers[1] + ";" + listOfVouchers[0]
+    val voucherstatusValue0 = if (listOfVouchers[0].contains("Activated")) 0 else 1
+    val voucherstatusValue1 = if (listOfVouchers[1].contains("Activated")) 0 else 1
+
+    return when {
+        voucherDate0 < voucherDate1  -> vouchers
+        voucherDate0 > voucherDate1  -> listOfVouchers[1] + ";" + listOfVouchers[0]
+        voucherstatusValue0 < voucherstatusValue1 -> vouchers
+        voucherstatusValue0 > voucherstatusValue1 -> listOfVouchers[1] + ";" + listOfVouchers[0]
+        else -> vouchers
+    }
 }
