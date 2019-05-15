@@ -5,8 +5,7 @@
 
 * I extended the Swift String struct so that a character in a String can be accessed simply and efficiently using a subscript. This means to access an item in the Grid (my name for the playing area) you use grid[row][col]. The subscript returns an empty string rather than raising an exception if you go out of bounds as that made some other code simpler.
 
-* I decided to validate whether someone had won was simplest if you find the row and col of the last token played and then create a string containing the contents of horizontal, vertical and diagonal intersections with the last token played. You can then just check whether the token contains 4 tokens that are the same colour as the last token played. 
-
+* I decided to validate whether someone had won was simplest if you find the row and col of the last token played and then create a string containing the contents of horizontal, vertical and diagonal intersections with the last token played. You can then just check whether the string for each line contains 4 tokens that are the same colour as the last token played. 
 
 * Swift doesn't come with a wide range of collection iterators (unlike Kotlin). You can do most things using map/filter/reduce but the code ends up difficult to read. Not having a mapIndex() function was badly missed. For that reason I've used for/in loops and the odd mutable variable. The loops are simple with small scope so that seemed a good trade-off.
 
