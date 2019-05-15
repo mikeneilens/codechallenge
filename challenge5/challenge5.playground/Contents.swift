@@ -111,6 +111,19 @@ class Challenge5Tests: XCTestCase {
         XCTAssertEqual(4, col)
     }
 
+    func test_tryAndFindLastTokenPlayedWhenThereIsntOne() {
+        let grid = [".......",
+                    ".......",
+                    ".r.....",
+                    ".y.....",
+                    ".r.....",
+                    ".y..y.."]
+        let (token, row, col) = lastTokenPlayed(grid: grid)
+        XCTAssertTrue(token.isEmpty)
+        XCTAssertEqual(-1, row)
+        XCTAssertEqual(-1, col)
+    }
+    
     func test_createHorizontalLine() {
         let grid = [".......",
                     ".......",
