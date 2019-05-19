@@ -82,7 +82,7 @@ func leftDiagonalLine(grid:Grid, tokenRow:Int, tokenCol:Int ) -> String {
     return createLine(grid: grid, columnCalc: leftDiagColumnCalculator)
 }
 
-
+//Start of challenge 5b =======================================================================
 extension Array {
     func mapIndexed<T>(_ transform:(Int, Element) -> T) -> Array<T> {
         var newArray = Array<T>()
@@ -103,18 +103,19 @@ extension String {
     }
 }
 
-func lowestEmptyRow(inGrid grid:Grid, forColumn column:Col) -> Int {
-    guard let gridRow =  grid.last else {return -1}
-    if gridRow[column] == "."
-    {return grid.count - 1}
-    else {
-        return lowestEmptyRow(inGrid: Array(grid.dropLast()), forColumn: column)
-    }
-}
-
 extension Grid {
     func replaceToken(row:Row, column:Col, token:Token) -> Grid {
         return self.replaceElementAt(index: row, with: self[row].replaceElementAt(index: column, with: Character(token)))
+    }
+    
+    func lowestEmptyRow(forColumn column:Col) -> Int {
+        guard let gridRow =  self.last else {return -1}
+        if gridRow[column] == "." {
+            return self.count - 1
+        }
+        else {
+            return Array(self.dropLast()).lowestEmptyRow(forColumn:column)
+        }
     }
 
 }
@@ -125,7 +126,7 @@ func addToken(grid:Grid) -> Grid {
 
     let token = lastToken == "r" ? "Y" : "R"
     let columnToDropInto = 0
-    let row = lowestEmptyRow(inGrid: grid, forColumn: columnToDropInto)
+    let row = grid.lowestEmptyRow(forColumn: columnToDropInto)
 
     if lastToken.isEmpty {
         return grid
@@ -258,9 +259,9 @@ class Challenge5bTests: XCTestCase {
                     "..R....",
                     "yrryrr.",
                     "rryryyr"]
-        XCTAssertEqual(3, lowestEmptyRow(inGrid: grid, forColumn: 0))
-        XCTAssertEqual(2, lowestEmptyRow(inGrid: grid, forColumn: 2))
-        XCTAssertEqual(4, lowestEmptyRow(inGrid: grid, forColumn: 6))
+        XCTAssertEqual(3, grid.lowestEmptyRow(forColumn: 0))
+        XCTAssertEqual(2, grid.lowestEmptyRow(forColumn: 2))
+        XCTAssertEqual(4, grid.lowestEmptyRow(forColumn: 6))
     }
     func test_addTokenToAGridContainingManyToken() {
         let grid = [".......",
