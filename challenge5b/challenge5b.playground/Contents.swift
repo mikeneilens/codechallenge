@@ -118,24 +118,38 @@ extension Grid {
         }
     }
 
+    func drop(_ token:Token, intoColumn column:Col) -> Grid {
+        let row = self.lowestEmptyRow(forColumn: column)
+        let cleanGrid = self.joined(separator: ":").lowercased().split(separator: ":").map{String($0)}
+        return cleanGrid.replaceToken(row: row, column: column, token: token.uppercased())
+    }
 }
 
 func addToken(grid:Grid) -> Grid {
 
-    let (lastToken, lastTokenRow, lastTokenCol) = lastTokenPlayed(grid: grid)
+    let (lastToken, _, _) = lastTokenPlayed(grid: grid)
+    let token = lastToken == "r" ? "y" : "r"
 
-    let token = lastToken == "r" ? "Y" : "R"
-    let columnToDropInto = 0
-    let row = grid.lowestEmptyRow(forColumn: columnToDropInto)
+    return grid.drop(token, intoColumn: 0)
+}
 
-    if lastToken.isEmpty {
-        return grid
-            .replaceToken(row: row, column: columnToDropInto, token: token)
+func determineBestOutcomeOfAllMoves(grid:Grid, token:Token) -> Grid {
+    let columns = [0,1,2,3,4,5,6]
+    let resultOfMoves = columns.map{ determineIfMoveWins(grid: grid, token: token, column: $0)}
+    
+    let winningMoves = resultOfMoves.filter{$0.1 == true}
+
+    if winningMoves.count > 0 {
+        return winningMoves[0].0
     } else {
-        return grid
-            .replaceToken(row: row, column: columnToDropInto, token: token)
-            .replaceToken(row: lastTokenRow, column:lastTokenCol , token: lastToken)
+        return resultOfMoves.filter{$0.1 == false}[0].0
     }
+}
+
+func determineIfMoveWins(grid:Grid, token:Token, column:Col) -> (Grid, Bool) {
+    let gridAfterMove = grid.drop(token, intoColumn: column)
+    let tokenText = tokenMap[token] ?? ""
+    return  (gridAfterMove,  getGridStatus(grid: gridAfterMove) == "\(tokenText) wins")
 }
 
 //===================================================================================================================
@@ -314,6 +328,37 @@ class Challenge5bTests: XCTestCase {
                              "rryryyr"]
         ]
         XCTAssertTrue(validResults.contains(addToken(grid: grid)))
+    }
+    func test_bestOutcomeOfAllMovesRedWins() {
+        let grid = [".......",
+                    ".......",
+                    ".......",
+                    ".......",
+                    ".......",
+                    "rrr...y"]
+        let bestMove = [".......",
+                        ".......",
+                        ".......",
+                        ".......",
+                        ".......",
+                        "rrrR..y"]
+
+        XCTAssertEqual(bestMove, determineBestOutcomeOfAllMoves(grid: grid, token: "r"))
+    }
+    func test_bestOutcomeOfAllMovesYellowWins() {
+        let grid = [".......",
+                    ".......",
+                    "y......",
+                    "y......",
+                    "yr.....",
+                    "rrR...."]
+        let bestMove = [".......",
+                        "Y......",
+                        "y......",
+                        "y......",
+                        "yr.....",
+                        "rrr...."]
+        XCTAssertEqual(bestMove, determineBestOutcomeOfAllMoves(grid: grid, token: "y"))
     }
 
 }
