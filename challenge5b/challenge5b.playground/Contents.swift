@@ -128,19 +128,19 @@ extension Grid {
 func addToken(grid:Grid) -> Grid {
 
     let (lastToken, _, _) = lastTokenPlayed(grid: grid)
-    let token = lastToken == "r" ? "y" : "r"
+    let tokenToPlay = lastToken == "r" ? "y" : "r"
 
     
-    let outcomeOfAllMoves = determineOutcomeOfAllMoves(grid:grid, token:token)
+    let outcomeOfAllMoves = determineOutcomeOfAllMoves(grid:grid, token:tokenToPlay)
     let winningMoves = outcomeOfAllMoves.filter{(grid, isWinner) in isWinner == true}
     if winningMoves.count > 0 {
         return winningMoves[0].0
     }
 
-    let subsequentToken = token == "r" ? "y" : "r"
+    let subsequentToken = tokenToPlay == "r" ? "y" : "r"
     let outcomeOfSubsequentMoves = outcomeOfAllMoves.map{$0.0}.map{ ($0, determineOutcomeOfAllMoves(grid: $0, token: subsequentToken))}
-    let subsequentMovesThatDontWin = outcomeOfSubsequentMoves.filter{$0.1.contains(where: {(grid, isWinner) in !isWinner})  }
-
+    let subsequentMovesThatDontWin = outcomeOfSubsequentMoves.filter{ !($0.1.contains(where: {(grid, isWinner) in isWinner})) }
+    
     if subsequentMovesThatDontWin.count > 0 {
         return subsequentMovesThatDontWin[0].0
     }
@@ -169,7 +169,7 @@ class Challenge5bTests: XCTestCase {
         XCTAssertEqual("abcdX", "abcde".replaceElementAt(index: 4, with: "X"))
         XCTAssertEqual("abcde", "abcde".replaceElementAt(index: 5, with: "X"))
     }
-    
+
     func test_addTokenToAnEmptyGrid() {
         let grid = [".......",
                     ".......",
@@ -335,6 +335,41 @@ class Challenge5bTests: XCTestCase {
                              "rryryyr"]
         ]
         XCTAssertTrue(validResults.contains(addToken(grid: grid)))
+    }
+    func test_addTokenToAGridSoThatYellowWins() {
+        let grid = [".......",
+                    ".......",
+                    ".y.....",
+                    ".R.....",
+                    "yrryrr.",
+                    "rryryyr"]
+        let expectedResult = [".......",
+                              ".......",
+                              ".y.....",
+                              ".rY....",
+                              "yrryrr.",
+                              "rryryyr"]
+
+        
+        XCTAssertEqual(expectedResult, addToken(grid: grid))
+    }
+ 
+    func test_addTokenToAGridSoThatRedDoesntWin() {
+        let grid = [".......",
+                    ".......",
+                    ".......",
+                    ".Rr....",
+                    "yrryrr.",
+                    "rryryyr"]
+        let expectedResult = [".......",
+                              ".......",
+                              ".Y.....",
+                              ".rr....",
+                              "yrryrr.",
+                              "rryryyr"]
+        
+        
+        XCTAssertEqual(expectedResult, addToken(grid: grid))
     }
     func test_OutcomeOfAllMovesRedWins() {
         let grid = [".......",
