@@ -1,10 +1,27 @@
 import XCTest
 
+//added a couple of functions to array to make code shorter to write
+extension Array {
+    func mapIndexed<T>(_ transform:(Int, Element) -> T) -> Array<T> {
+        var newArray = Array<T>()
+        for (index, element) in self.enumerated() {
+            newArray.append(transform(index, element))
+        }
+        return newArray
+    }
+    func replaceElementAt(index:Int, with element:Element) -> Array<Element> {
+        let a:Array<Element> = self.mapIndexed{ $0 == index ? element : $1}
+        return a.reduce(Array<Element>()){$0 + [$1]}
+    }
+}
 //This is a helper to find an element in a string using a subscript. e.g. "hello"[1] will give "e"
 extension String {
     subscript (i: Int) -> String {
         if i < 0 || i >= self.count {return ""}
         return String(self[index(startIndex, offsetBy: i)])
+    }
+    func replaceElementAt(index:Int, with char:Character) -> String {
+        return String(Array(self).replaceElementAt(index: index, with: char))
     }
 }
 
@@ -83,80 +100,62 @@ func leftDiagonalLine(grid:Grid, tokenRow:Int, tokenCol:Int ) -> String {
 }
 
 //Start of challenge 5b =======================================================================
-extension Array {
-    func mapIndexed<T>(_ transform:(Int, Element) -> T) -> Array<T> {
-        var newArray = Array<T>()
-        for (index, element) in self.enumerated() {
-            newArray.append(transform(index, element))
-        }
-        return newArray
-    }
-    func replaceElementAt(index:Int, with element:Element) -> Array<Element> {
-        let a:Array<Element> = self.mapIndexed{ $0 == index ? element : $1}
-        return a.reduce(Array<Element>()){$0 + [$1]}
-    }
-}
-
-extension String {
-    func replaceElementAt(index:Int, with char:Character) -> String {
-        return String(Array(self).replaceElementAt(index: index, with: char))
-    }
-}
 
 extension Grid {
-    func replaceToken(row:Row, column:Col, token:Token) -> Grid {
+    func replace(token:Token, row:Row, column:Col) -> Grid {
         return self.replaceElementAt(index: row, with: self[row].replaceElementAt(index: column, with: Character(token)))
     }
     
-    func lowestEmptyRow(forColumn column:Col) -> Int {
-        guard let gridRow =  self.last else {return -1}
+    func lowestEmptyRow(forColumn column:Col) -> Int? {
+        guard let gridRow =  self.last else {return nil}
         if gridRow[column] == "." {
             return self.count - 1
-        }
-        else {
+        } else {
             return Array(self.dropLast()).lowestEmptyRow(forColumn:column)
         }
     }
 
-    func drop(_ token:Token, intoColumn column:Col) -> Grid {
-        let row = self.lowestEmptyRow(forColumn: column)
+    func drop(_ token:Token, intoColumn column:Col) -> Grid? {
+        guard let row = self.lowestEmptyRow(forColumn: column) else {return nil}
         let cleanGrid = self.joined(separator: ":").lowercased().split(separator: ":").map{String($0)}
-        return cleanGrid.replaceToken(row: row, column: column, token: token.uppercased())
+        return cleanGrid.replace(token: token.uppercased(), row: row, column: column)
     }
+    
+    func determineOutcomeOfAllMoves(usingToken token:Token) -> Array<(Grid, Bool)> {
+        let columns = [0,1,2,3,4,5,6]
+        return columns.compactMap{ self.determineIfMoveWins(usingToken: token, inColumn: $0)}
+    }
+
+    func determineIfMoveWins(usingToken token:Token,inColumn column:Col) -> (Grid, Bool)? {
+        guard let gridAfterMove = self.drop(token, intoColumn: column) else {return nil}
+        let tokenText = tokenMap[token] ?? ""
+        return  (gridAfterMove,  getGridStatus(grid: gridAfterMove) == "\(tokenText) wins")
+    }
+
 }
 
-func addToken(grid:Grid) -> Grid {
+func addToken(grid existingGrid:Grid) -> Grid {
 
-    let (lastToken, _, _) = lastTokenPlayed(grid: grid)
+    let (lastToken, _, _) = lastTokenPlayed(grid: existingGrid)
     let tokenToPlay = lastToken == "r" ? "y" : "r"
 
+    let outcomeOfAllMoves = existingGrid.determineOutcomeOfAllMoves(usingToken:tokenToPlay)
+    let winningMoves = outcomeOfAllMoves.filter{(resultingGrid,isWinner) in isWinner == true}
     
-    let outcomeOfAllMoves = determineOutcomeOfAllMoves(grid:grid, token:tokenToPlay)
-    let winningMoves = outcomeOfAllMoves.filter{(grid, isWinner) in isWinner == true}
-    if winningMoves.count > 0 {
+    if winningMoves.count > 0  {
         return winningMoves[0].0
     }
 
     let subsequentToken = tokenToPlay == "r" ? "y" : "r"
-    let outcomeOfSubsequentMoves = outcomeOfAllMoves.map{$0.0}.map{ ($0, determineOutcomeOfAllMoves(grid: $0, token: subsequentToken))}
-    let subsequentMovesThatDontWin = outcomeOfSubsequentMoves.filter{ !($0.1.contains(where: {(grid, isWinner) in isWinner})) }
+    //This returns [(grid, [(subsequentGrid, isWinner)])]
+    let outcomeOfSubsequentMoves = outcomeOfAllMoves.map{ (grid,_) in (grid, grid.determineOutcomeOfAllMoves(usingToken: subsequentToken))}
+    let subsequentMovesThatDontWin = outcomeOfSubsequentMoves.filter{  (grid, subsequentGrids) in  !subsequentGrids.contains(where: {(_,isWinner) in isWinner}) }
     
     if subsequentMovesThatDontWin.count > 0 {
         return subsequentMovesThatDontWin[0].0
     }
     
     return outcomeOfAllMoves[0].0
-}
-
-func determineOutcomeOfAllMoves(grid:Grid, token:Token) -> Array<(Grid, Bool)> {
-    let columns = [0,1,2,3,4,5,6]
-    return columns.map{ determineIfMoveWins(grid: grid, token: token, column: $0)}
-}
-
-func determineIfMoveWins(grid:Grid, token:Token, column:Col) -> (Grid, Bool) {
-    let gridAfterMove = grid.drop(token, intoColumn: column)
-    let tokenText = tokenMap[token] ?? ""
-    return  (gridAfterMove,  getGridStatus(grid: gridAfterMove) == "\(tokenText) wins")
 }
 
 //===================================================================================================================
@@ -353,6 +352,22 @@ class Challenge5bTests: XCTestCase {
         
         XCTAssertEqual(expectedResult, addToken(grid: grid))
     }
+    func test_addTokenToAGridThatIsNearlyFull() {
+        let grid = ["x.xxRxx",
+                    "xxxxxxx",
+                    "xxxxxxx",
+                    "xxxxxxx",
+                    "xxxxxxx",
+                    "xxxxxxx"]
+        let expectedResult = ["xYxxrxx",
+                              "xxxxxxx",
+                              "xxxxxxx",
+                              "xxxxxxx",
+                              "xxxxxxx",
+                              "xxxxxxx"]
+        
+        XCTAssertEqual(expectedResult, addToken(grid: grid))
+    }
  
     func test_addTokenToAGridSoThatRedDoesntWin() {
         let grid = [".......",
@@ -421,20 +436,21 @@ class Challenge5bTests: XCTestCase {
                      "......R",
                      "rrr...y"]
 
-        XCTAssertEqual(move0, determineOutcomeOfAllMoves(grid: grid, token: "r")[0].0)
-        XCTAssertEqual(false, determineOutcomeOfAllMoves(grid: grid, token: "r")[0].1)
-        XCTAssertEqual(move1, determineOutcomeOfAllMoves(grid: grid, token: "r")[1].0)
-        XCTAssertEqual(false, determineOutcomeOfAllMoves(grid: grid, token: "r")[1].1)
-        XCTAssertEqual(move2, determineOutcomeOfAllMoves(grid: grid, token: "r")[2].0)
-        XCTAssertEqual(false, determineOutcomeOfAllMoves(grid: grid, token: "r")[2].1)
-        XCTAssertEqual(move3, determineOutcomeOfAllMoves(grid: grid, token: "r")[3].0)
-        XCTAssertEqual(true,  determineOutcomeOfAllMoves(grid: grid, token: "r")[3].1)
-        XCTAssertEqual(move4, determineOutcomeOfAllMoves(grid: grid, token: "r")[4].0)
-        XCTAssertEqual(false, determineOutcomeOfAllMoves(grid: grid, token: "r")[4].1)
-        XCTAssertEqual(move5, determineOutcomeOfAllMoves(grid: grid, token: "r")[5].0)
-        XCTAssertEqual(false, determineOutcomeOfAllMoves(grid: grid, token: "r")[5].1)
-        XCTAssertEqual(move6, determineOutcomeOfAllMoves(grid: grid, token: "r")[6].0)
-        XCTAssertEqual(false, determineOutcomeOfAllMoves(grid: grid, token: "r")[6].1)
+        let result = grid.determineOutcomeOfAllMoves(usingToken: "r")
+        XCTAssertEqual(move0, result[0].0)
+        XCTAssertEqual(false, result[0].1)
+        XCTAssertEqual(move1, result[1].0)
+        XCTAssertEqual(false, result[1].1)
+        XCTAssertEqual(move2, result[2].0)
+        XCTAssertEqual(false, result[2].1)
+        XCTAssertEqual(move3, result[3].0)
+        XCTAssertEqual(true,  result[3].1)
+        XCTAssertEqual(move4, result[4].0)
+        XCTAssertEqual(false, result[4].1)
+        XCTAssertEqual(move5, result[5].0)
+        XCTAssertEqual(false, result[5].1)
+        XCTAssertEqual(move6, result[6].0)
+        XCTAssertEqual(false, result[6].1)
 
     }
 }
