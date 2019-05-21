@@ -130,20 +130,27 @@ func addToken(grid:Grid) -> Grid {
     let (lastToken, _, _) = lastTokenPlayed(grid: grid)
     let token = lastToken == "r" ? "y" : "r"
 
-    return grid.drop(token, intoColumn: 0)
-}
-
-func determineBestOutcomeOfAllMoves(grid:Grid, token:Token) -> Grid {
-    let columns = [0,1,2,3,4,5,6]
-    let resultOfMoves = columns.map{ determineIfMoveWins(grid: grid, token: token, column: $0)}
     
-    let winningMoves = resultOfMoves.filter{$0.1 == true}
-
+    let outcomeOfAllMoves = determineOutcomeOfAllMoves(grid:grid, token:token)
+    let winningMoves = outcomeOfAllMoves.filter{(grid, isWinner) in isWinner == true}
     if winningMoves.count > 0 {
         return winningMoves[0].0
-    } else {
-        return resultOfMoves.filter{$0.1 == false}[0].0
     }
+
+    let subsequentToken = token == "r" ? "y" : "r"
+    let outcomeOfSubsequentMoves = outcomeOfAllMoves.map{$0.0}.map{ ($0, determineOutcomeOfAllMoves(grid: $0, token: subsequentToken))}
+    let subsequentMovesThatDontWin = outcomeOfSubsequentMoves.filter{$0.1.contains(where: {(grid, isWinner) in !isWinner})  }
+
+    if subsequentMovesThatDontWin.count > 0 {
+        return subsequentMovesThatDontWin[0].0
+    }
+    
+    return outcomeOfAllMoves[0].0
+}
+
+func determineOutcomeOfAllMoves(grid:Grid, token:Token) -> Array<(Grid, Bool)> {
+    let columns = [0,1,2,3,4,5,6]
+    return columns.map{ determineIfMoveWins(grid: grid, token: token, column: $0)}
 }
 
 func determineIfMoveWins(grid:Grid, token:Token, column:Col) -> (Grid, Bool) {
@@ -329,38 +336,72 @@ class Challenge5bTests: XCTestCase {
         ]
         XCTAssertTrue(validResults.contains(addToken(grid: grid)))
     }
-    func test_bestOutcomeOfAllMovesRedWins() {
+    func test_OutcomeOfAllMovesRedWins() {
         let grid = [".......",
                     ".......",
                     ".......",
                     ".......",
                     ".......",
                     "rrr...y"]
-        let bestMove = [".......",
+        let move0 = [".......",
                         ".......",
                         ".......",
                         ".......",
-                        ".......",
-                        "rrrR..y"]
+                        "R......",
+                        "rrr...y"]
+        let move1 = [".......",
+                     ".......",
+                     ".......",
+                     ".......",
+                     ".R.....",
+                     "rrr...y"]
+        let move2 = [".......",
+                     ".......",
+                     ".......",
+                     ".......",
+                     "..R....",
+                     "rrr...y"]
+        let move3 = [".......",
+                     ".......",
+                     ".......",
+                     ".......",
+                     ".......",
+                     "rrrR..y"]
+        let move4 = [".......",
+                     ".......",
+                     ".......",
+                     ".......",
+                     ".......",
+                     "rrr.R.y"]
+        let move5 = [".......",
+                     ".......",
+                     ".......",
+                     ".......",
+                     ".......",
+                     "rrr..Ry"]
+        let move6 = [".......",
+                     ".......",
+                     ".......",
+                     ".......",
+                     "......R",
+                     "rrr...y"]
 
-        XCTAssertEqual(bestMove, determineBestOutcomeOfAllMoves(grid: grid, token: "r"))
-    }
-    func test_bestOutcomeOfAllMovesYellowWins() {
-        let grid = [".......",
-                    ".......",
-                    "y......",
-                    "y......",
-                    "yr.....",
-                    "rrR...."]
-        let bestMove = [".......",
-                        "Y......",
-                        "y......",
-                        "y......",
-                        "yr.....",
-                        "rrr...."]
-        XCTAssertEqual(bestMove, determineBestOutcomeOfAllMoves(grid: grid, token: "y"))
-    }
+        XCTAssertEqual(move0, determineOutcomeOfAllMoves(grid: grid, token: "r")[0].0)
+        XCTAssertEqual(false, determineOutcomeOfAllMoves(grid: grid, token: "r")[0].1)
+        XCTAssertEqual(move1, determineOutcomeOfAllMoves(grid: grid, token: "r")[1].0)
+        XCTAssertEqual(false, determineOutcomeOfAllMoves(grid: grid, token: "r")[1].1)
+        XCTAssertEqual(move2, determineOutcomeOfAllMoves(grid: grid, token: "r")[2].0)
+        XCTAssertEqual(false, determineOutcomeOfAllMoves(grid: grid, token: "r")[2].1)
+        XCTAssertEqual(move3, determineOutcomeOfAllMoves(grid: grid, token: "r")[3].0)
+        XCTAssertEqual(true,  determineOutcomeOfAllMoves(grid: grid, token: "r")[3].1)
+        XCTAssertEqual(move4, determineOutcomeOfAllMoves(grid: grid, token: "r")[4].0)
+        XCTAssertEqual(false, determineOutcomeOfAllMoves(grid: grid, token: "r")[4].1)
+        XCTAssertEqual(move5, determineOutcomeOfAllMoves(grid: grid, token: "r")[5].0)
+        XCTAssertEqual(false, determineOutcomeOfAllMoves(grid: grid, token: "r")[5].1)
+        XCTAssertEqual(move6, determineOutcomeOfAllMoves(grid: grid, token: "r")[6].0)
+        XCTAssertEqual(false, determineOutcomeOfAllMoves(grid: grid, token: "r")[6].1)
 
+    }
 }
 Challenge5bTests.defaultTestSuite.run()
 
