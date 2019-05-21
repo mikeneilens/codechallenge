@@ -155,7 +155,11 @@ func addToken(grid existingGrid:Grid) -> Grid {
         return subsequentMovesThatDontWin[0].0
     }
     
-    return outcomeOfAllMoves[0].0
+    if outcomeOfAllMoves.count > 0 {
+        return outcomeOfAllMoves[0].0
+    } else {
+        return existingGrid
+    }
 }
 
 //===================================================================================================================
