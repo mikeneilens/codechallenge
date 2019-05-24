@@ -147,6 +147,7 @@ func addToken(grid existingGrid:Grid) -> Grid {
     }
 
     let subsequentToken = tokenToPlay == "r" ? "y" : "r"
+    
     //This returns [(grid, [(subsequentGrid, isWinner)])]
     let outcomeOfSubsequentMoves = outcomeOfAllMoves.map{ (grid,_) in (grid, grid.determineOutcomeOfAllMoves(usingToken: subsequentToken))}
     let subsequentMovesThatDontWin = outcomeOfSubsequentMoves.filter{  (grid, subsequentGrids) in  !subsequentGrids.contains(where: {(_,isWinner) in isWinner}) }
