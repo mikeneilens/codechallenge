@@ -102,7 +102,7 @@ func leftDiagonalLine(grid:Grid, tokenRow:Int, tokenCol:Int ) -> String {
 //Start of challenge 5b =======================================================================
 
 extension Grid {
-    func replace(token:Token, row:Row, column:Col) -> Grid {
+    func replace(row:Row, column:Col, using token:Token) -> Grid {
         return self.replaceElementAt(index: row, with: self[row].replaceElementAt(index: column, with: Character(token)))
     }
     
@@ -116,22 +116,21 @@ extension Grid {
     }
     
     func drop(_ token:Token, intoColumn column:Col) -> Grid? {
-        guard let row = self.lowestEmptyRow(forColumn: column) else {return nil}
+        guard let lowestRow = self.lowestEmptyRow(forColumn: column) else {return nil}
         let cleanGrid = self.joined(separator: ":").lowercased().split(separator: ":").map{String($0)}
-        return cleanGrid.replace(token: token.uppercased(), row: row, column: column)
+        return cleanGrid.replace(row: lowestRow, column: column, using:token.uppercased())
     }
     
-    func determineOutcomeOfAllMoves(usingToken token:Token) -> Array<(Grid, Bool)> {
+    func determineOutcomeOfAllMoves(using token:Token) -> Array<(Grid, Bool)> {
         let columns = [0,1,2,3,4,5,6]
-        return columns.compactMap{ self.determineIfMoveWins(usingToken: token, inColumn: $0)}
+        return columns.compactMap{ self.determineIfMoveWins(using:token, inColumn: $0)}
     }
     
-    func determineIfMoveWins(usingToken token:Token,inColumn column:Col) -> (Grid, Bool)? {
+    func determineIfMoveWins(using token:Token,inColumn column:Col) -> (Grid, Bool)? {
         guard let gridAfterMove = self.drop(token, intoColumn: column) else {return nil}
         let tokenText = tokenMap[token] ?? ""
         return  (gridAfterMove,  getGridStatus(grid: gridAfterMove) == "\(tokenText) wins")
     }
-    
 }
 
 func addToken(grid existingGrid:Grid) -> Grid {
@@ -139,7 +138,7 @@ func addToken(grid existingGrid:Grid) -> Grid {
     let (lastToken, _, _) = lastTokenPlayed(grid: existingGrid)
     let tokenToPlay = lastToken == "r" ? "y" : "r"
     
-    let outcomeOfAllMoves = existingGrid.determineOutcomeOfAllMoves(usingToken:tokenToPlay)
+    let outcomeOfAllMoves = existingGrid.determineOutcomeOfAllMoves(using:tokenToPlay)
     let winningMoves = outcomeOfAllMoves.filter{(resultingGrid,isWinner) in isWinner == true}
     
     if winningMoves.count > 0  {
@@ -148,12 +147,13 @@ func addToken(grid existingGrid:Grid) -> Grid {
     
     let subsequentToken = tokenToPlay == "r" ? "y" : "r"
     
-    //This returns [(grid, [(subsequentGrid, isWinner)])]
-    let outcomeOfSubsequentMoves = outcomeOfAllMoves.map{ (grid,_) in (grid, grid.determineOutcomeOfAllMoves(usingToken: subsequentToken))}
+    //outcomeOfSubsequentMoves contains [(grid, [(subsequentGrid, isWinner)])]
+    let outcomeOfSubsequentMoves = outcomeOfAllMoves.map{ (grid,_) in (grid, grid.determineOutcomeOfAllMoves(using: subsequentToken))}
     let movesThatDontAllowOpponentToWin = outcomeOfSubsequentMoves.filter{  (grid, subsequentGrids) in  !subsequentGrids.contains(where: {(_,isWinner) in isWinner}) }
     
     if movesThatDontAllowOpponentToWin.count > 0 {
-        return movesThatDontAllowOpponentToWin[0].0
+        let moveIndex = Int.random(in: 0..<movesThatDontAllowOpponentToWin.count)
+        return movesThatDontAllowOpponentToWin[moveIndex].0
     }
     
     if outcomeOfAllMoves.count > 0 {
@@ -441,7 +441,7 @@ class Challenge5bTests: XCTestCase {
                      "......R",
                      "rrr...y"]
         
-        let result = grid.determineOutcomeOfAllMoves(usingToken: "r")
+        let result = grid.determineOutcomeOfAllMoves(using: "r")
         XCTAssertEqual(move0, result[0].0)
         XCTAssertEqual(false, result[0].1)
         XCTAssertEqual(move1, result[1].0)
@@ -649,4 +649,4 @@ class Challenge5Tests: XCTestCase {
     
 }
 
-//Challenge5Tests.defaultTestSuite.run()
+Challenge5Tests.defaultTestSuite.run()
