@@ -173,7 +173,7 @@ class Challenge5bTests: XCTestCase {
         XCTAssertEqual("abcdX", "abcde".replaceElementAt(index: 4, with: "X"))
         XCTAssertEqual("abcde", "abcde".replaceElementAt(index: 5, with: "X"))
     }
-    
+
     func test_addTokenToAnEmptyGrid() {
         let grid = [".......",
                     ".......",
@@ -274,9 +274,35 @@ class Challenge5bTests: XCTestCase {
                              ".......",
                              "...Y...",
                              "...r..."]]
-        XCTAssertTrue(validResults.contains(addToken(grid: grid)))
+        let result = addToken(grid: grid)
+        XCTAssertTrue(validResults.contains(result))
     }
-    
+ 
+    func test_addTokenToGridWithTwoValidMoves() {
+        let grid = ["rr.y.Yr",
+                    "ryryryr",
+                    "ryyrrry",
+                    "yrryyyr",
+                    "yryrrry",
+                    "rryryry"]
+
+        let validResults = [
+                      ["rrRy.yr",
+                       "ryryryr",
+                       "ryyrrry",
+                       "yrryyyr",
+                       "yryrrry",
+                       "rryryry"],
+                      ["rr.yRyr",
+                       "ryryryr",
+                       "ryyrrry",
+                       "yrryyyr",
+                       "yryrrry",
+                       "rryryry"]]
+        let result = addToken(grid: grid)
+        XCTAssertTrue(validResults.contains(result))
+    }
+
     func test_findLowestEmptyRow() {
         let grid = [".......",
                     ".......",
@@ -458,7 +484,9 @@ class Challenge5bTests: XCTestCase {
         XCTAssertEqual(false, result[6].1)
         
     }
+ 
 }
+
 Challenge5bTests.defaultTestSuite.run()
 
 
@@ -601,7 +629,6 @@ class Challenge5Tests: XCTestCase {
                     "ryrrryr",
                     "rrryryy",
                     "yryryyy"]
-        print(grid)
         XCTAssertEqual("Draw", getGridStatus(grid: grid))
     }
     
@@ -612,7 +639,6 @@ class Challenge5Tests: XCTestCase {
                     "ryrrryr",
                     "rrryryy",
                     "yryryyy"]
-        print(grid)
         XCTAssertEqual("Yellow wins", getGridStatus(grid: grid))
     }
     
