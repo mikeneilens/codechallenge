@@ -102,8 +102,10 @@ func leftDiagonalLine(grid:Grid, tokenRow:Int, tokenCol:Int ) -> String {
 //Start of challenge 5b =======================================================================
 
 extension Grid {
-    func replace(row:Row, column:Col, using token:Token) -> Grid {
-        return self.replaceElementAt(index: row, with: self[row].replaceElementAt(index: column, with: Character(token)))
+    func drop(_ token:Token, intoColumn column:Col) -> Grid? {
+        guard let lowestRow = self.lowestEmptyRow(forColumn: column) else {return nil}
+        let cleanGrid = self.joined(separator: ":").lowercased().split(separator: ":").map{String($0)}
+        return cleanGrid.replace(row: lowestRow, column: column, using:token.uppercased())
     }
     
     func lowestEmptyRow(forColumn column:Col) -> Int? {
@@ -114,13 +116,11 @@ extension Grid {
             return Array(self.dropLast()).lowestEmptyRow(forColumn:column)
         }
     }
-    
-    func drop(_ token:Token, intoColumn column:Col) -> Grid? {
-        guard let lowestRow = self.lowestEmptyRow(forColumn: column) else {return nil}
-        let cleanGrid = self.joined(separator: ":").lowercased().split(separator: ":").map{String($0)}
-        return cleanGrid.replace(row: lowestRow, column: column, using:token.uppercased())
+
+    func replace(row:Row, column:Col, using token:Token) -> Grid {
+        return self.replaceElementAt(index: row, with: self[row].replaceElementAt(index: column, with: Character(token)))
     }
-    
+
     func determineOutcomeOfAllMoves(using token:Token) -> Array<(Grid, Bool)> {
         let columns = [0,1,2,3,4,5,6]
         return columns.compactMap{ self.determineIfMoveWins(using:token, inColumn: $0)}
