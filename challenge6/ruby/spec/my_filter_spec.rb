@@ -43,3 +43,11 @@ describe "myFilter" do
       end
     end
 end
+
+describe "myFilter" do
+    context "given first parameter which is not an array" do
+      it "returns the first parameter" do
+        expect( myFilter(4, is_less_than5 ) ).to eql(4)
+      end
+    end
+end
