@@ -19,3 +19,11 @@ describe "myFilter" do
       end
     end
 end
+
+describe "myFilter" do
+    context "given an array containing more than one number less than 5" do
+      it "returns an array containing all the numbers" do
+        expect( myFilter([3,2,4], is_less_than5 ) ).to eql([3,2,4])
+      end
+    end
+end
