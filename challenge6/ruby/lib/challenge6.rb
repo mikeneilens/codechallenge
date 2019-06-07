@@ -1,8 +1,10 @@
-def myFilter(anArray, filterRule) 
-	if anArray.length == 0 or anArray[0] < 5
-		anArray
-	else 
-		[]
+def myFilter(anArray, filterRule)
+	result = []
+	anArray.each do |element| 
+		if filterRule.(element) 
+			result.push(element)
+		end
 	end
+	result
 end
 

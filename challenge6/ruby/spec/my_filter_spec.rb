@@ -35,3 +35,11 @@ describe "myFilter" do
       end
     end
 end
+
+describe "myFilter" do
+    context "given an array containing one number which is below 5 and one number bigger or equal to 5" do
+      it "returns an empty array" do
+        expect( myFilter([4,5], is_less_than5 ) ).to eql([4])
+      end
+    end
+end
