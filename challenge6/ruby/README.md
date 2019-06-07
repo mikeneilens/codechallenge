@@ -5,4 +5,6 @@
 * I'm using Rspec for the first time, so not totally sure what I'm doing
 * I've passed the function into myFilter using a lambda function as otherwise you need to wrap the function to pass it as a parameter.
 
+You will need to install rspec using  __bundle install --path .bundle__
+If you haven't installed ruby bunlder you will need to install that first.
 To run the tests type __bundle exec rspec__ from the ruby directory
