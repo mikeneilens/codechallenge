@@ -51,3 +51,10 @@ describe "myFilter" do
       end
     end
 end
+describe "myFilter" do
+    context "given a second parameter which is not an anonymous function" do
+      it "returns first parameter" do
+        expect( myFilter([1,2,3,4,5], 999 ) ).to eql([1,2,3,4,5])
+      end
+    end
+end

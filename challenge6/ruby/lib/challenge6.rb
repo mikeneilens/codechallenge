@@ -1,5 +1,6 @@
 def myFilter(anArray, filterRule)
-	return anArray if !anArray.kind_of?(Array) 
+
+	return anArray unless anArray.kind_of?(Array) and filterRule.methods.include?(:call) 
 
 	result = []
 	anArray.each do |element| 
@@ -8,5 +9,6 @@ def myFilter(anArray, filterRule)
 		end
 	end
 	result
+
 end
 
