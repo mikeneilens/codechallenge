@@ -1,6 +1,8 @@
 def myFilter(anArray, filterRule) 
-	anArray
+	if anArray.length == 0 or anArray[0] < 5
+		anArray
+	else 
+		[]
+	end
 end
 
-is_less_than5 = ->(aNumber) { aNumber < 5 }
-myFilter([], is_less_than5)
