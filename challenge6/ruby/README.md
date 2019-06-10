@@ -7,5 +7,7 @@
 * I converted my original .each loop into a recursive function, although most Ruby implementations don't optimise for tail recursion so this is bad.
 
 You will need to install rspec using  __bundle install --path .bundle__
-If you haven't installed ruby bunlder you will need to install that first.
+
+If you haven't installed ruby bundler you will need to install that first.
+
 To run the tests type __bundle exec rspec__ from the ruby directory

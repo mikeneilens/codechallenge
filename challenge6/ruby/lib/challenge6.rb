@@ -13,13 +13,7 @@ def myFilter(anArray, filterRule)
 			end
 		end
 	end
-	#result = []
-	#anArray.each do |element| 
-	#	if filterRule.(element) 
-	#		result.push(element)
-	#	end
-	#end
-	#result
+
 	recursiveFilter([],anArray,filterRule)
 end
 
