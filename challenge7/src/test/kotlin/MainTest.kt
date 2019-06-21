@@ -43,5 +43,14 @@ class MainTest {
 
     }
 
+    @Test
+    fun `test the curried function with a function that takes a string and an Int and writes out a string`() {
+        val createScoreText = fun (text:String, score:Int):String = "$text $score"
+
+        assertEquals ("Your score is 180", createScoreText("Your score is", 180))
+
+        val createYouScoreText = createScoreText.curried("Your score is")
+        assertEquals("Your score is 180", createYouScoreText(180))
+    }
 }
 

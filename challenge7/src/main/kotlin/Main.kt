@@ -14,3 +14,7 @@ fun functionThatTakesTwoParams.curried(something: Int):functionThatTakesOneParam
     return {aNumber:Int -> this(something,aNumber) }
 }
 
+//made it more generic, couldn't make it work with typealias
+fun <P,Q,Output> ((P,Q)-> Output).curried(param1:P ):(Q)-> Output {
+    return {param2:Q -> this(param1,param2) }
+}
