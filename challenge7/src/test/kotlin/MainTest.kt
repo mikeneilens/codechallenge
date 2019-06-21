@@ -30,5 +30,18 @@ class MainTest {
         assertEquals(false, numberIsEvenAndLessThan5(3))
         assertEquals(false, numberIsEvenAndLessThan5(6))
     }
+
+    @Test
+    fun `test the curried function with a function that does something else` () {
+        val numberIsAMultipleOfSomething = fun (something:Int, aNumber:Int)  = (aNumber % something == 0)
+
+        val numberIsAMultipleOf3 = numberIsAMultipleOfSomething.curried(3)
+
+        assertEquals(true, numberIsAMultipleOf3(6))
+        assertEquals(true, numberIsAMultipleOf3(72))
+        assertEquals(false, numberIsAMultipleOf3(13))
+
+    }
+
 }
 
