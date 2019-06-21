@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="32ff443f-3085-4fdb-b941-367b63cf3d3e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" afterDir="false" />
-    </list>
+    <list default="true" id="32ff443f-3085-4fdb-b941-367b63cf3d3e" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -43,8 +39,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="596">
-              <caret line="50" column="8" lean-forward="true" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="8" />
+            <state relative-caret-position="509">
+              <caret line="53" column="5" lean-forward="true" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
               <folding>
                 <element signature="e#0#109#0" expanded="true" />
               </folding>
@@ -117,7 +113,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561150490883" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561150497794" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -258,15 +254,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MainTest_Test_the_function_isEvenAndLessThan - 2019.06.21 at 20h 54m 48s.xml">
-      <configuration name="MainTest.Test the function isEvenAndLessThan" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainTest - 2019.06.21 at 21h 06m 15s.xml">
-      <configuration name="MainTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainTest_Test_the_function__that_takes_two_parameters_called_numberIsEvenAndLessThanSomething - 2019.06.21 at 21h 09m 00s.xml">
-      <configuration name="MainTest.Test the function  that takes two parameters called numberIsEvenAndLessThanSomething" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="MainTest - 2019.06.21 at 21h 14m 24s.xml">
       <configuration name="MainTest" configurationId="JUnit" />
     </history-entry>
@@ -286,6 +273,15 @@
       <configuration name="MainTest.test the curried function with a function that does something else" configurationId="JUnit" />
     </history-entry>
     <history-entry file="MainTest - 2019.06.21 at 21h 33m 52s.xml">
+      <configuration name="MainTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest_test_the_curried_function_with_a_function_that_takes_a_string_and_an_Int_and_writes_out_a_string - 2019.06.21 at 21h 53m 04s.xml">
+      <configuration name="MainTest.test the curried function with a function that takes a string and an Int and writes out a string" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest_test_the_curried_function_with_a_function_that_takes_a_string_and_an_Int_and_writes_out_a_string - 2019.06.21 at 21h 54m 46s.xml">
+      <configuration name="MainTest.test the curried function with a function that takes a string and an Int and writes out a string" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest - 2019.06.21 at 21h 54m 53s.xml">
       <configuration name="MainTest" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -340,8 +336,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="596">
-          <caret line="50" column="8" lean-forward="true" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="8" />
+        <state relative-caret-position="509">
+          <caret line="53" column="5" lean-forward="true" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
           <folding>
             <element signature="e#0#109#0" expanded="true" />
           </folding>
