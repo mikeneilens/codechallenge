@@ -9,6 +9,10 @@ func curried<P,Q,Output>(_ f:@escaping (P,Q)->Output, _ param1:P) -> (Q)->Output
     return g
 }
 
+func isEvenAndLessThan(_ something:Int) -> (Int) -> Bool {
+    return curried(numberIsEvenAndLessThanSomething,5)
+}
+
 class Challenge7Tests: XCTestCase {
     func test_numberIsEvenAndLessThanSomething() {
         XCTAssertEqual(true, numberIsEvenAndLessThanSomething(5,2))
@@ -18,6 +22,13 @@ class Challenge7Tests: XCTestCase {
     
     func test_the_curried_function_to_make_sure_it_makes_isEvenAndLessThan_that_is_correct() {
         let numberIsEvenAndLessThan5 = curried(numberIsEvenAndLessThanSomething,5)
+        XCTAssertEqual(true, numberIsEvenAndLessThan5(2))
+        XCTAssertEqual(false, numberIsEvenAndLessThan5(3))
+        XCTAssertEqual(false, numberIsEvenAndLessThan5(6))
+    }
+    
+    func test_isEvenAndLessThan() {
+        let numberIsEvenAndLessThan5 = isEvenAndLessThan(5)
         XCTAssertEqual(true, numberIsEvenAndLessThan5(2))
         XCTAssertEqual(false, numberIsEvenAndLessThan5(3))
         XCTAssertEqual(false, numberIsEvenAndLessThan5(6))
