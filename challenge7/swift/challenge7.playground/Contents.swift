@@ -4,11 +4,10 @@ func numberIsEvenAndLessThanSomething(_ something:Int, _ aNumber:Int) ->Bool  {
     return aNumber % 2 == 0 && aNumber < something
 }
 
-func curried(_ f:@escaping (Int,Int)->Bool, _ something:Int) -> (Int)->Bool {
-     func g(aNumber:Int) -> Bool { return f(something, aNumber)}
+func curried<P,Q,Output>(_ f:@escaping (P,Q)->Output, _ something:P) -> (Q)->Output {
+     func g(aNumber:Q) -> Output { return f(something, aNumber)}
     return g
 }
-
 
 class Challenge7Tests: XCTestCase {
     func test_numberIsEvenAndLessThanSomething() {
