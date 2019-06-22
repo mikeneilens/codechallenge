@@ -9,9 +9,7 @@ func curried<P,Q,Output>(_ f:@escaping (P,Q)->Output, _ param1:P) -> (Q)->Output
     return g
 }
 
-func isEvenAndLessThan(_ something:Int) -> (Int) -> Bool {
-    return curried(numberIsEvenAndLessThanSomething,5)
-}
+func isEvenAndLessThan(_ something:Int) -> (Int) -> Bool { return curried(numberIsEvenAndLessThanSomething,5) }
 
 class Challenge7Tests: XCTestCase {
     func test_numberIsEvenAndLessThanSomething() {
