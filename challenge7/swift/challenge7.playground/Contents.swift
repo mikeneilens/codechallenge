@@ -4,8 +4,8 @@ func numberIsEvenAndLessThanSomething(_ something:Int, _ aNumber:Int) ->Bool  {
     return aNumber % 2 == 0 && aNumber < something
 }
 
-func curried<P,Q,Output>(_ f:@escaping (P,Q)->Output, _ something:P) -> (Q)->Output {
-     func g(aNumber:Q) -> Output { return f(something, aNumber)}
+func curried<P,Q,Output>(_ f:@escaping (P,Q)->Output, _ param1:P) -> (Q)->Output {
+     func g(param2:Q) -> Output { return f(param1, param2)}
     return g
 }
 
