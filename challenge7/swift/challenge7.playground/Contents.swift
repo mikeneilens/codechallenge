@@ -1,15 +1,16 @@
 import XCTest
-var str = "Hello, playground"
 func numberIsEvenAndLessThanSomething(_ something:Int, _ aNumber:Int) ->Bool  {
     return aNumber % 2 == 0 && aNumber < something
 }
 
-func curried<P,Q,Output>(_ f:@escaping (P,Q)->Output, _ param1:P) -> (Q)->Output {
+infix operator ||| //for currying
+
+func |||<P,Q,Output>(_ f:@escaping (P,Q)->Output, _ param1:P) -> (Q)->Output {
      func g(param2:Q) -> Output { return f(param1, param2)}
     return g
 }
 
-func isEvenAndLessThan(_ something:Int) -> (Int) -> Bool { return curried(numberIsEvenAndLessThanSomething,5) }
+func isEvenAndLessThan(_ something:Int) -> (Int) -> Bool { return numberIsEvenAndLessThanSomething ||| 5 }
 
 class Challenge7Tests: XCTestCase {
     func test_numberIsEvenAndLessThanSomething() {
@@ -19,7 +20,7 @@ class Challenge7Tests: XCTestCase {
     }
     
     func test_the_curried_function_to_make_sure_it_makes_isEvenAndLessThan_that_is_correct() {
-        let numberIsEvenAndLessThan5 = curried(numberIsEvenAndLessThanSomething,5)
+        let numberIsEvenAndLessThan5 = numberIsEvenAndLessThanSomething ||| 5
         XCTAssertEqual(true, numberIsEvenAndLessThan5(2))
         XCTAssertEqual(false, numberIsEvenAndLessThan5(3))
         XCTAssertEqual(false, numberIsEvenAndLessThan5(6))

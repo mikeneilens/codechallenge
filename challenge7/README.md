@@ -24,3 +24,5 @@ So to use it to create a new function did __let numberIsEvenAndLessThan5 = curri
 After I got that working I substitued the first Int with a generic type of P, the second Int with a generic type of Q and the Bool with a generic type of Output and reran the tests.
 
 Finally I used the curried function to create __numberIsEvenAndLessThan__. I've squeezed this onto one line!
+
+To make this even more confusing I thought it would be good to replace the curried function with an infix. Unfortunately in Swifty you can only use certain special characters for an infix so could just call the infix 'curry' or 'curried'. The infix I used is called ||| so you can use __let numberIsEvenAndLessThan5 = numberIsEvenAndLessThanSomething ||| 5__.   
