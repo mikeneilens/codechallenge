@@ -19,7 +19,8 @@ Like in Kotlin I created an anonymous function called __isEvenAndLessThanSomethi
 Unlike Kotlin you can not extend any Type, you can only extend Class or Struct so the curried function initially had a signature of ```curried((Int,Int)->Bool, Int) -> (Int)->Bool```. 
 To make this is easier to get your head around think of it as ```curried(functionType1, Int) -> functionType2``` where function1 has a signature of ```(Int,Int) -> Bool``` and function2 has a signature of ```(Int) -> Bool```.
 
-So to use it to create a new function did ```let numberIsEvenAndLessThan5 = curried(numberIsEvenAndLessThanSomething,5)```.
+So to use it to create a new function did
+```let numberIsEvenAndLessThan5 = curried(numberIsEvenAndLessThanSomething,5)```.
 
 After I got that working I substitued the first Int with a generic type of P, the second Int with a generic type of Q and the Bool with a generic type of Output and reran the tests.
 
