@@ -8,7 +8,7 @@ It was quite easy to make this more general purpose currying function by creatin
 
 I created tests that did the same as the original __numberIsEvenAndLessThan__ and then created an additional test that converted a different function to a function that accepts one parameter and returns a boolean.
 
-I then tried to make the curry function more general purpose by intead of using __(Int, Int)__ -> Bool used __<P,Q,Output> (P,Q)->Output__. Must admit I had to look up how to do this as I couldn't make it work using typealias instead of hard to read type definitions.
+I then tried to make the curry function more general purpose by intead of using ```(Int, Int)__ -> Bool``` used ```<P,Q,Output> (P,Q)->Output```. Must admit I had to look up how to do this as I couldn't make it work using typealias instead of hard to read type definitions.
 
 ## Challenge 7 - Swift
 
@@ -16,8 +16,8 @@ I copied my Kotlin solution and jumped straight into making a curry function.
 
 Like in Kotlin I created an anonymous function called __isEvenAndLessThanSomething__ that takes two integers and returns a boolean with some tests to make sure it worked.
 
-Unlike Kotlin you can not extend any Type, you can only extend Class or Struct so the curried function initially had a signature of __curried((Int,Int)->Bool, Int) -> (Int)->Bool__. 
-To make this is easier to get your head around think of it as __curried(functionType1, Int) -> functionType2__ where function1 has a signature of (Int,Int) -> Bool and function2 has a signature of (Int) -> Bool.
+Unlike Kotlin you can not extend any Type, you can only extend Class or Struct so the curried function initially had a signature of ```curried((Int,Int)->Bool, Int) -> (Int)->Bool```. 
+To make this is easier to get your head around think of it as ```curried(functionType1, Int) -> functionType2``` where function1 has a signature of ```(Int,Int) -> Bool``` and function2 has a signature of ```(Int) -> Bool```.
 
 So to use it to create a new function did __let numberIsEvenAndLessThan5 = curried(numberIsEvenAndLessThanSomething,5)__.
 
