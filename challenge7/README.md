@@ -19,13 +19,13 @@ Like in Kotlin I created an anonymous function called __isEvenAndLessThanSomethi
 Unlike Kotlin you can not extend any Type, you can only extend Class or Struct so the curried function initially had a signature of ```curried((Int,Int)->Bool, Int) -> (Int)->Bool```. 
 To make this is easier to get your head around think of it as ```curried(functionType1, Int) -> functionType2``` where function1 has a signature of ```(Int,Int) -> Bool``` and function2 has a signature of ```(Int) -> Bool```.
 
-So to use it to create a new function did __let numberIsEvenAndLessThan5 = curried(numberIsEvenAndLessThanSomething,5)__.
+So to use it to create a new function did ```let numberIsEvenAndLessThan5 = curried(numberIsEvenAndLessThanSomething,5)```.
 
 After I got that working I substitued the first Int with a generic type of P, the second Int with a generic type of Q and the Bool with a generic type of Output and reran the tests.
 
 Finally I used the curried function to create __numberIsEvenAndLessThan__. I've squeezed this onto one line!
 
-To make this even more confusing I thought it would be good to replace the curried function with an infix. Unfortunately in Swift you can only use certain special characters for an infix so could not just call the infix 'curry' or 'curried'. The infix I used is called => so you can use __let numberIsEvenAndLessThan5 = 5 => numberIsEvenAndLessThanSomething__.   
+To make this even more confusing I thought it would be good to replace the curried function with an infix. Unfortunately in Swift you can only use certain special characters for an infix so could not just call the infix 'curry' or 'curried'. The infix I used is called => so you can use ```let numberIsEvenAndLessThan5 = 5 => numberIsEvenAndLessThanSomething```.   
 
-I then set about making a version of => which operates on a single parameter function and returns the result and making a version of => which operates on a three parameter function and converts it into a two parameter function. To test this I created a three paramter function called __scoreboard__ which takes some text, a name and an integer score and writes out a string. To get the result using currying the syntax is then __5 => "Mike" => "Your score:" => scoreBoard__.
+I then set about making a version of => which operates on a single parameter function and returns the result and making a version of => which operates on a three parameter function and converts it into a two parameter function. To test this I created a three paramter function called __scoreboard__ which takes some text, a name and an integer score and writes out a string. To get the result using currying the syntax is then ```5 => "Mike" => "Your score:" => scoreBoard```.
 
