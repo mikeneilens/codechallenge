@@ -25,7 +25,7 @@ class MainTest {
 
     @Test
     fun `test the curried function to make sure it produces a function the same as isEvenAndLessThan does` () {
-        val numberIsEvenAndLessThan5 = numberIsEvenAndLessThanSomething.curried(5)
+        val numberIsEvenAndLessThan5 = numberIsEvenAndLessThanSomething curry 5
         assertEquals(true, numberIsEvenAndLessThan5(2))
         assertEquals(false, numberIsEvenAndLessThan5(3))
         assertEquals(false, numberIsEvenAndLessThan5(6))
@@ -35,7 +35,7 @@ class MainTest {
     fun `test the curried function with a function that does something else` () {
         val numberIsAMultipleOfSomething = fun (something:Int, aNumber:Int)  = (aNumber % something == 0)
 
-        val numberIsAMultipleOf3 = numberIsAMultipleOfSomething.curried(3)
+        val numberIsAMultipleOf3 = numberIsAMultipleOfSomething curry 3
 
         assertEquals(true, numberIsAMultipleOf3(6))
         assertEquals(true, numberIsAMultipleOf3(72))
@@ -49,7 +49,7 @@ class MainTest {
 
         assertEquals ("Your score is 180", createScoreText("Your score is", 180))
 
-        val createYouScoreText = createScoreText.curried("Your score is")
+        val createYouScoreText = createScoreText curry "Your score is"
         assertEquals("Your score is 180", createYouScoreText(180))
     }
 }
