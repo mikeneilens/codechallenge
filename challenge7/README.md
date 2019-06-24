@@ -27,7 +27,11 @@ After I got that working I substitued the first Int with a generic type of P, th
 
 Finally I used the curried function to create __numberIsEvenAndLessThan__. I've squeezed this onto one line!
 
-To make this even more confusing I thought it would be good to replace the curried function with an infix. Unfortunately in Swift you can only use certain special characters for an infix so could not just call the infix 'curry' or 'curried'. The infix I used is called => so you can use ```let numberIsEvenAndLessThan5 = 5 => numberIsEvenAndLessThanSomething```.   
+To make this even more confusing I thought it would be good to replace the curried function with an infix. Unfortunately in Swift you can only use certain special characters for an infix so could not just call the infix 'curry' or 'curried'. The infix I used is called => so you can use 
 
-I then set about making a version of => which operates on a single parameter function and returns the result and making a version of => which operates on a three parameter function and converts it into a two parameter function. To test this I created a three paramter function called __scoreboard__ which takes some text, a name and an integer score and writes out a string. To get the result using currying the syntax is then ```5 => "Mike" => "Your score:" => scoreBoard```.
+```let numberIsEvenAndLessThan5 = 5 => numberIsEvenAndLessThanSomething```.   
+
+I then set about making a version of => which operates on a single parameter function and returns the result and making a version of => which operates on a three parameter function and converts it into a two parameter function. To test this I created a three paramter function called __scoreboard__ which takes some text, a name and an integer score and writes out a string. To get the result using currying the syntax is then 
+
+```5 => "Mike" => "Your score:" => scoreBoard```.
 
