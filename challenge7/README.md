@@ -12,7 +12,7 @@ I then tried to make the curry function more general purpose by intead of using 
 
 ## Challenge 7 - Swift
 
-I copied my Kotlin solution and jumped straight into making a curried function. 
+I copied my Kotlin solution and jumped straight into making a curry function. 
 
 Like in Kotlin I created an anonymous function called __isEvenAndLessThanSomething__ that takes two integers and returns a boolean with some tests to make sure it worked.
 
@@ -25,7 +25,7 @@ After I got that working I substitued the first Int with a generic type of P, th
 
 Finally I used the curried function to create __numberIsEvenAndLessThan__. I've squeezed this onto one line!
 
-To make this even more confusing I thought it would be good to replace the curried function with an infix. Unfortunately in Swift you can only use certain special characters for an infix so could not just call the infix 'curry' or 'curried'. The infix I used is called <= so you can use __let numberIsEvenAndLessThan5 = numberIsEvenAndLessThanSomething <= 5__.   
+To make this even more confusing I thought it would be good to replace the curried function with an infix. Unfortunately in Swift you can only use certain special characters for an infix so could not just call the infix 'curry' or 'curried'. The infix I used is called => so you can use __let numberIsEvenAndLessThan5 = 5 => numberIsEvenAndLessThanSomething__.   
 
-I then set about making a version of <= which operates on a single parameter function and returns the result and making a version of <= which operates on a three parameter function and converts it into a two parameter function. To test this I created a three paramter function called __scoreboard__ which takes some text, a name and an integer score and writes out a string. To get the result using currying the syntax is then __scoreBoard <= "Your score:" <= "Mike" <= 5__.
+I then set about making a version of => which operates on a single parameter function and returns the result and making a version of => which operates on a three parameter function and converts it into a two parameter function. To test this I created a three paramter function called __scoreboard__ which takes some text, a name and an integer score and writes out a string. To get the result using currying the syntax is then __5 => "Mike" => "Your score:" => scoreBoard__.
 
