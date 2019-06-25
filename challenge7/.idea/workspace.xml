@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="32ff443f-3085-4fdb-b941-367b63cf3d3e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -29,20 +30,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="450">
+              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+            <state relative-caret-position="1125">
+              <caret line="75" column="117" lean-forward="true" selection-start-line="75" selection-start-column="117" selection-end-line="75" selection-end-column="117" />
               <folding>
                 <element signature="e#0#109#0" expanded="true" />
               </folding>
@@ -114,7 +115,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561397286076" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561482376246" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -132,7 +133,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.MainTest">
+  <component name="RunManager" selected="JUnit.MainTest.test using curry to reduce a function that takes three parameters to a result by repeatidly currying it">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -155,44 +156,44 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainTest.Test the function  that takes two parameters called isEvenAndLessThan" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="mike.challenge7.test" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MainTest" />
-      <option name="METHOD_NAME" value="Test the function  that takes two parameters called isEvenAndLessThan" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainTest.Test the function  that takes two parameters called numberIsEvenAndLessThanSomething" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="mike.challenge7.test" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MainTest" />
-      <option name="METHOD_NAME" value="Test the function  that takes two parameters called numberIsEvenAndLessThanSomething" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainTest.test the curried function with a function that does something else" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="mike.challenge7.test" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MainTest" />
-      <option name="METHOD_NAME" value="test the curried function with a function that does something else" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MainTest.test the curried function with a function that takes a string and an Int and writes out a string" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mike.challenge7.test" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MainTest" />
       <option name="METHOD_NAME" value="test the curried function with a function that takes a string and an Int and writes out a string" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainTest.test the curried function with a function that takes a string, another string and an Int and writes out a string" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mike.challenge7.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MainTest" />
+      <option name="METHOD_NAME" value="test the curried function with a function that takes a string, another string and an Int and writes out a string" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainTest.test the curried function with a function that takes one parameter writes out a string" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mike.challenge7.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MainTest" />
+      <option name="METHOD_NAME" value="test the curried function with a function that takes one parameter writes out a string" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainTest.test using curry to reduce a function that takes three parameters to a result by repeatidly currying it" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mike.challenge7.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MainTest" />
+      <option name="METHOD_NAME" value="test using curry to reduce a function that takes three parameters to a result by repeatidly currying it" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
@@ -226,11 +227,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MainTest.test using curry to reduce a function that takes three parameters to a result by repeatidly currying it" />
+        <item itemvalue="JUnit.MainTest.test the curried function with a function that takes a string, another string and an Int and writes out a string" />
+        <item itemvalue="JUnit.MainTest.test the curried function with a function that takes one parameter writes out a string" />
         <item itemvalue="JUnit.MainTest" />
         <item itemvalue="JUnit.MainTest.test the curried function with a function that takes a string and an Int and writes out a string" />
-        <item itemvalue="JUnit.MainTest.test the curried function with a function that does something else" />
-        <item itemvalue="JUnit.MainTest.Test the function  that takes two parameters called numberIsEvenAndLessThanSomething" />
-        <item itemvalue="JUnit.MainTest.Test the function  that takes two parameters called isEvenAndLessThan" />
       </list>
     </recent_temporary>
   </component>
@@ -255,27 +256,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MainTest - 2019.06.21 at 21h 14m 24s.xml">
-      <configuration name="MainTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainTest - 2019.06.21 at 21h 16m 40s.xml">
-      <configuration name="MainTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainTest - 2019.06.21 at 21h 18m 07s.xml">
-      <configuration name="MainTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainTest_test_the_curried_function_with_a_function_that_does_something_else - 2019.06.21 at 21h 32m 46s.xml">
-      <configuration name="MainTest.test the curried function with a function that does something else" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainTest_test_the_curried_function_with_a_function_that_does_something_else - 2019.06.21 at 21h 32m 59s.xml">
-      <configuration name="MainTest.test the curried function with a function that does something else" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainTest_test_the_curried_function_with_a_function_that_does_something_else - 2019.06.21 at 21h 33m 31s.xml">
-      <configuration name="MainTest.test the curried function with a function that does something else" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainTest - 2019.06.21 at 21h 33m 52s.xml">
-      <configuration name="MainTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="MainTest_test_the_curried_function_with_a_function_that_takes_a_string_and_an_Int_and_writes_out_a_string - 2019.06.21 at 21h 53m 04s.xml">
       <configuration name="MainTest.test the curried function with a function that takes a string and an Int and writes out a string" configurationId="JUnit" />
     </history-entry>
@@ -284,6 +264,27 @@
     </history-entry>
     <history-entry file="MainTest - 2019.06.21 at 21h 54m 53s.xml">
       <configuration name="MainTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest - 2019.06.24 at 18h 27m 21s.xml">
+      <configuration name="MainTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest - 2019.06.24 at 18h 28m 11s.xml">
+      <configuration name="MainTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest_test_the_curried_function_with_a_function_that_takes_one_parameter_writes_out_a_string - 2019.06.25 at 17h 54m 55s.xml">
+      <configuration name="MainTest.test the curried function with a function that takes one parameter writes out a string" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest_test_the_curried_function_with_a_function_that_takes_one_parameter_writes_out_a_string - 2019.06.25 at 17h 55m 12s.xml">
+      <configuration name="MainTest.test the curried function with a function that takes one parameter writes out a string" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest_test_the_curried_function_with_a_function_that_takes_a_string,_another_string_and_an_Int_and_writes_out_a_string - 2019.06.25 at 17h 57m 54s.xml">
+      <configuration name="MainTest.test the curried function with a function that takes a string, another string and an Int and writes out a string" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest_test_the_curried_function_with_a_function_that_takes_a_string,_another_string_and_an_Int_and_writes_out_a_string - 2019.06.25 at 18h 02m 44s.xml">
+      <configuration name="MainTest.test the curried function with a function that takes a string, another string and an Int and writes out a string" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest_test_using_curry_to_reduce_a_function_that_takes_three_parameters_to_a_result_by_repeatidly_currying_it - 2019.06.25 at 18h 04m 33s.xml">
+      <configuration name="MainTest.test using curry to reduce a function that takes three parameters to a result by repeatidly currying it" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -321,6 +322,16 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="75" column="117" lean-forward="true" selection-start-line="75" selection-start-column="117" selection-end-line="75" selection-end-column="117" />
+          <folding>
+            <element signature="e#0#109#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -330,18 +341,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
-          <folding>
-            <element signature="e#0#109#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="450">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
         </state>
       </provider>
     </entry>

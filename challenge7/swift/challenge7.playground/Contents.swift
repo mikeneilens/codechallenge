@@ -3,7 +3,12 @@ func numberIsEvenAndLessThanSomething(_ something:Int, _ aNumber:Int) ->Bool  {
     return aNumber % 2 == 0 && aNumber < something
 }
 
-infix operator => :TernaryPrecedence //for currying. Not sure if the precedence is ideal but it seems to work!
+func curry (_ param1:Int,_ f:@escaping (Int,Int)->Bool) -> (Int)->Bool {
+    func g(param2:Int) -> Bool { return f(param1, param2)}
+    return g
+}
+
+infix operator => :TernaryPrecedence //for currying. Not sure if the precedence is ideal but it seems to work processing right to left!
 
 func => <P,Q,Output>(_ param1:P,_ f:@escaping (P,Q)->Output) -> (Q)->Output {
     func g(param2:Q) -> Output { return f(param1, param2)}
@@ -27,11 +32,18 @@ class Challenge7Tests: XCTestCase {
         XCTAssertEqual(false, numberIsEvenAndLessThanSomething(5,3))
         XCTAssertEqual(false, numberIsEvenAndLessThanSomething(5,6))
     }
-    
-    func test_the_curried_function_to_make_sure_it_makes_isEvenAndLessThan_that_is_correct() {
-        XCTAssertEqual(true, 2 => 5 => numberIsEvenAndLessThanSomething)
-        XCTAssertEqual(false, 3 => 5 => numberIsEvenAndLessThanSomething)
-        XCTAssertEqual(false, 5 => 6 => numberIsEvenAndLessThanSomething)
+
+    func test_the_curry_function_that_takes_a_function_expecting_two_integers_and_converts_to_function_expecting_one_parameter() {
+        let numberIsEvenAndLessThan5 = curry(5, numberIsEvenAndLessThanSomething)
+        XCTAssertEqual(true, numberIsEvenAndLessThan5(2))
+        XCTAssertEqual(false, numberIsEvenAndLessThan5(3))
+        XCTAssertEqual(false, numberIsEvenAndLessThan5(6))
+    }
+
+    func test_the_generic_curried_function_to_make_sure_it_makes_isEvenAndLessThan_that_is_correct() {
+        XCTAssertEqual(true, (5 => numberIsEvenAndLessThanSomething)(2))
+        XCTAssertEqual(false, (5 => numberIsEvenAndLessThanSomething)(3))
+        XCTAssertEqual(false, (5 => numberIsEvenAndLessThanSomething)(6))
     }
     
     func test_isEvenAndLessThan() {
@@ -47,6 +59,8 @@ class Challenge7Tests: XCTestCase {
         }
         XCTAssertEqual("Your score: Mike 5", scoreBoard("Your score:", "Mike", 5))
         //curried version of the test
+        XCTAssertEqual("Your score: Mike 5", ("Your score:" => scoreBoard)("Mike",5) )
+        //test chaining currying together
         XCTAssertEqual("Your score: Mike 5", 5 => "Mike" => "Your score:" => scoreBoard )
     }
 

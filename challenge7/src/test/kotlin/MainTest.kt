@@ -52,5 +52,31 @@ class MainTest {
         val createYouScoreText = createScoreText curry "Your score is"
         assertEquals("Your score is 180", createYouScoreText(180))
     }
+
+    @Test
+    fun `test the curried function with a function that takes one parameter writes out a string`() {
+        val createScoreText = fun (score:Int):String = "score is $score"
+
+        assertEquals ("score is 180", createScoreText(180))
+
+        assertEquals("score is 180", createScoreText curry 180)
+    }
+
+    @Test
+    fun `test the curried function with a function that takes a string, another string and an Int and writes out a string`() {
+        val createScoreText = fun (text:String, name:String, score:Int):String = "$text $name is $score"
+
+        assertEquals ("The score for Mike is 180", createScoreText("The score for","Mike", 180))
+
+        val createYouScoreText = createScoreText curry "The score for"
+        assertEquals("The score for Mike is 180", createYouScoreText("Mike", 180))
+    }
+
+    @Test
+    fun `test using curry to reduce a function that takes three parameters to a result by repeatidly currying it`() {
+        val createScoreText = fun (text:String, name:String, score:Int):String = "$text $name is $score"
+
+        assertEquals("The score for Mike is 180", createScoreText curry "The score for" curry "Mike" curry 180)
+    }
 }
 
