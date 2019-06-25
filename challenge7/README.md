@@ -20,7 +20,7 @@ I copied my Kotlin solution and jumped straight into making a curry function.
 
 Like in Kotlin I created an anonymous function called __isEvenAndLessThanSomething__ that takes two integers and returns a boolean with some tests to make sure it worked.
 
-Unlike Kotlin you can not extend any Type, you can only extend Class or Struct so the curried function initially had a signature of ```curried(Int, (Int,Int)->Bool) -> (Int)->Bool```. 
+Unlike Kotlin you can not extend any Type, you can only extend Class, Struct or Enum so the curried function initially had a signature of ```curried(Int, (Int,Int)->Bool) -> (Int)->Bool```. 
 To make this is easier to get your head around think of it as ```curried(Int, functionType1) -> functionType2``` where function1 has a signature of ```(Int,Int) -> Bool``` and function2 has a signature of ```(Int) -> Bool```.
 
 So to use it to create a new function:
