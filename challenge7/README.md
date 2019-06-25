@@ -8,7 +8,7 @@ It was quite easy to make this more general purpose currying function by creatin
 
 I created tests that did the same as the original __numberIsEvenAndLessThan__ and then created an additional test that converted a different function to a function that accepts one parameter and returns a boolean.
 
-I then tried to make the curry function more general purpose by intead of using ```(Int, Int)__ -> Bool``` used ```<P,Q,Output> (P,Q)->Output```. Must admit I had to look up how to do this as I couldn't make it work using typealias instead of hard to read type definitions.
+I then tried to make the curry function more general purpose by intead of using ```(Int, Int) -> Bool``` used ```<P,Q,Output> (P,Q) -> Output```. Must admit I had to look up how to do this as I couldn't make it work using typealias instead of hard to read type definitions.
 
 I replicated this in Swift (see below) and then created a curry function in Kotlin to convert any function that takes three parameteres into a function that takes two parameters and also created a curry finction to convert a function that takes one parameter directly into a result. To use the curry function on a function with 3 parameters you can use:
 
