@@ -20,10 +20,10 @@ I copied my Kotlin solution and jumped straight into making a curry function.
 
 Like in Kotlin I created an anonymous function called __isEvenAndLessThanSomething__ that takes two integers and returns a boolean with some tests to make sure it worked.
 
-Unlike Kotlin you can not extend any Type, you can only extend Class or Struct so the curried function initially had a signature of ```curried((Int,Int)->Bool, Int) -> (Int)->Bool```. 
-To make this is easier to get your head around think of it as ```curried(functionType1, Int) -> functionType2``` where function1 has a signature of ```(Int,Int) -> Bool``` and function2 has a signature of ```(Int) -> Bool```.
+Unlike Kotlin you can not extend any Type, you can only extend Class or Struct so the curried function initially had a signature of ```curried(Int, (Int,Int)->Bool) -> (Int)->Bool```. 
+To make this is easier to get your head around think of it as ```curried(Int, functionType1) -> functionType2``` where function1 has a signature of ```(Int,Int) -> Bool``` and function2 has a signature of ```(Int) -> Bool```.
 
-So to use it to create a new function did
+So to use it to create a new function:
 
 ```let numberIsEvenAndLessThan5 = curry(5, numberIsEvenAndLessThanSomething)```.
 
@@ -31,11 +31,11 @@ After I got that working I substitued the first Int with a generic type of P, th
 
 Finally I used the curried function to create __numberIsEvenAndLessThan__. I've squeezed this onto one line!
 
-To make this even more confusing I thought it would be good to replace the curry function with an infix. Unfortunately in Swift you can only use certain special characters for an infix so could not just call the infix 'curry' or 'curried'. The infix I used is called => so you can use 
+To make this even more confusing I thought it would be good to replace the curry function with an infix. Unfortunately in Swift you can only use certain special characters for an infix so could not just call the infix 'curry' or 'curried'. The infix I used is called <= so you can use 
 
-```let numberIsEvenAndLessThan5 = 5 => numberIsEvenAndLessThanSomething```.   
+```let numberIsEvenAndLessThan5 = numberIsEvenAndLessThanSomething <= 5```.   
 
-I then set about making a version of => which operates on a single parameter function and returns the result and making a version of => which operates on a three parameter function and converts it into a two parameter function. To test this I created a three paramter function called __scoreboard__ which takes some text, a name and an integer score and writes out a string. To get the result using currying the syntax is then 
+I then set about making a version of <= which operates on a single parameter function and returns the result. I also made a version of <= which operates on a three parameter function and converts it into a two parameter function. To test this I created a three paramter function called __scoreboard__ which takes some text, a name and an integer score and writes out a string. To get the result using currying the syntax is then: 
 
-```5 => "Mike" => "Your score:" => scoreBoard //returhs "Your score: Mike 5" ```.
+```let scoreText = scoreBoard <= "Your score:" <= "Mike" <= 5 //returhs "Your score: Mike 5" ```.
 
