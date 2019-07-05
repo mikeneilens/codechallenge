@@ -19,11 +19,11 @@ class MyTests {
                             Development.MiniStore(GBP(100),GBP(10)),
                             Development.Supermarket(GBP(200),GBP(20)),
                             Development.Megastore(GBP(300),GBP(30)) )
-        assertEquals (10, shop.undeveloped.rent)
+        assertEquals (GBP(10), shop.undeveloped.rent)
     }
     @Test
     fun `currency class should alwatys return positive value` () {
-        assertEquals(10, GBP(10) )
-        assertEquals(10, GBP(-10))
+        assertEquals(10, GBP(10).value )
+        assertEquals(10, GBP(-10).value)
     }
 }
