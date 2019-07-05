@@ -14,13 +14,19 @@ class MyTests {
         assertEquals(GBP(100), warehouse.purchasePrice)
 
         val shop = Location.RetailSite("Victoria",
-                            100,
+                            GBP(100),
                             Development.Undeveloped(GBP(10)),
                             Development.MiniStore(GBP(100),GBP(10)),
                             Development.Supermarket(GBP(200),GBP(20)),
-                            Development.Megastore(GBP(300),GBP(30)) )
+                            Development.Megastore(GBP(300),GBP(30)),
+                            Group.Red)
+
         assertEquals (GBP(10), shop.undeveloped.rent)
+        assertEquals (GBP(200),shop.supermarket.buildingCost)
+        assertEquals (100, shop.purchasePrice.value)
+        assertEquals (Group.Red, shop.group)
     }
+
     @Test
     fun `currency class should alwatys return positive value` () {
         assertEquals(10, GBP(10).value )

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MyTests" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-07-05T14:47:19" hostname="MacBook-Pro-3.local" time="0.015">
+<testsuite name="MyTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-07-05T15:13:57" hostname="MacBook-Pro-3.local" time="0.008">
   <properties/>
-  <testcase name="initial test" classname="MyTests" time="0.014"/>
-  <testcase name="currency class should alwatys return positive value" classname="MyTests" time="0.001"/>
+  <testcase name="initial test" classname="MyTests" time="0.008"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

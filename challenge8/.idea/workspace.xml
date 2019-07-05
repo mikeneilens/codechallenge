@@ -8,6 +8,8 @@
       <change beforePath="$PROJECT_DIR$/../challenge2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge2/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../challenge7/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge7/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../challenge7/swift/challenge7.playground/playground.xcworkspace/xcuserdata/michaelneilens.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge7/swift/challenge7.playground/playground.xcworkspace/xcuserdata/michaelneilens.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/id-to-file.tab_i" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/id-to-file.tab_i.len" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/MyTests.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/MyTests.kt" afterDir="false" />
     </list>
@@ -41,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/MyTests.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" selection-start-line="27" selection-end-line="27" />
+            <state relative-caret-position="388">
+              <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
               <folding>
                 <element signature="e#0#66#0" expanded="true" />
               </folding>
@@ -53,11 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="463">
-              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+            <state relative-caret-position="-11">
+              <caret line="6" column="35" lean-forward="true" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -162,7 +164,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.MyTests">
+  <component name="RunManager" selected="Gradle.MyTests.initial test">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -275,8 +277,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.MyTests" />
         <item itemvalue="Gradle.MyTests.initial test" />
+        <item itemvalue="Gradle.MyTests" />
         <item itemvalue="Gradle.MyTests.currency class should alwatys return positive value" />
         <item itemvalue="Kotlin.MainKt" />
       </list>
@@ -303,15 +305,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MyTests_initial_test - 2019.07.05 at 14h 00m 49s.xml">
-      <configuration name="MyTests.initial test" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="MyTests_initial_test - 2019.07.05 at 14h 02m 05s.xml">
-      <configuration name="MyTests.initial test" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="MyTests_initial_test - 2019.07.05 at 14h 13m 36s.xml">
-      <configuration name="MyTests.initial test" configurationId="GradleRunConfiguration" />
-    </history-entry>
     <history-entry file="MyTests_currency_class_should_alwatys_return_positive_value - 2019.07.05 at 14h 26m 52s.xml">
       <configuration name="MyTests.currency class should alwatys return positive value" configurationId="GradleRunConfiguration" />
     </history-entry>
@@ -333,9 +326,19 @@
     <history-entry file="MyTests - 2019.07.05 at 15h 47m 19s.xml">
       <configuration name="MyTests" configurationId="GradleRunConfiguration" />
     </history-entry>
+    <history-entry file="MyTests_initial_test - 2019.07.05 at 16h 07m 53s.xml">
+      <configuration name="MyTests.initial test" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="MyTests_initial_test - 2019.07.05 at 16h 09m 14s.xml">
+      <configuration name="MyTests.initial test" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="MyTests_initial_test - 2019.07.05 at 16h 13m 57s.xml">
+      <configuration name="MyTests.initial test" configurationId="GradleRunConfiguration" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
       <window_info id="Designer" />
@@ -405,20 +408,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/kotlin/MyTests.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        <state relative-caret-position="388">
+          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
           <folding>
             <element signature="e#0#66#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-11">
+          <caret line="6" column="35" lean-forward="true" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
         </state>
       </provider>
     </entry>
