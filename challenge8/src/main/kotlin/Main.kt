@@ -1,6 +1,3 @@
-fun main(args: Array<String>) {
-    print("hello world")
-}
 
 sealed class Location() {
     object FreeParking

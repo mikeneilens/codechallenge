@@ -1,18 +1,28 @@
 import junit.framework.TestCase.assertEquals
+import junit.framework.TestCase.assertTrue
 import org.junit.Test
 
 class MyTests {
     @Test
-    fun `initial test`() {
+    fun `free parking test`() {
         val freeParking = Location.FreeParking
-        assertEquals(true , freeParking is Location.FreeParking  )
-
+        assertTrue(freeParking is Location.FreeParking)
+    }
+    @Test
+    fun `go test`(){
         val go = Location.Go()
+        assertTrue(go is Location.Go)
         assertEquals(GBP(100), go.fee)
+    }
 
+    @Test
+    fun `warehouse test`(){
         val warehouse = Location.FactoryOrWarehouse("Magna Park")
+        assertTrue(warehouse is Location.FactoryOrWarehouse)
         assertEquals(GBP(100), warehouse.purchasePrice)
-
+    }
+    @Test
+    fun `retail location test`(){
         val shop = Location.RetailSite("Victoria",
                             GBP(100),
                             Development.Undeveloped(GBP(10)),
@@ -21,6 +31,7 @@ class MyTests {
                             Development.Megastore(GBP(300),GBP(30)),
                             Group.Red)
 
+        assertTrue(shop is Location.RetailSite)
         assertEquals (GBP(10), shop.undeveloped.rent)
         assertEquals (GBP(200),shop.supermarket.buildingCost)
         assertEquals (100, shop.purchasePrice.value)
