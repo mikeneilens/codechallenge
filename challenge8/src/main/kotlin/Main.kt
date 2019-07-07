@@ -7,18 +7,18 @@ sealed class Location() {
         val rent = GBP(20)
     }
     class RetailSite (val name:String, val purchasePrice:GBP,
-                      val undeveloped:Development.Undeveloped,
-                      val miniStore:Development.MiniStore,
-                      val supermarket: Development.Supermarket,
-                      val megastore: Development.Megastore,
+                      val undeveloped:Development.UndevelopedRent,
+                      val miniStore:Development.MiniStoreCostAndRent,
+                      val supermarket: Development.SupermarketCostAndRent,
+                      val megastore: Development.MegastoreCostAndRent,
                       val group:Group)
 }
 
 sealed class Development{
-    class Undeveloped(val rent:GBP)
-    class MiniStore(val buildingCost:GBP, val rent:GBP)
-    class Supermarket(val buildingCost:GBP, val rent:GBP)
-    class Megastore(val buildingCost:GBP, val rent:GBP)
+    class UndevelopedRent(val rent:GBP)
+    class MiniStoreCostAndRent(val buildingCost:GBP, val rent:GBP)
+    class SupermarketCostAndRent(val buildingCost:GBP, val rent:GBP)
+    class MegastoreCostAndRent(val buildingCost:GBP, val rent:GBP)
 }
 
 enum class Group {

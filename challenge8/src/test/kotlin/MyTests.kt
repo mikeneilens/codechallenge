@@ -19,21 +19,28 @@ class MyTests {
     fun `warehouse test`(){
         val warehouse = Location.FactoryOrWarehouse("Magna Park")
         assertTrue(warehouse is Location.FactoryOrWarehouse)
+        assertEquals("Magna Park", warehouse.name)
         assertEquals(GBP(100), warehouse.purchasePrice)
     }
     @Test
     fun `retail location test`(){
         val shop = Location.RetailSite("Victoria",
                             GBP(100),
-                            Development.Undeveloped(GBP(10)),
-                            Development.MiniStore(GBP(100),GBP(10)),
-                            Development.Supermarket(GBP(200),GBP(20)),
-                            Development.Megastore(GBP(300),GBP(30)),
+                            Development.UndevelopedRent(GBP(10)),
+                            Development.MiniStoreCostAndRent(GBP(100),GBP(10)),
+                            Development.SupermarketCostAndRent(GBP(200),GBP(20)),
+                            Development.MegastoreCostAndRent(GBP(300),GBP(30)),
                             Group.Red)
 
         assertTrue(shop is Location.RetailSite)
+        assertEquals("Victoria", shop.name)
         assertEquals (GBP(10), shop.undeveloped.rent)
+        assertEquals (GBP(100),shop.miniStore.buildingCost)
+        assertEquals (GBP(10),shop.miniStore.rent)
         assertEquals (GBP(200),shop.supermarket.buildingCost)
+        assertEquals (GBP(20),shop.supermarket.rent)
+        assertEquals (GBP(300),shop.megastore.buildingCost)
+        assertEquals (GBP(30),shop.megastore.rent)
         assertEquals (100, shop.purchasePrice.value)
         assertEquals (Group.Red, shop.group)
     }
