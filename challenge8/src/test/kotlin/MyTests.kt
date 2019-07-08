@@ -21,16 +21,16 @@ class MyTests {
         assertTrue(warehouse is Location.FactoryOrWarehouse)
         assertEquals("Magna Park", warehouse.name)
         assertEquals(GBP(100), warehouse.purchasePrice)
+        assertEquals(GBP(20), warehouse.rent)
     }
     @Test
     fun `retail location test`(){
-        val shop = Location.RetailSite("Victoria",
-                            GBP(100),
-                            Development.UndevelopedRent(GBP(10)),
-                            Development.MiniStoreCostAndRent(GBP(100),GBP(10)),
-                            Development.SupermarketCostAndRent(GBP(200),GBP(20)),
-                            Development.MegastoreCostAndRent(GBP(300),GBP(30)),
-                            Group.Red)
+        val shop = Location.RetailSite(Group.Red,"Victoria", GBP(100),
+                            undeveloped = DevelopmentType.RentOnly(GBP(10)),
+                            miniStore = DevelopmentType.BuildCostAndRent(GBP(100),GBP(10)),
+                            supermarket =  DevelopmentType.BuildCostAndRent(GBP(200),GBP(20)),
+                            megastore = DevelopmentType.BuildCostAndRent(GBP(300),GBP(30))
+                            )
 
         assertTrue(shop is Location.RetailSite)
         assertEquals("Victoria", shop.name)
@@ -49,5 +49,6 @@ class MyTests {
     fun `currency class should alwatys return positive value` () {
         assertEquals(10, GBP(10).value )
         assertEquals(10, GBP(-10).value)
+        assertEquals("£500", "${GBP(500)}")
     }
 }
