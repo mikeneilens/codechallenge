@@ -21,7 +21,7 @@ struct DevelopmentType {
 
 protocol Location {}
 
-class FreeParking:Location {}
+struct FreeParking:Location {}
 
 struct Go:Location {
     let fee = GBP(100)
