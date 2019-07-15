@@ -2,16 +2,20 @@
 sealed class Location() {
     object FreeParking
     class Go (){val fee = GBP(100)}
-    class FactoryOrWarehouse (val name:String) {
-        val purchasePrice = GBP(100)
+    class FactoryOrWarehouse (val name:String):Purchaseable {
+        override val purchasePrice = GBP(100)
         val rent = GBP(20)
     }
-    class RetailSite (val group:Group, val name:String, val purchasePrice:GBP,
+    class RetailSite (val group:Group, val name:String, override val purchasePrice:GBP,
                       val undeveloped:DevelopmentType.RentOnly,
                       val miniStore:DevelopmentType.BuildCostAndRent,
                       val supermarket: DevelopmentType.BuildCostAndRent,
                       val megastore: DevelopmentType.BuildCostAndRent
-                      )
+                      ):Purchaseable
+}
+
+interface Purchaseable {
+    val purchasePrice:GBP
 }
 
 sealed class DevelopmentType{

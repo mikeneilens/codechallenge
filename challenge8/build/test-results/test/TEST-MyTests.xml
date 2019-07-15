@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MyTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-07-08T20:01:54" hostname="MacBook-Pro-2" time="0.002">
+<testsuite name="MyTests" tests="5" skipped="0" failures="0" errors="0" timestamp="2019-07-15T16:27:20" hostname="MacBook-Pro-2" time="0.006">
   <properties/>
-  <testcase name="currency class should alwatys return positive value" classname="MyTests" time="0.002"/>
+  <testcase name="free parking test" classname="MyTests" time="0.002"/>
+  <testcase name="warehouse test" classname="MyTests" time="0.002"/>
+  <testcase name="go test" classname="MyTests" time="0.0"/>
+  <testcase name="retail location test" classname="MyTests" time="0.001"/>
+  <testcase name="currency class should alwatys return positive value" classname="MyTests" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

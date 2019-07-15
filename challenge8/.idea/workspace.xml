@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a6b5da2-8e9c-4f47-8aaf-6c00f13587e4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/swift/challenge8.playground/Contents.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/swift/challenge8.playground/contents.xcplayground" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../challenge7/swift/challenge7.playground/playground.xcworkspace/xcuserdata/michaelneilens.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge7/swift/challenge7.playground/playground.xcworkspace/xcuserdata/michaelneilens.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/id-to-file.tab_i" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/id-to-file.tab_i.len" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -40,8 +39,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="23" selection-start-line="8" selection-start-column="10" selection-end-line="13" selection-end-column="23" />
+            <state relative-caret-position="300">
+              <caret line="20" column="29" lean-forward="true" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -105,7 +104,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.MyTests.currency class should alwatys return positive value">
+  <component name="RunManager" selected="Gradle.MyTests">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -228,8 +227,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.MyTests.currency class should alwatys return positive value" />
         <item itemvalue="Gradle.MyTests" />
+        <item itemvalue="Gradle.MyTests.currency class should alwatys return positive value" />
         <item itemvalue="JUnit.MyTests" />
         <item itemvalue="Gradle.MyTests.initial test" />
         <item itemvalue="Kotlin.MainKt" />
@@ -257,9 +256,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MyTests - 2019.07.08 at 18h 08m 46s.xml">
-      <configuration name="MyTests" configurationId="GradleRunConfiguration" />
-    </history-entry>
     <history-entry file="MyTests - 2019.07.08 at 18h 09m 02s.xml">
       <configuration name="MyTests" configurationId="GradleRunConfiguration" />
     </history-entry>
@@ -286,6 +282,9 @@
     </history-entry>
     <history-entry file="MyTests_currency_class_should_alwatys_return_positive_value - 2019.07.08 at 21h 01m 55s.xml">
       <configuration name="MyTests.currency class should alwatys return positive value" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="MyTests - 2019.07.15 at 17h 27m 20s.xml">
+      <configuration name="MyTests" configurationId="GradleRunConfiguration" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -370,8 +369,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="23" selection-start-line="8" selection-start-column="10" selection-end-line="13" selection-end-column="23" />
+        <state relative-caret-position="300">
+          <caret line="20" column="29" lean-forward="true" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
         </state>
       </provider>
     </entry>
