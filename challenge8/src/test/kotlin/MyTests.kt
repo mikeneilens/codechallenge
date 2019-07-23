@@ -5,34 +5,40 @@ import org.junit.Test
 class MyTests {
     @Test
     fun `free parking test`() {
-        val freeParking = Location.FreeParking
-        assertTrue(freeParking is Location.FreeParking)
+        val freeParking = FreeParking
+        assertTrue(freeParking is FreeParking)
     }
     @Test
     fun `go test`(){
-        val go = Location.Go()
-        assertTrue(go is Location.Go)
+        val go = Go
+        assertTrue(go is Go)
         assertEquals(GBP(100), go.fee)
     }
 
     @Test
     fun `warehouse test`(){
-        val warehouse = Location.FactoryOrWarehouse("Magna Park")
-        assertTrue(warehouse is Location.FactoryOrWarehouse)
+        val warehouse = FactoryOrWarehouse("Magna Park")
+        assertTrue(warehouse is FactoryOrWarehouse)
+        assertTrue(warehouse is Location)
+        assertTrue(warehouse is Purchaseable)
         assertEquals("Magna Park", warehouse.name)
         assertEquals(GBP(100), warehouse.purchasePrice)
         assertEquals(GBP(20), warehouse.rent)
     }
     @Test
     fun `retail location test`(){
-        val shop = Location.RetailSite(Group.Red,"Victoria", GBP(100),
+        val shop =          RetailSite(Group.Red,"Victoria", GBP(100),
                             undeveloped = DevelopmentType.RentOnly(GBP(10)),
                             miniStore = DevelopmentType.BuildCostAndRent(GBP(100),GBP(10)),
                             supermarket =  DevelopmentType.BuildCostAndRent(GBP(200),GBP(20)),
                             megastore = DevelopmentType.BuildCostAndRent(GBP(300),GBP(30))
                             )
 
-        assertTrue(shop is Location.RetailSite)
+        assertTrue(shop is RetailSite)
+        assertTrue(shop is Location)
+        assertTrue(shop is Purchaseable)
+        assertTrue(shop is Buildable)
+
         assertEquals("Victoria", shop.name)
         assertEquals (GBP(10), shop.undeveloped.rent)
         assertEquals (GBP(100),shop.miniStore.buildingCost)
@@ -50,5 +56,21 @@ class MyTests {
         assertEquals(10, GBP(10).value )
         assertEquals(10, GBP(-10).value)
         assertEquals("£500", "${GBP(500)}")
+    }
+
+    @Test
+    fun `can make a list of locations of different types`() {
+        //This is just to show usage
+
+        val warehouse = FactoryOrWarehouse("Magna Park")
+        val shop =          RetailSite(Group.Red,"Victoria", GBP(100),
+            undeveloped = DevelopmentType.RentOnly(GBP(10)),
+            miniStore = DevelopmentType.BuildCostAndRent(GBP(100),GBP(10)),
+            supermarket =  DevelopmentType.BuildCostAndRent(GBP(200),GBP(20)),
+            megastore = DevelopmentType.BuildCostAndRent(GBP(300),GBP(30))
+        )
+
+        val listOfLocations = listOf<Location>(Go, FreeParking, warehouse,shop)
+        assertTrue(listOfLocations is List<Location>)
     }
 }

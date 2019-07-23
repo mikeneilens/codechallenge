@@ -21,8 +21,14 @@ struct DevelopmentType {
 
 protocol Location {}
 
-protocol Purchaseable {
+protocol Purchaseable:Location {
     var purchasePrice:GBP { get }
+}
+
+protocol Buildable:Purchaseable {
+    var miniStore:DevelopmentType.BuildCostAndRent { get }
+    var supermarket:DevelopmentType.BuildCostAndRent { get }
+    var megaStore:DevelopmentType.BuildCostAndRent { get }
 }
 
 struct FreeParking:Location {}
@@ -31,13 +37,13 @@ struct Go:Location {
     let fee = GBP(100)
 }
 
-struct FactoryOrWarehouse:Location, Purchaseable{
+struct FactoryOrWarehouse:Purchaseable{
     let name:String
     let purchasePrice:GBP = GBP(100)
     let rent = GBP(20)
 }
 
-struct RetailSite:Location, Purchaseable {
+struct RetailSite:Buildable {
     let group:Group
     let name:String
     let purchasePrice:GBP
@@ -77,9 +83,11 @@ class Challenge8Tests: XCTestCase {
                                              miniStore: DevelopmentType.BuildCostAndRent(buildCost: GBP(200), rent: GBP(50)),
                                              supermarket: DevelopmentType.BuildCostAndRent(buildCost: GBP(500),rent:GBP(100)),
                                              megaStore: DevelopmentType.BuildCostAndRent(buildCost:GBP(1000),rent:GBP(300)))
-        
+
+        XCTAssertTrue(retailSite is Location)
         XCTAssertTrue(retailSite is RetailSite)
         XCTAssertTrue(retailSite is Purchaseable)
+        XCTAssertTrue(retailSite is Buildable)
         XCTAssertEqual(Group.Green , retailSite.group)
         XCTAssertEqual("Victoria", retailSite.name)
         XCTAssertEqual(GBP(200), retailSite.purchasePrice)
