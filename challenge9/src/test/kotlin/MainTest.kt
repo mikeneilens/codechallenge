@@ -8,4 +8,13 @@ class MainTest {
         val gameLedger = GameLedger
         assertTrue(gameLedger is GameLedger)
     }
+
+    @Test
+    fun `Transaction is added to GameLedger for new player`() {
+
+        val newPlayer = object:Player{override val name = "A player"}
+        GameLedger.addNewPlayer(newPlayer, GBP(500))
+
+        assertEquals(GameLedger.transactions[0].player, newPlayer)
+    }
 }
