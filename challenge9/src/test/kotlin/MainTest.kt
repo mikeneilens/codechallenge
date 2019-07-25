@@ -19,8 +19,9 @@ class MainTest {
         val newPlayer = object:Player{override val name = "A playerCredited"}
         GameLedger.addNewPlayer(newPlayer, GBP(500))
 
-        assertEquals(GameLedger.transactions[0].playerCredited, newPlayer)
-        assertEquals(GameLedger.transactions[0].amount, GBP(500))
+        val firstTransaction = GameLedger.transactions[0] as GameLedger.PlayerCredited
+        assertEquals(firstTransaction.playerCredited, newPlayer)
+        assertEquals(firstTransaction.amount, GBP(500))
     }
 
     @Test
@@ -31,15 +32,17 @@ class MainTest {
         GameLedger.addFeeForPlayerPassingGo(player, GBP(100))
 
         assertEquals(GameLedger.transactions.size, 1)
-        assertEquals(GameLedger.transactions[0].playerCredited, player)
-        assertEquals(GameLedger.transactions[0].amount, GBP(100))
+
+        val firstTransaction = GameLedger.transactions[0] as GameLedger.PlayerCredited
+        assertEquals(firstTransaction.playerCredited, player)
+        assertEquals(firstTransaction.amount, GBP(100))
 
         GameLedger.addFeeForPlayerPassingGo(player, GBP(100))
         assertEquals(GameLedger.transactions.size, 2)
-        assertEquals(GameLedger.transactions[0].playerCredited, player)
-        assertEquals(GameLedger.transactions[0].amount, GBP(100))
-        assertEquals(GameLedger.transactions[1].playerCredited, player)
-        assertEquals(GameLedger.transactions[1].amount, GBP(100))
+
+        val secondTransaction = GameLedger.transactions[1] as GameLedger.PlayerCredited
+        assertEquals(secondTransaction.playerCredited, player)
+        assertEquals(secondTransaction.amount, GBP(100))
     }
 
     @Test
@@ -52,5 +55,11 @@ class MainTest {
         val rent = GBP(20)
 
         GameLedger.payRent(player1, player2, rent)
+
+        val firstTransaction = GameLedger.transactions[0] as GameLedger.PlayerPayingAnotherPlayer
+        assertEquals(firstTransaction.playerCredited, player1)
+        assertEquals(firstTransaction.playerDebted, player2)
+        assertEquals(firstTransaction.amount, GBP(20))
+
     }
 }
