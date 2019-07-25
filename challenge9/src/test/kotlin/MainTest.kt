@@ -69,7 +69,7 @@ class MainTest {
         GameLedger.reset()
 
         val player = object:Player{override val name = "A playerCredited"}
-        val location = object:Purchaseable{override val purchasePrice = GBP(200)}
+        val location = object:Purchaseable{override val purchasePrice = GBP(150)}
         val purchasePrice = GBP(200)
 
         GameLedger.purchaseLocation(player, location, purchasePrice)
@@ -78,5 +78,30 @@ class MainTest {
         assertEquals(firstTransaction.playerDebted, player)
         assertEquals(firstTransaction.location, location)
         assertEquals(firstTransaction.amount, purchasePrice)
+    }
+
+    @Test
+    fun `Transaction is added when a player builds on a location`() {
+
+        GameLedger.reset()
+
+        val player = object:Player{override val name = "A playerCredited"}
+        val location = object:Buildable{
+            override val purchasePrice = GBP(200)
+            override val miniStore = DevelopmentType.BuildCostAndRent(GBP(100), GBP(10) )
+            override val supermarket = DevelopmentType.BuildCostAndRent(GBP(200), GBP(20))
+            override val megastore = DevelopmentType.BuildCostAndRent(GBP(300), GBP(30))
+        }
+        val developmentCost = GBP(300)
+        val buildingType = Building.minimarket
+
+        GameLedger.buildOnLocation(player, location, buildingType, developmentCost )
+
+        val firstTransaction = GameLedger.transactions[0] as GameLedger.PlayerBuildsOnLocation
+        assertEquals(firstTransaction.playerDebted, player)
+        assertEquals(firstTransaction.location, location)
+        assertEquals(firstTransaction.building, buildingType)
+        assertEquals(firstTransaction.amount, developmentCost)
+
     }
 }

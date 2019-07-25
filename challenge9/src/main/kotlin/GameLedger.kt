@@ -13,14 +13,18 @@ object GameLedger {
     interface PlayerDebted:Transaction{
         val playerDebted:Player
     }
+    interface PlayerPayingAnotherPlayer:PlayerCredited, PlayerDebted {
+        override  val playerCredited:Player
+        override val playerDebted:Player
+    }
     interface PlayerPurchasesProerty:PlayerDebted{
         override val playerDebted:Player
         val location:Purchaseable
     }
-
-    interface PlayerPayingAnotherPlayer:PlayerCredited, PlayerDebted {
-        override  val playerCredited:Player
+    interface PlayerBuildsOnLocation:PlayerDebted {
         override val playerDebted:Player
+        val location:Buildable
+        val building:Building
     }
 
     fun addNewPlayer(player:Player, startingBalance:GBP ) {
@@ -50,4 +54,17 @@ object GameLedger {
             override val amount = purchasePrice
         })
     }
+
+    fun buildOnLocation(player: Player, location: Buildable, buildingType: Building, developmentCost: GBP) {
+        transactions.add(object:PlayerBuildsOnLocation {
+            override val playerDebted = player
+            override val location = location
+            override val building = buildingType
+            override val amount = developmentCost
+        })
+    }
+}
+
+enum class Building {
+    minimarket, supermarket, megastore
 }
