@@ -6,14 +6,21 @@ object GameLedger {
     interface Transaction {
         val amount:GBP
     }
- //   open class Transaction( val playerCredited: Player, val amount:GBP)
 
     interface PlayerCredited:Transaction{
         val playerCredited:Player
     }
-    interface PlayerPayingAnotherPlayer:PlayerCredited {
-        override  val playerCredited:Player
+    interface PlayerDebted:Transaction{
         val playerDebted:Player
+    }
+    interface PlayerPurchasesProerty:PlayerDebted{
+        override val playerDebted:Player
+        val location:Purchaseable
+    }
+
+    interface PlayerPayingAnotherPlayer:PlayerCredited, PlayerDebted {
+        override  val playerCredited:Player
+        override val playerDebted:Player
     }
 
     fun addNewPlayer(player:Player, startingBalance:GBP ) {
@@ -33,6 +40,14 @@ object GameLedger {
             override val playerCredited = playerCredited
             override val playerDebted = playerDebted
             override val amount = rent
+        })
+    }
+
+    fun purchaseLocation(player: Player, location: Purchaseable, purchasePrice: GBP) {
+        transactions.add(object:PlayerPurchasesProerty{
+            override val playerDebted = player
+            override val location = location
+            override val amount = purchasePrice
         })
     }
 }

@@ -2,16 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a28bad6d-906f-4d03-855c-f7b9ee592c58" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/MainTest.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/base-style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/js/report.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/default-package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-MainTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/GameLedger.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/GameLedger.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" afterDir="false" />
     </list>
@@ -62,8 +52,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="60" column="60" selection-start-line="60" selection-start-column="60" selection-end-line="60" selection-end-column="60" />
+            <state relative-caret-position="507">
+              <caret line="79" column="60" selection-start-line="79" selection-start-column="60" selection-end-line="79" selection-end-column="60" />
               <folding>
                 <element signature="e#0#109#0" expanded="true" />
               </folding>
@@ -74,8 +64,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/GameLedger.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="19" column="31" lean-forward="true" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+            <state relative-caret-position="-119">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
@@ -323,9 +313,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MainTest - 2019.07.25 at 21h 04m 14s.xml">
-      <configuration name="MainTest" configurationId="GradleRunConfiguration" />
-    </history-entry>
     <history-entry file="MainTest - 2019.07.25 at 21h 06m 14s.xml">
       <configuration name="MainTest" configurationId="GradleRunConfiguration" />
     </history-entry>
@@ -351,6 +338,9 @@
       <configuration name="MainTest.Transaction is added to GameLedger for new player" configurationId="GradleRunConfiguration" />
     </history-entry>
     <history-entry file="MainTest - 2019.07.25 at 21h 41m 31s.xml">
+      <configuration name="MainTest" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="MainTest - 2019.07.25 at 21h 54m 39s.xml">
       <configuration name="MainTest" configurationId="GradleRunConfiguration" />
     </history-entry>
   </component>
@@ -425,8 +415,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="60" column="60" selection-start-line="60" selection-start-column="60" selection-end-line="60" selection-end-column="60" />
+        <state relative-caret-position="507">
+          <caret line="79" column="60" selection-start-line="79" selection-start-column="60" selection-end-line="79" selection-end-column="60" />
           <folding>
             <element signature="e#0#109#0" expanded="true" />
           </folding>
@@ -435,8 +425,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/GameLedger.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="19" column="31" lean-forward="true" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+        <state relative-caret-position="-119">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>

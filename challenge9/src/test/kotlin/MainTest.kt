@@ -62,4 +62,21 @@ class MainTest {
         assertEquals(firstTransaction.amount, GBP(20))
 
     }
+
+    @Test
+    fun `Transaction is added when a player purchases a property from the bank`() {
+
+        GameLedger.reset()
+
+        val player = object:Player{override val name = "A playerCredited"}
+        val location = object:Purchaseable{override val purchasePrice = GBP(200)}
+        val purchasePrice = GBP(200)
+
+        GameLedger.purchaseLocation(player, location, purchasePrice)
+
+        val firstTransaction = GameLedger.transactions[0] as GameLedger.PlayerPurchasesProerty
+        assertEquals(firstTransaction.playerDebted, player)
+        assertEquals(firstTransaction.location, location)
+        assertEquals(firstTransaction.amount, purchasePrice)
+    }
 }
