@@ -118,5 +118,9 @@ let g = Go()
 printTypeOf(location: f)
 printTypeOf(location: g)
 let listOfLocations:Array<Location> = [f,g]
+print(listOfLocations[0] is FactoryOrWarehouse)
+print(listOfLocations[0] is Purchaseable)
+print(listOfLocations[1] is FactoryOrWarehouse)
+print(listOfLocations[1] is Purchaseable)
 
 Challenge8Tests.defaultTestSuite.run()

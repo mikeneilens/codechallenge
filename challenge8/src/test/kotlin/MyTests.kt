@@ -72,5 +72,10 @@ class MyTests {
 
         val listOfLocations = listOf<Location>(Go, FreeParking, warehouse,shop)
         assertTrue(listOfLocations is List<Location>)
+        assertTrue(listOfLocations[0] is Go)
+        assertTrue(listOfLocations[1] is FreeParking )
+        assertTrue(listOfLocations[2] is Purchaseable )
+        assertTrue(listOfLocations[3] is Buildable)
+
     }
 }
