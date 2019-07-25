@@ -30,8 +30,17 @@ class MainTest {
         val player = object:Player{override val name = "A player"}
         GameLedger.addFeeForPlayerPassingGo(player, GBP(100))
 
+        assertEquals(GameLedger.transactions.size, 1)
         assertEquals(GameLedger.transactions[0].player, player)
         assertEquals(GameLedger.transactions[0].amount, GBP(100))
+
+        GameLedger.addFeeForPlayerPassingGo(player, GBP(100))
+        assertEquals(GameLedger.transactions.size, 2)
+        assertEquals(GameLedger.transactions[0].player, player)
+        assertEquals(GameLedger.transactions[0].amount, GBP(100))
+        assertEquals(GameLedger.transactions[1].player, player)
+        assertEquals(GameLedger.transactions[1].amount, GBP(100))
+
 
     }
 }
