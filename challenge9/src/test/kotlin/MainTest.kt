@@ -14,7 +14,7 @@ class MainTest {
 
     @Test
     fun `Transaction is added to GameLedger for new player`() {
-        GameLedger.reset()
+        GameLedger.reset() // need to reset as is a singleton so gets updated by other tests.
 
         val newPlayer = object:Player{override val name = "A playerCredited"}
         GameLedger.addNewPlayer(newPlayer, GBP(500))
@@ -58,7 +58,7 @@ class MainTest {
 
         val firstTransaction = GameLedger.transactions[0] as GameLedger.PlayerPayingAnotherPlayer
         assertEquals(firstTransaction.playerCredited, player1)
-        assertEquals(firstTransaction.playerDebted, player2)
+        assertEquals(firstTransaction.playerDebited, player2)
         assertEquals(firstTransaction.amount, GBP(20))
 
     }
@@ -75,7 +75,7 @@ class MainTest {
         GameLedger.purchaseLocation(player, location, purchasePrice)
 
         val firstTransaction = GameLedger.transactions[0] as GameLedger.PlayerPurchasesProerty
-        assertEquals(firstTransaction.playerDebted, player)
+        assertEquals(firstTransaction.playerDebited, player)
         assertEquals(firstTransaction.location, location)
         assertEquals(firstTransaction.amount, purchasePrice)
     }
@@ -98,7 +98,7 @@ class MainTest {
         GameLedger.buildOnLocation(player, location, buildingType, developmentCost )
 
         val firstTransaction = GameLedger.transactions[0] as GameLedger.PlayerBuildsOnLocation
-        assertEquals(firstTransaction.playerDebted, player)
+        assertEquals(firstTransaction.playerDebited, player)
         assertEquals(firstTransaction.location, location)
         assertEquals(firstTransaction.building, buildingType)
         assertEquals(firstTransaction.amount, developmentCost)

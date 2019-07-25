@@ -10,19 +10,19 @@ object GameLedger {
     interface PlayerCredited:Transaction{
         val playerCredited:Player
     }
-    interface PlayerDebted:Transaction{
-        val playerDebted:Player
+    interface PlayerDebited:Transaction{
+        val playerDebited:Player
     }
-    interface PlayerPayingAnotherPlayer:PlayerCredited, PlayerDebted {
+    interface PlayerPayingAnotherPlayer:PlayerCredited, PlayerDebited {
         override  val playerCredited:Player
-        override val playerDebted:Player
+        override val playerDebited:Player
     }
-    interface PlayerPurchasesProerty:PlayerDebted{
-        override val playerDebted:Player
+    interface PlayerPurchasesProerty:PlayerDebited{
+        override val playerDebited:Player
         val location:Purchaseable
     }
-    interface PlayerBuildsOnLocation:PlayerDebted {
-        override val playerDebted:Player
+    interface PlayerBuildsOnLocation:PlayerDebited {
+        override val playerDebited:Player
         val location:Buildable
         val building:Building
     }
@@ -42,14 +42,14 @@ object GameLedger {
     fun payRent(playerCredited: Player, playerDebted: Player, rent: GBP) {
         transactions.add(object:PlayerPayingAnotherPlayer{
             override val playerCredited = playerCredited
-            override val playerDebted = playerDebted
+            override val playerDebited = playerDebted
             override val amount = rent
         })
     }
 
     fun purchaseLocation(player: Player, location: Purchaseable, purchasePrice: GBP) {
         transactions.add(object:PlayerPurchasesProerty{
-            override val playerDebted = player
+            override val playerDebited = player
             override val location = location
             override val amount = purchasePrice
         })
@@ -57,7 +57,7 @@ object GameLedger {
 
     fun buildOnLocation(player: Player, location: Buildable, buildingType: Building, developmentCost: GBP) {
         transactions.add(object:PlayerBuildsOnLocation {
-            override val playerDebted = player
+            override val playerDebited = player
             override val location = location
             override val building = buildingType
             override val amount = developmentCost
