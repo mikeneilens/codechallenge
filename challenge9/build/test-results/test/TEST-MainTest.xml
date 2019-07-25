@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MainTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-07-25T19:54:48" hostname="MacBook-Pro-2" time="0.004">
+<testsuite name="MainTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-07-25T19:57:29" hostname="MacBook-Pro-2" time="0.005">
   <properties/>
-  <testcase name="Create an Empty GameLedger" classname="MainTest" time="0.002"/>
+  <testcase name="Create an Empty GameLedger" classname="MainTest" time="0.003"/>
   <testcase name="Transaction is added to GameLedger for new player" classname="MainTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

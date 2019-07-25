@@ -16,5 +16,6 @@ class MainTest {
         GameLedger.addNewPlayer(newPlayer, GBP(500))
 
         assertEquals(GameLedger.transactions[0].player, newPlayer)
+        assertEquals(GameLedger.transactions[0].amount, GBP(500))
     }
 }
