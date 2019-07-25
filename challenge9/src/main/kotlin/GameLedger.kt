@@ -8,4 +8,11 @@ object GameLedger {
         transactions.add(Transaction(player, startingBalance))
     }
 
+    fun addFeeForPlayerPassingGo(player: Player, fee:GBP) {
+        transactions.add(Transaction(player, fee))
+    }
+
+    fun reset() {
+        transactions.clear()
+    }
 }

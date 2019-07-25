@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a28bad6d-906f-4d03-855c-f7b9ee592c58" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Player.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge8/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge8/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/GameLedger.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/GameLedger.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" afterDir="false" />
     </list>
@@ -53,8 +53,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="69" selection-start-line="14" selection-start-column="69" selection-end-line="14" selection-end-column="69" />
+            <state relative-caret-position="450">
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
               <folding>
                 <element signature="e#0#109#0" expanded="true" />
               </folding>
@@ -65,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/GameLedger.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="210">
+              <caret line="14" column="17" lean-forward="true" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -166,7 +166,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Gradle.MainTest">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -185,6 +185,26 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" value="--tests &quot;MainTest&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":cleanTest" />
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="MainTest.Create an Empty GameLedger" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;MainTest.Create an Empty GameLedger&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -227,6 +247,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.MainTest" />
+        <item itemvalue="Gradle.MainTest.Create an Empty GameLedger" />
       </list>
     </recent_temporary>
   </component>
@@ -261,6 +282,24 @@
       <configuration name="MainTest" configurationId="GradleRunConfiguration" />
     </history-entry>
     <history-entry file="MainTest - 2019.07.25 at 20h 54m 48s.xml">
+      <configuration name="MainTest" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="MainTest - 2019.07.25 at 20h 57m 29s.xml">
+      <configuration name="MainTest" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="MainTest_Create_an_Empty_GameLedger - 2019.07.25 at 21h 02m 28s.xml">
+      <configuration name="MainTest.Create an Empty GameLedger" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="MainTest - 2019.07.25 at 21h 03m 55s.xml">
+      <configuration name="MainTest" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="MainTest - 2019.07.25 at 21h 04m 14s.xml">
+      <configuration name="MainTest" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="MainTest - 2019.07.25 at 21h 06m 14s.xml">
+      <configuration name="MainTest" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="MainTest - 2019.07.25 at 21h 08m 07s.xml">
       <configuration name="MainTest" configurationId="GradleRunConfiguration" />
     </history-entry>
   </component>
@@ -311,17 +350,17 @@
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/GBP.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/Player.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/GBP.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
     </entry>
@@ -334,15 +373,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/GameLedger.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="210">
+          <caret line="14" column="17" lean-forward="true" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="69" selection-start-line="14" selection-start-column="69" selection-end-line="14" selection-end-column="69" />
+        <state relative-caret-position="450">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
           <folding>
             <element signature="e#0#109#0" expanded="true" />
           </folding>
