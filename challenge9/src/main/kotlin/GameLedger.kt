@@ -2,7 +2,6 @@ object GameLedger {
 
     val transactions:MutableList<Transaction> = mutableListOf()
 
-
     interface Transaction {
         val amount:GBP
     }

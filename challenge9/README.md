@@ -1,0 +1,22 @@
+**Challenge 9**
+
+The GameLedger is created as a singleton simply by creating a object rather than a class and then an instance of the class.
+
+GameLedger contains a mutable list of _Transaction_. 
+I have followed a similar pattern to Challenge 8 as I have used a hierarchy of interfaces instead of abstract classes or sealed classes to define different types of Transaction.
+
+The _Transaction_ interface contains a single property which is _amount_:GBP as these are financial transactions. 
+
+Every transaction has either a _playerCredited_ or _playerDebited_ property which are represented by intefaces _CreditTransaction_ and _DebitTransaction_ which are both children of Transaction. 
+
+The transaction for when one player pays rent to another, _PlayerPayingAnotherPlayer_, conforms to both CreditTransaction and DebitTransaction.
+Other interfaces are _PlayerPurchasingProperty_ and _PlayerBuildingOnLocation_ which are both children of DebitTransaction.
+
+Using this approach it should be possible to determine all money paid to a player by filtering on all transactions of type CreditTransaction rather than having to filter on lots of different types of transaction and updating the filter each time a new transaction type is invented.
+
+As all transactions are indepent entities that only contain properties defined in their interfaces I've not bothered creating any classes for each different type of transaction and just added objects directly to the list of transactions in the GameLedger.
+
+**Testing**
+
+Using a Singleton for GameLedger had an interesting side effect when testing. As the unit tests can run in any sequence (unless you put them in one big test function) you have to either interogate the last element added to the list of transactions rather than element at position [x] as its not possible to know what [x] should be. There is a risk that two tests run concurrently which would mess up that approach but I've not encountered that problem. 
+
