@@ -1,5 +1,4 @@
 import junit.framework.TestCase.assertEquals
-import junit.framework.TestCase.assertTrue
 import org.junit.Test
 
 class MainTest {
@@ -9,7 +8,7 @@ class MainTest {
         val newPlayer = object:Player{override val name = "A playerCredited"}
         GameLedger.addNewPlayer(newPlayer, GBP(500))
 
-        val lastTransaction = GameLedger.transactions.last() as GameLedger.Crediting
+        val lastTransaction = GameLedger.transactions.last() as GameLedger.CreditTransaction
         assertEquals(lastTransaction.playerCredited, newPlayer)
         assertEquals(lastTransaction.amount, GBP(500))
     }
@@ -23,14 +22,14 @@ class MainTest {
 
         assertEquals(GameLedger.transactions.size, originalNoOfTransactions + 1)
 
-        val lastTransaction = GameLedger.transactions.last() as GameLedger.Crediting
+        val lastTransaction = GameLedger.transactions.last() as GameLedger.CreditTransaction
         assertEquals(lastTransaction.playerCredited, player)
         assertEquals(lastTransaction.amount, GBP(100))
 
         GameLedger.addFeeForPlayerPassingGo(player, GBP(100))
         assertEquals(GameLedger.transactions.size, originalNoOfTransactions + 2)
 
-        val secondTransaction = GameLedger.transactions.last() as GameLedger.Crediting
+        val secondTransaction = GameLedger.transactions.last() as GameLedger.CreditTransaction
         assertEquals(secondTransaction.playerCredited, player)
         assertEquals(secondTransaction.amount, GBP(100))
     }

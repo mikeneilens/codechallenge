@@ -7,32 +7,28 @@ object GameLedger {
         val amount:GBP
     }
 
-    interface Crediting:Transaction{
+    interface CreditTransaction:Transaction{
         val playerCredited:Player
     }
-    interface Debiting:Transaction{
+    interface DebitTransaction:Transaction{
         val playerDebited:Player
     }
-    interface PlayerPayingAnotherPlayer:Crediting, Debiting {
-        override  val playerCredited:Player
-        override val playerDebited:Player
-    }
-    interface PlayerPurchasingProperty:Debiting{
-        override val playerDebited:Player
+    interface PlayerPayingAnotherPlayer:CreditTransaction, DebitTransaction
+
+    interface PlayerPurchasingProperty:DebitTransaction{
         val location:Purchaseable
     }
-    interface PlayerBuildingOnLocation:Debiting {
-        override val playerDebited:Player
+    interface PlayerBuildingOnLocation:DebitTransaction {
         val location:Buildable
         val building:Building
     }
 
     fun addNewPlayer(player:Player, startingBalance:GBP ) {
-        transactions.add(object:Crediting{override val playerCredited = player; override val amount = startingBalance})
+        transactions.add(object:CreditTransaction{override val playerCredited = player; override val amount = startingBalance})
     }
 
     fun addFeeForPlayerPassingGo(player: Player, fee:GBP) {
-        transactions.add(object:Crediting{override val playerCredited = player; override val amount = fee})
+        transactions.add(object:CreditTransaction{override val playerCredited = player; override val amount = fee})
     }
 
     fun payRent(playerCredited: Player, playerDebted: Player, rent: GBP) {
