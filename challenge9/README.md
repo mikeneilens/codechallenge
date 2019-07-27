@@ -9,7 +9,7 @@ The _Transaction_ interface contains a single property which is _amount_:GBP as 
 
 Every transaction has either a _playerCredited_ or _playerDebited_ property which are represented by intefaces _CreditTransaction_ and _DebitTransaction_ which are both children of Transaction. 
 
-The transaction for when one player pays rent to another, _PlayerPayingAnotherPlayer_, conforms to both CreditTransaction and DebitTransaction.
+The interface for when one player pays rent to another, _PlayerPayingAnotherPlayer_, conforms to both CreditTransaction and DebitTransaction.
 Other interfaces are _PlayerPurchasingProperty_ and _PlayerBuildingOnLocation_ which are both children of DebitTransaction.
 
 Using this approach it should be possible to determine all money paid to a player by filtering on all transactions of type CreditTransaction rather than having to filter on lots of different types of transaction and updating the filter each time a new transaction type is invented.
