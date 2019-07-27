@@ -35,10 +35,6 @@ object GameLedger {
         transactions.add(object:Crediting{override val playerCredited = player; override val amount = fee})
     }
 
-    fun reset() {
-        transactions.clear()
-    }
-
     fun payRent(playerCredited: Player, playerDebted: Player, rent: GBP) {
         transactions.add(object:PlayerPayingAnotherPlayer{
             override val playerCredited = playerCredited
