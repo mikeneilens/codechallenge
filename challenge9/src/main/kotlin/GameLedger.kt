@@ -7,32 +7,32 @@ object GameLedger {
         val amount:GBP
     }
 
-    interface PlayerCredited:Transaction{
+    interface Crediting:Transaction{
         val playerCredited:Player
     }
-    interface PlayerDebited:Transaction{
+    interface Debiting:Transaction{
         val playerDebited:Player
     }
-    interface PlayerPayingAnotherPlayer:PlayerCredited, PlayerDebited {
+    interface PlayerPayingAnotherPlayer:Crediting, Debiting {
         override  val playerCredited:Player
         override val playerDebited:Player
     }
-    interface PlayerPurchasesProerty:PlayerDebited{
+    interface PlayerPurchasingProperty:Debiting{
         override val playerDebited:Player
         val location:Purchaseable
     }
-    interface PlayerBuildsOnLocation:PlayerDebited {
+    interface PlayerBuildingOnLocation:Debiting {
         override val playerDebited:Player
         val location:Buildable
         val building:Building
     }
 
     fun addNewPlayer(player:Player, startingBalance:GBP ) {
-        transactions.add(object:PlayerCredited{override val playerCredited = player; override val amount = startingBalance})
+        transactions.add(object:Crediting{override val playerCredited = player; override val amount = startingBalance})
     }
 
     fun addFeeForPlayerPassingGo(player: Player, fee:GBP) {
-        transactions.add(object:PlayerCredited{override val playerCredited = player; override val amount = fee})
+        transactions.add(object:Crediting{override val playerCredited = player; override val amount = fee})
     }
 
     fun reset() {
@@ -48,7 +48,7 @@ object GameLedger {
     }
 
     fun purchaseLocation(player: Player, location: Purchaseable, purchasePrice: GBP) {
-        transactions.add(object:PlayerPurchasesProerty{
+        transactions.add(object:PlayerPurchasingProperty{
             override val playerDebited = player
             override val location = location
             override val amount = purchasePrice
@@ -56,15 +56,11 @@ object GameLedger {
     }
 
     fun buildOnLocation(player: Player, location: Buildable, buildingType: Building, developmentCost: GBP) {
-        transactions.add(object:PlayerBuildsOnLocation {
+        transactions.add(object:PlayerBuildingOnLocation {
             override val playerDebited = player
             override val location = location
             override val building = buildingType
             override val amount = developmentCost
         })
     }
-}
-
-enum class Building {
-    minimarket, supermarket, megastore
 }

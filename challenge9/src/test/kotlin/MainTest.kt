@@ -19,7 +19,7 @@ class MainTest {
         val newPlayer = object:Player{override val name = "A playerCredited"}
         GameLedger.addNewPlayer(newPlayer, GBP(500))
 
-        val firstTransaction = GameLedger.transactions[0] as GameLedger.PlayerCredited
+        val firstTransaction = GameLedger.transactions[0] as GameLedger.Crediting
         assertEquals(firstTransaction.playerCredited, newPlayer)
         assertEquals(firstTransaction.amount, GBP(500))
     }
@@ -33,14 +33,14 @@ class MainTest {
 
         assertEquals(GameLedger.transactions.size, 1)
 
-        val firstTransaction = GameLedger.transactions[0] as GameLedger.PlayerCredited
+        val firstTransaction = GameLedger.transactions[0] as GameLedger.Crediting
         assertEquals(firstTransaction.playerCredited, player)
         assertEquals(firstTransaction.amount, GBP(100))
 
         GameLedger.addFeeForPlayerPassingGo(player, GBP(100))
         assertEquals(GameLedger.transactions.size, 2)
 
-        val secondTransaction = GameLedger.transactions[1] as GameLedger.PlayerCredited
+        val secondTransaction = GameLedger.transactions[1] as GameLedger.Crediting
         assertEquals(secondTransaction.playerCredited, player)
         assertEquals(secondTransaction.amount, GBP(100))
     }
@@ -74,7 +74,7 @@ class MainTest {
 
         GameLedger.purchaseLocation(player, location, purchasePrice)
 
-        val firstTransaction = GameLedger.transactions[0] as GameLedger.PlayerPurchasesProerty
+        val firstTransaction = GameLedger.transactions[0] as GameLedger.PlayerPurchasingProperty
         assertEquals(firstTransaction.playerDebited, player)
         assertEquals(firstTransaction.location, location)
         assertEquals(firstTransaction.amount, purchasePrice)
@@ -97,7 +97,7 @@ class MainTest {
 
         GameLedger.buildOnLocation(player, location, buildingType, developmentCost )
 
-        val firstTransaction = GameLedger.transactions[0] as GameLedger.PlayerBuildsOnLocation
+        val firstTransaction = GameLedger.transactions[0] as GameLedger.PlayerBuildingOnLocation
         assertEquals(firstTransaction.playerDebited, player)
         assertEquals(firstTransaction.location, location)
         assertEquals(firstTransaction.building, buildingType)
