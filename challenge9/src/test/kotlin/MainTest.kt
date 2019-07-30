@@ -84,4 +84,19 @@ class MainTest {
         assertEquals(lastTransaction.amount, developmentCost)
 
     }
+
+    @Test
+    fun `get all credits for a player`() {
+        val player = object:Player{override val name = "Mike"}
+        val otherPlayer = object:Player{override val name = "Donald"}
+
+        GameLedger.addNewPlayer(player,GBP(2000))
+        GameLedger.addFeeForPlayerPassingGo(player, GBP(100))
+        GameLedger.payRent(player, otherPlayer, GBP(150))
+
+        val creditTransactionsForMike = GameLedger.transactions.filter { it is GameLedger.CreditTransaction && it.playerCredited == player }
+        val totalCredits = creditTransactionsForMike.fold(0){total, transaction -> total + transaction.amount.value}
+
+        assertEquals(totalCredits, 2000 + 100 + 150 )
+    }
 }

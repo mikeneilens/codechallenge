@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MainTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2019-07-27T12:07:59" hostname="MacBook-Pro-2" time="0.017">
+<testsuite name="MainTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-07-30T16:36:57" hostname="MacBook-Pro-2" time="0.006">
   <properties/>
-  <testcase name="Transaction is added when a player purchases a property from the bank" classname="MainTest" time="0.011"/>
-  <testcase name="Transaction is added when a player builds on a location" classname="MainTest" time="0.001"/>
-  <testcase name="Transaction is added to GameLedger for new player" classname="MainTest" time="0.001"/>
-  <testcase name="Transaction is added to GameLedger when player passes go" classname="MainTest" time="0.001"/>
-  <testcase name="Transaction is added to GameLedger when one player pays rent to another" classname="MainTest" time="0.002"/>
+  <testcase name="get all credits for a player" classname="MainTest" time="0.006"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
