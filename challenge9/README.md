@@ -1,4 +1,4 @@
-**Challenge 9**
+**Challenge 9 - Kotlin**
 
 The GameLedger is created as a singleton simply by creating a object rather than a class and then an instance of the class.
 
@@ -20,3 +20,12 @@ As all transactions are indepent entities that only contain properties defined i
 
 Using a Singleton for GameLedger had an interesting side effect when testing. As the unit tests can run in any sequence (unless you put them in one big test function) you have to either interogate the last element added to the list of transactions rather than element at position [x] as its not possible to know what [x] should be. There is a risk that two tests run concurrently which would mess up that approach but I've not encountered that problem. 
 
+**Challenge 9 - Swift**
+
+I've taken a different approach to the approach I took with Kotlin. The GameLedger is a struct containing static properties including a mutable array of _Traransaction_.
+
+Transaction is an enum with associated values, with each case representing a different kind of transaction. This is very similar to a Sealed Class in Kotlin.
+
+This approach works well when creating transactions and makes the code nice and compact.
+ 
+I did a test to obtain the total amount that a player has been credited with in the GameLedger which required much more code than doing the same in Kotlin using an interface based appraoch. This was because I had to create a switch statement that checks every possible case of Transaction, using pattern matching to get info about the player and amount for each transaction of the right type. Adding new types of transactions would break the code as Swift (helpfully) insists that the switch contains every possible case. Adding a default case would shorten the code but it's usually better for the code to break when new transactions are added than to continue working (potentually incorrectly).
