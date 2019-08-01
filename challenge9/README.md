@@ -22,7 +22,7 @@ Using a Singleton for GameLedger had an interesting side effect when testing. As
 
 **Challenge 9 - Swift**
 
-I've taken a different approach to the approach I took with Kotlin. The GameLedger is a struct containing static properties including a mutable array of _Traransaction_.
+I've taken a different approach to the approach I took with Kotlin. The GameLedger is a struct containing static properties including a mutable array of _Transaction_.
 
 Transaction is an enum with associated values, with each case representing a different kind of transaction. This is very similar to a Sealed Class in Kotlin.
 
