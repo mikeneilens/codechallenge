@@ -152,6 +152,47 @@ class Challenge9Tests: XCTestCase {
             XCTAssertFalse(true)
         }
     }
+    
+    func test_building_on_location() {
+
+        let buyer = Player(name: "player1")
+        let retailSite = RetailSite(group: .Green, name: "Victoria", purchasePrice: GBP(200),
+                                    undeveloped: DevelopmentType.RentOnly(rent: GBP(10)),
+                                    miniStore: DevelopmentType.BuildCostAndRent(buildCost: GBP(200), rent: GBP(50)),
+                                    supermarket: DevelopmentType.BuildCostAndRent(buildCost: GBP(500),rent:GBP(100)),
+                                    megaStore: DevelopmentType.BuildCostAndRent(buildCost:GBP(1000),rent:GBP(300)))
+
+        GameLedger.build(.supermarket, onLocation: retailSite, owner: buyer, buildCost: GBP(400) )
+
+        if case .buildOnLocation(let transactionLocation, let transactionBuilding, let transactionPlayer, let transactionAmount )? = GameLedger.transactions.last {
+            XCTAssertEqual(buyer, transactionPlayer)
+            XCTAssertEqual(retailSite.name, transactionLocation.name)
+            XCTAssertEqual(.supermarket, transactionBuilding)
+            XCTAssertEqual(GBP(400), transactionAmount)
+        }
+        
+    }
+    
+    func test_total_credit_for_a_player() {
+        let player = Player(name: "Mike")
+        let otherPlayer = Player(name: "Donald")
+        
+        GameLedger.addNew(player:player , startingBalance: GBP(2000))
+        GameLedger.pay(fee: GBP(200), toPlayer: player)
+        GameLedger.pay(rent: GBP(100), from: otherPlayer, to: player)
+        
+        let creditAmountForPlayer = {(transaction:GameLedger.Transaction) -> Int in
+            switch transaction {
+                case .creditPlayer( let toPlayer, let amount),
+                     .payAnotherPlayer( _, let toPlayer, let amount):
+                    return toPlayer == player ?  amount.value  : 0
+                case .buildOnLocation, .purchaseLocation:
+                    return 0
+            }
+        }
+        let totalAmount = GameLedger.transactions.map(creditAmountForPlayer).reduce(0,+)
+        XCTAssertEqual(2000 + 200 + 100, totalAmount)
+    }
 }
 
 Challenge9Tests.defaultTestSuite.run()
