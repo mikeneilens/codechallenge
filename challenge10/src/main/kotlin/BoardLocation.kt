@@ -1,6 +1,8 @@
 class BoardLocation(locations:List<Location>) {
-    val locations:List<Location>
+
+    private val locations:List<Location>
     private var locationIndex = 0
+
     var hasPassedGo = false
 
     fun currentLocation():Location = this.locations[locationIndex]
