@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="MainTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-08-12T17:55:29" hostname="MacBook-Pro-2" time="0.046">
+  <properties/>
+  <testcase name="test 100 dice contain one of each possible value()" classname="MainTest" time="0.046"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
