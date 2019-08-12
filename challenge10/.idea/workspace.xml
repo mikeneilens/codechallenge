@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3bfd32a8-46fd-4dc0-aa92-75bed44975bf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BoardLocationTest.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/base-style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/js/report.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/default-package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BoardLocationTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/BoardLocation.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/BoardLocation.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Dice.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Dice.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/BoardLocationTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/BoardLocationTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/DiceTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/DiceTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../challenge8/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge8/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../challenge9/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge9/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -62,7 +50,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/DiceTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
+            <state relative-caret-position="1215">
               <caret line="81" column="5" lean-forward="true" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
               <folding>
                 <element signature="e#0#75#0" expanded="true" />
@@ -71,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/BoardLocationTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="507">
-              <caret line="47" column="34" selection-start-line="47" selection-start-column="34" selection-end-line="47" selection-end-column="34" />
+            <state relative-caret-position="855">
+              <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
               <folding>
                 <element signature="e#0#137#0" expanded="true" />
               </folding>
@@ -92,11 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/BoardLocation.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+            <state relative-caret-position="45">
+              <caret line="3" column="6" lean-forward="true" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -129,10 +117,10 @@
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/Location.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/BoardLocation.kt" />
-        <option value="$PROJECT_DIR$/src/test/kotlin/BoardLocationTest.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/Dice.kt" />
         <option value="$PROJECT_DIR$/src/test/kotlin/DiceTest.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/BoardLocation.kt" />
+        <option value="$PROJECT_DIR$/src/test/kotlin/BoardLocationTest.kt" />
       </list>
     </option>
   </component>
@@ -289,12 +277,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="BoardLocationTest.Initial board location is Go" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="BoardLocationTest.Initial board has hasPassedGo set correctly depending on locationIndex sent to the constructor" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;BoardLocationTest.Initial board location is Go&quot;" />
+        <option name="scriptParameters" value="--tests &quot;BoardLocationTest.Initial board has hasPassedGo set correctly depending on locationIndex sent to the constructor&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -309,12 +297,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="DiceTest.toString formats dice value correctly" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="BoardLocationTest.Initial board location is Go" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;DiceTest.toString formats dice value correctly&quot;" />
+        <option name="scriptParameters" value="--tests &quot;BoardLocationTest.Initial board location is Go&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -358,9 +346,9 @@
       <list>
         <item itemvalue="Gradle.BoardLocationTest.Adding dice of value 4 to an inital boardLocation with index set to board size - 3 updates the boardLocation to show location at position 1 in the Location array" />
         <item itemvalue="Gradle.BoardLocationTest" />
+        <item itemvalue="Gradle.BoardLocationTest.Initial board has hasPassedGo set correctly depending on locationIndex sent to the constructor" />
         <item itemvalue="Gradle.BoardLocationTest.Adding dice of value 4 to an inital boardLocation updates the boardLocation to show location at position 4 in the Location array" />
         <item itemvalue="Gradle.BoardLocationTest.Initial board location is Go" />
-        <item itemvalue="Gradle.DiceTest.toString formats dice value correctly" />
       </list>
     </recent_temporary>
   </component>
@@ -385,18 +373,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="DiceTest_toString_formats_dice_value_correctly - 2019.08.12 at 20h 04m 45s.xml">
-      <configuration name="DiceTest.toString formats dice value correctly" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="DiceTest_toString_formats_dice_value_correctly - 2019.08.12 at 20h 04m 59s.xml">
-      <configuration name="DiceTest.toString formats dice value correctly" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="BoardLocationTest_Initial_board_location_is_Go - 2019.08.12 at 20h 19m 22s.xml">
-      <configuration name="BoardLocationTest.Initial board location is Go" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="BoardLocationTest - 2019.08.12 at 20h 21m 03s.xml">
-      <configuration name="BoardLocationTest" configurationId="GradleRunConfiguration" />
-    </history-entry>
     <history-entry file="BoardLocationTest - 2019.08.12 at 20h 22m 15s.xml">
       <configuration name="BoardLocationTest" configurationId="GradleRunConfiguration" />
     </history-entry>
@@ -413,6 +389,18 @@
       <configuration name="BoardLocationTest.Adding dice of value 4 to an inital boardLocation with index set to board size - 3 updates the boardLocation to show location at position 1 in the Location array" configurationId="GradleRunConfiguration" />
     </history-entry>
     <history-entry file="BoardLocationTest_Adding_dice_of_value_4_to_an_inital_boardLocation_with_index_set_to_board_size_-_3_updates_the_boardLocation_to_show_location_at_position_1_in_the_Location_array - 2019.08.12 at 20h 28m 28s.xml">
+      <configuration name="BoardLocationTest.Adding dice of value 4 to an inital boardLocation with index set to board size - 3 updates the boardLocation to show location at position 1 in the Location array" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="BoardLocationTest_Initial_board_has_hasPassedGo_set_correctly_depending_on_locationIndex_sent_to_the_constructor - 2019.08.12 at 21h 03m 43s.xml">
+      <configuration name="BoardLocationTest.Initial board has hasPassedGo set correctly depending on locationIndex sent to the constructor" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="BoardLocationTest_Initial_board_has_hasPassedGo_set_correctly_depending_on_locationIndex_sent_to_the_constructor - 2019.08.12 at 21h 04m 34s.xml">
+      <configuration name="BoardLocationTest.Initial board has hasPassedGo set correctly depending on locationIndex sent to the constructor" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="BoardLocationTest - 2019.08.12 at 21h 04m 42s.xml">
+      <configuration name="BoardLocationTest" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="BoardLocationTest_Adding_dice_of_value_4_to_an_inital_boardLocation_with_index_set_to_board_size_-_3_updates_the_boardLocation_to_show_location_at_position_1_in_the_Location_array - 2019.08.12 at 21h 05m 38s.xml">
       <configuration name="BoardLocationTest.Adding dice of value 4 to an inital boardLocation with index set to board size - 3 updates the boardLocation to show location at position 1 in the Location array" configurationId="GradleRunConfiguration" />
     </history-entry>
   </component>
@@ -458,17 +446,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Location.kt">
+    <entry file="file://$PROJECT_DIR$/src/test/kotlin/DiceTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/BoardLocation.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+        <state relative-caret-position="1215">
+          <caret line="81" column="5" lean-forward="true" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#75#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -479,23 +463,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/kotlin/DiceTest.kt">
+    <entry file="file://$PROJECT_DIR$/src/test/kotlin/BoardLocationTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="81" column="5" lean-forward="true" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
+        <state relative-caret-position="855">
+          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
           <folding>
-            <element signature="e#0#75#0" expanded="true" />
+            <element signature="e#0#137#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/kotlin/BoardLocationTest.kt">
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Location.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="47" column="34" selection-start-line="47" selection-start-column="34" selection-end-line="47" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#137#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/BoardLocation.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="6" lean-forward="true" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
         </state>
       </provider>
     </entry>

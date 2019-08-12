@@ -70,9 +70,7 @@
       <change beforePath="$PROJECT_DIR$/../challenge10/build/test-results/test/TEST-BoardLocationTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge10/build/test-results/test/TEST-BoardLocationTest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../challenge10/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge10/build/test-results/test/binary/results.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../challenge10/src/main/kotlin/BoardLocation.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge10/src/main/kotlin/BoardLocation.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../challenge10/src/main/kotlin/Dice.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge10/src/main/kotlin/Dice.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../challenge10/src/test/kotlin/BoardLocationTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge10/src/test/kotlin/BoardLocationTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../challenge10/src/test/kotlin/DiceTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge10/src/test/kotlin/DiceTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../challenge9/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge9/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />

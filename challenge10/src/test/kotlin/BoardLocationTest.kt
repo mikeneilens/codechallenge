@@ -16,6 +16,15 @@ class BoardLocationTest {
     }
 
     @Test
+    fun `Initial board has hasPassedGo set correctly depending on locationIndex sent to the constructor`() {
+        val boardLocation = BoardLocation(locations, locations.size  - 1)
+        assertEquals(false, boardLocation.hasPassedGo)
+
+        val boardLocationPassedGo = BoardLocation(locations, locations.size  + 1)
+        assertEquals(true, boardLocationPassedGo.hasPassedGo)
+    }
+
+    @Test
     fun `Adding dice of value 4 to an inital boardLocation updates the boardLocation to show location at position 4 in the Location array`() {
         val boardLocation = BoardLocation(locations)
         var dice = Dice()
@@ -46,5 +55,7 @@ class BoardLocationTest {
         }
         val newBoardLocation = boardLocation + dice
         assertEquals(locations[1], newBoardLocation.currentLocation())
+
+        assertEquals(true, newBoardLocation.hasPassedGo)
     }
 }

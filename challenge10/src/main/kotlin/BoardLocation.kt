@@ -1,6 +1,7 @@
 class BoardLocation(locations:List<Location>) {
     val locations:List<Location>
     private var locationIndex = 0
+    var hasPassedGo = false
 
     fun currentLocation():Location = this.locations[locationIndex]
 
@@ -9,12 +10,13 @@ class BoardLocation(locations:List<Location>) {
     }
 
     constructor (locations:List<Location>, locationIndex:Int):this(locations) {
-        this.locationIndex = locationIndex
+        this.locationIndex = locationIndex % locations.size
+        this.hasPassedGo = (this.locationIndex != locationIndex)
     }
 
     operator fun plus(other:Dice):BoardLocation {
-        val newLocation = (this.locationIndex + other.totalValue) % locations.size
-        return BoardLocation(this.locations, newLocation)
+        val newLocationIndex = (this.locationIndex + other.totalValue)
+        return BoardLocation(this.locations, newLocationIndex)
     }
 }
 
