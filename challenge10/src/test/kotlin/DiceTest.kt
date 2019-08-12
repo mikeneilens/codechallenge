@@ -72,4 +72,12 @@ class DiceTest {
         dicesWithValue11.size + dicesWithValue12.size)
     }
 
+    @Test
+    fun `toString formats dice value correctly when a value of 11 is thrown`() {
+        var dice = Dice()
+        while (dice.totalValue != 11) {
+            dice = Dice()
+        }
+        assertTrue(dice.toString() == "You threw a 5 and a 6" || dice.toString() == "You threw a 6 and a 5" )
+    }
 }

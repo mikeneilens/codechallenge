@@ -1,9 +1,22 @@
-class BoardLocation(private val locations:List<Location>) {
+class BoardLocation(locations:List<Location>) {
+    val locations:List<Location>
     private var locationIndex = 0
 
     fun currentLocation():Location = this.locations[locationIndex]
-}
 
+    init {
+        this.locations = locations
+    }
+
+    constructor (locations:List<Location>, locationIndex:Int):this(locations) {
+        this.locationIndex = locationIndex
+    }
+
+    operator fun plus(other:Dice):BoardLocation {
+        val newLocation = (this.locationIndex + other.totalValue) % locations.size
+        return BoardLocation(this.locations, newLocation)
+    }
+}
 
 val aFactory = FactoryOrWarehouse("A Factory")
 val aWarehouse = FactoryOrWarehouse("A Warehouse")
