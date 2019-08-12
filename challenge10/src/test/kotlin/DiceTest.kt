@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
-class MainTest {
+class DiceTest {
 
     @Test
     fun `test Dice Is Between Two And Twelve`(){

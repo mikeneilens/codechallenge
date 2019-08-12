@@ -1,14 +1,4 @@
 
-sealed class X (open val v:Int) {
-    class Y(val v:Int)
-    class Z()
-}
-//val x = X()// this isn't allowed
-val y = X.Y(2)
-val z = X.Z()
-
-
-
 interface Location
 
 interface Purchaseable:Location {
