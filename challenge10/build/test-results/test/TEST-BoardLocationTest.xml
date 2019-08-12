@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BoardLocationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-08-12T20:05:37" hostname="MacBook-Pro-2" time="0.062">
-  <properties/>
-  <testcase name="Adding dice of value 4 to an inital boardLocation with index set to board size - 3 updates the boardLocation to show location at position 1 in the Location array()" classname="BoardLocationTest" time="0.062"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

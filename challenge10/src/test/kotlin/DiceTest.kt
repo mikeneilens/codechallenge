@@ -78,6 +78,6 @@ class DiceTest {
         while (dice.totalValue != 11) {
             dice = Dice()
         }
-        assertTrue(dice.toString() == "You threw a 5 and a 6" || dice.toString() == "You threw a 6 and a 5" )
+        assertTrue("$dice" == "You threw a 5 and a 6" || "$dice" == "You threw a 6 and a 5" )
     }
 }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="DiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-08-12T20:09:34" hostname="MacBook-Pro-2" time="0.03">
+  <properties/>
+  <testcase name="toString formats dice value correctly when a value of 11 is thrown()" classname="DiceTest" time="0.03"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
