@@ -1,15 +1,11 @@
-class BoardLocation(locations:List<Location>) {
+class BoardLocation(private val locations: List<Location>) {
 
-    private val locations:List<Location>
     private var locationIndex = 0
 
     var hasPassedGo = false
+        private set
 
-    fun currentLocation():Location = this.locations[locationIndex]
-
-    init {
-        this.locations = locations
-    }
+    val currentLocation get() = this.locations[locationIndex]
 
     constructor (locations:List<Location>, locationIndex:Int):this(locations) {
         this.locationIndex = locationIndex % locations.size
