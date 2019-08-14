@@ -5,16 +5,21 @@ class BoardLocation(private val locations: List<Location>) {
     var hasPassedGo = false
         private set
 
-    val currentLocation get() = this.locations[locationIndex]
+    val currentLocation get() = locations[locationIndex]
 
-    constructor (locations:List<Location>, locationIndex:Int):this(locations) {
-        this.locationIndex = locationIndex % locations.size
-        this.hasPassedGo = (this.locationIndex != locationIndex)
+    constructor (_locations:List<Location>, _locationIndex:Int):this(_locations) {
+
+        if (_locationIndex > locations.lastIndex) {
+            this.locationIndex = _locationIndex % locations.size
+            this.hasPassedGo = true
+        } else {
+            this.locationIndex = _locationIndex
+        }
+
     }
 
-    operator fun plus(other:Dice):BoardLocation {
-        val newLocationIndex = (this.locationIndex + other.totalValue)
+    operator fun plus(dice:Dice):BoardLocation {
+        val newLocationIndex = (this.locationIndex + dice.totalValue)
         return BoardLocation(this.locations, newLocationIndex)
     }
 }
-
