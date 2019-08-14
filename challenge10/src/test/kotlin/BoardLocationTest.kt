@@ -1,18 +1,17 @@
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 
 class BoardLocationTest {
     @Test
     fun `Initial board location is Go` () {
         val boardLocation = BoardLocation(locations)
-        assertEquals(Go, boardLocation.currentLocation())
+        assertEquals(Go, boardLocation.currentLocation)
     }
 
     @Test
     fun `Initial board location is location at position 4 if a locationIndex is given to the constructor`() {
         val boardLocation = BoardLocation(locations, 4)
-        assertEquals(locations[4], boardLocation.currentLocation())
+        assertEquals(locations[4], boardLocation.currentLocation)
     }
 
     @Test
@@ -32,7 +31,7 @@ class BoardLocationTest {
             dice = Dice()
         }
         val newBoardLocation = boardLocation + dice
-        assertEquals(locations[4], newBoardLocation.currentLocation())
+        assertEquals(locations[4], newBoardLocation.currentLocation)
     }
 
     @Test
@@ -43,7 +42,7 @@ class BoardLocationTest {
             dice = Dice()
         }
         val newBoardLocation = boardLocation + dice
-        assertEquals(locations[9], newBoardLocation.currentLocation())
+        assertEquals(locations[9], newBoardLocation.currentLocation)
     }
 
     @Test
@@ -54,7 +53,7 @@ class BoardLocationTest {
             dice = Dice()
         }
         val newBoardLocation = boardLocation + dice
-        assertEquals(locations[1], newBoardLocation.currentLocation())
+        assertEquals(locations[1], newBoardLocation.currentLocation)
 
         assertEquals(true, newBoardLocation.hasPassedGo)
     }
