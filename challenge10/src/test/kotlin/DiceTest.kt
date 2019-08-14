@@ -20,9 +20,19 @@ class DiceTest {
     }
 
     @Test
-    fun `test 100 dice contain one of each possible value`() {
+    fun `test 200 dice contain one of each possible value`() {
         val dices = listOf(
             Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice()
+            ,Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice()
+            ,Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice()
+            ,Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice()
+            ,Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice()
+            ,Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice()
+            ,Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice()
+            ,Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice()
+            ,Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice()
+            ,Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice()
+            ,Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice()
             ,Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice()
             ,Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice()
             ,Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice(),Dice()
@@ -67,7 +77,7 @@ class DiceTest {
         val dicesWithValue12 = dices.filter{it.totalValue == 12}
         assertTrue(dicesWithValue12.size > 0 )
 
-        assertEquals(100,dicesWithValue2.size + dicesWithValue3.size + dicesWithValue4.size + dicesWithValue5.size +
+        assertEquals(200,dicesWithValue2.size + dicesWithValue3.size + dicesWithValue4.size + dicesWithValue5.size +
         dicesWithValue6.size + dicesWithValue7.size + dicesWithValue8.size + dicesWithValue9.size + dicesWithValue10.size +
         dicesWithValue11.size + dicesWithValue12.size)
     }

@@ -1,7 +1,8 @@
-import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.*
+
 import org.junit.jupiter.api.Test
 
-class PlayerTest {
+class PlayerTestOld {
     @Test
     fun `Location of a new player is first location on the board`() {
         val player = Player("Mike")
