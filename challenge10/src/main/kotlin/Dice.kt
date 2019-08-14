@@ -7,8 +7,6 @@ class Dice {
     val totalValue:Int
 
     init {
-//        diceOne = Random.nextInt(1, 7)
-//        diceTwo = Random.nextInt(1, 7)
         totalValue = diceOne + diceTwo
     }
 
