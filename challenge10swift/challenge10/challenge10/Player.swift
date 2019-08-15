@@ -1,9 +1,18 @@
-//
-//  Player.swift
-//  challenge10
-//
-//  Created by Michael Neilens on 15/08/2019.
-//  Copyright © 2019 Michael Neilens. All rights reserved.
-//
-
 import Foundation
+
+struct Player {
+    let name:String
+    private var boardLocation:BoardLocation = BoardLocation(locations:locations)
+    
+    var currentLocation:Location {return boardLocation.currentLocation}
+    var hasPassedGo:Bool {return boardLocation.hasPassedGo}
+    
+    init(_ _name:String) {
+        name = _name
+    }
+    
+    mutating func move(using dice: Dice) {
+        boardLocation = boardLocation.move(using: dice)
+    }
+    
+}

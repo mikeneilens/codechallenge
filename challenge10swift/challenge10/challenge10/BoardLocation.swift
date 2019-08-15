@@ -31,7 +31,7 @@ struct BoardLocation {
         }
     }
     
-    func move(dice:Dice) -> BoardLocation {
+    func move(using dice:Dice) -> BoardLocation {
         let newLocationIndex = (locationIndex + dice.total)
         return BoardLocation(locations:locations, locationIndex:newLocationIndex)
     }

@@ -121,7 +121,7 @@ class diceTest: XCTestCase {
         let boardLocation = BoardLocation(locations: locations)
         var dice = Dice()
         while (dice.total != 4) {dice = Dice()}
-        let newBoardLocation = boardLocation.move(dice:dice)
+        let newBoardLocation = boardLocation.move(using:dice)
         XCTAssertTrue(locations[4] == newBoardLocation.currentLocation)
     }
     
@@ -131,7 +131,7 @@ class diceTest: XCTestCase {
         var dice = Dice()
         while (dice.total != 4) {dice = Dice() }
         
-        let newBoardLocation = boardLocation.move(dice:dice)
+        let newBoardLocation = boardLocation.move(using:dice)
         XCTAssertTrue(locations[9] == newBoardLocation.currentLocation)
     }
     
@@ -141,8 +141,85 @@ class diceTest: XCTestCase {
         var dice = Dice()
         while (dice.total != 4) {dice = Dice() }
     
-        let newBoardLocation = boardLocation.move(dice: dice)
+        let newBoardLocation = boardLocation.move(using:dice)
         XCTAssertTrue(locations[1] == newBoardLocation.currentLocation)
         XCTAssertTrue(newBoardLocation.hasPassedGo)
+    }
+    
+    func test_Location_of_a_new_player_is_first_location_on_the_board() {
+        let player = Player("Mike")
+        XCTAssertEqual("Mike", player.name)
+        XCTAssertTrue(locations[0] == player.currentLocation)
+        XCTAssertFalse(player.hasPassedGo)
+    }
+    
+    
+    func test_Location_of_a_player_after_moving_a_new_player_using_a_dice_value_of_4_is_location_4() {
+        var player = Player("Mike")
+    
+        var dice = Dice()
+        while (dice.total != 4) { dice = Dice() }
+    
+        player.move(using:dice)
+    
+        XCTAssertTrue(locations[4] == player.currentLocation)
+        XCTAssertFalse(player.hasPassedGo)
+    }
+    
+    
+    func test_Location_of_a_player_after_moving_a_player_at_position_4_using_a_dice_value_of_6_is_location_10() {
+        var player = Player("Mike")
+    
+        var dice = Dice()
+        while (dice.total != 4) { dice = Dice() }
+    
+        player.move(using:dice)
+    
+        while (dice.total != 6) { dice = Dice() }
+    
+        player.move(using:dice)
+    
+        XCTAssertTrue(locations[10] == player.currentLocation)
+        XCTAssertFalse(player.hasPassedGo)
+    }
+    
+    
+    func test_Location_of_a_player_after_moving_a_player_at_position_10_using_a_dice_value_of_5_is_location_2() {
+        var player = Player("Mike")
+    
+        var dice = Dice()
+        while (dice.total != 4) { dice = Dice() }
+        player.move(using:dice)
+    
+        while (dice.total != 6) { dice = Dice() }
+        player.move(using:dice)
+    
+        while (dice.total != 5) { dice = Dice() }
+        player.move(using:dice)
+    
+        XCTAssertTrue(locations[2] == player.currentLocation)
+        XCTAssertTrue(player.hasPassedGo)
+
+    }
+    
+    
+    func test_Moving_a_player_who_has_passed_go_resets_the_hasPassedGo_flag_to_false() {
+        var player = Player("Mike")
+    
+        var dice = Dice()
+        while (dice.total != 4) { dice = Dice() }
+        player.move(using:dice)
+    
+        while (dice.total != 6) { dice = Dice() }
+        player.move(using:dice)
+    
+        while (dice.total != 5) { dice = Dice() }
+        player.move(using:dice)
+    
+        XCTAssertTrue(player.hasPassedGo)
+    
+        player.move(using:dice)
+    
+        XCTAssertFalse(player.hasPassedGo)
     }
 }
