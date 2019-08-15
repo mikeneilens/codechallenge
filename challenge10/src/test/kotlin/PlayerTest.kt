@@ -2,7 +2,7 @@ import org.junit.jupiter.api.Assertions.*
 
 import org.junit.jupiter.api.Test
 
-class PlayerTestOld {
+class PlayerTest {
     @Test
     fun `Location of a new player is first location on the board`() {
         val player = Player("Mike")
@@ -70,5 +70,32 @@ class PlayerTestOld {
         assertEquals(locations[2], player.currentLocation)
         assertEquals(true, player.hasPassedGo)
 
+    }
+
+    @Test
+    fun `Moving a player who has passed go resets the hasPassedGo flag to false`() {
+        val player = Player("Mike")
+
+        var dice = Dice()
+        while (dice.totalValue != 4) {
+            dice = Dice()
+        }
+        player.move(dice)
+
+        while (dice.totalValue != 6) {
+            dice = Dice()
+        }
+        player.move(dice)
+
+        while (dice.totalValue != 5) {
+            dice = Dice()
+        }
+        player.move(dice)
+
+        assertEquals(true, player.hasPassedGo)
+
+        player.move(dice)
+
+        assertEquals(false, player.hasPassedGo)
     }
 }
