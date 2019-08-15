@@ -3,6 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="3bfd32a8-46fd-4dc0-aa92-75bed44975bf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10.xcodeproj/project.xcworkspace/xcuserdata/michaelneilens.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10.xcodeproj/project.xcworkspace/xcuserdata/michaelneilens.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10.xcodeproj/xcuserdata/michaelneilens.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10.xcodeproj/xcuserdata/michaelneilens.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10/BoardLocation.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10/BoardLocation.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10/Location.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10/Location.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10/Locations.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10/Locations.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10/Player.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10/Player.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10Tests/challenge10Tests.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10Tests/challenge10Tests.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../challenge9/challenge9.playground/playground.xcworkspace/xcuserdata/michaelneilens.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge9/challenge9.playground/playground.xcworkspace/xcuserdata/michaelneilens.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -48,8 +54,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/PlayerTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="75" column="80" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="80" />
+            <state relative-caret-position="840">
+              <caret line="99" column="5" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="99" selection-end-column="5" />
               <folding>
                 <element signature="e#0#76#0" expanded="true" />
               </folding>
@@ -96,11 +102,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/Locations.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="870">
-              <caret line="58" column="54" lean-forward="true" selection-end-line="58" selection-end-column="54" />
+            <state relative-caret-position="555">
+              <caret line="37" column="1" lean-forward="true" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -126,7 +132,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/Player.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
@@ -516,23 +522,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/kotlin/PlayerTest.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="75" column="80" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="80" />
-          <folding>
-            <element signature="e#0#76#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Locations.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="58" column="54" lean-forward="true" selection-end-line="58" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/BoardLocation.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -561,6 +550,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" lean-forward="true" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/kotlin/PlayerTest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="99" column="5" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="99" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#76#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Locations.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="37" column="1" lean-forward="true" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
         </state>
       </provider>
     </entry>

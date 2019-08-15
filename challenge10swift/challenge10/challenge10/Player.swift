@@ -2,7 +2,7 @@ import Foundation
 
 struct Player {
     let name:String
-    private var boardLocation:BoardLocation = BoardLocation(locations:locations)
+    private var boardLocation:BoardLocation = BoardLocation()
     
     var currentLocation:Location {return boardLocation.currentLocation}
     var hasPassedGo:Bool {return boardLocation.hasPassedGo}
