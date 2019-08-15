@@ -8,7 +8,9 @@
 
 import Foundation
 
-protocol Location {}
+protocol Location {
+    var name:String { get }
+}
 
 protocol Purchaseable:Location {
     var purchasePrice:GBP { get }
@@ -20,9 +22,12 @@ protocol Buildable:Purchaseable {
     var megaStore:DevelopmentType.BuildCostAndRent { get }
 }
 
-struct FreeParking:Location {}
+struct FreeParking:Location {
+    let name = "Free Parking"
+}
 
 struct Go:Location {
+    let name = "Go"
     let fee = GBP(100)
 }
 
@@ -50,4 +55,8 @@ enum Group {
 struct DevelopmentType {
     struct RentOnly {let rent:GBP}
     struct BuildCostAndRent{let buildCost:GBP; let rent:GBP}
+}
+
+func == (lhs:Location, rhs:Location) -> Bool {
+    return lhs.name == rhs.name
 }

@@ -2,28 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3bfd32a8-46fd-4dc0-aa92-75bed44975bf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10.xcodeproj/project.pbxproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10.xcodeproj/project.xcworkspace/contents.xcworkspacedata" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10.xcodeproj/project.xcworkspace/xcuserdata/michaelneilens.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10.xcodeproj/xcuserdata/michaelneilens.xcuserdatad/xcschemes/xcschememanagement.plist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10/AppDelegate.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10/Assets.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10/Assets.xcassets/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10/Base.lproj/LaunchScreen.storyboard" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10/Base.lproj/Main.storyboard" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10/BoardLocation.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10/Dice.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10/GBP.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10/Info.plist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10/Location.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10/Locations.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10/Player.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10/ViewController.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10Tests/Info.plist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10Tests/challenge10Tests.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../challenge8/swift/challenge8.playground/playground.xcworkspace/xcuserdata/michaelneilens.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge8/swift/challenge8.playground/playground.xcworkspace/xcuserdata/michaelneilens.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10.xcodeproj/project.xcworkspace/xcuserdata/michaelneilens.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10.xcodeproj/project.xcworkspace/xcuserdata/michaelneilens.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10/Location.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10/Location.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10Tests/challenge10Tests.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge10swift/challenge10/challenge10Tests/challenge10Tests.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge9/challenge9.playground/playground.xcworkspace/xcuserdata/michaelneilens.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge9/challenge9.playground/playground.xcworkspace/xcuserdata/michaelneilens.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -77,7 +59,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/DiceTest.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="855">
@@ -89,11 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/BoardLocationTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="57" selection-start-line="57" selection-end-line="57" />
+            <state relative-caret-position="855">
+              <caret line="58" column="5" lean-forward="true" selection-start-line="4" selection-end-line="58" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -512,13 +494,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/kotlin/BoardLocationTest.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="57" selection-start-line="57" selection-end-line="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/Location.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -581,6 +556,13 @@
           <folding>
             <element signature="e#0#75#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/kotlin/BoardLocationTest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="855">
+          <caret line="58" column="5" lean-forward="true" selection-start-line="4" selection-end-line="58" selection-end-column="5" />
         </state>
       </provider>
     </entry>

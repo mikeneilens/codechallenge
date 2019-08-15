@@ -98,13 +98,13 @@ class diceTest: XCTestCase {
     
     func test_Initial_board_location_is_Go () {
         let boardLocation = BoardLocation(locations: locations)
-        XCTAssertEqual(Go(), boardLocation.currentLocation)
+        XCTAssertTrue(Go() == boardLocation.currentLocation)
     }
     
     
     func test_Initial_board_location_is_location_at_position_4_if_a_locationIndex_is_given_to_the_constructor() {
         let boardLocation = BoardLocation(locations: locations, locationIndex: 4)
-        XCTAssertEqual(locations[4], boardLocation.currentLocation)
+        XCTAssertTrue(locations[4] == boardLocation.currentLocation)
     }
     
     
@@ -113,7 +113,7 @@ class diceTest: XCTestCase {
         XCTAssertEqual(false, boardLocation.hasPassedGo)
     
         let boardLocationPassedGo = BoardLocation(locations: locations, locationIndex: locations.count + 1)
-        XCTAssertEqual(true, boardLocationPassedGo.hasPassedGo)
+        XCTAssertTrue(boardLocationPassedGo.hasPassedGo)
     }
     
     
@@ -122,7 +122,7 @@ class diceTest: XCTestCase {
         var dice = Dice()
         while (dice.total != 4) {dice = Dice()}
         let newBoardLocation = boardLocation.move(dice:dice)
-        XCTAssertEqual(locations[4], newBoardLocation.currentLocation)
+        XCTAssertTrue(locations[4] == newBoardLocation.currentLocation)
     }
     
     
@@ -132,7 +132,7 @@ class diceTest: XCTestCase {
         while (dice.total != 4) {dice = Dice() }
         
         let newBoardLocation = boardLocation.move(dice:dice)
-        XCTAssertEqual(locations[9], newBoardLocation.currentLocation)
+        XCTAssertTrue(locations[9] == newBoardLocation.currentLocation)
     }
     
     
@@ -142,7 +142,7 @@ class diceTest: XCTestCase {
         while (dice.total != 4) {dice = Dice() }
     
         let newBoardLocation = boardLocation.move(dice: dice)
-        XCTAssertEqual(locations[1], newBoardLocation.currentLocation)
-        XCTAssertEqual(true, newBoardLocation.hasPassedGo)
+        XCTAssertTrue(locations[1] == newBoardLocation.currentLocation)
+        XCTAssertTrue(newBoardLocation.hasPassedGo)
     }
 }
