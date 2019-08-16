@@ -10,76 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "challenge10Tests/challenge10Tests.swift"
-            timestampString = "587595478.361467"
+            timestampString = "587587110.034951"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "95"
             endingLineNumber = "95"
             landmarkName = "test_description_formats_dice_value_correctly_when_a_value_of_11_is_thrown()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "challenge10Tests/challenge10Tests.swift"
-            timestampString = "587595478.362023"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
-            landmarkName = "test_Adding_dice_of_value_4_to_an_inital_boardLocation_with_index_set_to_board_size_minus_3_updates_the_boardLocation_to_show_location_at_position_1_in_the_Location_array()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "challenge10Tests/challenge10Tests.swift"
-            timestampString = "587595478.3624001"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "test_Adding_dice_of_value_4_to_an_inital_boardLocation_with_index_set_to_board_size_minus_3_updates_the_boardLocation_to_show_location_at_position_1_in_the_Location_array()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "challenge10/Location.swift"
-            timestampString = "587595478.36277"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "ahead(by:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "challenge10Tests/challenge10Tests.swift"
-            timestampString = "587595478.362834"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
-            landmarkName = "test_Adding_dice_of_value_4_to_an_inital_boardLocation_with_index_set_to_board_size_minus_3_updates_the_boardLocation_to_show_location_at_position_1_in_the_Location_array()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

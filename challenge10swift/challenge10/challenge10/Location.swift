@@ -10,17 +10,6 @@ import Foundation
 
 protocol Location {
     var name:String { get }
-    var nextLocation:Location? {get set}
-}
-extension Location {
-    mutating func add(location:Location) {
-        nextLocation = location
-    }
-    func ahead(by places:Int) -> Location {
-        guard let nextLocation = self.nextLocation else {print("error");return self}
-        if places == 0 {return self}
-        return nextLocation.ahead(by: places - 1)
-    }
 }
 
 protocol Purchaseable:Location {
@@ -35,18 +24,15 @@ protocol Buildable:Purchaseable {
 
 struct FreeParking:Location {
     let name = "Free Parking"
-    var nextLocation: Location? = nil
 }
 
-class Go:Location {
+struct Go:Location {
     let name = "Go"
-    var nextLocation: Location? = nil
     let fee = GBP(100)
 }
 
 struct FactoryOrWarehouse:Purchaseable{
     let name:String
-    var nextLocation: Location? = nil
     let purchasePrice:GBP = GBP(100)
     let rent = GBP(20)
 }
@@ -54,7 +40,6 @@ struct FactoryOrWarehouse:Purchaseable{
 struct RetailSite:Buildable {
     let group:Group
     let name:String
-    var nextLocation: Location? = nil
     let purchasePrice:GBP
     let undeveloped:DevelopmentType.RentOnly
     let miniStore:DevelopmentType.BuildCostAndRent

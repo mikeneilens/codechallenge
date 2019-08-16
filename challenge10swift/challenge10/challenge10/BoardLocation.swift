@@ -8,31 +8,31 @@
 
 struct BoardLocation {
     
-    let currentLocation:Location
+    private let locationIndex:Int
+    private let locations:Array<Location>
     
     let hasPassedGo:Bool
+    var currentLocation:Location { return locations[locationIndex] }
     
-    init() {
-        self.currentLocation = go
+    init(locations _locations:Array<Location>) {
+        self.locations = _locations
+        self.locationIndex = 0
         self.hasPassedGo = false
     }
     
-    init(location:Location, _hasPassedGo:Bool = false) {
-        self.currentLocation = location
-        self.hasPassedGo = _hasPassedGo
+    init(locations _locations:Array<Location>, locationIndex _locationIndex:Int) {
+        self.locations = _locations
+        if _locationIndex > (locations.count - 1 ) {
+            self.locationIndex = _locationIndex % locations.count
+            self.hasPassedGo = true
+        } else {
+            self.locationIndex = _locationIndex
+            self.hasPassedGo = false
+        }
     }
     
     func move(using dice:Dice) -> BoardLocation {
-        var movesLeft = dice.total
-        var location = currentLocation
-        var passingGo = false
-
-        while movesLeft > 0 {
-            location = location.ahead(by: 1)
-            if location == go { passingGo = true }
-            movesLeft -= 1
-        }
-        
-        return BoardLocation(location:location, _hasPassedGo: passingGo)
+        let newLocationIndex = (locationIndex + dice.total)
+        return BoardLocation(locations:locations, locationIndex:newLocationIndex)
     }
 }
