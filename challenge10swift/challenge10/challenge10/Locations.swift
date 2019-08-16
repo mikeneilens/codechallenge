@@ -1,4 +1,3 @@
-import Foundation
 
 let aFactory = FactoryOrWarehouse(name: "A Factory")
 let aWarehouse = FactoryOrWarehouse(name: "A Warehouse")

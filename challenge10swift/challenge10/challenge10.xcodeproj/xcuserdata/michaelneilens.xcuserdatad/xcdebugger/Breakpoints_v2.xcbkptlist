@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "challenge10Tests/challenge10Tests.swift"
-            timestampString = "587587110.034951"
+            timestampString = "587671369.815299"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "test_description_formats_dice_value_correctly_when_a_value_of_11_is_thrown()"
             landmarkType = "7">
          </BreakpointContent>

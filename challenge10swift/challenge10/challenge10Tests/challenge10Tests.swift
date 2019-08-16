@@ -11,7 +11,6 @@ import XCTest
 
 class diceTest: XCTestCase {
 
-
     func test_Dice_I_Between_Two_And_Twelve() {
         let dice = Dice()
         XCTAssertTrue(dice.total >= 1 && dice.total <= 12 )
@@ -94,19 +93,19 @@ class diceTest: XCTestCase {
         while (dice.total != 11) { dice = Dice()}
         XCTAssertTrue("\(dice)" == "You shook a 5 and a 6" || "\(dice)" == "You shook a 6 and a 5" )
     }
-    
+}
+
+class boardLocationTest: XCTestCase {
     
     func test_Initial_board_location_is_Go () {
         let boardLocation = BoardLocation(locations: locations)
         XCTAssertTrue(Go() == boardLocation.currentLocation)
     }
     
-    
     func test_Initial_board_location_is_location_at_position_4_if_a_locationIndex_is_given_to_the_constructor() {
         let boardLocation = BoardLocation(locations: locations, locationIndex: 4)
         XCTAssertTrue(locations[4] == boardLocation.currentLocation)
     }
-    
     
     func test_Initial_board_has_hasPassedGo_set_correctly_depending_on_locationIndex_sent_to_the_constructor() {
         let boardLocation = BoardLocation(locations: locations, locationIndex: locations.count  - 1)
@@ -116,7 +115,6 @@ class diceTest: XCTestCase {
         XCTAssertTrue(boardLocationPassedGo.hasPassedGo)
     }
     
-    
     func test_Adding_dice_of_value_4_to_an_inital_boardLocation_updates_the_boardLocation_to_show_location_at_position_4_in_the_Location_array() {
         let boardLocation = BoardLocation(locations: locations)
         var dice = Dice()
@@ -124,7 +122,6 @@ class diceTest: XCTestCase {
         let newBoardLocation = boardLocation.move(using:dice)
         XCTAssertTrue(locations[4] == newBoardLocation.currentLocation)
     }
-    
     
     func test_Adding_dice_of_value_4_to_an_inital_boardLocation_with_index_set_to_5_updates_the_boardLocation_to_show_location_at_position_9_in_the_Location_array() {
         let boardLocation = BoardLocation(locations: locations, locationIndex: 5)
@@ -135,7 +132,6 @@ class diceTest: XCTestCase {
         XCTAssertTrue(locations[9] == newBoardLocation.currentLocation)
     }
     
-    
     func test_Adding_dice_of_value_4_to_an_inital_boardLocation_with_index_set_to_board_size_minus_3_updates_the_boardLocation_to_show_location_at_position_1_in_the_Location_array() {
         let boardLocation = BoardLocation(locations:locations, locationIndex:locations.count - 3 )
         var dice = Dice()
@@ -145,14 +141,16 @@ class diceTest: XCTestCase {
         XCTAssertTrue(locations[1] == newBoardLocation.currentLocation)
         XCTAssertTrue(newBoardLocation.hasPassedGo)
     }
-    
+}
+
+class playerTest: XCTestCase {
+
     func test_Location_of_a_new_player_is_first_location_on_the_board() {
         let player = Player("Mike")
         XCTAssertEqual("Mike", player.name)
         XCTAssertTrue(locations[0] == player.currentLocation)
         XCTAssertFalse(player.hasPassedGo)
     }
-    
     
     func test_Location_of_a_player_after_moving_a_new_player_using_a_dice_value_of_4_is_location_4() {
         var player = Player("Mike")
@@ -165,7 +163,6 @@ class diceTest: XCTestCase {
         XCTAssertTrue(locations[4] == player.currentLocation)
         XCTAssertFalse(player.hasPassedGo)
     }
-    
     
     func test_Location_of_a_player_after_moving_a_player_at_position_4_using_a_dice_value_of_6_is_location_10() {
         var player = Player("Mike")
@@ -182,7 +179,6 @@ class diceTest: XCTestCase {
         XCTAssertTrue(locations[10] == player.currentLocation)
         XCTAssertFalse(player.hasPassedGo)
     }
-    
     
     func test_Location_of_a_player_after_moving_a_player_at_position_10_using_a_dice_value_of_5_is_location_2() {
         var player = Player("Mike")
@@ -201,7 +197,6 @@ class diceTest: XCTestCase {
         XCTAssertTrue(player.hasPassedGo)
 
     }
-    
     
     func test_Moving_a_player_who_has_passed_go_resets_the_hasPassedGo_flag_to_false() {
         var player = Player("Mike")
