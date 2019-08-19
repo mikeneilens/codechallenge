@@ -42,12 +42,8 @@ enum Group {
     case Green
     case Orange
 }
-    
+
 struct DevelopmentType {
     struct RentOnly {let rent:GBP}
     struct BuildCostAndRent{let buildCost:GBP; let rent:GBP}
-}
-
-func == (lhs:Location, rhs:Location) -> Bool {
-    return lhs.name == rhs.name
 }

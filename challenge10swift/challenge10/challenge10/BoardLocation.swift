@@ -15,8 +15,8 @@ struct BoardLocation {
     
     init(locations _locations:Array<Location>, locationIndex _locationIndex:Int) {
         self.locations = _locations
-        if _locationIndex > (locations.count - 1 ) {
-            self.locationIndex = _locationIndex % locations.count
+        if _locationIndex > (locations.endIndex - 1 ) {
+            self.locationIndex = _locationIndex - locations.endIndex
             self.hasPassedGo = true
         } else {
             self.locationIndex = _locationIndex

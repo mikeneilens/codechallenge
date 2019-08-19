@@ -9,6 +9,11 @@
 import XCTest
 @testable import challenge10
 
+//This is needed to check if a location is the same as another location. This isn't needed in the application.
+func == (lhs:Location, rhs:Location) -> Bool {
+    return lhs.name == rhs.name
+}
+
 class diceTest: XCTestCase {
 
     func test_Dice_I_Between_Two_And_Twelve() {
@@ -108,10 +113,10 @@ class boardLocationTest: XCTestCase {
     }
     
     func test_Initial_board_has_hasPassedGo_set_correctly_depending_on_locationIndex_sent_to_the_constructor() {
-        let boardLocation = BoardLocation(locations: locations, locationIndex: locations.count  - 1)
+        let boardLocation = BoardLocation(locations: locations, locationIndex: locations.endIndex  - 1)
         XCTAssertEqual(false, boardLocation.hasPassedGo)
     
-        let boardLocationPassedGo = BoardLocation(locations: locations, locationIndex: locations.count + 1)
+        let boardLocationPassedGo = BoardLocation(locations: locations, locationIndex: locations.endIndex + 1)
         XCTAssertTrue(boardLocationPassedGo.hasPassedGo)
     }
     
@@ -133,7 +138,7 @@ class boardLocationTest: XCTestCase {
     }
     
     func test_Adding_dice_of_value_4_to_an_inital_boardLocation_with_index_set_to_board_size_minus_3_updates_the_boardLocation_to_show_location_at_position_1_in_the_Location_array() {
-        let boardLocation = BoardLocation(locations:locations, locationIndex:locations.count - 3 )
+        let boardLocation = BoardLocation(locations:locations, locationIndex:locations.endIndex - 3 )
         var dice = Dice()
         while (dice.total != 4) {dice = Dice() }
     
