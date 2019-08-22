@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="PlayerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-08-15T13:04:16" hostname="MacBook-Pro-2" time="0.046">
-  <properties/>
-  <testcase name="Moving a player who has passed go resets the hasPassedGo flag to false()" classname="PlayerTest" time="0.046"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
