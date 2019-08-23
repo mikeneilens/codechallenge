@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="PlayerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2019-08-22T20:07:45" hostname="MacBook-Pro-2" time="0.038">
+  <properties/>
+  <testcase name="Location of a player after moving a player at position 4 using a dice value of 6 is location 10()" classname="PlayerTest" time="0.031"/>
+  <testcase name="Location of a new player is first location on the board()" classname="PlayerTest" time="0.003"/>
+  <testcase name="Location of a player after moving a player at position 10 using a dice value of 5 is location 2()" classname="PlayerTest" time="0.001"/>
+  <testcase name="Location of a player after moving a new player using a dice value of 4 is location 4()" classname="PlayerTest" time="0.0"/>
+  <testcase name="Moving a player who has passed go resets the hasPassedGo flag to false()" classname="PlayerTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

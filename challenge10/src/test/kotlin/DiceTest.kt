@@ -84,10 +84,10 @@ class DiceTest {
 
     @Test
     fun `toString formats dice value correctly when a value of 11 is thrown`() {
-        var dice = Dice()
-        while (dice.totalValue != 11) {
-            dice = Dice()
-        }
-        assertTrue("$dice" == "You threw a 5 and a 6" || "$dice" == "You threw a 6 and a 5" )
+        val dice5and6 = Dice(PredictableDiceValue(listOf(5,6)))
+        assertTrue("$dice5and6" == "You threw a 5 and a 6" )
+
+        val dice6and5 = Dice(PredictableDiceValue(listOf(6,5)))
+        assertTrue("$dice6and5" == "You threw a 6 and a 5" )
     }
 }

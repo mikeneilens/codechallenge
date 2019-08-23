@@ -15,11 +15,7 @@ class PlayerTest {
     fun `Location of a player after moving a new player using a dice value of 4 is location 4`() {
         val player = Player("Mike")
 
-        var dice = Dice()
-        while (dice.totalValue != 4) {
-            dice = Dice()
-        }
-
+        val dice = Dice(PredictableDiceValue(listOf(3,1)))
         player.move(dice)
 
         assertEquals(locations[4], player.currentLocation)
@@ -30,17 +26,10 @@ class PlayerTest {
     fun `Location of a player after moving a player at position 4 using a dice value of 6 is location 10`() {
         val player = Player("Mike")
 
-        var dice = Dice()
-        while (dice.totalValue != 4) {
-            dice = Dice()
-        }
-
+        var dice = Dice(PredictableDiceValue(listOf(3,1)))
         player.move(dice)
 
-        while (dice.totalValue != 6) {
-            dice = Dice()
-        }
-
+        dice = Dice(PredictableDiceValue(listOf(4,2)))
         player.move(dice)
 
         assertEquals(locations[10], player.currentLocation)
@@ -51,20 +40,14 @@ class PlayerTest {
     fun `Location of a player after moving a player at position 10 using a dice value of 5 is location 2`() {
         val player = Player("Mike")
 
-        var dice = Dice()
-        while (dice.totalValue != 4) {
-            dice = Dice()
-        }
+
+        var dice = Dice(PredictableDiceValue(listOf(3,1)))
         player.move(dice)
 
-        while (dice.totalValue != 6) {
-            dice = Dice()
-        }
+        dice = Dice(PredictableDiceValue(listOf(4,2)))
         player.move(dice)
 
-        while (dice.totalValue != 5) {
-            dice = Dice()
-        }
+        dice = Dice(PredictableDiceValue(listOf(2,3)))
         player.move(dice)
 
         assertEquals(locations[2], player.currentLocation)
@@ -76,20 +59,13 @@ class PlayerTest {
     fun `Moving a player who has passed go resets the hasPassedGo flag to false`() {
         val player = Player("Mike")
 
-        var dice = Dice()
-        while (dice.totalValue != 4) {
-            dice = Dice()
-        }
+        var dice = Dice(PredictableDiceValue(listOf(3,1)))
         player.move(dice)
 
-        while (dice.totalValue != 6) {
-            dice = Dice()
-        }
+        dice = Dice(PredictableDiceValue(listOf(4,2)))
         player.move(dice)
 
-        while (dice.totalValue != 5) {
-            dice = Dice()
-        }
+        dice = Dice(PredictableDiceValue(listOf(2,3)))
         player.move(dice)
 
         assertEquals(true, player.hasPassedGo)
