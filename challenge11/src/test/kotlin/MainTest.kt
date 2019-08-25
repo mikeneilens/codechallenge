@@ -169,11 +169,11 @@ class MainTest {
 
         assertEquals("b1", beers[0].name)
         assertEquals("pub1", beers[0].pubName)
-        assertEquals("b1", beers[1].name)
-        assertEquals("pub4", beers[1].pubName)
+        assertEquals("b2", beers[1].name)
+        assertEquals("pub1", beers[1].pubName)
 
-        assertEquals("b4", beers[8].name)
-        assertEquals("pub3", beers[8].pubName)
+        assertEquals("b3", beers[8].name)
+        assertEquals("pub5", beers[8].pubName)
         assertEquals("b4", beers[9].name)
         assertEquals("pub5", beers[9].pubName)
     }

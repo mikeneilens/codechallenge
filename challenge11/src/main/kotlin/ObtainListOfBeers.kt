@@ -1,4 +1,7 @@
-fun obtainListOfBeers(jsonString:String): List<Beer> = parseJsonIntoPubs(jsonString).removeDuplicates().flattenEachPub()
+fun obtainListOfBeers(jsonString:String): List<Beer> = parseJsonIntoPubs(jsonString)
+    .removeDuplicates()
+    .flattenEachPub()
+    .sortedBy { beer -> beer.name + beer.pubName }
 
 fun List<Pub>.removeDuplicates()= this.sortIntoDescendingOrder().removeDuplicatePubs()
 
@@ -6,10 +9,7 @@ fun List<Pub>.sortIntoDescendingOrder() = this.sortedByDescending {pub -> pub.br
 
 fun List<Pub>.removeDuplicatePubs() = this.distinctBy {pub ->  pub.branch + pub.id }
 
-fun List<Pub>.flattenEachPub():List<Beer> {
-    val beers =  flatMap{pub -> pub.mapRegularBeers()} + this.flatMap{pub -> pub.mapGuestBeers()}
-    return beers.sortedBy { it.name + it.pubName }
-}
+fun List<Pub>.flattenEachPub() = flatMap{pub -> pub.mapRegularBeers()} + this.flatMap{pub -> pub.mapGuestBeers()}
 
 fun Pub.mapRegularBeers():List<Beer> = this.regularBeers.map{regularBeer ->  Beer(regularBeer, this.name, this.pubService, true)}
 
