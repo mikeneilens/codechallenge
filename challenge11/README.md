@@ -4,7 +4,7 @@ I chose to use Klaxon to convert json directly into an object defined using a ko
 
 Once I had the data in a kotlin object I went through the following steps:
 
-* Removed duplciates by sorting into key/date order and using the kotlin distinctBy function to remove duplicates.
+* Removed duplciates by sorting into key/date descending order and using the kotlin distinctBy function to remove duplicates.
 
 * Used flatMap to create a list of regular beers and list of guest beers.
 
