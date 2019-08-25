@@ -1,9 +1,10 @@
-fun List<Pub>.flattenPub() {
+fun List<Pub>.flattenEachPub():List<Beer> {
     val beers = mutableListOf<Beer>()
     for ( pub in this  ) {
         beers += pub.flattenRegularBeers()
         beers += pub.flattenGuestBeers()
     }
+    return beers.sortedBy { it.name + it.pubName }
 }
 
 fun Pub.flattenRegularBeers():List<Beer> {
