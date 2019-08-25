@@ -109,5 +109,34 @@ class MainTest {
         assertEquals(pub2, pubsWithNoDuplicates[4])
 
     }
+    @Test
+    fun `flattenRegularBeers returns an empty array if pub has no beers`() {
+        val pub = Pub("pub1","b1","id1","2019-05-16 19:33:39","pub service", listOf(),listOf("beer1","beer2"))
+        val beers = pub.flattenRegularBeers()
+        assertTrue(beers.isEmpty())
+    }
+    @Test
+    fun `flattenRegularBeers returns an array of beers`() {
+        val pub = Pub("pub1","b1","id1","2019-05-16 19:33:39","pub service", listOf("beer1","beer2"),listOf("beer3","beer4","beer5"))
+        val beers = pub.flattenRegularBeers()
+        assertEquals(2, beers.size)
+        assertEquals("beer1",beers[0].name)
+        assertEquals("beer2",beers[1].name)
+    }
+    @Test
+    fun `flattenGuestBeers returns an empty array if pub has no beers`() {
+        val pub = Pub("pub1","b1","id1","2019-05-16 19:33:39","pub service", listOf("beer1","beer2"),listOf())
+        val beers = pub.flattenGuestBeers()
+        assertTrue(beers.isEmpty())
+    }
+    @Test
+    fun `flattenGuestBeers returns an array of beers`() {
+        val pub = Pub("pub1","b1","id1","2019-05-16 19:33:39","pub service", listOf("beer1","beer2"),listOf("beer3","beer4","beer5"))
+        val beers = pub.flattenGuestBeers()
+        assertEquals(3, beers.size)
+        assertEquals("beer3",beers[0].name)
+        assertEquals("beer4",beers[1].name)
+        assertEquals("beer5",beers[2].name)
+    }
 
 }

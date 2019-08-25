@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MainTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2019-08-25T10:18:29" hostname="MacBook-Pro-2" time="0.741">
+<testsuite name="MainTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-08-25T10:39:37" hostname="MacBook-Pro-2" time="0.034">
   <properties/>
-  <testcase name="removeDuplicates removes duplicate pub, retaining the latest pub when there is more than one with the same key()" classname="MainTest" time="0.038"/>
-  <testcase name="distinctValues returns distinct values in the correct order()" classname="MainTest" time="0.001"/>
-  <testcase name="ParseJsonIntoPubs parses empty json array OK()" classname="MainTest" time="0.665"/>
-  <testcase name="ParseJsonIntoPubs parses a json array containing more than one pub()" classname="MainTest" time="0.021"/>
-  <testcase name="ParseJsonIntoPubs parses a json array containing one pub with no beers()" classname="MainTest" time="0.005"/>
-  <testcase name="sortIntoDescendingOrder sorts pubs into correct order()" classname="MainTest" time="0.001"/>
-  <testcase name="ParseJsonIntoPubs parses a json array containing one pub with regular beers and guest beers()" classname="MainTest" time="0.005"/>
+  <testcase name="flattenGuestBeers returns an array of beers()" classname="MainTest" time="0.034"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
