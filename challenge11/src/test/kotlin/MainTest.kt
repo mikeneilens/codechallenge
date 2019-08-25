@@ -62,7 +62,7 @@ class MainTest {
         val pub7 = Pub("pub7","b3","id3","2019-05-16 19:33:39","pub service", listOf("beer1"),listOf("beer2"))
 
         val pubs = listOf(pub1, pub2, pub3, pub4, pub5, pub6, pub7)
-        val sortedPubs = sortIntoDescendingOrder(pubs)
+        val sortedPubs = pubs.sortIntoDescendingOrder()
 
         assertEquals(pub7, sortedPubs[0])
         assertEquals(pub6, sortedPubs[1])
@@ -82,13 +82,32 @@ class MainTest {
         val pub6 = Pub("pub6","b2","id1","2019-05-16 19:31:39","pub service", listOf("beer1"),listOf("beer2"))
 
         val pubs = listOf(pub1, pub2, pub3, pub4, pub5, pub6)
-        val distinctPubs = distinctValues(pubs)
+        val distinctPubs = pubs.distinctValues()
 
         assertEquals(3, distinctPubs.size)
         assertEquals(pub1, distinctPubs[0])
         assertEquals(pub4, distinctPubs[1])
         assertEquals(pub6, distinctPubs[2])
     }
+    @Test
+    fun `removeDuplicates removes duplicate pub, retaining the latest pub when there is more than one with the same key`() {
+        val pub1 = Pub("pub1","b1","id1","2019-05-16 19:31:39","pub service", listOf("beer1"),listOf("beer2"))
+        val pub2 = Pub("pub2","b1","id1","2019-05-16 19:33:39","pub service", listOf("beer1"),listOf("beer2"))
+        val pub3 = Pub("pub3","b1","id1","2019-05-16 19:32:39","pub service", listOf("beer1"),listOf("beer2"))
+        val pub4 = Pub("pub4","b1","id2","2019-05-16 19:33:39","pub service", listOf("beer1"),listOf("beer2"))
+        val pub5 = Pub("pub5","b1","id3","2019-05-16 19:33:39","pub service", listOf("beer1"),listOf("beer2"))
+        val pub6 = Pub("pub6","b2","id3","2019-05-16 19:33:39","pub service", listOf("beer1"),listOf("beer2"))
+        val pub7 = Pub("pub7","b3","id3","2019-05-16 19:33:39","pub service", listOf("beer1"),listOf("beer2"))
 
+        val pubs = listOf(pub1,pub2,pub3,pub4,pub5,pub6,pub7)
+
+        val pubsWithNoDuplicates = pubs.removeDuplicates()
+        assertEquals(pub7, pubsWithNoDuplicates[0])
+        assertEquals(pub6, pubsWithNoDuplicates[1])
+        assertEquals(pub5, pubsWithNoDuplicates[2])
+        assertEquals(pub4, pubsWithNoDuplicates[3])
+        assertEquals(pub2, pubsWithNoDuplicates[4])
+
+    }
 
 }
