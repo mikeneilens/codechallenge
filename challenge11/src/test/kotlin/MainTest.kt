@@ -73,7 +73,7 @@ class MainTest {
         assertEquals(pub1, sortedPubs[6])
     }
     @Test
-    fun `distinctValues returns distinct values in the correct order`() {
+    fun `RemoveDuplicatePubs returns distinct values in the correct order`() {
         val pub1 = Pub("pub1","b1","id1","2019-05-16 19:33:39","pub service", listOf("beer1"),listOf("beer2"))
         val pub2 = Pub("pub2","b1","id1","2019-05-16 19:32:39","pub service", listOf("beer1"),listOf("beer2"))
         val pub3 = Pub("pub3","b1","id1","2019-05-16 19:31:39","pub service", listOf("beer1"),listOf("beer2"))
@@ -82,7 +82,7 @@ class MainTest {
         val pub6 = Pub("pub6","b2","id1","2019-05-16 19:31:39","pub service", listOf("beer1"),listOf("beer2"))
 
         val pubs = listOf(pub1, pub2, pub3, pub4, pub5, pub6)
-        val distinctPubs = pubs.distinctValues()
+        val distinctPubs = pubs.removeDuplicatePubs()
 
         assertEquals(3, distinctPubs.size)
         assertEquals(pub1, distinctPubs[0])
@@ -90,7 +90,7 @@ class MainTest {
         assertEquals(pub6, distinctPubs[2])
     }
     @Test
-    fun `removeDuplicates removes duplicate pub, retaining the latest pub when there is more than one with the same key`() {
+    fun `RemoveDuplicatePubs removes duplicate pub, retaining the latest pub when there is more than one with the same key`() {
         val pub1 = Pub("pub1","b1","id1","2019-05-16 19:31:39","pub service", listOf("beer1"),listOf("beer2"))
         val pub2 = Pub("pub2","b1","id1","2019-05-16 19:33:39","pub service", listOf("beer1"),listOf("beer2"))
         val pub3 = Pub("pub3","b1","id1","2019-05-16 19:32:39","pub service", listOf("beer1"),listOf("beer2"))
@@ -110,15 +110,15 @@ class MainTest {
 
     }
     @Test
-    fun `flattenRegularBeers returns an empty array if pub has no beers`() {
+    fun `mapRegularBeers returns an empty array if pub has no beers`() {
         val pub = Pub("pub1","b1","id1","2019-05-16 19:33:39","pub service", listOf(),listOf("beer1","beer2"))
-        val beers = pub.flattenRegularBeers()
+        val beers = pub.mapRegularBeers()
         assertTrue(beers.isEmpty())
     }
     @Test
-    fun `flattenRegularBeers returns an array of beers`() {
+    fun `mapRegularBeers returns an array of beers`() {
         val pub = Pub("pub1","b1","id1","2019-05-16 19:33:39","pub service", listOf("beer1","beer2"),listOf("beer3","beer4","beer5"))
-        val beers = pub.flattenRegularBeers()
+        val beers = pub.mapRegularBeers()
         assertEquals(2, beers.size)
         assertEquals("beer1",beers[0].name)
         assertTrue(beers[0].isRegularBeer)
@@ -126,15 +126,15 @@ class MainTest {
         assertTrue(beers[1].isRegularBeer)
     }
     @Test
-    fun `flattenGuestBeers returns an empty array if pub has no beers`() {
+    fun `mapGuestBeers returns an empty array if pub has no beers`() {
         val pub = Pub("pub1","b1","id1","2019-05-16 19:33:39","pub service", listOf("beer1","beer2"),listOf())
-        val beers = pub.flattenGuestBeers()
+        val beers = pub.mapGuestBeers()
         assertTrue(beers.isEmpty())
     }
     @Test
-    fun `flattenGuestBeers returns an array of beers`() {
+    fun `mapGuestBeers returns an array of beers`() {
         val pub = Pub("pub1","b1","id1","2019-05-16 19:33:39","pub service", listOf("beer1","beer2"),listOf("beer3","beer4","beer5"))
-        val beers = pub.flattenGuestBeers()
+        val beers = pub.mapGuestBeers()
         assertEquals(3, beers.size)
         assertEquals("beer3",beers[0].name)
         assertFalse(beers[0].isRegularBeer)
