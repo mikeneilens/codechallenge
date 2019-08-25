@@ -2,8 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c1b5598-82de-4dd4-aff8-f530461d9562" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../challenge10/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge10/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/TestData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/TestData.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Beer.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/RemoveDuplicates.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/test/META-INF/challenge11.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/MainTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/base-style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/js/report.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/default-package.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-MainTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ParseJsonIntoPubs.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ParseJsonIntoPubs.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -25,6 +38,16 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view />
+      </state>
+    </system>
+  </component>
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
@@ -39,8 +62,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/ParseJsonIntoPubs.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+            <state relative-caret-position="210">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
               <folding>
                 <element signature="e#0#67#0" expanded="true" />
               </folding>
@@ -48,11 +71,20 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/RemoveDuplicates.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="18" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="50" column="25" selection-start-line="50" selection-start-column="25" selection-end-line="50" selection-end-column="25" />
+            <state relative-caret-position="537">
+              <caret line="89" column="42" selection-start-line="89" selection-start-column="42" selection-end-line="89" selection-end-column="42" />
               <folding>
                 <element signature="e#0#75#0" expanded="true" />
               </folding>
@@ -70,10 +102,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/Beer.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="101" selection-start-column="101" selection-end-column="101" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/TestData.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+            <state relative-caret-position="331">
+              <caret line="28" column="46" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -93,8 +134,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin File" />
         <option value="Kotlin Class" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
@@ -106,8 +147,10 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/kotlin/PubData.kt" />
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/ParseJsonIntoPubs.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/TestData.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/Beer.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/ParseJsonIntoPubs.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/RemoveDuplicates.kt" />
         <option value="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" />
       </list>
     </option>
@@ -148,6 +191,13 @@
               <item name="challenge11" type="b2602c69:ProjectViewProjectNode" />
               <item name="challenge11" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="kotlin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="challenge11" type="b2602c69:ProjectViewProjectNode" />
+              <item name="challenge11" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
           </expand>
@@ -175,7 +225,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.MainTest.ParseJsonIntoPubs parses a json array containing more than one pub">
+  <component name="RunManager" selected="Gradle.MainTest.distinctValues returns distinct values in the correct order">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -228,26 +278,6 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="MainTest.ParseJsonIntoPubs parses a json array containing one pub with no beers" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;MainTest.ParseJsonIntoPubs parses a json array containing one pub with no beers&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":cleanTest" />
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="MainTest.ParseJsonIntoPubs parses a json array containing one pub with regular beers and guest beers" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -268,12 +298,32 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="MainTest.ParseJsonIntoPubs parses empty json array OK" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MainTest.distinctValues returns distinct values in the correct order" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;MainTest.ParseJsonIntoPubs parses empty json array OK&quot;" />
+        <option name="scriptParameters" value="--tests &quot;MainTest.distinctValues returns distinct values in the correct order&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":cleanTest" />
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="MainTest.sortIntoDescendingOrder sorts pubs into correct order" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;MainTest.sortIntoDescendingOrder sorts pubs into correct order&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -315,11 +365,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.MainTest.distinctValues returns distinct values in the correct order" />
+        <item itemvalue="Gradle.MainTest.sortIntoDescendingOrder sorts pubs into correct order" />
         <item itemvalue="Gradle.MainTest.ParseJsonIntoPubs parses a json array containing more than one pub" />
         <item itemvalue="Gradle.MainTest.ParseJsonIntoPubs parses a json array containing one pub with regular beers and guest beers" />
         <item itemvalue="Gradle.MainTest" />
-        <item itemvalue="Gradle.MainTest.ParseJsonIntoPubs parses a json array containing one pub with no beers" />
-        <item itemvalue="Gradle.MainTest.ParseJsonIntoPubs parses empty json array OK" />
       </list>
     </recent_temporary>
   </component>
@@ -344,47 +394,46 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MainTest_ParseJsonIntoPubs_parses_a_json_array_containing_one_pub_with_regular_beers_and_guest_beers - 2019.08.23 at 11h 22m 18s.xml">
-      <configuration name="MainTest.ParseJsonIntoPubs parses a json array containing one pub with regular beers and guest beers" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="MainTest_ParseJsonIntoPubs_parses_a_json_array_containing_one_pub_with_regular_beers_and_guest_beers - 2019.08.23 at 11h 22m 31s.xml">
-      <configuration name="MainTest.ParseJsonIntoPubs parses a json array containing one pub with regular beers and guest beers" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="MainTest_ParseJsonIntoPubs_parses_a_json_array_containing_one_pub_with_regular_beers_and_guest_beers - 2019.08.23 at 11h 22m 55s.xml">
-      <configuration name="MainTest.ParseJsonIntoPubs parses a json array containing one pub with regular beers and guest beers" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="MainTest_ParseJsonIntoPubs_parses_a_json_array_containing_more_than_one_pub - 2019.08.23 at 11h 41m 26s.xml">
-      <configuration name="MainTest.ParseJsonIntoPubs parses a json array containing more than one pub" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="MainTest_ParseJsonIntoPubs_parses_a_json_array_containing_more_than_one_pub - 2019.08.23 at 11h 41m 59s.xml">
-      <configuration name="MainTest.ParseJsonIntoPubs parses a json array containing more than one pub" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="MainTest_ParseJsonIntoPubs_parses_a_json_array_containing_more_than_one_pub - 2019.08.23 at 11h 42m 18s.xml">
-      <configuration name="MainTest.ParseJsonIntoPubs parses a json array containing more than one pub" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="MainTest_ParseJsonIntoPubs_parses_a_json_array_containing_more_than_one_pub - 2019.08.23 at 11h 43m 07s.xml">
-      <configuration name="MainTest.ParseJsonIntoPubs parses a json array containing more than one pub" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="MainTest_ParseJsonIntoPubs_parses_a_json_array_containing_more_than_one_pub - 2019.08.23 at 11h 44m 00s.xml">
-      <configuration name="MainTest.ParseJsonIntoPubs parses a json array containing more than one pub" configurationId="GradleRunConfiguration" />
-    </history-entry>
     <history-entry file="MainTest_ParseJsonIntoPubs_parses_a_json_array_containing_more_than_one_pub - 2019.08.23 at 11h 44m 48s.xml">
       <configuration name="MainTest.ParseJsonIntoPubs parses a json array containing more than one pub" configurationId="GradleRunConfiguration" />
     </history-entry>
     <history-entry file="MainTest_ParseJsonIntoPubs_parses_a_json_array_containing_more_than_one_pub - 2019.08.23 at 11h 45m 31s.xml">
       <configuration name="MainTest.ParseJsonIntoPubs parses a json array containing more than one pub" configurationId="GradleRunConfiguration" />
     </history-entry>
+    <history-entry file="MainTest_sortIntoDescendingOrder_sorts_pubs_into_correct_order - 2019.08.23 at 12h 07m 22s.xml">
+      <configuration name="MainTest.sortIntoDescendingOrder sorts pubs into correct order" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="MainTest_sortIntoDescendingOrder_sorts_pubs_into_correct_order - 2019.08.23 at 12h 09m 42s.xml">
+      <configuration name="MainTest.sortIntoDescendingOrder sorts pubs into correct order" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="MainTest_sortIntoDescendingOrder_sorts_pubs_into_correct_order - 2019.08.23 at 12h 09m 43s.xml">
+      <configuration name="MainTest.sortIntoDescendingOrder sorts pubs into correct order" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="MainTest_distinctValues_returns_distinct_values_in_the_correct_order - 2019.08.23 at 12h 54m 19s.xml">
+      <configuration name="MainTest.distinctValues returns distinct values in the correct order" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="MainTest_distinctValues_returns_distinct_values_in_the_correct_order - 2019.08.23 at 12h 54m 21s.xml">
+      <configuration name="MainTest.distinctValues returns distinct values in the correct order" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="MainTest_distinctValues_returns_distinct_values_in_the_correct_order - 2019.08.23 at 12h 54m 30s.xml">
+      <configuration name="MainTest.distinctValues returns distinct values in the correct order" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="MainTest_distinctValues_returns_distinct_values_in_the_correct_order - 2019.08.23 at 12h 55m 22s.xml">
+      <configuration name="MainTest.distinctValues returns distinct values in the correct order" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="MainTest_distinctValues_returns_distinct_values_in_the_correct_order - 2019.08.23 at 12h 56m 08s.xml">
+      <configuration name="MainTest.distinctValues returns distinct values in the correct order" configurationId="GradleRunConfiguration" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="0" width="954" height="1080" extended-state="6" />
     <layout>
       <window_info id="Image Layers" />
       <window_info id="Designer" />
       <window_info id="UI Designer" />
       <window_info id="Capture Tool" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24973376" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.5142544" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" />
@@ -425,13 +474,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/ParseJsonIntoPubs.kt">
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Beer.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#67#0" expanded="true" />
-          </folding>
+        <state>
+          <caret column="101" selection-start-column="101" selection-end-column="101" />
         </state>
       </provider>
     </entry>
@@ -444,15 +490,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/TestData.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+        <state relative-caret-position="331">
+          <caret line="28" column="46" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/ParseJsonIntoPubs.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="e#0#67#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/RemoveDuplicates.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="18" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="50" column="25" selection-start-line="50" selection-start-column="25" selection-end-line="50" selection-end-column="25" />
+        <state relative-caret-position="537">
+          <caret line="89" column="42" selection-start-line="89" selection-start-column="42" selection-end-line="89" selection-end-column="42" />
           <folding>
             <element signature="e#0#75#0" expanded="true" />
           </folding>
