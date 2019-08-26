@@ -9,11 +9,11 @@ fun parseJsonIntoPubs(jsonString:String):List<Pub>{
     }
     val klaxon = Klaxon().fieldRenamer(renamer)
 
-    try {
+    return try {
         val pubData = klaxon.parse<PubData>(jsonString)
-        return pubData?.pubs ?: listOf<Pub>()
+        pubData?.pubs ?: listOf()
     } catch (e:KlaxonException)  {
-        return listOf<Pub>()
+        listOf()
     }
 }
 
