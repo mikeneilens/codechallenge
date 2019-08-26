@@ -50,6 +50,13 @@ class MainTest {
         assertEquals(3, listOfPubs[3].regularBeers.size)
         assertEquals(0, listOfPubs[3].guestBeers.size)
     }
+    @Test
+    fun `ParseJsonIntoPubs returns an empty list if the json is invalid`() {
+        val rubbishJson = "This is rubbish json!"
+        val listOfPubs = parseJsonIntoPubs(rubbishJson)
+
+        assertTrue(listOfPubs.isEmpty())
+    }
 
     @Test
     fun `sortIntoDescendingOrder sorts pubs into correct order`() {

@@ -1,5 +1,6 @@
 import com.beust.klaxon.FieldRenamer
 import com.beust.klaxon.Klaxon
+import com.beust.klaxon.KlaxonException
 
 fun parseJsonIntoPubs(jsonString:String):List<Pub>{
     val renamer = object: FieldRenamer {
@@ -8,7 +9,11 @@ fun parseJsonIntoPubs(jsonString:String):List<Pub>{
     }
     val klaxon = Klaxon().fieldRenamer(renamer)
 
-    val pubData = klaxon.parse<PubData>(jsonString)
-    return pubData?.pubs ?: listOf<Pub>()
+    try {
+        val pubData = klaxon.parse<PubData>(jsonString)
+        return pubData?.pubs ?: listOf<Pub>()
+    } catch (e:KlaxonException)  {
+        return listOf<Pub>()
+    }
 }
 

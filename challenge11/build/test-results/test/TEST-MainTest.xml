@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MainTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-08-25T15:42:15" hostname="MacBook-Pro-2" time="0.037">
+<testsuite name="MainTest" tests="18" skipped="0" failures="0" errors="0" timestamp="2019-08-26T10:02:04" hostname="MacBook-Pro-2" time="0.716">
   <properties/>
-  <testcase name="FlattenEachPub returns an array of regular beers()" classname="MainTest" time="0.037"/>
+  <testcase name="RemoveDuplicatePubs removes duplicate pub, retaining the latest pub when there is more than one with the same key()" classname="MainTest" time="0.038"/>
+  <testcase name="ParseJsonIntoPubs returns an empty list if the json is invalid()" classname="MainTest" time="0.581"/>
+  <testcase name="ObtianListOfBeers returns an array containing correct number of regular and guest beers when json contains a pub with beer()" classname="MainTest" time="0.038"/>
+  <testcase name="ParseJsonIntoPubs parses empty json array OK()" classname="MainTest" time="0.002"/>
+  <testcase name="ParseJsonIntoPubs parses a json array containing more than one pub()" classname="MainTest" time="0.016"/>
+  <testcase name="ParseJsonIntoPubs parses a json array containing one pub with no beers()" classname="MainTest" time="0.004"/>
+  <testcase name="sortIntoDescendingOrder sorts pubs into correct order()" classname="MainTest" time="0.0"/>
+  <testcase name="RemoveDuplicatePubs returns distinct values in the correct order()" classname="MainTest" time="0.0"/>
+  <testcase name="ParseJsonIntoPubs parses a json array containing one pub with regular beers and guest beers()" classname="MainTest" time="0.005"/>
+  <testcase name="ObtainListOfBeers returns an empty array if json contains no pubs()" classname="MainTest" time="0.002"/>
+  <testcase name="ObtainListOfBeers returns an empty array if json contain a pub but the pub has no beer()" classname="MainTest" time="0.003"/>
+  <testcase name="mapRegularBeers returns an array of beers()" classname="MainTest" time="0.0"/>
+  <testcase name="mapGuestBeers returns an array of beers()" classname="MainTest" time="0.0"/>
+  <testcase name="mapGuestBeers returns an empty array if pub has no beers()" classname="MainTest" time="0.0"/>
+  <testcase name="FlattenEachPub returns an array of regular beers()" classname="MainTest" time="0.0"/>
+  <testcase name="ObtianListOfBeers returns an array containing correct number of regular and guest beers when json contains many pub with beer()" classname="MainTest" time="0.012"/>
+  <testcase name="mapRegularBeers returns an empty array if pub has no beers()" classname="MainTest" time="0.0"/>
+  <testcase name="FlattenEachPub returns an empty list if pubs don't contain any beers()" classname="MainTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
