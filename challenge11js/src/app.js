@@ -52,6 +52,7 @@ const createFlatListOfBeer = (listOfPubs) => {
 };
 
 const obtainListOfBeers = (jsonString) => {
+
     const listOfPubs = parseJson(jsonString);
     const sortedPubs = sortOnPubKey(listOfPubs);
     const uniquePubs = removeDuplicates(sortedPubs);
