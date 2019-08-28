@@ -5,9 +5,18 @@ class Pub {
         this.id = pubObject.Id;
         this.createTS = pubObject.CreateTS;
         this.pubService = pubObject.PubService;
-        this.regularBeers = pubObject.RegularBeers;
-        this.guestBeers = pubObject.GuestBeers;
-    };
+        if (pubObject.RegularBeers == undefined) {
+            this.regularBeers = [];
+        } else {
+            this.regularBeers = pubObject.RegularBeers;
+        }
+        if (pubObject.GuestBeers == undefined) {
+            this.guestBeers = [];
+        } else {
+            this.guestBeers = pubObject.GuestBeers;
+        }
+
+    }
     get sortKey() { return this.branch + this.id + this.createTS;} 
     get secondKey() { return this.branch + this.id;} 
 }

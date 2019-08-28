@@ -1,9 +1,10 @@
-const { parseJson, sortOnPubKey, removeDuplicates, mapToRegularBeer, createFlatListOfBeer, sortKeyIsAscending } = require("../src/app");
+const { parseJson, sortOnPubKey, removeDuplicates, mapToRegularBeer, createFlatListOfBeer, sortKeyIsAscending, obtainListOfBeers } = require("../src/app");
 const { Pub } = require("../src/pub");
 const { Beer } = require("../src/beer");
 const { noPubs, singlePub, singlePubWithNoBeer, manyPubs, invalidJson, jsonNotPubs} = require("../src/testdata");
 
 var assert = require('assert');
+/*
 describe('Test json parser', function () {
 
 	it(' should return an empty list of Pubs if the jsonstring contains no Pubs', function () {
@@ -125,5 +126,19 @@ describe('Test mapping a list of pubs into beers', function () {
 		assert.equal("pub3", result[7].pubName);
 		assert.equal(false, result[7].isRegularBeer);
 		
+	});
+});
+*/
+describe('Test obtainListOfBeers', function () {
+	it(' string containing json should map correctly to a list of beers', function () {
+		// const beersForInvalidJson = obtainListOfBeers(invalidJson);
+		// assert.equal(0,beersForInvalidJson.length);
+		
+		const beersForPubWithNoBeers = obtainListOfBeers(singlePubWithNoBeer);
+		assert.equal(0, beersForPubWithNoBeers.length);
+
+		const beersForSinglePub = obtainListOfBeers(singlePub);
+		assert.equal(5, beersForSinglePub.length);
+		//assert.equal(2, beersForSinglePub.filter(beer => beer.isRegularBeer));
 	});
 });

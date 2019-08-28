@@ -26,7 +26,7 @@ const singlePubWithNoBeer = "{\"Pubs\":[{" +
         "  \"PubService\": \"https://pubcrawlapi.appspot.com/pub/?v=1&id=15938&branch=WLD&uId=mike&pubs=no&realAle=yes&memberDiscount=no&town=London\"," +
         "  \"Id\": \"15938\"," +
         "  \"Branch\": \"WLD\"," +
-        "  \"CreateTS\": \"2019-05-16 19:31:39\"," +
+        "  \"CreateTS\": \"2019-05-16 19:31:39\"" +
         "}]}";
 const manyPubs = "{" +
         "  \"Pubs\": [" +

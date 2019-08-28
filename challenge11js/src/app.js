@@ -12,17 +12,19 @@ const parseJson = (jsonString) => {
  };
 
 const sortKeyIsAscending =  (element1, element2) =>  {
-    if (element1.sortKey > element2.sortKey) {return 1};
-    if (element1.sortKey < element2.sortKey) {return -1};
+    console.log("test");
+    console.log(element1);
+    if (element1.sortKey > element2.sortKey) {return 1}
+    if (element1.sortKey < element2.sortKey) {return -1}
     return 0;
 };    
 const sortKeyIsDescending =  (element1, element2) =>  {
-    return -1 * sortKeyIsAscending(element1, element2)
+    return -1 * sortKeyIsAscending(element1, element2);
 };    
 
 const sortOnPubKey = (listOfPubs) => {
     return listOfPubs.sort(sortKeyIsDescending);
-}
+};
 
 const removeDuplicates = (listOfPubs) => {
     let mapOfPubs = new Map();
@@ -33,7 +35,7 @@ const removeDuplicates = (listOfPubs) => {
         }
     } 
     return Array.from( mapOfPubs.values() );
-}
+};
 
 Array.prototype.flatMap = function(lambda) { 
 	return Array.prototype.concat.apply([], this.map(lambda)); 
@@ -41,22 +43,32 @@ Array.prototype.flatMap = function(lambda) {
 	
 const mapToRegularBeer = (listOfPubs) => {
     return listOfPubs.flatMap( pub => pub.regularBeers.map(regularBeer => new Beer(regularBeer, pub.name, pub.pubService, true) ) );
-}
+};
 
 const mapToGuestBeer = (listOfPubs) => {
     return listOfPubs.flatMap( pub => pub.guestBeers.map(regularBeer => new Beer(regularBeer, pub.name, pub.pubService, false) ) );
-}
+};
 
 const createFlatListOfBeer = (listOfPubs) => {
     return  mapToRegularBeer(listOfPubs).concat(mapToGuestBeer(listOfPubs));
-}
+};
 
 const obtainListOfBeers = (jsonString) => {
     const listOfPubs = parseJson(jsonString);
+    if (listOfPubs.length == 0) {
+        console.log("No pubs");
+        return [];
+    }
     const sortedPubs = sortOnPubKey(listOfPubs);
     const uniquePubs = removeDuplicates(sortedPubs);
+    console.log(uniquePubs);
     const beers = createFlatListOfBeer(uniquePubs);
-    return beers.sort(sortKeyIsAscending());
-}
 
-module.exports = { parseJson, Pub, Beer, sortOnPubKey, removeDuplicates, mapToRegularBeer, createFlatListOfBeer, sortKeyIsAscending };
+    if (beers.length == 0) {
+        console.log("No beer");
+        return [];
+    }
+    return beers.sort(sortKeyIsAscending());
+};
+
+module.exports = { parseJson, sortOnPubKey, removeDuplicates, mapToRegularBeer, createFlatListOfBeer, sortKeyIsAscending, obtainListOfBeers };
