@@ -45,7 +45,7 @@ const manyPubs = "{" +
         "      \"PubService\": \"https://pubcrawlapi.appspot.com/pub/?v=1&id=16185&branch=WLD&uId=mike&pubs=no&realAle=yes&memberDiscount=no&town=London\"," +
         "      \"Id\": \"16185\"," +
         "      \"Branch\": \"WLD\"," +
-        "      \"CreateTS\": \"2019-05-16 19:31:20\"," +
+        "      \"CreateTS\": \"2019-05-16 19:31:20\"" +
         "    }," +
         "    {" +
         "      \"Name\": \"Windsor Castle\"," +
@@ -57,7 +57,7 @@ const manyPubs = "{" +
         "      \"PubService\": \"https://pubcrawlapi.appspot.com/pub/?v=1&id=16187&branch=WLD&uId=mike&pubs=no&realAle=yes&memberDiscount=no&town=London\"," +
         "      \"Id\": \"16187\"," +
         "      \"Branch\": \"WLD\"," +
-        "      \"CreateTS\": \"2019-05-16 19:31:20\"," +
+        "      \"CreateTS\": \"2019-05-16 19:31:20\"" +
         "    }," +
         "    {" +
         "      \"Name\": \"Sports Bar and Grill Victoria\"," +
@@ -70,7 +70,7 @@ const manyPubs = "{" +
         "      \"PubService\": \"https://pubcrawlapi.appspot.com/pub/?v=1&id=16196&branch=WLD&uId=mike&pubs=no&realAle=yes&memberDiscount=no&town=London\"," +
         "      \"Id\": \"16196\"," +
         "      \"Branch\": \"WLD\"," +
-        "      \"CreateTS\": \"2019-05-16 19:31:20\"," +
+        "      \"CreateTS\": \"2019-05-16 19:31:20\"" +
         "    }," +
         "    {" +
         "      \"Name\": \"Willow Walk\"," +
@@ -84,7 +84,7 @@ const manyPubs = "{" +
         "      \"PubService\": \"https://pubcrawlapi.appspot.com/pub/?v=1&id=15951&branch=WLD&uId=mike&pubs=no&realAle=yes&memberDiscount=no&town=London\"," +
         "      \"Id\": \"15951\"," +
         "      \"Branch\": \"WLD\"," +
-        "      \"CreateTS\": \"2019-05-16 19:31:21\"," +
+        "      \"CreateTS\": \"2019-05-16 19:31:21\"" +
         "    }," +
         "    {" +
         "      \"Name\": \"Buckingham Arms\"," +
@@ -99,7 +99,7 @@ const manyPubs = "{" +
         "      \"PubService\": \"https://pubcrawlapi.appspot.com/pub/?v=1&id=15905&branch=WLD&uId=mike&pubs=no&realAle=yes&memberDiscount=no&town=London\"," +
         "      \"Id\": \"15905\"," +
         "      \"Branch\": \"WLD\"," +
-        "      \"CreateTS\": \"2019-05-16 19:31:21\"," +
+        "      \"CreateTS\": \"2019-05-16 19:31:21\"" +
         "    }," +
         "    {" +
         "      \"Name\": \"Shakespeare\"," +
@@ -112,8 +112,11 @@ const manyPubs = "{" +
         "      \"PubService\": \"https://pubcrawlapi.appspot.com/pub/?v=1&id=16066&branch=WLD&uId=mike&pubs=no&realAle=yes&memberDiscount=no&town=London\"," +
         "      \"Id\": \"16066\"," +
         "      \"Branch\": \"WLD\"," +
-        "      \"CreateTS\": \"2019-05-16 19:31:21\"," +
+        "      \"CreateTS\": \"2019-05-16 19:31:21\"" +
         "    }" +
         "  ]" +
-        "}";``
-module.exports = { noPubs, singlePub, singlePubWithNoBeer, manyPubs};
+        "}";
+const invalidJson = "This is some invalid json!!";
+const jsonNotPubs = "{\"Shops\":[]}";
+
+module.exports = { noPubs, singlePub, singlePubWithNoBeer, manyPubs, invalidJson, jsonNotPubs };
