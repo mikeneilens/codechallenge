@@ -1,4 +1,4 @@
-const { Pub, parseJson, sortOnPubKey } = require("../src/app");
+const { Pub, parseJson, sortOnPubKey, removeDuplicates } = require("../src/app");
 const { noPubs, singlePub, singlePubWithNoBeer, manyPubs, invalidJson, jsonNotPubs} = require("../src/testdata");
 
 var assert = require('assert');
@@ -49,4 +49,19 @@ describe('Test sortOnPubKey', function () {
 		assert.equal(true, sortedPubs[3].sortKey > sortedPubs[4].sortKey );
 	});
 
+});
+
+describe('Test removeDuplicates', function () {
+	it(' list of duplicates has duplciates removed', function () {
+		const pub1 = new Pub({"Name":"pub1", "Branch":"b1", "Id":"id1", "CreateTS":"2019-05-16 19:31:21", "PubService":"pub1 service", "RegularBeers":[], "GuestBeers":[]});		
+		const pub2 = new Pub({"Name":"pub1", "Branch":"b1", "Id":"id1", "CreateTS":"2019-05-16 19:31:23", "PubService":"pub1 service", "RegularBeers":[], "GuestBeers":[]});		
+		const pub3 = new Pub({"Name":"pub1", "Branch":"b1", "Id":"id1", "CreateTS":"2019-05-16 19:31:22", "PubService":"pub2 service", "RegularBeers":[], "GuestBeers":[]});		
+		const pub4 = new Pub({"Name":"pub4", "Branch":"b2", "Id":"id1", "CreateTS":"2019-05-16 19:31:22", "PubService":"pub2 service", "RegularBeers":[], "GuestBeers":[]});		
+		const pub5 = new Pub({"Name":"pub4", "Branch":"b2", "Id":"id2", "CreateTS":"2019-05-16 19:31:22", "PubService":"pub2 service", "RegularBeers":[], "GuestBeers":[]});		
+		const result = removeDuplicates([pub1,pub2,pub3,pub4,pub5]);
+		assert.equal(3, result.length);
+		assert.equal(pub1, result[0]);
+		assert.equal(pub4, result[1]);
+		assert.equal(pub5, result[2]);
+	});
 });

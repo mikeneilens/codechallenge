@@ -9,6 +9,7 @@ class Pub {
         this.guestBeers = pubObject.GuestBeers;
     };
     get sortKey() { return this.branch + this.id + this.createTS;} 
+    get secondKey() { return this.branch + this.id;} 
 }
 
 const parseJson = (jsonString) => { 
@@ -23,13 +24,24 @@ const parseJson = (jsonString) => {
 
 
 const sortOnPubKey = (listOfPubs) => {
-    const pubSortKeyDescending =  (pub1, pub2) =>  {
-        if (pub1.sortKey < pub2.sortKey) {return 1};
-        if (pub1.sortKey > pub2.sortKey) {return -1};
+    const sortKeyIsDescending =  (element1, element2) =>  {
+        if (element1.sortKey < element2.sortKey) {return 1};
+        if (element1.sortKey > element2.sortKey) {return -1};
         return 0;
     };    
 
-    return listOfPubs.sort(pubSortKeyDescending);
+    return listOfPubs.sort(sortKeyIsDescending);
 }
 
-module.exports = { parseJson, Pub, sortOnPubKey };
+const removeDuplicates = (listOfPubs) => {
+    let mapOfPubs = new Map();
+    let pub;
+    for (pub of listOfPubs) {
+        if (!mapOfPubs.has(pub.secondKey)) {
+            mapOfPubs.set(pub.secondKey, pub);
+        }
+    } 
+    return Array.from( mapOfPubs.values() );
+}
+
+module.exports = { parseJson, Pub, sortOnPubKey, removeDuplicates };
