@@ -1,4 +1,6 @@
-const { Pub, parseJson, sortOnPubKey, removeDuplicates, mapToRegularBeer, createFlatListOfBeer, sortKeyIsAscending } = require("../src/app");
+const { parseJson, sortOnPubKey, removeDuplicates, mapToRegularBeer, createFlatListOfBeer, sortKeyIsAscending } = require("../src/app");
+const { Pub } = require("../src/pub");
+const { Beer } = require("../src/beer");
 const { noPubs, singlePub, singlePubWithNoBeer, manyPubs, invalidJson, jsonNotPubs} = require("../src/testdata");
 
 var assert = require('assert');

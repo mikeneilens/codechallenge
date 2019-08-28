@@ -11,7 +11,6 @@ const parseJson = (jsonString) => {
     }
  };
 
-
 const sortKeyIsAscending =  (element1, element2) =>  {
     if (element1.sortKey > element2.sortKey) {return 1};
     if (element1.sortKey < element2.sortKey) {return -1};
@@ -50,6 +49,14 @@ const mapToGuestBeer = (listOfPubs) => {
 
 const createFlatListOfBeer = (listOfPubs) => {
     return  mapToRegularBeer(listOfPubs).concat(mapToGuestBeer(listOfPubs));
+}
+
+const obtainListOfBeers = (jsonString) => {
+    const listOfPubs = parseJson(jsonString);
+    const sortedPubs = sortOnPubKey(listOfPubs);
+    const uniquePubs = removeDuplicates(sortedPubs);
+    const beers = createFlatListOfBeer(uniquePubs);
+    return beers.sort(sortKeyIsAscending());
 }
 
 module.exports = { parseJson, Pub, Beer, sortOnPubKey, removeDuplicates, mapToRegularBeer, createFlatListOfBeer, sortKeyIsAscending };
