@@ -20,10 +20,10 @@ const sortKeyIsDescending =  (element1, element2) =>  {
     return -1 * sortKeyIsAscending(element1, element2);
 };    
 
-const removeDuplicates = (listOfPubs) => {
+Array.prototype.removeDuplicates = function() {
     let mapOfPubs = new Map();
     let pub;
-    for (pub of listOfPubs) {
+    for (pub of this) {
         if (!mapOfPubs.has(pub.uniqueKey)) {
             mapOfPubs.set(pub.uniqueKey, pub);
         }
@@ -44,18 +44,18 @@ const mapToGuestBeer = (listOfPubs) => {
     return listOfPubs.flatMap( pub => pub.guestBeers.map(regularBeer => new Beer(regularBeer, pub.name, pub.pubService, false) ) );
 };
 
-const createFlatListOfBeer = (listOfPubs) => {
-    return  mapToRegularBeer(listOfPubs).concat(mapToGuestBeer(listOfPubs));
+Array.prototype.createFlatListOfBeer = function() {
+    return  mapToRegularBeer(this).concat(mapToGuestBeer(this));
 };
 
 const obtainListOfBeers = (jsonString) => {
-
     const listOfPubs = parseJson(jsonString);
-    const sortedPubs = listOfPubs.sort(sortKeyIsDescending);
-    const uniquePubs = removeDuplicates(sortedPubs);
-    const beers = createFlatListOfBeer(uniquePubs);
 
-    return beers.sort(sortKeyIsAscending);
+    return listOfPubs
+            .sort(sortKeyIsDescending)
+            .removeDuplicates()
+            .createFlatListOfBeer()
+            .sort(sortKeyIsAscending);
 };
 
-module.exports = { parseJson, sortKeyIsDescending, sortKeyIsAscending, removeDuplicates, mapToRegularBeer, createFlatListOfBeer, obtainListOfBeers };
+module.exports = { parseJson, sortKeyIsDescending, sortKeyIsAscending, mapToRegularBeer, obtainListOfBeers };

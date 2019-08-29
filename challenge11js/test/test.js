@@ -1,4 +1,4 @@
-const { parseJson, sortKeyIsDescending, sortKeyIsAscending, removeDuplicates, mapToRegularBeer, createFlatListOfBeer, obtainListOfBeers } = require("../src/app");
+const { parseJson, sortKeyIsDescending, sortKeyIsAscending, mapToRegularBeer, obtainListOfBeers } = require("../src/app");
 const { Pub } = require("../src/pub");
 const { Beer } = require("../src/beer");
 const { noPubs, singlePub, singlePubWithNoBeer, singlePubMissingFields ,manyPubs, invalidJson, jsonNotPubs} = require("../src/testdata");
@@ -84,7 +84,8 @@ describe('Test removeDuplicates', function () {
 		const pub3 = new Pub({"Name":"pub1", "Branch":"b1", "Id":"id1", "CreateTS":"2019-05-16 19:31:22", "PubService":"pub2 service", "RegularBeers":[], "GuestBeers":[]});		
 		const pub4 = new Pub({"Name":"pub4", "Branch":"b2", "Id":"id1", "CreateTS":"2019-05-16 19:31:22", "PubService":"pub2 service", "RegularBeers":[], "GuestBeers":[]});		
 		const pub5 = new Pub({"Name":"pub4", "Branch":"b2", "Id":"id2", "CreateTS":"2019-05-16 19:31:22", "PubService":"pub2 service", "RegularBeers":[], "GuestBeers":[]});		
-		const result = removeDuplicates([pub1,pub2,pub3,pub4,pub5]);
+		//const result = removeDuplicates([pub1,pub2,pub3,pub4,pub5]);
+		const result =  [pub1,pub2,pub3,pub4,pub5].removeDuplicates();
 		assert.equal(3, result.length);
 		assert.equal(pub1, result[0]);
 		assert.equal(pub4, result[1]);
@@ -114,7 +115,7 @@ describe('Test mapping a list of pubs into beers', function () {
 		const pub1 = new Pub({"Name":"pub1", "Branch":"b1", "Id":"id1", "CreateTS":"", "PubService":"pub1 service", "RegularBeers":["b1","b2","b3"], "GuestBeers":[]});		
 		const pub2 = new Pub({"Name":"pub2", "Branch":"b1", "Id":"id1", "CreateTS":"", "PubService":"pub2 service", "RegularBeers":[], "GuestBeers":["b2","b3","b4"]});		
 		const pub3 = new Pub({"Name":"pub3", "Branch":"b1", "Id":"id1", "CreateTS":"", "PubService":"pub3 service", "RegularBeers":["b4"], "GuestBeers":["b5"]});		
-		const result = createFlatListOfBeer([pub1,pub2,pub3]).sort(sortKeyIsAscending);
+		const result = [pub1,pub2,pub3].createFlatListOfBeer().sort(sortKeyIsAscending);
 
 		assert.equal("b1", result[0].name);
 		assert.equal("pub1", result[0].pubName);
