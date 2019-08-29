@@ -1,7 +1,7 @@
-const { parseJson, sortOnPubKey, removeDuplicates, mapToRegularBeer, createFlatListOfBeer, sortKeyIsAscending, obtainListOfBeers } = require("../src/app");
+const { parseJson, sortKeyIsDescending, sortKeyIsAscending, removeDuplicates, mapToRegularBeer, createFlatListOfBeer, obtainListOfBeers } = require("../src/app");
 const { Pub } = require("../src/pub");
 const { Beer } = require("../src/beer");
-const { noPubs, singlePub, singlePubWithNoBeer, manyPubs, invalidJson, jsonNotPubs} = require("../src/testdata").default;
+const { noPubs, singlePub, singlePubWithNoBeer, manyPubs, invalidJson, jsonNotPubs} = require("../src/testdata");
 
 var assert = require('assert');
 
@@ -37,19 +37,36 @@ describe('Test json parser', function () {
 
 });
 
-describe('Test sortOnPubKey', function () {
+describe('Test sortKeyIsDescending', function () {
 	it(' list of pubs is sorted into descending sequence on key branch/id/createts', function () {
 		const pub1 = new Pub({"Name":"pub1", "Branch":"b1", "Id":"id1", "CreateTS":"2019-05-16 19:31:21", "PubService":"pub1 service", "RegularBeers":[], "GuestBeers":[]});		
 		const pub2 = new Pub({"Name":"pub1", "Branch":"b1", "Id":"id1", "CreateTS":"2019-05-16 19:31:23", "PubService":"pub1 service", "RegularBeers":[], "GuestBeers":[]});		
 		const pub3 = new Pub({"Name":"pub1", "Branch":"b1", "Id":"id1", "CreateTS":"2019-05-16 19:31:22", "PubService":"pub2 service", "RegularBeers":[], "GuestBeers":[]});		
 		const pub4 = new Pub({"Name":"pub4", "Branch":"b2", "Id":"id1", "CreateTS":"2019-05-16 19:31:22", "PubService":"pub2 service", "RegularBeers":[], "GuestBeers":[]});		
 		const pub5 = new Pub({"Name":"pub4", "Branch":"b2", "Id":"id2", "CreateTS":"2019-05-16 19:31:22", "PubService":"pub2 service", "RegularBeers":[], "GuestBeers":[]});		
-		const sortedPubs = sortOnPubKey([pub1, pub2, pub3, pub4, pub5]);
+		const sortedPubs = [pub1, pub2, pub3, pub4, pub5].sort(sortKeyIsDescending);
 	
-		assert.equal(true, sortedPubs[0].sortKey > sortedPubs[1].sortKey );
-		assert.equal(true, sortedPubs[1].sortKey > sortedPubs[2].sortKey );
-		assert.equal(true, sortedPubs[2].sortKey > sortedPubs[3].sortKey );
-		assert.equal(true, sortedPubs[3].sortKey > sortedPubs[4].sortKey );
+		assert.equal(true, sortedPubs[0].sortKey >= sortedPubs[1].sortKey );
+		assert.equal(true, sortedPubs[1].sortKey >= sortedPubs[2].sortKey );
+		assert.equal(true, sortedPubs[2].sortKey >= sortedPubs[3].sortKey );
+		assert.equal(true, sortedPubs[3].sortKey >= sortedPubs[4].sortKey );
+	});
+
+});
+
+describe('Test sortKeyIsAscending', function () {
+	it(' list of pubs is sorted into descending sequence on key branch/id/createts', function () {
+		const pub1 = new Pub({"Name":"pub1", "Branch":"b1", "Id":"id1", "CreateTS":"2019-05-16 19:31:21", "PubService":"pub1 service", "RegularBeers":[], "GuestBeers":[]});		
+		const pub2 = new Pub({"Name":"pub1", "Branch":"b1", "Id":"id1", "CreateTS":"2019-05-16 19:31:23", "PubService":"pub1 service", "RegularBeers":[], "GuestBeers":[]});		
+		const pub3 = new Pub({"Name":"pub1", "Branch":"b1", "Id":"id1", "CreateTS":"2019-05-16 19:31:22", "PubService":"pub2 service", "RegularBeers":[], "GuestBeers":[]});		
+		const pub4 = new Pub({"Name":"pub4", "Branch":"b2", "Id":"id1", "CreateTS":"2019-05-16 19:31:22", "PubService":"pub2 service", "RegularBeers":[], "GuestBeers":[]});		
+		const pub5 = new Pub({"Name":"pub4", "Branch":"b2", "Id":"id2", "CreateTS":"2019-05-16 19:31:22", "PubService":"pub2 service", "RegularBeers":[], "GuestBeers":[]});		
+		const sortedPubs = [pub1, pub2, pub3, pub4, pub5].sort(sortKeyIsAscending);
+	
+		assert.equal(true, sortedPubs[0].sortKey <= sortedPubs[1].sortKey );
+		assert.equal(true, sortedPubs[1].sortKey <= sortedPubs[2].sortKey );
+		assert.equal(true, sortedPubs[2].sortKey <= sortedPubs[3].sortKey );
+		assert.equal(true, sortedPubs[3].sortKey <= sortedPubs[4].sortKey );
 	});
 
 });
@@ -133,7 +150,8 @@ describe('Test obtainListOfBeers', function () {
 	it(' string containing json should map correctly to a list of beers', function () {
 		const beersForInvalidJson = obtainListOfBeers(invalidJson);
 		assert.equal(0,beersForInvalidJson.length);
-		
+	
+
 		const beersForPubWithNoBeers = obtainListOfBeers(singlePubWithNoBeer);
 		assert.equal(0, beersForPubWithNoBeers.length);
 
@@ -156,6 +174,6 @@ describe('Test obtainListOfBeers', function () {
 		assert.equal('Shakespeare',beersForManyPubs[4].pubName);
 		assert.equal('Greene King IPA',beersForManyPubs[5].name);
 		assert.equal('Willow Walk',beersForManyPubs[5].pubName);
-		
+
 	});
 });

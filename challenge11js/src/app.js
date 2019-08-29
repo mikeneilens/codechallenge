@@ -20,10 +20,6 @@ const sortKeyIsDescending =  (element1, element2) =>  {
     return -1 * sortKeyIsAscending(element1, element2);
 };    
 
-const sortOnPubKey = (listOfPubs) => {
-    return listOfPubs.sort(sortKeyIsDescending);
-};
-
 const removeDuplicates = (listOfPubs) => {
     let mapOfPubs = new Map();
     let pub;
@@ -54,11 +50,11 @@ const createFlatListOfBeer = (listOfPubs) => {
 const obtainListOfBeers = (jsonString) => {
 
     const listOfPubs = parseJson(jsonString);
-    const sortedPubs = sortOnPubKey(listOfPubs);
+    const sortedPubs = listOfPubs.sort(sortKeyIsDescending);
     const uniquePubs = removeDuplicates(sortedPubs);
     const beers = createFlatListOfBeer(uniquePubs);
 
     return beers.sort(sortKeyIsAscending);
 };
 
-module.exports = { parseJson, sortOnPubKey, removeDuplicates, mapToRegularBeer, createFlatListOfBeer, sortKeyIsAscending, obtainListOfBeers };
+module.exports = { parseJson, sortKeyIsDescending, sortKeyIsAscending, removeDuplicates, mapToRegularBeer, createFlatListOfBeer, obtainListOfBeers };
