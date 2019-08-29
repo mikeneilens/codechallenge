@@ -1,10 +1,10 @@
 const { parseJson, sortOnPubKey, removeDuplicates, mapToRegularBeer, createFlatListOfBeer, sortKeyIsAscending, obtainListOfBeers } = require("../src/app");
 const { Pub } = require("../src/pub");
 const { Beer } = require("../src/beer");
-const { noPubs, singlePub, singlePubWithNoBeer, manyPubs, invalidJson, jsonNotPubs} = require("../src/testdata");
+const { noPubs, singlePub, singlePubWithNoBeer, manyPubs, invalidJson, jsonNotPubs} = require("../src/testdata").default;
 
 var assert = require('assert');
-/*
+
 describe('Test json parser', function () {
 
 	it(' should return an empty list of Pubs if the jsonstring contains no Pubs', function () {
@@ -128,17 +128,34 @@ describe('Test mapping a list of pubs into beers', function () {
 		
 	});
 });
-*/
+
 describe('Test obtainListOfBeers', function () {
 	it(' string containing json should map correctly to a list of beers', function () {
-		// const beersForInvalidJson = obtainListOfBeers(invalidJson);
-		// assert.equal(0,beersForInvalidJson.length);
+		const beersForInvalidJson = obtainListOfBeers(invalidJson);
+		assert.equal(0,beersForInvalidJson.length);
 		
 		const beersForPubWithNoBeers = obtainListOfBeers(singlePubWithNoBeer);
 		assert.equal(0, beersForPubWithNoBeers.length);
 
 		const beersForSinglePub = obtainListOfBeers(singlePub);
 		assert.equal(5, beersForSinglePub.length);
-		//assert.equal(2, beersForSinglePub.filter(beer => beer.isRegularBeer));
+		assert.equal('Shepherd Neame --seasonal--', beersForSinglePub[0].name);
+		assert.equal('Cask and Glass', beersForSinglePub[0].pubName);
+		assert.equal('Shepherd Neame --varies--', beersForSinglePub[1].name);
+		assert.equal('Cask and Glass', beersForSinglePub[1].pubName);
+		assert.equal('Shepherd Neame Whitstable Bay Pale Ale', beersForSinglePub[4].name);
+		
+		const beersForManyPubs = obtainListOfBeers(manyPubs);
+		
+		assert.equal(16, beersForManyPubs.length);
+		assert.equal('Brakspear Bitter',beersForManyPubs[0].name);
+		assert.equal('Sports Bar and Grill Victoria',beersForManyPubs[0].pubName);
+		assert.equal('Fuller#039;s London Pride',beersForManyPubs[1].name);
+		assert.equal('Willow Walk',beersForManyPubs[1].pubName);
+		assert.equal('Greene King IPA',beersForManyPubs[4].name);
+		assert.equal('Shakespeare',beersForManyPubs[4].pubName);
+		assert.equal('Greene King IPA',beersForManyPubs[5].name);
+		assert.equal('Willow Walk',beersForManyPubs[5].pubName);
+		
 	});
 });
