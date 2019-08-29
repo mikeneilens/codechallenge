@@ -28,6 +28,14 @@ const singlePubWithNoBeer = "{\"Pubs\":[{" +
         "  \"Branch\": \"WLD\"," +
         "  \"CreateTS\": \"2019-05-16 19:31:39\"" +
         "}]}";
+const singlePubMissingFields = "{\"Pubs\":[{" +
+        "  \"Address\": \"39 Palace Street Victoria London SW1E 5HN\"," +
+        "  \"Town\": \"London\"," +
+        "  \"PostCode\": \"SW1E 5HN\"," +
+        "  \"PubService\": \"https://pubcrawlapi.appspot.com/pub/?v=1&id=15938&branch=WLD&uId=mike&pubs=no&realAle=yes&memberDiscount=no&town=London\"," +
+        "  \"Id\": \"15938\"," +
+        "  \"CreateTS\": \"2019-05-16 19:31:39\"" +
+        "}]}";
 const manyPubs = "{" +
         "  \"Pubs\": [" +
         "    {" +
@@ -119,4 +127,4 @@ const manyPubs = "{" +
 const invalidJson = "This is some invalid json!!";
 const jsonNotPubs = "{\"Shops\":[]}";
 
-module.exports = { noPubs, singlePub, singlePubWithNoBeer, manyPubs, invalidJson, jsonNotPubs };
+module.exports = { noPubs, singlePub, singlePubWithNoBeer, singlePubMissingFields, manyPubs, invalidJson, jsonNotPubs };

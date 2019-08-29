@@ -24,13 +24,14 @@ const removeDuplicates = (listOfPubs) => {
     let mapOfPubs = new Map();
     let pub;
     for (pub of listOfPubs) {
-        if (!mapOfPubs.has(pub.secondKey)) {
-            mapOfPubs.set(pub.secondKey, pub);
+        if (!mapOfPubs.has(pub.uniqueKey)) {
+            mapOfPubs.set(pub.uniqueKey, pub);
         }
     } 
     return Array.from( mapOfPubs.values() );
 };
 
+//Included in latest version of ES6 but not in the version used by Cloud9
 Array.prototype.flatMap = function(lambda) { 
 	return Array.prototype.concat.apply([], this.map(lambda)); 
 };

@@ -1,7 +1,7 @@
 const { parseJson, sortKeyIsDescending, sortKeyIsAscending, removeDuplicates, mapToRegularBeer, createFlatListOfBeer, obtainListOfBeers } = require("../src/app");
 const { Pub } = require("../src/pub");
 const { Beer } = require("../src/beer");
-const { noPubs, singlePub, singlePubWithNoBeer, manyPubs, invalidJson, jsonNotPubs} = require("../src/testdata");
+const { noPubs, singlePub, singlePubWithNoBeer, singlePubMissingFields ,manyPubs, invalidJson, jsonNotPubs} = require("../src/testdata");
 
 var assert = require('assert');
 
@@ -28,6 +28,12 @@ describe('Test json parser', function () {
 		const listOfPubs = parseJson(invalidJson);
 	   	assert.equal(0, listOfPubs.length);
 	});
+
+	it(' should return an empty list of Pubs if mandatory fields are missing', function () {
+		const listOfPubs = parseJson(singlePubMissingFields);
+	   	assert.equal(0, listOfPubs.length);
+	});
+
 
 	it(' should return an empty list of Pubs if the jsonstring does not contain pubs', function () {
 		const listOfPubs = parseJson(jsonNotPubs);
@@ -109,8 +115,7 @@ describe('Test mapping a list of pubs into beers', function () {
 		const pub2 = new Pub({"Name":"pub2", "Branch":"b1", "Id":"id1", "CreateTS":"", "PubService":"pub2 service", "RegularBeers":[], "GuestBeers":["b2","b3","b4"]});		
 		const pub3 = new Pub({"Name":"pub3", "Branch":"b1", "Id":"id1", "CreateTS":"", "PubService":"pub3 service", "RegularBeers":["b4"], "GuestBeers":["b5"]});		
 		const result = createFlatListOfBeer([pub1,pub2,pub3]).sort(sortKeyIsAscending);
-		console.log(result.length);
-		
+
 		assert.equal("b1", result[0].name);
 		assert.equal("pub1", result[0].pubName);
 		assert.equal(true, result[0].isRegularBeer);
