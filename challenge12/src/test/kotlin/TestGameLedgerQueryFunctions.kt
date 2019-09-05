@@ -24,7 +24,6 @@ class TestGameLedgerQueryFunctions {
         val balanceForPlayer = GameLedger.balanceFor(mike)
 
         assertEquals(Credit(GBP(500)),balanceForPlayer)
-
     }
 
     @Test
@@ -33,7 +32,16 @@ class TestGameLedgerQueryFunctions {
         val balanceForPlayer = GameLedger.balanceFor(mike)
 
         assertEquals(Debt(GBP(200)),balanceForPlayer)
+    }
 
+    @Test
+    fun `getting balance for a player with £200 credit and £150 debt has £50 credit in total` () {
+        GameLedger.addNewPlayer(mike, GBP(100))
+        GameLedger.payRent(jake,mike,GBP(150))
+        GameLedger.addFeeForPlayerPassingGo(mike,GBP(100))
+        val balanceForPlayer = GameLedger.balanceFor(mike)
+
+        assertEquals(Credit(GBP(50)),balanceForPlayer)
     }
 
 
