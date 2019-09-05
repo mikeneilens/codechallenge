@@ -9,3 +9,9 @@ fun GameLedger.balanceFor(player: Player): Balance {
 
     return balance
 }
+
+data class OwnedLocation(val location: Location, val building: Building)
+
+fun GameLedger.locationsFor(plaher: Player): List<OwnedLocation> {
+    return listOf()
+}

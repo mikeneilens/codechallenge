@@ -5,6 +5,13 @@ import org.junit.jupiter.api.Test
 class TestGameLedgerQueryFunctions {
     val mike = object:Player { override val name = "Mike"}
     val jake = object:Player { override val name = "Jake"}
+    val warehouse = FactoryOrWarehouse("Magna Park")
+    val shop = RetailSite(Group.Red,"Victoria", GBP(100),
+        undeveloped = DevelopmentType.RentOnly(GBP(10)),
+        miniStore = DevelopmentType.BuildCostAndRent(GBP(100),GBP(20)),
+        supermarket =  DevelopmentType.BuildCostAndRent(GBP(200),GBP(30)),
+        megastore = DevelopmentType.BuildCostAndRent(GBP(300),GBP(40))
+    )
 
     @BeforeEach
     fun `delete all transactions`() {
@@ -44,5 +51,11 @@ class TestGameLedgerQueryFunctions {
         assertEquals(Credit(GBP(50)),balanceForPlayer)
     }
 
+    @Test
+    fun `getting locations for a player returns an empty list if a player hasnt bought any`() {
+        val locationsForPlayer = GameLedger.locationsFor(mike)
+
+        assertEquals(listOf<OwnedLocation>(), locationsForPlayer)
+    }
 
 }
