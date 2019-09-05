@@ -12,6 +12,16 @@ fun GameLedger.balanceFor(player: Player): Balance {
 
 data class OwnedLocation(val location: Location, val building: Building)
 
-fun GameLedger.locationsFor(plaher: Player): List<OwnedLocation> {
-    return listOf()
+fun GameLedger.locationsFor(player: Player): List<OwnedLocation> {
+    val locationTransactions = GameLedger.transactions.filter { (it is GameLedger.PlayerPurchasingProperty || it is GameLedger.PlayerBuildingOnLocation) && it is GameLedger.DebitTransaction  && it.playerDebited == player}
+
+    val listOfOwnedLocations = locationTransactions.mapNotNull{
+        when (it) {
+            is GameLedger.PlayerPurchasingProperty -> OwnedLocation(it.location, Building.undeveloped)
+            is GameLedger.PlayerBuildingOnLocation -> OwnedLocation(it.location, it.building)
+            else -> null
+        }
+    }
+
+    return listOfOwnedLocations
 }

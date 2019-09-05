@@ -3,8 +3,8 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 class TestGameLedgerQueryFunctions {
-    val mike = object:Player { override val name = "Mike"}
-    val jake = object:Player { override val name = "Jake"}
+    val mike = Player("Mike")
+    val jake = Player("Jake")
     val warehouse = FactoryOrWarehouse("Magna Park")
     val shop = RetailSite(Group.Red,"Victoria", GBP(100),
         undeveloped = DevelopmentType.RentOnly(GBP(10)),
@@ -58,4 +58,12 @@ class TestGameLedgerQueryFunctions {
         assertEquals(listOf<OwnedLocation>(), locationsForPlayer)
     }
 
+    @Test
+    fun `getting locations for a player returns a single undeveloped location if a player has only one undeveloeprd location`() {
+        GameLedger.purchaseLocation(mike, shop, GBP(200))
+        val locationsForPlayer = GameLedger.locationsFor(mike)
+
+        assertEquals(listOf(OwnedLocation(shop, Building.undeveloped)), locationsForPlayer)
+    }
+    
 }

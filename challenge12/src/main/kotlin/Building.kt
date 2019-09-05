@@ -1,3 +1,3 @@
 enum class Building {
-    minimarket, supermarket, megastore
+    undeveloped, minimarket, supermarket, megastore
 }

@@ -1,3 +1,1 @@
-interface Player {
-    val name:String
-}
+data class Player ( val name:String)
