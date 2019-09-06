@@ -13,3 +13,13 @@ fun GameLedger.balanceFor(player: Player): Balance {
 fun GameLedger.locationsFor(player: Player): List<OwnedLocation> {
     return GameLedger.ownedLocations.filter{it.owner == player}
 }
+
+fun GameLedger.ownerOf(location: Location):Pair<Player, GBP>? {
+    val foundLocation = GameLedger.ownedLocations.filter{it.location == location}.firstOrNull()
+
+    if (foundLocation == null) {
+        return null
+    } else {
+        return Pair(foundLocation.owner, GBP(10))
+    }
+}

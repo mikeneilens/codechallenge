@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
@@ -140,5 +141,27 @@ class TestGameLedgerQueryFunctions {
         assertEquals(OwnedLocation(playerJake, warehouse, Building.Undeveloped), GameLedger.ownedLocations[0])
         assertEquals(OwnedLocation(playerMike, shop, Building.Supermarket), GameLedger.ownedLocations[1])
 
+    }
+
+    @Test
+    fun `when no transactions have been added to GameLedger, there is no owner of a location`() {
+        assertNull(GameLedger.ownerOf(shop))
+    }
+    @Test
+    fun `when no transactions involving locations have been added to GameLedger, there is no owner of a location`() {
+        GameLedger.addFeeForPlayerPassingGo(playerMike,Go.fee)
+        GameLedger.payRent(playerJake, playerMike, GBP(20))
+        GameLedger.addNewPlayer(playerMike, GBP(200))
+        assertNull(GameLedger.ownerOf(shop))
+    }
+    @Test
+    fun `when a transaction involving a different location has been added to GameLedger, there is no owner of a location`() {
+        GameLedger.purchaseLocation(playerMike, shop, shop.purchasePrice)
+        assertNull(GameLedger.ownerOf(warehouse))
+    }
+    @Test
+    fun `when a single transaction involving a location has been added to GameLedger, the correct owner and basic rent is returned `() {
+        GameLedger.purchaseLocation(playerMike, shop, shop.purchasePrice)
+        assertEquals(Pair(playerMike, shop.undeveloped.rent), GameLedger.ownerOf(shop)  )
     }
 }
