@@ -14,8 +14,8 @@ To get a total balance for the player I filter out all credit transactions for t
 I created a new class called OwnedLocation which gives the status of the location, e.g. what's been built on it and whether it is mortgaged.
 I created a new getter called ownedLocations on GameLedger that does the following to work out who owns each location:
 
-* map each transaction into an OwnedLocation. The status of each location can be derived directly from the transaction in most cases. For transactions where a building is sold the OwnedLocation needs to contain the property smaller than the one sold. Only include transactions which process locations.
-
+* map each transaction into an OwnedLocation. The status of each location can be derived directly from the transaction in most cases. For transactions where a building is sold the OwnedLocation needs to contain the property smaller than the one sold. Any new transaction types that deal with Location need to be added to the getter here.
+ 
 * reverse the list, so newest ownedLocations appear first.
 
 * use distinctBy to only include the latest status of each location.
