@@ -3,20 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="968f8ffb-1e47-4767-8f49-40a5fc36a6db" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../challenge10/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge10/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/TestGameLedgerQueryFunctions.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/base-style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/js/report.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/default-package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-TestGameLedgerQueryFunctions.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Building.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Building.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/GameLedgerQueries.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/GameLedgerQueries.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Player.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Player.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/TestGameLedgerCommandFunctions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/TestGameLedgerCommandFunctions.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/TestGameLedgerQueryFunctions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/TestGameLedgerQueryFunctions.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -104,8 +91,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/TestGameLedgerQueryFunctions.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="523">
-              <caret line="67" column="4" selection-start-line="67" selection-start-column="4" selection-end-line="67" selection-end-column="4" />
+            <state relative-caret-position="477">
+              <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
               <folding>
                 <element signature="e#0#86#0" expanded="true" />
               </folding>
@@ -116,8 +103,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/GameLedgerQueries.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+            <state relative-caret-position="405">
+              <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -256,7 +243,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.TestGameLedgerQueryFunctions">
+  <component name="RunManager" selected="Gradle.TestGameLedgerQueryFunctions.getting locations for a player returns a single undeveloped location if a player has only one undeveloeprd location">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -396,9 +383,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.TestGameLedgerQueryFunctions.getting locations for a player returns a single undeveloped location if a player has only one undeveloeprd location" />
         <item itemvalue="Gradle.TestGameLedgerQueryFunctions" />
         <item itemvalue="Gradle.TestGameLedgerCommandFunctions" />
-        <item itemvalue="Gradle.TestGameLedgerQueryFunctions.getting locations for a player returns a single undeveloped location if a player has only one undeveloeprd location" />
         <item itemvalue="Gradle.TestGameLedgerQueryFunctions.getting locations for a player returns an empty list if a player hasnt bought any" />
         <item itemvalue="Gradle.TestGameLedgerQueryFunctions.getting balance for a player with £200 credit and £150 debt has £50 credit in total" />
       </list>
@@ -425,21 +412,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestGameLedgerQueryFunctions_getting_locations_for_a_player_returns_an_empty_list_if_a_player_hasnt_bought_any - 2019.09.05 at 20h 36m 42s.xml">
-      <configuration name="TestGameLedgerQueryFunctions.getting locations for a player returns an empty list if a player hasnt bought any" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="TestGameLedgerQueryFunctions_getting_locations_for_a_player_returns_a_single_undeveloped_location_if_a_player_has_only_one_undeveloeprd_location - 2019.09.05 at 20h 41m 45s.xml">
-      <configuration name="TestGameLedgerQueryFunctions.getting locations for a player returns a single undeveloped location if a player has only one undeveloeprd location" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="TestGameLedgerQueryFunctions - 2019.09.05 at 21h 00m 16s.xml">
-      <configuration name="TestGameLedgerQueryFunctions" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="TestGameLedgerQueryFunctions - 2019.09.05 at 21h 00m 54s.xml">
-      <configuration name="TestGameLedgerQueryFunctions" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="TestGameLedgerQueryFunctions - 2019.09.05 at 21h 01m 15s.xml">
-      <configuration name="TestGameLedgerQueryFunctions" configurationId="GradleRunConfiguration" />
-    </history-entry>
     <history-entry file="TestGameLedgerQueryFunctions - 2019.09.05 at 21h 01m 32s.xml">
       <configuration name="TestGameLedgerQueryFunctions" configurationId="GradleRunConfiguration" />
     </history-entry>
@@ -454,6 +426,21 @@
     </history-entry>
     <history-entry file="TestGameLedgerQueryFunctions - 2019.09.05 at 21h 07m 29s.xml">
       <configuration name="TestGameLedgerQueryFunctions" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestGameLedgerQueryFunctions_getting_locations_for_a_player_returns_a_single_undeveloped_location_if_a_player_has_only_one_undeveloeprd_location - 2019.09.06 at 08h 10m 46s.xml">
+      <configuration name="TestGameLedgerQueryFunctions.getting locations for a player returns a single undeveloped location if a player has only one undeveloeprd location" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestGameLedgerQueryFunctions_getting_locations_for_a_player_returns_a_single_undeveloped_location_if_a_player_has_only_one_undeveloeprd_location - 2019.09.06 at 08h 14m 28s.xml">
+      <configuration name="TestGameLedgerQueryFunctions.getting locations for a player returns a single undeveloped location if a player has only one undeveloeprd location" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestGameLedgerQueryFunctions_getting_locations_for_a_player_returns_a_single_undeveloped_location_if_a_player_has_only_one_undeveloeprd_location - 2019.09.06 at 08h 16m 22s.xml">
+      <configuration name="TestGameLedgerQueryFunctions.getting locations for a player returns a single undeveloped location if a player has only one undeveloeprd location" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestGameLedgerQueryFunctions_getting_locations_for_a_player_returns_a_single_undeveloped_location_if_a_player_has_only_one_undeveloeprd_location - 2019.09.06 at 08h 27m 51s.xml">
+      <configuration name="TestGameLedgerQueryFunctions.getting locations for a player returns a single undeveloped location if a player has only one undeveloeprd location" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestGameLedgerQueryFunctions_getting_locations_for_a_player_returns_a_single_undeveloped_location_if_a_player_has_only_one_undeveloeprd_location - 2019.09.06 at 08h 30m 47s.xml">
+      <configuration name="TestGameLedgerQueryFunctions.getting locations for a player returns a single undeveloped location if a player has only one undeveloeprd location" configurationId="GradleRunConfiguration" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -562,13 +549,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/GameLedger.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/Balance.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -580,6 +560,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="36" lean-forward="true" selection-start-column="36" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/GameLedger.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -595,8 +582,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/kotlin/TestGameLedgerQueryFunctions.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="67" column="4" selection-start-line="67" selection-start-column="4" selection-end-line="67" selection-end-column="4" />
+        <state relative-caret-position="477">
+          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
           <folding>
             <element signature="e#0#86#0" expanded="true" />
           </folding>
@@ -605,8 +592,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/GameLedgerQueries.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+        <state relative-caret-position="405">
+          <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
         </state>
       </provider>
     </entry>

@@ -63,7 +63,7 @@ class TestGameLedgerQueryFunctions {
         GameLedger.purchaseLocation(mike, shop, GBP(200))
         val locationsForPlayer = GameLedger.locationsFor(mike)
 
-        assertEquals(listOf(OwnedLocation(shop, Building.undeveloped)), locationsForPlayer)
+        assertEquals(listOf(OwnedLocation(mike, shop, Building.undeveloped)), locationsForPlayer)
     }
-    
+
 }

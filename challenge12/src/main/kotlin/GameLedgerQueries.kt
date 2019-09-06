@@ -10,18 +10,19 @@ fun GameLedger.balanceFor(player: Player): Balance {
     return balance
 }
 
-data class OwnedLocation(val location: Location, val building: Building)
+data class OwnedLocation(val owner:Player, val location: Location, val building: Building)
 
-fun GameLedger.locationsFor(player: Player): List<OwnedLocation> {
-    val locationTransactions = GameLedger.transactions.filter { (it is GameLedger.PlayerPurchasingProperty || it is GameLedger.PlayerBuildingOnLocation) && it is GameLedger.DebitTransaction  && it.playerDebited == player}
-
-    val listOfOwnedLocations = locationTransactions.mapNotNull{
+fun GameLedger.ownedLocations():List<OwnedLocation> {
+    val listOfOwnedLocations = this.transactions.mapNotNull{
         when (it) {
-            is GameLedger.PlayerPurchasingProperty -> OwnedLocation(it.location, Building.undeveloped)
-            is GameLedger.PlayerBuildingOnLocation -> OwnedLocation(it.location, it.building)
+            is GameLedger.PlayerPurchasingProperty -> OwnedLocation(it.playerDebited, it.location, Building.undeveloped)
+            is GameLedger.PlayerBuildingOnLocation -> OwnedLocation(it.playerDebited, it.location, it.building)
             else -> null
         }
     }
+    return listOfOwnedLocations.reversed().distinctBy { it.location }
+}
 
-    return listOfOwnedLocations
+fun GameLedger.locationsFor(player: Player): List<OwnedLocation> {
+    return GameLedger.ownedLocations().filter{it.owner == player}
 }
