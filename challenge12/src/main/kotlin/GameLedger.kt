@@ -131,7 +131,7 @@ object GameLedger {
         })
 
         locationBeingSoldStatus?.let{locationBeingSold ->
-            if (locationBeingSold.mortgaged) {
+            if (locationBeingSold.isMortgaged) {
                 mortgageLocation(playerBuying, location, GBP(0))
             }
         }

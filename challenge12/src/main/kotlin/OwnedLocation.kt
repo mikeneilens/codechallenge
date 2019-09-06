@@ -1,8 +1,8 @@
 
-data class OwnedLocation(val owner:Player, val location: Purchaseable, val building: Building, val mortgaged:Boolean = false) {
+data class OwnedLocation(val owner:Player, val location: Purchaseable, val building: Building, val isMortgaged:Boolean = false) {
 
     val rentPayable:GBP get() {
-        if (mortgaged) return GBP(0)
+        if (isMortgaged) return GBP(0)
 
         return when (location) {
             is Buildable -> {
