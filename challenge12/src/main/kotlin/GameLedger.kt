@@ -22,6 +22,17 @@ object GameLedger {
         val building:Building
     }
 
+    val ownedLocations:List<OwnedLocation> get() {
+        val listOfOwnedLocations = this.transactions.mapNotNull{
+            when (it) {
+                is GameLedger.PlayerPurchasingProperty -> OwnedLocation(it.playerDebited, it.location, Building.Undeveloped)
+                is GameLedger.PlayerBuildingOnLocation -> OwnedLocation(it.playerDebited, it.location, it.building)
+                else -> null
+            }
+        }
+        return listOfOwnedLocations.reversed().distinctBy { it.location }.reversed()
+    }
+
     fun addNewPlayer(player:Player, startingBalance:GBP ) {
         transactions.add(object:CreditTransaction{override val playerCredited = player; override val amount = startingBalance})
     }

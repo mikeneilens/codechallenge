@@ -73,7 +73,7 @@ class TestGameLedgerCommandFunctions {
             override val megastore = DevelopmentType.BuildCostAndRent(GBP(300), GBP(30))
         }
         val developmentCost = GBP(300)
-        val buildingType = Building.minimarket
+        val buildingType = Building.Minimarket
 
         GameLedger.buildOnLocation(player, location, buildingType, developmentCost )
 
