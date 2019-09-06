@@ -89,19 +89,24 @@ class TestGameLedgerCommandFunctions {
         assertEquals(lastTransaction.amount, developmentCost)
 
     }
-
     @Test
-    fun `get all credits for a player`() {
-        val player = Player("Mike")
-        val otherPlayer = Player("Donald")
+    fun `Transaction is added when a player sells property to the bank`() {
+        val location = object:Buildable {
+            override val purchasePrice = GBP(200)
+            override val rent = GBP(10)
+            override val miniStore = BuildCostAndRent(GBP(100), GBP(10))
+            override val supermarket = BuildCostAndRent(GBP(200), GBP(20))
+            override val megastore = BuildCostAndRent(GBP(300), GBP(30))
+        }
 
-        GameLedger.addNewPlayer(player,GBP(2000))
-        GameLedger.addFeeForPlayerPassingGo(player, GBP(100))
-        GameLedger.payRent(player, otherPlayer, GBP(150))
+        val player = Player("The playerCredited")
 
-        val creditTransactionsForMike = GameLedger.transactions.filter { it is GameLedger.CreditTransaction && it.playerCredited == player }
-        val totalCredits = creditTransactionsForMike.fold(0){total, transaction -> total + transaction.amount.value}
+        GameLedger.sellBuilding(player, location, Building.Megastore, GBP(200))
 
-        assertEquals(totalCredits, 2000 + 100 + 150 )
+        val lastTransaction = GameLedger.transactions.last() as GameLedger.PlayerSellingBuilding
+        assertEquals(lastTransaction.playerCredited, player)
+        assertEquals(lastTransaction.location, location)
+        assertEquals(lastTransaction.building, Building.Megastore)
+        assertEquals(lastTransaction.amount, GBP(200))
     }
 }

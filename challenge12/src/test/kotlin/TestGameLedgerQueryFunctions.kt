@@ -48,6 +48,16 @@ class TestGameLedgerQueryFunctions {
 
         assertEquals(Credit(GBP(50)),balanceForPlayer)
     }
+    @Test
+    fun `getting balance when every type of credit transaction has been created`() {
+        GameLedger.addNewPlayer(playerMike, GBP(10))
+        GameLedger.addFeeForPlayerPassingGo(playerMike, GBP(20))
+        GameLedger.payRent(playerMike, playerJake, GBP(30))
+        GameLedger.sellBuilding(playerMike, shop, Building.Supermarket, GBP(40))
+
+        assertEquals(Credit(GBP(10 + 20 + 30 + 40)), GameLedger.balanceFor(playerMike))
+        assertEquals(Debt(GBP(30)), GameLedger.balanceFor(playerJake))
+    }
 
     @Test
     fun `getting balance for a player with 150 credit and 200 debt has 50 debt in total` () {
@@ -146,7 +156,27 @@ class TestGameLedgerQueryFunctions {
         assertEquals(2, GameLedger.ownedLocations.size)
         assertEquals(OwnedLocation(playerJake, warehouse, Building.Undeveloped), GameLedger.ownedLocations[0])
         assertEquals(OwnedLocation(playerMike, shop, Building.Supermarket), GameLedger.ownedLocations[1])
+    }
+    @Test
+    fun `ownedLocation returns an ownedLocation with a supermarket if aplayer has sold a megastore`() {
+        GameLedger.sellBuilding(playerMike, shop, Building.Megastore, shop.megastore.buildingCost)
 
+        assertEquals(1, GameLedger.ownedLocations.size)
+        assertEquals(OwnedLocation(playerMike, shop, Building.Supermarket), GameLedger.ownedLocations[0])
+    }
+    @Test
+    fun `ownedLocation returns an ownedLocation with a minimarket if aplayer has sold a supermarket`() {
+        GameLedger.sellBuilding(playerMike, shop, Building.Supermarket, shop.supermarket.buildingCost)
+
+        assertEquals(1, GameLedger.ownedLocations.size)
+        assertEquals(OwnedLocation(playerMike, shop, Building.Minimarket), GameLedger.ownedLocations[0])
+    }
+    @Test
+    fun `ownedLocation returns an ownedLocation with undeveloepd if aplayer has sold a minimarket`() {
+        GameLedger.sellBuilding(playerMike, shop, Building.Minimarket, shop.supermarket.buildingCost)
+
+        assertEquals(1, GameLedger.ownedLocations.size)
+        assertEquals(OwnedLocation(playerMike, shop, Building.Undeveloped), GameLedger.ownedLocations[0])
     }
 
     @Test
@@ -208,4 +238,5 @@ class TestGameLedgerQueryFunctions {
         val ownedLocation = OwnedLocation(playerMike, shop, Building.Megastore)
         assertEquals(shop.megastore.rent, ownedLocation.rentPayable)
     }
+
 }
