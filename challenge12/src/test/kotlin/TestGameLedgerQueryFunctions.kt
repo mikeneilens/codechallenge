@@ -8,10 +8,10 @@ class TestGameLedgerQueryFunctions {
     val playerJake = Player("Jake")
     val warehouse = FactoryOrWarehouse("Magna Park")
     val shop = RetailSite(Group.Red,"Victoria", GBP(100),
-        undeveloped = DevelopmentType.RentOnly(GBP(10)),
-        miniStore = DevelopmentType.BuildCostAndRent(GBP(100),GBP(20)),
-        supermarket =  DevelopmentType.BuildCostAndRent(GBP(200),GBP(30)),
-        megastore = DevelopmentType.BuildCostAndRent(GBP(300),GBP(40))
+        rent = GBP(10),
+        miniStore = BuildCostAndRent(GBP(100),GBP(20)),
+        supermarket =  BuildCostAndRent(GBP(200),GBP(30)),
+        megastore = BuildCostAndRent(GBP(300),GBP(40))
     )
 
     @BeforeEach
@@ -25,15 +25,13 @@ class TestGameLedgerQueryFunctions {
 
         assertEquals(Credit(GBP(0)),balanceForPlayer )
     }
-
     @Test
-    fun `getting balance for a new player added with £500 to the GameLedger gives £500` () {
+    fun `getting balance for a new player added with 500 to the GameLedger gives 500` () {
         GameLedger.addNewPlayer(playerMike, GBP(500))
         val balanceForPlayer = GameLedger.balanceFor(playerMike)
 
         assertEquals(Credit(GBP(500)),balanceForPlayer)
     }
-
     @Test
     fun `getting balance for a player with no credit pays rent of 200` () {
         GameLedger.payRent(playerJake,playerMike,GBP(200))
@@ -41,9 +39,8 @@ class TestGameLedgerQueryFunctions {
 
         assertEquals(Debt(GBP(200)),balanceForPlayer)
     }
-
     @Test
-    fun `getting balance for a player with £200 credit and £150 debt has £50 credit in total` () {
+    fun `getting balance for a player with 200 credit and 150 debt has 50 credit in total` () {
         GameLedger.addNewPlayer(playerMike, GBP(100))
         GameLedger.payRent(playerJake,playerMike,GBP(150))
         GameLedger.addFeeForPlayerPassingGo(playerMike,GBP(100))
@@ -52,6 +49,15 @@ class TestGameLedgerQueryFunctions {
         assertEquals(Credit(GBP(50)),balanceForPlayer)
     }
 
+    @Test
+    fun `getting balance for a player with 150 credit and 200 debt has 50 debt in total` () {
+        GameLedger.addNewPlayer(playerMike, GBP(100))
+        GameLedger.payRent(playerJake,playerMike,GBP(200))
+        GameLedger.addFeeForPlayerPassingGo(playerMike,GBP(50))
+        val balanceForPlayer = GameLedger.balanceFor(playerMike)
+
+        assertEquals(Debt(GBP(50)),balanceForPlayer)
+    }
     @Test
     fun `getting locations for a player returns an empty list if a player hasnt bought any`() {
         val locationsForPlayer = GameLedger.locationsFor(playerMike)
@@ -160,8 +166,20 @@ class TestGameLedgerQueryFunctions {
         assertNull(GameLedger.ownerOf(warehouse))
     }
     @Test
-    fun `when a single transaction involving a location has been added to GameLedger, the correct owner and basic rent is returned `() {
+    fun `when a single transaction involving a Retail location has been added to GameLedger, the correct owner and basic rent is returned `() {
         GameLedger.purchaseLocation(playerMike, shop, shop.purchasePrice)
-        assertEquals(Pair(playerMike, shop.undeveloped.rent), GameLedger.ownerOf(shop)  )
+        assertEquals(Pair(playerMike, shop.rent), GameLedger.ownerOf(shop)  )
+    }
+    @Test
+    fun `when a single transaction involving a warehouse has been added to GameLedger, the correct owner and basic rent is returned `() {
+        GameLedger.purchaseLocation(playerMike, warehouse, warehouse.purchasePrice)
+        assertEquals(Pair(playerMike, warehouse.rent), GameLedger.ownerOf(warehouse)  )
+    }
+    @Test
+    fun `when a retail location is purchased and then has a ministore built on it , the rent for the ministore is returned `() {
+        GameLedger.purchaseLocation(playerMike, shop, shop.purchasePrice)
+        GameLedger.buildOnLocation(playerMike, shop, Building.Minimarket, shop.miniStore.buildingCost)
+
+        assertEquals(Pair(playerMike,shop.miniStore.rent), GameLedger.ownerOf(shop) )
     }
 }

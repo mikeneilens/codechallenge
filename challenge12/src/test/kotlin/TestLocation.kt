@@ -28,10 +28,10 @@ class TestLocation {
     @Test
     fun `retail location test`(){
         val shop =          RetailSite(Group.Red,"Victoria", GBP(100),
-            undeveloped = DevelopmentType.RentOnly(GBP(10)),
-            miniStore = DevelopmentType.BuildCostAndRent(GBP(100),GBP(10)),
-            supermarket =  DevelopmentType.BuildCostAndRent(GBP(200),GBP(20)),
-            megastore = DevelopmentType.BuildCostAndRent(GBP(300),GBP(30))
+            rent =GBP(10),
+            miniStore = BuildCostAndRent(GBP(100),GBP(10)),
+            supermarket =  BuildCostAndRent(GBP(200),GBP(20)),
+            megastore = BuildCostAndRent(GBP(300),GBP(30))
         )
 
         assertTrue(shop is RetailSite)
@@ -40,7 +40,7 @@ class TestLocation {
         assertTrue(shop is Buildable)
 
         assertEquals("Victoria", shop.name)
-        assertEquals (GBP(10), shop.undeveloped.rent)
+        assertEquals (GBP(10), shop.rent)
         assertEquals (GBP(100),shop.miniStore.buildingCost)
         assertEquals (GBP(10),shop.miniStore.rent)
         assertEquals (GBP(200),shop.supermarket.buildingCost)
@@ -64,10 +64,10 @@ class TestLocation {
 
         val warehouse = FactoryOrWarehouse("Magna Park")
         val shop =          RetailSite(Group.Red,"Victoria", GBP(100),
-            undeveloped = DevelopmentType.RentOnly(GBP(10)),
-            miniStore = DevelopmentType.BuildCostAndRent(GBP(100),GBP(10)),
-            supermarket =  DevelopmentType.BuildCostAndRent(GBP(200),GBP(20)),
-            megastore = DevelopmentType.BuildCostAndRent(GBP(300),GBP(30))
+            rent = GBP(10),
+            miniStore = BuildCostAndRent(GBP(100),GBP(10)),
+            supermarket =  BuildCostAndRent(GBP(200),GBP(20)),
+            megastore = BuildCostAndRent(GBP(300),GBP(30))
         )
 
         val listOfLocations = listOf<Location>(Go, FreeParking, warehouse,shop)
