@@ -182,4 +182,30 @@ class TestGameLedgerQueryFunctions {
 
         assertEquals(Pair(playerMike,shop.miniStore.rent), GameLedger.ownerOf(shop) )
     }
+
+    @Test
+    fun `when an owned location is puchasable location but not buildable it should return standard rent for the location`() {
+        val ownedLocation = OwnedLocation(playerMike, warehouse, Building.Undeveloped)
+        assertEquals(warehouse.rent, ownedLocation.rentPayable)
+    }
+    @Test
+    fun `when an owned location is buildable location but not developede it should return standard rent for the location`() {
+        val ownedLocation = OwnedLocation(playerMike, shop, Building.Undeveloped)
+        assertEquals(shop.rent, ownedLocation.rentPayable)
+    }
+    @Test
+    fun `when an owned location is buildable location and has a minimarket it should return minimarket rent for the location`() {
+        val ownedLocation = OwnedLocation(playerMike, shop, Building.Minimarket)
+        assertEquals(shop.miniStore.rent, ownedLocation.rentPayable)
+    }
+    @Test
+    fun `when an owned location is buildable location and has a supermarket it should return supermarket rent for the location`() {
+        val ownedLocation = OwnedLocation(playerMike, shop, Building.Supermarket)
+        assertEquals(shop.supermarket.rent, ownedLocation.rentPayable)
+    }
+    @Test
+    fun `when an owned location is buildable location and has a megastore it should return megastore rent for the location`() {
+        val ownedLocation = OwnedLocation(playerMike, shop, Building.Megastore)
+        assertEquals(shop.megastore.rent, ownedLocation.rentPayable)
+    }
 }

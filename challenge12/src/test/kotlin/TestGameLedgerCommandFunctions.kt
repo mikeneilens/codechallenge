@@ -68,13 +68,15 @@ class TestGameLedgerCommandFunctions {
     @Test
     fun `Transaction is added when a player builds on a location`() {
         val player = Player("A playerCredited")
-        val location = RetailSite(group = Group.Blue, name = "Oxford",
-            purchasePrice = GBP(200),
-            rent = GBP(10),
-            miniStore = BuildCostAndRent(GBP(100), GBP(10) ),
-            supermarket = BuildCostAndRent(GBP(200), GBP(20)),
-            megastore = BuildCostAndRent(GBP(300), GBP(30))
-        )
+
+        val location = object:Buildable {
+            override val purchasePrice = GBP(200)
+            override val rent = GBP(10)
+            override val miniStore = BuildCostAndRent(GBP(100), GBP(10))
+            override val supermarket = BuildCostAndRent(GBP(200), GBP(20))
+            override val megastore = BuildCostAndRent(GBP(300), GBP(30))
+        }
+
         val developmentCost = GBP(300)
         val buildingType = Building.Minimarket
 

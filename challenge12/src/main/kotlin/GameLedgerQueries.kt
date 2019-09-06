@@ -18,25 +18,10 @@ fun GameLedger.ownerOf(location: Location):Pair<Player, GBP>? {
     if (ownedLocation == null) {
         return null
     } else {
-        val rent = ownedLocation.calcRent()
+        val rent = ownedLocation.rentPayable
         return Pair(ownedLocation.owner, rent)
     }
 }
 
-fun OwnedLocation.calcRent():GBP = when (this.location) {
-    is Buildable -> {
-        when (building) {
-            Building.Undeveloped -> this.location.rent
-            Building.Minimarket -> this.location.miniStore.rent
-            Building.Supermarket -> this.location.supermarket.rent
-            Building.Megastore -> this.location.megastore.rent
-        }
-    }
-    is Purchaseable -> {
-        this.location.rent
-    }
-    else -> {
-        GBP(0)
-    }
-}
+
 
