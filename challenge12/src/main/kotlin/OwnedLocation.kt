@@ -9,12 +9,8 @@ data class OwnedLocation(val owner:Player, val location: Purchaseable, val build
                 Building.Megastore -> location.megastore.rent
             }
         }
-        is Purchaseable -> {
+        else -> {
             location.rent
         }
-        else -> {
-            GBP(0)
-        }
     }
-
 }
