@@ -27,9 +27,18 @@ object GameLedger {
         val building:Building
     }
 
+    interface PlayerMortgagingLocation:CreditTransaction {
+        val location:Purchaseable
+    }
+
+    interface PlayerUnMortgagingLocation:DebitTransaction {
+        val location:Purchaseable
+    }
+
     val ownedLocations:List<OwnedLocation> get() {
         val listOfOwnedLocations = this.transactions.mapNotNull{
             when (it) {
+                is GameLedger.PlayerMortgagingLocation -> OwnedLocation(it.playerCredited, it.location, Building.Undeveloped, true)
                 is GameLedger.PlayerPurchasingProperty -> OwnedLocation(it.playerDebited, it.location, Building.Undeveloped)
                 is GameLedger.PlayerBuildingOnLocation -> OwnedLocation(it.playerDebited, it.location, it.building)
                 is GameLedger.PlayerSellingBuilding -> {
@@ -79,12 +88,20 @@ object GameLedger {
         })
     }
 
-    fun sellBuilding(player: Player, location: Buildable, buildingType: Building, developmentCost: GBP) {
+    fun sellBuilding(player: Player, location: Buildable, buildingType: Building, sellingPrice: GBP) {
         transactions.add(object:PlayerSellingBuilding{
             override val playerCredited = player
             override val location = location
             override val building = buildingType
-            override val amount = developmentCost
+            override val amount = sellingPrice
+        })
+    }
+
+    fun mortgageLocation(player: Player, location: Purchaseable, mortgageValue: GBP) {
+        transactions.add(object:PlayerMortgagingLocation{
+            override val playerCredited = player
+            override val location = location
+            override val amount = mortgageValue
         })
     }
 }

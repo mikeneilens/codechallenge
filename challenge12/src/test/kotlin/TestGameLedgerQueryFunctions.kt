@@ -54,8 +54,9 @@ class TestGameLedgerQueryFunctions {
         GameLedger.addFeeForPlayerPassingGo(playerMike, GBP(20))
         GameLedger.payRent(playerMike, playerJake, GBP(30))
         GameLedger.sellBuilding(playerMike, shop, Building.Supermarket, GBP(40))
+        GameLedger.mortgageLocation(playerMike, shop, GBP(50))
 
-        assertEquals(Credit(GBP(10 + 20 + 30 + 40)), GameLedger.balanceFor(playerMike))
+        assertEquals(Credit(GBP(10 + 20 + 30 + 40 + 50)), GameLedger.balanceFor(playerMike))
         assertEquals(Debt(GBP(30)), GameLedger.balanceFor(playerJake))
     }
 
@@ -106,7 +107,6 @@ class TestGameLedgerQueryFunctions {
         assertEquals(OwnedLocation(playerMike, shop, Building.Supermarket), locationsForPlayer[0])
         assertEquals(OwnedLocation(playerMike, warehouse, Building.Undeveloped), locationsForPlayer[1])
     }
-
     @Test
     fun `getting locations for a player returns no locations if the same property has been subsequently bought by another player`() {
         GameLedger.purchaseLocation(playerMike, shop, GBP(200))
@@ -120,7 +120,18 @@ class TestGameLedgerQueryFunctions {
         assertEquals(listOf(OwnedLocation(playerJake, shop, Building.Undeveloped)), locationsForJake)
 
     }
+    @Test
+    fun `getting locations for a player returns a mortgaged location in undeveloped state if it has been mortgaged`() {
+        GameLedger.purchaseLocation(playerMike, shop, GBP(200))
+        GameLedger.buildOnLocation(playerMike, shop, Building.Minimarket, GBP(100))
+        GameLedger.mortgageLocation(playerMike, shop, GBP(50))
 
+        val locationsForMike = GameLedger.locationsFor(playerMike)
+
+        assertEquals(1, locationsForMike.size)
+        assertEquals(OwnedLocation(playerMike, shop, Building.Undeveloped, true), locationsForMike[0])
+
+    }
     @Test
     fun `ownedLocation returns an empty list when nothing has been added to the GameLedger`() {
         assertEquals(0, GameLedger.ownedLocations.size)
@@ -212,6 +223,15 @@ class TestGameLedgerQueryFunctions {
 
         assertEquals(Pair(playerMike,shop.miniStore.rent), GameLedger.ownerOf(shop) )
     }
+    @Test
+    fun `when a retail location is purchased and then mortgaged , the rent is zero`() {
+        GameLedger.purchaseLocation(playerMike, shop, shop.purchasePrice)
+        GameLedger.buildOnLocation(playerMike, shop, Building.Minimarket, shop.miniStore.buildingCost)
+        GameLedger.mortgageLocation(playerMike, shop, GBP(50))
+
+        assertEquals(Pair( playerMike, GBP(0)), GameLedger.ownerOf(shop) )
+
+    }
 
     @Test
     fun `when an owned location is puchasable location but not buildable it should return standard rent for the location`() {
@@ -238,5 +258,9 @@ class TestGameLedgerQueryFunctions {
         val ownedLocation = OwnedLocation(playerMike, shop, Building.Megastore)
         assertEquals(shop.megastore.rent, ownedLocation.rentPayable)
     }
-
+    @Test
+    fun `when an owned location is mortgaged should return zero rent`() {
+        val ownedLocation = OwnedLocation(playerMike, shop, Building.Megastore, true)
+        assertEquals(GBP(0), ownedLocation.rentPayable)
+    }
 }

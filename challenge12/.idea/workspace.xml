@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="968f8ffb-1e47-4767-8f49-40a5fc36a6db" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab.values" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab.values.s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/build-history 2.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/file-to-id.tab.values 2.at" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/id-to-file.tab.values 2.at" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab.values 2.at" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/TestGameLedgerQueryFunctions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-TestGameLedgerQueryFunctions.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/GameLedger.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/GameLedger.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/OwnedLocation.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/OwnedLocation.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/TestGameLedgerCommandFunctions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/TestGameLedgerCommandFunctions.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/TestGameLedgerQueryFunctions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/TestGameLedgerQueryFunctions.kt" afterDir="false" />
     </list>
@@ -60,17 +65,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/GameLedger.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="35" column="40" lean-forward="true" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
+            <state relative-caret-position="417">
+              <caret line="99" selection-start-line="99" selection-end-line="99" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/TestGameLedgerCommandFunctions.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1335">
-              <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
+            <state relative-caret-position="522">
+              <caret line="126" column="5" lean-forward="true" selection-start-line="126" selection-start-column="5" selection-end-line="126" selection-end-column="5" />
               <folding>
                 <element signature="e#0#86#0" expanded="true" />
               </folding>
@@ -78,11 +83,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/TestGameLedgerQueryFunctions.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-483">
-              <caret line="173" column="9" lean-forward="true" selection-start-line="173" selection-start-column="9" selection-end-line="173" selection-end-column="9" />
+            <state relative-caret-position="1620">
+              <caret line="108" column="5" selection-start-line="108" selection-start-column="5" selection-end-line="108" selection-end-column="5" />
               <folding>
                 <element signature="e#0#86#0" expanded="true" />
               </folding>
@@ -102,8 +107,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/OwnedLocation.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="90">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
@@ -156,10 +161,10 @@
         <option value="$PROJECT_DIR$/src/main/kotlin/Location.kt" />
         <option value="$PROJECT_DIR$/src/test/kotlin/TestLocation.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/GameLedgerQueries.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/OwnedLocation.kt" />
         <option value="$PROJECT_DIR$/src/test/kotlin/TestGameLedgerCommandFunctions.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/GameLedger.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/OwnedLocation.kt" />
         <option value="$PROJECT_DIR$/src/test/kotlin/TestGameLedgerQueryFunctions.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/GameLedger.kt" />
       </list>
     </option>
   </component>
@@ -251,6 +256,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestGameLedgerCommandFunctions" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;TestGameLedgerCommandFunctions&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":cleanTest" />
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="TestGameLedgerQueryFunctions" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -271,12 +296,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="TestGameLedgerQueryFunctions.getting balance when every type of credit transaction has been created" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="TestGameLedgerQueryFunctions.getting locations for a player returns a mortgaged location in undeveloped state if it has been mortgaged" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;TestGameLedgerQueryFunctions.getting balance when every type of credit transaction has been created&quot;" />
+        <option name="scriptParameters" value="--tests &quot;TestGameLedgerQueryFunctions.getting locations for a player returns a mortgaged location in undeveloped state if it has been mortgaged&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -291,12 +316,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="TestGameLedgerQueryFunctions.ownedLocation returns an ownedLocation with a minimarket if aplayer has sold a supermarket" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="TestGameLedgerQueryFunctions.when a retail location is purchased and then mortgaged , the rent is zero and the development status is undeveloped " type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;TestGameLedgerQueryFunctions.ownedLocation returns an ownedLocation with a minimarket if aplayer has sold a supermarket&quot;" />
+        <option name="scriptParameters" value="--tests &quot;TestGameLedgerQueryFunctions.when a retail location is purchased and then mortgaged , the rent is zero and the development status is undeveloped &quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -311,32 +336,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="TestGameLedgerQueryFunctions.ownedLocation returns an ownedLocation with a supermarket if aplayer has sold a megastore" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="TestGameLedgerQueryFunctions.when an owned location is mortgages should return zero rent" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;TestGameLedgerQueryFunctions.ownedLocation returns an ownedLocation with a supermarket if aplayer has sold a megastore&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":cleanTest" />
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="TestGameLedgerQueryFunctions.ownedLocation returns an ownedLocation with undeveloepd if aplayer has sold a minimarket" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;TestGameLedgerQueryFunctions.ownedLocation returns an ownedLocation with undeveloepd if aplayer has sold a minimarket&quot;" />
+        <option name="scriptParameters" value="--tests &quot;TestGameLedgerQueryFunctions.when an owned location is mortgages should return zero rent&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -379,10 +384,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.TestGameLedgerQueryFunctions" />
-        <item itemvalue="Gradle.TestGameLedgerQueryFunctions.ownedLocation returns an ownedLocation with undeveloepd if aplayer has sold a minimarket" />
-        <item itemvalue="Gradle.TestGameLedgerQueryFunctions.ownedLocation returns an ownedLocation with a minimarket if aplayer has sold a supermarket" />
-        <item itemvalue="Gradle.TestGameLedgerQueryFunctions.ownedLocation returns an ownedLocation with a supermarket if aplayer has sold a megastore" />
-        <item itemvalue="Gradle.TestGameLedgerQueryFunctions.getting balance when every type of credit transaction has been created" />
+        <item itemvalue="Gradle.TestGameLedgerQueryFunctions.getting locations for a player returns a mortgaged location in undeveloped state if it has been mortgaged" />
+        <item itemvalue="Gradle.TestGameLedgerQueryFunctions.when a retail location is purchased and then mortgaged , the rent is zero and the development status is undeveloped " />
+        <item itemvalue="Gradle.TestGameLedgerQueryFunctions.when an owned location is mortgages should return zero rent" />
+        <item itemvalue="Gradle.TestGameLedgerCommandFunctions" />
       </list>
     </recent_temporary>
   </component>
@@ -407,34 +412,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestGameLedgerCommandFunctions_Transaction_is_added_when_a_player_sells_property_to_the_bank - 2019.09.06 at 16h 56m 24s.xml">
-      <configuration name="TestGameLedgerCommandFunctions.Transaction is added when a player sells property to the bank" configurationId="GradleRunConfiguration" />
+    <history-entry file="TestGameLedgerCommandFunctions_Transaction_is_added_when_a_player_mortgages_a_property - 2019.09.06 at 17h 24m 01s.xml">
+      <configuration name="TestGameLedgerCommandFunctions.Transaction is added when a player mortgages a property" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="TestGameLedgerCommandFunctions_Transaction_is_added_when_a_player_sells_property_to_the_bank - 2019.09.06 at 16h 57m 57s.xml">
-      <configuration name="TestGameLedgerCommandFunctions.Transaction is added when a player sells property to the bank" configurationId="GradleRunConfiguration" />
+    <history-entry file="TestGameLedgerQueryFunctions_getting_balance_when_every_type_of_credit_transaction_has_been_created - 2019.09.06 at 17h 24m 57s.xml">
+      <configuration name="TestGameLedgerQueryFunctions.getting balance when every type of credit transaction has been created" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="TestGameLedgerCommandFunctions - 2019.09.06 at 16h 58m 05s.xml">
+    <history-entry file="TestGameLedgerQueryFunctions_getting_balance_when_every_type_of_credit_transaction_has_been_created - 2019.09.06 at 17h 25m 08s.xml">
+      <configuration name="TestGameLedgerQueryFunctions.getting balance when every type of credit transaction has been created" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestGameLedgerCommandFunctions - 2019.09.06 at 17h 33m 26s.xml">
       <configuration name="TestGameLedgerCommandFunctions" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="TestGameLedgerQueryFunctions_getting_balance_when_every_type_of_credit_transaction_has_been_created - 2019.09.06 at 17h 01m 47s.xml">
-      <configuration name="TestGameLedgerQueryFunctions.getting balance when every type of credit transaction has been created" configurationId="GradleRunConfiguration" />
+    <history-entry file="TestGameLedgerQueryFunctions - 2019.09.06 at 17h 33m 35s.xml">
+      <configuration name="TestGameLedgerQueryFunctions" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="TestGameLedgerQueryFunctions_getting_balance_when_every_type_of_credit_transaction_has_been_created - 2019.09.06 at 17h 02m 45s.xml">
-      <configuration name="TestGameLedgerQueryFunctions.getting balance when every type of credit transaction has been created" configurationId="GradleRunConfiguration" />
+    <history-entry file="TestGameLedgerQueryFunctions_when_an_owned_location_is_mortgages_should_return_zero_rent - 2019.09.06 at 17h 34m 54s.xml">
+      <configuration name="TestGameLedgerQueryFunctions.when an owned location is mortgages should return zero rent" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="TestGameLedgerQueryFunctions_ownedLocation_returns_an_ownedLocation_with_a_supermarket_if_aplayer_has_sold_a_megastore - 2019.09.06 at 17h 13m 07s.xml">
-      <configuration name="TestGameLedgerQueryFunctions.ownedLocation returns an ownedLocation with a supermarket if aplayer has sold a megastore" configurationId="GradleRunConfiguration" />
+    <history-entry file="TestGameLedgerQueryFunctions_when_a_retail_location_is_purchased_and_then_mortgaged_,_the_rent_is_zero_and_the_development_status_is_undeveloped_ - 2019.09.06 at 17h 38m 08s.xml">
+      <configuration name="TestGameLedgerQueryFunctions.when a retail location is purchased and then mortgaged , the rent is zero and the development status is undeveloped " configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="TestGameLedgerQueryFunctions_ownedLocation_returns_an_ownedLocation_with_a_supermarket_if_aplayer_has_sold_a_megastore - 2019.09.06 at 17h 14m 20s.xml">
-      <configuration name="TestGameLedgerQueryFunctions.ownedLocation returns an ownedLocation with a supermarket if aplayer has sold a megastore" configurationId="GradleRunConfiguration" />
+    <history-entry file="TestGameLedgerQueryFunctions_when_a_retail_location_is_purchased_and_then_mortgaged_,_the_rent_is_zero_and_the_development_status_is_undeveloped_ - 2019.09.06 at 17h 39m 31s.xml">
+      <configuration name="TestGameLedgerQueryFunctions.when a retail location is purchased and then mortgaged , the rent is zero and the development status is undeveloped " configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="TestGameLedgerQueryFunctions_ownedLocation_returns_an_ownedLocation_with_a_minimarket_if_aplayer_has_sold_a_supermarket - 2019.09.06 at 17h 15m 20s.xml">
-      <configuration name="TestGameLedgerQueryFunctions.ownedLocation returns an ownedLocation with a minimarket if aplayer has sold a supermarket" configurationId="GradleRunConfiguration" />
+    <history-entry file="TestGameLedgerQueryFunctions_getting_locations_for_a_player_returns_a_mortgaged_location_in_undeveloped_state_if_it_has_been_mortgaged - 2019.09.06 at 17h 43m 46s.xml">
+      <configuration name="TestGameLedgerQueryFunctions.getting locations for a player returns a mortgaged location in undeveloped state if it has been mortgaged" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="TestGameLedgerQueryFunctions_ownedLocation_returns_an_ownedLocation_with_undeveloepd_if_aplayer_has_sold_a_minimarket - 2019.09.06 at 17h 16m 20s.xml">
-      <configuration name="TestGameLedgerQueryFunctions.ownedLocation returns an ownedLocation with undeveloepd if aplayer has sold a minimarket" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="TestGameLedgerQueryFunctions - 2019.09.06 at 17h 16m 27s.xml">
+    <history-entry file="TestGameLedgerQueryFunctions - 2019.09.06 at 17h 43m 57s.xml">
       <configuration name="TestGameLedgerQueryFunctions" configurationId="GradleRunConfiguration" />
     </history-entry>
   </component>
@@ -449,6 +454,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
       <window_info id="Designer" />
@@ -563,10 +569,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/GameLedger.kt">
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/OwnedLocation.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="35" column="40" lean-forward="true" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
+        <state relative-caret-position="90">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
@@ -577,27 +583,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/OwnedLocation.kt">
+    <entry file="file://$PROJECT_DIR$/src/test/kotlin/TestGameLedgerQueryFunctions.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/kotlin/TestGameLedgerCommandFunctions.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1335">
-          <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
+        <state relative-caret-position="1620">
+          <caret line="108" column="5" selection-start-line="108" selection-start-column="5" selection-end-line="108" selection-end-column="5" />
           <folding>
             <element signature="e#0#86#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/kotlin/TestGameLedgerQueryFunctions.kt">
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/GameLedger.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-483">
-          <caret line="173" column="9" lean-forward="true" selection-start-line="173" selection-start-column="9" selection-end-line="173" selection-end-column="9" />
+        <state relative-caret-position="417">
+          <caret line="99" selection-start-line="99" selection-end-line="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/kotlin/TestGameLedgerCommandFunctions.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="126" column="5" lean-forward="true" selection-start-line="126" selection-start-column="5" selection-end-line="126" selection-end-column="5" />
           <folding>
             <element signature="e#0#86#0" expanded="true" />
           </folding>

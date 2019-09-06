@@ -109,4 +109,20 @@ class TestGameLedgerCommandFunctions {
         assertEquals(lastTransaction.building, Building.Megastore)
         assertEquals(lastTransaction.amount, GBP(200))
     }
+
+    @Test
+    fun `Transaction is added when a player mortgages a property`(){
+        val location = object:Buildable {
+            override val purchasePrice = GBP(200)
+            override val rent = GBP(10)
+            override val miniStore = BuildCostAndRent(GBP(100), GBP(10))
+            override val supermarket = BuildCostAndRent(GBP(200), GBP(20))
+            override val megastore = BuildCostAndRent(GBP(300), GBP(30))
+        }
+
+        val player = Player("The playerMortgaging")
+
+        GameLedger.mortgageLocation(player, location, GBP(50))
+
+    }
 }

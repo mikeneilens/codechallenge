@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">30</div>
+<div class="counter">33</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.050s</div>
+<div class="counter">0.059s</div>
 <p>duration</p>
 </div>
 </td>
@@ -76,7 +76,7 @@
 </thead>
 <tr>
 <td class="success">get balance for a player not on GameLedger returns zero()</td>
-<td class="success">0s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -86,7 +86,7 @@
 </tr>
 <tr>
 <td class="success">getting balance for a player with 150 credit and 200 debt has 50 debt in total()</td>
-<td class="success">0s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -101,6 +101,11 @@
 </tr>
 <tr>
 <td class="success">getting balance when every type of credit transaction has been created()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getting locations for a player returns a mortgaged location in undeveloped state if it has been mortgaged()</td>
 <td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
@@ -126,22 +131,22 @@
 </tr>
 <tr>
 <td class="success">getting locations for a player returns two locations if a player has bought two locations()</td>
-<td class="success">0.027s</td>
+<td class="success">0.028s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">ownedLocation returns an empty list when nothing has been added to the GameLedger()</td>
-<td class="success">0s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">ownedLocation returns an ownedLocation with a minimarket if aplayer has sold a supermarket()</td>
-<td class="success">0.001s</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">ownedLocation returns an ownedLocation with a supermarket if aplayer has sold a megastore()</td>
-<td class="success">0.001s</td>
+<td class="success">0s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -156,7 +161,7 @@
 </tr>
 <tr>
 <td class="success">ownedLocations returns a single owned location with correct building when one location has been added to GameLEdger and then built on()</td>
-<td class="success">0.001s</td>
+<td class="success">0s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -166,12 +171,17 @@
 </tr>
 <tr>
 <td class="success">ownedLocations returns two owned locations when two locations have been added to GameLedger()</td>
-<td class="success">0s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">when a retail location is purchased and then has a ministore built on it , the rent for the ministore is returned ()</td>
 <td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">when a retail location is purchased and then mortgaged , the rent is zero()</td>
+<td class="success">0s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -181,7 +191,7 @@
 </tr>
 <tr>
 <td class="success">when a single transaction involving a warehouse has been added to GameLedger, the correct owner and basic rent is returned ()</td>
-<td class="success">0.001s</td>
+<td class="success">0s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -191,7 +201,7 @@
 </tr>
 <tr>
 <td class="success">when an owned location is buildable location and has a megastore it should return megastore rent for the location()</td>
-<td class="success">0s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -201,17 +211,22 @@
 </tr>
 <tr>
 <td class="success">when an owned location is buildable location and has a supermarket it should return supermarket rent for the location()</td>
-<td class="success">0s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">when an owned location is buildable location but not developede it should return standard rent for the location()</td>
 <td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">when an owned location is puchasable location but not buildable it should return standard rent for the location()</td>
+<td class="success">when an owned location is buildable location but not developede it should return standard rent for the location()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">when an owned location is mortgaged should return zero rent()</td>
 <td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">when an owned location is puchasable location but not buildable it should return standard rent for the location()</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -234,7 +249,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.3</a> at 06-Sep-2019 17:16:27</p>
+<a href="http://www.gradle.org">Gradle 4.10.3</a> at 06-Sep-2019 17:43:57</p>
 </div>
 </div>
 </body>
