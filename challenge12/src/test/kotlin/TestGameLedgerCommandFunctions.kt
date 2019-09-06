@@ -1,7 +1,13 @@
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 class TestGameLedgerCommandFunctions {
+
+    @BeforeEach
+    fun `delete all transactions`() {
+        GameLedger.transactions.clear()
+    }
 
     @Test
     fun `Transaction is added to GameLedger for new player`() {
@@ -124,5 +130,80 @@ class TestGameLedgerCommandFunctions {
 
         GameLedger.mortgageLocation(player, location, GBP(50))
 
+        val lastTransaction = GameLedger.transactions.last() as GameLedger.PlayerMortgagingLocation
+        assertEquals(lastTransaction.playerCredited, player)
+        assertEquals(lastTransaction.location, location)
+        assertEquals(lastTransaction.amount, GBP(50))
+    }
+
+    @Test
+    fun `Transaction is added when a player unmortgages a property`(){
+        val location = object:Buildable {
+            override val purchasePrice = GBP(200)
+            override val rent = GBP(10)
+            override val miniStore = BuildCostAndRent(GBP(100), GBP(10))
+            override val supermarket = BuildCostAndRent(GBP(200), GBP(20))
+            override val megastore = BuildCostAndRent(GBP(300), GBP(30))
+        }
+
+        val player = Player("The playerUnMortgaging")
+
+        GameLedger.unmortgageLocation(player, location, GBP(50))
+
+        val lastTransaction = GameLedger.transactions.last() as GameLedger.PlayerUnMortgagingLocation
+        assertEquals(lastTransaction.playerDebited, player)
+        assertEquals(lastTransaction.location, location)
+        assertEquals(lastTransaction.amount, GBP(50))
+    }
+
+    @Test
+    fun `Transaction is added when a player sells a property to another player`() {
+        val location = object:Buildable {
+            override val purchasePrice = GBP(200)
+            override val rent = GBP(10)
+            override val miniStore = BuildCostAndRent(GBP(100), GBP(10))
+            override val supermarket = BuildCostAndRent(GBP(200), GBP(20))
+            override val megastore = BuildCostAndRent(GBP(300), GBP(30))
+        }
+
+        val playerSelling = Player("The playerSelling")
+        val playerBuying = Player("The playerBuying")
+
+        GameLedger.sellLocation(playerSelling, playerBuying, location, GBP(1000))
+
+        val lastTransaction = GameLedger.transactions.last() as GameLedger.PlayerSellingLocation
+        assertEquals(lastTransaction.playerDebited, playerBuying)
+        assertEquals(lastTransaction.playerCredited, playerSelling)
+        assertEquals(lastTransaction.location, location)
+        assertEquals(lastTransaction.amount, GBP(1000))
+    }
+    @Test
+    fun `A sale transaction and a mortgage transaction is added when a player sells a mortgaged property to another player`() {
+        val location = object:Buildable {
+            override val purchasePrice = GBP(200)
+            override val rent = GBP(10)
+            override val miniStore = BuildCostAndRent(GBP(100), GBP(10))
+            override val supermarket = BuildCostAndRent(GBP(200), GBP(20))
+            override val megastore = BuildCostAndRent(GBP(300), GBP(30))
+        }
+
+        val playerSelling = Player("The playerSelling")
+        val playerBuying = Player("The playerBuying")
+
+        GameLedger.purchaseLocation(playerSelling, location, location.purchasePrice)
+        GameLedger.mortgageLocation(playerSelling, location, GBP(100))
+        GameLedger.sellLocation(playerSelling, playerBuying, location, GBP(1000))
+
+        val nextToLastTransaction = GameLedger.transactions[2] as GameLedger.PlayerSellingLocation
+        val lastTransaction = GameLedger.transactions[3] as GameLedger.PlayerMortgagingLocation
+
+        assertEquals(nextToLastTransaction.playerDebited, playerBuying)
+        assertEquals(nextToLastTransaction.playerCredited, playerSelling)
+        assertEquals(nextToLastTransaction.location, location)
+        assertEquals(nextToLastTransaction.amount, GBP(1000))
+
+        assertEquals(lastTransaction.playerCredited, playerBuying)
+        assertEquals(lastTransaction.location, location)
+        assertEquals(lastTransaction.amount, GBP(0))
     }
 }

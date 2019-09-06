@@ -35,10 +35,16 @@ object GameLedger {
         val location:Purchaseable
     }
 
+    interface PlayerSellingLocation:CreditTransaction, DebitTransaction {
+        val location:Purchaseable
+    }
+
     val ownedLocations:List<OwnedLocation> get() {
         val listOfOwnedLocations = this.transactions.mapNotNull{
             when (it) {
                 is GameLedger.PlayerMortgagingLocation -> OwnedLocation(it.playerCredited, it.location, Building.Undeveloped, true)
+                is GameLedger.PlayerUnMortgagingLocation -> OwnedLocation(it.playerDebited, it.location, Building.Undeveloped, false)
+                is GameLedger.PlayerSellingLocation -> OwnedLocation(it.playerDebited, it.location, Building.Undeveloped)
                 is GameLedger.PlayerPurchasingProperty -> OwnedLocation(it.playerDebited, it.location, Building.Undeveloped)
                 is GameLedger.PlayerBuildingOnLocation -> OwnedLocation(it.playerDebited, it.location, it.building)
                 is GameLedger.PlayerSellingBuilding -> {
@@ -103,5 +109,32 @@ object GameLedger {
             override val location = location
             override val amount = mortgageValue
         })
+    }
+
+    fun unmortgageLocation(player: Player, location: Purchaseable, redeemCost: GBP) {
+        transactions.add(object:PlayerUnMortgagingLocation{
+            override val playerDebited = player
+            override val location = location
+            override val amount = redeemCost
+        })
+    }
+
+    fun sellLocation(playerSelling: Player, playerBuying:Player, location:Purchaseable, sellingPrice: GBP) {
+        val locationsForSeller = locationsFor(playerSelling)
+        val locationBeingSoldStatus = locationsForSeller.filter{it.location == location}.lastOrNull()
+
+        transactions.add(object:PlayerSellingLocation {
+            override val playerCredited = playerSelling
+            override val playerDebited = playerBuying
+            override val location = location
+            override val amount = sellingPrice
+        })
+
+        locationBeingSoldStatus?.let{locationBeingSold ->
+            if (locationBeingSold.mortgaged) {
+                mortgageLocation(playerBuying, location, GBP(0))
+            }
+        }
+
     }
 }
