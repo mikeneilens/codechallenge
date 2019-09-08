@@ -8,12 +8,12 @@ fun GameLedger.balanceFor(player: Player): Balance {
     return Credit(totalCredits) + Debt(totalDebts)
 }
 
-fun GameLedger.locationsFor(player: Player): List<OwnedLocation> {
-    return ownedLocations.filter{it.owner == player}
+fun GameLedger.locationsFor(player: Player): List<LocationStatus> {
+    return locationStatuses.filter{it.owner == player}
 }
 
 fun GameLedger.ownerOf(location: Location):Pair<Player, GBP>? {
-    val ownedLocation = this.ownedLocations.firstOrNull { it.location == location }
+    val ownedLocation = this.locationStatuses.firstOrNull { it.location == location }
 
     if (ownedLocation == null) {
         return null

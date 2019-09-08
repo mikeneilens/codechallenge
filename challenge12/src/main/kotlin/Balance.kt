@@ -1,5 +1,5 @@
 sealed class Balance {
-    val value:Int get() = when (this) {
+    private val value:Int get() = when (this) {
         is Credit ->  this.gbp.value
         is Debt -> - this.gbp.value
     }

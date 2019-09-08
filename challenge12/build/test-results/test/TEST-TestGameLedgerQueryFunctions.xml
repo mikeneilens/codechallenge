@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestGameLedgerQueryFunctions" tests="37" skipped="0" failures="0" errors="0" timestamp="2019-09-08T12:26:50" hostname="MacBook-Pro-2" time="0.073">
+  <properties/>
+  <testcase name="getting locations for a player returns two locations if a player has bought two locations()" classname="TestGameLedgerQueryFunctions" time="0.03"/>
+  <testcase name="when no transactions have been added to GameLedger, there is no owner of a location()" classname="TestGameLedgerQueryFunctions" time="0.002"/>
+  <testcase name="getting balance for a new player added with 500 to the GameLedger gives 500()" classname="TestGameLedgerQueryFunctions" time="0.002"/>
+  <testcase name="getting balance for a player with 200 credit and 150 debt has 50 credit in total()" classname="TestGameLedgerQueryFunctions" time="0.002"/>
+  <testcase name="ownedLocation returns an ownedLocation with a minimarket if aplayer has sold a supermarket()" classname="TestGameLedgerQueryFunctions" time="0.001"/>
+  <testcase name="getting locations for a player returns a single location with supermarket if a player has bout a location and developed it()" classname="TestGameLedgerQueryFunctions" time="0.0"/>
+  <testcase name="when an owned location is mortgaged should return zero rent()" classname="TestGameLedgerQueryFunctions" time="0.0"/>
+  <testcase name="when an owned location is unmortgaged should return standard rent()" classname="TestGameLedgerQueryFunctions" time="0.001"/>
+  <testcase name="ownedLocation returns an empty list when nothing has been added to the GameLedger()" classname="TestGameLedgerQueryFunctions" time="0.001"/>
+  <testcase name="when an owned location is buildable location but not developede it should return standard rent for the location()" classname="TestGameLedgerQueryFunctions" time="0.001"/>
+  <testcase name="when an owned location is buildable location and has a megastore it should return megastore rent for the location()" classname="TestGameLedgerQueryFunctions" time="0.001"/>
+  <testcase name="when a mortgaged location is sold to another player, ownership moves to the other player and rent is zero()" classname="TestGameLedgerQueryFunctions" time="0.002"/>
+  <testcase name="ownedLocations returns two owned locations when two locations have been added to GameLedger()" classname="TestGameLedgerQueryFunctions" time="0.001"/>
+  <testcase name="when a single transaction involving a Retail location has been added to GameLedger, the correct owner and basic rent is returned ()" classname="TestGameLedgerQueryFunctions" time="0.001"/>
+  <testcase name="when an owned location is buildable location and has a minimarket it should return minimarket rent for the location()" classname="TestGameLedgerQueryFunctions" time="0.0"/>
+  <testcase name="ownedLocations returns a single owned location when one has been added to GameLEdger()" classname="TestGameLedgerQueryFunctions" time="0.001"/>
+  <testcase name="getting locations for a player returns no locations if the same property has been subsequently bought by another player()" classname="TestGameLedgerQueryFunctions" time="0.0"/>
+  <testcase name="getting locations for a player returns a single undeveloped location if a player has only one undeveloeprd location()" classname="TestGameLedgerQueryFunctions" time="0.0"/>
+  <testcase name="when a single transaction involving a warehouse has been added to GameLedger, the correct owner and basic rent is returned ()" classname="TestGameLedgerQueryFunctions" time="0.001"/>
+  <testcase name="getting locations for a player returns a mortgaged location in undeveloped state if it has been mortgaged()" classname="TestGameLedgerQueryFunctions" time="0.001"/>
+  <testcase name="when a mortgage free location is sold to another player, ownership moves to the other player and rent is standard rent()" classname="TestGameLedgerQueryFunctions" time="0.001"/>
+  <testcase name="getting balance for a player with no credit pays rent of 200()" classname="TestGameLedgerQueryFunctions" time="0.0"/>
+  <testcase name="when an owned location is buildable location and has a supermarket it should return supermarket rent for the location()" classname="TestGameLedgerQueryFunctions" time="0.001"/>
+  <testcase name="get balance for a player not on GameLedger returns zero()" classname="TestGameLedgerQueryFunctions" time="0.001"/>
+  <testcase name="when no transactions involving locations have been added to GameLedger, there is no owner of a location()" classname="TestGameLedgerQueryFunctions" time="0.001"/>
+  <testcase name="when a transaction involving a different location has been added to GameLedger, there is no owner of a location()" classname="TestGameLedgerQueryFunctions" time="0.001"/>
+  <testcase name="getting balance when every type of credit transaction has been created()" classname="TestGameLedgerQueryFunctions" time="0.001"/>
+  <testcase name="when a retail location is purchased and then mortgaged , the rent is zero()" classname="TestGameLedgerQueryFunctions" time="0.001"/>
+  <testcase name="when a retail location is purchased and then mortgaged and then unmortgaged , the rent is the standard ret()" classname="TestGameLedgerQueryFunctions" time="0.001"/>
+  <testcase name="ownedLocation returns an ownedLocation with undeveloepd if aplayer has sold a minimarket()" classname="TestGameLedgerQueryFunctions" time="0.0"/>
+  <testcase name="getting locations for a player returns an empty list if a player hasnt bought any()" classname="TestGameLedgerQueryFunctions" time="0.0"/>
+  <testcase name="getting balance for a player with 150 credit and 200 debt has 50 debt in total()" classname="TestGameLedgerQueryFunctions" time="0.001"/>
+  <testcase name="ownedLocations returns a single owned location with correct building when one location has been added to GameLEdger and then built on()" classname="TestGameLedgerQueryFunctions" time="0.001"/>
+  <testcase name="when a retail location is purchased and then has a ministore built on it , the rent for the ministore is returned ()" classname="TestGameLedgerQueryFunctions" time="0.001"/>
+  <testcase name="ownedLocations returns an empty list when transactions containing no location information have been added to the GameLedger()()" classname="TestGameLedgerQueryFunctions" time="0.001"/>
+  <testcase name="when an owned location is purchasable location but not buildable it should return standard rent for the location()" classname="TestGameLedgerQueryFunctions" time="0.001"/>
+  <testcase name="ownedLocation returns an ownedLocation with a supermarket if aplayer has sold a megastore()" classname="TestGameLedgerQueryFunctions" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -3,6 +3,25 @@
   <component name="ChangeListManager">
     <list default="true" id="968f8ffb-1e47-4767-8f49-40a5fc36a6db" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/test/META-INF/challenge12.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab.values" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab.values.s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/TestGameLedgerCommandFunctions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/base-style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/js/report.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/default-package.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-TestGameLedgerCommandFunctions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Balance.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Balance.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/GameLedger.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/GameLedger.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/GameLedgerQueries.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/GameLedgerQueries.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/OwnedLocation.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/LocationStatus.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/TestGameLedgerCommandFunctions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/TestGameLedgerCommandFunctions.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/TestGameLedgerQueryFunctions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/TestGameLedgerQueryFunctions.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -56,8 +75,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/GameLedger.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="133" selection-start-line="133" selection-end-line="133" />
+            <state relative-caret-position="-483">
+              <caret line="75" column="53" selection-start-line="75" selection-start-column="53" selection-end-line="75" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -65,8 +84,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/TestGameLedgerCommandFunctions.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="855">
-              <caret line="207" column="5" lean-forward="true" selection-start-line="207" selection-start-column="5" selection-end-line="207" selection-end-column="5" />
+            <state relative-caret-position="2925">
+              <caret line="195" lean-forward="true" selection-start-line="195" selection-end-line="195" />
               <folding>
                 <element signature="e#0#86#0" expanded="true" />
               </folding>
@@ -77,8 +96,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/TestGameLedgerQueryFunctions.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4327">
-              <caret line="291" column="5" lean-forward="true" selection-start-line="291" selection-start-column="5" selection-end-line="291" selection-end-column="5" />
+            <state relative-caret-position="381">
+              <caret line="258" selection-start-line="258" selection-end-line="258" />
               <folding>
                 <element signature="e#0#86#0" expanded="true" />
               </folding>
@@ -90,8 +109,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="238">
-                <caret line="18" column="43" lean-forward="true" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
+              <first_editor relative-caret-position="539">
+                <caret line="36" column="129" selection-start-line="36" selection-start-column="129" selection-end-line="36" selection-end-column="129" />
               </first_editor>
               <second_editor />
             </state>
@@ -101,17 +120,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/GameLedgerQueries.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="255">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/kotlin/OwnedLocation.kt">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/LocationStatus.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="15">
-              <caret line="1" column="102" selection-start-line="1" selection-start-column="102" selection-end-line="1" selection-end-column="102" />
+              <caret line="1" column="103" selection-start-line="1" selection-start-column="103" selection-end-line="1" selection-end-column="103" />
             </state>
           </provider>
         </entry>
@@ -119,8 +138,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/Balance.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
+            <state relative-caret-position="30">
+              <caret line="2" column="13" lean-forward="true" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -149,7 +168,12 @@
       <find>DevelopmentType.</find>
       <find>mortgage</find>
       <find>mortgaged</find>
+      <find>ownedLocations</find>
+      <find>ownedLocation</find>
     </findStrings>
+    <replaceStrings>
+      <replace>locationStatuse</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -160,21 +184,22 @@
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/test/kotlin/TestGameLedger.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/GBP.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/Balance.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/Player.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/Building.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/Location.kt" />
         <option value="$PROJECT_DIR$/src/test/kotlin/TestLocation.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/GameLedgerQueries.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/GameLedger.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/OwnedLocation.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/Balance.kt" />
         <option value="$PROJECT_DIR$/src/test/kotlin/TestGameLedgerCommandFunctions.kt" />
         <option value="$PROJECT_DIR$/src/test/kotlin/TestGameLedgerQueryFunctions.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/OwnedLocation.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/LocationStatus.kt" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/GameLedger.kt" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="width" value="1920" />
     <option name="height" value="1080" />
   </component>
@@ -249,7 +274,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.TestGameLedgerCommandFunctions.A sale transaction and a mortgage transaction is added when a player sells a mortgaged property to another player">
+  <component name="RunManager" selected="Gradle.TestGameLedgerQueryFunctions">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -268,6 +293,26 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" value="--tests &quot;TestGameLedgerCommandFunctions&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":cleanTest" />
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="TestGameLedgerCommandFunctions.A mortgaged sale transaction is added when a player sells a mortgaged property to another player" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;TestGameLedgerCommandFunctions.A mortgaged sale transaction is added when a player sells a mortgaged property to another player&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -302,32 +347,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="TestGameLedgerCommandFunctions.Transaction is added when a player sells a property to another player" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="TestGameLedgerQueryFunctions" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;TestGameLedgerCommandFunctions.Transaction is added when a player sells a property to another player&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":cleanTest" />
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="TestGameLedgerQueryFunctions.when a mortgage free location is sold to another player, ownership moves to the other player and rent is standard rent" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;TestGameLedgerQueryFunctions.when a mortgage free location is sold to another player, ownership moves to the other player and rent is standard rent&quot;" />
+        <option name="scriptParameters" value="--tests &quot;TestGameLedgerQueryFunctions&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -389,11 +414,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.TestGameLedgerCommandFunctions.A sale transaction and a mortgage transaction is added when a player sells a mortgaged property to another player" />
-        <item itemvalue="Gradle.TestGameLedgerCommandFunctions" />
-        <item itemvalue="Gradle.TestGameLedgerQueryFunctions.when a mortgage free location is sold to another player, ownership moves to the other player and rent is standard rent" />
+        <item itemvalue="Gradle.TestGameLedgerQueryFunctions" />
         <item itemvalue="Gradle.TestGameLedgerQueryFunctions.when a mortgaged location is sold to another player, ownership moves to the other player and rent is zero" />
-        <item itemvalue="Gradle.TestGameLedgerCommandFunctions.Transaction is added when a player sells a property to another player" />
+        <item itemvalue="Gradle.TestGameLedgerCommandFunctions" />
+        <item itemvalue="Gradle.TestGameLedgerCommandFunctions.A mortgaged sale transaction is added when a player sells a mortgaged property to another player" />
+        <item itemvalue="Gradle.TestGameLedgerCommandFunctions.A sale transaction and a mortgage transaction is added when a player sells a mortgaged property to another player" />
       </list>
     </recent_temporary>
   </component>
@@ -418,35 +443,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestGameLedgerQueryFunctions_when_a_mortgage_free_location_is_sold_to_another_player,_ownership_moves_to_the_other_player_and_rent_is_standard_rent - 2019.09.06 at 18h 19m 02s.xml">
-      <configuration name="TestGameLedgerQueryFunctions.when a mortgage free location is sold to another player, ownership moves to the other player and rent is standard rent" configurationId="GradleRunConfiguration" />
+    <history-entry file="TestGameLedgerCommandFunctions_A_mortgaged_sale_transaction_is_added_when_a_player_sells_a_mortgaged_property_to_another_player - 2019.09.08 at 13h 20m 26s.xml">
+      <configuration name="TestGameLedgerCommandFunctions.A mortgaged sale transaction is added when a player sells a mortgaged property to another player" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="TestGameLedgerQueryFunctions_when_a_mortgaged_location_is_sold_to_another_player,_ownership_moves_to_the_other_player_and_rent_is_zero - 2019.09.06 at 18h 21m 09s.xml">
-      <configuration name="TestGameLedgerQueryFunctions.when a mortgaged location is sold to another player, ownership moves to the other player and rent is zero" configurationId="GradleRunConfiguration" />
+    <history-entry file="TestGameLedgerCommandFunctions_A_mortgaged_sale_transaction_is_added_when_a_player_sells_a_mortgaged_property_to_another_player - 2019.09.08 at 13h 21m 08s.xml">
+      <configuration name="TestGameLedgerCommandFunctions.A mortgaged sale transaction is added when a player sells a mortgaged property to another player" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="TestGameLedgerCommandFunctions_Transaction_is_added_when_a_player_sells_a_property_to_another_player - 2019.09.06 at 18h 25m 51s.xml">
-      <configuration name="TestGameLedgerCommandFunctions.Transaction is added when a player sells a property to another player" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="TestGameLedgerQueryFunctions_when_a_mortgaged_location_is_sold_to_another_player,_ownership_moves_to_the_other_player_and_rent_is_zero - 2019.09.06 at 18h 25m 59s.xml">
-      <configuration name="TestGameLedgerQueryFunctions.when a mortgaged location is sold to another player, ownership moves to the other player and rent is zero" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="TestGameLedgerQueryFunctions_when_a_mortgage_free_location_is_sold_to_another_player,_ownership_moves_to_the_other_player_and_rent_is_standard_rent - 2019.09.06 at 18h 26m 06s.xml">
-      <configuration name="TestGameLedgerQueryFunctions.when a mortgage free location is sold to another player, ownership moves to the other player and rent is standard rent" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="TestGameLedgerCommandFunctions_A_sale_transaction_and_a_mortgage_transaction_is_added_when_a_player_sells_a_mortgaged_property_to_another_player - 2019.09.06 at 18h 28m 04s.xml">
-      <configuration name="TestGameLedgerCommandFunctions.A sale transaction and a mortgage transaction is added when a player sells a mortgaged property to another player" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="TestGameLedgerCommandFunctions - 2019.09.06 at 18h 29m 00s.xml">
+    <history-entry file="TestGameLedgerCommandFunctions - 2019.09.08 at 13h 21m 16s.xml">
       <configuration name="TestGameLedgerCommandFunctions" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="TestGameLedgerCommandFunctions_A_sale_transaction_and_a_mortgage_transaction_is_added_when_a_player_sells_a_mortgaged_property_to_another_player - 2019.09.06 at 18h 30m 36s.xml">
-      <configuration name="TestGameLedgerCommandFunctions.A sale transaction and a mortgage transaction is added when a player sells a mortgaged property to another player" configurationId="GradleRunConfiguration" />
+    <history-entry file="TestGameLedgerQueryFunctions - 2019.09.08 at 13h 21m 22s.xml">
+      <configuration name="TestGameLedgerQueryFunctions" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="TestGameLedgerCommandFunctions_A_sale_transaction_and_a_mortgage_transaction_is_added_when_a_player_sells_a_mortgaged_property_to_another_player - 2019.09.06 at 18h 31m 24s.xml">
-      <configuration name="TestGameLedgerCommandFunctions.A sale transaction and a mortgage transaction is added when a player sells a mortgaged property to another player" configurationId="GradleRunConfiguration" />
+    <history-entry file="TestGameLedgerQueryFunctions_when_a_mortgaged_location_is_sold_to_another_player,_ownership_moves_to_the_other_player_and_rent_is_zero - 2019.09.08 at 13h 22m 49s.xml">
+      <configuration name="TestGameLedgerQueryFunctions.when a mortgaged location is sold to another player, ownership moves to the other player and rent is zero" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="TestGameLedgerCommandFunctions_A_sale_transaction_and_a_mortgage_transaction_is_added_when_a_player_sells_a_mortgaged_property_to_another_player - 2019.09.06 at 18h 33m 33s.xml">
-      <configuration name="TestGameLedgerCommandFunctions.A sale transaction and a mortgage transaction is added when a player sells a mortgaged property to another player" configurationId="GradleRunConfiguration" />
+    <history-entry file="TestGameLedgerQueryFunctions_when_a_mortgaged_location_is_sold_to_another_player,_ownership_moves_to_the_other_player_and_rent_is_zero - 2019.09.08 at 13h 23m 08s.xml">
+      <configuration name="TestGameLedgerQueryFunctions.when a mortgaged location is sold to another player, ownership moves to the other player and rent is zero" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestGameLedgerQueryFunctions_when_a_mortgaged_location_is_sold_to_another_player,_ownership_moves_to_the_other_player_and_rent_is_zero - 2019.09.08 at 13h 26m 36s.xml">
+      <configuration name="TestGameLedgerQueryFunctions.when a mortgaged location is sold to another player, ownership moves to the other player and rent is zero" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestGameLedgerQueryFunctions_getting_balance_for_a_player_with_150_credit_and_200_debt_has_50_debt_in_total - 2019.09.08 at 13h 26m 36s.xml">
+      <configuration name="TestGameLedgerQueryFunctions.getting balance for a player with 150 credit and 200 debt has 50 debt in total" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestGameLedgerQueryFunctions_when_a_mortgaged_location_is_sold_to_another_player,_ownership_moves_to_the_other_player_and_rent_is_zero - 2019.09.08 at 13h 26m 43s.xml">
+      <configuration name="TestGameLedgerQueryFunctions.when a mortgaged location is sold to another player, ownership moves to the other player and rent is zero" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestGameLedgerQueryFunctions - 2019.09.08 at 13h 26m 50s.xml">
+      <configuration name="TestGameLedgerQueryFunctions" configurationId="GradleRunConfiguration" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -459,7 +484,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
+    <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
@@ -475,7 +500,7 @@
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Build" weight="0.32970297" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32970297" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32970297" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32970297" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -522,6 +547,18 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
     </layout-to-restore>
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/GameLedgerQueries.kt</url>
+          <line>17</line>
+          <properties />
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
@@ -554,6 +591,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Building.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/GBP.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -563,15 +607,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/Balance.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
+        <state relative-caret-position="30">
+          <caret line="2" column="13" lean-forward="true" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/kotlin/TestGameLedgerQueryFunctions.kt">
+    <entry file="file://$PROJECT_DIR$/src/test/kotlin/TestGameLedgerCommandFunctions.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4327">
-          <caret line="291" column="5" lean-forward="true" selection-start-line="291" selection-start-column="5" selection-end-line="291" selection-end-column="5" />
+        <state relative-caret-position="2925">
+          <caret line="195" lean-forward="true" selection-start-line="195" selection-end-line="195" />
           <folding>
             <element signature="e#0#86#0" expanded="true" />
           </folding>
@@ -580,47 +624,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/GameLedgerQueries.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="255">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/kotlin/TestGameLedgerCommandFunctions.kt">
+    <entry file="file://$PROJECT_DIR$/src/test/kotlin/TestGameLedgerQueryFunctions.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
-          <caret line="207" column="5" lean-forward="true" selection-start-line="207" selection-start-column="5" selection-end-line="207" selection-end-column="5" />
+        <state relative-caret-position="381">
+          <caret line="258" selection-start-line="258" selection-end-line="258" />
           <folding>
             <element signature="e#0#86#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/GameLedger.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="133" selection-start-line="133" selection-end-line="133" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Building.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/OwnedLocation.kt">
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/LocationStatus.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
-          <caret line="1" column="102" selection-start-line="1" selection-start-column="102" selection-end-line="1" selection-end-column="102" />
+          <caret line="1" column="103" selection-start-line="1" selection-start-column="103" selection-end-line="1" selection-end-column="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/GameLedger.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-483">
+          <caret line="75" column="53" selection-start-line="75" selection-start-column="53" selection-end-line="75" selection-end-column="53" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="238">
-            <caret line="18" column="43" lean-forward="true" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
+          <first_editor relative-caret-position="539">
+            <caret line="36" column="129" selection-start-line="36" selection-start-column="129" selection-end-line="36" selection-end-column="129" />
           </first_editor>
           <second_editor />
         </state>
