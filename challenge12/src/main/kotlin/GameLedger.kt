@@ -4,6 +4,17 @@ object GameLedger {
 
     interface Transaction {
         val amount:GBP
+
+        fun toLocationStatus() = when (this) {
+            is PlayerMortgagingLocation -> LocationStatus(playerCredited, location, Building.Undeveloped, true)
+            is PlayerUnMortgagingLocation -> LocationStatus(playerDebited, location, Building.Undeveloped, false)
+            is PlayerSellingLocation -> LocationStatus(playerDebited, location, Building.Undeveloped)
+            is PlayerSellingMortgagedLocation -> LocationStatus(playerDebited, location, Building.Undeveloped, true)
+            is PlayerPurchasingProperty -> LocationStatus(playerDebited, location, Building.Undeveloped)
+            is PlayerBuildingOnLocation -> LocationStatus(playerDebited, location, building)
+            is PlayerSellingBuilding -> LocationStatus(playerCredited, location, buildingRemaining)
+            else -> null
+        }
     }
 
     interface CreditTransaction:Transaction{
@@ -24,7 +35,8 @@ object GameLedger {
 
     interface PlayerSellingBuilding:CreditTransaction {
         val location:Buildable
-        val building:Building
+        val buildingSold:Building
+        val buildingRemaining:Building
     }
 
     interface PlayerMortgagingLocation:CreditTransaction {
@@ -43,25 +55,7 @@ object GameLedger {
         val location:Purchaseable
     }
     val locationStatuses:List<LocationStatus> get() {
-        val listOfOwnedLocations = this.transactions.mapNotNull{
-            when (it) {
-                is PlayerMortgagingLocation -> LocationStatus(it.playerCredited, it.location, Building.Undeveloped, true)
-                is PlayerUnMortgagingLocation -> LocationStatus(it.playerDebited, it.location, Building.Undeveloped, false)
-                is PlayerSellingLocation -> LocationStatus(it.playerDebited, it.location, Building.Undeveloped)
-                is PlayerSellingMortgagedLocation -> LocationStatus(it.playerDebited, it.location, Building.Undeveloped, true)
-                is PlayerPurchasingProperty -> LocationStatus(it.playerDebited, it.location, Building.Undeveloped)
-                is PlayerBuildingOnLocation -> LocationStatus(it.playerDebited, it.location, it.building)
-                is PlayerSellingBuilding -> {
-                    when (it.building) {
-                        Building.Megastore -> LocationStatus(it.playerCredited, it.location, Building.Supermarket)
-                        Building.Supermarket -> LocationStatus(it.playerCredited, it.location, Building.Minimarket)
-                        Building.Minimarket -> LocationStatus(it.playerCredited, it.location, Building.Undeveloped)
-                        else -> LocationStatus(it.playerCredited, it.location, Building.Undeveloped)
-                    }
-                }
-                else -> null
-            }
-        }
+        val listOfOwnedLocations = this.transactions.mapNotNull{it.toLocationStatus()}
         return listOfOwnedLocations.reversed().distinctBy { it.location }.reversed()
     }
 
@@ -99,10 +93,18 @@ object GameLedger {
     }
 
     fun sellBuilding(player: Player, location: Buildable, buildingType: Building, sellingPrice: GBP) {
+        val buildingRemaining = when (buildingType) {
+            Building.Megastore -> Building.Supermarket
+            Building.Supermarket -> Building.Minimarket
+            Building.Minimarket -> Building.Undeveloped
+            else -> Building.Undeveloped
+        }
+
         transactions.add(object:PlayerSellingBuilding{
             override val playerCredited = player
             override val location = location
-            override val building = buildingType
+            override val buildingSold = buildingType
+            override val buildingRemaining = buildingRemaining
             override val amount = sellingPrice
         })
     }

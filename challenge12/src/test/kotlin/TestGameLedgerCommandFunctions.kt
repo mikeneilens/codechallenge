@@ -112,7 +112,7 @@ class TestGameLedgerCommandFunctions {
         val lastTransaction = GameLedger.transactions.last() as GameLedger.PlayerSellingBuilding
         assertEquals(lastTransaction.playerCredited, player)
         assertEquals(lastTransaction.location, location)
-        assertEquals(lastTransaction.building, Building.Megastore)
+        assertEquals(lastTransaction.buildingSold, Building.Megastore)
         assertEquals(lastTransaction.amount, GBP(200))
     }
 
