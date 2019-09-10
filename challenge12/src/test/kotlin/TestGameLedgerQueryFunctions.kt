@@ -133,25 +133,25 @@ class TestGameLedgerQueryFunctions {
 
     }
     @Test
-    fun `ownedLocation returns an empty list when nothing has been added to the GameLedger`() {
+    fun `locationStatus returns an empty list when nothing has been added to the GameLedger`() {
         assertEquals(0, GameLedger.locationStatuses.size)
     }
     @Test
-    fun `ownedLocations returns an empty list when transactions containing no location information have been added to the GameLedger()`(){
+    fun `locationStatuss returns an empty list when transactions containing no location information have been added to the GameLedger()`(){
         GameLedger.addFeeForPlayerPassingGo(playerMike,Go.fee)
         GameLedger.payRent(playerJake, playerMike, GBP(20))
         GameLedger.addNewPlayer(playerMike, GBP(200))
         assertEquals(0, GameLedger.locationStatuses.size)
     }
     @Test
-    fun `ownedLocations returns a single owned location when one has been added to GameLEdger`() {
+    fun `locationStatuss returns a single locationStatus when one has been added to GameLEdger`() {
         GameLedger.purchaseLocation(playerMike, shop, shop.purchasePrice)
 
         assertEquals(1, GameLedger.locationStatuses.size)
         assertEquals(LocationStatus(playerMike, shop, Building.Undeveloped), GameLedger.locationStatuses[0])
     }
     @Test
-    fun `ownedLocations returns a single owned location with correct building when one location has been added to GameLEdger and then built on`() {
+    fun `locationStatuss returns a single locationStatus with correct building when one location has been added to GameLEdger and then built on`() {
         GameLedger.purchaseLocation(playerMike, shop, shop.purchasePrice)
         GameLedger.buildOnLocation(playerMike, shop, Building.Supermarket, shop.supermarket.buildingCost)
 
@@ -159,7 +159,7 @@ class TestGameLedgerQueryFunctions {
         assertEquals(LocationStatus(playerMike, shop, Building.Supermarket), GameLedger.locationStatuses[0])
     }
     @Test
-    fun `ownedLocations returns two owned locations when two locations have been added to GameLedger` () {
+    fun `locationStatuss returns two locationStatuss when two locations have been added to GameLedger` () {
         GameLedger.purchaseLocation(playerJake, warehouse, warehouse.purchasePrice)
         GameLedger.purchaseLocation(playerMike, shop, shop.purchasePrice)
         GameLedger.buildOnLocation(playerMike, shop, Building.Supermarket, shop.supermarket.buildingCost)
@@ -169,21 +169,21 @@ class TestGameLedgerQueryFunctions {
         assertEquals(LocationStatus(playerMike, shop, Building.Supermarket), GameLedger.locationStatuses[1])
     }
     @Test
-    fun `ownedLocation returns an ownedLocation with a supermarket if aplayer has sold a megastore`() {
+    fun `locationStatus returns an locationStatus with a supermarket if aplayer has sold a megastore`() {
         GameLedger.sellBuilding(playerMike, shop, Building.Megastore, shop.megastore.buildingCost)
 
         assertEquals(1, GameLedger.locationStatuses.size)
         assertEquals(LocationStatus(playerMike, shop, Building.Supermarket), GameLedger.locationStatuses[0])
     }
     @Test
-    fun `ownedLocation returns an ownedLocation with a minimarket if aplayer has sold a supermarket`() {
+    fun `locationStatus returns an locationStatus with a minimarket if aplayer has sold a supermarket`() {
         GameLedger.sellBuilding(playerMike, shop, Building.Supermarket, shop.supermarket.buildingCost)
 
         assertEquals(1, GameLedger.locationStatuses.size)
         assertEquals(LocationStatus(playerMike, shop, Building.Minimarket), GameLedger.locationStatuses[0])
     }
     @Test
-    fun `ownedLocation returns an ownedLocation with undeveloepd if aplayer has sold a minimarket`() {
+    fun `locationStatus returns an locationStatus with undeveloepd if aplayer has sold a minimarket`() {
         GameLedger.sellBuilding(playerMike, shop, Building.Minimarket, shop.supermarket.buildingCost)
 
         assertEquals(1, GameLedger.locationStatuses.size)
@@ -239,7 +239,6 @@ class TestGameLedgerQueryFunctions {
         GameLedger.unMortgageLocation(playerMike, shop, GBP(60))
 
         assertEquals(Pair( playerMike, shop.rent), GameLedger.ownerOf(shop) )
-
     }
 
     @Test
@@ -261,38 +260,38 @@ class TestGameLedgerQueryFunctions {
     }
 
     @Test
-    fun `when an owned location is purchasable location but not buildable it should return standard rent for the location`() {
-        val ownedLocation = LocationStatus(playerMike, warehouse, Building.Undeveloped)
-        assertEquals(warehouse.rent, ownedLocation.rentPayable)
+    fun `when an locationStatus is purchasable location but not buildable it should return standard rent for the location`() {
+        val locationStatus = LocationStatus(playerMike, warehouse, Building.Undeveloped)
+        assertEquals(warehouse.rent, locationStatus.rentPayable)
     }
     @Test
-    fun `when an owned location is buildable location but not developede it should return standard rent for the location`() {
-        val ownedLocation = LocationStatus(playerMike, shop, Building.Undeveloped)
-        assertEquals(shop.rent, ownedLocation.rentPayable)
+    fun `when an locationStatus is buildable location but not developede it should return standard rent for the location`() {
+        val locationStatus = LocationStatus(playerMike, shop, Building.Undeveloped)
+        assertEquals(shop.rent, locationStatus.rentPayable)
     }
     @Test
-    fun `when an owned location is buildable location and has a minimarket it should return minimarket rent for the location`() {
-        val ownedLocation = LocationStatus(playerMike, shop, Building.Minimarket)
-        assertEquals(shop.miniStore.rent, ownedLocation.rentPayable)
+    fun `when an locationStatus is buildable location and has a minimarket it should return minimarket rent for the location`() {
+        val locationStatus = LocationStatus(playerMike, shop, Building.Minimarket)
+        assertEquals(shop.miniStore.rent, locationStatus.rentPayable)
     }
     @Test
-    fun `when an owned location is buildable location and has a supermarket it should return supermarket rent for the location`() {
-        val ownedLocation = LocationStatus(playerMike, shop, Building.Supermarket)
-        assertEquals(shop.supermarket.rent, ownedLocation.rentPayable)
+    fun `when an locationStatus is buildable location and has a supermarket it should return supermarket rent for the location`() {
+        val locationStatus = LocationStatus(playerMike, shop, Building.Supermarket)
+        assertEquals(shop.supermarket.rent, locationStatus.rentPayable)
     }
     @Test
-    fun `when an owned location is buildable location and has a megastore it should return megastore rent for the location`() {
-        val ownedLocation = LocationStatus(playerMike, shop, Building.Megastore)
-        assertEquals(shop.megastore.rent, ownedLocation.rentPayable)
+    fun `when an locationStatus is buildable location and has a megastore it should return megastore rent for the location`() {
+        val locationStatus = LocationStatus(playerMike, shop, Building.Megastore)
+        assertEquals(shop.megastore.rent, locationStatus.rentPayable)
     }
     @Test
-    fun `when an owned location is mortgaged should return zero rent`() {
-        val ownedLocation = LocationStatus(playerMike, shop, Building.Megastore, true)
-        assertEquals(GBP(0), ownedLocation.rentPayable)
+    fun `when an locationStatus is mortgaged should return zero rent`() {
+        val locationStatus = LocationStatus(playerMike, shop, Building.Megastore, true)
+        assertEquals(GBP(0), locationStatus.rentPayable)
     }
     @Test
-    fun `when an owned location is unmortgaged should return standard rent`() {
-        val ownedLocation = LocationStatus(playerMike, shop, Building.Undeveloped, false)
-        assertEquals(shop.rent, ownedLocation.rentPayable)
+    fun `when an locationStatus is unmortgaged should return standard rent`() {
+        val locationStatus = LocationStatus(playerMike, shop, Building.Undeveloped, false)
+        assertEquals(shop.rent, locationStatus.rentPayable)
     }
 }

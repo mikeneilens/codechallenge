@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestGameLedgerQueryFunctions" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-09-10T08:27:43" hostname="MacBook-Pro-2" time="0.016">
+  <properties/>
+  <testcase name="when an owned location is purchasable location but not buildable it should return standard rent for the location()" classname="TestGameLedgerQueryFunctions" time="0.016"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

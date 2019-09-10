@@ -15,11 +15,11 @@ fun GameLedger.locationsFor(player: Player): List<LocationStatus> {
 fun GameLedger.ownerOf(location: Location):Pair<Player, GBP>? {
     val ownedLocation = this.locationStatuses.firstOrNull { it.location == location }
 
-    if (ownedLocation == null) {
-        return null
+    return if (ownedLocation == null) {
+        null
     } else {
         val rent = ownedLocation.rentPayable
-        return Pair(ownedLocation.owner, rent)
+        Pair(ownedLocation.owner, rent)
     }
 }
 
