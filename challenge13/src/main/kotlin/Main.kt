@@ -25,5 +25,11 @@ class Shop(val name:String, val postcode:String, val geoLocation: GeoLocation ) 
     fun distanceTo(otherShop:Shop): DistanceInMiles =  this.geoLocation.distanceTo(otherShop.geoLocation)
 }
 
+fun orderShops(shops:List<Shop>):List<Shop> {
+    if (shops.size == 0)
+        return listOf()
+    else
+        return shops
+}
 
 

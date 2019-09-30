@@ -12,7 +12,6 @@ class MainTest {
     fun `distance between Liverpool and London should be 177`() {
         val londonLocation = oxfordStreet.geoLocation
         val liverpoolLocation = liverpool.geoLocation
-
         val distanceBetweenLiverpoolAndLondon = londonLocation.distanceTo(liverpoolLocation).toInt()
 
         assertEquals(177, distanceBetweenLiverpoolAndLondon)
@@ -22,7 +21,6 @@ class MainTest {
     fun `distance between Peter Jones location and Oxford Street location should be 3 miles`() {
         val peterJonesLocation = peterJones.geoLocation
         val oxfordStreetLocation = oxfordStreet.geoLocation
-
         val distanceBetweenPeterJonesAndOxfordStreet = peterJonesLocation.distanceTo(oxfordStreetLocation).toInt()
 
         assertEquals(3, distanceBetweenPeterJonesAndOxfordStreet)
@@ -30,17 +28,28 @@ class MainTest {
 
     @Test
     fun `distance to same shop is zero `() {
-
         val distanceToSamePlace = peterJones.distanceTo(peterJones)
-
         assertEquals(0.0,distanceToSamePlace)
     }
 
     @Test
     fun `distance between Peter Jones shop and Oxford Street shop is roughly 3 miles `() {
-
         val distanceBeweenPeterJonesAndOxfordStree = peterJones.distanceTo(oxfordStreet).toInt()
-
         assertEquals(3,distanceBeweenPeterJonesAndOxfordStree)
+    }
+
+    @Test
+    fun `Re-ordering an empty list of shops creates an empty list of shops`() {
+        val emptyListofShops = emptyList<Shop>()
+
+        assertEquals(emptyList<Shop>(), orderShops(emptyListofShops))
+    }
+
+    @Test
+    fun `Re-ordering a list of one shop returns a list of one shop`() {
+        val listOfOneShop = listOf(oxfordStreet)
+
+        assertEquals(1, orderShops(listOfOneShop).size)
+        assertEquals(oxfordStreet, orderShops(listOfOneShop).first())
     }
 }
