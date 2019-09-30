@@ -1,7 +1,148 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3bfd32a8-46fd-4dc0-aa92-75bed44975bf" name="Default Changelist" comment="" />
+    <list default="true" id="3bfd32a8-46fd-4dc0-aa92-75bed44975bf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/chai/bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/chalk/index.js.flow" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/color-name/.eslintrc.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/define-properties/.jscs.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/diff/yarn.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/es-to-primitive/.jscs.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/esprima/LICENSE.BSD" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/function-bind/.jscs.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/get-caller-file/index.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/growl/.eslintrc.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/is-callable/.jscs.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/is-date-object/.jscs.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/is-regex/.jscs.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/is-symbol/.jscs.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/lcid/lcid.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/mocha/lib/browser/template.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/mocha/lib/mocharc.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/mocha/mocha.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/node-environment-flags/flags.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/object.getownpropertydescriptors/.jscs.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/semver/range.bnf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/sprintf-js/bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/sprintf-js/demo/angular.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/sprintf-js/dist/angular-sprintf.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/sprintf-js/dist/angular-sprintf.min.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/sprintf-js/dist/sprintf.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/sprintf-js/dist/sprintf.min.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs-unparser/node_modules/yargs/completion.sh.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs-unparser/node_modules/yargs/locales/be.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs-unparser/node_modules/yargs/locales/de.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs-unparser/node_modules/yargs/locales/en.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs-unparser/node_modules/yargs/locales/es.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs-unparser/node_modules/yargs/locales/fr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs-unparser/node_modules/yargs/locales/hi.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs-unparser/node_modules/yargs/locales/hu.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs-unparser/node_modules/yargs/locales/id.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs-unparser/node_modules/yargs/locales/it.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs-unparser/node_modules/yargs/locales/ja.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs-unparser/node_modules/yargs/locales/ko.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs-unparser/node_modules/yargs/locales/nb.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs-unparser/node_modules/yargs/locales/nl.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs-unparser/node_modules/yargs/locales/nn.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs-unparser/node_modules/yargs/locales/pirate.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs-unparser/node_modules/yargs/locales/pl.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs-unparser/node_modules/yargs/locales/pt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs-unparser/node_modules/yargs/locales/pt_BR.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs-unparser/node_modules/yargs/locales/ru.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs-unparser/node_modules/yargs/locales/th.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs-unparser/node_modules/yargs/locales/tr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs-unparser/node_modules/yargs/locales/zh_CN.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs-unparser/node_modules/yargs/locales/zh_TW.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs/completion.sh.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs/completion.zsh.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs/locales/be.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs/locales/de.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs/locales/en.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs/locales/es.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs/locales/fr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs/locales/hi.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs/locales/hu.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs/locales/id.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs/locales/it.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs/locales/ja.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs/locales/ko.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs/locales/nb.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs/locales/nl.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs/locales/nn.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs/locales/pirate.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs/locales/pl.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs/locales/pt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs/locales/pt_BR.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs/locales/ru.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs/locales/th.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs/locales/tr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs/locales/zh_CN.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge11js/node_modules/yargs/locales/zh_TW.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/.gradle/4.10.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/.gradle/4.10.3/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/.gradle/4.10.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/.gradle/4.10.3/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/.gradle/4.10.3/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/.gradle/4.10.3/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/.gradle/4.10.3/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/.gradle/4.10.3/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/build-history.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/build-history.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/subtypes.tab" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/subtypes.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/subtypes.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/subtypes.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/lookups/counters.tab" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/lookups/counters.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab.keystream" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab.keystream.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab.len" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab_i" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.values" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.values" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.values.s" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.values.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/last-build.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileKotlin/last-build.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/build-history.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/build-history.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/inputs/source-to-output.tab" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/inputs/source-to-output.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/inputs/source-to-output.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/inputs/source-to-output.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/proto.tab" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/proto.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/proto.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/proto.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/lookups/counters.tab" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/lookups/counters.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/lookups/file-to-id.tab" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/lookups/file-to-id.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/lookups/file-to-id.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/lookups/file-to-id.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/lookups/id-to-file.tab" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/lookups/id-to-file.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/lookups/id-to-file.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/lookups/id-to-file.tab.keystream" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/lookups/id-to-file.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/lookups/id-to-file.tab.keystream.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/lookups/id-to-file.tab.len" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/lookups/id-to-file.tab.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/lookups/id-to-file.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/lookups/id-to-file.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/lookups/id-to-file.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/lookups/id-to-file.tab_i" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/last-build.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/kotlin/compileTestKotlin/last-build.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/reports/tests/test/classes/TestGameLedgerQueryFunctions.html" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/reports/tests/test/classes/TestGameLedgerQueryFunctions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/reports/tests/test/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/reports/tests/test/packages/default-package.html" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/reports/tests/test/packages/default-package.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/test-results/test/TEST-TestGameLedgerQueryFunctions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/test-results/test/TEST-TestGameLedgerQueryFunctions.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge12/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge12/build/test-results/test/binary/results.bin" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -33,35 +174,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/BoardLocation.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="1" selection-start-line="22" selection-end-line="24" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/kotlin/PlayerTest.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
-              <folding>
-                <element signature="e#0#76#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/kotlin/DiceTest.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="2" selection-end-line="2" />
-              <folding>
-                <element signature="e#0#75#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="408">
+              <caret line="24" column="1" selection-end-line="7" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -69,65 +186,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/BoardLocationTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="645">
-              <caret line="44" column="56" selection-start-line="44" selection-start-column="56" selection-end-line="44" selection-end-column="56" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/kotlin/Location.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/kotlin/BoardLocation.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="6" selection-start-column="6" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/kotlin/Locations.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="870">
-              <caret line="58" column="54" selection-end-line="58" selection-end-column="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/kotlin/Dice.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" selection-start-line="37" selection-end-line="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="165">
-                <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/kotlin/Player.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret lean-forward="true" />
+            <state relative-caret-position="782">
+              <caret line="47" selection-start-line="47" selection-end-line="47" />
             </state>
           </provider>
         </entry>
@@ -137,8 +197,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin File" />
         <option value="Kotlin Class" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
@@ -151,85 +211,39 @@
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/Location.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/BoardLocation.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/Locations.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/PlayerTestOld.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/PlayerTest.kt" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/test/kotlin/DiceTest.kt" />
-        <option value="$PROJECT_DIR$/src/test/kotlin/BoardLocationTest.kt" />
-        <option value="$PROJECT_DIR$/src/test/kotlin/PlayerTest.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/Dice.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/Locations.kt" />
+        <option value="$PROJECT_DIR$/src/test/kotlin/DiceTest.kt" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/test/kotlin/BoardLocationTest.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/BoardLocation.kt" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="width" value="1920" />
-    <option name="height" value="1080" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="challenge10" type="b2602c69:ProjectViewProjectNode" />
-              <item name="challenge10" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="challenge10" type="b2602c69:ProjectViewProjectNode" />
-              <item name="challenge10" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="challenge10" type="b2602c69:ProjectViewProjectNode" />
-              <item name="challenge10" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="challenge10" type="b2602c69:ProjectViewProjectNode" />
-              <item name="challenge10" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="kotlin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="challenge10" type="b2602c69:ProjectViewProjectNode" />
-              <item name="challenge10" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="challenge10" type="b2602c69:ProjectViewProjectNode" />
-              <item name="challenge10" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="kotlin" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="ProjectPane" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.annotationProcessors" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
     <key name="CreateKotlinClassDialog.RecentsKey">
       <recent name="" />
     </key>
@@ -246,7 +260,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.PlayerTest">
+  <component name="RunManager" selected="Gradle.BoardLocationTest">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -279,12 +293,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="PlayerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="BoardLocationTest.Adding dice of value 4 to an inital boardLocation with index set to board size - 3 updates the boardLocation to show location at position 1 in the Location array" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;PlayerTest&quot;" />
+        <option name="scriptParameters" value="--tests &quot;BoardLocationTest.Adding dice of value 4 to an inital boardLocation with index set to board size - 3 updates the boardLocation to show location at position 1 in the Location array&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -299,12 +313,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="PlayerTest.Location of a player after moving a new player using a dice value of 4 is location 4" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="BoardLocationTest.Initial board has hasPassedGo set correctly depending on locationIndex sent to the constructor" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;PlayerTest.Location of a player after moving a new player using a dice value of 4 is location 4&quot;" />
+        <option name="scriptParameters" value="--tests &quot;BoardLocationTest.Initial board has hasPassedGo set correctly depending on locationIndex sent to the constructor&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -319,12 +333,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="PlayerTest.Location of a player after moving a player at position 4 using a dice value of 6 is location 10" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="DiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;PlayerTest.Location of a player after moving a player at position 4 using a dice value of 6 is location 10&quot;" />
+        <option name="scriptParameters" value="--tests &quot;DiceTest&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -339,12 +353,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="PlayerTest.Moving a player who has passed go resets the hasPassedGo flag to false" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="DiceTest.toString formats dice value correctly when a value of 11 is thrown" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;PlayerTest.Moving a player who has passed go resets the hasPassedGo flag to false&quot;" />
+        <option name="scriptParameters" value="--tests &quot;DiceTest.toString formats dice value correctly when a value of 11 is thrown&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -386,11 +400,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.PlayerTest" />
-        <item itemvalue="Gradle.PlayerTest.Location of a player after moving a player at position 4 using a dice value of 6 is location 10" />
-        <item itemvalue="Gradle.PlayerTest.Location of a player after moving a new player using a dice value of 4 is location 4" />
-        <item itemvalue="Gradle.PlayerTest.Moving a player who has passed go resets the hasPassedGo flag to false" />
         <item itemvalue="Gradle.BoardLocationTest" />
+        <item itemvalue="Gradle.DiceTest.toString formats dice value correctly when a value of 11 is thrown" />
+        <item itemvalue="Gradle.DiceTest" />
+        <item itemvalue="Gradle.BoardLocationTest.Adding dice of value 4 to an inital boardLocation with index set to board size - 3 updates the boardLocation to show location at position 1 in the Location array" />
+        <item itemvalue="Gradle.BoardLocationTest.Initial board has hasPassedGo set correctly depending on locationIndex sent to the constructor" />
       </list>
     </recent_temporary>
   </component>
@@ -415,42 +429,42 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="DiceTest_toString_formats_dice_value_correctly_when_a_value_of_11_is_thrown - 2019.08.22 at 21h 00m 16s.xml">
-      <configuration name="DiceTest.toString formats dice value correctly when a value of 11 is thrown" configurationId="GradleRunConfiguration" />
+    <history-entry file="BoardLocationTest_Adding_dice_of_value_4_to_an_inital_boardLocation_with_index_set_to_board_size_-_3_updates_the_boardLocation_to_show_location_at_position_1_in_the_Location_array - 2019.08.12 at 20h 28m 20s.xml">
+      <configuration name="BoardLocationTest.Adding dice of value 4 to an inital boardLocation with index set to board size - 3 updates the boardLocation to show location at position 1 in the Location array" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="DiceTest_toString_formats_dice_value_correctly_when_a_value_of_11_is_thrown - 2019.08.22 at 21h 00m 30s.xml">
-      <configuration name="DiceTest.toString formats dice value correctly when a value of 11 is thrown" configurationId="GradleRunConfiguration" />
+    <history-entry file="BoardLocationTest_Adding_dice_of_value_4_to_an_inital_boardLocation_with_index_set_to_board_size_-_3_updates_the_boardLocation_to_show_location_at_position_1_in_the_Location_array - 2019.08.12 at 20h 28m 28s.xml">
+      <configuration name="BoardLocationTest.Adding dice of value 4 to an inital boardLocation with index set to board size - 3 updates the boardLocation to show location at position 1 in the Location array" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="BoardLocationTest_Adding_dice_of_value_4_to_an_inital_boardLocation_updates_the_boardLocation_to_show_location_at_position_4_in_the_Location_array - 2019.08.22 at 21h 02m 54s.xml">
-      <configuration name="BoardLocationTest.Adding dice of value 4 to an inital boardLocation updates the boardLocation to show location at position 4 in the Location array" configurationId="GradleRunConfiguration" />
+    <history-entry file="BoardLocationTest_Initial_board_has_hasPassedGo_set_correctly_depending_on_locationIndex_sent_to_the_constructor - 2019.08.12 at 21h 03m 43s.xml">
+      <configuration name="BoardLocationTest.Initial board has hasPassedGo set correctly depending on locationIndex sent to the constructor" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="BoardLocationTest - 2019.08.22 at 21h 03m 35s.xml">
+    <history-entry file="BoardLocationTest_Initial_board_has_hasPassedGo_set_correctly_depending_on_locationIndex_sent_to_the_constructor - 2019.08.12 at 21h 04m 34s.xml">
+      <configuration name="BoardLocationTest.Initial board has hasPassedGo set correctly depending on locationIndex sent to the constructor" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="BoardLocationTest - 2019.08.12 at 21h 04m 42s.xml">
       <configuration name="BoardLocationTest" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="PlayerTest - 2019.08.22 at 21h 05m 16s.xml">
-      <configuration name="PlayerTest" configurationId="GradleRunConfiguration" />
+    <history-entry file="BoardLocationTest_Adding_dice_of_value_4_to_an_inital_boardLocation_with_index_set_to_board_size_-_3_updates_the_boardLocation_to_show_location_at_position_1_in_the_Location_array - 2019.08.12 at 21h 05m 38s.xml">
+      <configuration name="BoardLocationTest.Adding dice of value 4 to an inital boardLocation with index set to board size - 3 updates the boardLocation to show location at position 1 in the Location array" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="PlayerTest_Moving_a_player_who_has_passed_go_resets_the_hasPassedGo_flag_to_false - 2019.08.22 at 21h 06m 12s.xml">
-      <configuration name="PlayerTest.Moving a player who has passed go resets the hasPassedGo flag to false" configurationId="GradleRunConfiguration" />
+    <history-entry file="BoardLocationTest - 2019.08.12 at 21h 08m 38s.xml">
+      <configuration name="BoardLocationTest" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="PlayerTest_Location_of_a_player_after_moving_a_new_player_using_a_dice_value_of_4_is_location_4 - 2019.08.22 at 21h 06m 59s.xml">
-      <configuration name="PlayerTest.Location of a player after moving a new player using a dice value of 4 is location 4" configurationId="GradleRunConfiguration" />
+    <history-entry file="DiceTest - 2019.08.12 at 21h 08m 48s.xml">
+      <configuration name="DiceTest" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="PlayerTest - 2019.08.22 at 21h 07m 08s.xml">
-      <configuration name="PlayerTest" configurationId="GradleRunConfiguration" />
+    <history-entry file="DiceTest_toString_formats_dice_value_correctly_when_a_value_of_11_is_thrown - 2019.08.12 at 21h 09m 34s.xml">
+      <configuration name="DiceTest.toString formats dice value correctly when a value of 11 is thrown" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="PlayerTest_Location_of_a_player_after_moving_a_player_at_position_4_using_a_dice_value_of_6_is_location_10 - 2019.08.22 at 21h 07m 39s.xml">
-      <configuration name="PlayerTest.Location of a player after moving a player at position 4 using a dice value of 6 is location 10" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="PlayerTest - 2019.08.22 at 21h 07m 45s.xml">
-      <configuration name="PlayerTest" configurationId="GradleRunConfiguration" />
+    <history-entry file="BoardLocationTest - 2019.08.14 at 16h 52m 37s.xml">
+      <configuration name="BoardLocationTest" configurationId="GradleRunConfiguration" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2736954" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33541667" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -459,7 +473,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32970297" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32902467" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -468,7 +482,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="11" weight="0.32970297" />
+      <window_info anchor="bottom" id="Build" order="11" weight="0.32902467" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -479,115 +493,25 @@
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
     </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2657082" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32970297" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="11" weight="0.32970297" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Gradle" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Maven" order="6" />
-      <window_info anchor="right" id="Capture Analysis" order="7" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
-    </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/PlayerTest.kt" />
-    <entry file="file://$PROJECT_DIR$/build.gradle">
+    <entry file="file://$PROJECT_DIR$/build.gradle" />
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Locations.kt" />
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Dice.kt" />
+    <entry file="file://$PROJECT_DIR$/src/test/kotlin/DiceTest.kt" />
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Location.kt" />
+    <entry file="file://$PROJECT_DIR$/README.md" />
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/BoardLocation.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="1" selection-start-line="22" selection-end-line="24" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/kotlin/PlayerTest.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-          <folding>
-            <element signature="e#0#76#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/kotlin/DiceTest.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="2" selection-end-line="2" />
-          <folding>
-            <element signature="e#0#75#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="408">
+          <caret line="24" column="1" selection-end-line="7" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/kotlin/BoardLocationTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="44" column="56" selection-start-line="44" selection-start-column="56" selection-end-line="44" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Location.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/BoardLocation.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="6" selection-start-column="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Locations.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="58" column="54" selection-end-line="58" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Dice.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="165">
-            <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Player.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
+        <state relative-caret-position="782">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
         </state>
       </provider>
     </entry>

@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">1</div>
+<div class="counter">37</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.016s</div>
+<div class="counter">0.070s</div>
 <p>duration</p>
 </div>
 </td>
@@ -75,8 +75,188 @@
 </tr>
 </thead>
 <tr>
-<td class="success">when an owned location is purchasable location but not buildable it should return standard rent for the location()</td>
-<td class="success">0.016s</td>
+<td class="success">get balance for a player not on GameLedger returns zero()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getting balance for a new player added with 500 to the GameLedger gives 500()</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getting balance for a player with 150 credit and 200 debt has 50 debt in total()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getting balance for a player with 200 credit and 150 debt has 50 credit in total()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getting balance for a player with no credit pays rent of 200()</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getting balance when every type of credit transaction has been created()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getting locations for a player returns a mortgaged location in undeveloped state if it has been mortgaged()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getting locations for a player returns a single location with supermarket if a player has bout a location and developed it()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getting locations for a player returns a single undeveloped location if a player has only one undeveloeprd location()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getting locations for a player returns an empty list if a player hasnt bought any()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getting locations for a player returns no locations if the same property has been subsequently bought by another player()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getting locations for a player returns two locations if a player has bought two locations()</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">locationStatus returns an empty list when nothing has been added to the GameLedger()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">locationStatus returns an locationStatus with a minimarket if aplayer has sold a supermarket()</td>
+<td class="success">0.030s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">locationStatus returns an locationStatus with a supermarket if aplayer has sold a megastore()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">locationStatus returns an locationStatus with undeveloepd if aplayer has sold a minimarket()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">locationStatuss returns a single locationStatus when one has been added to GameLEdger()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">locationStatuss returns a single locationStatus with correct building when one location has been added to GameLEdger and then built on()</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">locationStatuss returns an empty list when transactions containing no location information have been added to the GameLedger()()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">locationStatuss returns two locationStatuss when two locations have been added to GameLedger()</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">when a mortgage free location is sold to another player, ownership moves to the other player and rent is standard rent()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">when a mortgaged location is sold to another player, ownership moves to the other player and rent is zero()</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">when a retail location is purchased and then has a ministore built on it , the rent for the ministore is returned ()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">when a retail location is purchased and then mortgaged , the rent is zero()</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">when a retail location is purchased and then mortgaged and then unmortgaged , the rent is the standard ret()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">when a single transaction involving a Retail location has been added to GameLedger, the correct owner and basic rent is returned ()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">when a single transaction involving a warehouse has been added to GameLedger, the correct owner and basic rent is returned ()</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">when a transaction involving a different location has been added to GameLedger, there is no owner of a location()</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">when an locationStatus is buildable location and has a megastore it should return megastore rent for the location()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">when an locationStatus is buildable location and has a minimarket it should return minimarket rent for the location()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">when an locationStatus is buildable location and has a supermarket it should return supermarket rent for the location()</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">when an locationStatus is buildable location but not developede it should return standard rent for the location()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">when an locationStatus is mortgaged should return zero rent()</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">when an locationStatus is purchasable location but not buildable it should return standard rent for the location()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">when an locationStatus is unmortgaged should return standard rent()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">when no transactions have been added to GameLedger, there is no owner of a location()</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">when no transactions involving locations have been added to GameLedger, there is no owner of a location()</td>
+<td class="success">0s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -89,7 +269,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.3</a> at 10-Sep-2019 09:27:43</p>
+<a href="http://www.gradle.org">Gradle 4.10.3</a> at 27-Sep-2019 09:15:47</p>
 </div>
 </div>
 </body>
