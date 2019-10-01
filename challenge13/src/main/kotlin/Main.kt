@@ -31,8 +31,6 @@ data class Shop(val name:String, val postcode:String, val geoLocation: GeoLocati
 }
 
 fun String.toShops():List<Shop> {
-    if (this.isEmpty()) return listOf()
-
     val items = this.split(",")
 
     return items.windowed(4,4).mapNotNull{fourItems ->
