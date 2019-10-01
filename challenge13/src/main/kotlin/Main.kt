@@ -35,16 +35,12 @@ fun String.toShops():List<Shop> {
 
     val items = this.split(",")
 
-    fun getShops(items:List<String>, listOfShops:List<Shop> = emptyList()):List<Shop> {
-        val firstFourItems = items.take(4)
-
-        if ((firstFourItems.size != 4) ||(firstFourItems[2].toDoubleOrNull() == null) ||(firstFourItems[3].toDoubleOrNull() == null) ) return listOfShops
-
-        val shop = Shop(firstFourItems[0], firstFourItems[1], GeoLocation(firstFourItems[2].toDouble(), firstFourItems[3].toDouble()))
-        return getShops(items.drop(4), listOfShops + shop)
+    return items.windowed(4,4).mapNotNull{fourItems ->
+        if ((fourItems.size != 4) ||(fourItems[2].toDoubleOrNull() == null) ||(fourItems[3].toDoubleOrNull() == null) )
+            null
+        else
+            Shop(fourItems[0], fourItems[1], GeoLocation(fourItems[2].toDouble(), fourItems[3].toDouble()))
     }
-
-    return getShops(items)
 }
 
 
