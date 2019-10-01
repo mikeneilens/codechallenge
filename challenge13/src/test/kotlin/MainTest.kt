@@ -55,8 +55,8 @@ class MainTest {
 
     @Test
     fun `Re-ordering a list of two shops returns a list of two shop`() {
-        val listOfOneShop = listOf(headOffice, oxfordStreet)
-        val orderedShops = orderShops(listOfOneShop)
+        val listOfTwoShop = listOf(headOffice, oxfordStreet)
+        val orderedShops = orderShops(listOfTwoShop)
 
         assertEquals(2, orderedShops.size)
         assertEquals(headOffice, orderedShops[0])
@@ -67,8 +67,8 @@ class MainTest {
 
     @Test
     fun `Re-ordering a list of three shops in correct order returns a list of three shops`() {
-        val listOfOneShop = listOf(headOffice, peterJones, oxfordStreet)
-        val orderedShops = orderShops(listOfOneShop)
+        val listOfThreeShop = listOf(headOffice, peterJones, oxfordStreet)
+        val orderedShops = orderShops(listOfThreeShop)
 
         assertEquals(3, orderedShops.size)
         assertEquals(headOffice, orderedShops[0])
@@ -80,8 +80,8 @@ class MainTest {
 
     @Test
     fun `Re-ordering a list of three shops in incorrect order returns a list of three shops`() {
-        val listOfOneShop = listOf(headOffice, oxfordStreet, peterJones)
-        val orderedShops = orderShops(listOfOneShop)
+        val listOfThreeShop = listOf(headOffice, oxfordStreet, peterJones)
+        val orderedShops = orderShops(listOfThreeShop)
 
         assertEquals(3, orderedShops.size)
         assertEquals(headOffice, orderedShops[0])
@@ -89,6 +89,19 @@ class MainTest {
         assertEquals(oxfordStreet, orderedShops[2])
         assertEquals(0, orderedShops[1].distanceFromLastShop.toInt())
         assertEquals(3, orderedShops[2].distanceFromLastShop.toInt())
+    }
+
+    @Test
+    fun `Re-ordering a list of four shops in a random order returns shops in the correct order`() {
+        val listOfFourShop = listOf(headOffice, liverpool, peterJones, oxfordStreet)
+
+        val orderedShops = orderShops(listOfFourShop)
+
+        assertEquals(4, orderedShops.size)
+        assertEquals(headOffice, orderedShops[0])
+        assertEquals(peterJones, orderedShops[1])
+        assertEquals(oxfordStreet, orderedShops[2])
+        assertEquals(liverpool, orderedShops[3])
     }
 
     @Test

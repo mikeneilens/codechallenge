@@ -37,10 +37,12 @@ fun orderShops(shops:List<Shop>):List<Shop> {
 
     val newListOfShops = mutableListOf(shops.first())
     var closestShop = findClosestShop(shops, newListOfShops)
+
     while (closestShop != null) {
         newListOfShops.add(closestShop)
         closestShop = findClosestShop(shops, newListOfShops)
     }
+
     return newListOfShops
 }
 

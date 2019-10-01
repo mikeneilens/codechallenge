@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MainTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2019-10-01T14:08:38" hostname="MacBook-Pro-3.local" time="0.095">
+<testsuite name="MainTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-10-01T14:15:10" hostname="MacBook-Pro-3.local" time="0.042">
   <properties/>
-  <testcase name="closest shop to peter jones is head office ()" classname="MainTest" time="0.042"/>
-  <testcase name="distance to same shop is zero ()" classname="MainTest" time="0.003"/>
-  <testcase name="Re-ordering a list of three shops in correct order returns a list of three shops()" classname="MainTest" time="0.002"/>
-  <testcase name="distance between Liverpool and London should be 177()" classname="MainTest" time="0.002"/>
-  <testcase name="closest shop is null if the list of all shops is empty ()" classname="MainTest" time="0.003"/>
-  <testcase name="Re-ordering a list of one shop returns a list of one shop()" classname="MainTest" time="0.002"/>
-  <testcase name="Re-ordering a list of three shops in incorrect order returns a list of three shops()" classname="MainTest" time="0.003"/>
-  <testcase name="Re-ordering an empty list of shops creates an empty list of shops()" classname="MainTest" time="0.002"/>
-  <testcase name="liverpool is the last shop on the new list of shops then closest shop is oxford street ()" classname="MainTest" time="0.002"/>
-  <testcase name="Re-ordering a list of two shops returns a list of two shop()" classname="MainTest" time="0.003"/>
-  <testcase name="distance between Peter Jones shop and Oxford Street shop is roughly 3 miles ()" classname="MainTest" time="0.002"/>
-  <testcase name="distance between Peter Jones location and Oxford Street location should be 3 miles()" classname="MainTest" time="0.001"/>
-  <testcase name="closest shop is null if the list of new shops is empty ()" classname="MainTest" time="0.002"/>
+  <testcase name="Re-ordering a list of four shops in a random order returns shops in the correct order()" classname="MainTest" time="0.042"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

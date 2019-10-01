@@ -2,16 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee77280b-02f8-4089-adce-4da6378b325e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/MainTest.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/base-style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/js/report.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/default-package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-MainTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" afterDir="false" />
     </list>
@@ -35,13 +25,23 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view />
+      </state>
+    </system>
+  </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="45" selection-start-line="45" selection-end-line="45" />
+            <state relative-caret-position="180">
+              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
               <folding>
                 <element signature="e#0#130#0" expanded="true" />
               </folding>
@@ -49,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="119" column="33" selection-start-line="119" selection-start-column="33" selection-end-line="119" selection-end-column="33" />
+            <state relative-caret-position="307">
+              <caret line="101" column="48" selection-start-line="101" selection-start-column="48" selection-end-line="101" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -73,8 +73,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/Main.kt" />
+        <option value="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" />
       </list>
     </option>
   </component>
@@ -159,7 +159,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.MainTest">
+  <component name="RunManager" selected="Gradle.MainTest.Re-ordering a list of four shops in a random order returns shops in the correct order">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -192,12 +192,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="MainTest.closest shop is null if the list of all shops is empty " type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MainTest.Re-ordering a list of four shops in a random order returns shops in the correct order" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;MainTest.closest shop is null if the list of all shops is empty &quot;" />
+        <option name="scriptParameters" value="--tests &quot;MainTest.Re-ordering a list of four shops in a random order returns shops in the correct order&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -212,12 +212,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="MainTest.closest shop is null if the list of new shops is empty " type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MainTest.closest shop is null if the list of all shops is empty " type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;MainTest.closest shop is null if the list of new shops is empty &quot;" />
+        <option name="scriptParameters" value="--tests &quot;MainTest.closest shop is null if the list of all shops is empty &quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -299,11 +299,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.MainTest.Re-ordering a list of four shops in a random order returns shops in the correct order" />
         <item itemvalue="Gradle.MainTest" />
         <item itemvalue="Gradle.MainTest.liverpool is the last shop on the new list of shops then closest shop is oxford street " />
         <item itemvalue="Gradle.MainTest.closest shop to peter jones is head office " />
         <item itemvalue="Gradle.MainTest.closest shop is null if the list of all shops is empty " />
-        <item itemvalue="Gradle.MainTest.closest shop is null if the list of new shops is empty " />
       </list>
     </recent_temporary>
   </component>
@@ -328,12 +328,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MainTest_closest_shop_is_null_if_the_list_of_new_shops_is_empty_ - 2019.10.01 at 14h 51m 01s.xml">
-      <configuration name="MainTest.closest shop is null if the list of new shops is empty " configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="MainTest_closest_shop_is_null_if_the_list_of_all_shops_is_empty_ - 2019.10.01 at 14h 52m 18s.xml">
-      <configuration name="MainTest.closest shop is null if the list of all shops is empty " configurationId="GradleRunConfiguration" />
-    </history-entry>
     <history-entry file="MainTest_closest_shop_to_peter_jones_is_head_office_ - 2019.10.01 at 14h 53m 52s.xml">
       <configuration name="MainTest.closest shop to peter jones is head office " configurationId="GradleRunConfiguration" />
     </history-entry>
@@ -358,9 +352,16 @@
     <history-entry file="MainTest - 2019.10.01 at 15h 08m 38s.xml">
       <configuration name="MainTest" configurationId="GradleRunConfiguration" />
     </history-entry>
+    <history-entry file="MainTest_Re-ordering_a_list_of_four_shops_in_a_random_order_returns_shops_in_the_correct_order - 2019.10.01 at 15h 13m 59s.xml">
+      <configuration name="MainTest.Re-ordering a list of four shops in a random order returns shops in the correct order" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="MainTest_Re-ordering_a_list_of_four_shops_in_a_random_order_returns_shops_in_the_correct_order - 2019.10.01 at 15h 15m 10s.xml">
+      <configuration name="MainTest.Re-ordering a list of four shops in a random order returns shops in the correct order" configurationId="GradleRunConfiguration" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="816" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
       <window_info id="Designer" />
@@ -425,20 +426,20 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="119" column="33" selection-start-line="119" selection-start-column="33" selection-end-line="119" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
+        <state relative-caret-position="180">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
           <folding>
             <element signature="e#0#130#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="101" column="48" selection-start-line="101" selection-start-column="48" selection-end-line="101" selection-end-column="48" />
         </state>
       </provider>
     </entry>
