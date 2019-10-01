@@ -4,8 +4,6 @@ import org.gavaghan.geodesy.GlobalCoordinates
 
 typealias DistanceInMiles = Double
 
-class Main {
-}
 
 val geoCalc = GeodeticCalculator()
 val reference = Ellipsoid.WGS84
@@ -21,15 +19,24 @@ class GeoLocation(val lat:Double, val lng:Double) {
     }
 }
 
-class Shop(val name:String, val postcode:String, val geoLocation: GeoLocation ) {
+data class Shop(val name:String, val postcode:String, val geoLocation: GeoLocation, val distanceFromLastShop:DistanceInMiles ) {
     fun distanceTo(otherShop:Shop): DistanceInMiles =  this.geoLocation.distanceTo(otherShop.geoLocation)
+    override fun equals(other: Any?): Boolean {
+        return other is Shop && this.name == other.name
+    }
 }
 
 fun orderShops(shops:List<Shop>):List<Shop> {
-    if (shops.size == 0)
-        return listOf()
-    else
-        return shops
-}
 
+    if (shops.size <= 1 )
+        return shops
+
+    val firstShop = shops[0]
+    val secondShop = Shop(shops[1].name, shops[1].postcode, shops[1].geoLocation,shops[1].distanceTo(firstShop))
+    if (shops.size == 2) {
+        return listOf(firstShop, secondShop)
+    }
+    val thirdShop = Shop(shops[2].name, shops[2].postcode, shops[2].geoLocation,shops[2].distanceTo(secondShop))
+    return listOf(firstShop, secondShop, thirdShop)
+}
 

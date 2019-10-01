@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MainTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2019-09-30T19:12:21" hostname="MacBook-Pro-2" time="0.031">
+<testsuite name="MainTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2019-10-01T07:14:33" hostname="MacBook-Pro-2" time="0.051">
   <properties/>
-  <testcase name="distance to same shop is zero ()" classname="MainTest" time="0.016"/>
+  <testcase name="distance to same shop is zero ()" classname="MainTest" time="0.022"/>
+  <testcase name="Re-ordering a list of three shops in correct order returns a list of three shops()" classname="MainTest" time="0.016"/>
   <testcase name="distance between Liverpool and London should be 177()" classname="MainTest" time="0.001"/>
-  <testcase name="Re-ordering a list of one shop returns a list of one shop()" classname="MainTest" time="0.007"/>
-  <testcase name="Re-ordering an empty list of shops creates an empty list of shops()" classname="MainTest" time="0.001"/>
+  <testcase name="Re-ordering a list of one shop returns a list of one shop()" classname="MainTest" time="0.004"/>
+  <testcase name="Re-ordering an empty list of shops creates an empty list of shops()" classname="MainTest" time="0.002"/>
+  <testcase name="Re-ordering a list of two shops returns a list of two shop()" classname="MainTest" time="0.0"/>
   <testcase name="distance between Peter Jones shop and Oxford Street shop is roughly 3 miles ()" classname="MainTest" time="0.0"/>
   <testcase name="distance between Peter Jones location and Oxford Street location should be 3 miles()" classname="MainTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
