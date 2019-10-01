@@ -31,14 +31,15 @@ data class Shop(val name:String, val postcode:String, val geoLocation: GeoLocati
 }
 
 fun String.toShops():List<Shop> {
-    val items = this.split(",")
 
-    return items.windowed(4,4).mapNotNull{fourItems ->
-        if ((fourItems.size != 4) ||(fourItems[2].toDoubleOrNull() == null) ||(fourItems[3].toDoubleOrNull() == null) )
-            null
-        else
-            Shop(fourItems[0], fourItems[1], GeoLocation(fourItems[2].toDouble(), fourItems[3].toDouble()))
-    }
+    return this.split(",")
+                .windowed(4,4)
+                .mapNotNull{fourItems ->
+                                if ((fourItems.size != 4) ||(fourItems[2].toDoubleOrNull() == null) ||(fourItems[3].toDoubleOrNull() == null) )
+                                    null
+                                else
+                                    Shop(fourItems[0], fourItems[1], GeoLocation(fourItems[2].toDouble(), fourItems[3].toDouble()))
+                            }
 }
 
 
