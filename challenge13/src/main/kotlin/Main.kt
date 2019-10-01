@@ -30,6 +30,15 @@ data class Shop(val name:String, val postcode:String, val geoLocation: GeoLocati
     }
 }
 
+fun String.toShops():List<Shop> {
+    if (this.isEmpty()) return listOf()
+
+    val items = this.split(",")
+    val shop = Shop(items[0], items[1], GeoLocation(items[2].toDouble(), items[3].toDouble()))
+    return listOf(shop)
+}
+
+
 fun orderShops(shops:List<Shop>):List<Shop> {
 
     if (shops.size <= 1 ) return shops

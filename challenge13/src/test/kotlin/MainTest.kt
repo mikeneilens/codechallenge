@@ -9,6 +9,20 @@ class MainTest {
     val headOffice = Shop("Victoria 171", "SW1E 5NN",GeoLocation(51.496466,-0.141499))
 
     @Test
+    fun `Empty string converts to an empty list of shops`() {
+        val emptyString = ""
+        assertEquals(listOf<Shop>(), emptyString.toShops() )
+    }
+
+    @Test
+    fun `string containing data for one shop converts to a list of one shop`() {
+        val stringForOneShop = "Peter Jones,SW3,51.492246,-0.159"
+        val shops =  stringForOneShop.toShops()
+        assertEquals(1, shops.size )
+        assertEquals(peterJones, shops[0] )
+    }
+
+    @Test
     fun `distance between Liverpool and London should be 177`() {
         val londonLocation = oxfordStreet.geoLocation
         val liverpoolLocation = liverpool.geoLocation
