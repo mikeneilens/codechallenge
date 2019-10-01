@@ -32,8 +32,7 @@ data class Shop(val name:String, val postcode:String, val geoLocation: GeoLocati
 
 fun orderShops(shops:List<Shop>):List<Shop> {
 
-    if (shops.size <= 1 )
-        return shops
+    if (shops.size <= 1 ) return shops
 
     val newListOfShops = mutableListOf(shops.first())
     var closestShop = findClosestShop(shops, newListOfShops)

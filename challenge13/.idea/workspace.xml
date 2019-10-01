@@ -81,11 +81,6 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="816" />
-  </component>
   <component name="ProjectId" id="1RZEd0wWlf4njcZfzQXQcri6xum" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -159,7 +154,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.MainTest.Re-ordering a list of four shops in a random order returns shops in the correct order">
+  <component name="RunManager" selected="Gradle.MainTest">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -299,8 +294,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.MainTest.Re-ordering a list of four shops in a random order returns shops in the correct order" />
         <item itemvalue="Gradle.MainTest" />
+        <item itemvalue="Gradle.MainTest.Re-ordering a list of four shops in a random order returns shops in the correct order" />
         <item itemvalue="Gradle.MainTest.liverpool is the last shop on the new list of shops then closest shop is oxford street " />
         <item itemvalue="Gradle.MainTest.closest shop to peter jones is head office " />
         <item itemvalue="Gradle.MainTest.closest shop is null if the list of all shops is empty " />
