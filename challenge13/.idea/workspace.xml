@@ -2,13 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee77280b-02f8-4089-adce-4da6378b325e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab_i" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.values" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.values.s" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/id-to-file.tab_i" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/MainTest.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/base-style.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/style.css" beforeDir="false" />
@@ -20,6 +13,7 @@
       <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -46,8 +40,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
+            <state relative-caret-position="306">
+              <caret line="45" selection-start-line="45" selection-end-line="45" />
               <folding>
                 <element signature="e#0#130#0" expanded="true" />
               </folding>
@@ -58,8 +52,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+            <state relative-caret-position="341">
+              <caret line="119" column="33" selection-start-line="119" selection-start-column="33" selection-end-line="119" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -79,6 +73,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/Main.kt" />
       </list>
     </option>
@@ -197,12 +192,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="MainTest.distance between Peter Jones and Oxford Street shops should be" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MainTest.closest shop is null if the list of all shops is empty " type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;MainTest.distance between Peter Jones and Oxford Street shops should be&quot;" />
+        <option name="scriptParameters" value="--tests &quot;MainTest.closest shop is null if the list of all shops is empty &quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -217,12 +212,52 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="MainTest.test geodesy" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MainTest.closest shop is null if the list of new shops is empty " type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;MainTest.test geodesy&quot;" />
+        <option name="scriptParameters" value="--tests &quot;MainTest.closest shop is null if the list of new shops is empty &quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":cleanTest" />
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="MainTest.closest shop to peter jones is head office " type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;MainTest.closest shop to peter jones is head office &quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":cleanTest" />
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="MainTest.liverpool is the last shop on the new list of shops then closest shop is oxford street " type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;MainTest.liverpool is the last shop on the new list of shops then closest shop is oxford street &quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -265,8 +300,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.MainTest" />
-        <item itemvalue="Gradle.MainTest.distance between Peter Jones and Oxford Street shops should be" />
-        <item itemvalue="Gradle.MainTest.test geodesy" />
+        <item itemvalue="Gradle.MainTest.liverpool is the last shop on the new list of shops then closest shop is oxford street " />
+        <item itemvalue="Gradle.MainTest.closest shop to peter jones is head office " />
+        <item itemvalue="Gradle.MainTest.closest shop is null if the list of all shops is empty " />
+        <item itemvalue="Gradle.MainTest.closest shop is null if the list of new shops is empty " />
       </list>
     </recent_temporary>
   </component>
@@ -291,31 +328,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MainTest - 2019.10.01 at 14h 06m 11s.xml">
+    <history-entry file="MainTest_closest_shop_is_null_if_the_list_of_new_shops_is_empty_ - 2019.10.01 at 14h 51m 01s.xml">
+      <configuration name="MainTest.closest shop is null if the list of new shops is empty " configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="MainTest_closest_shop_is_null_if_the_list_of_all_shops_is_empty_ - 2019.10.01 at 14h 52m 18s.xml">
+      <configuration name="MainTest.closest shop is null if the list of all shops is empty " configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="MainTest_closest_shop_to_peter_jones_is_head_office_ - 2019.10.01 at 14h 53m 52s.xml">
+      <configuration name="MainTest.closest shop to peter jones is head office " configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="MainTest_closest_shop_to_peter_jones_is_head_office_ - 2019.10.01 at 14h 54m 11s.xml">
+      <configuration name="MainTest.closest shop to peter jones is head office " configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="MainTest_liverpool_is_the_last_shop_on_the_new_list_of_shops_then_closest_shop_is_oxford_street_ - 2019.10.01 at 14h 55m 40s.xml">
+      <configuration name="MainTest.liverpool is the last shop on the new list of shops then closest shop is oxford street " configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="MainTest_liverpool_is_the_last_shop_on_the_new_list_of_shops_then_closest_shop_is_oxford_street_ - 2019.10.01 at 14h 56m 14s.xml">
+      <configuration name="MainTest.liverpool is the last shop on the new list of shops then closest shop is oxford street " configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="MainTest - 2019.10.01 at 15h 03m 44s.xml">
       <configuration name="MainTest" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="MainTest - 2019.10.01 at 14h 06m 46s.xml">
+    <history-entry file="MainTest - 2019.10.01 at 15h 07m 29s.xml">
       <configuration name="MainTest" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="MainTest - 2019.10.01 at 14h 07m 36s.xml">
+    <history-entry file="MainTest - 2019.10.01 at 15h 07m 58s.xml">
       <configuration name="MainTest" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="MainTest - 2019.10.01 at 14h 11m 08s.xml">
-      <configuration name="MainTest" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="MainTest - 2019.10.01 at 14h 43m 02s.xml">
-      <configuration name="MainTest" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="MainTest - 2019.10.01 at 14h 43m 40s.xml">
-      <configuration name="MainTest" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="MainTest - 2019.10.01 at 14h 45m 43s.xml">
+    <history-entry file="MainTest - 2019.10.01 at 15h 08m 38s.xml">
       <configuration name="MainTest" configurationId="GradleRunConfiguration" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="816" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
       <window_info id="Designer" />
@@ -379,36 +424,18 @@
       </map>
     </option>
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt</url>
-          <line>72</line>
-          <properties />
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt</url>
-          <line>85</line>
-          <properties />
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+        <state relative-caret-position="341">
+          <caret line="119" column="33" selection-start-line="119" selection-start-column="33" selection-end-line="119" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
+        <state relative-caret-position="306">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
           <folding>
             <element signature="e#0#130#0" expanded="true" />
           </folding>

@@ -35,37 +35,28 @@ fun orderShops(shops:List<Shop>):List<Shop> {
     if (shops.size <= 1 )
         return shops
 
-    val firstShop = shops[0]
-    if (shops.size == 2) {
-        val distanceToFirstShop = shops[1].distanceTo(firstShop)
-        val secondShop = shops[1].withDistance(distanceToFirstShop)
-        return listOf(firstShop, secondShop)
+    val newListOfShops = mutableListOf(shops.first())
+    var closestShop = findClosestShop(shops, newListOfShops)
+    while (closestShop != null) {
+        newListOfShops.add(closestShop)
+        closestShop = findClosestShop(shops, newListOfShops)
     }
-
-    fun findClosestShop(allShops:List<Shop>, newListOfShops:List<Shop>):Shop? {
-        val shop = newListOfShops.lastOrNull()
-        if (shop == null) return null
-        val nullShop:Shop? = null
-
-        val closestShop:Shop? = allShops.fold(nullShop){closestShop:Shop?, nextShop:Shop ->
-            if (newListOfShops.contains(nextShop)) closestShop
-            else {
-                if ((closestShop == null)||( shop.distanceTo(nextShop) < closestShop.distanceFromLastShop)) {
-                    nextShop.withDistance(shop.distanceTo(nextShop))
-                } else closestShop
-            }
-        }
-
-        return closestShop
-    }
-
-    val newListOfShops = mutableListOf<Shop>(firstShop)
-    val secondShop = findClosestShop( shops, newListOfShops)
-    secondShop?.let{newListOfShops.add(secondShop)
-        val thirdShop = findClosestShop(shops, newListOfShops)
-        thirdShop?.let{newListOfShops.add(it)}
-    }
-
     return newListOfShops
 }
 
+fun findClosestShop(allShops:List<Shop>, newListOfShops:List<Shop>):Shop? {
+    val shop = newListOfShops.lastOrNull()
+    if (shop == null) return null
+    val nullShop:Shop? = null
+
+    val closestShop:Shop? = allShops.fold(nullShop){closestShop:Shop?, nextShop:Shop ->
+        if (newListOfShops.contains(nextShop)) closestShop
+        else {
+            if ((closestShop == null)||( shop.distanceTo(nextShop) < closestShop.distanceFromLastShop)) {
+                nextShop.withDistance(shop.distanceTo(nextShop))
+            } else closestShop
+        }
+    }
+
+    return closestShop
+}

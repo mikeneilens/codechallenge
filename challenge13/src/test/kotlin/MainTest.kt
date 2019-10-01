@@ -90,4 +90,33 @@ class MainTest {
         assertEquals(0, orderedShops[1].distanceFromLastShop.toInt())
         assertEquals(3, orderedShops[2].distanceFromLastShop.toInt())
     }
+
+    @Test
+    fun `closest shop is null if the list of new shops is empty `() {
+        val listOfNewShops = emptyList<Shop>()
+        val listOfAllShops = emptyList<Shop>()
+
+        assertEquals(null, findClosestShop(listOfAllShops, listOfNewShops))
+    }
+    @Test
+    fun `closest shop is null if the list of all shops is empty `() {
+        val listOfNewShops = listOf<Shop>(headOffice, liverpool, peterJones)
+        val listOfAllShops = emptyList<Shop>()
+
+        assertEquals(null, findClosestShop(listOfAllShops, listOfNewShops))
+    }
+    @Test
+    fun `closest shop to peter jones is head office `() {
+        val listOfNewShops = listOf<Shop>(peterJones)
+        val listOfAllShops = listOf<Shop>(peterJones, liverpool, headOffice, oxfordStreet)
+
+        assertEquals(headOffice, findClosestShop(listOfAllShops, listOfNewShops))
+    }
+    @Test
+    fun `liverpool is the last shop on the new list of shops then closest shop is oxford street `() {
+        val listOfNewShops = listOf<Shop>(peterJones, liverpool)
+        val listOfAllShops = listOf<Shop>(peterJones, liverpool, headOffice, oxfordStreet)
+
+        assertEquals(oxfordStreet, findClosestShop(listOfAllShops, listOfNewShops))
+    }
 }
