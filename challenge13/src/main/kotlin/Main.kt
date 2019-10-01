@@ -37,7 +37,8 @@ fun orderShops(shops:List<Shop>):List<Shop> {
 
     val firstShop = shops[0]
     if (shops.size == 2) {
-        val secondShop = shops[1].withDistance(shops[1].distanceTo(firstShop))
+        val distanceToFirstShop = shops[1].distanceTo(firstShop)
+        val secondShop = shops[1].withDistance(distanceToFirstShop)
         return listOf(firstShop, secondShop)
     }
 

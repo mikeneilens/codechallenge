@@ -3,10 +3,10 @@ import org.junit.jupiter.api.Test
 
 class MainTest {
 
-    val peterJones = Shop("Peter Jones", "SW3", GeoLocation(51.492246,-0.159 ),0.0)
-    val oxfordStreet = Shop("Oxford Street", "W1", GeoLocation(51.524565, -0.112042),0.0)
-    val liverpool = Shop("Liverpool", "L1", GeoLocation(53.403799, -2.987648),0.0)
-    val headOffice = Shop("Victoria 171", "SW1E 5NN",GeoLocation(51.496466,-0.141499),0.0)
+    val peterJones = Shop("Peter Jones", "SW3", GeoLocation(51.492246,-0.159 ))
+    val oxfordStreet = Shop("Oxford Street", "W1", GeoLocation(51.524565, -0.112042))
+    val liverpool = Shop("Liverpool", "L1", GeoLocation(53.403799, -2.987648))
+    val headOffice = Shop("Victoria 171", "SW1E 5NN",GeoLocation(51.496466,-0.141499))
 
     @Test
     fun `distance between Liverpool and London should be 177`() {
