@@ -23,6 +23,29 @@ class MainTest {
     }
 
     @Test
+    fun `string containing an invalid number of elements returns empty list of shops`() {
+        val stringForOneShop = "Peter Jones,SW3,51.492246"
+        val shops =  stringForOneShop.toShops()
+        assertEquals(listOf<Shop>(), shops )
+    }
+
+    @Test
+    fun `string containing invalid data for lng and lat returns an empty list`() {
+        val stringForOneShop = "Peter Jones,SW3,xxx,yyy"
+        val shops =  stringForOneShop.toShops()
+        assertEquals(listOf<Shop>(), shops )
+    }
+
+    @Test
+    fun `string containing data for two shops converts to a list of two shops`() {
+        val stringForOneShop = "Peter Jones,SW3,51.492246,-0.159,Liverpool,L1,53.403799,-2.987648"
+        val shops =  stringForOneShop.toShops()
+        assertEquals(2, shops.size )
+        assertEquals(peterJones, shops[0] )
+        assertEquals(liverpool, shops[1] )
+    }
+
+    @Test
     fun `distance between Liverpool and London should be 177`() {
         val londonLocation = oxfordStreet.geoLocation
         val liverpoolLocation = liverpool.geoLocation

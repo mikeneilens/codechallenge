@@ -34,8 +34,17 @@ fun String.toShops():List<Shop> {
     if (this.isEmpty()) return listOf()
 
     val items = this.split(",")
-    val shop = Shop(items[0], items[1], GeoLocation(items[2].toDouble(), items[3].toDouble()))
-    return listOf(shop)
+
+    fun getShops(items:List<String>, listOfShops:List<Shop> = emptyList()):List<Shop> {
+        val firstFourItems = items.take(4)
+
+        if ((firstFourItems.size != 4) ||(firstFourItems[2].toDoubleOrNull() == null) ||(firstFourItems[3].toDoubleOrNull() == null) ) return listOfShops
+
+        val shop = Shop(firstFourItems[0], firstFourItems[1], GeoLocation(firstFourItems[2].toDouble(), firstFourItems[3].toDouble()))
+        return getShops(items.drop(4), listOfShops + shop)
+    }
+
+    return getShops(items)
 }
 
 
