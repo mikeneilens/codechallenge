@@ -37,6 +37,14 @@ fun orderShops(shops:List<Shop>):List<Shop> {
         return listOf(firstShop, secondShop)
     }
     val thirdShop = Shop(shops[2].name, shops[2].postcode, shops[2].geoLocation,shops[2].distanceTo(secondShop))
-    return listOf(firstShop, secondShop, thirdShop)
+
+    if (secondShop.distanceFromLastShop < thirdShop.distanceTo(firstShop))
+        return listOf(firstShop, secondShop, thirdShop)
+    else {
+        val secondShop = Shop(shops[2].name, shops[2].postcode, shops[2].geoLocation,shops[2].distanceTo(firstShop))
+        val thirdShop = Shop(shops[1].name, shops[1].postcode, shops[1].geoLocation,shops[1].distanceTo(secondShop))
+        return listOf(firstShop, secondShop, thirdShop)
+    }
+
 }
 

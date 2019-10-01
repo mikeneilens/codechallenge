@@ -64,16 +64,30 @@ class MainTest {
         assertEquals(2, orderedShops[1].distanceFromLastShop.toInt())
 
     }
+
     @Test
     fun `Re-ordering a list of three shops in correct order returns a list of three shops`() {
+        val listOfOneShop = listOf(headOffice, peterJones, oxfordStreet)
+        val orderedShops = orderShops(listOfOneShop)
+
+        assertEquals(3, orderedShops.size)
+        assertEquals(headOffice, orderedShops[0])
+        assertEquals(peterJones, orderedShops[1])
+        assertEquals(oxfordStreet, orderedShops[2])
+        assertEquals(0, orderedShops[1].distanceFromLastShop.toInt())
+        assertEquals(3, orderedShops[2].distanceFromLastShop.toInt())
+    }
+
+    @Test
+    fun `Re-ordering a list of three shops in incorrect order returns a list of three shops`() {
         val listOfOneShop = listOf(headOffice, oxfordStreet, peterJones)
         val orderedShops = orderShops(listOfOneShop)
 
         assertEquals(3, orderedShops.size)
         assertEquals(headOffice, orderedShops[0])
-        assertEquals(oxfordStreet, orderedShops[1])
-        assertEquals(peterJones, orderedShops[2])
-        assertEquals(2, orderedShops[1].distanceFromLastShop.toInt())
+        assertEquals(peterJones, orderedShops[1])
+        assertEquals(oxfordStreet, orderedShops[2])
+        assertEquals(0, orderedShops[1].distanceFromLastShop.toInt())
         assertEquals(3, orderedShops[2].distanceFromLastShop.toInt())
     }
 }
