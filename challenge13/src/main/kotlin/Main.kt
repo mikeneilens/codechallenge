@@ -19,8 +19,12 @@ class GeoLocation(val lat:Double, val lng:Double) {
     }
 }
 
-data class Shop(val name:String, val postcode:String, val geoLocation: GeoLocation, val distanceFromLastShop:DistanceInMiles ) {
+data class Shop(val name:String, val postcode:String, val geoLocation: GeoLocation, val distanceFromLastShop:DistanceInMiles = 0.0 ) {
+
     fun distanceTo(otherShop:Shop): DistanceInMiles =  this.geoLocation.distanceTo(otherShop.geoLocation)
+
+    fun withDistance(distance:DistanceInMiles):Shop = Shop(this.name, this.postcode, this.geoLocation, distance)
+
     override fun equals(other: Any?): Boolean {
         return other is Shop && this.name == other.name
     }
@@ -32,19 +36,33 @@ fun orderShops(shops:List<Shop>):List<Shop> {
         return shops
 
     val firstShop = shops[0]
-    val secondShop = Shop(shops[1].name, shops[1].postcode, shops[1].geoLocation,shops[1].distanceTo(firstShop))
     if (shops.size == 2) {
+        val secondShop = shops[1].withDistance(shops[1].distanceTo(firstShop))
         return listOf(firstShop, secondShop)
     }
-    val thirdShop = Shop(shops[2].name, shops[2].postcode, shops[2].geoLocation,shops[2].distanceTo(secondShop))
 
-    if (secondShop.distanceFromLastShop < thirdShop.distanceTo(firstShop))
-        return listOf(firstShop, secondShop, thirdShop)
-    else {
-        val secondShop = Shop(shops[2].name, shops[2].postcode, shops[2].geoLocation,shops[2].distanceTo(firstShop))
-        val thirdShop = Shop(shops[1].name, shops[1].postcode, shops[1].geoLocation,shops[1].distanceTo(secondShop))
-        return listOf(firstShop, secondShop, thirdShop)
+    fun findClosestShop(shop:Shop, shops:List<Shop>, newListOfShops:List<Shop>):Shop? {
+        var shortestDistance = 9999.99
+        var closestShop:Shop? = null
+        for (potentialShop in shops) {
+            if (!newListOfShops.contains(potentialShop)) {
+                val distanceToPotentialShop = shop.distanceTo(potentialShop)
+                if (distanceToPotentialShop < shortestDistance) {
+                    shortestDistance = distanceToPotentialShop
+                    closestShop = potentialShop.withDistance(distanceToPotentialShop)
+                }
+            }
+        }
+        return closestShop
     }
 
+    val newListOfShops = mutableListOf<Shop>(firstShop)
+    val secondShop = findClosestShop(firstShop, shops, newListOfShops)
+    secondShop?.let{newListOfShops.add(secondShop)
+        val thirdShop = findClosestShop(secondShop, shops, newListOfShops)
+        thirdShop?.let{newListOfShops.add(it)}
+    }
+
+    return newListOfShops
 }
 
