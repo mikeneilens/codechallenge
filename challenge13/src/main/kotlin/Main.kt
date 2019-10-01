@@ -42,25 +42,27 @@ fun orderShops(shops:List<Shop>):List<Shop> {
         return listOf(firstShop, secondShop)
     }
 
-    fun findClosestShop(shop:Shop, shops:List<Shop>, newListOfShops:List<Shop>):Shop? {
-        var shortestDistance = 9999.99
-        var closestShop:Shop? = null
-        for (potentialShop in shops) {
-            if (!newListOfShops.contains(potentialShop)) {
-                val distanceToPotentialShop = shop.distanceTo(potentialShop)
-                if (distanceToPotentialShop < shortestDistance) {
-                    shortestDistance = distanceToPotentialShop
-                    closestShop = potentialShop.withDistance(distanceToPotentialShop)
-                }
+    fun findClosestShop(allShops:List<Shop>, newListOfShops:List<Shop>):Shop? {
+        val shop = newListOfShops.lastOrNull()
+        if (shop == null) return null
+        val nullShop:Shop? = null
+
+        val closestShop:Shop? = allShops.fold(nullShop){closestShop:Shop?, nextShop:Shop ->
+            if (newListOfShops.contains(nextShop)) closestShop
+            else {
+                if ((closestShop == null)||( shop.distanceTo(nextShop) < closestShop.distanceFromLastShop)) {
+                    nextShop.withDistance(shop.distanceTo(nextShop))
+                } else closestShop
             }
         }
+
         return closestShop
     }
 
     val newListOfShops = mutableListOf<Shop>(firstShop)
-    val secondShop = findClosestShop(firstShop, shops, newListOfShops)
+    val secondShop = findClosestShop( shops, newListOfShops)
     secondShop?.let{newListOfShops.add(secondShop)
-        val thirdShop = findClosestShop(secondShop, shops, newListOfShops)
+        val thirdShop = findClosestShop(shops, newListOfShops)
         thirdShop?.let{newListOfShops.add(it)}
     }
 
