@@ -78,36 +78,32 @@ val speedInMPH = 30
 fun calculateJourneyTime(shopsData: String, dailyTimeAllowance:Int = secondsBetween8amAnd6pm, nonTravellingTime:Int = secondsBetween6pmAnd8am): Int {
     val unsortedShops = shopsData.toShops()
     if (unsortedShops.size <= 1) return 0
+    val sortedShops = unsortedShops.createRoute()
 
+    return sortedShops.calculateJourneyTime(dailyTimeAllowance, nonTravellingTime)
+}
+
+fun List<Shop>.calculateJourneyTime(dailyTimeAllowance:Int = secondsBetween8amAnd6pm, nonTravellingTime:Int = secondsBetween6pmAnd8am):Int {
     var timeLeftToday = dailyTimeAllowance
     var travellingTime: Int = 0
 
-    val sortedShops = unsortedShops.createRoute()
-    var timeToNextShop = (3600 * sortedShops[1].distanceFromLastShop / speedInMPH).roundToInt()
+    for (nextShop in this.drop(1)) {
+        var timeToNextShop = (3600 * nextShop.distanceFromLastShop / speedInMPH).roundToInt()
 
-    if (timeToNextShop > dailyTimeAllowance) {
-        return travellingTime
+        if (timeToNextShop > dailyTimeAllowance) {
+            print("shop is too far away to ever reach")
+            return travellingTime
+        }
+
+        if (timeToNextShop > timeLeftToday) {
+            print("shop required an overnight stop")
+            travellingTime += timeToNextShop + nonTravellingTime
+            timeLeftToday = dailyTimeAllowance
+        } else {
+            travellingTime += timeToNextShop
+            timeLeftToday -= timeToNextShop
+        }
     }
-    travellingTime += timeToNextShop
 
-    if (unsortedShops.size <= 2) return travellingTime
-
-    timeLeftToday -= timeToNextShop
-
-    timeToNextShop = (3600 * sortedShops[2].distanceFromLastShop / speedInMPH).roundToInt()
-
-    if (timeToNextShop > dailyTimeAllowance) {
-        print("third shop is too far away")
-        return travellingTime
-    }
-
-    if (timeToNextShop > timeLeftToday) {
-        print("third shop required an overnight stop")
-        travellingTime += timeToNextShop + nonTravellingTime
-        timeLeftToday = dailyTimeAllowance
-    } else {
-        travellingTime += timeToNextShop
-        timeLeftToday -= timeToNextShop
-    }
     return travellingTime
 }

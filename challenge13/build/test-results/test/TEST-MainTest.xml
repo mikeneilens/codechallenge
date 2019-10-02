@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MainTest" tests="25" skipped="0" failures="0" errors="0" timestamp="2019-10-02T13:12:26" hostname="MacBook-Pro-3.local" time="0.12">
+<testsuite name="MainTest" tests="25" skipped="0" failures="0" errors="0" timestamp="2019-10-02T13:38:25" hostname="MacBook-Pro-3.local" time="0.107">
   <properties/>
-  <testcase name="closest shop to peter jones is head office ()" classname="MainTest" time="0.044"/>
-  <testcase name="string containing invalid data for lng and lat returns an empty list()" classname="MainTest" time="0.015"/>
-  <testcase name="journey time is calculated correctly if there is three shops that are reachable in the same day()" classname="MainTest" time="0.004"/>
-  <testcase name="journey time is zero if there is one shop()" classname="MainTest" time="0.002"/>
+  <testcase name="closest shop to peter jones is head office ()" classname="MainTest" time="0.042"/>
+  <testcase name="string containing invalid data for lng and lat returns an empty list()" classname="MainTest" time="0.013"/>
+  <testcase name="journey time is calculated correctly if there is three shops that are reachable in the same day()" classname="MainTest" time="0.002"/>
+  <testcase name="journey time is zero if there is one shop()" classname="MainTest" time="0.001"/>
   <testcase name="distance to same shop is zero ()" classname="MainTest" time="0.001"/>
-  <testcase name="Re-ordering a list of three shops in correct order returns a list of three shops()" classname="MainTest" time="0.002"/>
-  <testcase name="journey time is zero if there are no shops()" classname="MainTest" time="0.001"/>
+  <testcase name="Re-ordering a list of three shops in correct order returns a list of three shops()" classname="MainTest" time="0.001"/>
+  <testcase name="journey time is zero if there are no shops()" classname="MainTest" time="0.002"/>
   <testcase name="string containing data for two shops converts to a list of two shops()" classname="MainTest" time="0.001"/>
-  <testcase name="string containing data for one shop converts to a list of one shop()" classname="MainTest" time="0.002"/>
+  <testcase name="string containing data for one shop converts to a list of one shop()" classname="MainTest" time="0.001"/>
   <testcase name="distance between Liverpool and London should be 177()" classname="MainTest" time="0.0"/>
   <testcase name="closest shop is null if the list of all shops is empty ()" classname="MainTest" time="0.002"/>
   <testcase name="Re-ordering a list of four shops in a random order returns shops in the correct order()" classname="MainTest" time="0.001"/>
-  <testcase name="journey time is calculated correctly if there is three shops that are not all reachable in the same day()" classname="MainTest" time="0.005"/>
-  <testcase name="Re-ordering a list of one shop returns a list of one shop()" classname="MainTest" time="0.0"/>
+  <testcase name="journey time is calculated correctly if there is three shops that are not all reachable in the same day()" classname="MainTest" time="0.003"/>
+  <testcase name="Re-ordering a list of one shop returns a list of one shop()" classname="MainTest" time="0.001"/>
   <testcase name="Re-ordering a list of three shops in incorrect order returns a list of three shops()" classname="MainTest" time="0.001"/>
-  <testcase name="Re-ordering an empty list of shops creates an empty list of shops()" classname="MainTest" time="0.002"/>
+  <testcase name="Re-ordering an empty list of shops creates an empty list of shops()" classname="MainTest" time="0.001"/>
   <testcase name="string containing an invalid number of elements returns empty list of shops()" classname="MainTest" time="0.0"/>
   <testcase name="journey time is zero if there is two shops that are not reachable in the time allowed()" classname="MainTest" time="0.001"/>
-  <testcase name="liverpool is the last shop on the new list of shops then closest shop is oxford street ()" classname="MainTest" time="0.001"/>
-  <testcase name="Empty string converts to an empty list of shops()" classname="MainTest" time="0.0"/>
+  <testcase name="liverpool is the last shop on the new list of shops then closest shop is oxford street ()" classname="MainTest" time="0.0"/>
+  <testcase name="Empty string converts to an empty list of shops()" classname="MainTest" time="0.002"/>
   <testcase name="Re-ordering a list of two shops returns a list of two shop()" classname="MainTest" time="0.001"/>
   <testcase name="distance between Peter Jones shop and Oxford Street shop is roughly 3 miles ()" classname="MainTest" time="0.001"/>
-  <testcase name="journey time is calculated correctly if there is two shops that are reachable in the time allowed()" classname="MainTest" time="0.001"/>
-  <testcase name="distance between Peter Jones location and Oxford Street location should be 3 miles()" classname="MainTest" time="0.003"/>
-  <testcase name="closest shop is null if the list of new shops is empty ()" classname="MainTest" time="0.002"/>
-  <system-out><![CDATA[third shop required an overnight stop]]></system-out>
+  <testcase name="journey time is calculated correctly if there is two shops that are reachable in the time allowed()" classname="MainTest" time="0.002"/>
+  <testcase name="distance between Peter Jones location and Oxford Street location should be 3 miles()" classname="MainTest" time="0.001"/>
+  <testcase name="closest shop is null if the list of new shops is empty ()" classname="MainTest" time="0.0"/>
+  <system-out><![CDATA[shop required an overnight stopshop is too far away to ever reach]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
