@@ -8,6 +8,9 @@ class MainTest {
     val liverpool = Shop("Liverpool", "L1", GeoLocation(53.403799, -2.987648))
     val headOffice = Shop("Victoria 171", "SW1E 5NN",GeoLocation(51.496466,-0.141499))
 
+    val peterJonesAsString = "Peter Jones,SW3,51.492246,-0.159"
+    val peterJonesAndLiverpoolAsString = "Peter Jones,SW3,51.492246,-0.159,Liverpool,L1,53.403799,-2.987648"
+
     @Test
     fun `Empty string converts to an empty list of shops`() {
         val emptyString = ""
@@ -16,7 +19,7 @@ class MainTest {
 
     @Test
     fun `string containing data for one shop converts to a list of one shop`() {
-        val stringForOneShop = "Peter Jones,SW3,51.492246,-0.159"
+        val stringForOneShop = peterJonesAsString
         val shops =  stringForOneShop.toShops()
         assertEquals(1, shops.size )
         assertEquals(peterJones, shops[0] )
@@ -38,7 +41,7 @@ class MainTest {
 
     @Test
     fun `string containing data for two shops converts to a list of two shops`() {
-        val stringForOneShop = "Peter Jones,SW3,51.492246,-0.159,Liverpool,L1,53.403799,-2.987648"
+        val stringForOneShop = peterJonesAndLiverpoolAsString
         val shops =  stringForOneShop.toShops()
         assertEquals(2, shops.size )
         assertEquals(peterJones, shops[0] )
@@ -169,4 +172,21 @@ class MainTest {
 
         assertEquals(oxfordStreet, findClosestShop(listOfAllShops, listOfNewShops))
     }
+
+    @Test
+    fun `journey time is zero if there are no shops`() {
+        assertEquals(0, calculateJourneyTime(""))
+    }
+
+    @Test
+    fun `journey time is zero if there is one shop`() {
+        assertEquals(0, calculateJourneyTime(peterJonesAsString))
+    }
+
+    @Test
+    fun `journey time is calculated correctly if there is two shops that are reachable in the time allowed`() {
+        assertEquals(21379, calculateJourneyTime(peterJonesAndLiverpoolAsString))
+    }
+
+
 }

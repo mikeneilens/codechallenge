@@ -1,6 +1,7 @@
 import org.gavaghan.geodesy.Ellipsoid
 import org.gavaghan.geodesy.GeodeticCalculator
 import org.gavaghan.geodesy.GlobalCoordinates
+import kotlin.math.roundToInt
 
 typealias DistanceInMiles = Double
 
@@ -68,4 +69,18 @@ fun findClosestShop(allShops:List<Shop>, newListOfShops:List<Shop>):Shop? {
     }
 
     return closestShop
+}
+
+val secondsBetween8amAnd6pm = 10 * 3600
+val secondsBetween6pmAnd8am = 14 * 3600
+val speedInMPH = 30
+
+fun calculateJourneyTime(shopsData: String): Int {
+    val unsortedShops = shopsData.toShops()
+    if (unsortedShops.size <= 1) return 0
+
+    val sortedShops = unsortedShops.createRoute()
+    val timeToTravelToSecondShopInSeconds = (3600 * sortedShops[1].distanceFromLastShop / speedInMPH).roundToInt()
+
+    return timeToTravelToSecondShopInSeconds
 }
