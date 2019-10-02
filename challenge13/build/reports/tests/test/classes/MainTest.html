@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">34</div>
+<div class="counter">35</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.079s</div>
+<div class="counter">0.555s</div>
 <p>duration</p>
 </div>
 </td>
@@ -63,9 +63,6 @@
 <li>
 <a href="#tab0">Tests</a>
 </li>
-<li>
-<a href="#tab1">Standard output</a>
-</li>
 </ul>
 <div id="tab0" class="tab">
 <h2>Tests</h2>
@@ -79,12 +76,12 @@
 </thead>
 <tr>
 <td class="success">Empty string converts to an empty list of shops()</td>
-<td class="success">0s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Re-ordering a list of four shops in a random order returns shops in the correct order()</td>
-<td class="success">0.002s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -94,7 +91,7 @@
 </tr>
 <tr>
 <td class="success">Re-ordering a list of three shops in correct order returns a list of three shops()</td>
-<td class="success">0s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -104,12 +101,17 @@
 </tr>
 <tr>
 <td class="success">Re-ordering a list of two shops returns a list of two shop()</td>
-<td class="success">0s</td>
+<td class="success">0.006s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Re-ordering an empty list of shops creates an empty list of shops()</td>
-<td class="success">0s</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Test with the data from the challenge()</td>
+<td class="success">0.473s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -124,12 +126,12 @@
 </tr>
 <tr>
 <td class="success">closest shop to peter jones is head office ()</td>
-<td class="success">0.041s</td>
+<td class="success">0.044s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">distance between Liverpool and London should be 177()</td>
-<td class="success">0s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -139,7 +141,7 @@
 </tr>
 <tr>
 <td class="success">distance between Peter Jones shop and Oxford Street shop is roughly 3 miles ()</td>
-<td class="success">0.001s</td>
+<td class="success">0s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -149,17 +151,17 @@
 </tr>
 <tr>
 <td class="success">journey time is calculated as zero if array of shops contains two shops with shop too far away to reach()</td>
-<td class="success">0.001s</td>
+<td class="success">0s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">journey time is calculated correctly if array of shops contains four shops that will take 3 days to get around ()</td>
-<td class="success">0.001s</td>
+<td class="success">0s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">journey time is calculated correctly if array of shops contains many shops ()</td>
-<td class="success">0.002s</td>
+<td class="success">0s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -178,23 +180,23 @@
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">journey time is calculated correctly if array of shops contains three shops but not all reachabnle in same day()</td>
-<td class="success">0s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">journey time is calculated correctly if array of shops contains two shops()</td>
+<td class="success">journey time is calculated correctly if array of shops contains three shops but not all reachable in same day()</td>
 <td class="success">0.002s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
+<td class="success">journey time is calculated correctly if array of shops contains two shops()</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
 <td class="success">journey time is calculated correctly if array of shops is empty()</td>
-<td class="success">0.001s</td>
+<td class="success">0.002s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">journey time is calculated correctly if there is three shops in the string that are not all reachable in the same day()</td>
-<td class="success">0.001s</td>
+<td class="success">0s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -204,12 +206,12 @@
 </tr>
 <tr>
 <td class="success">journey time is calculated correctly if there is two shops in the string that are reachable in the time allowed()</td>
-<td class="success">0s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">journey time is zero if there are no shops()</td>
-<td class="success">0.001s</td>
+<td class="success">0s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -219,7 +221,7 @@
 </tr>
 <tr>
 <td class="success">journey time is zero if there is two shops in the string that are not reachable in the time allowed()</td>
-<td class="success">0.005s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -249,23 +251,6 @@
 </tr>
 </table>
 </div>
-<div id="tab1" class="tab">
-<h2>Standard output</h2>
-<span class="code">
-<pre>shop is too far away to ever reach
-shop is too far away to ever reach
-shop required an overnight stop
-shop required an overnight stop
-shop required an overnight stop
-shop required an overnight stop
-shop required an overnight stop
-shop required an overnight stop
-shop is too far away to ever reach
-shop required an overnight stop
-shop required an overnight stop
-</pre>
-</span>
-</div>
 </div>
 <div id="footer">
 <p>
@@ -274,7 +259,7 @@ shop required an overnight stop
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.3</a> at 02-Oct-2019 15:54:22</p>
+<a href="http://www.gradle.org">Gradle 4.10.3</a> at 02-Oct-2019 16:14:04</p>
 </div>
 </div>
 </body>
