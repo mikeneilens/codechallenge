@@ -38,16 +38,16 @@ fun List<String>.convertToShop():Shop? =
     else
         Shop(this[0], this[1], GeoLocation(this[2].toDouble(), this[3].toDouble()))
 
-fun orderShops(shops:List<Shop>):List<Shop> {
+fun List<Shop>.createRoute():List<Shop> {
 
-    if (shops.size <= 1 ) return shops
+    if (this.size <= 1 ) return this
 
-    val newListOfShops = mutableListOf(shops.first())
-    var closestShop = findClosestShop(shops, newListOfShops)
+    val newListOfShops = mutableListOf(this.first())
+    var closestShop = findClosestShop(this, newListOfShops)
 
     while (closestShop != null) {
         newListOfShops.add(closestShop)
-        closestShop = findClosestShop(shops, newListOfShops)
+        closestShop = findClosestShop(this, newListOfShops)
     }
 
     return newListOfShops

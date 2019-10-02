@@ -79,21 +79,21 @@ class MainTest {
     fun `Re-ordering an empty list of shops creates an empty list of shops`() {
         val emptyListofShops = emptyList<Shop>()
 
-        assertEquals(emptyList<Shop>(), orderShops(emptyListofShops))
+        assertEquals(emptyList<Shop>(), emptyListofShops.createRoute())
     }
 
     @Test
     fun `Re-ordering a list of one shop returns a list of one shop`() {
         val listOfOneShop = listOf(oxfordStreet)
 
-        assertEquals(1, orderShops(listOfOneShop).size)
-        assertEquals(oxfordStreet, orderShops(listOfOneShop).first())
+        assertEquals(1, listOfOneShop.createRoute().size)
+        assertEquals(oxfordStreet, listOfOneShop.createRoute().first())
     }
 
     @Test
     fun `Re-ordering a list of two shops returns a list of two shop`() {
         val listOfTwoShop = listOf(headOffice, oxfordStreet)
-        val orderedShops = orderShops(listOfTwoShop)
+        val orderedShops = listOfTwoShop.createRoute()
 
         assertEquals(2, orderedShops.size)
         assertEquals(headOffice, orderedShops[0])
@@ -105,7 +105,7 @@ class MainTest {
     @Test
     fun `Re-ordering a list of three shops in correct order returns a list of three shops`() {
         val listOfThreeShop = listOf(headOffice, peterJones, oxfordStreet)
-        val orderedShops = orderShops(listOfThreeShop)
+        val orderedShops = listOfThreeShop.createRoute()
 
         assertEquals(3, orderedShops.size)
         assertEquals(headOffice, orderedShops[0])
@@ -118,7 +118,7 @@ class MainTest {
     @Test
     fun `Re-ordering a list of three shops in incorrect order returns a list of three shops`() {
         val listOfThreeShop = listOf(headOffice, oxfordStreet, peterJones)
-        val orderedShops = orderShops(listOfThreeShop)
+        val orderedShops = listOfThreeShop.createRoute()
 
         assertEquals(3, orderedShops.size)
         assertEquals(headOffice, orderedShops[0])
@@ -132,7 +132,7 @@ class MainTest {
     fun `Re-ordering a list of four shops in a random order returns shops in the correct order`() {
         val listOfFourShop = listOf(headOffice, liverpool, peterJones, oxfordStreet)
 
-        val orderedShops = orderShops(listOfFourShop)
+        val orderedShops = listOfFourShop.createRoute()
 
         assertEquals(4, orderedShops.size)
         assertEquals(headOffice, orderedShops[0])
