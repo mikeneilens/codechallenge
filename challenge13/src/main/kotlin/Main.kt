@@ -75,12 +75,39 @@ val secondsBetween8amAnd6pm = 10 * 3600
 val secondsBetween6pmAnd8am = 14 * 3600
 val speedInMPH = 30
 
-fun calculateJourneyTime(shopsData: String): Int {
+fun calculateJourneyTime(shopsData: String, dailyTimeAllowance:Int = secondsBetween8amAnd6pm, nonTravellingTime:Int = secondsBetween6pmAnd8am): Int {
     val unsortedShops = shopsData.toShops()
     if (unsortedShops.size <= 1) return 0
 
-    val sortedShops = unsortedShops.createRoute()
-    val timeToTravelToSecondShopInSeconds = (3600 * sortedShops[1].distanceFromLastShop / speedInMPH).roundToInt()
+    var timeLeftToday = dailyTimeAllowance
+    var travellingTime: Int = 0
 
-    return timeToTravelToSecondShopInSeconds
+    val sortedShops = unsortedShops.createRoute()
+    var timeToNextShop = (3600 * sortedShops[1].distanceFromLastShop / speedInMPH).roundToInt()
+
+    if (timeToNextShop > dailyTimeAllowance) {
+        return travellingTime
+    }
+    travellingTime += timeToNextShop
+
+    if (unsortedShops.size <= 2) return travellingTime
+
+    timeLeftToday -= timeToNextShop
+
+    timeToNextShop = (3600 * sortedShops[2].distanceFromLastShop / speedInMPH).roundToInt()
+
+    if (timeToNextShop > dailyTimeAllowance) {
+        print("third shop is too far away")
+        return travellingTime
+    }
+
+    if (timeToNextShop > timeLeftToday) {
+        print("third shop required an overnight stop")
+        travellingTime += timeToNextShop + nonTravellingTime
+        timeLeftToday = dailyTimeAllowance
+    } else {
+        travellingTime += timeToNextShop
+        timeLeftToday -= timeToNextShop
+    }
+    return travellingTime
 }

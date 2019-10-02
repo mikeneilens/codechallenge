@@ -10,6 +10,10 @@ class MainTest {
 
     val peterJonesAsString = "Peter Jones,SW3,51.492246,-0.159"
     val peterJonesAndLiverpoolAsString = "Peter Jones,SW3,51.492246,-0.159,Liverpool,L1,53.403799,-2.987648"
+    val peterJonesHeadOfficeAndLiverpoolAsString = "Peter Jones,SW3,51.492246,-0.159," +
+            "Victoria 171,SW1E 5NN,51.496466,-0.141499," +
+            "Liverpool,L1,53.403799,-2.987648"
+    val peterJonesAndReykjavíkAsString = "Peter Jones,SW3,51.492246,-0.159,Reykjavík,L1,64.153,-21.895"
 
     @Test
     fun `Empty string converts to an empty list of shops`() {
@@ -187,6 +191,17 @@ class MainTest {
     fun `journey time is calculated correctly if there is two shops that are reachable in the time allowed`() {
         assertEquals(21379, calculateJourneyTime(peterJonesAndLiverpoolAsString))
     }
+    @Test
+    fun `journey time is zero if there is two shops that are not reachable in the time allowed`() {
+        assertEquals(0, calculateJourneyTime(peterJonesAndReykjavíkAsString))
+    }
+    @Test
+    fun `journey time is calculated correctly if there is three shops that are reachable in the same day`() {
+        assertEquals(21509, calculateJourneyTime(peterJonesHeadOfficeAndLiverpoolAsString))
+    }
 
-
+    @Test
+    fun `journey time is calculated correctly if there is three shops that are not all reachable in the same day`() {
+        assertEquals(71909, calculateJourneyTime(peterJonesHeadOfficeAndLiverpoolAsString, 21413))
+    }
 }

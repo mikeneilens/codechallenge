@@ -35,11 +35,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="84" selection-start-line="84" selection-end-line="84" />
+            <state relative-caret-position="-111">
+              <caret line="85" selection-start-line="85" selection-end-line="85" />
               <folding>
                 <element signature="e#0#160#0" expanded="true" />
               </folding>
@@ -59,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="188" selection-start-line="188" selection-end-line="188" />
+            <state relative-caret-position="280">
+              <caret line="202" column="9" lean-forward="true" selection-start-line="202" selection-start-column="9" selection-end-line="202" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -77,6 +77,11 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>travellingTime</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -84,8 +89,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/Main.kt" />
         <option value="$PROJECT_DIR$/src/test/kotlin/MainTest.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/Main.kt" />
       </list>
     </option>
   </component>
@@ -339,31 +344,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MainTest - 2019.10.02 at 11h 04m 43s.xml">
+    <history-entry file="MainTest - 2019.10.02 at 13h 42m 30s.xml">
       <configuration name="MainTest" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="MainTest - 2019.10.02 at 11h 20m 46s.xml">
+    <history-entry file="MainTest - 2019.10.02 at 13h 45m 26s.xml">
       <configuration name="MainTest" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="MainTest - 2019.10.02 at 12h 50m 55s.xml">
+    <history-entry file="MainTest - 2019.10.02 at 13h 46m 00s.xml">
       <configuration name="MainTest" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="MainTest - 2019.10.02 at 12h 58m 06s.xml">
+    <history-entry file="MainTest - 2019.10.02 at 13h 52m 27s.xml">
       <configuration name="MainTest" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="MainTest - 2019.10.02 at 13h 01m 11s.xml">
+    <history-entry file="MainTest - 2019.10.02 at 13h 52m 29s.xml">
       <configuration name="MainTest" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="MainTest - 2019.10.02 at 13h 03m 50s.xml">
+    <history-entry file="MainTest - 2019.10.02 at 13h 58m 22s.xml">
       <configuration name="MainTest" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="MainTest - 2019.10.02 at 13h 11m 24s.xml">
+    <history-entry file="MainTest - 2019.10.02 at 13h 58m 23s.xml">
+      <configuration name="MainTest" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="MainTest - 2019.10.02 at 13h 59m 59s.xml">
+      <configuration name="MainTest" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="MainTest - 2019.10.02 at 14h 00m 54s.xml">
+      <configuration name="MainTest" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="MainTest - 2019.10.02 at 14h 12m 26s.xml">
       <configuration name="MainTest" configurationId="GradleRunConfiguration" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="816" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -383,7 +396,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="11" />
+      <window_info anchor="bottom" id="Build" order="11" weight="0.32885906" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -444,20 +457,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
+    <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="84" selection-start-line="84" selection-end-line="84" />
-          <folding>
-            <element signature="e#0#160#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="280">
+          <caret line="202" column="9" lean-forward="true" selection-start-line="202" selection-start-column="9" selection-end-line="202" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/kotlin/MainTest.kt">
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="188" selection-start-line="188" selection-end-line="188" />
+        <state relative-caret-position="-111">
+          <caret line="85" selection-start-line="85" selection-end-line="85" />
+          <folding>
+            <element signature="e#0#160#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
