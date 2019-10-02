@@ -30,18 +30,13 @@ data class Shop(val name:String, val postcode:String, val geoLocation: GeoLocati
     }
 }
 
-fun String.toShops():List<Shop> {
+fun String.toShops():List<Shop> = this.split(",").windowed(4,4).mapNotNull{it.convertToShop()}
 
-    return this.split(",")
-                .windowed(4,4)
-                .mapNotNull{fourItems ->
-                                if ((fourItems.size != 4) ||(fourItems[2].toDoubleOrNull() == null) ||(fourItems[3].toDoubleOrNull() == null) )
-                                    null
-                                else
-                                    Shop(fourItems[0], fourItems[1], GeoLocation(fourItems[2].toDouble(), fourItems[3].toDouble()))
-                            }
-}
-
+fun List<String>.convertToShop():Shop? =
+    if ((this.size != 4) ||(this[2].toDoubleOrNull() == null) ||(this[3].toDoubleOrNull() == null) )
+        null
+    else
+        Shop(this[0], this[1], GeoLocation(this[2].toDouble(), this[3].toDouble()))
 
 fun orderShops(shops:List<Shop>):List<Shop> {
 
