@@ -183,25 +183,100 @@ class MainTest {
     }
 
     @Test
-    fun `journey time is zero if there is one shop`() {
+    fun `journey time is zero if there is one shop in the string`() {
         assertEquals(0, calculateJourneyTime(peterJonesAsString))
     }
 
     @Test
-    fun `journey time is calculated correctly if there is two shops that are reachable in the time allowed`() {
+    fun `journey time is calculated correctly if there is two shops in the string that are reachable in the time allowed`() {
         assertEquals(21379, calculateJourneyTime(peterJonesAndLiverpoolAsString))
     }
     @Test
-    fun `journey time is zero if there is two shops that are not reachable in the time allowed`() {
+    fun `journey time is zero if there is two shops in the string that are not reachable in the time allowed`() {
         assertEquals(0, calculateJourneyTime(peterJonesAndReykjavíkAsString))
     }
     @Test
-    fun `journey time is calculated correctly if there is three shops that are reachable in the same day`() {
+    fun `journey time is calculated correctly if there is three shops in the string that are reachable in the same day`() {
         assertEquals(21509, calculateJourneyTime(peterJonesHeadOfficeAndLiverpoolAsString))
     }
 
     @Test
-    fun `journey time is calculated correctly if there is three shops that are not all reachable in the same day`() {
+    fun `journey time is calculated correctly if there is three shops in the string that are not all reachable in the same day`() {
         assertEquals(71909, calculateJourneyTime(peterJonesHeadOfficeAndLiverpoolAsString, 21413))
     }
+
+    @Test
+    fun `journey time is calculated correctly if array of shops is empty`(){
+        assertEquals(0, listOf<Shop>().calculateJourneyTime())
+    }
+    @Test
+    fun `journey time is calculated correctly if array of shops contains one shop`(){
+        assertEquals(0, listOf<Shop>(Shop("shop1","pc1",GeoLocation(1.0,2.0),0.0)).calculateJourneyTime())
+    }
+    @Test
+    fun `journey time is calculated correctly if array of shops contains two shops`(){
+        val shop1 = Shop("shop1","pc1",GeoLocation(1.0,2.0),0.0)
+        val shop2 = Shop("shop2","pc2",GeoLocation(1.0,2.0),30.0) //30 miles will take 1 hour or 3600 seconds to reach
+
+        assertEquals(3600, listOf(shop1, shop2).calculateJourneyTime())
+    }
+    @Test
+    fun `journey time is calculated as zero if array of shops contains two shops with shop too far away to reach`(){
+        val shop1 = Shop("shop1","pc1",GeoLocation(1.0,2.0),0.0)
+        val shop2 = Shop("shop2","pc2",GeoLocation(1.0,2.0),30.0)
+
+        assertEquals(0, listOf(shop1, shop2).calculateJourneyTime(1800))
+    }
+    @Test
+    fun `journey time is calculated correctly if array of shops contains three shops all reachable in same day`(){
+        val shop1 = Shop("shop1","pc1",GeoLocation(1.0,2.0),0.0)
+        val shop2 = Shop("shop2","pc2",GeoLocation(1.0,2.0),30.0)
+        val shop3 = Shop("shop3","pc3",GeoLocation(1.0,2.0),30.0)
+
+        assertEquals(7200, listOf(shop1, shop2, shop3).calculateJourneyTime())
+    }
+    @Test
+    fun `journey time is calculated correctly if array of shops contains three shops but not all reachabnle in same day`(){
+        val shop1 = Shop("shop1","pc1",GeoLocation(1.0,2.0),0.0)
+        val shop2 = Shop("shop2","pc2",GeoLocation(1.0,2.0),30.0)
+        val shop3 = Shop("shop3","pc3",GeoLocation(1.0,2.0),30.0)
+        val timeAllowedEachDay = 3600
+        val timeRequiredForBreak = 10000
+        assertEquals(3600 + timeRequiredForBreak + 3600, listOf(shop1, shop2, shop3).calculateJourneyTime(timeAllowedEachDay,timeRequiredForBreak))
+    }
+    @Test
+    fun `journey time is calculated correctly if array of shops contains four shops that will take 3 days to get around `(){
+        val shop1 = Shop("shop1","pc1",GeoLocation(1.0,2.0),0.0)
+        val shop2 = Shop("shop2","pc2",GeoLocation(1.0,2.0),30.0)
+        val shop3 = Shop("shop3","pc3",GeoLocation(1.0,2.0),30.0)
+        val shop4 = Shop("shop4","pc4",GeoLocation(1.0,2.0),30.0)
+        val timeAllowedEachDay = 3600
+        val timeRequiredForBreak = 10000
+        assertEquals(3600 + timeRequiredForBreak + 3600 + timeRequiredForBreak + 3600, listOf(shop1, shop2, shop3, shop4).calculateJourneyTime(timeAllowedEachDay,timeRequiredForBreak))
+    }
+    @Test
+    fun `journey time is calculated correctly if array of shops contains many shops `(){
+        val shop1 = Shop("shop1","pc1",GeoLocation(1.0,2.0),0.0)
+        val shop2 = Shop("shop2","pc2",GeoLocation(1.0,2.0),15.0)
+        val shop3 = Shop("shop3","pc3",GeoLocation(1.0,2.0),30.0)//This will require time for a break before it
+        val shop4 = Shop("shop4","pc4",GeoLocation(1.0,2.0),15.0)//This will require time for a break before it
+        val shop5 = Shop("shop5","pc5",GeoLocation(1.0,2.0),15.0)
+        val shop6 = Shop("shop6","pc6",GeoLocation(1.0,2.0),15.0)//This will require time for a break before it
+        val timeAllowedEachDay = 3600
+        val timeRequiredForBreak = 10000
+        assertEquals(1800 + timeRequiredForBreak + 3600 + timeRequiredForBreak + 1800 + 1800 + timeRequiredForBreak + 1800, listOf(shop1, shop2, shop3, shop4, shop5, shop6).calculateJourneyTime(timeAllowedEachDay,timeRequiredForBreak))
+    }
+    @Test
+    fun `journey time is calculated correctly if array of shops contains many shops with one in the middle unreachable `(){
+        val shop1 = Shop("shop1","pc1",GeoLocation(1.0,2.0),0.0)
+        val shop2 = Shop("shop2","pc2",GeoLocation(1.0,2.0),15.0)
+        val shop3 = Shop("shop3","pc3",GeoLocation(1.0,2.0),30.0)//This will require time for a break before it
+        val shop4 = Shop("shop4","pc4",GeoLocation(1.0,2.0),1500.0)
+        val shop5 = Shop("shop5","pc5",GeoLocation(1.0,2.0),15.0)
+        val shop6 = Shop("shop6","pc6",GeoLocation(1.0,2.0),15.0)
+        val timeAllowedEachDay = 3600
+        val timeRequiredForBreak = 10000
+        assertEquals(1800 + timeRequiredForBreak + 3600 , listOf(shop1, shop2, shop3, shop4, shop5, shop6).calculateJourneyTime(timeAllowedEachDay,timeRequiredForBreak))
+    }
+
 }

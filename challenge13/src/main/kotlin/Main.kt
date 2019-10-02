@@ -5,7 +5,6 @@ import kotlin.math.roundToInt
 
 typealias DistanceInMiles = Double
 
-
 val geoCalc = GeodeticCalculator()
 val reference = Ellipsoid.WGS84
 val METRES_IN_A_MILE = 1609.34
@@ -91,18 +90,19 @@ fun List<Shop>.calculateJourneyTime(dailyTimeAllowance:Int = secondsBetween8amAn
         var timeToNextShop = (3600 * nextShop.distanceFromLastShop / speedInMPH).roundToInt()
 
         if (timeToNextShop > dailyTimeAllowance) {
-            print("shop is too far away to ever reach")
+            println("shop is too far away to ever reach")
             return travellingTime
         }
 
         if (timeToNextShop > timeLeftToday) {
-            print("shop required an overnight stop")
+            println("shop required an overnight stop")
             travellingTime += timeToNextShop + nonTravellingTime
             timeLeftToday = dailyTimeAllowance
         } else {
             travellingTime += timeToNextShop
-            timeLeftToday -= timeToNextShop
         }
+        timeLeftToday -= timeToNextShop
+
     }
 
     return travellingTime
