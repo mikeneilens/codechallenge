@@ -41,7 +41,7 @@ fun findClosestShop(allShops:List<Shop>, newListOfShops:List<Shop>):Shop? {
 
 const val secondsBetween8amAnd6pm = 10 * 3600
 const val secondsBetween6pmAnd8am = 14 * 3600
-const val timeSpentAtEachShop = 20 * 60
+const val minTimeSpentAtEachShop = 20 * 60
 const val speedInMPH = 30
 
 fun calculateJourneyTime(shopsData: String, dailyTimeAllowance:Int = secondsBetween8amAnd6pm, nonTravellingTime:Int = secondsBetween6pmAnd8am): Int {
@@ -53,25 +53,36 @@ fun calculateJourneyTime(shopsData: String, dailyTimeAllowance:Int = secondsBetw
 }
 
 fun List<Shop>.calculateJourneyTime(dailyTimeAllowance:Int = secondsBetween8amAnd6pm, nonTravellingTime:Int = secondsBetween6pmAnd8am):Int {
+    var noOfDaysTravelled = 0
     var timeLeftToday = dailyTimeAllowance
-    var travellingTime = 0
+    var timeTravelledToday = 0
 
     for (nextShop in this.drop(1)) {
         val timeToNextShop = (3600 * nextShop.distanceFromLastShop / speedInMPH).roundToInt()
 
         if (timeToNextShop > dailyTimeAllowance) {
-            return travellingTime
+            return noOfDaysTravelled * 3600 * 24 + timeTravelledToday
         }
 
-        if (timeToNextShop > timeLeftToday) {
-            travellingTime += timeToNextShop + nonTravellingTime
+        if (timeToNextShop > timeLeftToday) { //need to wait until tomorrow before travelling
+            noOfDaysTravelled += 1
+            timeTravelledToday = 0
             timeLeftToday = dailyTimeAllowance
-        } else {
-            travellingTime += timeToNextShop
         }
+
+        timeTravelledToday += timeToNextShop
         timeLeftToday -= timeToNextShop
+
+        val timeSpentAtShop = calcTimeSpentAtShop(timeLeftToday)
+
+        timeTravelledToday += timeSpentAtShop
+        timeLeftToday -= timeSpentAtShop
 
     }
 
-    return travellingTime
+    return noOfDaysTravelled * 3600 * 24 + timeTravelledToday
 }
+
+fun calcTimeSpentAtShop(timeLeftToday:Int) =
+    if (timeLeftToday > minTimeSpentAtEachShop) minTimeSpentAtEachShop else timeLeftToday
+
