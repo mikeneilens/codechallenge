@@ -295,7 +295,7 @@ class MainTest {
         val shop5 = Shop("shop5","pc5",GeoLocation(1.0,2.0),15.0)
         val shop6 = Shop("shop6","pc6",GeoLocation(1.0,2.0),15.0)
 
-        val expectedTime = oneDayInSeconds + 10 * oneHourInSeconds
+        val expectedTime = oneDayInSeconds + 10 * oneHourInSeconds + minTimeSpentAtEachShop
 
         assertEquals(expectedTime , listOf(shop1, shop2, shop3, shop4, shop5, shop6).calculateJourneyTime())
     }

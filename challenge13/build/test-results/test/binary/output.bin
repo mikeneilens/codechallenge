@@ -1,9 +1,9 @@
-{Shop(name=shop2, postcode=pc2, geoLocation=GeoLocation(lat=1.0, lng=2.0), distanceFromLastShop=300.0) time so far: 36000.0
+{Shop(name=shop2, postcode=pc2, geoLocation=GeoLocation(lat=1.0, lng=2.0), distanceFromLastShop=300.0) time so far: 37200.0
 zShop(name=shop3, postcode=pc3, geoLocation=GeoLocation(lat=1.0, lng=2.0), distanceFromLastShop=30.0) time so far: 91200.0
 ©Shop(name=Victoria 171, postcode=SW1E 5NN, geoLocation=GeoLocation(lat=51.496466, lng=-0.141499), distanceFromLastShop=0.8096236440680009) time so far: 1297.15483728816
 °Shop(name=Liverpool, postcode=L1, geoLocation=GeoLocation(lat=53.403799, lng=-2.987648), distanceFromLastShop=178.43540160093957) time so far: 23909.40302940091
 {Shop(name=shop2, postcode=pc2, geoLocation=GeoLocation(lat=1.0, lng=2.0), distanceFromLastShop=150.0) time so far: 19200.0
-|Shop(name=shop3, postcode=pc3, geoLocation=GeoLocation(lat=1.0, lng=2.0), distanceFromLastShop=300.0) time so far: 122400.0
+|Shop(name=shop3, postcode=pc3, geoLocation=GeoLocation(lat=1.0, lng=2.0), distanceFromLastShop=300.0) time so far: 123600.0
 {Shop(name=shop4, postcode=pc4, geoLocation=GeoLocation(lat=1.0, lng=2.0), distanceFromLastShop=90.0) time so far: 184800.0
 {Shop(name=shop5, postcode=pc5, geoLocation=GeoLocation(lat=1.0, lng=2.0), distanceFromLastShop=90.0) time so far: 196800.0
 |Shop(name=shop6, postcode=pc6, geoLocation=GeoLocation(lat=1.0, lng=2.0), distanceFromLastShop=150.0) time so far: 278400.0
@@ -37,7 +37,7 @@
 ™Shop(name=Clerkenwell, postcode=EC1V 4DE, geoLocation=GeoLocation(lat=51.524254, lng=-0.102786), distanceFromLastShop=0.39974722643401855) time so far: 33353.77270455196
 ßShop(name=Barbican, postcode=EC1Y 8NX, geoLocation=GeoLocation(lat=51.521846, lng=-0.092363), distanceFromLastShop=0.47934490329643636) time so far: 34611.29409294753
 ¶Shop(name=Walbrook, postcode=EC4N 8AF, geoLocation=GeoLocation(lat=51.512154, lng=-0.090177), distanceFromLastShop=0.6766365089615831) time so far: 35892.49047402292
-ßShop(name=Monument, postcode=EC4R 9AN, geoLocation=GeoLocation(lat=51.509974, lng=-0.086735), distanceFromLastShop=0.21156535800587453) time so far: 35999.99999999999
+®Shop(name=Monument, postcode=EC4R 9AN, geoLocation=GeoLocation(lat=51.509974, lng=-0.086735), distanceFromLastShop=0.21156535800587453) time so far: 37117.878316983624
 ÆShop(name=St Katharine Docks, postcode=E1W 1YY, geoLocation=GeoLocation(lat=51.507298, lng=-0.067249), distanceFromLastShop=0.860747489963766) time so far: 87703.28969879565
 ≠Shop(name=South Bank Tower, postcode=SE1 9LQ, geoLocation=GeoLocation(lat=51.507644, lng=-0.107208), distanceFromLastShop=1.7240526732534334) time so far: 89110.17601958607
 ©Shop(name=High Holborn, postcode=WC1V 7EX, geoLocation=GeoLocation(lat=51.517425, lng=-0.11878), distanceFromLastShop=0.8404800414740878) time so far: 90411.03362456296
@@ -87,7 +87,7 @@
 •Shop(name=Bagshot, postcode=GU19 5DH, geoLocation=GeoLocation(lat=51.355975, lng=-0.699842), distanceFromLastShop=3.7773564465703164) time so far: 204632.3560482753
 ¶Shop(name=Frimley, postcode=GU16 7JD, geoLocation=GeoLocation(lat=51.314419, lng=-0.744138), distanceFromLastShop=3.4543283037018693) time so far: 206246.87544471954
 ®Shop(name=Sandhurst, postcode=GU47 0PU, geoLocation=GeoLocation(lat=51.341129, lng=-0.778368), distanceFromLastShop=2.3679897326535775) time so far: 207731.03421263798
-úShop(name=Yateley, postcode=GU46 6FR, geoLocation=GeoLocation(lat=51.338895, lng=-0.846275), distanceFromLastShop=2.9443818178475065) time so far: 208800.0
+¶Shop(name=Yateley, postcode=GU46 6FR, geoLocation=GeoLocation(lat=51.338895, lng=-0.846275), distanceFromLastShop=2.9443818178475065) time so far: 209284.36003077967
 ≥Shop(name=Fleet South Services, postcode=GU51 1AA, geoLocation=GeoLocation(lat=51.295546, lng=-0.855807), distanceFromLastShop=3.0250506850869026) time so far: 260763.00608221043
 £Shop(name=Fleet, postcode=GU51 3LA, geoLocation=GeoLocation(lat=51.280883, lng=-0.841504), distanceFromLastShop=1.1882361943704784) time so far: 262105.5944255349
 ¢Shop(name=Farnham, postcode=GU9 7HD, geoLocation=GeoLocation(lat=51.21551, lng=-0.802169), distanceFromLastShop=4.83070033743631) time so far: 263885.27846602723
@@ -107,7 +107,7 @@
 •Shop(name=Abingdon, postcode=OX14 3HL, geoLocation=GeoLocation(lat=51.672083, lng=-1.279705), distanceFromLastShop=8.494354410507402) time so far: 291618.9306682919
 ÆShop(name=John Lewis Oxford, postcode=OX1 1PB, geoLocation=GeoLocation(lat=51.749895, lng=-1.261618), distanceFromLastShop=5.435336723671137) time so far: 293471.17107513244
 ¨Shop(name=Oxford Botley Road, postcode=OX2 0HH, geoLocation=GeoLocation(lat=51.75267, lng=-1.27938), distanceFromLastShop=0.7859555663044613) time so far: 294765.485743089
-´Shop(name=Headington - London Road, postcode=OX3 7RD, geoLocation=GeoLocation(lat=51.759531, lng=-1.213994), distanceFromLastShop=2.845280572474268) time so far: 295200.0
+¥Shop(name=Headington - London Road, postcode=OX3 7RD, geoLocation=GeoLocation(lat=51.759531, lng=-1.213994), distanceFromLastShop=2.845280572474268) time so far: 296306.9194117859
 ®Shop(name=Headington, postcode=OX3 9HP, geoLocation=GeoLocation(lat=51.761394, lng=-1.211112), distanceFromLastShop=0.17854169651020657) time so far: 346821.4250035812
 •Shop(name=Peartree, postcode=OX2 8JZ, geoLocation=GeoLocation(lat=51.795601, lng=-1.283438), distanceFromLastShop=3.9004383904929627) time so far: 348489.4776104404
 §Shop(name=Witney, postcode=OX28 6AR, geoLocation=GeoLocation(lat=51.784817, lng=-1.483448), distanceFromLastShop=8.607545158076723) time so far: 350722.38302940957
@@ -166,7 +166,7 @@
 •Shop(name=Banstead, postcode=SM7 2NB, geoLocation=GeoLocation(lat=51.322955, lng=-0.198596), distanceFromLastShop=2.8362112420205627) time so far: 550503.6195757533
 °Shop(name=Cheam, postcode=SM3 8BD, geoLocation=GeoLocation(lat=51.358936, lng=-0.216378), distanceFromLastShop=2.603826890690676) time so far: 552016.0788026362
 ™Shop(name=Worcester Park, postcode=KT4 8DX, geoLocation=GeoLocation(lat=51.378196, lng=-0.24356), distanceFromLastShop=1.7766022658218457) time so far: 553429.2710745349
-ùShop(name=New Malden, postcode=KT3 4HE, geoLocation=GeoLocation(lat=51.402339, lng=-0.256083), distanceFromLastShop=1.754725592216905) time so far: 554400.0
+¶Shop(name=New Malden, postcode=KT3 4HE, geoLocation=GeoLocation(lat=51.402339, lng=-0.256083), distanceFromLastShop=1.754725592216905) time so far: 554839.8381456009
 ©Shop(name=Raynes Park, postcode=SW20 0BS, geoLocation=GeoLocation(lat=51.408987, lng=-0.234012), distanceFromLastShop=1.0591961671429329) time so far: 606127.1035400572
 ´Shop(name=Wimbledon Hill, postcode=SW19 7NS, geoLocation=GeoLocation(lat=51.421003, lng=-0.20752), distanceFromLastShop=1.4147622433635663) time so far: 607496.8750092607
 ¶Shop(name=Wimbledon, postcode=SW19 7JY, geoLocation=GeoLocation(lat=51.42478, lng=-0.202204), distanceFromLastShop=0.3478075462847928) time so far: 608738.6119148149
@@ -191,7 +191,7 @@
 ©Shop(name=Burnt Common, postcode=GU23 7JY, geoLocation=GeoLocation(lat=51.282099, lng=-0.512846), distanceFromLastShop=4.221164793394931) time so far: 636722.7237230267
 ∂Shop(name=Guildford Worplesdon Road, postcode=GU2 9UY, geoLocation=GeoLocation(lat=51.256982, lng=-0.594269), distanceFromLastShop=3.9347906977882854) time so far: 638394.8986067614
 ¶Shop(name=Guildford, postcode=GU1 4AT, geoLocation=GeoLocation(lat=51.238307, lng=-0.573916), distanceFromLastShop=1.5641070780959474) time so far: 639782.5914561328
-úShop(name=Godalming, postcode=GU7 1HY, geoLocation=GeoLocation(lat=51.186416, lng=-0.60946), distanceFromLastShop=3.9050808541119197) time so far: 640800.0
+•Shop(name=Godalming, postcode=GU7 1HY, geoLocation=GeoLocation(lat=51.186416, lng=-0.60946), distanceFromLastShop=3.9050808541119197) time so far: 641451.2011586262
 ¶Shop(name=Haslemere, postcode=GU27 2AB, geoLocation=GeoLocation(lat=51.089048, lng=-0.710321), distanceFromLastShop=8.034011973601066) time so far: 693364.0814368321
 ®Shop(name=Petersfield, postcode=GU32 3JA, geoLocation=GeoLocation(lat=51.004364, lng=-0.936701), distanceFromLastShop=11.47073719250472) time so far: 695940.5698999327
 ©Shop(name=Waterlooville, postcode=PO7 7HS, geoLocation=GeoLocation(lat=50.879355, lng=-1.030421), distanceFromLastShop=9.561716147038506) time so far: 698287.9758375774
@@ -210,24 +210,24 @@
 ßShop(name=Winchester, postcode=SO22 6EL, geoLocation=GeoLocation(lat=51.074249, lng=-1.336797), distanceFromLastShop=9.086885826840849) time so far: 720396.5621560883
 •Shop(name=Andover, postcode=SP10 1LY, geoLocation=GeoLocation(lat=51.208503, lng=-1.481229), distanceFromLastShop=11.206283179470846) time so far: 722941.3161376248
 µShop(name=Cookery School (Salisbury), postcode=SP2 7TS, geoLocation=GeoLocation(lat=51.07606, lng=-1.801853), distanceFromLastShop=16.679798440501234) time so far: 726142.891950485
-çShop(name=Salisbury, postcode=SP2 7TS, geoLocation=GeoLocation(lat=51.07606, lng=-1.801853), distanceFromLastShop=0.0) time so far: 727200.0
-úShop(name=Salisbury Petrol Station, postcode=SP2 7TS, geoLocation=GeoLocation(lat=51.07606, lng=-1.801853), distanceFromLastShop=0.0) time so far: 727200.0
-•Shop(name=Ringwood, postcode=BH24 1AT, geoLocation=GeoLocation(lat=50.847353, lng=-1.79327), distanceFromLastShop=15.814083049616366) time so far: 780697.6899659539
-®Shop(name=Christchurch, postcode=BH23 1QD, geoLocation=GeoLocation(lat=50.736503, lng=-1.779396), distanceFromLastShop=7.686487956375202) time so far: 782820.068520719
-¢Shop(name=Winton, postcode=BH9 2AD, geoLocation=GeoLocation(lat=50.740705, lng=-1.879047), distanceFromLastShop=4.380686457363579) time so far: 784545.7508956026
-∂Shop(name=John Lewis at home Poole, postcode=BH12 1DN, geoLocation=GeoLocation(lat=50.728924, lng=-1.920832), distanceFromLastShop=2.0057405440766614) time so far: 785986.4397608918
-ßShop(name=Parkstone, postcode=BH14 0AP, geoLocation=GeoLocation(lat=50.728747, lng=-1.939931), distanceFromLastShop=0.8380135821221941) time so far: 787287.0013907464
-§Shop(name=Wimborne, postcode=BH21 1AN, geoLocation=GeoLocation(lat=50.800216, lng=-1.98248), distanceFromLastShop=5.280635873972963) time so far: 789120.6776956232
-´Shop(name=Lymington New, postcode=SO41 9GF, geoLocation=GeoLocation(lat=50.757146, lng=-1.549581), distanceFromLastShop=19.204419997862153) time so far: 792625.2080953667
-¶Shop(name=Chichester, postcode=PO19 1RD, geoLocation=GeoLocation(lat=50.832334, lng=-0.785585), distanceFromLastShop=33.87244606856063) time so far: 797889.901623594
-ªShop(name=John Lewis at home Chichester, postcode=PO19 7YH, geoLocation=GeoLocation(lat=50.841461, lng=-0.757297), distanceFromLastShop=1.3896790438872595) time so far: 799256.6631088605
-ßShop(name=Rustington, postcode=BN16 2NE, geoLocation=GeoLocation(lat=50.810181, lng=-0.504887), distanceFromLastShop=11.26055731303149) time so far: 801807.9299864243
-£Shop(name=Worthing, postcode=BN11 1LL, geoLocation=GeoLocation(lat=50.813757, lng=-0.367748), distanceFromLastShop=6.011084438214519) time so far: 803729.26011901
-ßShop(name=Storrington, postcode=RH20 4NQ, geoLocation=GeoLocation(lat=50.918173, lng=-0.451977), distanceFromLastShop=8.103825641691767) time so far: 805901.719196013
-©Shop(name=Horsham New, postcode=RH12 1LP, geoLocation=GeoLocation(lat=51.063106, lng=-0.335675), distanceFromLastShop=11.230313916159918) time so far: 808449.3568659521
-©Shop(name=John Lewis at home Horsham, postcode=RH12 1LP, geoLocation=GeoLocation(lat=51.063106, lng=-0.335675), distanceFromLastShop=0.0) time so far: 809649.3568659521
-£Shop(name=Horley, postcode=RH6 7PZ, geoLocation=GeoLocation(lat=51.171298, lng=-0.162757), distanceFromLastShop=10.608466700183564) time so far: 812122.3728699742
-≥Shop(name=Horley - Brighton Road, postcode=RH6 7JU, geoLocation=GeoLocation(lat=51.180569, lng=-0.163675), distanceFromLastShop=0.6421327699498953) time so far: 813399.4288023682
+ïShop(name=Salisbury, postcode=SP2 7TS, geoLocation=GeoLocation(lat=51.07606, lng=-1.801853), distanceFromLastShop=0.0) time so far: 727342.891950485
+úShop(name=Salisbury Petrol Station, postcode=SP2 7TS, geoLocation=GeoLocation(lat=51.07606, lng=-1.801853), distanceFromLastShop=0.0) time so far: 778800.0
+•Shop(name=Ringwood, postcode=BH24 1AT, geoLocation=GeoLocation(lat=50.847353, lng=-1.79327), distanceFromLastShop=15.814083049616366) time so far: 781897.6899659539
+®Shop(name=Christchurch, postcode=BH23 1QD, geoLocation=GeoLocation(lat=50.736503, lng=-1.779396), distanceFromLastShop=7.686487956375202) time so far: 784020.068520719
+¢Shop(name=Winton, postcode=BH9 2AD, geoLocation=GeoLocation(lat=50.740705, lng=-1.879047), distanceFromLastShop=4.380686457363579) time so far: 785745.7508956026
+∂Shop(name=John Lewis at home Poole, postcode=BH12 1DN, geoLocation=GeoLocation(lat=50.728924, lng=-1.920832), distanceFromLastShop=2.0057405440766614) time so far: 787186.4397608918
+ßShop(name=Parkstone, postcode=BH14 0AP, geoLocation=GeoLocation(lat=50.728747, lng=-1.939931), distanceFromLastShop=0.8380135821221941) time so far: 788487.0013907464
+§Shop(name=Wimborne, postcode=BH21 1AN, geoLocation=GeoLocation(lat=50.800216, lng=-1.98248), distanceFromLastShop=5.280635873972963) time so far: 790320.6776956232
+´Shop(name=Lymington New, postcode=SO41 9GF, geoLocation=GeoLocation(lat=50.757146, lng=-1.549581), distanceFromLastShop=19.204419997862153) time so far: 793825.2080953667
+¶Shop(name=Chichester, postcode=PO19 1RD, geoLocation=GeoLocation(lat=50.832334, lng=-0.785585), distanceFromLastShop=33.87244606856063) time so far: 799089.901623594
+ªShop(name=John Lewis at home Chichester, postcode=PO19 7YH, geoLocation=GeoLocation(lat=50.841461, lng=-0.757297), distanceFromLastShop=1.3896790438872595) time so far: 800456.6631088605
+ßShop(name=Rustington, postcode=BN16 2NE, geoLocation=GeoLocation(lat=50.810181, lng=-0.504887), distanceFromLastShop=11.26055731303149) time so far: 803007.9299864243
+£Shop(name=Worthing, postcode=BN11 1LL, geoLocation=GeoLocation(lat=50.813757, lng=-0.367748), distanceFromLastShop=6.011084438214519) time so far: 804929.26011901
+ßShop(name=Storrington, postcode=RH20 4NQ, geoLocation=GeoLocation(lat=50.918173, lng=-0.451977), distanceFromLastShop=8.103825641691767) time so far: 807101.719196013
+©Shop(name=Horsham New, postcode=RH12 1LP, geoLocation=GeoLocation(lat=51.063106, lng=-0.335675), distanceFromLastShop=11.230313916159918) time so far: 809649.3568659521
+©Shop(name=John Lewis at home Horsham, postcode=RH12 1LP, geoLocation=GeoLocation(lat=51.063106, lng=-0.335675), distanceFromLastShop=0.0) time so far: 810849.3568659521
+£Shop(name=Horley, postcode=RH6 7PZ, geoLocation=GeoLocation(lat=51.171298, lng=-0.162757), distanceFromLastShop=10.608466700183564) time so far: 813322.3728699742
+≥Shop(name=Horley - Brighton Road, postcode=RH6 7JU, geoLocation=GeoLocation(lat=51.180569, lng=-0.163675), distanceFromLastShop=0.6421327699498953) time so far: 814599.4288023682
 ®Shop(name=Burgh Heath, postcode=KT20 6SU, geoLocation=GeoLocation(lat=51.271217, lng=-0.211888), distanceFromLastShop=6.606655853132447) time so far: 865992.7987023758
 ¢Shop(name=Epsom, postcode=KT18 5DB, geoLocation=GeoLocation(lat=51.332158, lng=-0.268622), distanceFromLastShop=4.877797920720646) time so far: 867778.1344528623
 ©Shop(name=Leatherhead, postcode=KT22 8DW, geoLocation=GeoLocation(lat=51.294524, lng=-0.329242), distanceFromLastShop=3.6967823648685285) time so far: 869421.7483366466
@@ -277,7 +277,7 @@
 ªShop(name=John Lewis Heathrow Terminal 2, postcode=TW6 1EW, geoLocation=GeoLocation(lat=51.469777, lng=-0.449579), distanceFromLastShop=4.978879768095276) time so far: 1067541.0600101163
 ßShop(name=Bracknell, postcode=RG12 1RQ, geoLocation=GeoLocation(lat=51.418293, lng=-0.752195), distanceFromLastShop=13.54921328873227) time so far: 1070366.9656047642
 ªShop(name=Horticulture Direct Services, postcode=RG12 8YA, geoLocation=GeoLocation(lat=51.411734, lng=-0.770445), distanceFromLastShop=0.9099459387606514) time so far: 1071676.1591174155
-ùShop(name=Waitrose Online Direct, postcode=RG12 8YA, geoLocation=GeoLocation(lat=51.411734, lng=-0.770445), distanceFromLastShop=0.0) time so far: 1072800.0
+¶Shop(name=Waitrose Online Direct, postcode=RG12 8YA, geoLocation=GeoLocation(lat=51.411734, lng=-0.770445), distanceFromLastShop=0.0) time so far: 1072876.1591174155
 ©Shop(name=Bagshot Road, postcode=RG12 9SE, geoLocation=GeoLocation(lat=51.405228, lng=-0.747918), distanceFromLastShop=1.072787145700059) time so far: 1124528.734457484
 ®Shop(name=Wokingham, postcode=RG40 1BB, geoLocation=GeoLocation(lat=51.411668, lng=-0.833588), distanceFromLastShop=3.7305891519288905) time so far: 1126176.4051557155
 £Shop(name=Woodley, postcode=RG5 3JW, geoLocation=GeoLocation(lat=51.451809, lng=-0.905502), distanceFromLastShop=4.166289446255574) time so far: 1127876.359889266
@@ -328,7 +328,7 @@
 ¶Shop(name=Sheffield, postcode=S11 8HY, geoLocation=GeoLocation(lat=53.372999, lng=-1.477041), distanceFromLastShop=9.030825176930573) time so far: 1326475.5290043075
 ßShop(name=Sheffield Petrol Station, postcode=S11 8HY, geoLocation=GeoLocation(lat=53.372999, lng=-1.477041), distanceFromLastShop=0.0) time so far: 1327675.5290043075
 ∞Shop(name=John Lewis Sheffield, postcode=S1 4HP, geoLocation=GeoLocation(lat=53.379243, lng=-1.472154), distanceFromLastShop=0.476755115507928) time so far: 1328932.7396181684
-úShop(name=Buxton, postcode=SK17 6DF, geoLocation=GeoLocation(lat=53.259595, lng=-1.911921), distanceFromLastShop=20.001757541052385) time so far: 1332000.0
+•Shop(name=Buxton, postcode=SK17 6DF, geoLocation=GeoLocation(lat=53.259595, lng=-1.911921), distanceFromLastShop=20.001757541052385) time so far: 1332532.9505230947
 •Shop(name=Poynton, postcode=SK12 1RD, geoLocation=GeoLocation(lat=53.34895, lng=-2.119714), distanceFromLastShop=10.595832126877397) time so far: 1384871.4998552252
 ©Shop(name=Cheadle Hulme, postcode=SK8 7AE, geoLocation=GeoLocation(lat=53.37353, lng=-2.186789), distanceFromLastShop=3.2540347986145397) time so far: 1386461.984031059
 ∞Shop(name=John Lewis Cheadle, postcode=SK8 3BZ, geoLocation=GeoLocation(lat=53.375181, lng=-2.214799), distanceFromLastShop=1.1639811188974354) time so far: 1387801.6617653267
@@ -365,7 +365,7 @@
 ßShop(name=Daventry, postcode=NN11 4DR, geoLocation=GeoLocation(lat=52.257225, lng=-1.161736), distanceFromLastShop=11.440708874468575) time so far: 1583969.3646993951
 §Shop(name=Rushden, postcode=NN10 6AR, geoLocation=GeoLocation(lat=52.299379, lng=-0.619588), distanceFromLastShop=23.17617026284053) time so far: 1587950.505130936
 •Shop(name=Rushden Petrol Station, postcode=NN10 6AR, geoLocation=GeoLocation(lat=52.299379, lng=-0.619588), distanceFromLastShop=0.0) time so far: 1589150.505130936
-öShop(name=Oundle, postcode=PE8 4NH, geoLocation=GeoLocation(lat=52.48414, lng=-0.465705), distanceFromLastShop=14.337773278159084) time so far: 1591200.0
+¢Shop(name=Oundle, postcode=PE8 4NH, geoLocation=GeoLocation(lat=52.48414, lng=-0.465705), distanceFromLastShop=14.337773278159084) time so far: 1592071.037924315
 ©Shop(name=Peterborough, postcode=PE1 2BF, geoLocation=GeoLocation(lat=52.575479, lng=-0.249935), distanceFromLastShop=11.075880065508242) time so far: 1644129.105607861
 ∂Shop(name=John Lewis Peterborough, postcode=PE1 1NL, geoLocation=GeoLocation(lat=52.574709, lng=-0.245287), distanceFromLastShop=0.20290962564397458) time so far: 1645353.4547629382
 ¶Shop(name=Stamford, postcode=PE9 2PR, geoLocation=GeoLocation(lat=52.651649, lng=-0.485526), distanceFromLastShop=11.425601992709293) time so far: 1647924.5270020633
@@ -378,7 +378,7 @@
 £Shop(name=Ipswich, postcode=IP3 9SQ, geoLocation=GeoLocation(lat=52.034026, lng=1.201301), distanceFromLastShop=2.638530700094451) time so far: 1669032.2619518067
 ®Shop(name=John Lewis at home Ipswich, postcode=IP3 9SQ, geoLocation=GeoLocation(lat=52.034026, lng=1.201301), distanceFromLastShop=0.0) time so far: 1670232.2619518067
 ¶Shop(name=Saxmundham, postcode=IP17 1EP, geoLocation=GeoLocation(lat=52.21333, lng=1.493146), distanceFromLastShop=17.54832137523934) time so far: 1673538.0605168354
-òShop(name=Norwich, postcode=NR4 6NU, geoLocation=GeoLocation(lat=52.6079, lng=1.251195), distanceFromLastShop=29.13692831086387) time so far: 1677600.0
+°Shop(name=Norwich, postcode=NR4 6NU, geoLocation=GeoLocation(lat=52.6079, lng=1.251195), distanceFromLastShop=29.13692831086387) time so far: 1678234.4919141391
 ØShop(name=John Lewis Norwich, postcode=NR1 3LX, geoLocation=GeoLocation(lat=52.625197, lng=1.295972), distanceFromLastShop=2.2319755479484584) time so far: 1729467.8370657538
 •Shop(name=Wymondham, postcode=NR18 0SH, geoLocation=GeoLocation(lat=52.575198, lng=1.123725), distanceFromLastShop=8.033794884501063) time so far: 1731631.892451894
 ¶Shop(name=Wymondham Petrol Station, postcode=NR18 0SH, geoLocation=GeoLocation(lat=52.575198, lng=1.123725), distanceFromLastShop=0.0) time so far: 1732831.892451894
@@ -386,54 +386,54 @@
 •Shop(name=Swaffham Petrol Station, postcode=PE37 7HT, geoLocation=GeoLocation(lat=52.655715, lng=0.683974), distanceFromLastShop=0.0) time so far: 1737551.130622754
 ´Shop(name=North Walsham, postcode=NR28 0NB, geoLocation=GeoLocation(lat=52.827186, lng=1.368243), distanceFromLastShop=31.067406112017053) time so far: 1742479.2193561962
 ≥Shop(name=John Lewis Cheltenham, postcode=GL50 1DQ, geoLocation=GeoLocation(lat=51.89994, lng=-2.072513), distanceFromLastShop=159.10616434309333) time so far: 1762771.9590773673
-†Shop(name=Cheltenham, postcode=GL50 3QW, geoLocation=GeoLocation(lat=51.901938, lng=-2.083824), distanceFromLastShop=0.5030935550946434) time so far: 1764000.0
-†Shop(name=Cheltenham Petrol Station, postcode=GL50 3QW, geoLocation=GeoLocation(lat=51.901938, lng=-2.083824), distanceFromLastShop=0.0) time so far: 1764000.0
-§Shop(name=Stroud, postcode=GL5 2AP, geoLocation=GeoLocation(lat=51.741374, lng=-2.212701), distanceFromLastShop=12.398231836201761) time so far: 1817087.7878203443
-≥Shop(name=Michaelwood Services, postcode=GL11 6DD, geoLocation=GeoLocation(lat=51.666641, lng=-2.420144), distanceFromLastShop=10.300344142287413) time so far: 1819523.8291174187
-ÆShop(name=Chipping Sodbury, postcode=BS37 6AU, geoLocation=GeoLocation(lat=51.540449, lng=-2.396312), distanceFromLastShop=8.784255751386684) time so far: 1821777.9398075852
-∏Shop(name=John Lewis Cribbs Causeway, postcode=BS34 5QU, geoLocation=GeoLocation(lat=51.526226, lng=-2.597706), distanceFromLastShop=8.738987035191764) time so far: 1824026.6182518082
-™Shop(name=Westbury Park, postcode=BS9 4HN, geoLocation=GeoLocation(lat=51.480589, lng=-2.612402), distanceFromLastShop=3.218088745058684) time so far: 1825612.7889012152
-•Shop(name=Clifton, postcode=BS8 1QS, geoLocation=GeoLocation(lat=51.457131, lng=-2.608449), distanceFromLastShop=1.6306607911933662) time so far: 1827008.4681961583
-ÆShop(name=Gordano Services, postcode=BS20 7XG, geoLocation=GeoLocation(lat=51.477507, lng=-2.707929), distanceFromLastShop=4.520550207768033) time so far: 1828750.9342210905
-©Shop(name=Portishead, postcode=BS20 7DE, geoLocation=GeoLocation(lat=51.485968, lng=-2.763612), distanceFromLastShop=2.4737441578385617) time so far: 1830247.7835200313
-©Shop(name=Portishead Petrol Station, postcode=BS20 7DE, geoLocation=GeoLocation(lat=51.485968, lng=-2.763612), distanceFromLastShop=0.0) time so far: 1831447.7835200313
-•Shop(name=Nailsea, postcode=BS48 1AP, geoLocation=GeoLocation(lat=51.433521, lng=-2.758015), distanceFromLastShop=3.6338197276902435) time so far: 1833083.841887354
-ØShop(name=Weston Super Mare, postcode=BS23 3UZ, geoLocation=GeoLocation(lat=51.341378, lng=-2.958139), distanceFromLastShop=10.747448274166304) time so far: 1835573.535680254
-§Shop(name=Barry, postcode=CF63 2PE, geoLocation=GeoLocation(lat=51.414386, lng=-3.239174), distanceFromLastShop=13.164528129680866) time so far: 1838353.2790558157
-∞Shop(name=John Lewis Cardiff, postcode=CF10 1EG, geoLocation=GeoLocation(lat=51.477903, lng=-3.173921), distanceFromLastShop=5.217992671455157) time so far: 1840179.4381763902
-©Shop(name=Pontprennau, postcode=CF23 8AN, geoLocation=GeoLocation(lat=51.530294, lng=-3.137916), distanceFromLastShop=3.9409992006241716) time so far: 1841852.358080465
-¥Shop(name=Cardiff Gate Services, postcode=CF23 8RP, geoLocation=GeoLocation(lat=51.538673, lng=-3.130627), distanceFromLastShop=0.6590257853359344) time so far: 1843131.4411747055
-®Shop(name=Cowbridge, postcode=CF71 7FB, geoLocation=GeoLocation(lat=51.461382, lng=-3.448324), distanceFromLastShop=14.712692293601659) time so far: 1846096.9642499376
-üShop(name=Abergavenny, postcode=NP7 9LL, geoLocation=GeoLocation(lat=51.818294, lng=-3.028245), distanceFromLastShop=30.58388366322647) time so far: 1850400.0
-†Shop(name=Abergavenny Petrol Station, postcode=NP7 9LL, geoLocation=GeoLocation(lat=51.818294, lng=-3.028245), distanceFromLastShop=0.0) time so far: 1850400.0
-ßShop(name=Monmouth, postcode=NP25 3EQ, geoLocation=GeoLocation(lat=51.809944, lng=-2.718624), distanceFromLastShop=13.280165877210022) time so far: 1903593.6199052653
-¶Shop(name=Caldicot, postcode=NP26 4BR, geoLocation=GeoLocation(lat=51.589495, lng=-2.754474), distanceFromLastShop=15.318347290489957) time so far: 1906631.821580124
-¶Shop(name=Keynsham, postcode=BS31 1ST, geoLocation=GeoLocation(lat=51.420935, lng=-2.481869), distanceFromLastShop=16.55645011602819) time so far: 1909818.5955940473
-†Shop(name=Bath, postcode=BA1 5AL, geoLocation=GeoLocation(lat=51.383386, lng=-2.358584), distanceFromLastShop=5.929346468563046) time so far: 1911730.117170275
-•Shop(name=Melksham, postcode=SN12 6LP, geoLocation=GeoLocation(lat=51.375545, lng=-2.138789), distanceFromLastShop=9.52424200789921) time so far: 1914073.0262112229
-¶Shop(name=Chippenham, postcode=SN15 3WL, geoLocation=GeoLocation(lat=51.458394, lng=-2.116938), distanceFromLastShop=5.80484657745087) time so far: 1915969.607800517
-¶Shop(name=Malmesbury, postcode=SN16 9FS, geoLocation=GeoLocation(lat=51.58096, lng=-2.09269), distanceFromLastShop=8.537628079746995) time so far: 1918194.1231700866
-©Shop(name=Cirencester, postcode=GL7 1SZ, geoLocation=GeoLocation(lat=51.713416, lng=-1.971251), distanceFromLastShop=10.542062549113774) time so far: 1920659.1706759802
-´Shop(name=Great Malvern, postcode=WR14 4WR, geoLocation=GeoLocation(lat=52.112595, lng=-2.328429), distanceFromLastShop=31.541865464223548) time so far: 1925644.194531687
-¶Shop(name=Hereford, postcode=HR4 9HT, geoLocation=GeoLocation(lat=52.058733, lng=-2.718586), distanceFromLastShop=17.030140051218506) time so far: 1928887.8113378333
-ôShop(name=Wells, postcode=BA5 2PJ, geoLocation=GeoLocation(lat=51.209474, lng=-2.650273), distanceFromLastShop=58.78631887158659) time so far: 1936800.0
-ßShop(name=Sherborne, postcode=DT9 3PU, geoLocation=GeoLocation(lat=50.949349, lng=-2.516449), distanceFromLastShop=18.902449908453708) time so far: 1990668.2939890143
-ßShop(name=Gillingham, postcode=SP8 4UA, geoLocation=GeoLocation(lat=51.035823, lng=-2.275914), distanceFromLastShop=12.07669943495021) time so far: 1993317.4979212084
-©Shop(name=Warminster, postcode=BA12 9BR, geoLocation=GeoLocation(lat=51.205281, lng=-2.177745), distanceFromLastShop=12.468586598094031) time so far: 1996013.7283129797
-¶Shop(name=Crewkerne, postcode=TA18 8DA, geoLocation=GeoLocation(lat=50.882896, lng=-2.79436), distanceFromLastShop=34.90930740338645) time so far: 2001402.8452013861
-•Shop(name=Bridport, postcode=DT6 3QP, geoLocation=GeoLocation(lat=50.733657, lng=-2.759893), distanceFromLastShop=10.425919296739394) time so far: 2003853.955516995
-•Shop(name=Poundbury, postcode=DT1 3BW, geoLocation=GeoLocation(lat=50.715299, lng=-2.46693), distanceFromLastShop=12.91673883274659) time so far: 2006603.9641769244
-®Shop(name=Dorchester, postcode=DT1 1BN, geoLocation=GeoLocation(lat=50.714339, lng=-2.436197), distanceFromLastShop=1.3503727045604725) time so far: 2007966.0089014717
-•Shop(name=Sidmouth, postcode=EX10 9GA, geoLocation=GeoLocation(lat=50.700078, lng=-3.244277), distanceFromLastShop=35.48247222263624) time so far: 2013423.905568188
-§Shop(name=Exeter, postcode=EX1 2ED, geoLocation=GeoLocation(lat=50.724387, lng=-3.514024), distanceFromLastShop=11.957351059296474) time so far: 2016058.7876953036
-ØShop(name=John Lewis Exeter, postcode=EX4 6NN, geoLocation=GeoLocation(lat=50.726374, lng=-3.525637), distanceFromLastShop=0.5277179419434647) time so far: 2017322.1138483367
-®Shop(name=Teignmouth, postcode=TQ14 8HR, geoLocation=GeoLocation(lat=50.546827, lng=-3.49516), distanceFromLastShop=12.482806612538903) time so far: 2020020.0506418415
-§Shop(name=Torquay, postcode=TQ1 3HL, geoLocation=GeoLocation(lat=50.476812, lng=-3.528001), distanceFromLastShop=5.051323924118251) time so far: 2021826.2095127357
-ßShop(name=Okehampton, postcode=EX20 1WL, geoLocation=GeoLocation(lat=50.740446, lng=-4.004084), distanceFromLastShop=27.7591518959152) time so far: 2078131.0982275098
-®Shop(name=Holsworthy, postcode=EX22 6BL, geoLocation=GeoLocation(lat=50.807192, lng=-4.353758), distanceFromLastShop=16.005805525635314) time so far: 2081251.794890586
-•Shop(name=Saltash, postcode=PL12 6LD, geoLocation=GeoLocation(lat=50.421424, lng=-4.23376), distanceFromLastShop=27.182296117454626) time so far: 2085713.6704246807
-£Shop(name=Truro, postcode=TR1 1RH, geoLocation=GeoLocation(lat=50.272557, lng=-5.036674), distanceFromLastShop=36.971983573429114) time so far: 2091350.3084534921
-®Shop(name=Wellington, postcode=TA21 8RD, geoLocation=GeoLocation(lat=50.979792, lng=-3.225686), distanceFromLastShop=93.43133403430485) time so far: 2103762.0685376087
+©Shop(name=Cheltenham, postcode=GL50 3QW, geoLocation=GeoLocation(lat=51.901938, lng=-2.083824), distanceFromLastShop=0.5030935550946434) time so far: 1764032.3303039786
+†Shop(name=Cheltenham Petrol Station, postcode=GL50 3QW, geoLocation=GeoLocation(lat=51.901938, lng=-2.083824), distanceFromLastShop=0.0) time so far: 1815600.0
+§Shop(name=Stroud, postcode=GL5 2AP, geoLocation=GeoLocation(lat=51.741374, lng=-2.212701), distanceFromLastShop=12.398231836201761) time so far: 1818287.7878203443
+≥Shop(name=Michaelwood Services, postcode=GL11 6DD, geoLocation=GeoLocation(lat=51.666641, lng=-2.420144), distanceFromLastShop=10.300344142287413) time so far: 1820723.8291174187
+ÆShop(name=Chipping Sodbury, postcode=BS37 6AU, geoLocation=GeoLocation(lat=51.540449, lng=-2.396312), distanceFromLastShop=8.784255751386684) time so far: 1822977.9398075852
+∏Shop(name=John Lewis Cribbs Causeway, postcode=BS34 5QU, geoLocation=GeoLocation(lat=51.526226, lng=-2.597706), distanceFromLastShop=8.738987035191764) time so far: 1825226.6182518082
+™Shop(name=Westbury Park, postcode=BS9 4HN, geoLocation=GeoLocation(lat=51.480589, lng=-2.612402), distanceFromLastShop=3.218088745058684) time so far: 1826812.7889012152
+•Shop(name=Clifton, postcode=BS8 1QS, geoLocation=GeoLocation(lat=51.457131, lng=-2.608449), distanceFromLastShop=1.6306607911933662) time so far: 1828208.4681961583
+ÆShop(name=Gordano Services, postcode=BS20 7XG, geoLocation=GeoLocation(lat=51.477507, lng=-2.707929), distanceFromLastShop=4.520550207768033) time so far: 1829950.9342210905
+©Shop(name=Portishead, postcode=BS20 7DE, geoLocation=GeoLocation(lat=51.485968, lng=-2.763612), distanceFromLastShop=2.4737441578385617) time so far: 1831447.7835200313
+©Shop(name=Portishead Petrol Station, postcode=BS20 7DE, geoLocation=GeoLocation(lat=51.485968, lng=-2.763612), distanceFromLastShop=0.0) time so far: 1832647.7835200313
+•Shop(name=Nailsea, postcode=BS48 1AP, geoLocation=GeoLocation(lat=51.433521, lng=-2.758015), distanceFromLastShop=3.6338197276902435) time so far: 1834283.841887354
+ØShop(name=Weston Super Mare, postcode=BS23 3UZ, geoLocation=GeoLocation(lat=51.341378, lng=-2.958139), distanceFromLastShop=10.747448274166304) time so far: 1836773.535680254
+§Shop(name=Barry, postcode=CF63 2PE, geoLocation=GeoLocation(lat=51.414386, lng=-3.239174), distanceFromLastShop=13.164528129680866) time so far: 1839553.2790558157
+∞Shop(name=John Lewis Cardiff, postcode=CF10 1EG, geoLocation=GeoLocation(lat=51.477903, lng=-3.173921), distanceFromLastShop=5.217992671455157) time so far: 1841379.4381763902
+©Shop(name=Pontprennau, postcode=CF23 8AN, geoLocation=GeoLocation(lat=51.530294, lng=-3.137916), distanceFromLastShop=3.9409992006241716) time so far: 1843052.358080465
+¥Shop(name=Cardiff Gate Services, postcode=CF23 8RP, geoLocation=GeoLocation(lat=51.538673, lng=-3.130627), distanceFromLastShop=0.6590257853359344) time so far: 1844331.4411747055
+®Shop(name=Cowbridge, postcode=CF71 7FB, geoLocation=GeoLocation(lat=51.461382, lng=-3.448324), distanceFromLastShop=14.712692293601659) time so far: 1847296.9642499376
+®Shop(name=Abergavenny, postcode=NP7 9LL, geoLocation=GeoLocation(lat=51.818294, lng=-3.028245), distanceFromLastShop=30.58388366322647) time so far: 1905670.0660395871
+©Shop(name=Abergavenny Petrol Station, postcode=NP7 9LL, geoLocation=GeoLocation(lat=51.818294, lng=-3.028245), distanceFromLastShop=0.0) time so far: 1906870.0660395871
+ßShop(name=Monmouth, postcode=NP25 3EQ, geoLocation=GeoLocation(lat=51.809944, lng=-2.718624), distanceFromLastShop=13.280165877210022) time so far: 1909663.6859448524
+ßShop(name=Caldicot, postcode=NP26 4BR, geoLocation=GeoLocation(lat=51.589495, lng=-2.754474), distanceFromLastShop=15.318347290489957) time so far: 1912701.8876197112
+¶Shop(name=Keynsham, postcode=BS31 1ST, geoLocation=GeoLocation(lat=51.420935, lng=-2.481869), distanceFromLastShop=16.55645011602819) time so far: 1915888.6616336345
+†Shop(name=Bath, postcode=BA1 5AL, geoLocation=GeoLocation(lat=51.383386, lng=-2.358584), distanceFromLastShop=5.929346468563046) time so far: 1917800.183209862
+£Shop(name=Melksham, postcode=SN12 6LP, geoLocation=GeoLocation(lat=51.375545, lng=-2.138789), distanceFromLastShop=9.52424200789921) time so far: 1920143.09225081
+ßShop(name=Chippenham, postcode=SN15 3WL, geoLocation=GeoLocation(lat=51.458394, lng=-2.116938), distanceFromLastShop=5.80484657745087) time so far: 1922039.6738401041
+¶Shop(name=Malmesbury, postcode=SN16 9FS, geoLocation=GeoLocation(lat=51.58096, lng=-2.09269), distanceFromLastShop=8.537628079746995) time so far: 1924264.1892096738
+©Shop(name=Cirencester, postcode=GL7 1SZ, geoLocation=GeoLocation(lat=51.713416, lng=-1.971251), distanceFromLastShop=10.542062549113774) time so far: 1926729.2367155675
+¨Shop(name=Great Malvern, postcode=WR14 4WR, geoLocation=GeoLocation(lat=52.112595, lng=-2.328429), distanceFromLastShop=31.541865464223548) time so far: 1931714.2605712742
+¶Shop(name=Hereford, postcode=HR4 9HT, geoLocation=GeoLocation(lat=52.058733, lng=-2.718586), distanceFromLastShop=17.030140051218506) time so far: 1934957.8773774204
+¢Shop(name=Wells, postcode=BA5 2PJ, geoLocation=GeoLocation(lat=51.209474, lng=-2.650273), distanceFromLastShop=58.78631887158659) time so far: 1995454.3582645904
+ßShop(name=Sherborne, postcode=DT9 3PU, geoLocation=GeoLocation(lat=50.949349, lng=-2.516449), distanceFromLastShop=18.902449908453708) time so far: 1998922.6522536047
+ßShop(name=Gillingham, postcode=SP8 4UA, geoLocation=GeoLocation(lat=51.035823, lng=-2.275914), distanceFromLastShop=12.07669943495021) time so far: 2001571.8561857988
+ßShop(name=Warminster, postcode=BA12 9BR, geoLocation=GeoLocation(lat=51.205281, lng=-2.177745), distanceFromLastShop=12.468586598094031) time so far: 2004268.08657757
+¶Shop(name=Crewkerne, postcode=TA18 8DA, geoLocation=GeoLocation(lat=50.882896, lng=-2.79436), distanceFromLastShop=34.90930740338645) time so far: 2009657.2034659765
+¶Shop(name=Bridport, postcode=DT6 3QP, geoLocation=GeoLocation(lat=50.733657, lng=-2.759893), distanceFromLastShop=10.425919296739394) time so far: 2012108.3137815853
+•Shop(name=Poundbury, postcode=DT1 3BW, geoLocation=GeoLocation(lat=50.715299, lng=-2.46693), distanceFromLastShop=12.91673883274659) time so far: 2014858.3224415148
+®Shop(name=Dorchester, postcode=DT1 1BN, geoLocation=GeoLocation(lat=50.714339, lng=-2.436197), distanceFromLastShop=1.3503727045604725) time so far: 2016220.3671660621
+¶Shop(name=Sidmouth, postcode=EX10 9GA, geoLocation=GeoLocation(lat=50.700078, lng=-3.244277), distanceFromLastShop=35.48247222263624) time so far: 2021678.2638327784
+£Shop(name=Exeter, postcode=EX1 2ED, geoLocation=GeoLocation(lat=50.724387, lng=-3.514024), distanceFromLastShop=11.957351059296474) time so far: 2024313.145959894
+ØShop(name=John Lewis Exeter, postcode=EX4 6NN, geoLocation=GeoLocation(lat=50.726374, lng=-3.525637), distanceFromLastShop=0.5277179419434647) time so far: 2074863.3261530332
+ßShop(name=Teignmouth, postcode=TQ14 8HR, geoLocation=GeoLocation(lat=50.546827, lng=-3.49516), distanceFromLastShop=12.482806612538903) time so far: 2077561.262946538
+§Shop(name=Torquay, postcode=TQ1 3HL, geoLocation=GeoLocation(lat=50.476812, lng=-3.528001), distanceFromLastShop=5.051323924118251) time so far: 2079367.4218174322
+¶Shop(name=Okehampton, postcode=EX20 1WL, geoLocation=GeoLocation(lat=50.740446, lng=-4.004084), distanceFromLastShop=27.7591518959152) time so far: 2083898.520044942
+©Shop(name=Holsworthy, postcode=EX22 6BL, geoLocation=GeoLocation(lat=50.807192, lng=-4.353758), distanceFromLastShop=16.005805525635314) time so far: 2087019.2167080182
+•Shop(name=Saltash, postcode=PL12 6LD, geoLocation=GeoLocation(lat=50.421424, lng=-4.23376), distanceFromLastShop=27.182296117454626) time so far: 2091481.0922421126
+£Shop(name=Truro, postcode=TR1 1RH, geoLocation=GeoLocation(lat=50.272557, lng=-5.036674), distanceFromLastShop=36.971983573429114) time so far: 2097117.7302709243
+ßShop(name=Wellington, postcode=TA21 8RD, geoLocation=GeoLocation(lat=50.979792, lng=-3.225686), distanceFromLastShop=93.43133403430485) time so far: 2109529.490355041
 ´Shop(name=Menai Bridge, postcode=LL59 5EA, geoLocation=GeoLocation(lat=53.223915, lng=-4.166358), distanceFromLastShop=160.24007133957107) time so far: 2180428.8085607486
 µShop(name=Gretna Green (Services), postcode=DG16 5HQ, geoLocation=GeoLocation(lat=55.010746, lng=-3.084017), distanceFromLastShop=131.17062833952744) time so far: 2263340.475400743
 ¢Shop(name=Hexham, postcode=NE46 3PJ, geoLocation=GeoLocation(lat=54.972753, lng=-2.098948), distanceFromLastShop=39.26624479338869) time so far: 2269252.42477595
@@ -454,9 +454,9 @@
  Finished Testing with real data
 ======================
 {Shop(name=shop2, postcode=pc2, geoLocation=GeoLocation(lat=1.0, lng=2.0), distanceFromLastShop=150.0) time so far: 19200.0
-|Shop(name=shop3, postcode=pc3, geoLocation=GeoLocation(lat=1.0, lng=2.0), distanceFromLastShop=300.0) time so far: 122400.0
+|Shop(name=shop3, postcode=pc3, geoLocation=GeoLocation(lat=1.0, lng=2.0), distanceFromLastShop=300.0) time so far: 123600.0
 {Shop(name=shop2, postcode=pc2, geoLocation=GeoLocation(lat=1.0, lng=2.0), distanceFromLastShop=200.0) time so far: 25200.0
-|Shop(name=shop3, postcode=pc3, geoLocation=GeoLocation(lat=1.0, lng=2.0), distanceFromLastShop=300.0) time so far: 122400.0
+|Shop(name=shop3, postcode=pc3, geoLocation=GeoLocation(lat=1.0, lng=2.0), distanceFromLastShop=300.0) time so far: 123600.0
 {Shop(name=shop4, postcode=pc4, geoLocation=GeoLocation(lat=1.0, lng=2.0), distanceFromLastShop=30.0) time so far: 177600.0
 °Shop(name=Liverpool, postcode=L1, geoLocation=GeoLocation(lat=53.403799, lng=-2.987648), distanceFromLastShop=178.15851975177128) time so far: 22579.02237021255
 ßShop(name=Newcastle, postcode=NE99 1AB, geoLocation=GeoLocation(lat=54.96746, lng=-1.615383), distanceFromLastShop=121.62893959688955) time so far: 102195.47275162674
