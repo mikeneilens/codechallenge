@@ -6,7 +6,7 @@ val geoCalc = GeodeticCalculator()
 val reference: Ellipsoid = Ellipsoid.WGS84
 const val METRES_IN_A_MILE = 1609.34
 
-class GeoLocation(private val lat:Double, private val lng:Double) {
+data class GeoLocation(private val lat:Double, private val lng:Double) {
     fun distanceTo(other:GeoLocation):DistanceInMiles {
         val globalCoordinates1 = GlobalCoordinates(this.lat, this.lng)
         val globalCoordinates2 = GlobalCoordinates(other.lat, other.lng)

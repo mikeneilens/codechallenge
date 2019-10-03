@@ -8,7 +8,7 @@ fun List<String>.convertToShop():Shop? =
     if ((this.size != 4) ||(this[2].toDoubleOrNull() == null) ||(this[3].toDoubleOrNull() == null) )
         null
     else
-        Shop(this[0], this[1], GeoLocation(this[2].toDouble(), this[3].toDouble()))
+        Shop(this[0], this[1], GeoLocation(this[3].toDouble(), this[2].toDouble()))
 
 fun List<Shop>.createRoute():List<Shop> {
 
@@ -41,6 +41,7 @@ fun findClosestShop(allShops:List<Shop>, newListOfShops:List<Shop>):Shop? {
 
 const val secondsBetween8amAnd6pm = 10 * 3600
 const val secondsBetween6pmAnd8am = 14 * 3600
+const val timeSpentAtEachShop = 20 * 60
 const val speedInMPH = 30
 
 fun calculateJourneyTime(shopsData: String, dailyTimeAllowance:Int = secondsBetween8amAnd6pm, nonTravellingTime:Int = secondsBetween6pmAnd8am): Int {
