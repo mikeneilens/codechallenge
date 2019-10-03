@@ -19,9 +19,6 @@ class MainTest {
             "Newcastle,NE99 1AB,-1.615383,54.96746"
     private val peterJonesAndReykjavikAsString = "Peter Jones,SW3,-0.159,51.492246,Reykjavik,L1,-21.895,64.153"
 
-    private val oneHour = 3600.0
-    private val oneDay  = oneHour * 24.0
-
     @Test
     fun `Empty string converts to an empty list of shops`() {
         val emptyString = ""
@@ -197,7 +194,7 @@ class MainTest {
     @Test
     fun `journey time is calculated correctly if there is two shops in the string that are reachable in the time allowed`() {
         val distanceBetweenPeterJonesAndLiverpool = 178.15851975
-        val expectedTime = (distanceBetweenPeterJonesAndLiverpool /speedInMPH * 3600.0 + minTimeSpentAtEachShop).toInt()
+        val expectedTime = (distanceBetweenPeterJonesAndLiverpool /speedInMPH * oneHourInSeconds + minTimeSpentAtEachShop).toInt()
 
         assertEquals(expectedTime, calculateJourneyTime(peterJonesAndLiverpoolAsString))
     }
@@ -217,7 +214,7 @@ class MainTest {
     @Test
     fun `journey time is calculated correctly if there is three shops in the string that are not all reachable in the same day`() {
         val distanceBetweenLiverpoolAndNewcastle = 121.62893
-        val expectedTime = (oneDay + distanceBetweenLiverpoolAndNewcastle/speedInMPH * 3600.0 + minTimeSpentAtEachShop).toInt()
+        val expectedTime = (oneDayInSeconds + distanceBetweenLiverpoolAndNewcastle/speedInMPH * oneHourInSeconds + minTimeSpentAtEachShop).toInt()
         assertEquals(expectedTime, calculateJourneyTime(peterJonesLiverpoolAndNewcastleAsString))
     }
 
@@ -234,7 +231,7 @@ class MainTest {
         val shop1 = Shop("shop1","pc1",GeoLocation(1.0,2.0),0.0)
         val shop2 = Shop("shop2","pc2",GeoLocation(1.0,2.0),30.0) //30 miles will take 1 hour or 3600 seconds to reach
 
-        val expectedTime = oneHour + minTimeSpentAtEachShop
+        val expectedTime = oneHourInSeconds + minTimeSpentAtEachShop
 
         assertEquals(expectedTime, listOf(shop1, shop2).calculateJourneyTime())
     }
@@ -251,7 +248,7 @@ class MainTest {
         val shop2 = Shop("shop2","pc2",GeoLocation(1.0,2.0),30.0)
         val shop3 = Shop("shop3","pc3",GeoLocation(1.0,2.0),30.0)
 
-        val expectedTime = oneHour + minTimeSpentAtEachShop + oneHour + minTimeSpentAtEachShop
+        val expectedTime = oneHourInSeconds + minTimeSpentAtEachShop + oneHourInSeconds + minTimeSpentAtEachShop
 
         assertEquals(expectedTime, listOf(shop1, shop2, shop3).calculateJourneyTime())
     }
@@ -261,7 +258,7 @@ class MainTest {
         val shop2 = Shop("shop2","pc2",GeoLocation(1.0,2.0),300.0)
         val shop3 = Shop("shop3","pc3",GeoLocation(1.0,2.0),30.0)
 
-        val expectedTime = oneDay + oneHour + minTimeSpentAtEachShop
+        val expectedTime = oneDayInSeconds + oneHourInSeconds + minTimeSpentAtEachShop
 
         assertEquals(expectedTime, listOf(shop1, shop2, shop3).calculateJourneyTime())
     }
@@ -272,7 +269,7 @@ class MainTest {
         val shop3 = Shop("shop3","pc3",GeoLocation(1.0,2.0),300.0)
         val shop4 = Shop("shop4","pc4",GeoLocation(1.0,2.0),30.0)
 
-        val expectedTime =  2 * oneDay + oneHour + minTimeSpentAtEachShop
+        val expectedTime =  2 * oneDayInSeconds + oneHourInSeconds + minTimeSpentAtEachShop
 
         assertEquals(expectedTime, listOf(shop1, shop2, shop3, shop4).calculateJourneyTime())
     }
@@ -285,7 +282,7 @@ class MainTest {
         val shop5 = Shop("shop5","pc5",GeoLocation(1.0,2.0),90.0)
         val shop6 = Shop("shop6","pc6",GeoLocation(1.0,2.0),150.0)//new day
 
-        val expectedTime = 3 * oneDay + 5 * oneHour + minTimeSpentAtEachShop
+        val expectedTime = 3 * oneDayInSeconds + 5 * oneHourInSeconds + minTimeSpentAtEachShop
 
         assertEquals(expectedTime, listOf(shop1, shop2, shop3, shop4, shop5, shop6).calculateJourneyTime())
     }
@@ -298,7 +295,7 @@ class MainTest {
         val shop5 = Shop("shop5","pc5",GeoLocation(1.0,2.0),15.0)
         val shop6 = Shop("shop6","pc6",GeoLocation(1.0,2.0),15.0)
 
-        val expectedTime = oneDay + 10 * oneHour
+        val expectedTime = oneDayInSeconds + 10 * oneHourInSeconds
 
         assertEquals(expectedTime , listOf(shop1, shop2, shop3, shop4, shop5, shop6).calculateJourneyTime())
     }
