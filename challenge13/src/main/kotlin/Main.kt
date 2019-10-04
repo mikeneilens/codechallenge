@@ -46,16 +46,8 @@ fun findClosestShopOrNull(allShops:List<Shop>, newListOfShops:List<Shop>):Shop? 
 
 fun List<Shop>.calculateJourneyTime():Seconds {
 
-    val timeAccumulator = TimeAccumulator()
-
-    for (shop in this.drop(1)) {
-        if (shop.canNeverBeReached()) return timeAccumulator.totalTime
-        else timeAccumulator.add(shop.timeToReachShop())
-
-        println("${shop.name} time so far: ${timeAccumulator.totalTime}")
-    }
-
-    return timeAccumulator.totalTime
+    val shopsThatCanBeReached = this.takeWhile { shop -> shop.canBeReached() }
+    return shopsThatCanBeReached.drop(1).fold(TimeAccumulator()){timeAccumulator, shop -> timeAccumulator + shop.timeToReachShop()}.totalTime
 
 }
 

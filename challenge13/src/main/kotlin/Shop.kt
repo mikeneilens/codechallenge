@@ -4,7 +4,7 @@ data class Shop(val name:String, val postcode:String, val geoLocation: GeoLocati
 
     fun withDistance(distance:DistanceInMiles):Shop = Shop(this.name, this.postcode, this.geoLocation, distance)
 
-    fun canNeverBeReached():Boolean  = if (timeToReachShop()  > secondsBetween8amAnd6pm) true else false
+    fun canBeReached():Boolean  = if (timeToReachShop()  <= secondsBetween8amAnd6pm) true else false
 
     fun timeToReachShop():Seconds = oneHourInSeconds * distanceFromLastShop / speedInMPH
 
