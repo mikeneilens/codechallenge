@@ -19,23 +19,23 @@ fun List<Shop>.createRoute():List<Shop> {
 
     if (this.size <= 1 ) return this
 
-    val newListOfShops = mutableListOf(this.first())
-    var closestShop = findClosestShopOrNull(this, newListOfShops)
+    val route = mutableListOf(this.first())
+    var closestShop = findClosestShopOrNull(this, route)
 
     while (closestShop != null) {
-        newListOfShops.add(closestShop)
-        closestShop = findClosestShopOrNull(this, newListOfShops)
+        route.add(closestShop)
+        closestShop = findClosestShopOrNull(this, route)
     }
 
-    return newListOfShops
+    return route
 }
 
-fun findClosestShopOrNull(allShops:List<Shop>, newListOfShops:List<Shop>):Shop? {
-    val shop = newListOfShops.lastOrNull() ?: return null
-    val closestShop:Shop? = null
+fun findClosestShopOrNull(allShops:List<Shop>, route:List<Shop>):Shop? {
+    val shop = route.lastOrNull() ?: return null
+    val nullShop:Shop? = null
 
-    return allShops.fold(closestShop){ closestShop:Shop?, nextShop:Shop ->
-        if (newListOfShops.contains(nextShop)) closestShop
+    return allShops.fold(nullShop){ closestShop:Shop?, nextShop:Shop ->
+        if (route.contains(nextShop)) closestShop
         else {
             if ((closestShop == null)||( shop.distanceTo(nextShop) < closestShop.distanceFromLastShop)) {
                 nextShop.withDistance(shop.distanceTo(nextShop))
