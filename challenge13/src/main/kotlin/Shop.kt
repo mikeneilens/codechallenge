@@ -6,7 +6,7 @@ data class Shop(val name:String, val postcode:String, val geoLocation: GeoLocati
 
     fun canNeverBeReached():Boolean  = if (timeToReachShop()  > secondsBetween8amAnd6pm) true else false
 
-    fun timeToReachShop() = oneHourInSeconds * distanceFromLastShop / speedInMPH
+    fun timeToReachShop():Seconds = oneHourInSeconds * distanceFromLastShop / speedInMPH
 
     override fun equals(other: Any?): Boolean = other is Shop && this.name == other.name
 

@@ -157,28 +157,28 @@ class MainTest {
         val listOfNewShops = emptyList<Shop>()
         val listOfAllShops = emptyList<Shop>()
 
-        assertEquals(null, findClosestShop(listOfAllShops, listOfNewShops))
+        assertEquals(null, findClosestShopOrNull(listOfAllShops, listOfNewShops))
     }
     @Test
     fun `closest shop is null if the list of all shops is empty `() {
         val listOfNewShops = listOf(headOffice, liverpool, peterJones)
         val listOfAllShops = emptyList<Shop>()
 
-        assertEquals(null, findClosestShop(listOfAllShops, listOfNewShops))
+        assertEquals(null, findClosestShopOrNull(listOfAllShops, listOfNewShops))
     }
     @Test
     fun `closest shop to peter jones is head office `() {
         val listOfNewShops = listOf(peterJones)
         val listOfAllShops = listOf(peterJones, liverpool, headOffice, oxfordStreet)
 
-        assertEquals(headOffice, findClosestShop(listOfAllShops, listOfNewShops))
+        assertEquals(headOffice, findClosestShopOrNull(listOfAllShops, listOfNewShops))
     }
     @Test
     fun `liverpool is the last shop on the new list of shops then closest shop is oxford street `() {
         val listOfNewShops = listOf(peterJones, liverpool)
         val listOfAllShops = listOf(peterJones, liverpool, headOffice, oxfordStreet)
 
-        assertEquals(oxfordStreet, findClosestShop(listOfAllShops, listOfNewShops))
+        assertEquals(oxfordStreet, findClosestShopOrNull(listOfAllShops, listOfNewShops))
     }
 
     @Test
@@ -313,7 +313,7 @@ class MainTest {
     @Test
     fun `an array of data converts to a shop correctly`() {
         val shopDataArray = listOf("Shop", "PostCode", "1234", "5678")
-        val shop = shopDataArray.convertToShop()
+        val shop = shopDataArray.convertToShopOrNull()
         if (shop != null) {
             assertEquals("Shop", shop.name)
             assertEquals("PostCode", shop.postcode)

@@ -1,30 +1,24 @@
-import kotlin.math.min
 
 class TimeAccumulator {
     private var wholeDaysTravelled = 0
-    private var timeRemainingInLatestDay = secondsBetween8amAnd6pm
-    private var timeUsedInLatestDay = 0.0
+    private var timeRemainingInLatestDay:Seconds = secondsBetween8amAnd6pm
+    private var timeUsedInLatestDay:Seconds = 0.0
 
-    val totalTime get() = wholeDaysTravelled * oneDayInSeconds + timeUsedInLatestDay
+    val totalTime:Seconds get() = wholeDaysTravelled * oneDayInSeconds + timeUsedInLatestDay
 
-    fun updateUsing(shop:Shop) {
+    fun add(travellingTime:Double) {
 
-        if (shop.timeToReachShop() > timeRemainingInLatestDay) { //need to wait until tomorrow before travelling
+        if (travellingTime > timeRemainingInLatestDay) { //need to wait until tomorrow before travelling
             moveToNextDay()
         }
 
-        addTravellingTime(shop.timeToReachShop())
-        addTimeSpentAtShop()
+        addTime(travellingTime)
+        addTime(minTimeSpentAtEachShop)
     }
 
-    private fun addTravellingTime(timeToNextShop:Double) {
-        timeUsedInLatestDay += timeToNextShop
-        timeRemainingInLatestDay -= timeToNextShop
-    }
-
-    private fun addTimeSpentAtShop() {
-        timeUsedInLatestDay += minTimeSpentAtEachShop
-        timeRemainingInLatestDay -= minTimeSpentAtEachShop
+    private fun addTime(time:Double) {
+        timeUsedInLatestDay += time
+        timeRemainingInLatestDay -= time
     }
 
     private fun moveToNextDay() {

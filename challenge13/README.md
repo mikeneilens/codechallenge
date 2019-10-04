@@ -13,4 +13,4 @@ This validates the input to ensure that lat/lng are valid Doubles and that csv d
 
 * `List<Shop>.createRoute()` which converts the list of random shops into a list which forms a route.
 
-* `List<Shop>.calculateJourneyTime()`. This depends on each shop knowing how far away it is from the previous shop. (not written yet).
+* `List<Shop>.calculateJourneyTime()`. This depends on each shop knowing how far away it is from the previous shop. This uses `TimeAccumulator` class to cumlatively add the time taken to visit each shop, taking into account the length of the working day and how much time must be spent in each shop. 
