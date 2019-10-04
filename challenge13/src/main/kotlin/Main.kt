@@ -1,6 +1,12 @@
 
 typealias DistanceInMiles = Double
 
+fun calculateJourneyTime(shopsData: String): Int {
+    val unsortedShops = shopsData.toShops()
+    val route = unsortedShops.createRoute()
+    return route.calculateJourneyTime().toInt()
+}
+
 fun String.toShops():List<Shop> = this.split(",").windowed(4,4).mapNotNull{it.convertToShopOrNull()}
 
 fun List<String>.convertToShopOrNull() =
@@ -36,12 +42,6 @@ fun findClosestShopOrNull(allShops:List<Shop>, newListOfShops:List<Shop>):Shop? 
             } else closestShop
         }
     }
-}
-
-fun calculateJourneyTime(shopsData: String): Int {
-    val unsortedShops = shopsData.toShops()
-    val route = unsortedShops.createRoute()
-    return route.calculateJourneyTime().toInt()
 }
 
 fun List<Shop>.calculateJourneyTime():Seconds {
