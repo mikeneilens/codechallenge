@@ -20,26 +20,27 @@ fun List<Shop>.createRoute():List<Shop> {
     if (this.size <= 1 ) return this
 
     val route = mutableListOf(this.first())
-    var closestShop = findClosestShopOrNull(this, route)
+    var closestShop = findClosestShopToEndOfRouteOrNull(this, route)
 
     while (closestShop != null) {
         route.add(closestShop)
-        closestShop = findClosestShopOrNull(this, route)
+        closestShop = findClosestShopToEndOfRouteOrNull(this, route)
     }
 
     return route
 }
 
-fun findClosestShopOrNull(allShops:List<Shop>, route:List<Shop>):Shop? {
-    val shop = route.lastOrNull() ?: return null
+fun findClosestShopToEndOfRouteOrNull(allShops:List<Shop>, route:List<Shop>):Shop? {
+    val shopAtEndOfRoute = route.lastOrNull() ?: return null
     val nullShop:Shop? = null
 
-    return allShops.fold(nullShop){ closestShop:Shop?, nextShop:Shop ->
-        if (route.contains(nextShop)) closestShop
+    return allShops.fold(nullShop){ closestShopSoFar:Shop?, candidateShop:Shop ->
+        if (route.contains(candidateShop)) closestShopSoFar
         else {
-            if ((closestShop == null)||( shop.distanceTo(nextShop) < closestShop.distanceFromLastShop)) {
-                nextShop.withDistance(shop.distanceTo(nextShop))
-            } else closestShop
+            val distanceToCandidateShop = shopAtEndOfRoute.distanceTo(candidateShop)
+            if ((closestShopSoFar == null)||( distanceToCandidateShop < closestShopSoFar.distanceFromLastShop)) {
+                candidateShop.withDistance(distanceToCandidateShop)
+            } else closestShopSoFar
         }
     }
 }
@@ -47,7 +48,9 @@ fun findClosestShopOrNull(allShops:List<Shop>, route:List<Shop>):Shop? {
 fun List<Shop>.calculateJourneyTime():Seconds {
 
     val shopsThatCanBeReached = this.takeWhile { shop -> shop.canBeReached() }
-    return shopsThatCanBeReached.drop(1).fold(TimeAccumulator()){timeAccumulator, shop -> timeAccumulator + shop.timeToReachShop()}.totalTime
+    return shopsThatCanBeReached.drop(1).fold(TimeAccumulator()){ timeAccumulator, shop ->
+        println("${shop.name} time to here: ${formatTime((timeAccumulator + shop.timeToReachShop()).totalTime.toInt())} distance to previous ${shop.distanceFromLastShop} ")
+        timeAccumulator + shop.timeToReachShop()}.totalTime
 
 }
 

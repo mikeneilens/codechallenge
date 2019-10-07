@@ -76,6 +76,7 @@
     <option name="width" value="1440" />
     <option name="height" value="821" />
   </component>
+  <component name="ProjectId" id="1RspUTA4j0LGrBxq8zhZ2bvjrVY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -218,6 +219,7 @@
       </method>
     </configuration>
     <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <properties />
       <listeners />

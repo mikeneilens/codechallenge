@@ -1,4 +1,466 @@
+Hshop2 time to here: 10 hours and 20 minutes distance to previous 300.0 
+Lshop3 time to here: 1 day, 1 hour and 20 minutes distance to previous 30.0 
+^Victoria 171 time to here: 21 minutes and 37 seconds distance to previous 0.8096236440680009 
+dLiverpool time to here: 6 hours, 38 minutes and 29 seconds distance to previous 178.43540160093957 
+Gshop2 time to here: 5 hours and 20 minutes distance to previous 150.0 
+Oshop3 time to here: 1 day, 10 hours and 20 minutes distance to previous 300.0 
+Nshop4 time to here: 2 days, 3 hours and 20 minutes distance to previous 90.0 
+Nshop5 time to here: 2 days, 6 hours and 40 minutes distance to previous 90.0 
+Oshop6 time to here: 3 days, 5 hours and 20 minutes distance to previous 150.0 
 Testing with real data
 ======================
+BJohn Lewis.com time to here: 20 minutes distance to previous 0.0 
+lVictoria Bressenden Place time to here: 40 minutes and 15 seconds distance to previous 0.12569237063991653 
+^Victoria Street time to here: 1 hour and 42 seconds distance to previous 0.22916521856592026 
+_Pimlico time to here: 1 hour, 21 minutes and 25 seconds distance to previous 0.35744663977591 
+mBATTERSEA NINE ELMS time to here: 1 hour, 42 minutes and 55 seconds distance to previous 0.7501802203197941 
+cVauxhall time to here: 2 hours, 3 minutes and 53 seconds distance to previous 0.48246077505294443 
+dBattersea time to here: 2 hours, 26 minutes and 13 seconds distance to previous 1.1678726135048394 
+iClapham Common time to here: 2 hours, 48 minutes and 26 seconds distance to previous 1.1109175934090885 
+kClapham Junction time to here: 3 hours, 10 minutes and 55 seconds distance to previous 1.2387662394126422 
+dWandsworth time to here: 3 hours, 33 minutes and 26 seconds distance to previous 1.255267291162146 
+fEast Putney time to here: 3 hours, 55 minutes and 11 seconds distance to previous 0.8809650322675016 
+bPutney time to here: 4 hours, 15 minutes and 51 seconds distance to previous 0.33050923984094743 
+hParsons Green time to here: 4 hours, 37 minutes and 50 seconds distance to previous 0.9910595298261173 
+bFulham time to here: 4 hours, 58 minutes and 40 seconds distance to previous 0.41422555939774997 
+jWest Kensington time to here: 5 hours, 19 minutes and 55 seconds distance to previous 0.6245909562621519 
+mFulham Palace Road time to here: 5 hours, 41 minutes and 17 seconds distance to previous 0.6880176723792574 
+bKensington time to here: 6 hours, 4 minutes and 7 seconds distance to previous 1.415127093935127 
+lNotting Hill Gate time to here: 6 hours, 25 minutes and 28 seconds distance to previous 0.6726065509846327 
+mKensington Gardens time to here: 6 hours, 46 minutes and 55 seconds distance to previous 0.7289907847568136 
+cBayswater time to here: 7 hours, 7 minutes and 53 seconds distance to previous 0.4800700578870538 
+gEdgware Road time to here: 7 hours, 29 minutes and 44 seconds distance to previous 0.9264832960157268 
+eMarylebone time to here: 7 hours, 50 minutes and 59 seconds distance to previous 0.6235517100290904 
+tJL Foodhall Oxford Street time to here: 8 hours, 11 minutes and 50 seconds distance to previous 0.4306751729463311 
+dBloomsbury time to here: 8 hours, 34 minutes and 6 seconds distance to previous 1.1279246359319883 
+sJohn Lewis Oxford Street time to here: 8 hours, 55 minutes and 5 seconds distance to previous 0.49579239052860286 
+gClerkenwell time to here: 9 hours, 15 minutes and 53 seconds distance to previous 0.39974722643401855 
+dBarbican time to here: 9 hours, 36 minutes and 51 seconds distance to previous 0.47934490329643636 
+cWalbrook time to here: 9 hours, 58 minutes and 12 seconds distance to previous 0.6766365089615831 
+eMonument time to here: 10 hours, 18 minutes and 37 seconds distance to previous 0.21156535800587453 
+jSt Katharine Docks time to here: 1 day, 21 minutes and 43 seconds distance to previous 0.860747489963766 
+iSouth Bank Tower time to here: 1 day, 45 minutes and 10 seconds distance to previous 1.7240526732534334 
+lHigh Holborn time to here: 1 day, 1 hour, 6 minutes and 51 seconds distance to previous 0.8404800414740878 
+vJohn Lewis St Pancras time to here: 1 day, 1 hour, 28 minutes and 53 seconds distance to previous 1.0188675958994562 
+tKings Cross Station time to here: 1 day, 1 hour, 49 minutes and 10 seconds distance to previous 0.1394016472205681 
+}Cookery School (Kings Cross) time to here: 1 day, 2 hours, 9 minutes and 41 seconds distance to previous 0.2609357721183688 
+^Kings Cross time to here: 1 day, 2 hours, 29 minutes and 41 seconds distance to previous 0.0 
+jIslington time to here: 1 day, 2 hours, 51 minutes and 8 seconds distance to previous 0.7233859628950433 
+qHighbury Corner time to here: 1 day, 3 hours, 12 minutes and 56 seconds distance to previous 0.9055525298872792 
+oHolloway Road time to here: 1 day, 3 hours, 34 minutes and 35 seconds distance to previous 0.8210846027928036 
+lCrouch End time to here: 1 day, 3 hours, 57 minutes and 52 seconds distance to previous 1.6408477882477337 
+nMuswell Hill time to here: 1 day, 4 hours, 20 minutes and 13 seconds distance to previous 1.1779941440966402 
+iFinchley time to here: 1 day, 4 hours, 44 minutes and 26 seconds distance to previous 2.105990750975896 
+qFinchley Central time to here: 1 day, 5 hours, 6 minutes and 26 seconds distance to previous 0.9996337053636962 
+^Mill Hill time to here: 1 day, 5 hours and 28 minutes distance to previous 0.786456787932784 
+pTemple Fortune time to here: 1 day, 5 hours, 51 minutes and 26 seconds distance to previous 1.7181973825230636 
+mBrent Cross time to here: 1 day, 6 hours, 13 minutes and 42 seconds distance to previous 1.1266414310090034 
+iJohn Lewis Brent Cross time to here: 1 day, 6 hours, 33 minutes and 42 seconds distance to previous 0.0 
+oWest Hampstead time to here: 1 day, 6 hours, 58 minutes and 3 seconds distance to previous 2.1794052816257086 
+ÄCookery School (Finchley Road) time to here: 1 day, 7 hours, 19 minutes and 21 seconds distance to previous 0.6527790961374623 
+^John Barnes time to here: 1 day, 7 hours, 39 minutes and 21 seconds distance to previous 0.0 
+John Lewis White City Westfield time to here: 1 day, 8 hours, 5 minutes and 33 seconds distance to previous 3.099280041153213 
+sWestfield London time to here: 1 day, 8 hours, 25 minutes and 54 seconds distance to previous 0.17104816229126538 
+iChiswick time to here: 1 day, 8 hours, 49 minutes and 52 seconds distance to previous 1.984558427862844 
+lEast Sheen time to here: 1 day, 9 hours, 13 minutes and 49 seconds distance to previous 1.9758235982236019 
+hRichmond time to here: 1 day, 9 hours, 36 minutes and 37 seconds distance to previous 1.39566748957762 
+lTwickenham time to here: 1 day, 9 hours, 59 minutes and 40 seconds distance to previous 1.5306726517790867 
+hSKY (OSTERLEY) time to here: 2 days, 25 minutes and 24 seconds distance to previous 2.7016897499303694 
+cWest Ealing time to here: 2 days, 49 minutes and 1 second distance to previous 1.8070523760422985 
+hEaling time to here: 2 days, 1 hour, 11 minutes and 44 seconds distance to previous 1.3584128443962153 
+mSouth Harrow time to here: 2 days, 1 hour, 40 minutes and 36 seconds distance to previous 4.439402425732198 
+cSouth Harrow Petrol Station time to here: 2 days, 2 hours and 36 seconds distance to previous 0.0 
+nHarrow Weald time to here: 2 days, 2 hours, 25 minutes and 55 seconds distance to previous 2.659869437085423 
+jNorthwood time to here: 2 days, 2 hours, 53 minutes and 11 seconds distance to previous 3.62639053525682 
+jRuislip time to here: 2 days, 3 hours, 18 minutes and 41 seconds distance to previous 2.7567311283308205 
+kWaterside time to here: 2 days, 3 hours, 45 minutes and 58 seconds distance to previous 3.635841758990425 
+pGerrards Cross time to here: 2 days, 4 hours, 14 minutes and 53 seconds distance to previous 4.463825743018529 
+nBeaconsfield time to here: 2 days, 4 hours, 43 minutes and 45 seconds distance to previous 4.430474535520063 
+lHazlemere time to here: 2 days, 5 hours, 11 minutes and 40 seconds distance to previous 3.9589358772771344 
+oHigh Wycombe time to here: 2 days, 5 hours, 38 minutes and 10 seconds distance to previous 3.2498819632414073 
+nJohn Lewis High Wycombe time to here: 2 days, 6 hours and 10 seconds distance to previous 1.0007428050679328 
+iMarlow time to here: 2 days, 6 hours, 25 minutes and 26 seconds distance to previous 2.6325856321391377 
+kMaidenhead time to here: 2 days, 6 hours, 54 minutes and 7 seconds distance to previous 4.338459357173135 
+mWindsor New time to here: 2 days, 7 hours, 24 minutes and 44 seconds distance to previous 5.308564217662927 
+fEgham time to here: 2 days, 7 hours, 53 minutes and 38 seconds distance to previous 4.44981874430877 
+mSunningdale time to here: 2 days, 8 hours, 22 minutes and 59 seconds distance to previous 4.673598157883658 
+jBagshot time to here: 2 days, 8 hours, 50 minutes and 32 seconds distance to previous 3.7773564465703164 
+jFrimley time to here: 2 days, 9 hours, 17 minutes and 26 seconds distance to previous 3.4543283037018693 
+lSandhurst time to here: 2 days, 9 hours, 42 minutes and 11 seconds distance to previous 2.3679897326535775 
+iYateley time to here: 2 days, 10 hours, 8 minutes and 4 seconds distance to previous 2.9443818178475065 
+mFleet South Services time to here: 3 days, 26 minutes and 3 seconds distance to previous 3.0250506850869026 
+_Fleet time to here: 3 days, 48 minutes and 25 seconds distance to previous 1.1882361943704784 
+fFarnham time to here: 3 days, 1 hour, 18 minutes and 5 seconds distance to previous 4.83070033743631 
+fAlton time to here: 3 days, 1 hour, 54 minutes and 50 seconds distance to previous 8.377188675877472 
+mBASINGSTOKE time to here: 3 days, 2 hours, 33 minutes and 37 seconds distance to previous 9.392652362921035 
+rJohn Lewis at home Basingstoke time to here: 3 days, 2 hours, 53 minutes and 37 seconds distance to previous 0.0 
+kThatcham time to here: 3 days, 3 hours, 37 minutes and 38 seconds distance to previous 12.004593428635044 
+|John Lewis at home Newbury time to here: 3 days, 4 hours, 3 minutes and 23 seconds distance to previous 2.8807698716666104 
+iNewbury time to here: 3 days, 4 hours, 24 minutes and 4 seconds distance to previous 0.3363649251239811 
+rMembury Services time to here: 3 days, 5 hours, 6 minutes and 24 seconds distance to previous 11.171041409982971 
+mMarlborough time to here: 3 days, 5 hours, 43 minutes and 39 seconds distance to previous 8.623988506326322 
+hSwindon time to here: 3 days, 6 hours, 22 minutes and 2 seconds distance to previous 9.190076548633607 
+}John Lewis at home Swindon time to here: 3 days, 6 hours, 43 minutes and 26 seconds distance to previous 0.7006049242168739 
+yJohn Lewis Outlet Swindon time to here: 3 days, 7 hours, 5 minutes and 7 seconds distance to previous 0.842763323752615 
+lFaringdon time to here: 3 days, 7 hours, 47 minutes and 49 seconds distance to previous 11.350561814085658 
+iWantage time to here: 3 days, 8 hours, 23 minutes and 19 seconds distance to previous 7.748808150476092 
+^Abingdon time to here: 3 days, 9 hours and 18 seconds distance to previous 8.494354410507402 
+sJohn Lewis Oxford time to here: 3 days, 9 hours, 31 minutes and 11 seconds distance to previous 5.435336723671137 
+uOxford Botley Road time to here: 3 days, 9 hours, 52 minutes and 45 seconds distance to previous 0.7859555663044613 
+{Headington - London Road time to here: 3 days, 10 hours, 18 minutes and 26 seconds distance to previous 2.845280572474268 
+eHeadington time to here: 4 days, 20 minutes and 21 seconds distance to previous 0.17854169651020657 
+aPeartree time to here: 4 days, 48 minutes and 9 seconds distance to previous 3.9004383904929627 
+gWitney time to here: 4 days, 1 hour, 25 minutes and 22 seconds distance to previous 8.607545158076723 
+qOxford Services time to here: 4 days, 2 hours, 19 minutes and 8 seconds distance to previous 16.883485934476102 
+gThame time to here: 4 days, 2 hours, 49 minutes and 30 seconds distance to previous 5.185019709486401 
+kAylesbury time to here: 4 days, 3 hours, 26 minutes and 40 seconds distance to previous 8.582933083512549 
+qLeighton Buzzard time to here: 4 days, 4 hours, 5 minutes and 26 seconds distance to previous 9.379339851269934 
+jOakgrove time to here: 4 days, 4 hours, 42 minutes and 50 seconds distance to previous 8.701644942166766 
+zJohn Lewis Milton Keynes time to here: 4 days, 5 hours, 6 minutes and 12 seconds distance to previous 1.6817306702914292 
+rNewport Pagnell time to here: 4 days, 5 hours, 32 minutes and 33 seconds distance to previous 3.1744151140813375 
+jAmpthill time to here: 4 days, 6 hours, 12 minutes and 10 seconds distance to previous 9.812336911416955 
+iBedford time to here: 4 days, 6 hours, 48 minutes and 51 seconds distance to previous 8.338962273596032 
+^St Neots time to here: 4 days, 7 hours and 26 minutes distance to previous 8.576066792703983 
+iSt Ives time to here: 4 days, 8 hours, 7 minutes and 35 seconds distance to previous 10.793159686351691 
+wJohn Lewis Cambridge time to here: 4 days, 8 hours, 50 minutes and 43 seconds distance to previous 11.566235292658153 
+qFitzroy Street time to here: 4 days, 9 hours, 11 minutes and 30 seconds distance to previous 0.3938989683381621 
+lCambridge time to here: 4 days, 9 hours, 36 minutes and 53 seconds distance to previous 2.6888024503679087 
+gSaffron Walden time to here: 5 days, 43 minutes and 7 seconds distance to previous 11.564267440929818 
+uBirchanger Services time to here: 5 days, 1 hour, 24 minutes and 24 seconds distance to previous 10.637698732825314 
+sBishops Stortford time to here: 5 days, 1 hour, 47 minutes and 24 seconds distance to previous 1.4982904120383216 
+mBroxbourne time to here: 5 days, 2 hours, 31 minutes and 40 seconds distance to previous 12.138187182217287 
+hEnfield time to here: 5 days, 3 hours, 4 minutes and 50 seconds distance to previous 6.581407711475272 
+pEnfield Chase time to here: 5 days, 3 hours, 25 minutes and 40 seconds distance to previous 0.4143673124552858 
+qWinchmore Hill time to here: 5 days, 3 hours, 48 minutes and 10 seconds distance to previous 1.2509884318682551 
+kWhetstone time to here: 5 days, 4 hours, 15 minutes and 17 seconds distance to previous 3.558756433119065 
+iBarnet time to here: 5 days, 4 hours, 39 minutes and 22 seconds distance to previous 2.0474571486307873 
+nMimms Services time to here: 5 days, 5 hours, 4 minutes and 6 seconds distance to previous 2.363003642459465 
+oLondon Gateway time to here: 5 days, 5 hours, 33 minutes and 21 seconds distance to previous 4.62204898742491 
+sJohn Lewis Watford time to here: 5 days, 6 hours, 5 minutes and 30 seconds distance to previous 6.076076889285316 
+yLittle Waitrose at John Lewis Watford time to here: 5 days, 6 hours, 25 minutes and 30 seconds distance to previous 0.0 
+sSceptre (Watford) time to here: 5 days, 6 hours, 49 minutes and 9 seconds distance to previous 1.8261832298444363 
+oRickmansworth time to here: 5 days, 7 hours, 17 minutes and 49 seconds distance to previous 4.337781315747641 
+kAmersham time to here: 5 days, 7 hours, 50 minutes and 26 seconds distance to previous 6.3025847297502855 
+jChesham time to here: 5 days, 8 hours, 14 minutes and 31 seconds distance to previous 2.0448204464223347 
+kBerkhamsted time to here: 5 days, 8 hours, 43 minutes and 1 second distance to previous 4.244479207135108 
+kSt Albans time to here: 5 days, 9 hours, 20 minutes and 49 seconds distance to previous 8.907681506897182 
+kHarpenden time to here: 5 days, 9 hours, 50 minutes and 24 seconds distance to previous 4.790116333973177 
+jJohn Lewis Welwyn time to here: 6 days, 32 minutes and 59 seconds distance to previous 6.494845879007229 
+mWelwyn Garden City time to here: 6 days, 53 minutes and 12 seconds distance to previous 0.11337180053873784 
+iStevenage time to here: 6 days, 1 hour, 28 minutes and 5 seconds distance to previous 7.438709729839195 
+hHitchin time to here: 6 days, 1 hour, 56 minutes and 28 seconds distance to previous 4.186548632813579 
+pBuckhurst Hill time to here: 6 days, 3 hours, 9 minutes and 29 seconds distance to previous 26.508769674924427 
+oSouth Woodford time to here: 6 days, 3 hours, 34 minutes and 4 seconds distance to previous 2.297591043895152 
+tJohn Lewis Stratford time to here: 6 days, 4 hours, 1 minute and 38 seconds distance to previous 3.781479814737442 
+sStratford City time to here: 6 days, 4 hours, 21 minutes and 39 seconds distance to previous 0.010029525027142352 
+mCanary Wharf time to here: 6 days, 4 hours, 47 minutes and 7 seconds distance to previous 2.728859361046829 
+lGreenwich time to here: 6 days, 5 hours, 10 minutes and 13 seconds distance to previous 1.5512091922050748 
+jBromley time to here: 6 days, 5 hours, 39 minutes and 12 seconds distance to previous 4.4909008297712365 
+nBromley South time to here: 6 days, 6 hours, 2 minutes and 16 seconds distance to previous 1.532306518093671 
+kBeckenham time to here: 6 days, 6 hours, 26 minutes and 20 seconds distance to previous 2.039877538788527 
+jCroydon time to here: 6 days, 6 hours, 54 minutes and 30 seconds distance to previous 4.0766150781664745 
+|John Lewis at home Croydon time to here: 6 days, 7 hours, 16 minutes and 30 seconds distance to previous 0.999893450727981 
+mSanderstead time to here: 6 days, 7 hours, 43 minutes and 9 seconds distance to previous 3.3296598733033593 
+jCoulsdon time to here: 6 days, 8 hours, 8 minutes and 37 seconds distance to previous 2.7352182796161384 
+oCoulsdon DFC time to here: 6 days, 8 hours, 29 minutes and 23 seconds distance to previous 0.3780656667553703 
+jBanstead time to here: 6 days, 8 hours, 55 minutes and 3 seconds distance to previous 2.8362112420205627 
+gCheam time to here: 6 days, 9 hours, 20 minutes and 16 seconds distance to previous 2.603826890690676 
+qWorcester Park time to here: 6 days, 9 hours, 43 minutes and 49 seconds distance to previous 1.7766022658218457 
+lNew Malden time to here: 6 days, 10 hours, 7 minutes and 19 seconds distance to previous 1.754725592216905 
+dRaynes Park time to here: 7 days, 22 minutes and 7 seconds distance to previous 1.0591961671429329 
+hWimbledon Hill time to here: 7 days, 44 minutes and 56 seconds distance to previous 1.4147622433635663 
+jWimbledon time to here: 7 days, 1 hour, 5 minutes and 38 seconds distance to previous 0.3478075462847928 
+kROEHAMPTON time to here: 7 days, 1 hour, 30 minutes and 17 seconds distance to previous 2.328132268550751 
+gBalham time to here: 7 days, 1 hour, 57 minutes and 50 seconds distance to previous 3.775006404664219 
+mKings Road time to here: 7 days, 2 hours, 23 minutes and 59 seconds distance to previous 3.0732934748249545 
+nPeter Jones time to here: 7 days, 2 hours, 44 minutes and 51 seconds distance to previous 0.4344208877598921 
+kBelgravia time to here: 7 days, 3 hours, 5 minutes and 48 seconds distance to previous 0.4738607890028837 
+pKnightsbridge time to here: 7 days, 3 hours, 26 minutes and 28 seconds distance to previous 0.3310388506445801 
+sOld Brompton Road time to here: 7 days, 3 hours, 48 minutes and 5 seconds distance to previous 0.8046108100669992 
+rGloucester Road time to here: 7 days, 4 hours, 8 minutes and 34 seconds distance to previous 0.24391653474769293 
+hKingston time to here: 7 days, 4 hours, 44 minutes and 5 seconds distance to previous 7.76262551828096 
+vJohn Lewis Kingston time to here: 7 days, 5 hours, 4 minutes and 17 seconds distance to previous 0.09824797116065272 
+jSurbiton time to here: 7 days, 5 hours, 26 minutes and 46 seconds distance to previous 1.237797415070645 
+hEsher time to here: 7 days, 5 hours, 53 minutes and 13 seconds distance to previous 3.2273669922490718 
+hHersham time to here: 7 days, 6 hours, 16 minutes and 2 seconds distance to previous 1.405142442102448 
+gCobham time to here: 7 days, 6 hours, 41 minutes and 3 seconds distance to previous 2.510890902475033 
+jWeybridge time to here: 7 days, 7 hours, 8 minutes and 7 seconds distance to previous 3.5357147680632757 
+lAddlestone time to here: 7 days, 7 hours, 31 minutes and 8 seconds distance to previous 1.5103031112079075 
+oWest Byfleet time to here: 7 days, 7 hours, 55 minutes and 46 seconds distance to previous 2.3118676920376053 
+qGoldsworth Park time to here: 7 days, 8 hours, 23 minutes and 36 seconds distance to previous 3.915530108793496 
+mBurnt Common time to here: 7 days, 8 hours, 52 minutes and 2 seconds distance to previous 4.221164793394931 
+|Guildford Worplesdon Road time to here: 7 days, 9 hours, 19 minutes and 54 seconds distance to previous 3.9347906977882854 
+kGuildford time to here: 7 days, 9 hours, 43 minutes and 2 seconds distance to previous 1.5641070780959474 
+mGodalming time to here: 7 days, 10 hours, 10 minutes and 51 seconds distance to previous 3.9050808541119197 
+aHaslemere time to here: 8 days, 36 minutes and 4 seconds distance to previous 8.034011973601066 
+`Petersfield time to here: 8 days, 1 hour and 19 minutes distance to previous 11.47073719250472 
+mWaterlooville time to here: 8 days, 1 hour, 58 minutes and 7 seconds distance to previous 9.561716147038506 
+hHavant time to here: 8 days, 2 hours, 23 minutes and 52 seconds distance to previous 2.872852422124664 
+kSouthsea time to here: 8 days, 2 hours, 56 minutes and 52 seconds distance to previous 6.5000810520644645 
+qKnight and Lee time to here: 8 days, 3 hours, 17 minutes and 2 seconds distance to previous 0.07734534855438047 
+jGosport time to here: 8 days, 3 hours, 41 minutes and 18 seconds distance to previous 2.1333420149192537 
+kEast Cowes time to here: 8 days, 4 hours, 15 minutes and 31 seconds distance to previous 7.11359739382727 
+lLocks Heath time to here: 8 days, 4 hours, 50 minutes and 8 seconds distance to previous 7.310290842766968 
+iDibden time to here: 8 days, 5 hours, 20 minutes and 59 seconds distance to previous 5.4198320213885784 
+xJohn Lewis Southampton time to here: 8 days, 5 hours, 45 minutes and 47 seconds distance to previous 2.405105872910742 
+yLittle Waitrose John Lewis Southampton time to here: 8 days, 6 hours, 5 minutes and 47 seconds distance to previous 0.0 
+qSouthampton New time to here: 8 days, 6 hours, 28 minutes and 41 seconds distance to previous 1.451017562470767 
+oChandlers Ford time to here: 8 days, 6 hours, 57 minutes and 37 seconds distance to previous 4.46472222113432 
+hRomsey time to here: 8 days, 7 hours, 28 minutes and 26 seconds distance to previous 5.403146741922389 
+kWinchester time to here: 8 days, 8 hours, 6 minutes and 36 seconds distance to previous 9.086885826840849 
+hAndover time to here: 8 days, 8 hours, 49 minutes and 1 second distance to previous 11.206283179470846 
+}Cookery School (Salisbury) time to here: 8 days, 9 hours, 42 minutes and 22 seconds distance to previous 16.679798440501234 
+]Salisbury time to here: 8 days, 10 hours, 2 minutes and 22 seconds distance to previous 0.0 
+WSalisbury Petrol Station time to here: 9 days and 20 minutes distance to previous 0.0 
+jRingwood time to here: 9 days, 1 hour, 11 minutes and 37 seconds distance to previous 15.814083049616366 
+aChristchurch time to here: 9 days, 1 hour and 47 minutes distance to previous 7.686487956375202 
+hWinton time to here: 9 days, 2 hours, 15 minutes and 45 seconds distance to previous 4.380686457363579 
+{John Lewis at home Poole time to here: 9 days, 2 hours, 39 minutes and 46 seconds distance to previous 2.0057405440766614 
+jParkstone time to here: 9 days, 3 hours, 1 minute and 27 seconds distance to previous 0.8380135821221941 
+^Wimborne time to here: 9 days, 3 hours and 32 minutes distance to previous 5.280635873972963 
+pLymington New time to here: 9 days, 4 hours, 30 minutes and 25 seconds distance to previous 19.204419997862153 
+kChichester time to here: 9 days, 5 hours, 58 minutes and 9 seconds distance to previous 33.87244606856063 
+ÄJohn Lewis at home Chichester time to here: 9 days, 6 hours, 20 minutes and 56 seconds distance to previous 1.3896790438872595 
+kRustington time to here: 9 days, 7 hours, 3 minutes and 27 seconds distance to previous 11.26055731303149 
+jWorthing time to here: 9 days, 7 hours, 35 minutes and 29 seconds distance to previous 6.011084438214519 
+mStorrington time to here: 9 days, 8 hours, 11 minutes and 41 seconds distance to previous 8.103825641691767 
+mHorsham New time to here: 9 days, 8 hours, 54 minutes and 9 seconds distance to previous 11.230313916159918 
+mJohn Lewis at home Horsham time to here: 9 days, 9 hours, 14 minutes and 9 seconds distance to previous 0.0 
+iHorley time to here: 9 days, 9 hours, 55 minutes and 22 seconds distance to previous 10.608466700183564 
+zHorley - Brighton Road time to here: 9 days, 10 hours, 16 minutes and 39 seconds distance to previous 0.6421327699498953 
+eBurgh Heath time to here: 10 days, 33 minutes and 12 seconds distance to previous 6.606655853132447 
+fEpsom time to here: 10 days, 1 hour, 2 minutes and 58 seconds distance to previous 4.877797920720646 
+nLeatherhead time to here: 10 days, 1 hour, 30 minutes and 21 seconds distance to previous 3.6967823648685285 
+hDorking time to here: 10 days, 1 hour, 59 minutes and 6 seconds distance to previous 4.375161776009279 
+lCaterham time to here: 10 days, 2 hours, 42 minutes and 23 seconds distance to previous 11.636175501069552 
+hOxted time to here: 10 days, 3 hours, 9 minutes and 31 seconds distance to previous 3.5698408573953366 
+oBiggin Hill time to here: 10 days, 3 hours, 37 minutes and 22 seconds distance to previous 3.9277572964473997 
+rGreen Street Green time to here: 10 days, 4 hours, 5 minutes and 9 seconds distance to previous 3.88537132337603 
+mPetts Wood time to here: 10 days, 4 hours, 29 minutes and 47 seconds distance to previous 2.318064828694834 
+iSidcup time to here: 10 days, 4 hours, 55 minutes and 43 seconds distance to previous 2.971538578608943 
+yJL Foodhall Bluewater time to here: 10 days, 5 hours, 30 minutes and 16 seconds distance to previous 7.2724439564023164 
+iJohn Lewis Bluewater time to here: 10 days, 5 hours, 50 minutes and 16 seconds distance to previous 0.0 
+mLongfield time to here: 10 days, 6 hours, 16 minutes and 52 seconds distance to previous 3.2977193791144495 
+lKingshill time to here: 10 days, 6 hours, 56 minutes and 11 seconds distance to previous 9.658607403639625 
+pAllington Park time to here: 10 days, 7 hours, 24 minutes and 34 seconds distance to previous 4.19448173217742 
+mPaddock Wood time to here: 10 days, 8 hours, 1 minute and 48 seconds distance to previous 8.617976763109649 
+ÖJohn Lewis at home Tunbridge Wells time to here: 10 days, 8 hours, 30 minutes and 47 seconds distance to previous 4.488673333453656 
+mTonbridge time to here: 10 days, 8 hours, 55 minutes and 51 seconds distance to previous 2.5320843165741076 
+lSevenoaks time to here: 10 days, 9 hours, 28 minutes and 31 seconds distance to previous 6.333183480722918 
+mTubs Hill time to here: 10 days, 9 hours, 49 minutes and 47 seconds distance to previous 0.6324559904049872 
+dEdenbridge time to here: 11 days, 35 minutes and 16 seconds distance to previous 7.635364372120164 
+nEast Grinstead time to here: 11 days, 1 hour, 7 minutes and 8 seconds distance to previous 5.937840952950701 
+mCrowborough time to here: 11 days, 1 hour, 44 minutes and 41 seconds distance to previous 8.771105959169567 
+jUckfield time to here: 11 days, 2 hours, 18 minutes and 16 seconds distance to previous 6.79627989393315 
+aHeathfield time to here: 11 days, 2 hours and 52 minutes distance to previous 6.864077769080887 
+kHailsham time to here: 11 days, 3 hours, 26 minutes and 23 seconds distance to previous 7.193235855020176 
+lEastbourne time to here: 11 days, 3 hours, 59 minutes and 2 seconds distance to previous 6.320193777611696 
+iLewes time to here: 11 days, 4 hours, 45 minutes and 17 seconds distance to previous 13.130051088523647 
+kBrighton time to here: 11 days, 5 hours, 21 minutes and 19 seconds distance to previous 8.016801689339376 
+hHove time to here: 11 days, 5 hours, 44 minutes and 43 seconds distance to previous 1.6994465230672682 
+oBurgess Hill time to here: 11 days, 6 hours, 20 minutes and 37 seconds distance to previous 7.948325316607404 
+rHaywards Heath time to here: 11 days, 6 hours, 47 minutes and 59 seconds distance to previous 3.6866116614350295 
+jHawkhurst time to here: 11 days, 8 hours, 2 minutes and 1 second distance to previous 27.014897868847637 
+kTenterden time to here: 11 days, 8 hours, 37 minutes and 44 seconds distance to previous 7.85743642700746 
+jAshford time to here: 11 days, 9 hours, 16 minutes and 39 seconds distance to previous 9.455002549711052 
+~John Lewis at home Ashford time to here: 11 days, 9 hours, 37 minutes and 12 seconds distance to previous 0.2782595558516429 
+_Hythe time to here: 12 days, 43 minutes and 9 seconds distance to previous 11.579530093980885 
+mCanterbury time to here: 12 days, 1 hour, 31 minutes and 24 seconds distance to previous 14.123696949775459 
+jRamsgate time to here: 12 days, 2 hours, 21 minutes and 7 seconds distance to previous 14.85932862079878 
+kSouthend time to here: 12 days, 3 hours, 48 minutes and 26 seconds distance to previous 33.65758053302643 
+kSouthend Petrol Station time to here: 12 days, 4 hours, 8 minutes and 26 seconds distance to previous 0.0 
+pLeigh On Sea time to here: 12 days, 4 hours, 34 minutes and 31 seconds distance to previous 3.0406986151329756 
+nBillericay time to here: 12 days, 5 hours, 17 minutes and 33 seconds distance to previous 11.519273015833837 
+xJohn Lewis Chelmsford time to here: 12 days, 5 hours, 53 minutes and 41 seconds distance to previous 8.064625493318246 
+mUpminster time to here: 12 days, 6 hours, 44 minutes and 59 seconds distance to previous 15.650584287972926 
+iHampton time to here: 12 days, 8 hours, 2 minutes and 23 seconds distance to previous 28.70130270636798 
+ÅJohn Lewis Heathrow Terminal 2 time to here: 12 days, 8 hours, 32 minutes and 21 seconds distance to previous 4.978879768095276 
+lBracknell time to here: 12 days, 9 hours, 19 minutes and 26 seconds distance to previous 13.54921328873227 
+ÄHorticulture Direct Services time to here: 12 days, 9 hours, 41 minutes and 16 seconds distance to previous 0.9099459387606514 
+jWaitrose Online Direct time to here: 12 days, 10 hours, 1 minute and 16 seconds distance to previous 0.0 
+eBagshot Road time to here: 13 days, 22 minutes and 8 seconds distance to previous 1.072787145700059 
+dWokingham time to here: 13 days, 49 minutes and 36 seconds distance to previous 3.7305891519288905 
+iWoodley time to here: 13 days, 1 hour, 17 minutes and 56 seconds distance to previous 4.166289446255574 
+jTwyford time to here: 13 days, 1 hour, 42 minutes and 52 seconds distance to previous 2.4701189361766507 
+iHenley time to here: 13 days, 2 hours, 11 minutes and 54 seconds distance to previous 4.515014851325188 
+lCaversham time to here: 13 days, 2 hours, 43 minutes and 24 seconds distance to previous 5.750836164524421 
+tJohn Lewis Reading time to here: 13 days, 3 hours, 5 minutes and 4 seconds distance to previous 0.8279065684532677 
+kReading time to here: 13 days, 3 hours, 29 minutes and 22 seconds distance to previous 2.1558558823144316 
+nWallingford time to here: 13 days, 4 hours, 10 minutes and 10 seconds distance to previous 10.39587449788645 
+nBuckingham time to here: 13 days, 5 hours, 26 minutes and 45 seconds distance to previous 28.297183413788176 
+iBrackley time to here: 13 days, 6 hours, 1 minute and 20 seconds distance to previous 7.291927087143282 
+iBanbury time to here: 13 days, 6 hours, 38 minutes and 20 seconds distance to previous 8.49884114665219 
+tWarwick Services time to here: 13 days, 7 hours, 24 minutes and 23 seconds distance to previous 13.020540959866457 
+iStratford Upon Avon time to here: 13 days, 8 hours and 53 seconds distance to previous 8.24939258039124 
+jAlcester time to here: 13 days, 8 hours, 36 minutes and 20 seconds distance to previous 7.72767642705903 
+jEvesham time to here: 13 days, 9 hours, 14 minutes and 50 seconds distance to previous 9.250614345583552 
+lWorcester time to here: 13 days, 9 hours, 59 minutes and 4 seconds distance to previous 12.118412353811808 
+cDroitwich time to here: 14 days, 32 minutes and 39 seconds distance to previous 6.326004797194076 
+kBromsgrove time to here: 14 days, 1 hour, 3 minutes and 53 seconds distance to previous 5.622108809261738 
+âHopwood Park Petrol Filling Station (ser time to here: 14 days, 1 hour, 34 minutes and 47 seconds distance to previous 5.45184862204979 
+dHopwood Services time to here: 14 days, 1 hour, 54 minutes and 47 seconds distance to previous 0.0 
+mHall Green time to here: 14 days, 2 hours, 27 minutes and 22 seconds distance to previous 6.285307058795664 
+kSolihull time to here: 14 days, 2 hours, 52 minutes and 42 seconds distance to previous 2.670901770971357 
+xJohn Lewis Solihull time to here: 14 days, 3 hours, 12 minutes and 59 seconds distance to previous 0.14005221330324338 
+xJohn Lewis Birmingham time to here: 14 days, 3 hours, 46 minutes and 18 seconds distance to previous 6.654659588018326 
+kHarborne time to here: 14 days, 4 hours, 11 minutes and 10 seconds distance to previous 2.437670287536138 
+nStourbridge time to here: 14 days, 4 hours, 47 minutes and 51 seconds distance to previous 8.342270545675403 
+pWolverhampton time to here: 14 days, 5 hours, 24 minutes and 15 seconds distance to previous 8.198391940143742 
+qWolverhampton Petrol Station time to here: 14 days, 5 hours, 44 minutes and 15 seconds distance to previous 0.0 
+mFour Oaks time to here: 14 days, 6 hours, 29 minutes and 41 seconds distance to previous 12.713801119707137 
+jLichfield time to here: 14 days, 7 hours, 1 minute and 36 seconds distance to previous 5.961588084528438 
+~John Lewis at home Tamworth time to here: 14 days, 7 hours, 34 minutes and 45 seconds distance to previous 6.574690721338851 
+rCorley Services time to here: 14 days, 8 hours, 20 minutes and 4 seconds distance to previous 12.659921998777957 
+mKenilworth time to here: 14 days, 8 hours, 58 minutes and 15 seconds distance to previous 9.093779029627473 
+cLutterworth time to here: 14 days, 9 hours and 54 minutes distance to previous 17.875083569790107 
+_Blaby time to here: 15 days, 36 minutes and 19 seconds distance to previous 8.165250613087066 
+Leicester Forest East Services time to here: 15 days, 1 hour, 3 minutes and 23 seconds distance to previous 3.531654502225489 
+vJohn Lewis Leicester time to here: 15 days, 1 hour, 29 minutes and 33 seconds distance to previous 3.079797147372123 
+gOadby time to here: 15 days, 1 hour, 56 minutes and 33 seconds distance to previous 3.500506708492913 
+nMOUNTSORREL time to here: 15 days, 2 hours, 36 minutes and 12 seconds distance to previous 9.826639029148929 
+yJohn Lewis Nottingham time to here: 15 days, 3 hours, 26 minutes and 40 seconds distance to previous 15.234887141845695 
+tTrinity Square time to here: 15 days, 3 hours, 46 minutes and 45 seconds distance to previous 0.041491898327888126 
+lWollaton time to here: 15 days, 4 hours, 13 minutes and 31 seconds distance to previous 3.3787792803809085 
+jNewark time to here: 15 days, 5 hours, 12 minutes and 19 seconds distance to previous 19.399479020325604 
+jLincoln time to here: 15 days, 6 hours, 6 minutes and 12 seconds distance to previous 16.945096763572085 
+kLincoln Petrol Station time to here: 15 days, 6 hours, 26 minutes and 12 seconds distance to previous 0.0 
+rWoodhall South time to here: 15 days, 7 hours, 49 minutes and 51 seconds distance to previous 31.828334420852467 
+lSheffield time to here: 15 days, 8 hours, 27 minutes and 55 seconds distance to previous 9.030825176930573 
+mSheffield Petrol Station time to here: 15 days, 8 hours, 47 minutes and 55 seconds distance to previous 0.0 
+vJohn Lewis Sheffield time to here: 15 days, 9 hours, 8 minutes and 52 seconds distance to previous 0.476755115507928 
+jBuxton time to here: 15 days, 10 hours, 8 minutes and 52 seconds distance to previous 20.001757541052385 
+bPoynton time to here: 16 days, 41 minutes and 11 seconds distance to previous 10.595832126877397 
+oCheadle Hulme time to here: 16 days, 1 hour, 7 minutes and 41 seconds distance to previous 3.2540347986145397 
+sJohn Lewis Cheadle time to here: 16 days, 1 hour, 30 minutes and 1 second distance to previous 1.1639811188974354 
+jWilmslow time to here: 16 days, 1 hour, 56 minutes and 36 seconds distance to previous 3.289870500015351 
+qAlderley Edge time to here: 16 days, 2 hours, 20 minutes and 13 seconds distance to previous 1.8056664580205324 
+lKnutsford time to here: 16 days, 2 hours, 51 minutes and 41 seconds distance to previous 5.736142534436796 
+lNorthwich time to here: 16 days, 3 hours, 24 minutes and 51 seconds distance to previous 6.584565199918426 
+jSandbach time to here: 16 days, 4 hours, 5 minutes and 17 seconds distance to previous 10.21170178267844 
+rKeele Services time to here: 16 days, 4 hours, 46 minutes and 51 seconds distance to previous 10.791322992855923 
+kNewport time to here: 16 days, 5 hours, 38 minutes and 57 seconds distance to previous 16.044087609243224 
+nShrewsbury time to here: 16 days, 6 hours, 32 minutes and 13 seconds distance to previous 16.636906367642887 
+jChester time to here: 16 days, 7 hours, 59 minutes and 57 seconds distance to previous 33.86561662262605 
+~John Lewis at home Chester time to here: 16 days, 8 hours, 22 minutes and 57 seconds distance to previous 1.5000367166324107 
+xJohn Lewis Liverpool time to here: 16 days, 9 hours, 12 minutes and 12 seconds distance to previous 14.624210478422562 
+jFormby time to here: 16 days, 9 hours, 53 minutes and 58 seconds distance to previous 10.887013614226811 
+vCharnock Richard (Services) time to here: 17 days, 51 minutes and 49 seconds distance to previous 15.908930504176475 
+pWalton-le-Dale time to here: 17 days, 1 hour, 28 minutes and 17 seconds distance to previous 8.235506959736174 
+wJohn Lewis Trafford time to here: 17 days, 2 hours, 36 minutes and 21 seconds distance to previous 24.036785922371124 
+lAltrincham time to here: 17 days, 3 hours, 4 minutes and 31 seconds distance to previous 4.077371101762209 
+|Hartshead Moor (Services) time to here: 17 days, 4 hours, 30 minutes and 56 seconds distance to previous 33.21292801301364 
+tJohn Lewis Leeds time to here: 17 days, 5 hours, 11 minutes and 34 seconds distance to previous 10.313519635247589 
+lMeanwood time to here: 17 days, 5 hours, 36 minutes and 22 seconds distance to previous 2.4035912101324657 
+hOtley time to here: 17 days, 6 hours, 11 minutes and 17 seconds distance to previous 7.457178925753463 
+lHarrogate time to here: 17 days, 6 hours, 48 minutes and 51 seconds distance to previous 8.779856919494092 
+gYork time to here: 17 days, 7 hours, 47 minutes and 9 seconds distance to previous 19.153861511172835 
+fJohn Lewis York time to here: 17 days, 8 hours and 12 minutes distance to previous 2.421167378293962 
+kWillerby time to here: 17 days, 9 hours, 29 minutes and 21 seconds distance to previous 28.67980333162316 
+lAshbourne time to here: 18 days, 2 hours, 47 minutes and 40 seconds distance to previous 73.84003007530266 
+lUTTOXETER time to here: 18 days, 3 hours, 27 minutes and 30 seconds distance to previous 9.910848580360767 
+tMarket Harborough time to here: 18 days, 5 hours, 26 minutes and 4 seconds distance to previous 49.285393958025075 
+nKingsthorpe time to here: 18 days, 6 hours, 15 minutes and 32 seconds distance to previous 14.73240303213453 
+kWootton time to here: 18 days, 6 hours, 42 minutes and 48 seconds distance to previous 3.6342411079754937 
+mTowcester time to here: 18 days, 7 hours, 16 minutes and 36 seconds distance to previous 6.9010802000259295 
+lDaventry time to here: 18 days, 7 hours, 59 minutes and 29 seconds distance to previous 11.440708874468575 
+iRushden time to here: 18 days, 9 hours, 5 minutes and 50 seconds distance to previous 23.17617026284053 
+kRushden Petrol Station time to here: 18 days, 9 hours, 25 minutes and 50 seconds distance to previous 0.0 
+kOundle time to here: 18 days, 10 hours, 14 minutes and 31 seconds distance to previous 14.337773278159084 
+fPeterborough time to here: 19 days, 42 minutes and 9 seconds distance to previous 11.075880065508242 
+zJohn Lewis Peterborough time to here: 19 days, 1 hour, 2 minutes and 33 seconds distance to previous 0.20290962564397458 
+kStamford time to here: 19 days, 1 hour, 45 minutes and 24 seconds distance to previous 11.425601992709293 
+fEly time to here: 19 days, 3 hours, 17 minutes and 51 seconds distance to previous 36.22613119076356 
+lNewmarket time to here: 19 days, 4 hours, 2 minutes and 13 seconds distance to previous 12.178402751022983 
+sBury St Edmunds time to here: 19 days, 4 hours, 47 minutes and 40 seconds distance to previous 12.727995677775327 
+kSudbury time to here: 19 days, 5 hours, 36 minutes and 18 seconds distance to previous 14.314603529545423 
+nColchester time to here: 19 days, 6 hours, 21 minutes and 52 seconds distance to previous 12.788096103369668 
+{Ipswich (Corn Exchange) time to here: 19 days, 7 hours, 11 minutes and 55 seconds distance to previous 15.024031295289316 
+jIpswich time to here: 19 days, 7 hours, 37 minutes and 12 seconds distance to previous 2.638530700094451 
+oJohn Lewis at home Ipswich time to here: 19 days, 7 hours, 57 minutes and 12 seconds distance to previous 0.0 
+mSaxmundham time to here: 19 days, 8 hours, 52 minutes and 18 seconds distance to previous 17.54832137523934 
+kNorwich time to here: 19 days, 10 hours, 10 minutes and 34 seconds distance to previous 29.13692831086387 
+mJohn Lewis Norwich time to here: 20 days, 24 minutes and 27 seconds distance to previous 2.2319755479484584 
+_Wymondham time to here: 20 days, 1 hour and 31 seconds distance to previous 8.033794884501063 
+lWymondham Petrol Station time to here: 20 days, 1 hour, 20 minutes and 31 seconds distance to previous 0.0 
+lSwaffham time to here: 20 days, 2 hours, 19 minutes and 11 seconds distance to previous 19.326984757168265 
+lSwaffham Petrol Station time to here: 20 days, 2 hours, 39 minutes and 11 seconds distance to previous 0.0 
+oNorth Walsham time to here: 20 days, 4 hours, 1 minute and 19 seconds distance to previous 31.067406112017053 
+yJohn Lewis Cheltenham time to here: 20 days, 9 hours, 39 minutes and 31 seconds distance to previous 159.10616434309333 
+cCheltenham time to here: 20 days, 10 hours and 32 seconds distance to previous 0.5030935550946434 
+YCheltenham Petrol Station time to here: 21 days and 20 minutes distance to previous 0.0 
+hStroud time to here: 21 days, 1 hour, 4 minutes and 47 seconds distance to previous 12.398231836201761 
+wMichaelwood Services time to here: 21 days, 1 hour, 45 minutes and 23 seconds distance to previous 10.300344142287413 
+sChipping Sodbury time to here: 21 days, 2 hours, 22 minutes and 57 seconds distance to previous 8.784255751386684 
+qJohn Lewis Cribbs Causeway time to here: 21 days, 3 hours and 26 seconds distance to previous 8.738987035191764 
+pWestbury Park time to here: 21 days, 3 hours, 26 minutes and 52 seconds distance to previous 3.218088745058684 
+jClifton time to here: 21 days, 3 hours, 50 minutes and 8 seconds distance to previous 1.6306607911933662 
+sGordano Services time to here: 21 days, 4 hours, 19 minutes and 10 seconds distance to previous 4.520550207768033 
+mPortishead time to here: 21 days, 4 hours, 44 minutes and 7 seconds distance to previous 2.4737441578385617 
+lPortishead Petrol Station time to here: 21 days, 5 hours, 4 minutes and 7 seconds distance to previous 0.0 
+kNailsea time to here: 21 days, 5 hours, 31 minutes and 23 seconds distance to previous 3.6338197276902435 
+uWeston Super Mare time to here: 21 days, 6 hours, 12 minutes and 53 seconds distance to previous 10.747448274166304 
+iBarry time to here: 21 days, 6 hours, 59 minutes and 13 seconds distance to previous 13.164528129680866 
+uJohn Lewis Cardiff time to here: 21 days, 7 hours, 29 minutes and 39 seconds distance to previous 5.217992671455157 
+oPontprennau time to here: 21 days, 7 hours, 57 minutes and 32 seconds distance to previous 3.9409992006241716 
+yCardiff Gate Services time to here: 21 days, 8 hours, 18 minutes and 51 seconds distance to previous 0.6590257853359344 
+lCowbridge time to here: 21 days, 9 hours, 8 minutes and 16 seconds distance to previous 14.712692293601659 
+mAbergavenny time to here: 22 days, 1 hour, 21 minutes and 10 seconds distance to previous 30.58388366322647 
+nAbergavenny Petrol Station time to here: 22 days, 1 hour, 41 minutes and 10 seconds distance to previous 0.0 
+lMonmouth time to here: 22 days, 2 hours, 27 minutes and 43 seconds distance to previous 13.280165877210022 
+lCaldicot time to here: 22 days, 3 hours, 18 minutes and 21 seconds distance to previous 15.318347290489957 
+kKeynsham time to here: 22 days, 4 hours, 11 minutes and 28 seconds distance to previous 16.55645011602819 
+gBath time to here: 22 days, 4 hours, 43 minutes and 20 seconds distance to previous 5.929346468563046 
+jMelksham time to here: 22 days, 5 hours, 22 minutes and 23 seconds distance to previous 9.52424200789921 
+lChippenham time to here: 22 days, 5 hours, 53 minutes and 59 seconds distance to previous 5.80484657745087 
+lMalmesbury time to here: 22 days, 6 hours, 31 minutes and 4 seconds distance to previous 8.537628079746995 
+nCirencester time to here: 22 days, 7 hours, 12 minutes and 9 seconds distance to previous 10.542062549113774 
+qGreat Malvern time to here: 22 days, 8 hours, 35 minutes and 14 seconds distance to previous 31.541865464223548 
+lHereford time to here: 22 days, 9 hours, 29 minutes and 17 seconds distance to previous 17.030140051218506 
+hWells time to here: 23 days, 2 hours, 17 minutes and 34 seconds distance to previous 58.78631887158659 
+mSherborne time to here: 23 days, 3 hours, 15 minutes and 22 seconds distance to previous 18.902449908453708 
+mGillingham time to here: 23 days, 3 hours, 59 minutes and 31 seconds distance to previous 12.07669943495021 
+nWarminster time to here: 23 days, 4 hours, 44 minutes and 28 seconds distance to previous 12.468586598094031 
+lCrewkerne time to here: 23 days, 6 hours, 14 minutes and 17 seconds distance to previous 34.90930740338645 
+kBridport time to here: 23 days, 6 hours, 55 minutes and 8 seconds distance to previous 10.425919296739394 
+lPoundbury time to here: 23 days, 7 hours, 40 minutes and 58 seconds distance to previous 12.91673883274659 
+mDorchester time to here: 23 days, 8 hours, 3 minutes and 40 seconds distance to previous 1.3503727045604725 
+kSidmouth time to here: 23 days, 9 hours, 34 minutes and 38 seconds distance to previous 35.48247222263624 
+kExeter time to here: 23 days, 10 hours, 18 minutes and 33 seconds distance to previous 11.957351059296474 
+kJohn Lewis Exeter time to here: 24 days, 21 minutes and 3 seconds distance to previous 0.5277179419434647 
+jTeignmouth time to here: 24 days, 1 hour, 6 minutes and 1 second distance to previous 12.482806612538903 
+hTorquay time to here: 24 days, 1 hour, 36 minutes and 7 seconds distance to previous 5.051323924118251 
+lOkehampton time to here: 24 days, 2 hours, 51 minutes and 38 seconds distance to previous 27.7591518959152 
+nHolsworthy time to here: 24 days, 3 hours, 43 minutes and 39 seconds distance to previous 16.005805525635314 
+iSaltash time to here: 24 days, 4 hours, 58 minutes and 1 second distance to previous 27.182296117454626 
+iTruro time to here: 24 days, 6 hours, 31 minutes and 57 seconds distance to previous 36.971983573429114 
+mWellington time to here: 24 days, 9 hours, 58 minutes and 49 seconds distance to previous 93.43133403430485 
+pMenai Bridge time to here: 25 days, 5 hours, 40 minutes and 28 seconds distance to previous 160.24007133957107 
+{Gretna Green (Services) time to here: 26 days, 4 hours, 42 minutes and 20 seconds distance to previous 131.17062833952744 
+iHexham time to here: 26 days, 6 hours, 20 minutes and 52 seconds distance to previous 39.26624479338869 
+lPonteland time to here: 26 days, 7 hours, 11 minutes and 8 seconds distance to previous 15.133453708010018 
+jJesmond time to here: 26 days, 7 hours, 44 minutes and 45 seconds distance to previous 6.805582793315112 
+oEldon Square time to here: 26 days, 8 hours, 7 minutes and 12 seconds distance to previous 1.2319195173772128 
+xJohn Lewis Newcastle time to here: 26 days, 8 hours, 28 minutes and 15 seconds distance to previous 0.5227570137839814 
+nMorningside time to here: 27 days, 3 hours, 22 minutes and 49 seconds distance to previous 91.40947768244581 
+lComely Bank time to here: 27 days, 3 hours, 47 minutes and 1 second distance to previous 2.103150971744398 
+kStirling time to here: 27 days, 5 hours, 6 minutes and 19 seconds distance to previous 29.652290079305832 
+kMilngavie time to here: 27 days, 6 hours, 4 minutes and 56 seconds distance to previous 19.30952736715314 
+lByres Road time to here: 27 days, 6 hours, 33 minutes and 1 second distance to previous 4.0344679923736395 
+vJohn Lewis Glasgow time to here: 27 days, 6 hours, 56 minutes and 39 seconds distance to previous 1.8160882544391082 
+oNewton Mearns time to here: 27 days, 7 hours, 30 minutes and 9 seconds distance to previous 6.756428162628773 
+nHelensburgh time to here: 27 days, 8 hours, 30 minutes and 20 seconds distance to previous 20.08679808350582 
+oHelensburgh Petrol Station time to here: 27 days, 8 hours, 50 minutes and 20 seconds distance to previous 0.0 
+wJohn Lewis Aberdeen time to here: 28 days, 4 hours, 35 minutes and 12 seconds distance to previous 127.60240303196026 
  Finished Testing with real data
 ======================
+Gshop2 time to here: 5 hours and 20 minutes distance to previous 150.0 
+Oshop3 time to here: 1 day, 10 hours and 20 minutes distance to previous 300.0 
+8shop2 time to here: 7 hours distance to previous 200.0 
+Oshop3 time to here: 1 day, 10 hours and 20 minutes distance to previous 300.0 
+Mshop4 time to here: 2 days, 1 hour and 20 minutes distance to previous 30.0 
+dLiverpool time to here: 6 hours, 16 minutes and 19 seconds distance to previous 178.15851975177128 
+kNewcastle time to here: 1 day, 4 hours, 23 minutes and 15 seconds distance to previous 121.62893959688955 
+Eshop2 time to here: 1 hour and 20 minutes distance to previous 30.0 
+Fshop3 time to here: 2 hours and 40 minutes distance to previous 30.0 
+!Eshop2 time to here: 1 hour and 20 minutes distance to previous 30.0 
+"dLiverpool time to here: 6 hours, 16 minutes and 19 seconds distance to previous 178.15851975177128 
