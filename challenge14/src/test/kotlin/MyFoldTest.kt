@@ -39,5 +39,6 @@ class MyFoldTest {
     @Test
     fun `List of (1,2,3), plus an initial value of "x" returns a string containing "x 1 2 3" when used with empty spaces function `() {
         assertEquals("x 1 2 3", myFold(listOf(1,2,3),"x",convertIntsToSingleStringWithSpaces))
+        listOf(1,2,3).fold("",convertIntsToSingleStringWithSpaces)
     }
 }
