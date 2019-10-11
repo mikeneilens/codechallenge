@@ -19,10 +19,10 @@ class MyFoldGenericTest {
     }
     @Test
     fun `List of one String containing ("1","2") returns 12`() {
-        Assertions.assertEquals(12, myFold(listOf<String>("1","2"), 0, convertListOfStringToInt))
+        Assertions.assertEquals(12, myFold(listOf<String>("1", "2"), 0, convertListOfStringToInt))
     }
     @Test
     fun `List of one String containing ("1","2") and an initial value of 3  returns 312`() {
-        Assertions.assertEquals(312, myFold(listOf<String>("1","2"), 3, convertListOfStringToInt))
+        Assertions.assertEquals(312, myFold(listOf<String>("1", "2"), 3, convertListOfStringToInt))
     }
 }
