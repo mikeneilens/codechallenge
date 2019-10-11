@@ -1,7 +1,7 @@
-fun myFold(list: List<Int>, acc:String, myFunction:(String,Int)->String): String {
-    var output = acc
+fun myFold(list: List<Int>, initial:String, myFunction:(String,Int)->String): String {
+    var output = initial
     for (item in list) {
-        output += "$item"
+        output = myFunction(output, item)
     }
     return output
 }
