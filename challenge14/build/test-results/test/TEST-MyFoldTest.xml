@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MyFoldTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-10-11T08:18:43" hostname="MacBook-Pro-2" time="0.03">
+<testsuite name="MyFoldTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2019-10-11T08:27:54" hostname="MacBook-Pro-2" time="0.036">
   <properties/>
-  <testcase name="Empty list of Ints returns an empty String()" classname="MyFoldTest" time="0.025"/>
-  <testcase name="List of (1) returns a string containing &quot;1&quot; ()" classname="MyFoldTest" time="0.004"/>
+  <testcase name="Empty list of Ints returns an empty String()" classname="MyFoldTest" time="0.021"/>
+  <testcase name="List of (1,2), plus an initial value of &quot;x&quot; returns a string containing &quot;x1&quot; ()" classname="MyFoldTest" time="0.011"/>
+  <testcase name="List of (1) returns a string containing &quot;1&quot; ()" classname="MyFoldTest" time="0.0"/>
+  <testcase name="List of (1), plus an initial value of &quot;x&quot; returns a string containing &quot;x1&quot; ()" classname="MyFoldTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

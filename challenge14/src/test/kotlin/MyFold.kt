@@ -1,4 +1,10 @@
-fun myFold(list: List<Int>, acc:Int, myFunction:(String,Int)->String): String {
+fun myFold(list: List<Int>, acc:String, myFunction:(String,Int)->String): String {
     if (list.isEmpty()) return ""
-    else return "${list.first()}"
+    else {
+        var output = acc
+        for (item in list) {
+            output += "$item"
+        }
+        return output
+    }
 }
