@@ -29,7 +29,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">0</div>
+<div class="counter">7</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.458s</div>
+<div class="counter">0.724s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox success" id="successRate">
-<div class="percent">100%</div>
+<div class="infoBox failures" id="successRate">
+<div class="percent">80%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,13 +61,719 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Tests</a>
+<a href="#tab0">Failed tests</a>
 </li>
 <li>
-<a href="#tab1">Standard output</a>
+<a href="#tab1">Tests</a>
+</li>
+<li>
+<a href="#tab2">Standard output</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="Re-ordering a list of three shops in correct order returns a list of three shops()"></a>
+<h3 class="failures">Re-ordering a list of three shops in correct order returns a list of three shops()</h3>
+<span class="code">
+<pre>org.opentest4j.AssertionFailedError: expected: &lt;0&gt; but was: &lt;1&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at org.junit.jupiter.api.AssertionUtils.failNotEqual(AssertionUtils.java:62)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:510)
+	at MainTest.Re-ordering a list of three shops in correct order returns a list of three shops(MainTest.kt:125)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:675)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:125)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:132)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:124)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:74)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:104)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:62)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:43)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:35)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$6(TestMethodTestDescriptor.java:202)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:198)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:135)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:135)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at java.util.ArrayList.forEach(ArrayList.java:1249)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at java.util.ArrayList.forEach(ArrayList.java:1249)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:170)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:154)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:90)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:92)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$100(JUnitPlatformTestClassProcessor.java:77)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:73)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:61)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy2.stop(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.stop(TestWorker.java:131)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.lang.Thread.run(Thread.java:748)
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="Re-ordering a list of three shops in incorrect order returns a list of three shops()"></a>
+<h3 class="failures">Re-ordering a list of three shops in incorrect order returns a list of three shops()</h3>
+<span class="code">
+<pre>org.opentest4j.AssertionFailedError: expected: &lt;0&gt; but was: &lt;1&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at org.junit.jupiter.api.AssertionUtils.failNotEqual(AssertionUtils.java:62)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:510)
+	at MainTest.Re-ordering a list of three shops in incorrect order returns a list of three shops(MainTest.kt:138)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:675)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:125)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:132)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:124)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:74)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:104)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:62)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:43)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:35)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$6(TestMethodTestDescriptor.java:202)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:198)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:135)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:135)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at java.util.ArrayList.forEach(ArrayList.java:1249)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at java.util.ArrayList.forEach(ArrayList.java:1249)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:170)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:154)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:90)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:92)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$100(JUnitPlatformTestClassProcessor.java:77)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:73)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:61)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy2.stop(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.stop(TestWorker.java:131)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.lang.Thread.run(Thread.java:748)
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="Test with the data from the challenge()"></a>
+<h3 class="failures">Test with the data from the challenge()</h3>
+<span class="code">
+<pre>org.opentest4j.AssertionFailedError: expected: &lt;2435712&gt; but was: &lt;2625274&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at org.junit.jupiter.api.AssertionUtils.failNotEqual(AssertionUtils.java:62)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:510)
+	at MainTest.Test with the data from the challenge(MainTest.kt:309)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:675)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:125)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:132)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:124)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:74)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:104)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:62)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:43)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:35)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$6(TestMethodTestDescriptor.java:202)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:198)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:135)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:135)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at java.util.ArrayList.forEach(ArrayList.java:1249)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at java.util.ArrayList.forEach(ArrayList.java:1249)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:170)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:154)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:90)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:92)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$100(JUnitPlatformTestClassProcessor.java:77)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:73)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:61)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy2.stop(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.stop(TestWorker.java:131)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.lang.Thread.run(Thread.java:748)
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="journey time is calculated correctly if there is three shops in the string that are not all reachable in the same day()"></a>
+<h3 class="failures">journey time is calculated correctly if there is three shops in the string that are not all reachable in the same day()</h3>
+<span class="code">
+<pre>org.opentest4j.AssertionFailedError: expected: &lt;102195&gt; but was: &lt;105075&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at org.junit.jupiter.api.AssertionUtils.failNotEqual(AssertionUtils.java:62)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:510)
+	at MainTest.journey time is calculated correctly if there is three shops in the string that are not all reachable in the same day(MainTest.kt:218)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:675)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:125)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:132)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:124)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:74)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:104)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:62)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:43)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:35)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$6(TestMethodTestDescriptor.java:202)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:198)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:135)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:135)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at java.util.ArrayList.forEach(ArrayList.java:1249)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at java.util.ArrayList.forEach(ArrayList.java:1249)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:170)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:154)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:90)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:92)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$100(JUnitPlatformTestClassProcessor.java:77)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:73)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:61)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy2.stop(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.stop(TestWorker.java:131)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.lang.Thread.run(Thread.java:748)
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="journey time is calculated correctly if there is three shops in the string that are reachable in the same day()"></a>
+<h3 class="failures">journey time is calculated correctly if there is three shops in the string that are reachable in the same day()</h3>
+<span class="code">
+<pre>org.opentest4j.AssertionFailedError: expected: &lt;23909&gt; but was: &lt;31330&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at org.junit.jupiter.api.AssertionUtils.failNotEqual(AssertionUtils.java:62)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:510)
+	at MainTest.journey time is calculated correctly if there is three shops in the string that are reachable in the same day(MainTest.kt:211)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:675)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:125)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:132)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:124)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:74)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:104)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:62)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:43)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:35)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$6(TestMethodTestDescriptor.java:202)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:198)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:135)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:135)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at java.util.ArrayList.forEach(ArrayList.java:1249)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at java.util.ArrayList.forEach(ArrayList.java:1249)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:170)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:154)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:90)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:92)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$100(JUnitPlatformTestClassProcessor.java:77)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:73)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:61)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy2.stop(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.stop(TestWorker.java:131)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.lang.Thread.run(Thread.java:748)
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="journey time is calculated correctly if there is two shops in the string that are reachable in the time allowed()"></a>
+<h3 class="failures">journey time is calculated correctly if there is two shops in the string that are reachable in the time allowed()</h3>
+<span class="code">
+<pre>org.opentest4j.AssertionFailedError: expected: &lt;22579&gt; but was: &lt;29877&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at org.junit.jupiter.api.AssertionUtils.failNotEqual(AssertionUtils.java:62)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:510)
+	at MainTest.journey time is calculated correctly if there is two shops in the string that are reachable in the time allowed(MainTest.kt:199)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:675)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:125)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:132)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:124)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:74)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:104)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:62)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:43)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:35)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$6(TestMethodTestDescriptor.java:202)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:198)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:135)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:135)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at java.util.ArrayList.forEach(ArrayList.java:1249)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at java.util.ArrayList.forEach(ArrayList.java:1249)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:170)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:154)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:90)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:92)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$100(JUnitPlatformTestClassProcessor.java:77)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:73)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:61)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy2.stop(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.stop(TestWorker.java:131)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.lang.Thread.run(Thread.java:748)
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="liverpool is the last shop on the new list of shops then closest shop is oxford street ()"></a>
+<h3 class="failures">liverpool is the last shop on the new list of shops then closest shop is oxford street ()</h3>
+<span class="code">
+<pre>org.opentest4j.AssertionFailedError: expected: &lt;Shop(name=Oxford Street, postcode=W1, geoLocation=GeoLocation(lat=51.524565, lng=-0.112042), distanceFromLastShop=0.0)&gt; but was: &lt;Shop(name=Victoria 171, postcode=SW1E 5NN, geoLocation=GeoLocation(lat=51.496466, lng=-0.141499), distanceFromLastShop=239.83029038288936)&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at org.junit.jupiter.api.AssertionUtils.failNotEqual(AssertionUtils.java:62)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1124)
+	at MainTest.liverpool is the last shop on the new list of shops then closest shop is oxford street (MainTest.kt:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:675)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:125)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:132)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:124)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:74)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:104)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:62)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:43)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:35)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$6(TestMethodTestDescriptor.java:202)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:198)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:135)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:135)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at java.util.ArrayList.forEach(ArrayList.java:1249)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at java.util.ArrayList.forEach(ArrayList.java:1249)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:170)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:154)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:90)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:92)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$100(JUnitPlatformTestClassProcessor.java:77)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:73)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:61)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy2.stop(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.stop(TestWorker.java:131)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.lang.Thread.run(Thread.java:748)
+</pre>
+</span>
+</div>
+</div>
+<div id="tab1" class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -79,7 +785,7 @@
 </thead>
 <tr>
 <td class="success">Empty string converts to an empty list of shops()</td>
-<td class="success">0s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -93,14 +799,14 @@
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">Re-ordering a list of three shops in correct order returns a list of three shops()</td>
-<td class="success">0.001s</td>
-<td class="success">passed</td>
+<td class="failures">Re-ordering a list of three shops in correct order returns a list of three shops()</td>
+<td class="failures">0.001s</td>
+<td class="failures">failed</td>
 </tr>
 <tr>
-<td class="success">Re-ordering a list of three shops in incorrect order returns a list of three shops()</td>
-<td class="success">0.001s</td>
-<td class="success">passed</td>
+<td class="failures">Re-ordering a list of three shops in incorrect order returns a list of three shops()</td>
+<td class="failures">0.001s</td>
+<td class="failures">failed</td>
 </tr>
 <tr>
 <td class="success">Re-ordering a list of two shops returns a list of two shop()</td>
@@ -113,13 +819,13 @@
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">Test with the data from the challenge()</td>
-<td class="success">0.378s</td>
-<td class="success">passed</td>
+<td class="failures">Test with the data from the challenge()</td>
+<td class="failures">0.526s</td>
+<td class="failures">failed</td>
 </tr>
 <tr>
 <td class="success">an array of data converts to a shop correctly()</td>
-<td class="success">0.009s</td>
+<td class="success">0.027s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -134,22 +840,22 @@
 </tr>
 <tr>
 <td class="success">closest shop to peter jones is head office ()</td>
-<td class="success">0.033s</td>
+<td class="success">0.107s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">distance between Liverpool and London should be 177()</td>
-<td class="success">0.001s</td>
+<td class="success">0.006s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">distance between Peter Jones location and Oxford Street location should be 3 miles()</td>
-<td class="success">0s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">distance between Peter Jones shop and Oxford Street shop is roughly 3 miles ()</td>
-<td class="success">0s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -164,7 +870,7 @@
 </tr>
 <tr>
 <td class="success">journey time is calculated correctly if array of shops contains four shops that will take over 2 days to get around ()</td>
-<td class="success">0.003s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -179,7 +885,7 @@
 </tr>
 <tr>
 <td class="success">journey time is calculated correctly if array of shops contains one shop()</td>
-<td class="success">0s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -189,7 +895,7 @@
 </tr>
 <tr>
 <td class="success">journey time is calculated correctly if array of shops contains three shops but not all reachable in same day()</td>
-<td class="success">0.003s</td>
+<td class="success">0.012s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -203,19 +909,19 @@
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">journey time is calculated correctly if there is three shops in the string that are not all reachable in the same day()</td>
-<td class="success">0.001s</td>
-<td class="success">passed</td>
+<td class="failures">journey time is calculated correctly if there is three shops in the string that are not all reachable in the same day()</td>
+<td class="failures">0.003s</td>
+<td class="failures">failed</td>
 </tr>
 <tr>
-<td class="success">journey time is calculated correctly if there is three shops in the string that are reachable in the same day()</td>
-<td class="success">0.001s</td>
-<td class="success">passed</td>
+<td class="failures">journey time is calculated correctly if there is three shops in the string that are reachable in the same day()</td>
+<td class="failures">0.005s</td>
+<td class="failures">failed</td>
 </tr>
 <tr>
-<td class="success">journey time is calculated correctly if there is two shops in the string that are reachable in the time allowed()</td>
-<td class="success">0.001s</td>
-<td class="success">passed</td>
+<td class="failures">journey time is calculated correctly if there is two shops in the string that are reachable in the time allowed()</td>
+<td class="failures">0.002s</td>
+<td class="failures">failed</td>
 </tr>
 <tr>
 <td class="success">journey time is zero if there are no shops()</td>
@@ -229,22 +935,22 @@
 </tr>
 <tr>
 <td class="success">journey time is zero if there is two shops in the string that are not reachable in the time allowed()</td>
-<td class="success">0.002s</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">liverpool is the last shop on the new list of shops then closest shop is oxford street ()</td>
-<td class="success">0.002s</td>
-<td class="success">passed</td>
+<td class="failures">liverpool is the last shop on the new list of shops then closest shop is oxford street ()</td>
+<td class="failures">0.001s</td>
+<td class="failures">failed</td>
 </tr>
 <tr>
 <td class="success">string containing an invalid number of elements returns empty list of shops()</td>
-<td class="success">0.001s</td>
+<td class="success">0s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">string containing data for one shop converts to a list of one shop()</td>
-<td class="success">0.001s</td>
+<td class="success">0s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -254,18 +960,18 @@
 </tr>
 <tr>
 <td class="success">string containing invalid data for lng and lat returns an empty list()</td>
-<td class="success">0.005s</td>
+<td class="success">0.010s</td>
 <td class="success">passed</td>
 </tr>
 </table>
 </div>
-<div id="tab1" class="tab">
+<div id="tab2" class="tab">
 <h2>Standard output</h2>
 <span class="code">
 <pre>shop2 time to here: 10 hours and 20 minutes distance to previous 300.0 
 shop3 time to here: 1 day, 1 hour and 20 minutes distance to previous 30.0 
-Victoria 171 time to here: 21 minutes and 37 seconds distance to previous 0.8096236440680009 
-Liverpool time to here: 6 hours, 38 minutes and 29 seconds distance to previous 178.43540160093957 
+Victoria 171 time to here: 22 minutes and 31 seconds distance to previous 1.2601815999687727 
+Liverpool time to here: 8 hours, 42 minutes and 10 seconds distance to previous 239.83029038288936 
 shop2 time to here: 5 hours and 20 minutes distance to previous 150.0 
 shop3 time to here: 1 day, 10 hours and 20 minutes distance to previous 300.0 
 shop4 time to here: 2 days, 3 hours and 20 minutes distance to previous 90.0 
@@ -274,460 +980,457 @@ shop6 time to here: 3 days, 5 hours and 20 minutes distance to previous 150.0
 Testing with real data
 ======================
 John Lewis.com time to here: 20 minutes distance to previous 0.0 
-Victoria Bressenden Place time to here: 40 minutes and 15 seconds distance to previous 0.12569237063991653 
-Victoria Street time to here: 1 hour and 42 seconds distance to previous 0.22916521856592026 
-Pimlico time to here: 1 hour, 21 minutes and 25 seconds distance to previous 0.35744663977591 
-BATTERSEA NINE ELMS time to here: 1 hour, 42 minutes and 55 seconds distance to previous 0.7501802203197941 
-Vauxhall time to here: 2 hours, 3 minutes and 53 seconds distance to previous 0.48246077505294443 
-Battersea time to here: 2 hours, 26 minutes and 13 seconds distance to previous 1.1678726135048394 
-Clapham Common time to here: 2 hours, 48 minutes and 26 seconds distance to previous 1.1109175934090885 
-Clapham Junction time to here: 3 hours, 10 minutes and 55 seconds distance to previous 1.2387662394126422 
-Wandsworth time to here: 3 hours, 33 minutes and 26 seconds distance to previous 1.255267291162146 
-East Putney time to here: 3 hours, 55 minutes and 11 seconds distance to previous 0.8809650322675016 
-Putney time to here: 4 hours, 15 minutes and 51 seconds distance to previous 0.33050923984094743 
-Parsons Green time to here: 4 hours, 37 minutes and 50 seconds distance to previous 0.9910595298261173 
-Fulham time to here: 4 hours, 58 minutes and 40 seconds distance to previous 0.41422555939774997 
-West Kensington time to here: 5 hours, 19 minutes and 55 seconds distance to previous 0.6245909562621519 
-Fulham Palace Road time to here: 5 hours, 41 minutes and 17 seconds distance to previous 0.6880176723792574 
-Kensington time to here: 6 hours, 4 minutes and 7 seconds distance to previous 1.415127093935127 
-Notting Hill Gate time to here: 6 hours, 25 minutes and 28 seconds distance to previous 0.6726065509846327 
-Kensington Gardens time to here: 6 hours, 46 minutes and 55 seconds distance to previous 0.7289907847568136 
-Bayswater time to here: 7 hours, 7 minutes and 53 seconds distance to previous 0.4800700578870538 
-Edgware Road time to here: 7 hours, 29 minutes and 44 seconds distance to previous 0.9264832960157268 
-Marylebone time to here: 7 hours, 50 minutes and 59 seconds distance to previous 0.6235517100290904 
-JL Foodhall Oxford Street time to here: 8 hours, 11 minutes and 50 seconds distance to previous 0.4306751729463311 
-Bloomsbury time to here: 8 hours, 34 minutes and 6 seconds distance to previous 1.1279246359319883 
-John Lewis Oxford Street time to here: 8 hours, 55 minutes and 5 seconds distance to previous 0.49579239052860286 
-Clerkenwell time to here: 9 hours, 15 minutes and 53 seconds distance to previous 0.39974722643401855 
-Barbican time to here: 9 hours, 36 minutes and 51 seconds distance to previous 0.47934490329643636 
-Walbrook time to here: 9 hours, 58 minutes and 12 seconds distance to previous 0.6766365089615831 
-Monument time to here: 10 hours, 18 minutes and 37 seconds distance to previous 0.21156535800587453 
-St Katharine Docks time to here: 1 day, 21 minutes and 43 seconds distance to previous 0.860747489963766 
-South Bank Tower time to here: 1 day, 45 minutes and 10 seconds distance to previous 1.7240526732534334 
-High Holborn time to here: 1 day, 1 hour, 6 minutes and 51 seconds distance to previous 0.8404800414740878 
-John Lewis St Pancras time to here: 1 day, 1 hour, 28 minutes and 53 seconds distance to previous 1.0188675958994562 
-Kings Cross Station time to here: 1 day, 1 hour, 49 minutes and 10 seconds distance to previous 0.1394016472205681 
-Cookery School (Kings Cross) time to here: 1 day, 2 hours, 9 minutes and 41 seconds distance to previous 0.2609357721183688 
-Kings Cross time to here: 1 day, 2 hours, 29 minutes and 41 seconds distance to previous 0.0 
-Islington time to here: 1 day, 2 hours, 51 minutes and 8 seconds distance to previous 0.7233859628950433 
-Highbury Corner time to here: 1 day, 3 hours, 12 minutes and 56 seconds distance to previous 0.9055525298872792 
-Holloway Road time to here: 1 day, 3 hours, 34 minutes and 35 seconds distance to previous 0.8210846027928036 
-Crouch End time to here: 1 day, 3 hours, 57 minutes and 52 seconds distance to previous 1.6408477882477337 
-Muswell Hill time to here: 1 day, 4 hours, 20 minutes and 13 seconds distance to previous 1.1779941440966402 
-Finchley time to here: 1 day, 4 hours, 44 minutes and 26 seconds distance to previous 2.105990750975896 
-Finchley Central time to here: 1 day, 5 hours, 6 minutes and 26 seconds distance to previous 0.9996337053636962 
-Mill Hill time to here: 1 day, 5 hours and 28 minutes distance to previous 0.786456787932784 
-Temple Fortune time to here: 1 day, 5 hours, 51 minutes and 26 seconds distance to previous 1.7181973825230636 
-Brent Cross time to here: 1 day, 6 hours, 13 minutes and 42 seconds distance to previous 1.1266414310090034 
-John Lewis Brent Cross time to here: 1 day, 6 hours, 33 minutes and 42 seconds distance to previous 0.0 
-West Hampstead time to here: 1 day, 6 hours, 58 minutes and 3 seconds distance to previous 2.1794052816257086 
-Cookery School (Finchley Road) time to here: 1 day, 7 hours, 19 minutes and 21 seconds distance to previous 0.6527790961374623 
-John Barnes time to here: 1 day, 7 hours, 39 minutes and 21 seconds distance to previous 0.0 
-John Lewis White City Westfield time to here: 1 day, 8 hours, 5 minutes and 33 seconds distance to previous 3.099280041153213 
-Westfield London time to here: 1 day, 8 hours, 25 minutes and 54 seconds distance to previous 0.17104816229126538 
-Chiswick time to here: 1 day, 8 hours, 49 minutes and 52 seconds distance to previous 1.984558427862844 
-East Sheen time to here: 1 day, 9 hours, 13 minutes and 49 seconds distance to previous 1.9758235982236019 
-Richmond time to here: 1 day, 9 hours, 36 minutes and 37 seconds distance to previous 1.39566748957762 
-Twickenham time to here: 1 day, 9 hours, 59 minutes and 40 seconds distance to previous 1.5306726517790867 
-SKY (OSTERLEY) time to here: 2 days, 25 minutes and 24 seconds distance to previous 2.7016897499303694 
-West Ealing time to here: 2 days, 49 minutes and 1 second distance to previous 1.8070523760422985 
-Ealing time to here: 2 days, 1 hour, 11 minutes and 44 seconds distance to previous 1.3584128443962153 
-South Harrow time to here: 2 days, 1 hour, 40 minutes and 36 seconds distance to previous 4.439402425732198 
-South Harrow Petrol Station time to here: 2 days, 2 hours and 36 seconds distance to previous 0.0 
-Harrow Weald time to here: 2 days, 2 hours, 25 minutes and 55 seconds distance to previous 2.659869437085423 
-Northwood time to here: 2 days, 2 hours, 53 minutes and 11 seconds distance to previous 3.62639053525682 
-Ruislip time to here: 2 days, 3 hours, 18 minutes and 41 seconds distance to previous 2.7567311283308205 
-Waterside time to here: 2 days, 3 hours, 45 minutes and 58 seconds distance to previous 3.635841758990425 
-Gerrards Cross time to here: 2 days, 4 hours, 14 minutes and 53 seconds distance to previous 4.463825743018529 
-Beaconsfield time to here: 2 days, 4 hours, 43 minutes and 45 seconds distance to previous 4.430474535520063 
-Hazlemere time to here: 2 days, 5 hours, 11 minutes and 40 seconds distance to previous 3.9589358772771344 
-High Wycombe time to here: 2 days, 5 hours, 38 minutes and 10 seconds distance to previous 3.2498819632414073 
-John Lewis High Wycombe time to here: 2 days, 6 hours and 10 seconds distance to previous 1.0007428050679328 
-Marlow time to here: 2 days, 6 hours, 25 minutes and 26 seconds distance to previous 2.6325856321391377 
-Maidenhead time to here: 2 days, 6 hours, 54 minutes and 7 seconds distance to previous 4.338459357173135 
-Windsor New time to here: 2 days, 7 hours, 24 minutes and 44 seconds distance to previous 5.308564217662927 
-Egham time to here: 2 days, 7 hours, 53 minutes and 38 seconds distance to previous 4.44981874430877 
-Sunningdale time to here: 2 days, 8 hours, 22 minutes and 59 seconds distance to previous 4.673598157883658 
-Bagshot time to here: 2 days, 8 hours, 50 minutes and 32 seconds distance to previous 3.7773564465703164 
-Frimley time to here: 2 days, 9 hours, 17 minutes and 26 seconds distance to previous 3.4543283037018693 
-Sandhurst time to here: 2 days, 9 hours, 42 minutes and 11 seconds distance to previous 2.3679897326535775 
-Yateley time to here: 2 days, 10 hours, 8 minutes and 4 seconds distance to previous 2.9443818178475065 
-Fleet South Services time to here: 3 days, 26 minutes and 3 seconds distance to previous 3.0250506850869026 
-Fleet time to here: 3 days, 48 minutes and 25 seconds distance to previous 1.1882361943704784 
-Farnham time to here: 3 days, 1 hour, 18 minutes and 5 seconds distance to previous 4.83070033743631 
-Alton time to here: 3 days, 1 hour, 54 minutes and 50 seconds distance to previous 8.377188675877472 
-BASINGSTOKE time to here: 3 days, 2 hours, 33 minutes and 37 seconds distance to previous 9.392652362921035 
-John Lewis at home Basingstoke time to here: 3 days, 2 hours, 53 minutes and 37 seconds distance to previous 0.0 
-Thatcham time to here: 3 days, 3 hours, 37 minutes and 38 seconds distance to previous 12.004593428635044 
-John Lewis at home Newbury time to here: 3 days, 4 hours, 3 minutes and 23 seconds distance to previous 2.8807698716666104 
-Newbury time to here: 3 days, 4 hours, 24 minutes and 4 seconds distance to previous 0.3363649251239811 
-Membury Services time to here: 3 days, 5 hours, 6 minutes and 24 seconds distance to previous 11.171041409982971 
-Marlborough time to here: 3 days, 5 hours, 43 minutes and 39 seconds distance to previous 8.623988506326322 
-Swindon time to here: 3 days, 6 hours, 22 minutes and 2 seconds distance to previous 9.190076548633607 
-John Lewis at home Swindon time to here: 3 days, 6 hours, 43 minutes and 26 seconds distance to previous 0.7006049242168739 
-John Lewis Outlet Swindon time to here: 3 days, 7 hours, 5 minutes and 7 seconds distance to previous 0.842763323752615 
-Faringdon time to here: 3 days, 7 hours, 47 minutes and 49 seconds distance to previous 11.350561814085658 
-Wantage time to here: 3 days, 8 hours, 23 minutes and 19 seconds distance to previous 7.748808150476092 
-Abingdon time to here: 3 days, 9 hours and 18 seconds distance to previous 8.494354410507402 
-John Lewis Oxford time to here: 3 days, 9 hours, 31 minutes and 11 seconds distance to previous 5.435336723671137 
-Oxford Botley Road time to here: 3 days, 9 hours, 52 minutes and 45 seconds distance to previous 0.7859555663044613 
-Headington - London Road time to here: 3 days, 10 hours, 18 minutes and 26 seconds distance to previous 2.845280572474268 
-Headington time to here: 4 days, 20 minutes and 21 seconds distance to previous 0.17854169651020657 
-Peartree time to here: 4 days, 48 minutes and 9 seconds distance to previous 3.9004383904929627 
-Witney time to here: 4 days, 1 hour, 25 minutes and 22 seconds distance to previous 8.607545158076723 
-Oxford Services time to here: 4 days, 2 hours, 19 minutes and 8 seconds distance to previous 16.883485934476102 
-Thame time to here: 4 days, 2 hours, 49 minutes and 30 seconds distance to previous 5.185019709486401 
-Aylesbury time to here: 4 days, 3 hours, 26 minutes and 40 seconds distance to previous 8.582933083512549 
-Leighton Buzzard time to here: 4 days, 4 hours, 5 minutes and 26 seconds distance to previous 9.379339851269934 
-Oakgrove time to here: 4 days, 4 hours, 42 minutes and 50 seconds distance to previous 8.701644942166766 
-John Lewis Milton Keynes time to here: 4 days, 5 hours, 6 minutes and 12 seconds distance to previous 1.6817306702914292 
-Newport Pagnell time to here: 4 days, 5 hours, 32 minutes and 33 seconds distance to previous 3.1744151140813375 
-Ampthill time to here: 4 days, 6 hours, 12 minutes and 10 seconds distance to previous 9.812336911416955 
-Bedford time to here: 4 days, 6 hours, 48 minutes and 51 seconds distance to previous 8.338962273596032 
-St Neots time to here: 4 days, 7 hours and 26 minutes distance to previous 8.576066792703983 
-St Ives time to here: 4 days, 8 hours, 7 minutes and 35 seconds distance to previous 10.793159686351691 
-John Lewis Cambridge time to here: 4 days, 8 hours, 50 minutes and 43 seconds distance to previous 11.566235292658153 
-Fitzroy Street time to here: 4 days, 9 hours, 11 minutes and 30 seconds distance to previous 0.3938989683381621 
-Cambridge time to here: 4 days, 9 hours, 36 minutes and 53 seconds distance to previous 2.6888024503679087 
-Saffron Walden time to here: 5 days, 43 minutes and 7 seconds distance to previous 11.564267440929818 
-Birchanger Services time to here: 5 days, 1 hour, 24 minutes and 24 seconds distance to previous 10.637698732825314 
-Bishops Stortford time to here: 5 days, 1 hour, 47 minutes and 24 seconds distance to previous 1.4982904120383216 
-Broxbourne time to here: 5 days, 2 hours, 31 minutes and 40 seconds distance to previous 12.138187182217287 
-Enfield time to here: 5 days, 3 hours, 4 minutes and 50 seconds distance to previous 6.581407711475272 
-Enfield Chase time to here: 5 days, 3 hours, 25 minutes and 40 seconds distance to previous 0.4143673124552858 
-Winchmore Hill time to here: 5 days, 3 hours, 48 minutes and 10 seconds distance to previous 1.2509884318682551 
-Whetstone time to here: 5 days, 4 hours, 15 minutes and 17 seconds distance to previous 3.558756433119065 
-Barnet time to here: 5 days, 4 hours, 39 minutes and 22 seconds distance to previous 2.0474571486307873 
-Mimms Services time to here: 5 days, 5 hours, 4 minutes and 6 seconds distance to previous 2.363003642459465 
-London Gateway time to here: 5 days, 5 hours, 33 minutes and 21 seconds distance to previous 4.62204898742491 
-John Lewis Watford time to here: 5 days, 6 hours, 5 minutes and 30 seconds distance to previous 6.076076889285316 
-Little Waitrose at John Lewis Watford time to here: 5 days, 6 hours, 25 minutes and 30 seconds distance to previous 0.0 
-Sceptre (Watford) time to here: 5 days, 6 hours, 49 minutes and 9 seconds distance to previous 1.8261832298444363 
-Rickmansworth time to here: 5 days, 7 hours, 17 minutes and 49 seconds distance to previous 4.337781315747641 
-Amersham time to here: 5 days, 7 hours, 50 minutes and 26 seconds distance to previous 6.3025847297502855 
-Chesham time to here: 5 days, 8 hours, 14 minutes and 31 seconds distance to previous 2.0448204464223347 
-Berkhamsted time to here: 5 days, 8 hours, 43 minutes and 1 second distance to previous 4.244479207135108 
-St Albans time to here: 5 days, 9 hours, 20 minutes and 49 seconds distance to previous 8.907681506897182 
-Harpenden time to here: 5 days, 9 hours, 50 minutes and 24 seconds distance to previous 4.790116333973177 
-John Lewis Welwyn time to here: 6 days, 32 minutes and 59 seconds distance to previous 6.494845879007229 
-Welwyn Garden City time to here: 6 days, 53 minutes and 12 seconds distance to previous 0.11337180053873784 
-Stevenage time to here: 6 days, 1 hour, 28 minutes and 5 seconds distance to previous 7.438709729839195 
-Hitchin time to here: 6 days, 1 hour, 56 minutes and 28 seconds distance to previous 4.186548632813579 
-Buckhurst Hill time to here: 6 days, 3 hours, 9 minutes and 29 seconds distance to previous 26.508769674924427 
-South Woodford time to here: 6 days, 3 hours, 34 minutes and 4 seconds distance to previous 2.297591043895152 
-John Lewis Stratford time to here: 6 days, 4 hours, 1 minute and 38 seconds distance to previous 3.781479814737442 
-Stratford City time to here: 6 days, 4 hours, 21 minutes and 39 seconds distance to previous 0.010029525027142352 
-Canary Wharf time to here: 6 days, 4 hours, 47 minutes and 7 seconds distance to previous 2.728859361046829 
-Greenwich time to here: 6 days, 5 hours, 10 minutes and 13 seconds distance to previous 1.5512091922050748 
-Bromley time to here: 6 days, 5 hours, 39 minutes and 12 seconds distance to previous 4.4909008297712365 
-Bromley South time to here: 6 days, 6 hours, 2 minutes and 16 seconds distance to previous 1.532306518093671 
-Beckenham time to here: 6 days, 6 hours, 26 minutes and 20 seconds distance to previous 2.039877538788527 
-Croydon time to here: 6 days, 6 hours, 54 minutes and 30 seconds distance to previous 4.0766150781664745 
-John Lewis at home Croydon time to here: 6 days, 7 hours, 16 minutes and 30 seconds distance to previous 0.999893450727981 
-Sanderstead time to here: 6 days, 7 hours, 43 minutes and 9 seconds distance to previous 3.3296598733033593 
-Coulsdon time to here: 6 days, 8 hours, 8 minutes and 37 seconds distance to previous 2.7352182796161384 
-Coulsdon DFC time to here: 6 days, 8 hours, 29 minutes and 23 seconds distance to previous 0.3780656667553703 
-Banstead time to here: 6 days, 8 hours, 55 minutes and 3 seconds distance to previous 2.8362112420205627 
-Cheam time to here: 6 days, 9 hours, 20 minutes and 16 seconds distance to previous 2.603826890690676 
-Worcester Park time to here: 6 days, 9 hours, 43 minutes and 49 seconds distance to previous 1.7766022658218457 
-New Malden time to here: 6 days, 10 hours, 7 minutes and 19 seconds distance to previous 1.754725592216905 
-Raynes Park time to here: 7 days, 22 minutes and 7 seconds distance to previous 1.0591961671429329 
-Wimbledon Hill time to here: 7 days, 44 minutes and 56 seconds distance to previous 1.4147622433635663 
-Wimbledon time to here: 7 days, 1 hour, 5 minutes and 38 seconds distance to previous 0.3478075462847928 
-ROEHAMPTON time to here: 7 days, 1 hour, 30 minutes and 17 seconds distance to previous 2.328132268550751 
-Balham time to here: 7 days, 1 hour, 57 minutes and 50 seconds distance to previous 3.775006404664219 
-Kings Road time to here: 7 days, 2 hours, 23 minutes and 59 seconds distance to previous 3.0732934748249545 
-Peter Jones time to here: 7 days, 2 hours, 44 minutes and 51 seconds distance to previous 0.4344208877598921 
-Belgravia time to here: 7 days, 3 hours, 5 minutes and 48 seconds distance to previous 0.4738607890028837 
-Knightsbridge time to here: 7 days, 3 hours, 26 minutes and 28 seconds distance to previous 0.3310388506445801 
-Old Brompton Road time to here: 7 days, 3 hours, 48 minutes and 5 seconds distance to previous 0.8046108100669992 
-Gloucester Road time to here: 7 days, 4 hours, 8 minutes and 34 seconds distance to previous 0.24391653474769293 
-Kingston time to here: 7 days, 4 hours, 44 minutes and 5 seconds distance to previous 7.76262551828096 
-John Lewis Kingston time to here: 7 days, 5 hours, 4 minutes and 17 seconds distance to previous 0.09824797116065272 
-Surbiton time to here: 7 days, 5 hours, 26 minutes and 46 seconds distance to previous 1.237797415070645 
-Esher time to here: 7 days, 5 hours, 53 minutes and 13 seconds distance to previous 3.2273669922490718 
-Hersham time to here: 7 days, 6 hours, 16 minutes and 2 seconds distance to previous 1.405142442102448 
-Cobham time to here: 7 days, 6 hours, 41 minutes and 3 seconds distance to previous 2.510890902475033 
-Weybridge time to here: 7 days, 7 hours, 8 minutes and 7 seconds distance to previous 3.5357147680632757 
-Addlestone time to here: 7 days, 7 hours, 31 minutes and 8 seconds distance to previous 1.5103031112079075 
-West Byfleet time to here: 7 days, 7 hours, 55 minutes and 46 seconds distance to previous 2.3118676920376053 
-Goldsworth Park time to here: 7 days, 8 hours, 23 minutes and 36 seconds distance to previous 3.915530108793496 
-Burnt Common time to here: 7 days, 8 hours, 52 minutes and 2 seconds distance to previous 4.221164793394931 
-Guildford Worplesdon Road time to here: 7 days, 9 hours, 19 minutes and 54 seconds distance to previous 3.9347906977882854 
-Guildford time to here: 7 days, 9 hours, 43 minutes and 2 seconds distance to previous 1.5641070780959474 
-Godalming time to here: 7 days, 10 hours, 10 minutes and 51 seconds distance to previous 3.9050808541119197 
-Haslemere time to here: 8 days, 36 minutes and 4 seconds distance to previous 8.034011973601066 
-Petersfield time to here: 8 days, 1 hour and 19 minutes distance to previous 11.47073719250472 
-Waterlooville time to here: 8 days, 1 hour, 58 minutes and 7 seconds distance to previous 9.561716147038506 
-Havant time to here: 8 days, 2 hours, 23 minutes and 52 seconds distance to previous 2.872852422124664 
-Southsea time to here: 8 days, 2 hours, 56 minutes and 52 seconds distance to previous 6.5000810520644645 
-Knight and Lee time to here: 8 days, 3 hours, 17 minutes and 2 seconds distance to previous 0.07734534855438047 
-Gosport time to here: 8 days, 3 hours, 41 minutes and 18 seconds distance to previous 2.1333420149192537 
-East Cowes time to here: 8 days, 4 hours, 15 minutes and 31 seconds distance to previous 7.11359739382727 
-Locks Heath time to here: 8 days, 4 hours, 50 minutes and 8 seconds distance to previous 7.310290842766968 
-Dibden time to here: 8 days, 5 hours, 20 minutes and 59 seconds distance to previous 5.4198320213885784 
-John Lewis Southampton time to here: 8 days, 5 hours, 45 minutes and 47 seconds distance to previous 2.405105872910742 
-Little Waitrose John Lewis Southampton time to here: 8 days, 6 hours, 5 minutes and 47 seconds distance to previous 0.0 
-Southampton New time to here: 8 days, 6 hours, 28 minutes and 41 seconds distance to previous 1.451017562470767 
-Chandlers Ford time to here: 8 days, 6 hours, 57 minutes and 37 seconds distance to previous 4.46472222113432 
-Romsey time to here: 8 days, 7 hours, 28 minutes and 26 seconds distance to previous 5.403146741922389 
-Winchester time to here: 8 days, 8 hours, 6 minutes and 36 seconds distance to previous 9.086885826840849 
-Andover time to here: 8 days, 8 hours, 49 minutes and 1 second distance to previous 11.206283179470846 
-Cookery School (Salisbury) time to here: 8 days, 9 hours, 42 minutes and 22 seconds distance to previous 16.679798440501234 
-Salisbury time to here: 8 days, 10 hours, 2 minutes and 22 seconds distance to previous 0.0 
-Salisbury Petrol Station time to here: 9 days and 20 minutes distance to previous 0.0 
-Ringwood time to here: 9 days, 1 hour, 11 minutes and 37 seconds distance to previous 15.814083049616366 
-Christchurch time to here: 9 days, 1 hour and 47 minutes distance to previous 7.686487956375202 
-Winton time to here: 9 days, 2 hours, 15 minutes and 45 seconds distance to previous 4.380686457363579 
-John Lewis at home Poole time to here: 9 days, 2 hours, 39 minutes and 46 seconds distance to previous 2.0057405440766614 
-Parkstone time to here: 9 days, 3 hours, 1 minute and 27 seconds distance to previous 0.8380135821221941 
-Wimborne time to here: 9 days, 3 hours and 32 minutes distance to previous 5.280635873972963 
-Lymington New time to here: 9 days, 4 hours, 30 minutes and 25 seconds distance to previous 19.204419997862153 
-Chichester time to here: 9 days, 5 hours, 58 minutes and 9 seconds distance to previous 33.87244606856063 
-John Lewis at home Chichester time to here: 9 days, 6 hours, 20 minutes and 56 seconds distance to previous 1.3896790438872595 
-Rustington time to here: 9 days, 7 hours, 3 minutes and 27 seconds distance to previous 11.26055731303149 
-Worthing time to here: 9 days, 7 hours, 35 minutes and 29 seconds distance to previous 6.011084438214519 
-Storrington time to here: 9 days, 8 hours, 11 minutes and 41 seconds distance to previous 8.103825641691767 
-Horsham New time to here: 9 days, 8 hours, 54 minutes and 9 seconds distance to previous 11.230313916159918 
-John Lewis at home Horsham time to here: 9 days, 9 hours, 14 minutes and 9 seconds distance to previous 0.0 
-Horley time to here: 9 days, 9 hours, 55 minutes and 22 seconds distance to previous 10.608466700183564 
-Horley - Brighton Road time to here: 9 days, 10 hours, 16 minutes and 39 seconds distance to previous 0.6421327699498953 
-Burgh Heath time to here: 10 days, 33 minutes and 12 seconds distance to previous 6.606655853132447 
-Epsom time to here: 10 days, 1 hour, 2 minutes and 58 seconds distance to previous 4.877797920720646 
-Leatherhead time to here: 10 days, 1 hour, 30 minutes and 21 seconds distance to previous 3.6967823648685285 
-Dorking time to here: 10 days, 1 hour, 59 minutes and 6 seconds distance to previous 4.375161776009279 
-Caterham time to here: 10 days, 2 hours, 42 minutes and 23 seconds distance to previous 11.636175501069552 
-Oxted time to here: 10 days, 3 hours, 9 minutes and 31 seconds distance to previous 3.5698408573953366 
-Biggin Hill time to here: 10 days, 3 hours, 37 minutes and 22 seconds distance to previous 3.9277572964473997 
-Green Street Green time to here: 10 days, 4 hours, 5 minutes and 9 seconds distance to previous 3.88537132337603 
-Petts Wood time to here: 10 days, 4 hours, 29 minutes and 47 seconds distance to previous 2.318064828694834 
-Sidcup time to here: 10 days, 4 hours, 55 minutes and 43 seconds distance to previous 2.971538578608943 
-JL Foodhall Bluewater time to here: 10 days, 5 hours, 30 minutes and 16 seconds distance to previous 7.2724439564023164 
-John Lewis Bluewater time to here: 10 days, 5 hours, 50 minutes and 16 seconds distance to previous 0.0 
-Longfield time to here: 10 days, 6 hours, 16 minutes and 52 seconds distance to previous 3.2977193791144495 
-Kingshill time to here: 10 days, 6 hours, 56 minutes and 11 seconds distance to previous 9.658607403639625 
-Allington Park time to here: 10 days, 7 hours, 24 minutes and 34 seconds distance to previous 4.19448173217742 
-Paddock Wood time to here: 10 days, 8 hours, 1 minute and 48 seconds distance to previous 8.617976763109649 
-John Lewis at home Tunbridge Wells time to here: 10 days, 8 hours, 30 minutes and 47 seconds distance to previous 4.488673333453656 
-Tonbridge time to here: 10 days, 8 hours, 55 minutes and 51 seconds distance to previous 2.5320843165741076 
-Sevenoaks time to here: 10 days, 9 hours, 28 minutes and 31 seconds distance to previous 6.333183480722918 
-Tubs Hill time to here: 10 days, 9 hours, 49 minutes and 47 seconds distance to previous 0.6324559904049872 
-Edenbridge time to here: 11 days, 35 minutes and 16 seconds distance to previous 7.635364372120164 
-East Grinstead time to here: 11 days, 1 hour, 7 minutes and 8 seconds distance to previous 5.937840952950701 
-Crowborough time to here: 11 days, 1 hour, 44 minutes and 41 seconds distance to previous 8.771105959169567 
-Uckfield time to here: 11 days, 2 hours, 18 minutes and 16 seconds distance to previous 6.79627989393315 
-Heathfield time to here: 11 days, 2 hours and 52 minutes distance to previous 6.864077769080887 
-Hailsham time to here: 11 days, 3 hours, 26 minutes and 23 seconds distance to previous 7.193235855020176 
-Eastbourne time to here: 11 days, 3 hours, 59 minutes and 2 seconds distance to previous 6.320193777611696 
-Lewes time to here: 11 days, 4 hours, 45 minutes and 17 seconds distance to previous 13.130051088523647 
-Brighton time to here: 11 days, 5 hours, 21 minutes and 19 seconds distance to previous 8.016801689339376 
-Hove time to here: 11 days, 5 hours, 44 minutes and 43 seconds distance to previous 1.6994465230672682 
-Burgess Hill time to here: 11 days, 6 hours, 20 minutes and 37 seconds distance to previous 7.948325316607404 
-Haywards Heath time to here: 11 days, 6 hours, 47 minutes and 59 seconds distance to previous 3.6866116614350295 
-Hawkhurst time to here: 11 days, 8 hours, 2 minutes and 1 second distance to previous 27.014897868847637 
-Tenterden time to here: 11 days, 8 hours, 37 minutes and 44 seconds distance to previous 7.85743642700746 
-Ashford time to here: 11 days, 9 hours, 16 minutes and 39 seconds distance to previous 9.455002549711052 
-John Lewis at home Ashford time to here: 11 days, 9 hours, 37 minutes and 12 seconds distance to previous 0.2782595558516429 
-Hythe time to here: 12 days, 43 minutes and 9 seconds distance to previous 11.579530093980885 
-Canterbury time to here: 12 days, 1 hour, 31 minutes and 24 seconds distance to previous 14.123696949775459 
-Ramsgate time to here: 12 days, 2 hours, 21 minutes and 7 seconds distance to previous 14.85932862079878 
-Southend time to here: 12 days, 3 hours, 48 minutes and 26 seconds distance to previous 33.65758053302643 
-Southend Petrol Station time to here: 12 days, 4 hours, 8 minutes and 26 seconds distance to previous 0.0 
-Leigh On Sea time to here: 12 days, 4 hours, 34 minutes and 31 seconds distance to previous 3.0406986151329756 
-Billericay time to here: 12 days, 5 hours, 17 minutes and 33 seconds distance to previous 11.519273015833837 
-John Lewis Chelmsford time to here: 12 days, 5 hours, 53 minutes and 41 seconds distance to previous 8.064625493318246 
-Upminster time to here: 12 days, 6 hours, 44 minutes and 59 seconds distance to previous 15.650584287972926 
-Hampton time to here: 12 days, 8 hours, 2 minutes and 23 seconds distance to previous 28.70130270636798 
-John Lewis Heathrow Terminal 2 time to here: 12 days, 8 hours, 32 minutes and 21 seconds distance to previous 4.978879768095276 
-Bracknell time to here: 12 days, 9 hours, 19 minutes and 26 seconds distance to previous 13.54921328873227 
-Horticulture Direct Services time to here: 12 days, 9 hours, 41 minutes and 16 seconds distance to previous 0.9099459387606514 
-Waitrose Online Direct time to here: 12 days, 10 hours, 1 minute and 16 seconds distance to previous 0.0 
-Bagshot Road time to here: 13 days, 22 minutes and 8 seconds distance to previous 1.072787145700059 
-Wokingham time to here: 13 days, 49 minutes and 36 seconds distance to previous 3.7305891519288905 
-Woodley time to here: 13 days, 1 hour, 17 minutes and 56 seconds distance to previous 4.166289446255574 
-Twyford time to here: 13 days, 1 hour, 42 minutes and 52 seconds distance to previous 2.4701189361766507 
-Henley time to here: 13 days, 2 hours, 11 minutes and 54 seconds distance to previous 4.515014851325188 
-Caversham time to here: 13 days, 2 hours, 43 minutes and 24 seconds distance to previous 5.750836164524421 
-John Lewis Reading time to here: 13 days, 3 hours, 5 minutes and 4 seconds distance to previous 0.8279065684532677 
-Reading time to here: 13 days, 3 hours, 29 minutes and 22 seconds distance to previous 2.1558558823144316 
-Wallingford time to here: 13 days, 4 hours, 10 minutes and 10 seconds distance to previous 10.39587449788645 
-Buckingham time to here: 13 days, 5 hours, 26 minutes and 45 seconds distance to previous 28.297183413788176 
-Brackley time to here: 13 days, 6 hours, 1 minute and 20 seconds distance to previous 7.291927087143282 
-Banbury time to here: 13 days, 6 hours, 38 minutes and 20 seconds distance to previous 8.49884114665219 
-Warwick Services time to here: 13 days, 7 hours, 24 minutes and 23 seconds distance to previous 13.020540959866457 
-Stratford Upon Avon time to here: 13 days, 8 hours and 53 seconds distance to previous 8.24939258039124 
-Alcester time to here: 13 days, 8 hours, 36 minutes and 20 seconds distance to previous 7.72767642705903 
-Evesham time to here: 13 days, 9 hours, 14 minutes and 50 seconds distance to previous 9.250614345583552 
-Worcester time to here: 13 days, 9 hours, 59 minutes and 4 seconds distance to previous 12.118412353811808 
-Droitwich time to here: 14 days, 32 minutes and 39 seconds distance to previous 6.326004797194076 
-Bromsgrove time to here: 14 days, 1 hour, 3 minutes and 53 seconds distance to previous 5.622108809261738 
-Hopwood Park Petrol Filling Station (ser time to here: 14 days, 1 hour, 34 minutes and 47 seconds distance to previous 5.45184862204979 
-Hopwood Services time to here: 14 days, 1 hour, 54 minutes and 47 seconds distance to previous 0.0 
-Hall Green time to here: 14 days, 2 hours, 27 minutes and 22 seconds distance to previous 6.285307058795664 
-Solihull time to here: 14 days, 2 hours, 52 minutes and 42 seconds distance to previous 2.670901770971357 
-John Lewis Solihull time to here: 14 days, 3 hours, 12 minutes and 59 seconds distance to previous 0.14005221330324338 
-John Lewis Birmingham time to here: 14 days, 3 hours, 46 minutes and 18 seconds distance to previous 6.654659588018326 
-Harborne time to here: 14 days, 4 hours, 11 minutes and 10 seconds distance to previous 2.437670287536138 
-Stourbridge time to here: 14 days, 4 hours, 47 minutes and 51 seconds distance to previous 8.342270545675403 
-Wolverhampton time to here: 14 days, 5 hours, 24 minutes and 15 seconds distance to previous 8.198391940143742 
-Wolverhampton Petrol Station time to here: 14 days, 5 hours, 44 minutes and 15 seconds distance to previous 0.0 
-Four Oaks time to here: 14 days, 6 hours, 29 minutes and 41 seconds distance to previous 12.713801119707137 
-Lichfield time to here: 14 days, 7 hours, 1 minute and 36 seconds distance to previous 5.961588084528438 
-John Lewis at home Tamworth time to here: 14 days, 7 hours, 34 minutes and 45 seconds distance to previous 6.574690721338851 
-Corley Services time to here: 14 days, 8 hours, 20 minutes and 4 seconds distance to previous 12.659921998777957 
-Kenilworth time to here: 14 days, 8 hours, 58 minutes and 15 seconds distance to previous 9.093779029627473 
-Lutterworth time to here: 14 days, 9 hours and 54 minutes distance to previous 17.875083569790107 
-Blaby time to here: 15 days, 36 minutes and 19 seconds distance to previous 8.165250613087066 
-Leicester Forest East Services time to here: 15 days, 1 hour, 3 minutes and 23 seconds distance to previous 3.531654502225489 
-John Lewis Leicester time to here: 15 days, 1 hour, 29 minutes and 33 seconds distance to previous 3.079797147372123 
-Oadby time to here: 15 days, 1 hour, 56 minutes and 33 seconds distance to previous 3.500506708492913 
-MOUNTSORREL time to here: 15 days, 2 hours, 36 minutes and 12 seconds distance to previous 9.826639029148929 
-John Lewis Nottingham time to here: 15 days, 3 hours, 26 minutes and 40 seconds distance to previous 15.234887141845695 
-Trinity Square time to here: 15 days, 3 hours, 46 minutes and 45 seconds distance to previous 0.041491898327888126 
-Wollaton time to here: 15 days, 4 hours, 13 minutes and 31 seconds distance to previous 3.3787792803809085 
-Newark time to here: 15 days, 5 hours, 12 minutes and 19 seconds distance to previous 19.399479020325604 
-Lincoln time to here: 15 days, 6 hours, 6 minutes and 12 seconds distance to previous 16.945096763572085 
-Lincoln Petrol Station time to here: 15 days, 6 hours, 26 minutes and 12 seconds distance to previous 0.0 
-Woodhall South time to here: 15 days, 7 hours, 49 minutes and 51 seconds distance to previous 31.828334420852467 
-Sheffield time to here: 15 days, 8 hours, 27 minutes and 55 seconds distance to previous 9.030825176930573 
-Sheffield Petrol Station time to here: 15 days, 8 hours, 47 minutes and 55 seconds distance to previous 0.0 
-John Lewis Sheffield time to here: 15 days, 9 hours, 8 minutes and 52 seconds distance to previous 0.476755115507928 
-Buxton time to here: 15 days, 10 hours, 8 minutes and 52 seconds distance to previous 20.001757541052385 
-Poynton time to here: 16 days, 41 minutes and 11 seconds distance to previous 10.595832126877397 
-Cheadle Hulme time to here: 16 days, 1 hour, 7 minutes and 41 seconds distance to previous 3.2540347986145397 
-John Lewis Cheadle time to here: 16 days, 1 hour, 30 minutes and 1 second distance to previous 1.1639811188974354 
-Wilmslow time to here: 16 days, 1 hour, 56 minutes and 36 seconds distance to previous 3.289870500015351 
-Alderley Edge time to here: 16 days, 2 hours, 20 minutes and 13 seconds distance to previous 1.8056664580205324 
-Knutsford time to here: 16 days, 2 hours, 51 minutes and 41 seconds distance to previous 5.736142534436796 
-Northwich time to here: 16 days, 3 hours, 24 minutes and 51 seconds distance to previous 6.584565199918426 
-Sandbach time to here: 16 days, 4 hours, 5 minutes and 17 seconds distance to previous 10.21170178267844 
-Keele Services time to here: 16 days, 4 hours, 46 minutes and 51 seconds distance to previous 10.791322992855923 
-Newport time to here: 16 days, 5 hours, 38 minutes and 57 seconds distance to previous 16.044087609243224 
-Shrewsbury time to here: 16 days, 6 hours, 32 minutes and 13 seconds distance to previous 16.636906367642887 
-Chester time to here: 16 days, 7 hours, 59 minutes and 57 seconds distance to previous 33.86561662262605 
-John Lewis at home Chester time to here: 16 days, 8 hours, 22 minutes and 57 seconds distance to previous 1.5000367166324107 
-John Lewis Liverpool time to here: 16 days, 9 hours, 12 minutes and 12 seconds distance to previous 14.624210478422562 
-Formby time to here: 16 days, 9 hours, 53 minutes and 58 seconds distance to previous 10.887013614226811 
-Charnock Richard (Services) time to here: 17 days, 51 minutes and 49 seconds distance to previous 15.908930504176475 
-Walton-le-Dale time to here: 17 days, 1 hour, 28 minutes and 17 seconds distance to previous 8.235506959736174 
-John Lewis Trafford time to here: 17 days, 2 hours, 36 minutes and 21 seconds distance to previous 24.036785922371124 
-Altrincham time to here: 17 days, 3 hours, 4 minutes and 31 seconds distance to previous 4.077371101762209 
-Hartshead Moor (Services) time to here: 17 days, 4 hours, 30 minutes and 56 seconds distance to previous 33.21292801301364 
-John Lewis Leeds time to here: 17 days, 5 hours, 11 minutes and 34 seconds distance to previous 10.313519635247589 
-Meanwood time to here: 17 days, 5 hours, 36 minutes and 22 seconds distance to previous 2.4035912101324657 
-Otley time to here: 17 days, 6 hours, 11 minutes and 17 seconds distance to previous 7.457178925753463 
-Harrogate time to here: 17 days, 6 hours, 48 minutes and 51 seconds distance to previous 8.779856919494092 
-York time to here: 17 days, 7 hours, 47 minutes and 9 seconds distance to previous 19.153861511172835 
-John Lewis York time to here: 17 days, 8 hours and 12 minutes distance to previous 2.421167378293962 
-Willerby time to here: 17 days, 9 hours, 29 minutes and 21 seconds distance to previous 28.67980333162316 
-Ashbourne time to here: 18 days, 2 hours, 47 minutes and 40 seconds distance to previous 73.84003007530266 
-UTTOXETER time to here: 18 days, 3 hours, 27 minutes and 30 seconds distance to previous 9.910848580360767 
-Market Harborough time to here: 18 days, 5 hours, 26 minutes and 4 seconds distance to previous 49.285393958025075 
-Kingsthorpe time to here: 18 days, 6 hours, 15 minutes and 32 seconds distance to previous 14.73240303213453 
-Wootton time to here: 18 days, 6 hours, 42 minutes and 48 seconds distance to previous 3.6342411079754937 
-Towcester time to here: 18 days, 7 hours, 16 minutes and 36 seconds distance to previous 6.9010802000259295 
-Daventry time to here: 18 days, 7 hours, 59 minutes and 29 seconds distance to previous 11.440708874468575 
-Rushden time to here: 18 days, 9 hours, 5 minutes and 50 seconds distance to previous 23.17617026284053 
-Rushden Petrol Station time to here: 18 days, 9 hours, 25 minutes and 50 seconds distance to previous 0.0 
-Oundle time to here: 18 days, 10 hours, 14 minutes and 31 seconds distance to previous 14.337773278159084 
-Peterborough time to here: 19 days, 42 minutes and 9 seconds distance to previous 11.075880065508242 
-John Lewis Peterborough time to here: 19 days, 1 hour, 2 minutes and 33 seconds distance to previous 0.20290962564397458 
-Stamford time to here: 19 days, 1 hour, 45 minutes and 24 seconds distance to previous 11.425601992709293 
-Ely time to here: 19 days, 3 hours, 17 minutes and 51 seconds distance to previous 36.22613119076356 
-Newmarket time to here: 19 days, 4 hours, 2 minutes and 13 seconds distance to previous 12.178402751022983 
-Bury St Edmunds time to here: 19 days, 4 hours, 47 minutes and 40 seconds distance to previous 12.727995677775327 
-Sudbury time to here: 19 days, 5 hours, 36 minutes and 18 seconds distance to previous 14.314603529545423 
-Colchester time to here: 19 days, 6 hours, 21 minutes and 52 seconds distance to previous 12.788096103369668 
-Ipswich (Corn Exchange) time to here: 19 days, 7 hours, 11 minutes and 55 seconds distance to previous 15.024031295289316 
-Ipswich time to here: 19 days, 7 hours, 37 minutes and 12 seconds distance to previous 2.638530700094451 
-John Lewis at home Ipswich time to here: 19 days, 7 hours, 57 minutes and 12 seconds distance to previous 0.0 
-Saxmundham time to here: 19 days, 8 hours, 52 minutes and 18 seconds distance to previous 17.54832137523934 
-Norwich time to here: 19 days, 10 hours, 10 minutes and 34 seconds distance to previous 29.13692831086387 
-John Lewis Norwich time to here: 20 days, 24 minutes and 27 seconds distance to previous 2.2319755479484584 
-Wymondham time to here: 20 days, 1 hour and 31 seconds distance to previous 8.033794884501063 
-Wymondham Petrol Station time to here: 20 days, 1 hour, 20 minutes and 31 seconds distance to previous 0.0 
-Swaffham time to here: 20 days, 2 hours, 19 minutes and 11 seconds distance to previous 19.326984757168265 
-Swaffham Petrol Station time to here: 20 days, 2 hours, 39 minutes and 11 seconds distance to previous 0.0 
-North Walsham time to here: 20 days, 4 hours, 1 minute and 19 seconds distance to previous 31.067406112017053 
-John Lewis Cheltenham time to here: 20 days, 9 hours, 39 minutes and 31 seconds distance to previous 159.10616434309333 
-Cheltenham time to here: 20 days, 10 hours and 32 seconds distance to previous 0.5030935550946434 
-Cheltenham Petrol Station time to here: 21 days and 20 minutes distance to previous 0.0 
-Stroud time to here: 21 days, 1 hour, 4 minutes and 47 seconds distance to previous 12.398231836201761 
-Michaelwood Services time to here: 21 days, 1 hour, 45 minutes and 23 seconds distance to previous 10.300344142287413 
-Chipping Sodbury time to here: 21 days, 2 hours, 22 minutes and 57 seconds distance to previous 8.784255751386684 
-John Lewis Cribbs Causeway time to here: 21 days, 3 hours and 26 seconds distance to previous 8.738987035191764 
-Westbury Park time to here: 21 days, 3 hours, 26 minutes and 52 seconds distance to previous 3.218088745058684 
-Clifton time to here: 21 days, 3 hours, 50 minutes and 8 seconds distance to previous 1.6306607911933662 
-Gordano Services time to here: 21 days, 4 hours, 19 minutes and 10 seconds distance to previous 4.520550207768033 
-Portishead time to here: 21 days, 4 hours, 44 minutes and 7 seconds distance to previous 2.4737441578385617 
-Portishead Petrol Station time to here: 21 days, 5 hours, 4 minutes and 7 seconds distance to previous 0.0 
-Nailsea time to here: 21 days, 5 hours, 31 minutes and 23 seconds distance to previous 3.6338197276902435 
-Weston Super Mare time to here: 21 days, 6 hours, 12 minutes and 53 seconds distance to previous 10.747448274166304 
-Barry time to here: 21 days, 6 hours, 59 minutes and 13 seconds distance to previous 13.164528129680866 
-John Lewis Cardiff time to here: 21 days, 7 hours, 29 minutes and 39 seconds distance to previous 5.217992671455157 
-Pontprennau time to here: 21 days, 7 hours, 57 minutes and 32 seconds distance to previous 3.9409992006241716 
-Cardiff Gate Services time to here: 21 days, 8 hours, 18 minutes and 51 seconds distance to previous 0.6590257853359344 
-Cowbridge time to here: 21 days, 9 hours, 8 minutes and 16 seconds distance to previous 14.712692293601659 
-Abergavenny time to here: 22 days, 1 hour, 21 minutes and 10 seconds distance to previous 30.58388366322647 
-Abergavenny Petrol Station time to here: 22 days, 1 hour, 41 minutes and 10 seconds distance to previous 0.0 
-Monmouth time to here: 22 days, 2 hours, 27 minutes and 43 seconds distance to previous 13.280165877210022 
-Caldicot time to here: 22 days, 3 hours, 18 minutes and 21 seconds distance to previous 15.318347290489957 
-Keynsham time to here: 22 days, 4 hours, 11 minutes and 28 seconds distance to previous 16.55645011602819 
-Bath time to here: 22 days, 4 hours, 43 minutes and 20 seconds distance to previous 5.929346468563046 
-Melksham time to here: 22 days, 5 hours, 22 minutes and 23 seconds distance to previous 9.52424200789921 
-Chippenham time to here: 22 days, 5 hours, 53 minutes and 59 seconds distance to previous 5.80484657745087 
-Malmesbury time to here: 22 days, 6 hours, 31 minutes and 4 seconds distance to previous 8.537628079746995 
-Cirencester time to here: 22 days, 7 hours, 12 minutes and 9 seconds distance to previous 10.542062549113774 
-Great Malvern time to here: 22 days, 8 hours, 35 minutes and 14 seconds distance to previous 31.541865464223548 
-Hereford time to here: 22 days, 9 hours, 29 minutes and 17 seconds distance to previous 17.030140051218506 
-Wells time to here: 23 days, 2 hours, 17 minutes and 34 seconds distance to previous 58.78631887158659 
-Sherborne time to here: 23 days, 3 hours, 15 minutes and 22 seconds distance to previous 18.902449908453708 
-Gillingham time to here: 23 days, 3 hours, 59 minutes and 31 seconds distance to previous 12.07669943495021 
-Warminster time to here: 23 days, 4 hours, 44 minutes and 28 seconds distance to previous 12.468586598094031 
-Crewkerne time to here: 23 days, 6 hours, 14 minutes and 17 seconds distance to previous 34.90930740338645 
-Bridport time to here: 23 days, 6 hours, 55 minutes and 8 seconds distance to previous 10.425919296739394 
-Poundbury time to here: 23 days, 7 hours, 40 minutes and 58 seconds distance to previous 12.91673883274659 
-Dorchester time to here: 23 days, 8 hours, 3 minutes and 40 seconds distance to previous 1.3503727045604725 
-Sidmouth time to here: 23 days, 9 hours, 34 minutes and 38 seconds distance to previous 35.48247222263624 
-Exeter time to here: 23 days, 10 hours, 18 minutes and 33 seconds distance to previous 11.957351059296474 
-John Lewis Exeter time to here: 24 days, 21 minutes and 3 seconds distance to previous 0.5277179419434647 
-Teignmouth time to here: 24 days, 1 hour, 6 minutes and 1 second distance to previous 12.482806612538903 
-Torquay time to here: 24 days, 1 hour, 36 minutes and 7 seconds distance to previous 5.051323924118251 
-Okehampton time to here: 24 days, 2 hours, 51 minutes and 38 seconds distance to previous 27.7591518959152 
-Holsworthy time to here: 24 days, 3 hours, 43 minutes and 39 seconds distance to previous 16.005805525635314 
-Saltash time to here: 24 days, 4 hours, 58 minutes and 1 second distance to previous 27.182296117454626 
-Truro time to here: 24 days, 6 hours, 31 minutes and 57 seconds distance to previous 36.971983573429114 
-Wellington time to here: 24 days, 9 hours, 58 minutes and 49 seconds distance to previous 93.43133403430485 
-Menai Bridge time to here: 25 days, 5 hours, 40 minutes and 28 seconds distance to previous 160.24007133957107 
-Gretna Green (Services) time to here: 26 days, 4 hours, 42 minutes and 20 seconds distance to previous 131.17062833952744 
-Hexham time to here: 26 days, 6 hours, 20 minutes and 52 seconds distance to previous 39.26624479338869 
-Ponteland time to here: 26 days, 7 hours, 11 minutes and 8 seconds distance to previous 15.133453708010018 
-Jesmond time to here: 26 days, 7 hours, 44 minutes and 45 seconds distance to previous 6.805582793315112 
-Eldon Square time to here: 26 days, 8 hours, 7 minutes and 12 seconds distance to previous 1.2319195173772128 
-John Lewis Newcastle time to here: 26 days, 8 hours, 28 minutes and 15 seconds distance to previous 0.5227570137839814 
-Morningside time to here: 27 days, 3 hours, 22 minutes and 49 seconds distance to previous 91.40947768244581 
-Comely Bank time to here: 27 days, 3 hours, 47 minutes and 1 second distance to previous 2.103150971744398 
-Stirling time to here: 27 days, 5 hours, 6 minutes and 19 seconds distance to previous 29.652290079305832 
-Milngavie time to here: 27 days, 6 hours, 4 minutes and 56 seconds distance to previous 19.30952736715314 
-Byres Road time to here: 27 days, 6 hours, 33 minutes and 1 second distance to previous 4.0344679923736395 
-John Lewis Glasgow time to here: 27 days, 6 hours, 56 minutes and 39 seconds distance to previous 1.8160882544391082 
-Newton Mearns time to here: 27 days, 7 hours, 30 minutes and 9 seconds distance to previous 6.756428162628773 
-Helensburgh time to here: 27 days, 8 hours, 30 minutes and 20 seconds distance to previous 20.08679808350582 
-Helensburgh Petrol Station time to here: 27 days, 8 hours, 50 minutes and 20 seconds distance to previous 0.0 
-John Lewis Aberdeen time to here: 28 days, 4 hours, 35 minutes and 12 seconds distance to previous 127.60240303196026 
-Finished Testing with real data
-======================
+Victoria Bressenden Place time to here: 40 minutes and 16 seconds distance to previous 0.14081823639002838 
+Victoria Street time to here: 1 hour, 1 minute and 1 second distance to previous 0.36806013978695773 
+Pimlico time to here: 1 hour, 21 minutes and 46 seconds distance to previous 0.3795671495270667 
+BATTERSEA NINE ELMS time to here: 1 hour, 43 minutes and 23 seconds distance to previous 0.808157721487257 
+Vauxhall time to here: 2 hours, 4 minutes and 53 seconds distance to previous 0.7459988936318566 
+Battersea time to here: 2 hours, 28 minutes and 25 seconds distance to previous 1.7684930889320012 
+Clapham Common time to here: 2 hours, 50 minutes and 52 seconds distance to previous 1.2256229076268546 
+Balham time to here: 3 hours, 13 minutes and 50 seconds distance to previous 1.4812545649210993 
+Clapham Junction time to here: 3 hours, 37 minutes and 11 seconds distance to previous 1.6803981376151096 
+Kings Road time to here: 4 hours and 47 seconds distance to previous 1.796682325537742 
+Peter Jones time to here: 4 hours, 22 minutes and 1 second distance to previous 0.6199952754658561 
+Belgravia time to here: 4 hours and 43 minutes distance to previous 0.49092912411068584 
+Knightsbridge time to here: 5 hours, 4 minutes and 5 seconds distance to previous 0.5360992124597699 
+Old Brompton Road time to here: 5 hours, 26 minutes and 21 seconds distance to previous 1.133637162631765 
+Gloucester Road time to here: 5 hours and 47 minutes distance to previous 0.3269649946093528 
+Kensington time to here: 6 hours, 9 minutes and 5 seconds distance to previous 1.044488164844501 
+Notting Hill Gate time to here: 6 hours, 30 minutes and 29 seconds distance to previous 0.695411359771692 
+Bayswater time to here: 6 hours, 52 minutes and 32 seconds distance to previous 1.0299655588902012 
+Kensington Gardens time to here: 7 hours, 13 minutes and 38 seconds distance to previous 0.5443502190682369 
+Edgware Road time to here: 7 hours, 36 minutes and 12 seconds distance to previous 1.2840568540761232 
+Marylebone time to here: 7 hours, 58 minutes and 12 seconds distance to previous 0.9997309350520436 
+JL Foodhall Oxford Street time to here: 8 hours, 19 minutes and 21 seconds distance to previous 0.5791943483841704 
+Bloomsbury time to here: 8 hours, 42 minutes and 38 seconds distance to previous 1.642587037085155 
+John Lewis St Pancras time to here: 9 hours, 3 minutes and 42 seconds distance to previous 0.5333244323109667 
+Kings Cross Station time to here: 9 hours, 24 minutes and 7 seconds distance to previous 0.21033577822151034 
+Cookery School (Kings Cross) time to here: 9 hours, 44 minutes and 39 seconds distance to previous 0.2643624303864461 
+Kings Cross time to here: 10 hours, 4 minutes and 39 seconds distance to previous 0.0 
+John Lewis Oxford Street time to here: 1 day, 22 minutes and 16 seconds distance to previous 1.1388682564719959 
+Clerkenwell time to here: 1 day, 43 minutes and 34 seconds distance to previous 0.6482856309529086 
+Islington time to here: 1 day, 1 hour, 5 minutes and 2 seconds distance to previous 0.7325207251674892 
+Highbury Corner time to here: 1 day, 1 hour, 26 minutes and 54 seconds distance to previous 0.9353780848407169 
+Holloway Road time to here: 1 day, 1 hour, 49 minutes and 2 seconds distance to previous 1.0678323610473315 
+Crouch End time to here: 1 day, 2 hours, 12 minutes and 29 seconds distance to previous 1.7200392507730788 
+Muswell Hill time to here: 1 day, 2 hours, 35 minutes and 36 seconds distance to previous 1.5586284473856427 
+Finchley time to here: 1 day, 3 hours, 1 minute and 30 seconds distance to previous 2.9544588873431756 
+Finchley Central time to here: 1 day, 3 hours, 24 minutes and 6 seconds distance to previous 1.2997516194260796 
+Mill Hill time to here: 1 day, 3 hours, 46 minutes and 21 seconds distance to previous 1.1194442568079788 
+Temple Fortune time to here: 1 day, 4 hours, 9 minutes and 58 seconds distance to previous 1.8100478045067563 
+Brent Cross time to here: 1 day, 4 hours, 33 minutes and 26 seconds distance to previous 1.7353622505978659 
+John Lewis Brent Cross time to here: 1 day, 4 hours, 53 minutes and 26 seconds distance to previous 0.0 
+West Hampstead time to here: 1 day, 5 hours and 19 minutes distance to previous 2.7840337659590877 
+Cookery School (Finchley Road) time to here: 1 day, 5 hours, 40 minutes and 56 seconds distance to previous 0.9671224142269007 
+John Barnes time to here: 1 day, 6 hours and 56 seconds distance to previous 0.0 
+John Lewis White City Westfield time to here: 1 day, 6 hours, 28 minutes and 45 seconds distance to previous 3.9045180283613194 
+Westfield London time to here: 1 day, 6 hours, 49 minutes and 7 seconds distance to previous 0.18726501995860761 
+Fulham Palace Road time to here: 1 day, 7 hours, 12 minutes and 31 seconds distance to previous 1.6952212535828417 
+West Kensington time to here: 1 day, 7 hours, 34 minutes and 36 seconds distance to previous 1.0467323671788653 
+Fulham time to here: 1 day, 7 hours, 56 minutes and 1 second distance to previous 0.706345123930356 
+Parsons Green time to here: 1 day, 8 hours, 16 minutes and 52 seconds distance to previous 0.42928283462051087 
+East Putney time to here: 1 day, 8 hours, 39 minutes and 24 seconds distance to previous 1.2617733007555978 
+Putney time to here: 1 day, 9 hours and 14 seconds distance to previous 0.4186608885481254 
+Wandsworth time to here: 1 day, 9 hours, 23 minutes and 42 seconds distance to previous 1.7337656086391384 
+Wimbledon time to here: 1 day, 9 hours and 48 minutes distance to previous 2.1498793358933384 
+Wimbledon Hill time to here: 1 day, 10 hours, 8 minutes and 55 seconds distance to previous 0.45648150729244374 
+Raynes Park time to here: 2 days, 24 minutes and 4 seconds distance to previous 2.0362786076564956 
+New Malden time to here: 2 days, 47 minutes and 17 seconds distance to previous 1.6135340809850787 
+Worcester Park time to here: 2 days, 1 hour, 11 minutes and 6 seconds distance to previous 1.9038326849276568 
+Cheam time to here: 2 days, 1 hour, 35 minutes and 46 seconds distance to previous 2.3319654259016183 
+Banstead time to here: 2 days, 2 hours, 1 minute and 23 seconds distance to previous 2.809461912270721 
+Burgh Heath time to here: 2 days, 2 hours, 28 minutes and 52 seconds distance to previous 3.739269948693213 
+Epsom time to here: 2 days, 3 hours and 31 seconds distance to previous 5.82833646603384 
+Surbiton time to here: 2 days, 3 hours, 30 minutes and 30 seconds distance to previous 4.990162915356726 
+John Lewis Kingston time to here: 2 days, 3 hours, 53 minutes and 1 second distance to previous 1.259639473698459 
+Kingston time to here: 2 days, 4 hours, 13 minutes and 20 seconds distance to previous 0.1576112296126276 
+Twickenham time to here: 2 days, 4 hours, 39 minutes and 28 seconds distance to previous 3.063719159730601 
+Richmond time to here: 2 days, 5 hours, 3 minutes and 46 seconds distance to previous 2.1554175872437256 
+East Sheen time to here: 2 days, 5 hours, 28 minutes and 17 seconds distance to previous 2.255400908131435 
+Chiswick time to here: 2 days, 5 hours, 52 minutes and 21 seconds distance to previous 2.034995218962307 
+Ealing time to here: 2 days, 6 hours, 17 minutes and 30 seconds distance to previous 2.578509632811257 
+West Ealing time to here: 2 days, 6 hours, 41 minutes and 53 seconds distance to previous 2.18913771062947 
+SKY (OSTERLEY) time to here: 2 days, 7 hours, 5 minutes and 38 seconds distance to previous 1.8726499653965616 
+South Harrow time to here: 2 days, 7 hours, 37 minutes and 19 seconds distance to previous 5.84445108200933 
+South Harrow Petrol Station time to here: 2 days, 7 hours, 57 minutes and 19 seconds distance to previous 0.0 
+Harrow Weald time to here: 2 days, 8 hours, 22 minutes and 53 seconds distance to previous 2.779566171797053 
+John Lewis Watford time to here: 2 days, 8 hours, 52 minutes and 59 seconds distance to previous 5.048776176777988 
+Little Waitrose at John Lewis Watford time to here: 2 days, 9 hours, 12 minutes and 59 seconds distance to previous 0.0 
+Sceptre (Watford) time to here: 2 days, 9 hours, 36 minutes and 41 seconds distance to previous 1.8545711343864895 
+St Albans time to here: 2 days, 10 hours, 7 minutes and 2 seconds distance to previous 5.1752375704697515 
+Harpenden time to here: 3 days, 29 minutes and 42 seconds distance to previous 4.853509421645389 
+John Lewis Welwyn time to here: 3 days, 1 hour, 10 minutes and 48 seconds distance to previous 10.55115031182859 
+Welwyn Garden City time to here: 3 days, 1 hour, 31 minutes and 10 seconds distance to previous 0.18244986708685895 
+Stevenage time to here: 3 days, 2 hours, 6 minutes and 14 seconds distance to previous 7.5350769140400224 
+Hitchin time to here: 3 days, 2 hours, 38 minutes and 2 seconds distance to previous 5.897029244712995 
+Ampthill time to here: 3 days, 3 hours, 29 minutes and 38 seconds distance to previous 15.805053049113674 
+Bedford time to here: 3 days, 4 hours, 8 minutes and 21 seconds distance to previous 9.358815048434463 
+St Neots time to here: 3 days, 4 hours, 52 minutes and 13 seconds distance to previous 11.931114289864198 
+St Ives time to here: 3 days, 5 hours, 43 minutes and 33 seconds distance to previous 15.665908641288466 
+John Lewis Cambridge time to here: 3 days, 6 hours, 35 minutes and 8 seconds distance to previous 15.788043156724628 
+Fitzroy Street time to here: 3 days, 6 hours, 56 minutes and 19 seconds distance to previous 0.5911504144463445 
+Cambridge time to here: 3 days, 7 hours, 22 minutes and 8 seconds distance to previous 2.914517825318851 
+Saffron Walden time to here: 3 days, 8 hours, 9 minutes and 37 seconds distance to previous 13.736074465832768 
+Birchanger Services time to here: 3 days, 8 hours, 51 minutes and 46 seconds distance to previous 11.078964226261919 
+Bishops Stortford time to here: 3 days, 9 hours, 16 minutes and 40 seconds distance to previous 2.4478537569266687 
+Broxbourne time to here: 3 days, 10 hours, 8 minutes and 21 seconds distance to previous 15.845058575928327 
+Enfield time to here: 4 days, 34 minutes and 55 seconds distance to previous 7.463093613060606 
+Enfield Chase time to here: 4 days, 56 minutes and 13 seconds distance to previous 0.647073215022901 
+Winchmore Hill time to here: 4 days, 1 hour, 18 minutes and 45 seconds distance to previous 1.2672128227334771 
+Whetstone time to here: 4 days, 1 hour, 50 minutes and 18 seconds distance to previous 5.779216316776866 
+Barnet time to here: 4 days, 2 hours, 15 minutes and 26 seconds distance to previous 2.567254794542303 
+Mimms Services time to here: 4 days, 2 hours, 40 minutes and 39 seconds distance to previous 2.6014674301438734 
+London Gateway time to here: 4 days, 3 hours, 10 minutes and 52 seconds distance to previous 5.110768065222867 
+Northwood time to here: 4 days, 3 hours, 53 minutes and 54 seconds distance to previous 11.516474910010432 
+Ruislip time to here: 4 days, 4 hours, 19 minutes and 29 seconds distance to previous 2.791318323552658 
+Waterside time to here: 4 days, 4 hours, 49 minutes and 40 seconds distance to previous 5.093667564780747 
+John Lewis Heathrow Terminal 2 time to here: 4 days, 5 hours, 20 minutes and 30 seconds distance to previous 5.4174860024275455 
+Hampton time to here: 4 days, 5 hours, 53 minutes and 34 seconds distance to previous 6.529691446615357 
+Esher time to here: 4 days, 6 hours, 20 minutes and 16 seconds distance to previous 3.3565305327078243 
+Hersham time to here: 4 days, 6 hours, 44 minutes and 48 seconds distance to previous 2.258812957108217 
+Cobham time to here: 4 days, 7 hours, 10 minutes and 8 seconds distance to previous 2.6684201497140947 
+Weybridge time to here: 4 days, 7 hours, 38 minutes and 41 seconds distance to previous 4.278707854352873 
+Addlestone time to here: 4 days, 8 hours, 3 minutes and 33 seconds distance to previous 2.431701652444241 
+West Byfleet time to here: 4 days, 8 hours, 28 minutes and 30 seconds distance to previous 2.4720726827502313 
+Burnt Common time to here: 4 days, 8 hours, 56 minutes and 29 seconds distance to previous 3.9911222841825 
+Guildford time to here: 4 days, 9 hours and 27 minutes distance to previous 5.260388997365255 
+Guildford Worplesdon Road time to here: 4 days, 9 hours, 50 minutes and 52 seconds distance to previous 1.9335721208686107 
+Goldsworth Park time to here: 4 days, 10 hours, 19 minutes and 32 seconds distance to previous 4.334198417469941 
+Sunningdale time to here: 5 days, 31 minutes and 49 seconds distance to previous 5.916468430153447 
+Bagshot time to here: 5 days, 1 hour, 2 minutes and 21 seconds distance to previous 5.262347109380046 
+Frimley time to here: 5 days, 1 hour, 30 minutes and 51 seconds distance to previous 4.251620877359595 
+Sandhurst time to here: 5 days, 1 hour, 56 minutes and 56 seconds distance to previous 3.039255385781252 
+Yateley time to here: 5 days, 2 hours, 26 minutes and 27 seconds distance to previous 4.756061593850532 
+Fleet South Services time to here: 5 days, 2 hours, 52 minutes and 39 seconds distance to previous 3.106923662161601 
+Fleet time to here: 5 days, 3 hours, 15 minutes and 31 seconds distance to previous 1.4338545784701513 
+Farnham time to here: 5 days, 3 hours, 46 minutes and 12 seconds distance to previous 5.340624461109455 
+Haslemere time to here: 5 days, 4 hours, 28 minutes and 5 seconds distance to previous 10.940776639946751 
+Godalming time to here: 5 days, 5 hours, 7 minutes and 43 seconds distance to previous 9.813358082252112 
+Egham time to here: 5 days, 6 hours, 3 minutes and 10 seconds distance to previous 17.72653229814835 
+Windsor New time to here: 5 days, 6 hours, 34 minutes and 34 seconds distance to previous 5.7026604745943 
+Maidenhead time to here: 5 days, 7 hours, 10 minutes and 14 seconds distance to previous 7.830424092538013 
+Marlow time to here: 5 days, 7 hours, 41 minutes and 14 seconds distance to previous 5.4962240062883385 
+John Lewis High Wycombe time to here: 5 days, 8 hours, 6 minutes and 37 seconds distance to previous 2.69930589198404 
+High Wycombe time to here: 5 days, 8 hours, 29 minutes and 48 seconds distance to previous 1.5891909698019737 
+Hazlemere time to here: 5 days, 8 hours, 58 minutes and 11 seconds distance to previous 4.1910781173941265 
+Beaconsfield time to here: 5 days, 9 hours, 29 minutes and 2 seconds distance to previous 5.420952472029317 
+Amersham time to here: 5 days, 9 hours, 59 minutes and 46 seconds distance to previous 5.371344802384353 
+Chesham time to here: 6 days, 24 minutes and 10 seconds distance to previous 2.0864652190966346 
+Berkhamsted time to here: 6 days, 54 minutes and 3 seconds distance to previous 4.940106234322968 
+Rickmansworth time to here: 6 days, 1 hour, 35 minutes and 33 seconds distance to previous 10.74996775396994 
+Gerrards Cross time to here: 6 days, 2 hours, 8 minutes and 48 seconds distance to previous 6.6310656006709 
+Bracknell time to here: 6 days, 3 hours, 5 minutes and 40 seconds distance to previous 18.428720827632148 
+Bagshot Road time to here: 6 days, 3 hours, 27 minutes and 35 seconds distance to previous 0.9623076818770965 
+Horticulture Direct Services time to here: 6 days, 3 hours, 50 minutes and 52 seconds distance to previous 1.6413377009318113 
+Waitrose Online Direct time to here: 6 days, 4 hours, 10 minutes and 52 seconds distance to previous 0.0 
+Wokingham time to here: 6 days, 4 hours, 39 minutes and 43 seconds distance to previous 4.420012414518761 
+Twyford time to here: 6 days, 5 hours, 10 minutes and 3 seconds distance to previous 5.171490764073967 
+Woodley time to here: 6 days, 5 hours, 36 minutes and 38 seconds distance to previous 3.290992122749817 
+John Lewis Reading time to here: 6 days, 6 hours, 5 minutes and 58 seconds distance to previous 4.6672706366998025 
+Caversham time to here: 6 days, 6 hours, 27 minutes and 39 seconds distance to previous 0.8426258424709261 
+Reading time to here: 6 days, 6 hours, 54 minutes and 2 seconds distance to previous 3.1865809038058464 
+Henley time to here: 6 days, 7 hours, 32 minutes and 59 seconds distance to previous 9.476875942466725 
+Thame time to here: 6 days, 8 hours, 24 minutes and 9 seconds distance to previous 15.584969869964063 
+Oxford Services time to here: 6 days, 9 hours and 57 seconds distance to previous 8.400939831881868 
+Headington time to here: 6 days, 9 hours, 37 minutes and 14 seconds distance to previous 8.140339992119484 
+Headington - London Road time to here: 6 days, 9 hours, 57 minutes and 43 seconds distance to previous 0.24022030659376936 
+John Lewis Oxford time to here: 7 days, 26 minutes and 48 seconds distance to previous 3.4012350069937813 
+Oxford Botley Road time to here: 7 days, 49 minutes and 19 seconds distance to previous 1.2584225912228382 
+Peartree time to here: 7 days, 1 hour, 15 minutes and 21 seconds distance to previous 3.018565356671651 
+Abingdon time to here: 7 days, 1 hour, 52 minutes and 39 seconds distance to previous 8.650207795405642 
+Wantage time to here: 7 days, 2 hours, 36 minutes and 5 seconds distance to previous 11.716656868066023 
+Faringdon time to here: 7 days, 3 hours, 18 minutes and 51 seconds distance to previous 11.386514416413833 
+Witney time to here: 7 days, 4 hours, 1 minute and 41 seconds distance to previous 11.414674103209983 
+Membury Services time to here: 7 days, 5 hours, 5 minutes and 7 seconds distance to previous 21.715420705521524 
+Marlborough time to here: 7 days, 5 hours, 50 minutes and 50 seconds distance to previous 12.860774730007584 
+Swindon time to here: 7 days, 6 hours, 31 minutes and 16 seconds distance to previous 10.21824070182862 
+John Lewis at home Swindon time to here: 7 days, 6 hours, 52 minutes and 50 seconds distance to previous 0.7762368554118748 
+John Lewis Outlet Swindon time to here: 7 days, 7 hours, 15 minutes and 10 seconds distance to previous 1.166570504170293 
+Cirencester time to here: 7 days, 8 hours, 7 minutes and 17 seconds distance to previous 16.065987134073083 
+Malmesbury time to here: 7 days, 8 hours, 52 minutes and 27 seconds distance to previous 12.578986883660635 
+Chippenham time to here: 7 days, 9 hours, 29 minutes and 56 seconds distance to previous 8.745908204068854 
+Melksham time to here: 7 days, 10 hours, 1 minute and 56 seconds distance to previous 5.9977473029293815 
+Warminster time to here: 8 days, 44 minutes and 27 seconds distance to previous 12.226457303602096 
+Gillingham time to here: 8 days, 1 hour, 31 minutes and 52 seconds distance to previous 13.708775109122563 
+Sherborne time to here: 8 days, 2 hours, 27 minutes and 39 seconds distance to previous 17.89247636899102 
+Poundbury time to here: 8 days, 3 hours, 21 minutes and 8 seconds distance to previous 16.746179143879107 
+Dorchester time to here: 8 days, 3 hours, 45 minutes and 27 seconds distance to previous 2.1523592999543615 
+Bridport time to here: 8 days, 4 hours, 50 minutes and 51 seconds distance to previous 22.699035202977228 
+Crewkerne time to here: 8 days, 5 hours, 32 minutes and 17 seconds distance to previous 10.721718179890862 
+Wells time to here: 8 days, 6 hours, 42 minutes and 16 seconds distance to previous 24.986593263182026 
+Nailsea time to here: 8 days, 7 hours, 37 minutes and 4 seconds distance to previous 17.402483851097156 
+Portishead time to here: 8 days, 8 hours, 4 minutes and 27 seconds distance to previous 3.6921361930731145 
+Portishead Petrol Station time to here: 8 days, 8 hours, 24 minutes and 27 seconds distance to previous 0.0 
+Gordano Services time to here: 8 days, 8 hours, 52 minutes and 20 seconds distance to previous 3.9425507668259425 
+Westbury Park time to here: 8 days, 9 hours, 25 minutes and 43 seconds distance to previous 6.690369318632575 
+Clifton time to here: 8 days, 9 hours, 49 minutes and 3 seconds distance to previous 1.6652115384242245 
+John Lewis Cribbs Causeway time to here: 8 days, 10 hours, 18 minutes and 50 seconds distance to previous 4.894762738131738 
+Keynsham time to here: 9 days, 41 minutes and 54 seconds distance to previous 10.957718089319561 
+Bath time to here: 9 days, 1 hour, 19 minutes and 57 seconds distance to previous 9.021345867851402 
+Chipping Sodbury time to here: 9 days, 2 hours, 2 minutes and 34 seconds distance to previous 11.307153530827344 
+Michaelwood Services time to here: 9 days, 2 hours, 40 minutes and 33 seconds distance to previous 8.989587695283648 
+Stroud time to here: 9 days, 3 hours, 31 minutes and 25 seconds distance to previous 15.434582460701732 
+Cheltenham time to here: 9 days, 4 hours, 20 minutes and 14 seconds distance to previous 14.412195814743201 
+Cheltenham Petrol Station time to here: 9 days, 4 hours, 40 minutes and 14 seconds distance to previous 0.0 
+John Lewis Cheltenham time to here: 9 days, 5 hours, 1 minute and 51 seconds distance to previous 0.8040277063012291 
+Evesham time to here: 9 days, 5 hours, 53 minutes and 43 seconds distance to previous 15.937074786277444 
+Alcester time to here: 9 days, 6 hours, 34 minutes and 26 seconds distance to previous 10.35669350478232 
+Hopwood Park Petrol Filling Station (ser time to here: 9 days, 7 hours, 17 minutes and 36 seconds distance to previous 11.585064016832026 
+Hopwood Services time to here: 9 days, 7 hours, 37 minutes and 36 seconds distance to previous 0.0 
+Harborne time to here: 9 days, 8 hours, 10 minutes and 54 seconds distance to previous 6.645160400810486 
+John Lewis Birmingham time to here: 9 days, 8 hours, 38 minutes and 15 seconds distance to previous 3.682633985722754 
+Hall Green time to here: 9 days, 9 hours, 8 minutes and 45 seconds distance to previous 5.248165476478382 
+Solihull time to here: 9 days, 9 hours, 37 minutes and 10 seconds distance to previous 4.2060531166522415 
+John Lewis Solihull time to here: 9 days, 9 hours, 57 minutes and 38 seconds distance to previous 0.23172146426259246 
+Four Oaks time to here: 10 days, 45 minutes and 21 seconds distance to previous 12.676031834233608 
+Lichfield time to here: 10 days, 1 hour, 17 minutes and 28 seconds distance to previous 6.062808028248521 
+John Lewis at home Tamworth time to here: 10 days, 1 hour, 57 minutes and 38 seconds distance to previous 10.085813585675673 
+Corley Services time to here: 10 days, 2 hours, 48 minutes and 46 seconds distance to previous 15.561932204870637 
+Kenilworth time to here: 10 days, 3 hours, 27 minutes and 27 seconds distance to previous 9.346346751458803 
+Warwick Services time to here: 10 days, 4 hours, 6 minutes and 27 seconds distance to previous 9.4933910564402 
+Stratford Upon Avon time to here: 10 days, 4 hours, 52 minutes and 39 seconds distance to previous 13.098810465458328 
+Banbury time to here: 10 days, 6 hours, 5 minutes and 18 seconds distance to previous 26.32961208513523 
+Brackley time to here: 10 days, 6 hours, 52 minutes and 20 seconds distance to previous 13.515565721419156 
+Buckingham time to here: 10 days, 7 hours, 35 minutes and 48 seconds distance to previous 11.735703794055077 
+Towcester time to here: 10 days, 8 hours, 13 minutes and 57 seconds distance to previous 9.06906236110403 
+Wootton time to here: 10 days, 8 hours, 51 minutes and 32 seconds distance to previous 8.798073235839746 
+Kingsthorpe time to here: 10 days, 9 hours, 18 minutes and 58 seconds distance to previous 3.7120651516373733 
+Market Harborough time to here: 10 days, 10 hours, 8 minutes and 50 seconds distance to previous 14.93743840329046 
+Oadby time to here: 11 days, 48 minutes and 59 seconds distance to previous 14.497955907040819 
+John Lewis Leicester time to here: 11 days, 1 hour, 18 minutes and 30 seconds distance to previous 4.760250787437806 
+Blaby time to here: 11 days, 1 hour, 47 minutes and 54 seconds distance to previous 4.6922717255614605 
+Leicester Forest East Services time to here: 11 days, 2 hours, 16 minutes and 25 seconds distance to previous 4.263075879784638 
+MOUNTSORREL time to here: 11 days, 2 hours, 54 minutes and 23 seconds distance to previous 8.984176176945562 
+John Lewis Nottingham time to here: 11 days, 3 hours, 45 minutes and 14 seconds distance to previous 15.424250988913904 
+Trinity Square time to here: 11 days, 4 hours, 5 minutes and 22 seconds distance to previous 0.06563660030799795 
+Wollaton time to here: 11 days, 4 hours, 36 minutes and 42 seconds distance to previous 5.663664890448579 
+Woodhall South time to here: 11 days, 5 hours, 47 minutes and 30 seconds distance to previous 25.406387336297904 
+John Lewis Sheffield time to here: 11 days, 6 hours, 35 minutes and 41 seconds distance to previous 14.087435801592939 
+Sheffield time to here: 11 days, 6 hours, 56 minutes and 48 seconds distance to previous 0.5550355794903138 
+Sheffield Petrol Station time to here: 11 days, 7 hours, 16 minutes and 48 seconds distance to previous 0.0 
+John Lewis Leeds time to here: 11 days, 8 hours, 36 minutes and 56 seconds distance to previous 30.074608597601003 
+Meanwood time to here: 11 days, 9 hours, 2 minutes and 50 seconds distance to previous 2.944504715567844 
+Otley time to here: 11 days, 9 hours, 43 minutes and 46 seconds distance to previous 10.464617382135849 
+Harrogate time to here: 12 days, 45 minutes and 21 seconds distance to previous 12.676976341639918 
+Hartshead Moor (Services) time to here: 12 days, 1 hour, 53 minutes and 52 seconds distance to previous 24.259535504230296 
+Buxton time to here: 12 days, 3 hours, 21 minutes and 37 seconds distance to previous 33.87295113051858 
+Poynton time to here: 12 days, 4 hours, 13 minutes and 17 seconds distance to previous 15.833351182949375 
+Cheadle Hulme time to here: 12 days, 4 hours, 43 minutes and 17 seconds distance to previous 5.000583658184319 
+John Lewis Cheadle time to here: 12 days, 5 hours, 7 minutes and 12 seconds distance to previous 1.9641030815361882 
+Wilmslow time to here: 12 days, 5 hours, 34 minutes and 4 seconds distance to previous 3.4298934390586253 
+Alderley Edge time to here: 12 days, 5 hours, 57 minutes and 49 seconds distance to previous 1.8743700432145487 
+Knutsford time to here: 12 days, 6 hours, 37 minutes and 12 seconds distance to previous 9.692260706837175 
+Altrincham time to here: 12 days, 7 hours, 11 minutes and 30 seconds distance to previous 7.153888630982382 
+John Lewis Trafford time to here: 12 days, 7 hours, 40 minutes and 2 seconds distance to previous 4.265292024070521 
+Northwich time to here: 12 days, 8 hours, 37 minutes and 16 seconds distance to previous 18.617734439539085 
+Sandbach time to here: 12 days, 9 hours, 24 minutes and 2 seconds distance to previous 13.378976941463181 
+Keele Services time to here: 12 days, 10 hours, 7 minutes and 20 seconds distance to previous 11.649664119347044 
+Newport time to here: 13 days, 53 minutes and 35 seconds distance to previous 16.792512360051745 
+Wolverhampton time to here: 13 days, 1 hour, 55 minutes and 57 seconds distance to previous 21.186168388266957 
+Wolverhampton Petrol Station time to here: 13 days, 2 hours, 15 minutes and 57 seconds distance to previous 0.0 
+Stourbridge time to here: 13 days, 2 hours, 52 minutes and 37 seconds distance to previous 8.334636465557594 
+Bromsgrove time to here: 13 days, 3 hours, 33 minutes and 19 seconds distance to previous 10.345920748140184 
+Droitwich time to here: 13 days, 4 hours, 7 minutes and 49 seconds distance to previous 7.249984867660227 
+Worcester time to here: 13 days, 4 hours, 41 minutes and 43 seconds distance to previous 6.9506924644452655 
+Great Malvern time to here: 13 days, 5 hours, 22 minutes and 51 seconds distance to previous 10.571433477069297 
+Hereford time to here: 13 days, 6 hours and 38 minutes distance to previous 27.570013393099803 
+Monmouth time to here: 13 days, 7 hours, 32 minutes and 49 seconds distance to previous 17.415230203143683 
+Caldicot time to here: 13 days, 8 hours, 24 minutes and 6 seconds distance to previous 15.634149228368793 
+Weston Super Mare time to here: 13 days, 9 hours, 29 minutes and 2 seconds distance to previous 22.470052108942724 
+John Lewis Cardiff time to here: 14 days, 55 minutes and 44 seconds distance to previous 17.874133294515243 
+Pontprennau time to here: 14 days, 1 hour, 24 minutes and 38 seconds distance to previous 4.449917621641999 
+Cardiff Gate Services time to here: 14 days, 1 hour, 46 minutes and 12 seconds distance to previous 0.7774008578593283 
+Barry time to here: 14 days, 2 hours, 29 minutes and 18 seconds distance to previous 11.550998958194187 
+Cowbridge time to here: 14 days, 3 hours, 19 minutes and 18 seconds distance to previous 15.005548904601907 
+Wellington time to here: 14 days, 4 hours, 53 minutes and 35 seconds distance to previous 37.13937768737632 
+Sidmouth time to here: 14 days, 5 hours, 52 minutes and 50 seconds distance to previous 19.623179678057152 
+Exeter time to here: 14 days, 6 hours, 50 minutes and 45 seconds distance to previous 18.958808514803906 
+John Lewis Exeter time to here: 14 days, 7 hours, 12 minutes and 24 seconds distance to previous 0.8247234058761796 
+Teignmouth time to here: 14 days, 7 hours, 57 minutes and 54 seconds distance to previous 12.748069125016507 
+Torquay time to here: 14 days, 8 hours, 28 minutes and 43 seconds distance to previous 5.41341799415108 
+Okehampton time to here: 14 days, 10 hours, 4 minutes and 55 seconds distance to previous 38.0942745480274 
+Holsworthy time to here: 15 days, 1 hour, 9 minutes and 50 seconds distance to previous 24.919108741702665 
+Saltash time to here: 15 days, 2 hours, 26 minutes and 23 seconds distance to previous 28.280040702891416 
+Truro time to here: 15 days, 4 hours, 40 minutes and 43 seconds distance to previous 57.16185920626182 
+Abergavenny time to here: 16 days, 6 hours, 14 minutes and 48 seconds distance to previous 177.40670960797686 
+Abergavenny Petrol Station time to here: 16 days, 6 hours, 34 minutes and 48 seconds distance to previous 0.0 
+Shrewsbury time to here: 16 days, 9 hours, 5 minutes and 18 seconds distance to previous 65.24528918936149 
+Chester time to here: 17 days, 1 hour, 29 minutes and 59 seconds distance to previous 34.99926427462717 
+John Lewis at home Chester time to here: 17 days, 1 hour, 54 minutes and 59 seconds distance to previous 2.4938055032419686 
+John Lewis Liverpool time to here: 17 days, 2 hours, 45 minutes and 42 seconds distance to previous 15.36256273134128 
+Formby time to here: 17 days, 3 hours, 29 minutes and 8 seconds distance to previous 11.714562034434106 
+Charnock Richard (Services) time to here: 17 days, 4 hours, 41 minutes and 24 seconds distance to previous 26.132898560925018 
+Walton-le-Dale time to here: 17 days, 5 hours, 18 minutes and 8 seconds distance to previous 8.370116021298658 
+UTTOXETER time to here: 17 days, 8 hours, 23 minutes and 24 seconds distance to previous 82.63465708099946 
+Ashbourne time to here: 17 days, 9 hours, 8 minutes and 15 seconds distance to previous 12.418810774969655 
+Lutterworth time to here: 18 days, 2 hours, 7 minutes and 51 seconds distance to previous 53.926916705909534 
+Daventry time to here: 18 days, 2 hours, 56 minutes and 33 seconds distance to previous 14.348406796923783 
+John Lewis Milton Keynes time to here: 18 days, 4 hours, 21 minutes and 6 seconds distance to previous 32.278248736525235 
+Oakgrove time to here: 18 days, 4 hours, 46 minutes and 31 seconds distance to previous 2.7049834756611713 
+Newport Pagnell time to here: 18 days, 5 hours, 12 minutes and 39 seconds distance to previous 3.0686807038854833 
+Leighton Buzzard time to here: 18 days, 5 hours, 56 minutes and 40 seconds distance to previous 12.00951258963094 
+Aylesbury time to here: 18 days, 6 hours, 41 minutes and 24 seconds distance to previous 12.369571535805125 
+Wallingford time to here: 18 days, 7 hours, 55 minutes and 1 second distance to previous 26.804825606748476 
+Thatcham time to here: 18 days, 8 hours, 48 minutes and 17 seconds distance to previous 16.63315736745399 
+John Lewis at home Newbury time to here: 18 days, 9 hours, 17 minutes and 36 seconds distance to previous 4.662469192906269 
+Newbury time to here: 18 days, 9 hours, 38 minutes and 33 seconds distance to previous 0.4692558794516432 
+Andover time to here: 19 days and 55 minutes distance to previous 17.504531628366934 
+Winchester time to here: 19 days, 1 hour, 42 minutes and 36 seconds distance to previous 13.803449633551676 
+Chandlers Ford time to here: 19 days, 2 hours, 15 minutes and 51 seconds distance to previous 6.621390782547242 
+Southampton New time to here: 19 days, 2 hours, 45 minutes and 12 seconds distance to previous 4.6754213628505505 
+John Lewis Southampton time to here: 19 days, 3 hours, 8 minutes and 27 seconds distance to previous 1.6236905056382955 
+Little Waitrose John Lewis Southampton time to here: 19 days, 3 hours, 28 minutes and 27 seconds distance to previous 0.0 
+Dibden time to here: 19 days, 3 hours, 53 minutes and 25 seconds distance to previous 2.4873387500099486 
+Locks Heath time to here: 19 days, 4 hours, 30 minutes and 44 seconds distance to previous 8.654795666611653 
+East Cowes time to here: 19 days, 5 hours, 5 minutes and 37 seconds distance to previous 7.438609501244249 
+Gosport time to here: 19 days, 5 hours, 47 minutes and 33 seconds distance to previous 10.973675215405244 
+Knight and Lee time to here: 19 days, 6 hours, 14 minutes and 15 seconds distance to previous 3.346861988026991 
+Southsea time to here: 19 days, 6 hours, 34 minutes and 27 seconds distance to previous 0.10351009612600924 
+Waterlooville time to here: 19 days, 7 hours, 9 minutes and 45 seconds distance to previous 7.6493830292708065 
+Havant time to here: 19 days, 7 hours, 37 minutes and 39 seconds distance to previous 3.9467479886228722 
+Petersfield time to here: 19 days, 8 hours, 19 minutes and 54 seconds distance to previous 11.122585712108547 
+Alton time to here: 19 days, 9 hours, 1 minute and 7 seconds distance to previous 10.609761936490282 
+BASINGSTOKE time to here: 19 days, 9 hours, 43 minutes and 52 seconds distance to previous 11.378412111872088 
+John Lewis at home Basingstoke time to here: 19 days, 10 hours, 3 minutes and 52 seconds distance to previous 0.0 
+Romsey time to here: 20 days, 1 hour, 29 minutes and 55 seconds distance to previous 34.96480758432536 
+Lymington New time to here: 20 days, 2 hours, 23 minutes and 21 seconds distance to previous 16.71285557759962 
+Christchurch time to here: 20 days, 3 hours, 15 minutes and 39 seconds distance to previous 16.1518182135201 
+Winton time to here: 20 days, 3 hours, 49 minutes and 37 seconds distance to previous 6.981768770483588 
+John Lewis at home Poole time to here: 20 days, 4 hours, 15 minutes and 42 seconds distance to previous 3.0389822492735914 
+Parkstone time to here: 20 days, 4 hours, 38 minutes and 22 seconds distance to previous 1.3369874109354947 
+Wimborne time to here: 20 days, 5 hours, 10 minutes and 1 second distance to previous 5.822315112891117 
+Ringwood time to here: 20 days, 5 hours, 57 minutes and 19 seconds distance to previous 13.649519121862859 
+Cookery School (Salisbury) time to here: 20 days, 6 hours, 49 minutes and 21 seconds distance to previous 16.020759742165787 
+Salisbury time to here: 20 days, 7 hours, 9 minutes and 21 seconds distance to previous 0.0 
+Salisbury Petrol Station time to here: 20 days, 7 hours, 29 minutes and 21 seconds distance to previous 0.0 
+Chichester time to here: 20 days, 10 hours, 15 minutes and 40 seconds distance to previous 73.15596184460968 
+John Lewis at home Chichester time to here: 21 days, 24 minutes and 9 seconds distance to previous 2.080676346215322 
+Rustington time to here: 21 days, 1 hour, 19 minutes and 46 seconds distance to previous 17.803856544299634 
+Storrington time to here: 21 days, 1 hour, 56 minutes and 36 seconds distance to previous 8.417988287209903 
+Worthing time to here: 21 days, 2 hours, 35 minutes and 23 seconds distance to previous 9.390761680252595 
+Hove time to here: 21 days, 3 hours, 22 minutes and 30 seconds distance to previous 13.557794708509874 
+Brighton time to here: 21 days, 3 hours, 46 minutes and 53 seconds distance to previous 2.194227507802978 
+Burgess Hill time to here: 21 days, 4 hours, 25 minutes and 19 seconds distance to previous 9.215955574686733 
+Haywards Heath time to here: 21 days, 4 hours, 53 minutes and 19 seconds distance to previous 4.000997027304526 
+East Grinstead time to here: 21 days, 5 hours, 34 minutes and 25 seconds distance to previous 10.54777287577338 
+Edenbridge time to here: 21 days, 6 hours, 8 minutes and 58 seconds distance to previous 7.273891720069649 
+Oxted time to here: 21 days, 6 hours, 42 minutes and 2 seconds distance to previous 6.537759076396291 
+Biggin Hill time to here: 21 days, 7 hours, 11 minutes and 17 seconds distance to previous 4.620086345253831 
+Green Street Green time to here: 21 days, 7 hours, 40 minutes and 57 seconds distance to previous 4.8348809838194 
+Petts Wood time to here: 21 days, 8 hours, 5 minutes and 54 seconds distance to previous 2.478556853675293 
+Sidcup time to here: 21 days, 8 hours, 32 minutes and 44 seconds distance to previous 3.4143246074883096 
+Bromley time to here: 21 days, 9 hours, 4 minutes and 30 seconds distance to previous 5.88047266308585 
+Bromley South time to here: 21 days, 9 hours, 27 minutes and 37 seconds distance to previous 1.5597051299844145 
+Beckenham time to here: 21 days, 9 hours, 53 minutes and 47 seconds distance to previous 3.088941837668599 
+Greenwich time to here: 22 days, 29 minutes and 51 seconds distance to previous 4.9312338984277435 
+Canary Wharf time to here: 22 days and 53 minutes distance to previous 1.574089229554252 
+Stratford City time to here: 22 days, 1 hour, 18 minutes and 38 seconds distance to previous 2.8124296620894285 
+John Lewis Stratford time to here: 22 days, 1 hour, 38 minutes and 39 seconds distance to previous 0.011080582114533792 
+South Woodford time to here: 22 days, 2 hours, 6 minutes and 57 seconds distance to previous 4.148868537673878 
+Buckhurst Hill time to here: 22 days, 2 hours, 32 minutes and 13 seconds distance to previous 2.6332215534970245 
+St Katharine Docks time to here: 22 days, 3 hours, 15 minutes and 2 seconds distance to previous 11.407182780485412 
+Monument time to here: 22 days, 3 hours, 37 minutes and 47 seconds distance to previous 1.3768221899722661 
+Walbrook time to here: 22 days, 3 hours, 58 minutes and 21 seconds distance to previous 0.28519965568011824 
+Barbican time to here: 22 days, 4 hours, 19 minutes and 45 seconds distance to previous 0.6954825332094501 
+South Bank Tower time to here: 22 days, 4 hours, 42 minutes and 37 seconds distance to previous 1.438105372390923 
+High Holborn time to here: 22 days, 5 hours, 4 minutes and 44 seconds distance to previous 1.0606308549633872 
+ROEHAMPTON time to here: 22 days, 5 hours, 44 minutes and 4 seconds distance to previous 9.660841059545525 
+John Lewis at home Croydon time to here: 22 days, 6 hours, 24 minutes and 2 seconds distance to previous 9.989760176470716 
+Croydon time to here: 22 days, 6 hours, 47 minutes and 15 seconds distance to previous 1.6034158209584761 
+Sanderstead time to here: 22 days, 7 hours, 13 minutes and 50 seconds distance to previous 3.2896081107023507 
+Caterham time to here: 22 days, 7 hours, 40 minutes and 54 seconds distance to previous 3.5333495622429605 
+Coulsdon DFC time to here: 22 days, 8 hours, 10 minutes and 8 seconds distance to previous 4.623308015317746 
+Coulsdon time to here: 22 days, 8 hours, 30 minutes and 58 seconds distance to previous 0.4113860455822983 
+Horley - Brighton Road time to here: 22 days, 9 hours, 11 minutes and 10 seconds distance to previous 10.100435153576264 
+Horley time to here: 22 days, 9 hours, 32 minutes and 28 seconds distance to previous 0.6521437023385575 
+Dorking time to here: 22 days, 10 hours, 17 minutes and 50 seconds distance to previous 12.682332602049144 
+Leatherhead time to here: 23 days, 28 minutes and 52 seconds distance to previous 4.436926989449227 
+Horsham New time to here: 23 days, 1 hour, 21 minutes and 17 seconds distance to previous 16.2055176913208 
+John Lewis at home Horsham time to here: 23 days, 1 hour, 41 minutes and 17 seconds distance to previous 0.0 
+Lewes time to here: 23 days, 2 hours, 56 minutes and 57 seconds distance to previous 27.83894417331589 
+Uckfield time to here: 23 days, 3 hours, 34 minutes and 29 seconds distance to previous 8.766874343944037 
+Crowborough time to here: 23 days, 4 hours and 10 minutes distance to previous 7.754175252088349 
+Heathfield time to here: 23 days, 4 hours and 48 minutes distance to previous 9.002458921039395 
+Hailsham time to here: 23 days, 5 hours, 22 minutes and 35 seconds distance to previous 7.293183574605697 
+Eastbourne time to here: 23 days, 5 hours, 55 minutes and 25 seconds distance to previous 6.413698331579301 
+Hawkhurst time to here: 23 days, 7 hours, 6 minutes and 47 seconds distance to previous 25.682732297732613 
+Paddock Wood time to here: 23 days, 7 hours, 51 minutes and 38 seconds distance to previous 12.428461155754567 
+Kingshill time to here: 23 days, 8 hours, 24 minutes and 39 seconds distance to previous 6.503895263993839 
+Allington Park time to here: 23 days, 8 hours, 57 minutes and 58 seconds distance to previous 6.66364439676215 
+Longfield time to here: 23 days, 9 hours, 49 minutes and 32 seconds distance to previous 15.783589228198569 
+JL Foodhall Bluewater time to here: 23 days, 10 hours, 16 minutes and 56 seconds distance to previous 3.700575341065097 
+John Lewis Bluewater time to here: 24 days and 20 minutes distance to previous 0.0 
+Upminster time to here: 24 days, 56 minutes and 25 seconds distance to previous 8.215659645457594 
+Billericay time to here: 24 days, 1 hour, 41 minutes and 20 seconds distance to previous 12.454448710336353 
+John Lewis Chelmsford time to here: 24 days, 2 hours, 18 minutes and 55 seconds distance to previous 8.791093270720197 
+Leigh On Sea time to here: 24 days, 3 hours, 15 minutes and 4 seconds distance to previous 18.079443395461663 
+Southend time to here: 24 days, 3 hours, 44 minutes and 52 seconds distance to previous 4.895901286269961 
+Southend Petrol Station time to here: 24 days, 4 hours, 4 minutes and 52 seconds distance to previous 0.0 
+Colchester time to here: 24 days, 5 hours, 19 minutes and 35 seconds distance to previous 27.362783491059734 
+Sudbury time to here: 24 days, 6 hours, 12 minutes and 51 seconds distance to previous 16.628488573833035 
+Bury St Edmunds time to here: 24 days, 7 hours, 1 minute and 57 seconds distance to previous 14.551317839818244 
+Newmarket time to here: 24 days, 8 hours, 3 minutes and 56 seconds distance to previous 20.99054090803998 
+Ely time to here: 24 days, 8 hours, 53 minutes and 1 second distance to previous 14.543615769831883 
+Swaffham time to here: 25 days, 1 hour, 28 minutes and 12 seconds distance to previous 34.10531063587897 
+Swaffham Petrol Station time to here: 25 days, 1 hour, 48 minutes and 12 seconds distance to previous 0.0 
+Wymondham time to here: 25 days, 3 hours, 10 minutes and 47 seconds distance to previous 31.294300655566673 
+Wymondham Petrol Station time to here: 25 days, 3 hours, 30 minutes and 47 seconds distance to previous 0.0 
+Norwich time to here: 25 days, 4 hours, 9 minutes and 13 seconds distance to previous 9.211856835057747 
+John Lewis Norwich time to here: 25 days, 4 hours, 35 minutes and 56 seconds distance to previous 3.3601209942797894 
+North Walsham time to here: 25 days, 5 hours, 25 minutes and 58 seconds distance to previous 15.0170237548522 
+Saxmundham time to here: 25 days, 7 hours, 13 minutes and 40 seconds distance to previous 43.8504018899541 
+Ipswich time to here: 25 days, 8 hours, 21 minutes and 37 seconds distance to previous 23.976755396861016 
+John Lewis at home Ipswich time to here: 25 days, 8 hours, 41 minutes and 37 seconds distance to previous 0.0 
+Ipswich (Corn Exchange) time to here: 25 days, 9 hours, 9 minutes and 12 seconds distance to previous 3.7919552888714274 
+Ramsgate time to here: 26 days, 2 hours, 8 minutes and 1 second distance to previous 54.00840090053117 
+Canterbury time to here: 26 days, 3 hours and 15 minutes distance to previous 23.497260755505074 
+Hythe time to here: 26 days, 4 hours, 3 minutes and 36 seconds distance to previous 14.302579693345423 
+John Lewis at home Ashford time to here: 26 days, 4 hours, 57 minutes and 45 seconds distance to previous 17.074375537863652 
+Ashford time to here: 26 days, 5 hours, 18 minutes and 29 seconds distance to previous 0.36638971614938626 
+Tenterden time to here: 26 days, 6 hours, 4 minutes and 57 seconds distance to previous 13.228245239554578 
+John Lewis at home Tunbridge Wells time to here: 26 days, 7 hours, 21 minutes and 27 seconds distance to previous 28.249235004314706 
+Tonbridge time to here: 26 days, 7 hours, 46 minutes and 59 seconds distance to previous 2.7717077681820728 
+Sevenoaks time to here: 26 days, 8 hours, 22 minutes and 40 seconds distance to previous 7.841581747001059 
+Tubs Hill time to here: 26 days, 8 hours, 44 minutes and 20 seconds distance to previous 0.8324048462136836 
+Rushden time to here: 27 days, 3 hours, 22 minutes and 4 seconds distance to previous 91.04020829937731 
+Rushden Petrol Station time to here: 27 days, 3 hours, 42 minutes and 4 seconds distance to previous 0.0 
+Oundle time to here: 27 days, 4 hours, 35 minutes and 44 seconds distance to previous 16.83155856030541 
+Stamford time to here: 27 days, 5 hours, 19 minutes and 21 seconds distance to previous 11.80743290888431 
+Peterborough time to here: 27 days, 6 hours, 14 minutes and 1 second distance to previous 17.33189089761698 
+John Lewis Peterborough time to here: 27 days, 6 hours, 34 minutes and 40 seconds distance to previous 0.32979438988560833 
+Lincoln time to here: 27 days, 8 hours, 36 minutes and 57 seconds distance to previous 51.13936147279316 
+Lincoln Petrol Station time to here: 27 days, 8 hours, 56 minutes and 57 seconds distance to previous 0.0 
+Newark time to here: 27 days, 10 hours, 4 minutes and 17 seconds distance to previous 23.66325107119479 
+Willerby time to here: 28 days, 2 hours, 8 minutes and 1 second distance to previous 54.01546162335845 
+John Lewis York time to here: 28 days, 3 hours, 56 minutes and 24 seconds distance to previous 44.18941031215622 
+York time to here: 28 days, 4 hours, 22 minutes and 2 seconds distance to previous 2.8181676504601225 
+John Lewis Newcastle time to here: 28 days, 7 hours, 22 minutes and 50 seconds distance to previous 80.39937628558219 
+Eldon Square time to here: 28 days, 7 hours, 43 minutes and 54 seconds distance to previous 0.5290391329569936 
+Jesmond time to here: 28 days, 8 hours, 6 minutes and 41 seconds distance to previous 1.3973268306664441 
+Ponteland time to here: 28 days, 8 hours, 47 minutes and 41 seconds distance to previous 10.498478019693929 
+Hexham time to here: 28 days, 9 hours, 58 minutes and 44 seconds distance to previous 25.521262040441886 
+Gretna Green (Services) time to here: 29 days, 2 hours and 38 minutes distance to previous 69.00609809117596 
+Morningside time to here: 29 days, 5 hours, 7 minutes and 49 seconds distance to previous 64.90416082419672 
+Comely Bank time to here: 29 days, 5 hours, 32 minutes and 14 seconds distance to previous 2.2068396081729325 
+Stirling time to here: 29 days, 7 hours, 34 minutes and 31 seconds distance to previous 51.14202857869445 
+John Lewis Glasgow time to here: 29 days, 8 hours, 51 minutes and 8 seconds distance to previous 28.311205390975687 
+Byres Road time to here: 29 days, 9 hours, 17 minutes and 3 seconds distance to previous 2.955384578240182 
+Milngavie time to here: 29 days, 9 hours, 45 minutes and 39 seconds distance to previous 4.302881961895137 
+Newton Mearns time to here: 30 days, 41 minutes and 40 seconds distance to previous 10.840101707096933 
+Helensburgh time to here: 30 days, 1 hour, 59 minutes and 29 seconds distance to previous 28.90693342218965 
+Helensburgh Petrol Station time to here: 30 days, 2 hours, 19 minutes and 29 seconds distance to previous 0.0 
+Menai Bridge time to here: 30 days, 9 hours, 14 minutes and 34 seconds distance to previous 197.53707693725008 
 shop2 time to here: 5 hours and 20 minutes distance to previous 150.0 
 shop3 time to here: 1 day, 10 hours and 20 minutes distance to previous 300.0 
 shop2 time to here: 7 hours distance to previous 200.0 
 shop3 time to here: 1 day, 10 hours and 20 minutes distance to previous 300.0 
 shop4 time to here: 2 days, 1 hour and 20 minutes distance to previous 30.0 
-Liverpool time to here: 6 hours, 16 minutes and 19 seconds distance to previous 178.15851975177128 
-Newcastle time to here: 1 day, 4 hours, 23 minutes and 15 seconds distance to previous 121.62893959688955 
+Liverpool time to here: 8 hours, 17 minutes and 57 seconds distance to previous 238.9788556768018 
+Newcastle time to here: 1 day, 5 hours, 11 minutes and 15 seconds distance to previous 145.62939287937533 
 shop2 time to here: 1 hour and 20 minutes distance to previous 30.0 
 shop3 time to here: 2 hours and 40 minutes distance to previous 30.0 
 shop2 time to here: 1 hour and 20 minutes distance to previous 30.0 
-Liverpool time to here: 6 hours, 16 minutes and 19 seconds distance to previous 178.15851975177128 
+Liverpool time to here: 8 hours, 17 minutes and 57 seconds distance to previous 238.9788556768018 
 </pre>
 </span>
 </div>
@@ -739,7 +1442,7 @@ Liverpool time to here: 6 hours, 16 minutes and 19 seconds distance to previous 
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.3</a> at 07-Oct-2019 17:30:42</p>
+<a href="http://www.gradle.org">Gradle 4.10.3</a> at 09-Oct-2019 19:00:53</p>
 </div>
 </div>
 </body>

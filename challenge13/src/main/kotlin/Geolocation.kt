@@ -1,3 +1,4 @@
+import com.sun.org.apache.xalan.internal.lib.ExsltMath.power
 import org.gavaghan.geodesy.Ellipsoid
 import org.gavaghan.geodesy.GeodeticCalculator
 import org.gavaghan.geodesy.GlobalCoordinates
@@ -13,5 +14,9 @@ data class GeoLocation(private val lat:Double, private val lng:Double) {
         val distanceInMetres = geoCalc.calculateGeodeticCurve(reference, globalCoordinates1, globalCoordinates2).ellipsoidalDistance
 
         return distanceInMetres/METRES_IN_A_MILE
+    }
+    fun distanceTo2(other:GeoLocation):DistanceInMiles {
+        return power(power((this.lat - other.lat),2.0) + power((this.lng - other.lng),2.0),0.5) * 70
+
     }
 }

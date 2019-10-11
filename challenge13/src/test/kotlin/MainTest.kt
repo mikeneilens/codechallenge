@@ -322,4 +322,5 @@ class MainTest {
             assertTrue(false,"shop created by convertToShop should not be null")
         }
     }
+
 }
