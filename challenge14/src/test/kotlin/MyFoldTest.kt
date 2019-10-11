@@ -22,4 +22,8 @@ class MyFoldTest {
     fun `List of (1,2), plus an initial value of "x" returns a string containing "x1" `() {
         assertEquals("x12", myFold(listOf(1,2),"x",convertIntsToSingleString))
     }
+    @Test
+    fun `List of (1,2,3), plus an initial value of "x" returns a string containing "x123" `() {
+        assertEquals("x123", myFold(listOf(1,2,3),"x",convertIntsToSingleString))
+    }
 }

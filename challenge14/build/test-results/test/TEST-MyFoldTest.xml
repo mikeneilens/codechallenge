@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MyFoldTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2019-10-11T08:28:21" hostname="MacBook-Pro-2" time="0.034">
+<testsuite name="MyFoldTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2019-10-11T08:29:53" hostname="MacBook-Pro-2" time="0.028">
   <properties/>
-  <testcase name="Empty list of Ints returns an empty String()" classname="MyFoldTest" time="0.02"/>
-  <testcase name="List of (1,2), plus an initial value of &quot;x&quot; returns a string containing &quot;x1&quot; ()" classname="MyFoldTest" time="0.01"/>
+  <testcase name="List of (1,2,3), plus an initial value of &quot;x&quot; returns a string containing &quot;x123&quot; ()" classname="MyFoldTest" time="0.023"/>
+  <testcase name="Empty list of Ints returns an empty String()" classname="MyFoldTest" time="0.002"/>
+  <testcase name="List of (1,2), plus an initial value of &quot;x&quot; returns a string containing &quot;x1&quot; ()" classname="MyFoldTest" time="0.001"/>
   <testcase name="List of (1) returns a string containing &quot;1&quot; ()" classname="MyFoldTest" time="0.001"/>
-  <testcase name="List of (1), plus an initial value of &quot;x&quot; returns a string containing &quot;x1&quot; ()" classname="MyFoldTest" time="0.0"/>
+  <testcase name="List of (1), plus an initial value of &quot;x&quot; returns a string containing &quot;x1&quot; ()" classname="MyFoldTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
