@@ -41,4 +41,9 @@ class MyFoldTest {
         assertEquals("x 1 2 3", myFold(listOf(1,2,3),"x",convertIntsToSingleStringWithSpaces))
         listOf(1,2,3).fold("",convertIntsToSingleStringWithSpaces)
     }
+    @Test
+    fun `The test case from the challenge`() {
+        val result = myFold(listOf(1,2,3,4),"The result is ",{acc, element -> acc + element.toString() })
+        assertEquals("The result is 1234", result)
+    }
 }
