@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MyFoldTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2019-10-11T08:32:25" hostname="MacBook-Pro-2" time="0.035">
+<testsuite name="MyFoldTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2019-10-11T08:48:32" hostname="MacBook-Pro-2" time="0.048">
   <properties/>
-  <testcase name="List of (1,2,3), plus an initial value of &quot;x&quot; returns a string containing &quot;x123&quot; ()" classname="MyFoldTest" time="0.029"/>
-  <testcase name="Empty list of Ints returns an empty String()" classname="MyFoldTest" time="0.002"/>
-  <testcase name="List of (1,2), plus an initial value of &quot;x&quot; returns a string containing &quot;x1&quot; ()" classname="MyFoldTest" time="0.0"/>
-  <testcase name="List of (1) returns a string containing &quot;1&quot; ()" classname="MyFoldTest" time="0.001"/>
+  <testcase name="List of (1,2,3), plus an initial value of &quot;x&quot; returns a string containing &quot;321x&quot; when used with reverse function ()" classname="MyFoldTest" time="0.037"/>
+  <testcase name="An empty list, plus an initial value of &quot;x&quot; returns a string containing &quot;x&quot; when used with empty spaces function ()" classname="MyFoldTest" time="0.001"/>
+  <testcase name="List of (1,2,3), plus an initial value of &quot;x&quot; returns a string containing &quot;x123&quot; ()" classname="MyFoldTest" time="0.001"/>
+  <testcase name="Empty list of Ints returns an empty String()" classname="MyFoldTest" time="0.001"/>
+  <testcase name="List of (1,2), plus an initial value of &quot;x&quot; returns a string containing &quot;x1&quot; ()" classname="MyFoldTest" time="0.001"/>
+  <testcase name="List of (1,2,3), plus an initial value of &quot;x&quot; returns a string containing &quot;x 1 2 3&quot; when used with empty spaces function ()" classname="MyFoldTest" time="0.0"/>
+  <testcase name="List of (1) returns a string containing &quot;1&quot; ()" classname="MyFoldTest" time="0.0"/>
   <testcase name="List of (1), plus an initial value of &quot;x&quot; returns a string containing &quot;x1&quot; ()" classname="MyFoldTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

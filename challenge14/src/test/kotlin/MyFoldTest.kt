@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test
 class MyFoldTest {
 
     val convertIntsToSingleString = fun  (acc:String, value:Int) ="$acc$value"
+    val convertIntsToSingleStringInReverse = fun  (acc:String, value:Int) ="$value$acc"
+    val convertIntsToSingleStringWithSpaces = fun  (acc:String, value:Int) ="$acc $value"
 
     @Test
     fun `Empty list of Ints returns an empty String`() {
@@ -25,5 +27,17 @@ class MyFoldTest {
     @Test
     fun `List of (1,2,3), plus an initial value of "x" returns a string containing "x123" `() {
         assertEquals("x123", myFold(listOf(1,2,3),"x",convertIntsToSingleString))
+    }
+    @Test
+    fun `List of (1,2,3), plus an initial value of "x" returns a string containing "321x" when used with reverse function `() {
+        assertEquals("321x", myFold(listOf(1,2,3),"x",convertIntsToSingleStringInReverse))
+    }
+    @Test
+    fun `An empty list, plus an initial value of "x" returns a string containing "x" when used with empty spaces function `() {
+        assertEquals("x", myFold(listOf(),"x",convertIntsToSingleStringWithSpaces))
+    }
+    @Test
+    fun `List of (1,2,3), plus an initial value of "x" returns a string containing "x 1 2 3" when used with empty spaces function `() {
+        assertEquals("x 1 2 3", myFold(listOf(1,2,3),"x",convertIntsToSingleStringWithSpaces))
     }
 }
