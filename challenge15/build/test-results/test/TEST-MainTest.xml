@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MainTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2019-10-22T16:47:41" hostname="MacBook-Pro-2" time="0.052">
+<testsuite name="MainTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2019-10-22T17:10:19" hostname="MacBook-Pro-2" time="0.06">
   <properties/>
-  <testcase name="createDiscountForAnEAN creates a null if the value for discount is not prefixed with a £()" classname="MainTest" time="0.039"/>
-  <testcase name="an empty string creates an empty ListOfDiscountsForAnEAN()" classname="MainTest" time="0.002"/>
-  <testcase name="createDiscountForAnEAN creates the object correctly from an array of strings()" classname="MainTest" time="0.007"/>
-  <testcase name="createDiscountForAnEAN creates a null if the data contains wrong number of elements()" classname="MainTest" time="0.0"/>
-  <testcase name="an string containing CSV data for one DiscountForAnEAN creates a ListOfDiscountsForAnEAN containing one element()" classname="MainTest" time="0.001"/>
+  <testcase name="createDiscountForAnEAN creates a null if the value for discount is not prefixed with a pound()" classname="MainTest" time="0.04"/>
+  <testcase name="a string containing CSV data for one DiscountForAnEAN creates a ListOfDiscountsForAnEAN containing one element()" classname="MainTest" time="0.01"/>
+  <testcase name="an empty string creates an empty ListOfDiscountsForAnEAN()" classname="MainTest" time="0.001"/>
+  <testcase name="a string containing CSV data for several DiscountForAnEAN including an invalid discount value creates a ListOfDiscountsForAnEAN containing several elements()" classname="MainTest" time="0.002"/>
+  <testcase name="createDiscountForAnEAN creates the object correctly from an array of strings()" classname="MainTest" time="0.001"/>
+  <testcase name="createDiscountForAnEAN creates a null if the data contains wrong number of elements()" classname="MainTest" time="0.001"/>
+  <testcase name="a string containing CSV data for several DiscountForAnEAN creates a ListOfDiscountsForAnEAN containing several elements()" classname="MainTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
