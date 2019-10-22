@@ -7,7 +7,7 @@ class MainTest {
     fun `createDiscountForAnEAN creates the object correctly from an array of strings`() {
         val dataForOneEAN = listOf("Tomato Soup", "E10001", "£126.19")
 
-        assertEquals(DiscountForAnEAN("Tomato Soup", "E10001", 126.19), createDiscountForEANorNull(dataForOneEAN))
+        assertEquals(DiscountsForAnEAN("Tomato Soup", "E10001", 126.19), createDiscountForEANorNull(dataForOneEAN))
     }
 
     @Test
@@ -31,26 +31,26 @@ class MainTest {
     @Test
     fun `an empty string creates an empty ListOfDiscountsForAnEAN`() {
         val csvData = ""
-        val listOfDiscountForAnEAN = csvData.createListOfObject(3, createDiscountForEANorNull)
+        val listOfDiscountForAnEAN = csvData.toListOfObjects(3, createDiscountForEANorNull)
         assertTrue(listOfDiscountForAnEAN.isEmpty())
     }
 
     @Test
     fun `a string containing CSV data for one DiscountForAnEAN creates a ListOfDiscountsForAnEAN containing one element`() {
         val csvData = "Tomato Soup,E10001,£126.19"
-        val listOfDiscountForAnEAN = csvData.createListOfObject(3, createDiscountForEANorNull)
+        val listOfDiscountForAnEAN = csvData.toListOfObjects(3, createDiscountForEANorNull)
         assertTrue(listOfDiscountForAnEAN.size == 1)
-        assertEquals(listOf(DiscountForAnEAN("Tomato Soup", "E10001", 126.19)), listOfDiscountForAnEAN)
+        assertEquals(listOf(DiscountsForAnEAN("Tomato Soup", "E10001", 126.19)), listOfDiscountForAnEAN)
     }
 
     @Test
     fun `a string containing CSV data for several DiscountForAnEAN creates a ListOfDiscountsForAnEAN containing several elements`() {
         val csvData = "Tomato Soup,E10001,£126.19,Tomato Soup,E10002,£123.80,Chicken Soup,E10004,£127.70"
-        val listOfDiscountForAnEAN = csvData.createListOfObject(3, createDiscountForEANorNull)
+        val listOfDiscountForAnEAN = csvData.toListOfObjects(3, createDiscountForEANorNull)
         val expectedResult = listOf(
-            DiscountForAnEAN("Tomato Soup", "E10001", 126.19),
-            DiscountForAnEAN("Tomato Soup", "E10002", 123.80),
-            DiscountForAnEAN("Chicken Soup", "E10004", 127.70)
+            DiscountsForAnEAN("Tomato Soup", "E10001", 126.19),
+            DiscountsForAnEAN("Tomato Soup", "E10002", 123.80),
+            DiscountsForAnEAN("Chicken Soup", "E10004", 127.70)
         )
         assertEquals(expectedResult, listOfDiscountForAnEAN)
     }
@@ -58,10 +58,10 @@ class MainTest {
     @Test
     fun `a string containing CSV data for several DiscountForAnEAN including an invalid discount value creates a ListOfDiscountsForAnEAN containing several elements`() {
         val csvData = "Tomato Soup,E10001,£126.19,Tomato Soup,E10002,123.80,Chicken Soup,E10004,£127.70"
-        val listOfDiscountForAnEAN = csvData.createListOfObject(3, createDiscountForEANorNull)
+        val listOfDiscountForAnEAN = csvData.toListOfObjects(3, createDiscountForEANorNull)
         val expectedResult = listOf(
-            DiscountForAnEAN("Tomato Soup", "E10001", 126.19),
-            DiscountForAnEAN("Chicken Soup", "E10004", 127.70)
+            DiscountsForAnEAN("Tomato Soup", "E10001", 126.19),
+            DiscountsForAnEAN("Chicken Soup", "E10004", 127.70)
         )
         assertEquals(expectedResult, listOfDiscountForAnEAN)
     }
