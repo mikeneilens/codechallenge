@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="MyFoldGenericTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2019-10-11T09:41:30" hostname="MacBook-Pro-2" time="0.044">
+  <properties/>
+  <testcase name="List of one String containing (&quot;1&quot;,&quot;2&quot;) and an initial value of 3  returns 312()" classname="MyFoldGenericTest" time="0.039"/>
+  <testcase name="Empty list of String returns 0()" classname="MyFoldGenericTest" time="0.002"/>
+  <testcase name="List of one String containing (&quot;1&quot;,&quot;2&quot;) returns 12()" classname="MyFoldGenericTest" time="0.001"/>
+  <testcase name="List of one String containing &quot;1&quot; returns 1()" classname="MyFoldGenericTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

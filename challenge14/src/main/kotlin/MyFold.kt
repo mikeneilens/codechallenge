@@ -13,3 +13,4 @@ fun <ElementType, FoldedType>myFold(list: List<ElementType>, initial:FoldedType,
     }
     return output
 }
+
