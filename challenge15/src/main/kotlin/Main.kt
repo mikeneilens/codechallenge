@@ -11,11 +11,6 @@ fun createDiscountForEANorNull(list:List<String>):DiscountForAnEAN? {
 
 }
 
-fun createListOfDiscountsForAnEAN(csvOfDiscountsForEachEAN: String): List<DiscountForAnEAN> =
-     csvOfDiscountsForEachEAN.split(",")
-        .windowed(3,3)
-        .mapNotNull{createDiscountForEANorNull(it)}
-
 data class DeliveryToAShop(val product: String, val EAN: String, val item: String, val caseSize: Int, val depot: String, val qtyDelivered:Int)
 
 fun createDeliveryToAShopOrNull(list: List<String>): DeliveryToAShop? {
@@ -29,12 +24,7 @@ fun createDeliveryToAShopOrNull(list: List<String>): DeliveryToAShop? {
         DeliveryToAShop(list[0],list[1],list[2], caseSize, list[4], qtyDelivered)
 }
 
-fun createListOfDeliveryToShop(csvOfDeliveryToShop: String): List<DeliveryToAShop> =
-    csvOfDeliveryToShop.split(",")
-        .windowed(6,6)
-        .mapNotNull{createDeliveryToAShopOrNull(it)}
-
-fun <ObjectType:Any>createListOfObject(csvData: String, parameters:Int, objectCreator:(List<String>)->ObjectType?): List<ObjectType> =
-    csvData.split(",")
-        .windowed(parameters,parameters)
+fun <ObjectType:Any>String.createListOfObject(noOfProperties:Int, objectCreator:(List<String>)->ObjectType?): List<ObjectType> =
+    this.split(",")
+        .windowed(noOfProperties,noOfProperties)
         .mapNotNull{objectCreator(it)}
