@@ -9,3 +9,11 @@ fun createDiscountForEANorNull(list:List<String>):DiscountForAnEAN? {
     else return DiscountForAnEAN(list[0], list[1], discountValueOrNull)
 
 }
+
+fun createListOfDiscountsForAnEAN(csvOfDiscountsForEachEAN: String): List<DiscountForAnEAN> {
+    if (csvOfDiscountsForEachEAN.isEmpty()) return emptyList()
+
+    val discountForAnEAN = createDiscountForEANorNull(csvOfDiscountsForEachEAN.split(",") )
+    if (discountForAnEAN != null) return listOf(discountForAnEAN)
+    else return emptyList()
+}

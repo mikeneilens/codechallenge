@@ -1,5 +1,4 @@
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertNull
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
 class MainTest {
@@ -19,5 +18,17 @@ class MainTest {
     fun `createDiscountForAnEAN creates a null if the value for discount is not prefixed with a £`() {
         val dataForOneEAN = listOf("Tomato Soup","E10001","126.19")
         assertNull( createDiscountForEANorNull(dataForOneEAN))
+    }
+
+    @Test
+    fun `an empty string creates an empty ListOfDiscountsForAnEAN`() {
+        val listOfDiscountForAnEAN = createListOfDiscountsForAnEAN("")
+        assertTrue(listOfDiscountForAnEAN.isEmpty())
+    }
+
+    @Test
+    fun `an string containing CSV data for one DiscountForAnEAN creates a ListOfDiscountsForAnEAN containing one element`() {
+        val listOfDiscountForAnEAN = createListOfDiscountsForAnEAN("Tomato Soup,E10001,£126.19")
+        assertTrue(listOfDiscountForAnEAN.size == 1)
     }
 }
