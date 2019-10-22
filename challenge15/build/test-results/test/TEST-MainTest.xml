@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MainTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-10-22T16:24:14" hostname="MacBook-Pro-2" time="0.042">
+<testsuite name="MainTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-10-22T16:36:16" hostname="MacBook-Pro-2" time="0.046">
   <properties/>
-  <testcase name="DiscountForAnEAN is created correctly from an array of strings()" classname="MainTest" time="0.042"/>
+  <testcase name="createDiscountForAnEAN creates a null if the value for discount is not prefixed with a £()" classname="MainTest" time="0.036"/>
+  <testcase name="createDiscountForAnEAN creates the object correctly from an array of strings()" classname="MainTest" time="0.007"/>
+  <testcase name="createDiscountForAnEAN creates a null if the data contains wrong number of elements()" classname="MainTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
