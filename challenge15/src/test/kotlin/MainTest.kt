@@ -117,14 +117,14 @@ class MainTest {
     @Test
     fun `summing total deliveries of each EAN to a shop creates an empty map when there are no deliveries to a shop`() {
         val deliveriesToAShop = emptyList<DeliveryToAShop>()
-        assertTrue(calcTotalDeliveryQtyToShopForEachEAN(deliveriesToAShop).isEmpty())
+        assertTrue(calculateTotalDeliveryForEachKey(deliveriesToAShop).isEmpty())
     }
     @Test
     fun `summing total deliveries of each EAN to a shop creates a map of one KeyValue when there is one deliveries to a shop`() {
         val deliveriesToAShop = listOf(
             DeliveryToAShop("Carrot Soup", "E110011", "I118", 72, "Depot-A", 7)
         )
-        assertEquals(mapOf("E110011" to (72 * 7) ),calcTotalDeliveryQtyToShopForEachEAN(deliveriesToAShop))
+        assertEquals(mapOf("E110011" to (72 * 7) ),calculateTotalDeliveryForEachKey(deliveriesToAShop))
     }
     @Test
     fun `summing total deliveries of each EAN to a shop creates a map of one KeyValue when there is two deliveries with the same EAN`() {
@@ -132,7 +132,7 @@ class MainTest {
             DeliveryToAShop("Carrot Soup", "E110011", "I118", 72, "Depot-A", 7) ,
             DeliveryToAShop("Carrot Soup", "E110011", "I119", 36, "Depot-A", 12)
         )
-        assertEquals(mapOf("E110011" to ((72* 7) + (36 * 12)) ),calcTotalDeliveryQtyToShopForEachEAN(deliveriesToAShop))
+        assertEquals(mapOf("E110011" to ((72* 7) + (36 * 12)) ),calculateTotalDeliveryForEachKey(deliveriesToAShop))
     }
     @Test
     fun `summing total deliveries of each EAN to a shop creates a map of one KeyValue when there is three deliveries with two EANs`() {
@@ -145,14 +145,43 @@ class MainTest {
             "E110011" to ((72* 7) + (36 * 12)),
             "E110004" to (96* 6))
 
-        assertEquals(expectedResult,calcTotalDeliveryQtyToShopForEachEAN(deliveriesToAShop))
+        assertEquals(expectedResult,calculateTotalDeliveryForEachKey(deliveriesToAShop))
     }
 
     @Test
     fun `summing total deliveries of each item  to each depot creates an empty map if the list of deliveries is empty`() {
         val deliveriesToEachDepot = emptyList<DeliveryToADepot>()
-        val expectedResult = mapOf<String, Int>()
 
-        assertTrue(calculateTotalDeliveryQtyToEachDepot(deliveriesToEachDepot).isEmpty())
+        assertTrue(calculateTotalDeliveryForEachKey(deliveriesToEachDepot).isEmpty())
+    }
+
+    fun `summing total deliveries of each item to each depot creates a map containing one item if the list of deliveries contains one DepotItem `() {
+        val deliveriesToEachDepot = listOf(
+            DeliveryToADepot("Carrot Soup","I118",72,"Depot-C","Dodgy Food Inc",766)
+        )
+        val expectedResult = mapOf("Depot-C I118" to (72 * 766))
+
+        assertEquals( expectedResult, calculateTotalDeliveryForEachKey(deliveriesToEachDepot))
+    }
+    @Test
+    fun `summing total deliveries of each item to each depot creates a map containing one item if the list of deliveries contains two DepotItem that are the same `() {
+        val deliveriesToEachDepot = listOf(
+            DeliveryToADepot("Carrot Soup","I118",72,"Depot-C","Dodgy Food Inc",766),
+            DeliveryToADepot("Carrot Soup","I118",72,"Depot-C","Mary's Farm",97)
+        )
+        val expectedResult = mapOf("Depot-C I118" to ((72 * 766)+(72 * 97)))
+
+        assertEquals( expectedResult, calculateTotalDeliveryForEachKey(deliveriesToEachDepot))
+    }
+    @Test
+    fun `summing total deliveries of each item to each depot creates a map containing one item if the list of deliveries contains three DepotItem that are different `() {
+        val deliveriesToEachDepot = listOf(
+            DeliveryToADepot("Carrot Soup","I118",72,"Depot-C","Dodgy Food Inc",766),
+            DeliveryToADepot("Carrot Soup","I118",72,"Depot-C","Mary's Farm",97),
+            DeliveryToADepot("Chicken Soup","I106",96,"Depot-A","Dodgy Food Inc",171)
+        )
+        val expectedResult = mapOf("Depot-C I118" to ((72 * 766)+(72 * 97)), "Depot-A I106" to (96 * 171))
+
+        assertEquals( expectedResult, calculateTotalDeliveryForEachKey(deliveriesToEachDepot))
     }
 }

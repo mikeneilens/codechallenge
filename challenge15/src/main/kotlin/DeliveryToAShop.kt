@@ -1,4 +1,12 @@
-data class DeliveryToAShop(val product: String, val EAN: String, val item: String, val caseSize: Int, val depot: String, val qtyDelivered:Int)
+interface Delivery {
+    val unitsDelivered:Int
+    val key:String
+}
+
+data class DeliveryToAShop(val product: String, val EAN: String, val item: String, private val caseSize: Int, val depot: String, private val qtyDelivered:Int) :Delivery{
+    override val unitsDelivered = qtyDelivered * caseSize
+    override val key = EAN
+}
 
 val createDeliveryToAShopOrNull = fun (list: List<String>): DeliveryToAShop? {
     if (list.size != 6)  return null

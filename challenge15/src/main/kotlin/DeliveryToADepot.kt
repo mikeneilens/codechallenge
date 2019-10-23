@@ -1,4 +1,7 @@
-data class DeliveryToADepot(val product:String,val item:String,val caseSize:Int, val depot:String, val supplier:String, val qtyDelivered:Int)
+data class DeliveryToADepot(val product:String,val item:String, private val caseSize:Int, val depot:String, val supplier:String, private val qtyDelivered:Int):Delivery {
+    override val unitsDelivered = qtyDelivered * caseSize
+    override val key:String = "$depot $item"
+}
 
 val createDeliveryToADepotOrNull = fun (list: List<String>): DeliveryToADepot? {
     if (list.size != 6)  return null
