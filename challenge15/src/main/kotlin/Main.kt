@@ -23,7 +23,8 @@ data class Result(val product:String
                   , val qtyToShop:Int
                   , val qtyToDepot:Int
                   , val totalForEAN:Int
-                  , val totalForItemDepot:Int )
+                  , val totalForItemDepot:Int
+                  , val perc:Double  )
 
 fun calculateResult(listOfEANs:List<DiscountsForAnEAN>, listOfDeliveryToAShop: List<DeliveryToAShop>, listOfDeliveryToADepot: List<DeliveryToADepot>):List<Result> {
     val totalDeliveryForEachEAN = calculateTotalDeliveryForEachKey(listOfDeliveryToAShop)
@@ -38,8 +39,9 @@ fun calculateResult(listOfEANs:List<DiscountsForAnEAN>, listOfDeliveryToAShop: L
             val deliveriesForDepotItem = listOfDeliveryToADepot.filter{it.key == key}
             val totalForDeliveryItem = totalDeliveryForEachDepotItem[key] ?: 0
             for (deliveryForDepotItem in deliveriesForDepotItem) {
+                val perc = 1.0 * deliveryForEAN.unitsDelivered / totalForEAN * deliveryForDepotItem.unitsDelivered / totalForDeliveryItem
                 val result = Result(discountForAnEAN.product,discountForAnEAN.EAN, deliveryForEAN.item,deliveryForEAN.depot, deliveryForDepotItem.supplier,
-                    deliveryForEAN.unitsDelivered, deliveryForDepotItem.unitsDelivered, totalForEAN, totalForDeliveryItem)
+                    deliveryForEAN.unitsDelivered, deliveryForDepotItem.unitsDelivered, totalForEAN, totalForDeliveryItem, perc)
                 results.add(result)
                 println(result.toString())
             }
