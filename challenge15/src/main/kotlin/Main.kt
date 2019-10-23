@@ -15,15 +15,38 @@ fun calculateTotalDeliveryForEachKey(deliveries: List<Delivery>): Map<String, In
     return totalForEachKey
 }
 
-fun calculateResult(listOfEANs:List<DiscountsForAnEAN>, listOfDeliveryToAShop: List<DeliveryToAShop>, listOfDeliveryToADepot: List<DeliveryToADepot>) {
+data class Result(val product:String
+                  , val EAN:String
+                  , val item:String
+                  , val depot:String
+                  , val supplier:String
+                  , val qtyToShop:Int
+                  , val qtyToDepot:Int
+                  , val totalForEAN:Int
+                  , val totalForItemDepot:Int )
+
+fun calculateResult(listOfEANs:List<DiscountsForAnEAN>, listOfDeliveryToAShop: List<DeliveryToAShop>, listOfDeliveryToADepot: List<DeliveryToADepot>):List<Result> {
+    val totalDeliveryForEachEAN = calculateTotalDeliveryForEachKey(listOfDeliveryToAShop)
+    val totalDeliveryForEachDepotItem = calculateTotalDeliveryForEachKey(listOfDeliveryToADepot)
+    val results = mutableListOf<Result>()
+
     for (discountForAnEAN in listOfEANs) {
         val deliveriesForEAN = listOfDeliveryToAShop.filter{it.EAN == discountForAnEAN.EAN}
+        val totalForEAN = totalDeliveryForEachEAN[discountForAnEAN.EAN] ?: 0
         for (deliveryForEAN in deliveriesForEAN){
             val key = "${deliveryForEAN.depot} ${deliveryForEAN.item}"
             val deliveriesForDepotItem = listOfDeliveryToADepot.filter{it.key == key}
-            println("${discountForAnEAN.product} ${discountForAnEAN.EAN} ${deliveryForEAN.depot} ${deliveryForEAN.item}")
+            val totalForDeliveryItem = totalDeliveryForEachDepotItem[key] ?: 0
+            for (deliveryForDepotItem in deliveriesForDepotItem) {
+                val result = Result(discountForAnEAN.product,discountForAnEAN.EAN, deliveryForEAN.item,deliveryForEAN.depot, deliveryForDepotItem.supplier,
+                    deliveryForEAN.unitsDelivered, deliveryForDepotItem.unitsDelivered, totalForEAN, totalForDeliveryItem)
+                results.add(result)
+                println(result.toString())
+            }
+
         }
     }
+    return results
 }
 
 /*
