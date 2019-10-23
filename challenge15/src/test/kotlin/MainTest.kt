@@ -113,4 +113,38 @@ class MainTest {
         val dataWithInvalidQtyDelivered = listOf("Carrot Soup","I118","72","Depot-C","Dodgy Food Inc","xx766")
         assertNull(createDeliveryToADepotOrNull(dataWithInvalidQtyDelivered))
     }
+
+    @Test
+    fun `summing total deliveries of each EAN to a shop creates an empty map when there are no deliveries to a shop`() {
+        val deliveriesToAShop = emptyList<DeliveryToAShop>()
+        assertTrue(calcTotalDeliveryQtyToShopForEachEAN(deliveriesToAShop).isEmpty())
+    }
+    @Test
+    fun `summing total deliveries of each EAN to a shop creates a map of one KeyValue when there is one deliveries to a shop`() {
+        val deliveriesToAShop = listOf(
+            DeliveryToAShop("Carrot Soup", "E110011", "I118", 72, "Depot-A", 7)
+        )
+        assertEquals(mapOf("E110011" to (72 * 7) ),calcTotalDeliveryQtyToShopForEachEAN(deliveriesToAShop))
+    }
+    @Test
+    fun `summing total deliveries of each EAN to a shop creates a map of one KeyValue when there is two deliveries with the same EAN`() {
+        val deliveriesToAShop = listOf(
+            DeliveryToAShop("Carrot Soup", "E110011", "I118", 72, "Depot-A", 7) ,
+            DeliveryToAShop("Carrot Soup", "E110011", "I119", 36, "Depot-A", 12)
+        )
+        assertEquals(mapOf("E110011" to ((72* 7) + (36 * 12)) ),calcTotalDeliveryQtyToShopForEachEAN(deliveriesToAShop))
+    }
+    @Test
+    fun `summing total deliveries of each EAN to a shop creates a map of one KeyValue when there is three deliveries with two EANs`() {
+        val deliveriesToAShop = listOf(
+            DeliveryToAShop("Carrot Soup", "E110011", "I119", 36, "Depot-A", 12) ,
+            DeliveryToAShop("Chicken Soup","E110004", "I105", 96, "Depot-B", 6),
+            DeliveryToAShop("Carrot Soup", "E110011", "I118", 72, "Depot-A", 7)
+        )
+        val expectedResult = mapOf(
+            "E110011" to ((72* 7) + (36 * 12)),
+            "E110004" to (96* 6))
+
+        assertEquals(expectedResult,calcTotalDeliveryQtyToShopForEachEAN(deliveriesToAShop))
+    }
 }
