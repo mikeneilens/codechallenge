@@ -14,3 +14,12 @@ fun <ElementType, FoldedType>myFold(list: List<ElementType>, initial:FoldedType,
     return output
 }
 
+typealias FoldFunction<ElementType, FoldedType> = (FoldedType,ElementType)->FoldedType
+
+fun <ElementType, FoldedType>FoldFunction<ElementType, FoldedType>.myFold(list: List<ElementType>, initial:FoldedType): FoldedType {
+    var output = initial
+    for (item in list) {
+        output = this(output, item)
+    }
+    return output
+}

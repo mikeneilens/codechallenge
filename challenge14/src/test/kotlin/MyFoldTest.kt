@@ -46,4 +46,11 @@ class MyFoldTest {
         val result = myFold(listOf(1, 2, 3, 4), "The result is ", { acc, element -> acc + element.toString() })
         assertEquals("The result is 1234", result)
     }
+
+    @Test
+    fun `The test case from the challenge using FoldFunction`() {
+        val foldFunction:FoldFunction<Int, String> = { acc, element -> acc + element.toString() }
+        val result = foldFunction.myFold(listOf(1, 2, 3, 4), "The result is ")
+        assertEquals("The result is 1234", result)
+    }
 }
