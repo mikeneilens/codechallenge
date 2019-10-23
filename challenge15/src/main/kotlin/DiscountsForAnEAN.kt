@@ -8,5 +8,4 @@ val createDiscountForEANorNull =  fun (list:List<String>):DiscountsForAnEAN? {
         null
     else
         DiscountsForAnEAN(list[0], list[1], discountValueOrNull)
-
 }

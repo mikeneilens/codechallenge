@@ -147,4 +147,12 @@ class MainTest {
 
         assertEquals(expectedResult,calcTotalDeliveryQtyToShopForEachEAN(deliveriesToAShop))
     }
+
+    @Test
+    fun `summing total deliveries of each item  to each depot creates an empty map if the list of deliveries is empty`() {
+        val deliveriesToEachDepot = emptyList<DeliveryToADepot>()
+        val expectedResult = mapOf<String, Int>()
+
+        assertTrue(calculateTotalDeliveryQtyToEachDepot(deliveriesToEachDepot).isEmpty())
+    }
 }
