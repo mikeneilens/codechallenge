@@ -15,47 +15,48 @@ fun calculateTotalDeliveryForEachKey(deliveries: List<Delivery>): Map<String, In
     return totalForEachKey
 }
 
-data class Result(val product:String
-                  , val EAN:String
-                  , val item:String
-                  , val depot:String
-                  , val supplier:String
-                  , val qtyToShop:Int
-                  , val qtyToDepot:Int
-                  , val totalForEAN:Int
-                  , val totalForItemDepot:Int
-                  , val perc:Double  )
 
-fun calculateResult(listOfEANs:List<DiscountsForAnEAN>, listOfDeliveryToAShop: List<DeliveryToAShop>, listOfDeliveryToADepot: List<DeliveryToADepot>):List<Result> {
+data class EANResult(val product:String
+                     , val EAN:String
+                     , val item:String
+                     , val depot:String
+                     , val supplier:String
+                     , val qtyToShop:Int
+                     , val qtyToDepot:Int
+                     , val totalForEAN:Int
+                     , val totalForItemDepot:Int
+                     , val perc:Double  )
+
+data class DepotItemResult(val depot:String
+                           , val item:String
+                           , val supplier:String
+                           , val unitsDelivered:Int
+                           , val totalUnitsDelivered:Int
+                           , val perc:Double )
+
+fun calculateResult(listOfEANs:List<DiscountsForAnEAN>, listOfDeliveryToAShop: List<DeliveryToAShop>, listOfDeliveryToADepot: List<DeliveryToADepot>):List<EANResult> {
     val totalDeliveryForEachEAN = calculateTotalDeliveryForEachKey(listOfDeliveryToAShop)
     val totalDeliveryForEachDepotItem = calculateTotalDeliveryForEachKey(listOfDeliveryToADepot)
-    val results = mutableListOf<Result>()
 
-    for (discountForAnEAN in listOfEANs) {
+    val results = listOfEANs.flatMap{discountForAnEAN ->
         val deliveriesForEAN = listOfDeliveryToAShop.filter{it.EAN == discountForAnEAN.EAN}
-        val totalForEAN = totalDeliveryForEachEAN[discountForAnEAN.EAN] ?: 0
-        for (deliveryForEAN in deliveriesForEAN){
-            val key = "${deliveryForEAN.depot} ${deliveryForEAN.item}"
-            val deliveriesForDepotItem = listOfDeliveryToADepot.filter{it.key == key}
-            val totalForDeliveryItem = totalDeliveryForEachDepotItem[key] ?: 0
-            for (deliveryForDepotItem in deliveriesForDepotItem) {
-                val perc = 1.0 * deliveryForEAN.unitsDelivered / totalForEAN * deliveryForDepotItem.unitsDelivered / totalForDeliveryItem
-                val result = Result(discountForAnEAN.product,discountForAnEAN.EAN, deliveryForEAN.item,deliveryForEAN.depot, deliveryForDepotItem.supplier,
-                    deliveryForEAN.unitsDelivered, deliveryForDepotItem.unitsDelivered, totalForEAN, totalForDeliveryItem, perc)
-                results.add(result)
-                println(result.toString())
-            }
-
-        }
+        val totalDeliveriesForEAN = totalDeliveryForEachEAN[discountForAnEAN.EAN] ?: 0
+        calculateResultForEAN(deliveriesForEAN,listOfDeliveryToADepot,totalDeliveryForEachDepotItem,totalDeliveriesForEAN)
     }
     return results
 }
 
-/*
-//This extends a function which is an ObjectCreator with a function called createList.
-//Decided to do this in a more conventional way by creating function String.toListOfObjects() instead.
-fun <ObjectType:Any>ObjectCreator<ObjectType>.createList(list:StringContainingCSV, noOfProperties: Int):List<ObjectType>
-   = list.split(",")
-        .windowed(noOfProperties)
-        .mapNotNull{this(it)}
-*/
+fun calculateResultForEAN(deliveriesForEAN:List<DeliveryToAShop>, listOfDeliveryToADepot: List<DeliveryToADepot>, totalDeliveryForEachDepotItem:Map<String, Int>, totalForEAN:Int):List<EANResult> =
+    deliveriesForEAN.flatMap{deliveryForEAN ->
+        val deliveriesForDepotItem = listOfDeliveryToADepot.filter{it.key == deliveryForEAN.depotItemKey}
+        val totalDeliveriesForDepotItem = totalDeliveryForEachDepotItem[deliveryForEAN.depotItemKey] ?: 0
+        val resultsForDepotItem = calculateResultForDepotItem(deliveriesForDepotItem, totalDeliveriesForDepotItem)
+        resultsForDepotItem.map{ depotItem -> EANResult(deliveryForEAN.product,deliveryForEAN.EAN, deliveryForEAN.item,deliveryForEAN.depot, depotItem.supplier,
+            deliveryForEAN.unitsDelivered, depotItem.unitsDelivered, totalForEAN, totalDeliveriesForDepotItem, depotItem.perc * deliveryForEAN.unitsDelivered / totalForEAN) }
+    }
+
+fun calculateResultForDepotItem(deliveriesForDepotItem:List<DeliveryToADepot>, totalForDeliveryItem:Int):List<DepotItemResult> =
+    deliveriesForDepotItem.map{deliveryForDepotItem ->
+        val perc = 1.0  * deliveryForDepotItem.unitsDelivered / totalForDeliveryItem
+        DepotItemResult(deliveryForDepotItem.depot,deliveryForDepotItem.item, deliveryForDepotItem.supplier, deliveryForDepotItem.unitsDelivered, totalForDeliveryItem, perc)
+    }

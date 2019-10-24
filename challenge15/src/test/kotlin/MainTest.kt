@@ -191,20 +191,91 @@ class MainTest {
         val deliveriesToAShop = listOf(DeliveryToAShop("Carrot Soup", "E10001", "I119", 36, "Depot-A", 12))
         val deliveriesToDepots = listOf(DeliveryToADepot("Carrot Soup","I119",72,"Depot-A","Dodgy Food Inc",766))
 
-        val expectedResult = Result("Carrot Soup","E10001","I119","Depot-A","Dodgy Food Inc", 432,55152,432,55152,1.0)
+        val expectedResult = EANResult("Carrot Soup","E10001","I119","Depot-A","Dodgy Food Inc", 432,55152,432,55152,1.0)
         val result= calculateResult(discountsForAnEAN, deliveriesToAShop, deliveriesToDepots)
         assertEquals(expectedResult, result.first())
     }
+
     @Test
     fun `A single EAN discounted, two delviery to the shop for the same EAN and a single delivery to depot for the same DepotItem that delivered to the shop gives 100% to the supplier`() {
         val discountsForAnEAN = listOf(DiscountsForAnEAN("Carrot Soup", "E10001", 126.19))
-        val deliveriesToAShop = listOf(DeliveryToAShop("Carrot Soup", "E10001", "I119", 36, "Depot-A", 12),
-                                       DeliveryToAShop("Carrot Soup", "E10001", "I119", 36, "Depot-A", 12))
+        val deliveriesToAShop = listOf(
+                                                                DeliveryToAShop("Carrot Soup", "E10001", "I119", 36, "Depot-A", 12),
+                                                                DeliveryToAShop("Carrot Soup", "E10001", "I119", 36, "Depot-A", 12))
+
         val deliveriesToDepots = listOf(DeliveryToADepot("Carrot Soup","I119",72,"Depot-A","Dodgy Food Inc",766))
 
-        val expectedResult1 = Result("Carrot Soup","E10001","I119","Depot-A","Dodgy Food Inc", 432,55152,864,55152,0.5)
-        val expectedResult2 = Result("Carrot Soup","E10001","I119","Depot-A","Dodgy Food Inc", 432,55152,864,55152,0.5)
+        val expectedResult1 = EANResult("Carrot Soup","E10001","I119","Depot-A","Dodgy Food Inc", 432,55152,864,55152,0.5)
+        val expectedResult2 = EANResult("Carrot Soup","E10001","I119","Depot-A","Dodgy Food Inc", 432,55152,864,55152,0.5)
         val result= calculateResult(discountsForAnEAN, deliveriesToAShop, deliveriesToDepots)
         assertEquals(listOf(expectedResult1,expectedResult2), result)
+    }
+
+    @Test
+    fun `A single EAN discounted, one delviery to the shop for the same EAN and two deliveries to the depot for the same DepotItem that delivered to the shop gives 50% to each supplier`() {
+        val discountsForAnEAN = listOf(DiscountsForAnEAN("Carrot Soup", "E10001", 126.19))
+        val deliveriesToAShop = listOf(
+            DeliveryToAShop("Carrot Soup", "E10001", "I119", 36, "Depot-A", 12))
+
+        val deliveriesToDepots = listOf(
+            DeliveryToADepot("Carrot Soup","I119",72,"Depot-A","Dodgy Food Inc",766),
+            DeliveryToADepot("Carrot Soup","I119",72,"Depot-A","Mary's Farm",766))
+
+        val expectedResult1 = EANResult("Carrot Soup","E10001","I119","Depot-A","Dodgy Food Inc", 432,55152,432,110304,0.5)
+        val expectedResult2 = EANResult("Carrot Soup","E10001","I119","Depot-A","Mary's Farm", 432,55152,432,110304,0.5)
+        val result= calculateResult(discountsForAnEAN, deliveriesToAShop, deliveriesToDepots)
+        assertEquals(listOf(expectedResult1,expectedResult2), result)
+    }
+
+    @Test
+    fun `A single EAN discounted, two delvieries to the shop from different depots for the same EAN and one delivery to each depot from one supplier for the same DepotItem that delivered to the shop gives 100% to the supplier`() {
+        val discountsForAnEAN = listOf(DiscountsForAnEAN("Carrot Soup", "E10001", 126.19))
+        val deliveriesToAShop = listOf(
+            DeliveryToAShop("Carrot Soup", "E10001", "I119", 36, "Depot-A", 12),
+            DeliveryToAShop("Carrot Soup", "E10001", "I119", 36, "Depot-B", 12))
+
+        val deliveriesToDepots = listOf(
+            DeliveryToADepot("Carrot Soup","I119",72,"Depot-A","Dodgy Food Inc",766),
+            DeliveryToADepot("Carrot Soup","I119",72,"Depot-B","Dodgy Food Inc",766))
+
+        val expectedResult1 = EANResult("Carrot Soup","E10001","I119","Depot-A","Dodgy Food Inc", 432,55152,864,55152,0.5)
+        val expectedResult2 = EANResult("Carrot Soup","E10001","I119","Depot-B","Dodgy Food Inc", 432,55152,864,55152,0.5)
+        val result= calculateResult(discountsForAnEAN, deliveriesToAShop, deliveriesToDepots)
+        assertEquals(listOf(expectedResult1,expectedResult2), result)
+    }
+    @Test
+    fun `A single EAN discounted, two delvieries to the shop from different depots but only one for the correct EAN then give 100% to the supplier of item for the correct EAN `() {
+        val discountsForAnEAN = listOf(DiscountsForAnEAN("Carrot Soup", "E10001", 126.19))
+        val deliveriesToAShop = listOf(
+            DeliveryToAShop("Carrot Soup", "E10001", "I118", 36, "Depot-A", 12),
+            DeliveryToAShop("Carrot Soup", "E10002", "I119", 36, "Depot-A", 12))
+
+        val deliveriesToDepots = listOf(
+            DeliveryToADepot("Carrot Soup","I118",72,"Depot-A","Dodgy Food Inc",766),
+            DeliveryToADepot("Carrot Soup","I119",72,"Depot-A","Dodgy Food Inc",766))
+
+        val expectedResult1 = EANResult("Carrot Soup","E10001","I118","Depot-A","Dodgy Food Inc", 432,55152,432,55152,1.0)
+        val result= calculateResult(discountsForAnEAN, deliveriesToAShop, deliveriesToDepots)
+        assertEquals(listOf(expectedResult1), result)
+    }
+    @Test
+    fun `A single EAN discounted, two delvieries to the shop, 2 different depots delivering different amounts with two suppliers supplying each depot with different amounts `() {
+        val discountsForAnEAN = listOf(DiscountsForAnEAN("Carrot Soup", "E10001", 126.19))
+        val deliveriesToAShop = listOf(
+            DeliveryToAShop("Carrot Soup", "E10001", "I118", 36, "Depot-A", 10), //25%
+            DeliveryToAShop("Carrot Soup", "E10001", "I118", 36, "Depot-B", 30)) //75%
+
+        val deliveriesToDepots = listOf(
+            DeliveryToADepot("Carrot Soup","I118",72,"Depot-A","Dodgy Food Inc",40), //40% or 10% of total
+            DeliveryToADepot("Carrot Soup","I118",72,"Depot-A","Mary's Farm",60), //60% or 15% or total
+            DeliveryToADepot("Carrot Soup","I118",72,"Depot-B","Dodgy Food Inc",40), //20% or 15% of total
+            DeliveryToADepot("Carrot Soup","I118",72,"Depot-B","Mary's Farm",160)) //80% or 60% of total
+
+        val expectedResult1 = EANResult("Carrot Soup","E10001","I118","Depot-A","Dodgy Food Inc", 360,2880,1440,7200,0.1)
+        val expectedResult2 = EANResult("Carrot Soup","E10001","I118","Depot-A","Mary's Farm", 360,4320,1440,7200,0.15)
+        val expectedResult3 = EANResult("Carrot Soup","E10001","I118","Depot-B","Dodgy Food Inc", 1080,2880,1440,14400,0.15)
+        val expectedResult4 = EANResult("Carrot Soup","E10001","I118","Depot-B","Mary's Farm", 1080,11520,1440,14400,0.6)
+        val result= calculateResult(discountsForAnEAN, deliveriesToAShop, deliveriesToDepots)
+        assertEquals(listOf(expectedResult1, expectedResult2, expectedResult3, expectedResult4), result)
     }
 }
