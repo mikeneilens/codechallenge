@@ -1,6 +1,6 @@
 ### Challenge 15
 
-First of created a class for each of these:
+First off I created a class for each of these:
 
 * DiscountForAnEAN
 
@@ -8,10 +8,12 @@ First of created a class for each of these:
 
 * DeliveryToADepot
 
-I created a constructor function for each of these classes that would take an array of values to create an object
-I then created a general purpose function called **String.toListOfObjects()** that takes a string containing a CSV and a function to create a function from an array to create a list of the appropriate object. 
+I created a minitype for each of Product, EAN, Item, Depot, Supplier to prevent passing Strings around.
 
-To calculate the percentage discount for each supplier I worked out the relationship between the different types are:
+There is a constructor function for each of these classes that would take an array of values to create an object.
+A general purpose function called **String.toListOfObjects()** takes a string containing a CSV and any constructor function. It creates a list of the appropriate object. 
+
+To calculate the percentage discount for each supplier I worked out that the relationship between the different types are:
 
 EAN <- Depot/Item <- Supplier.
 
@@ -21,6 +23,8 @@ When constructing each DepotRebateCalculator, the percentage rebate allocated to
 
  <Percent supplied by the Depot/Item to the shop> X (Percent supplied by the suplier to the Depot/Item). 
 
-A getter returns a list of SupplierRebates. The supplier is repeated if it supplies more than one depot or item so there is also a getter than aggregates the SupplierRebates so that there is only one value for each supplier with %rebate summed up.  
+If a Depot/Item is supplied to a shop but a supplier doesn't supply a Depot/Item then the calculation will be incorrect but in theory we shouldn't be giving shops things we haven't received!
+ 
+A getter returns a list of SupplierRebates. The supplier is repeated if it supplies more than one depot/item for the same EAN so there is also a getter than aggregates the SupplierRebates so that there is only one value for each supplier with %rebate summed up.  
 
 A function is used to calculate rebates for each EAN. The result of this is summed by product using Kotlin .groupingBy() and .aggregate().
