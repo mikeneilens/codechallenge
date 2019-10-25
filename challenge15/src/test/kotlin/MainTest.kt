@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import kotlin.math.roundToInt
 
 class MainTest {
 
@@ -330,15 +331,15 @@ class MainTest {
     @Test
     fun `Rebate is calculated correcrtly using full set of test data`() {
 
-        val discounts = exampleDiscountsForEachEAN.toListOfObjects(3, createDiscountForEANorNull)
-        val deliveriesToShop = exampleDeliveriesToAShop.toListOfObjects(6, createDeliveryToAShopOrNull)
-        val deliveriesToADepot = exampleDeliveriesToDepots.toListOfObjects(6,createDeliveryToADepotOrNull)
-
-        val deliveriesOfTomatoSoup = deliveriesToShop.filter { it.product == "Tomato Soup" }
-        val suppliersOfTomatoSoup = deliveriesToADepot.filter{it.item == "I101" || it.item == "I102" || it.item == "I103" || it.item == "I104"}
+        val discountedEANs = exampleDiscountsForEachEAN.toListOfObjects(3, createDiscountForEANorNull)
 
         val result = calculateRebate(exampleDiscountsForEachEAN, exampleDeliveriesToAShop, exampleDeliveriesToDepots)
-        val expectedResult = listOf(ResultForAProduct("Tomato Soup","Dodgy Food Inc",63.095))
-        assertEquals(expectedResult, result)
+        val discountForProducts = discountedEANs.groupingBy { it.product }.aggregate { _, accumulator:Double?, element, _ -> (accumulator ?: 0.0) + element.discountValue  }
+
+        for (discountedProduct in discountForProducts) {
+            val rebateForProduct = result.filter { it.product == discountedProduct.key }.fold(0.0){acc, element -> element.rebateAmount + acc}
+            //test total of all rebates adds up to 50% of discounts to customers
+            assertEquals( (discountedProduct.value/2).roundToInt() , rebateForProduct.roundToInt() )
+        }
     }
 }
