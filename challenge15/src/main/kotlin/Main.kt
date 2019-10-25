@@ -6,27 +6,25 @@ fun <ObjectType:Any>StringContainingCSV.toListOfObjects(noOfProperties:Int, obje
         .windowed(noOfProperties)
         .mapNotNull{objectCreator(it)}
 
-data class ResultForAnEAN(val product:String, val EAN:String, val supplier:String, val percentRebate:Double, val rebateAmount:Double)
+data class RebateForAnEAN(val product:String, val EAN:String, val supplier:String, val percentRebate:Double, val rebateAmount:Double)
 
-data class ResultForAProduct(val product:String, val supplier:String, val rebateAmount:Double)
+data class RebateForAProduct(val product:String, val supplier:String, val rebateAmount:Double)
 
-fun calculateResultForEANs(discountsForEANs:List<DiscountsForAnEAN>,deliveriesToAShop:List<DeliveryToAShop>, deliveriesToDepots:List<DeliveryToADepot>):List<ResultForAnEAN>
+fun calculateRebatesForEANs(discountsForEANs:List<DiscountsForAnEAN>, deliveriesToAShop:List<DeliveryToAShop>, deliveriesToDepots:List<DeliveryToADepot>):List<RebateForAnEAN>
     =  discountsForEANs
         .flatMap{ discountForAnEAN -> EANRebateCalculator(discountForAnEAN.EAN, deliveriesToAShop, deliveriesToDepots).suppliersGrouped
-            .map{ suppliersGrouped -> ResultForAnEAN(discountForAnEAN.product, discountForAnEAN.EAN,suppliersGrouped.supplier, suppliersGrouped.percentRebate,0.5 * suppliersGrouped.percentRebate * discountForAnEAN.discountValue)}}
+            .map{ suppliersGrouped -> RebateForAnEAN(discountForAnEAN.product, discountForAnEAN.EAN,suppliersGrouped.supplier, suppliersGrouped.percentRebate,0.5 * suppliersGrouped.percentRebate * discountForAnEAN.discountValue)}}
 
-fun calculateResultForProducts(discountsForEANs:List<DiscountsForAnEAN>,deliveriesToAShop:List<DeliveryToAShop>, deliveriesToDepots:List<DeliveryToADepot>):List<ResultForAProduct> {
-    val resultsForEANs = calculateResultForEANs(discountsForEANs, deliveriesToAShop, deliveriesToDepots)
+fun List<RebateForAnEAN>.sumByProduct() = this.groupingBy { Pair(it.product, it.supplier) }
+    .aggregate { _, accumulator: Double?, element, _ -> (accumulator ?: 0.0) + element.rebateAmount }
+    .map{ RebateForAProduct(it.key.first, it.key.second, it.value)}
 
-    return resultsForEANs.groupingBy { Pair(it.product, it.supplier) }
-        .aggregate { _, accumulator: Double?, element, _ -> (accumulator ?: 0.0) + element.rebateAmount }
-        .map{ ResultForAProduct(it.key.first, it.key.second, it.value)}
-}
-
-fun calculateRebate(discountsForEachEANCSV:StringContainingCSV, deliveriesToAShopCSV:StringContainingCSV, deliveriesToADepotCSV:StringContainingCSV):List<ResultForAProduct> {
+fun calculateRebate(discountsForEachEANCSV:StringContainingCSV, deliveriesToAShopCSV:StringContainingCSV, deliveriesToADepotCSV:StringContainingCSV):List<RebateForAProduct> {
     val discountsForEANs = discountsForEachEANCSV.toListOfObjects(3,createDiscountForEANorNull)
     val deliveriesToAShop = deliveriesToAShopCSV.toListOfObjects(6,createDeliveryToAShopOrNull)
     val deliveriesToDepots = deliveriesToADepotCSV.toListOfObjects(6,createDeliveryToADepotOrNull)
 
-    return  calculateResultForProducts(discountsForEANs, deliveriesToAShop, deliveriesToDepots)
+    val rebatesForEANs = calculateRebatesForEANs(discountsForEANs, deliveriesToAShop, deliveriesToDepots)
+
+    return  rebatesForEANs.sumByProduct()
 }

@@ -22,3 +22,5 @@ When constructing each DepotRebateCalculator, the percentage rebate allocated to
  <Percent supplied by the Depot/Item to the shop> X (Percent supplied by the suplier to the Depot/Item). 
 
 A getter returns a list of SupplierRebates. The supplier is repeated if it supplies more than one depot or item so there is also a getter than aggregates the SupplierRebates so that there is only one value for each supplier with %rebate summed up.  
+
+A function is used to calculate rebates for each EAN. The result of this is summed by product using Kotlin .groupingBy() and .aggregate().

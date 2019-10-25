@@ -229,10 +229,10 @@ class MainTest {
             DeliveryToADepot("Carrot Soup","I118",72,"Depot-A","Dodgy Food Inc",40),
             DeliveryToADepot("Carrot Soup","I118",72,"Depot-B","Mary's Farm",60)
         )
-        val result = calculateResultForEANs(discountsForEANs,deliveriesToAShop, deliveriesToDepots)
+        val result = calculateRebatesForEANs(discountsForEANs,deliveriesToAShop, deliveriesToDepots)
         val expectedResult = listOf(
-            ResultForAnEAN("Carrot Soup", "E10001","Dodgy Food Inc",1.0,50.0 ),
-            ResultForAnEAN("Carrot Soup", "E10002","Mary's Farm",1.0,100.0 )
+            RebateForAnEAN("Carrot Soup", "E10001","Dodgy Food Inc",1.0,50.0 ),
+            RebateForAnEAN("Carrot Soup", "E10002","Mary's Farm",1.0,100.0 )
         )
         assertEquals(expectedResult, result)
     }
@@ -253,66 +253,12 @@ class MainTest {
             DeliveryToADepot("Carrot Soup","I118",72,"Depot-B","Mary's Farm",60), //50%
             DeliveryToADepot("Carrot Soup","I118",72,"Depot-B","Dodgy Food Inc",60) //50%
         )
-        val result = calculateResultForEANs(discountsForEANs,deliveriesToAShop, deliveriesToDepots)
+        val result = calculateRebatesForEANs(discountsForEANs,deliveriesToAShop, deliveriesToDepots)
         val expectedResult = listOf(
-            ResultForAnEAN("Carrot Soup", "E10001","Dodgy Food Inc",0.25,12.5 ),
-            ResultForAnEAN("Carrot Soup", "E10001","Mary's Farm",0.75,37.5 ),
-            ResultForAnEAN("Carrot Soup", "E10002","Mary's Farm",0.5,50.0 ),
-            ResultForAnEAN("Carrot Soup", "E10002","Dodgy Food Inc",0.5,50.0 )
-        )
-        assertEquals(expectedResult, result)
-    }
-
-    @Test
-    fun `rebates are calculated correctly for a list of Products when there is two suppliers for each Product`() {
-        val discountsForEANs = listOf(
-            DiscountsForAnEAN("Carrot Soup", "E10001",100.0 )
-            ,DiscountsForAnEAN("Tomato Soup", "E10002",200.0 )
-        )
-
-        val deliveriesToAShop = listOf(
-            DeliveryToAShop("Carrot Soup", "E10001", "I118", 36, "Depot-A", 10),
-            DeliveryToAShop("Tomato Soup", "E10002", "I119", 36, "Depot-B", 30))
-
-        val deliveriesToDepots = listOf(
-            DeliveryToADepot("Carrot Soup","I118",72,"Depot-A","Dodgy Food Inc",40),
-            DeliveryToADepot("Tomato Soup","I119",72,"Depot-B","Mary's Farm",60)
-        )
-        val result = calculateResultForProducts(discountsForEANs,deliveriesToAShop, deliveriesToDepots)
-        val expectedResult = listOf(
-            ResultForAProduct("Carrot Soup", "Dodgy Food Inc",50.0 ),
-            ResultForAProduct("Tomato Soup", "Mary's Farm",100.0 )
-        )
-        assertEquals(expectedResult, result)
-    }
-
-    @Test
-    fun `rebates are calculated correctly for a list of Products when there is more than one EAN and two suppliers for each Product`() {
-        val discountsForEANs = listOf(
-            DiscountsForAnEAN("Carrot Soup", "E10001",100.0 ),
-            DiscountsForAnEAN("Carrot Soup", "E10002",200.0 ), //Total for product us 300
-            DiscountsForAnEAN("Tomato Soup", "E10003",300.0 ),
-            DiscountsForAnEAN("Tomato Soup", "E10004",400.0 ) //Total for product is 400
-        )
-
-        val deliveriesToAShop = listOf(
-            DeliveryToAShop("Carrot Soup", "E10001", "I118", 36, "Depot-A", 10),
-            DeliveryToAShop("Carrot Soup", "E10002", "I119", 36, "Depot-A", 10),
-            DeliveryToAShop("Tomato Soup", "E10003", "I120", 36, "Depot-B", 10),
-            DeliveryToAShop("Tomato Soup", "E10004", "I121", 36, "Depot-B", 10))
-
-        val deliveriesToDepots = listOf(
-            DeliveryToADepot("Carrot Soup","I118",36,"Depot-A","Dodgy Food Inc",100),
-            DeliveryToADepot("Carrot Soup","I119",36,"Depot-A","Mary's Farm",150),
-            DeliveryToADepot("Tomato Soup","I120",36,"Depot-B","Dodgy Food Inc",200),
-            DeliveryToADepot("Tomato Soup","I121",36,"Depot-B","Mary's Farm",150)
-        )
-        val result = calculateResultForProducts(discountsForEANs,deliveriesToAShop, deliveriesToDepots)
-        val expectedResult = listOf(
-            ResultForAProduct("Carrot Soup", "Dodgy Food Inc",50.0 ), // 50% of EAN E1001 discount Value
-            ResultForAProduct("Carrot Soup", "Mary's Farm",100.0 ), // 50% of EAN E1002 discount value
-            ResultForAProduct("Tomato Soup", "Dodgy Food Inc",150.0 ), //50% of EAN1003 discount value
-            ResultForAProduct("Tomato Soup", "Mary's Farm",200.0 ) //50% of EAN1004 discount value
+            RebateForAnEAN("Carrot Soup", "E10001","Dodgy Food Inc",0.25,12.5 ),
+            RebateForAnEAN("Carrot Soup", "E10001","Mary's Farm",0.75,37.5 ),
+            RebateForAnEAN("Carrot Soup", "E10002","Mary's Farm",0.5,50.0 ),
+            RebateForAnEAN("Carrot Soup", "E10002","Dodgy Food Inc",0.5,50.0 )
         )
         assertEquals(expectedResult, result)
     }
@@ -324,10 +270,24 @@ class MainTest {
         val dataForOneDeliveryToADepot = "Tomato Soup,I118,72,Depot-A,Dodgy Food Inc,766"
 
         val result = calculateRebate(dataForOneEAN, dataForOneDeliveryToShop, dataForOneDeliveryToADepot)
-        val expectedResult = listOf(ResultForAProduct("Tomato Soup","Dodgy Food Inc",63.095))
+        val expectedResult = listOf(RebateForAProduct("Tomato Soup","Dodgy Food Inc",63.095))
         assertEquals(expectedResult, result)
     }
 
+    @Test
+    fun `rebates for EANs are summed up correctly `() {
+        val rebatesForEANs = listOf(
+            RebateForAnEAN("Tomato Soup","E10001","Dodgy Food Inc",0.6,60.0),
+            RebateForAnEAN("Tomato Soup","E10002","Dodgy Food Inc",0.3,30.0),
+            RebateForAnEAN("Chicken Soup","E10004","Mary's Farm",0.25,130.0),
+            RebateForAnEAN("Tomato Soup","E10003","Dodgy Food Inc",0.1,10.0))
+        val result = rebatesForEANs.sumByProduct()
+        val expectedResult = listOf(
+            RebateForAProduct("Tomato Soup", "Dodgy Food Inc", 100.0),
+            RebateForAProduct("Chicken Soup", "Mary's Farm", 130.0)
+        )
+        assertEquals(expectedResult, result)
+    }
     @Test
     fun `Rebate is calculated correcrtly using full set of test data`() {
 
