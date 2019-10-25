@@ -315,4 +315,30 @@ class MainTest {
         )
         assertEquals(expectedResult, result)
     }
+
+    @Test
+    fun `Rebate is calculated correcrtly for single EAN, single delivery to shop and single delivery to depot on CSV files`() {
+        val dataForOneEAN = "Tomato Soup,E10001,£126.19"
+        val dataForOneDeliveryToShop = "Tomato Soup,E10001,I118,72,Depot-A,7"
+        val dataForOneDeliveryToADepot = "Tomato Soup,I118,72,Depot-A,Dodgy Food Inc,766"
+
+        val result = calculateRebate(dataForOneEAN, dataForOneDeliveryToShop, dataForOneDeliveryToADepot)
+        val expectedResult = listOf(ResultForAProduct("Tomato Soup","Dodgy Food Inc",63.095))
+        assertEquals(expectedResult, result)
+    }
+
+    @Test
+    fun `Rebate is calculated correcrtly using full set of test data`() {
+
+        val discounts = exampleDiscountsForEachEAN.toListOfObjects(3, createDiscountForEANorNull)
+        val deliveriesToShop = exampleDeliveriesToAShop.toListOfObjects(6, createDeliveryToAShopOrNull)
+        val deliveriesToADepot = exampleDeliveriesToDepots.toListOfObjects(6,createDeliveryToADepotOrNull)
+
+        val deliveriesOfTomatoSoup = deliveriesToShop.filter { it.product == "Tomato Soup" }
+        val suppliersOfTomatoSoup = deliveriesToADepot.filter{it.item == "I101" || it.item == "I102" || it.item == "I103" || it.item == "I104"}
+
+        val result = calculateRebate(exampleDiscountsForEachEAN, exampleDeliveriesToAShop, exampleDeliveriesToDepots)
+        val expectedResult = listOf(ResultForAProduct("Tomato Soup","Dodgy Food Inc",63.095))
+        assertEquals(expectedResult, result)
+    }
 }
