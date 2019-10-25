@@ -1,12 +1,6 @@
-interface Delivery {
-    val unitsDelivered:Int
-    val key:String
-}
 
-data class DeliveryToAShop(val product: String, val EAN: String, val item: String, private val caseSize: Int, val depot: String, private val qtyDelivered:Int) :Delivery{
-    override val unitsDelivered = qtyDelivered * caseSize
-    override val key = EAN
-    val depotItemKey = "$depot $item"
+data class DeliveryToAShop(val product: Product, val EAN: EAN, val item: Item, private val caseSize: Int, val depot: Depot, private val qtyDelivered:Int) {
+    val unitsDelivered = qtyDelivered * caseSize
 }
 
 val createDeliveryToAShopOrNull = fun (list: List<String>): DeliveryToAShop? {
@@ -17,5 +11,5 @@ val createDeliveryToAShopOrNull = fun (list: List<String>): DeliveryToAShop? {
     return if ((caseSize == null) || (qtyDelivered == null))
         null
     else
-        DeliveryToAShop(list[0],list[1],list[2], caseSize, list[4], qtyDelivered)
+        DeliveryToAShop(Product(list[0]),EAN(list[1]),Item(list[2]), caseSize, Depot(list[4]), qtyDelivered)
 }

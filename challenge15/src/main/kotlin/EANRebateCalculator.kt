@@ -1,5 +1,5 @@
 
-class EANRebateCalculator(EAN:String, listOfDeliveryToAShop: List<DeliveryToAShop>, listOfDeliveryToADepot: List<DeliveryToADepot>) {
+class EANRebateCalculator(EAN:EAN, listOfDeliveryToAShop: List<DeliveryToAShop>, listOfDeliveryToADepot: List<DeliveryToADepot>) {
     private val deliveriesToShop:List<DeliveryToShopRebateCalculator>
 
     val suppliers:List<SupplierRebatePercent> get()  = deliveriesToShop.flatMap{it.deliveriesToDepot}
@@ -16,7 +16,7 @@ class EANRebateCalculator(EAN:String, listOfDeliveryToAShop: List<DeliveryToASho
     }
 }
 
-class DeliveryToShopRebateCalculator (depot:String, item:String, EANpercent:Double, listOfDeliveriesToADepot:List<DeliveryToADepot> ) {
+class DeliveryToShopRebateCalculator (depot:Depot, item:Item, EANpercent:Double, listOfDeliveriesToADepot:List<DeliveryToADepot> ) {
     val deliveriesToDepot:List<SupplierRebatePercent>
 
     init {
@@ -27,4 +27,4 @@ class DeliveryToShopRebateCalculator (depot:String, item:String, EANpercent:Doub
     }
 }
 
-data class SupplierRebatePercent(val supplier:String, val percentRebate:Double)
+data class SupplierRebatePercent(val supplier:Supplier, val percentRebate:Double)

@@ -15,7 +15,7 @@ To calculate the percentage discount for each supplier I worked out the relation
 
 EAN <- Depot/Item <- Supplier.
 
-I createde class **EANRebateCalculator** which contains a list of **DepotRebateCalculator**s. Each DepotRebateCalcuator contains a list of **SupplierRebate**s. 
+I createde class **EANRebateCalculator** which contains a list of **deliveriesToShopRebateCalculator**s. Each DeliveryToShopRebateCalcuator contains a list of **SupplierRebate**s. 
 
 When constructing each DepotRebateCalculator, the percentage rebate allocated to each Depot/Item is calculated. This percentage is then used when constructing each SupplierRebate for each Depot/Item. Percentage rebate for each supplier is calculated as
 
