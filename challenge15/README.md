@@ -8,8 +8,6 @@ First off I created a class for each of these:
 
 * DeliveryToADepot
 
-I created a minitype for each of Product, EAN, Item, Depot, Supplier to prevent passing Strings around.
-
 There is a constructor function for each of these classes that would take an array of values to create an object.
 A general purpose function called **String.toListOfObjects()** takes a string containing a CSV and any object with interface **CreatesObjectFromAListOfStrings**. It creates a list of the appropriate object. 
 
