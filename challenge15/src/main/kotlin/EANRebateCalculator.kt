@@ -10,19 +10,19 @@ class EANRebateCalculator(EAN:EAN, listOfDeliveryToAShop: List<DeliveryToAShop>,
 
     init{
         val onlyDeliveriesForThisEAN = listOfDeliveryToAShop.filter{it.EAN == EAN}
-        val totalUnitsDelivered = onlyDeliveriesForThisEAN.fold(0){acc, element -> acc + element.unitsDelivered}
-        this.deliveriesToShop =  onlyDeliveriesForThisEAN.map{DeliveryToShopRebateCalculator(it.depot, it.item, 1.0 * it.unitsDelivered/totalUnitsDelivered, listOfDeliveryToADepot)}
+        val totalUnitsDeliveredToShop = onlyDeliveriesForThisEAN.fold(0){ acc, element -> acc + element.unitsDelivered}
+        this.deliveriesToShop =  onlyDeliveriesForThisEAN.map{DeliveryToShopRebateCalculator(it.depot, it.item, 1.0 * it.unitsDelivered/totalUnitsDeliveredToShop, listOfDeliveryToADepot)}
         if (this.deliveriesToShop.isEmpty()) println("No deliveries to shop for EAN $EAN")
     }
 }
 
-class DeliveryToShopRebateCalculator (depot:Depot, item:Item, EANpercent:Double, listOfDeliveriesToADepot:List<DeliveryToADepot> ) {
+class DeliveryToShopRebateCalculator (depot:Depot, item:Item, EAN_percent:Double, listOfDeliveriesToADepot:List<DeliveryToADepot> ) {
     val deliveriesToDepot:List<SupplierRebatePercent>
 
     init {
         val onlyDeliveriesForThisDepotItem = listOfDeliveriesToADepot.filter{it.depot == depot && it.item == item}
-        val totalDeliveryToDepot = onlyDeliveriesForThisDepotItem.fold(0){ acc, element -> acc + element.unitsDelivered}
-        this.deliveriesToDepot = onlyDeliveriesForThisDepotItem.map{SupplierRebatePercent(it.supplier, EANpercent * it.unitsDelivered/totalDeliveryToDepot)}
+        val totalUnitsDeliveryToDepot = onlyDeliveriesForThisDepotItem.fold(0){ acc, element -> acc + element.unitsDelivered}
+        this.deliveriesToDepot = onlyDeliveriesForThisDepotItem.map{SupplierRebatePercent(it.supplier, EAN_percent * it.unitsDelivered/totalUnitsDeliveryToDepot)}
         if (this.deliveriesToDepot.isEmpty()) println("No deliveries to depot for $depot, $item")
     }
 }

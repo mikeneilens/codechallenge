@@ -1,16 +1,19 @@
 typealias StringContainingCSV = String
-typealias ObjectCreator<Object> = (List<String>)->Object?
 
-fun <ObjectType:Any>StringContainingCSV.toListOfObjects(noOfProperties:Int, objectCreator:ObjectCreator<ObjectType>): List<ObjectType> =
+interface CreatesObjectFromAListOfStrings<Object> {
+    fun createObjectOrNull(properties:List<String>):Object?
+    val numberOfProperties:Int
+}
+fun <ObjectType:Any>StringContainingCSV.toListOfObjects(objectCreator:CreatesObjectFromAListOfStrings<ObjectType>): List<ObjectType> =
     this.split(",")
-        .windowed(noOfProperties)
-        .mapNotNull{objectCreator(it)}
+        .windowed(objectCreator.numberOfProperties)
+        .mapNotNull{objectCreator.createObjectOrNull(it)}
 
 data class RebateForAnEAN(val product:Product, val EAN:EAN, val supplier:Supplier, val percentRebate:Double, val rebateAmount:Double)
 
 data class RebateForAProduct(val product:Product, val supplier:Supplier, val rebateAmount:Double)
 
-fun calculateRebatesForEANs(discountsForEANs:List<DiscountsForAnEAN>, deliveriesToAShop:List<DeliveryToAShop>, deliveriesToDepots:List<DeliveryToADepot>):List<RebateForAnEAN>
+fun calculateRebatesForEANs(discountsForEANs:List<DiscountsForAnEAN>, deliveriesToAShop:List<DeliveryToAShop>, deliveriesToDepots:List<DeliveryToADepot>)
     =  discountsForEANs
         .flatMap{ discountForAnEAN -> EANRebateCalculator(discountForAnEAN.EAN, deliveriesToAShop, deliveriesToDepots).suppliersGrouped
             .map{ suppliersGrouped -> RebateForAnEAN(discountForAnEAN.product, discountForAnEAN.EAN, suppliersGrouped.supplier, suppliersGrouped.percentRebate,0.5 * suppliersGrouped.percentRebate * discountForAnEAN.discountValue)}}
@@ -20,9 +23,9 @@ fun List<RebateForAnEAN>.sumByProduct() = this.groupingBy { Pair(it.product, it.
     .map{ RebateForAProduct(it.key.first, it.key.second, it.value)}
 
 fun calculateRebate(discountsForEachEANCSV:StringContainingCSV, deliveriesToAShopCSV:StringContainingCSV, deliveriesToADepotCSV:StringContainingCSV):List<RebateForAProduct> {
-    val discountsForEANs = discountsForEachEANCSV.toListOfObjects(3,createDiscountForEANorNull)
-    val deliveriesToAShop = deliveriesToAShopCSV.toListOfObjects(6,createDeliveryToAShopOrNull)
-    val deliveriesToDepots = deliveriesToADepotCSV.toListOfObjects(6,createDeliveryToADepotOrNull)
+    val discountsForEANs = discountsForEachEANCSV.toListOfObjects(DiscountsForAnEAN)
+    val deliveriesToAShop = deliveriesToAShopCSV.toListOfObjects(DeliveryToAShop)
+    val deliveriesToDepots = deliveriesToADepotCSV.toListOfObjects(DeliveryToADepot)
 
     val rebatesForEANs = calculateRebatesForEANs(discountsForEANs, deliveriesToAShop, deliveriesToDepots)
 
