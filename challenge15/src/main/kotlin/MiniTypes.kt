@@ -1,15 +1,15 @@
-data class Product(private val id:String) {
+inline class Product(private val id:String) {
     override fun toString()= id
 }
-data class EAN(private val id:String) {
+inline class EAN(private val id:String) {
     override fun toString()= id
 }
-data class Depot(private val id:String) {
+inline class Depot(private val id:String) {
     override fun toString()= id
 }
-data class Item(private val id:String) {
+inline class Item(private val id:String) {
     override fun toString()= id
 }
-data class Supplier(private val id:String) {
+inline class Supplier(private val id:String) {
     override fun toString()= id
 }
