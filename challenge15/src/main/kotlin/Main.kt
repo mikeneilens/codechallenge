@@ -34,6 +34,12 @@ fun calculateRebate(discountsForEachEANCSV:StringContainingCSV, deliveriesToASho
 
 //for this assume list has been filtered to only include products within a promotion.
 fun calculateDiscountForEachEAN(salesTransaction: List<EANSold>): List<DiscountsForAnEAN> {
-    if (salesTransaction.size < 3)  return emptyList()
-    else return listOf(salesTransaction.sortedByDescending { it.price }[2].toDiscount(0.5))
+
+    //this converts [(EAN1,Prod1,Value1,3)] to [(EAN1,Prod1,Value1,1),(EAN1,Prod1,Value1,1),(EAN1,Prod1,Value1,1)]
+    val salesTransactionAtomic = salesTransaction.flatMap { generateSequence { EANSold(it.EAN,it.prod,it.price,1) }.take(it.qty).toList() }
+
+    return salesTransactionAtomic.sortedByDescending { it.price }.windowed(3,3) {
+            if (it.size < 3) null
+            else it[2].toDiscount(0.5)
+    }.mapNotNull {it}
 }

@@ -359,4 +359,44 @@ class MainTest {
         val result = calculateDiscountForEachEAN(salesTransaction)
         assertEquals(0.6 , result[0].discountValue)
     }
+    @Test
+    fun `function that calculates discounts for each EAN in a promotion returns list of two EAN if the input list contains six EANs, with cheapest not last`() {
+        val EAN1 = EANSold(EAN("E10001"),Product("Tomato Soup"),1.20,1 )
+        val EAN2 = EANSold(EAN("E10002"),Product("Tomato Soup"),1.00,1 )
+        val EAN3 = EANSold(EAN("E10003"),Product("Tomato Soup"),0.90,1 )
+        val EAN4 = EANSold(EAN("E10004"),Product("Tomato Soup"),1.20,1 )
+        val EAN5 = EANSold(EAN("E10005"),Product("Tomato Soup"),1.20,1 )
+        val EAN6 = EANSold(EAN("E10006"),Product("Tomato Soup"),1.20,1 )
+        val salesTransaction = listOf(EAN1,EAN2,EAN3,EAN4,EAN5,EAN6)
+
+        val result = calculateDiscountForEachEAN(salesTransaction)
+        assertEquals(0.60 , result[0].discountValue)
+        assertEquals(0.45 , result[1].discountValue)
+    }
+    @Test
+    fun `function that calculates discounts for each EAN in a promotion returns list of two EAN if the input list contains seven EANs, with cheapest not last`() {
+        val EAN1 = EANSold(EAN("E10001"),Product("Tomato Soup"),1.20,1 )
+        val EAN2 = EANSold(EAN("E10002"),Product("Tomato Soup"),1.00,1 )
+        val EAN3 = EANSold(EAN("E10003"),Product("Tomato Soup"),0.90,1 )
+        val EAN4 = EANSold(EAN("E10004"),Product("Tomato Soup"),1.20,1 )
+        val EAN5 = EANSold(EAN("E10005"),Product("Tomato Soup"),1.20,1 )
+        val EAN6 = EANSold(EAN("E10006"),Product("Tomato Soup"),1.20,1 )
+        val EAN7 = EANSold(EAN("E10006"),Product("Tomato Soup"),1.20,1 )
+        val salesTransaction = listOf(EAN1,EAN2,EAN3,EAN4,EAN5,EAN6,EAN7)
+
+        val result = calculateDiscountForEachEAN(salesTransaction)
+        assertEquals(0.60 , result[0].discountValue)
+        assertEquals(0.50 , result[1].discountValue)
+    }
+    @Test
+    fun `function that calculates discounts for each EAN in a promotion returns list of two EAN if the input list contains two EANs, with each qty more than 1`() {
+        val EAN1 = EANSold(EAN("E10001"),Product("Tomato Soup"),1.20,3 )
+        val EAN2 = EANSold(EAN("E10002"),Product("Tomato Soup"),1.00,4 )
+        val salesTransaction = listOf(EAN1,EAN2)
+
+        val result = calculateDiscountForEachEAN(salesTransaction)
+        val expectedResult = listOf(DiscountsForAnEAN(Product("Tomato Soup"), EAN("E10001"), 0.6),
+                                    DiscountsForAnEAN(Product("Tomato Soup"), EAN("E10002"), 0.5))
+        assertEquals(expectedResult , result)
+    }
 }
