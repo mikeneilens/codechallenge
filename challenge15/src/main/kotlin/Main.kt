@@ -38,8 +38,7 @@ fun calculateDiscountForEachEAN(salesTransaction: List<EANSold>): List<Discounts
     //this converts [(EAN1,Prod1,Value1,3)] to [(EAN1,Prod1,Value1,1),(EAN1,Prod1,Value1,1),(EAN1,Prod1,Value1,1)]
     val salesTransactionAtomic = salesTransaction.flatMap { generateSequence { EANSold(it.EAN,it.prod,it.price,1) }.take(it.qty).toList() }
 
-    return salesTransactionAtomic.sortedByDescending { it.price }.windowed(3,3) {
-            if (it.size < 3) null
-            else it[2].toDiscount(0.5)
+    return salesTransactionAtomic.sortedByDescending {EANSold -> EANSold.price }.windowed(3,3) {
+        listOfEANSSold -> if (listOfEANSSold.size < 3) null else listOfEANSSold[2].toDiscount(0.5)
     }.mapNotNull {it}
 }
