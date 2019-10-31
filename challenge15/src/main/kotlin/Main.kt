@@ -31,3 +31,7 @@ fun calculateRebate(discountsForEachEANCSV:StringContainingCSV, deliveriesToASho
 
     return  rebatesForEANs.sumByProduct()
 }
+
+fun calculateDiscountForEachEAN(salesTransaction: List<EANSold>): List<DiscountsForAnEAN> {
+    return emptyList()
+}

@@ -304,4 +304,12 @@ class MainTest {
             assertEquals((discountedProduct.value / 2).roundToInt(), rebateForProduct.roundToInt())
         }
     }
+
+    @Test
+    fun `function that calculates discounts for each EAN in a promotion returns zero if the input list is empty`() {
+        val salesTransaction = emptyList<EANSold>()
+
+        val result = calculateDiscountForEachEAN(salesTransaction)
+        assertEquals(emptyList<DiscountsForAnEAN>(), result)
+    }
 }

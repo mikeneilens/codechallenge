@@ -1,0 +1,1 @@
+data class EANSold (val EAN:EAN, val prod:Product, val price:Double, val qty:Int)
