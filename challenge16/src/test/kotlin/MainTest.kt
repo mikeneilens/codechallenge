@@ -58,4 +58,8 @@ class MainTest {
     fun `string containing L is converted to 50`() {
         assertEquals(50, "L".fromRomanToInt())
     }
+    @Test
+    fun `string containing XL is converted to 40`() {
+        assertEquals(40, "XL".fromRomanToInt())
+    }
 }
