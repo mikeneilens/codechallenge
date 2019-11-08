@@ -179,6 +179,14 @@ class MainTest {
     fun `400 is converted to CD`() {
         assertEquals("CD", 400.fromIntToRomanSymbol())
     }
+    @Test
+    fun `1000 is converted to M`() {
+        assertEquals("M", 1000.fromIntToRomanSymbol())
+    }
+    @Test
+    fun `1900 is converted to MCM`() {
+        assertEquals("MCM", 1900.fromIntToRomanSymbol())
+    }
 
 }
 

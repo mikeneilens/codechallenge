@@ -11,10 +11,11 @@ val romanNinety = Roman( "XC",90)
 val romanHundred = Roman( "C",100,"CD|CM".toRegex())
 val romanFourHundred = Roman( "CD",400)
 val romanFiveHundred = Roman( "D",500)
+val romanNineHundred = Roman( "CM",900)
 val romanThousand = Roman( "M",1000)
 
 val romanValues = listOf(romanOne,romanFive,romanTen,romanFifty, romanHundred,romanFiveHundred,romanThousand)
-val romanSymbols = listOf(romanThousand, romanFiveHundred,romanFourHundred,romanHundred, romanNinety, romanFifty,romanForty,romanTen,romanNine,romanFive,romanFour,romanOne)
+val romanSymbols = listOf(romanThousand,romanNineHundred,romanFiveHundred,romanFourHundred,romanHundred, romanNinety, romanFifty,romanForty,romanTen,romanNine,romanFive,romanFour,romanOne)
 
 fun String.fromRomanToInt(): Int =
      romanValues.fold(0){acc, element -> acc
