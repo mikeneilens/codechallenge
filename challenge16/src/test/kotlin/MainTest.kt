@@ -188,6 +188,18 @@ class MainTest {
         assertEquals("MCM", 1900.fromIntToRomanSymbol())
     }
 
+    @Test
+    fun `count occurences returns zero if empty string`() {
+        println("".countOccurrences("cd"))
+    }
+    @Test
+    fun `count occurences returns 1 if string contains another string once`() {
+        println("gagagdacdgda".countOccurrences("cd"))
+    }
+    @Test
+    fun `count occurences returns 2 if string contains another string twice`() {
+        println("gcdagagdacdgda".countOccurrences("cd"))
+    }
 }
 
 
