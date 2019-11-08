@@ -30,4 +30,12 @@ class MainTest {
     fun `string containing VI is converted to 6`() {
         assertEquals(6, "VI".fromRomanToInt())
     }
+    @Test
+    fun `string containing VII is converted to 7`() {
+        assertEquals(7, "VII".fromRomanToInt())
+    }
+    @Test
+    fun `string containing X is converted to 10`() {
+        assertEquals(10, "X".fromRomanToInt())
+    }
 }
