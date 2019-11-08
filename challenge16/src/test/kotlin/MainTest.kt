@@ -199,15 +199,15 @@ class MainTest {
 
     @Test
     fun `count occurences returns zero if empty string`() {
-        println("".countOccurrences("cd"))
+        assertEquals(0,"".countOccurrences("cd"))
     }
     @Test
     fun `count occurences returns 1 if string contains another string once`() {
-        println("gagagdacdgda".countOccurrences("cd"))
+        assertEquals(1,"gagagdacdgda".countOccurrences("cd"))
     }
     @Test
     fun `count occurences returns 2 if string contains another string twice`() {
-        println("gcdagagdacdgda".countOccurrences("cd"))
+        assertEquals(2,"gcdagagdacdgda".countOccurrences("cd"))
     }
 }
 

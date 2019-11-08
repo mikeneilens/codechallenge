@@ -17,9 +17,7 @@ val romanThousand = RomanSymbol("M", 1000, 1000)
 
 val romanSymbols = listOf(romanThousand,romanNineHundred,romanFiveHundred,romanFourHundred,romanHundred, romanNinety, romanFifty,romanForty,romanTen,romanNine,romanFive,romanFour,romanOne)
 
-fun addRomanNumbers(first:String, second:String):String {
-    return  (first.fromRomanSymbolToInt + second.fromRomanSymbolToInt).fromIntToRomanSymbol
-}
+fun addRomanNumbers(first:String, second:String):String = (first.fromRomanSymbolToInt + second.fromRomanSymbolToInt).fromIntToRomanSymbol
 
 val String.fromRomanSymbolToInt: Int get() =
     romanSymbols.fold(0){acc, romanSymbol ->
@@ -32,7 +30,6 @@ val Int.fromIntToRomanSymbol: String get() =
         Pair(result + romanSymbol.symbol.repeat(multiplesOfTheSymbol), remainder - multiplesOfTheSymbol * romanSymbol.value)
     }.first
 
-fun String.countOccurrences(s:String):Int {
-    return this.map{it}.windowed(s.length,1).fold(0){ acc, chars ->  acc + if  (chars == s.toList()) 1 else 0 }
-}
+fun String.countOccurrences(s:String):Int = this.map{it}.windowed(s.length,1).fold(0){ acc, chars ->  acc + if  (chars == s.toList()) 1 else 0 }
+
 
