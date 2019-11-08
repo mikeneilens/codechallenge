@@ -143,6 +143,34 @@ class MainTest {
     fun `29 is converted to XXIX`() {
         assertEquals("XXIX", 29.fromIntToRomanSymbol())
     }
+    @Test
+    fun `50 is converted to L`() {
+        assertEquals("L", 50.fromIntToRomanSymbol())
+    }
+    @Test
+    fun `53 is converted to LIII`() {
+        assertEquals("LIII", 53.fromIntToRomanSymbol())
+    }
+    @Test
+    fun `54 is converted to LIV`() {
+        assertEquals("LIV", 54.fromIntToRomanSymbol())
+    }
+    @Test
+    fun `40 is converted to XL`() {
+        assertEquals("XL", 40.fromIntToRomanSymbol())
+    }
+    @Test
+    fun `100 is converted to C`() {
+        assertEquals("C", 100.fromIntToRomanSymbol())
+    }
+    @Test
+    fun `300 is converted to CCC`() {
+        assertEquals("CCC", 300.fromIntToRomanSymbol())
+    }
+    @Test
+    fun `290 is converted to CCXC`() {
+        assertEquals("CCXC", 290.fromIntToRomanSymbol())
+    }
 
 }
 
