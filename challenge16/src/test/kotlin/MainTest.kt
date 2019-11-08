@@ -171,6 +171,14 @@ class MainTest {
     fun `290 is converted to CCXC`() {
         assertEquals("CCXC", 290.fromIntToRomanSymbol())
     }
+    @Test
+    fun `500 is converted to D`() {
+        assertEquals("D", 500.fromIntToRomanSymbol())
+    }
+    @Test
+    fun `400 is converted to CD`() {
+        assertEquals("CD", 400.fromIntToRomanSymbol())
+    }
 
 }
 
