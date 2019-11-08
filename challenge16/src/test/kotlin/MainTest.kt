@@ -189,6 +189,15 @@ class MainTest {
     }
 
     @Test
+    fun `adding I to IV gives V`() {
+        assertEquals("V", addRomanNumbers("I","IV"))
+    }
+    @Test
+    fun `adding 1466 MCDLXVI to 277 CCLXXVII gives 1743 MDCCXLIII`() {
+        assertEquals("V", addRomanNumbers("I","IV"))
+    }
+
+    @Test
     fun `count occurences returns zero if empty string`() {
         println("".countOccurrences("cd"))
     }
