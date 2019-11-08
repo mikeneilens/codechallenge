@@ -17,18 +17,18 @@ val romanThousand = RomanSymbol("M", 1000, 1000)
 val romanSymbols = listOf(romanThousand,romanNineHundred,romanFiveHundred,romanFourHundred,romanHundred, romanNinety, romanFifty,romanForty,romanTen,romanNine,romanFive,romanFour,romanOne)
 
 fun addRomanNumbers(first:String, second:String):String {
-    return  (first.fromRomanSymbolToInt() + second.fromRomanSymbolToInt()).fromIntToRomanSymbol()
+    return  (first.fromRomanSymbolToInt + second.fromRomanSymbolToInt).fromIntToRomanSymbol
 }
 
-fun String.fromRomanSymbolToInt(): Int =
+val String.fromRomanSymbolToInt: Int get() =
     romanSymbols.fold(0){acc, romanSymbol ->
         acc + this.countOccurrences(romanSymbol.symbol) * romanSymbol.parseValue
     }
 
-fun Int.fromIntToRomanSymbol(): String =
+val Int.fromIntToRomanSymbol: String get() =
     romanSymbols.fold(Pair("",this)){ (result,remainder),romanSymbol ->
-        val multiples = remainder / romanSymbol.value
-        Pair(result + romanSymbol.symbol.repeat(multiples), remainder - multiples * romanSymbol.value)
+        val multiplesOfTheSymbol = remainder / romanSymbol.value
+        Pair(result + romanSymbol.symbol.repeat(multiplesOfTheSymbol), remainder - multiplesOfTheSymbol * romanSymbol.value)
     }.first
 
 fun String.countOccurrences(s:String):Int {
