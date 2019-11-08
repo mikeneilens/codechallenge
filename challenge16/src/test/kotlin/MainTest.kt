@@ -131,6 +131,19 @@ class MainTest {
     fun `20 is converted to XX`() {
         assertEquals("XX", 20.fromIntToRomanSymbol())
     }
+    @Test
+    fun `23 is converted to XXIII`() {
+        assertEquals("XX", 20.fromIntToRomanSymbol())
+    }
+    @Test
+    fun `24 is converted to XXIV`() {
+        assertEquals("XXIV", 24.fromIntToRomanSymbol())
+    }
+    @Test
+    fun `29 is converted to XXIX`() {
+        assertEquals("XXIX", 29.fromIntToRomanSymbol())
+    }
+
 }
 
 
