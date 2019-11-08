@@ -99,6 +99,30 @@ class MainTest {
     fun `1 is converted to I`() {
        assertEquals("I", 1.fromIntToRoman())
     }
+    @Test
+    fun `2 is converted to II`() {
+       assertEquals("II", 2.fromIntToRoman())
+    }
+    @Test
+    fun `3 is converted to III`() {
+        assertEquals("III", 3.fromIntToRoman())
+    }
+    @Test
+    fun `4 is converted to IV`() {
+        assertEquals("IV", 4.fromIntToRoman())
+    }
+    @Test
+    fun `5 is converted to V`() {
+        assertEquals("V", 5.fromIntToRoman())
+    }
+    @Test
+    fun `6 is converted to VI`() {
+        assertEquals("VI", 6.fromIntToRoman())
+    }
+    @Test
+    fun `8 is converted to VIII`() {
+        assertEquals("VIII", 8.fromIntToRoman())
+    }
 }
 
 

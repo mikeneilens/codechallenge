@@ -17,5 +17,18 @@ fun String.fromRomanToInt(): Int {
 }
 
 fun Int.fromIntToRoman(): String {
-    return "I"
+    var remainder = this
+    var result = ""
+    if (remainder >= 5 ) {
+        val multiples = remainder / 5
+        result += "V".repeat(multiples)
+        remainder -= multiples * 5
+    }
+    if (remainder >= 4 ) {
+        val multiples = remainder / 4
+        result += "IV".repeat(multiples)
+        remainder -= multiples * 4
+    }
+    result += "I".repeat(remainder)
+    return result
 }
