@@ -18,4 +18,16 @@ class MainTest {
     fun `string containing III is converted to 3`() {
         assertEquals(3, "III".fromRomanToInt())
     }
+    @Test
+    fun `string containing IV is converted to 4`() {
+        assertEquals(4, "IV".fromRomanToInt())
+    }
+    @Test
+    fun `string containing V is converted to 5`() {
+        assertEquals(5, "V".fromRomanToInt())
+    }
+    @Test
+    fun `string containing VI is converted to 6`() {
+        assertEquals(6, "VI".fromRomanToInt())
+    }
 }
