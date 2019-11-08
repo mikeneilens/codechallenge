@@ -1,5 +1,6 @@
 
 class RomanSymbol(val symbol: String, val value: Int, val parseValue: Int)
+//could probably automate the generation of these values as there is a repeating pattern.
 val romanOne = RomanSymbol("I", 1, 1)
 val romanFour = RomanSymbol("IV", 4, -2)
 val romanFive = RomanSymbol("V", 5, 5)
