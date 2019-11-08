@@ -97,31 +97,39 @@ class MainTest {
 
     @Test
     fun `1 is converted to I`() {
-       assertEquals("I", 1.fromIntToRoman())
+       assertEquals("I", 1.fromIntToRomanSymbol())
     }
     @Test
     fun `2 is converted to II`() {
-       assertEquals("II", 2.fromIntToRoman())
+       assertEquals("II", 2.fromIntToRomanSymbol())
     }
     @Test
     fun `3 is converted to III`() {
-        assertEquals("III", 3.fromIntToRoman())
+        assertEquals("III", 3.fromIntToRomanSymbol())
     }
     @Test
     fun `4 is converted to IV`() {
-        assertEquals("IV", 4.fromIntToRoman())
+        assertEquals("IV", 4.fromIntToRomanSymbol())
     }
     @Test
     fun `5 is converted to V`() {
-        assertEquals("V", 5.fromIntToRoman())
+        assertEquals("V", 5.fromIntToRomanSymbol())
     }
     @Test
     fun `6 is converted to VI`() {
-        assertEquals("VI", 6.fromIntToRoman())
+        assertEquals("VI", 6.fromIntToRomanSymbol())
     }
     @Test
     fun `8 is converted to VIII`() {
-        assertEquals("VIII", 8.fromIntToRoman())
+        assertEquals("VIII", 8.fromIntToRomanSymbol())
+    }
+    @Test
+    fun `10 is converted to X`() {
+        assertEquals("X", 10.fromIntToRomanSymbol())
+    }
+    @Test
+    fun `20 is converted to XX`() {
+        assertEquals("XX", 20.fromIntToRomanSymbol())
     }
 }
 

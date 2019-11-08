@@ -16,9 +16,14 @@ fun String.fromRomanToInt(): Int {
     }
 }
 
-fun Int.fromIntToRoman(): String {
+fun Int.fromIntToRomanSymbol(): String {
     var remainder = this
     var result = ""
+    if (remainder >= 10 ) {
+        val multiples = remainder / 10
+        result += "X".repeat(multiples)
+        remainder -= multiples * 10
+    }
     if (remainder >= 5 ) {
         val multiples = remainder / 5
         result += "V".repeat(multiples)
