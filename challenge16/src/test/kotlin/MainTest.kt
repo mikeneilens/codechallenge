@@ -38,4 +38,24 @@ class MainTest {
     fun `string containing X is converted to 10`() {
         assertEquals(10, "X".fromRomanToInt())
     }
+    @Test
+    fun `string containing XIII is converted to 13`() {
+        assertEquals(13, "XIII".fromRomanToInt())
+    }
+    @Test
+    fun `string containing XIV is converted to 14`() {
+        assertEquals(14, "XIV".fromRomanToInt())
+    }
+    @Test
+    fun `string containing XVIII is converted to 18`() {
+        assertEquals(18, "XVIII".fromRomanToInt())
+    }
+    @Test
+    fun `string containing IX is converted to 9`() {
+        assertEquals(9, "IX".fromRomanToInt())
+    }
+    @Test
+    fun `string containing L is converted to 50`() {
+        assertEquals(50, "L".fromRomanToInt())
+    }
 }
