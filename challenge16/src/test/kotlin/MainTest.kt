@@ -94,4 +94,11 @@ class MainTest {
     fun `string containing MCM is converted to 1900`() {
         assertEquals(1900, "MCM".fromRomanToInt())
     }
+
+    @Test
+    fun `1 is converted to I`() {
+       assertEquals("I", 1.fromIntToRoman())
+    }
 }
+
+

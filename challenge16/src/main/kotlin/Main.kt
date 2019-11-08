@@ -15,3 +15,7 @@ fun String.fromRomanToInt(): Int {
         acc + this.filter { it.toString() == element.symbol }.count() * element.value  + (if (this.contains(element.negativeCheck )) -2 * element.value else 0)
     }
 }
+
+fun Int.fromIntToRoman(): String {
+    return "I"
+}
