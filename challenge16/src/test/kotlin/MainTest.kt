@@ -62,4 +62,16 @@ class MainTest {
     fun `string containing XL is converted to 40`() {
         assertEquals(40, "XL".fromRomanToInt())
     }
+    @Test
+    fun `string containing C is converted to 100`() {
+        assertEquals(100, "C".fromRomanToInt())
+    }
+    @Test
+    fun `string containing XC is converted to 90`() {
+        assertEquals(90, "XC".fromRomanToInt())
+    }
+    @Test
+    fun `string containing CCLXXVII is converted to 277`() {
+        assertEquals(277, "CCLXXVII".fromRomanToInt())
+    }
 }
