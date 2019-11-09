@@ -26,10 +26,11 @@ val String.fromRomanSymbolToInt: Int get() =
 
 val Int.fromIntToRomanSymbol: String get() =
     romanSymbols.fold(Pair("",this)){ (result,remainder),romanSymbol ->
-        val multiplesOfTheSymbol = remainder / romanSymbol.value
-        Pair(result + romanSymbol.symbol.repeat(multiplesOfTheSymbol), remainder - multiplesOfTheSymbol * romanSymbol.value)
+        val multiplesOfTheValue = remainder / romanSymbol.value
+        Pair(result + romanSymbol.symbol.repeat(multiplesOfTheValue), remainder - multiplesOfTheValue * romanSymbol.value)
     }.first
 
-fun String.countOccurrences(s:String):Int = this.map{it}.windowed(s.length,1).fold(0){ acc, chars ->  acc + if  (chars == s.toList()) 1 else 0 }
+fun String.countOccurrences(stringToFind:String):Int = this.toList().windowed(stringToFind.length,1).map{it.joinToString ("")}
+                                                           .fold(0){ acc, chars ->  acc + if  (chars == stringToFind) 1 else 0 }
 
 
