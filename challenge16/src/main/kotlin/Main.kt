@@ -1,6 +1,6 @@
+data class RomanSymbol(val symbol: String, val value: Int, val parseValue: Int)
 
-class RomanSymbol(val symbol: String, val value: Int, val parseValue: Int)
-//could probably automate the generation of these values as there is a repeating pattern.
+//there's a repeating pattern here but automating the creation of roman Symbols took lots of complex code when I tried
 val romanOne = RomanSymbol("I", 1, 1)
 val romanFour = RomanSymbol("IV", 4, -2)
 val romanFive = RomanSymbol("V", 5, 5)
@@ -20,8 +20,8 @@ val romanSymbols = listOf(romanThousand,romanNineHundred,romanFiveHundred,romanF
 fun addRomanNumbers(first:String, second:String):String = (first.fromRomanSymbolToInt + second.fromRomanSymbolToInt).fromIntToRomanSymbol
 
 val String.fromRomanSymbolToInt: Int get() =
-    romanSymbols.fold(0){acc, romanSymbol ->
-        acc + this.countOccurrences(romanSymbol.symbol) * romanSymbol.parseValue
+    romanSymbols.fold(0){result, romanSymbol ->
+        result + this.countOccurrences(romanSymbol.symbol) * romanSymbol.parseValue
     }
 
 val Int.fromIntToRomanSymbol: String get() =
@@ -31,6 +31,6 @@ val Int.fromIntToRomanSymbol: String get() =
     }.first
 
 fun String.countOccurrences(stringToFind:String):Int = this.toList().windowed(stringToFind.length,1).map{it.joinToString ("")}
-                                                           .fold(0){ acc, chars ->  acc + if  (chars == stringToFind) 1 else 0 }
+                                                           .fold(0){ result, chars ->  if  (chars == stringToFind) result + 1 else result }
 
 
