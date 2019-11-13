@@ -1,4 +1,4 @@
-data class RomanSymbol(val symbol: String, val value: Int, val parseValue: Int)
+data class RomanSymbol(val symbol: String, val value: Int, val conversionValue: Int)
 
 //there's a repeating pattern here but automating the creation of roman Symbols took lots of complex code when I tried
 val romanOne = RomanSymbol("I", 1, 1)
@@ -21,7 +21,7 @@ fun addRomanNumbers(first:String, second:String):String = (first.fromRomanSymbol
 
 val String.fromRomanSymbolToInt: Int get() =
     romanSymbols.fold(0){result, romanSymbol ->
-        result + this.countOccurrences(romanSymbol.symbol) * romanSymbol.parseValue
+        result + this.countOccurrences(romanSymbol.symbol) * romanSymbol.conversionValue
     }
 
 val Int.fromIntToRomanSymbol: String get() =
