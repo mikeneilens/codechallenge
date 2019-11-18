@@ -196,19 +196,6 @@ class MainTest {
     fun `adding 1466 MCDLXVI to 277 CCLXXVII gives 1743 MDCCXLIII`() {
         assertEquals("V", addRomanNumbers("I","IV"))
     }
-
-    @Test
-    fun `count occurences returns zero if empty string`() {
-        assertEquals(0,"".countOccurrences("cd"))
-    }
-    @Test
-    fun `count occurences returns 1 if string contains another string once`() {
-        assertEquals(1,"gagagdacdgda".countOccurrences("cd"))
-    }
-    @Test
-    fun `count occurences returns 2 if string contains another string twice`() {
-        assertEquals(2,"gcdagagdacdgda".countOccurrences("cd"))
-    }
 }
 
 
