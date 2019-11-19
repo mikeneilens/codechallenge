@@ -2,7 +2,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 
-class MaintTest {
+class MainTest {
     //Test card suits are initialised correctly
     @Test
     fun `string AC creates a card with ace of clubs`() {

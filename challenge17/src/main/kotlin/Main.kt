@@ -6,8 +6,8 @@ sealed class Suit {
     object Spades:Suit()
 
     companion object {
-        val suitMap = mapOf("C" to Suit.Clubs, "D" to Suit.Diamonds, "H" to Suit.Hearts, "S" to Suit.Spades)
-        fun fromString(string:String):Suit = suitMap[string] ?: Suit.Clubs
+        val suitMap = mapOf("C" to Clubs, "D" to Diamonds, "H" to Hearts, "S" to Spades)
+        fun fromString(string:String):Suit = suitMap[string] ?: Clubs
     }
 }
 
@@ -38,10 +38,10 @@ sealed class Rank {
     }
 
     companion object {
-        val rankMap = mapOf("T" to Rank.Number(10),"J" to Rank.Picture.Jack, "Q" to Rank.Picture.Queen, "K" to Rank.Picture.King,"A" to Rank.Ace)
+        private val rankMap = mapOf("T" to Number(10),"J" to Picture.Jack, "Q" to Picture.Queen, "K" to Picture.King,"A" to Ace)
         fun fromString(string:String):Rank {
             val number = string.toIntOrNull()
-            return if (number != null) Rank.Number(number) else rankMap[string] ?: Rank.Ace
+            return if (number != null) Number(number) else rankMap[string] ?: Ace
         }
     }
 }
