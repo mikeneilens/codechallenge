@@ -12,7 +12,7 @@ val String.fromRomanSymbolToInt:Int get() =
 
 
 val Int.fromIntToRomanSymbol: String get() =
-    romanKeyValues.toList().fold(Pair("",this)){ (result,remainder),(symbol, value) ->
-        val multiplesOfTheValue = remainder / value
-        Pair(result + symbol.repeat(multiplesOfTheValue), remainder - multiplesOfTheValue * value)
+    romanKeyValues.toList().fold(Pair("",this)){ (result,remainder),(romanDigit, valueOfRomanDigit) ->
+        val multiplesOfTheValue = remainder / valueOfRomanDigit
+        Pair(result + romanDigit.repeat(multiplesOfTheValue), remainder - multiplesOfTheValue * valueOfRomanDigit)
     }.first
