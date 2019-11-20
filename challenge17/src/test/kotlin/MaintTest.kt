@@ -125,26 +125,26 @@ class MainTest {
     fun `A Jack of spades and an Ace of diamonds is Pontoon`() {
         val jackOfSpades = Card("JS")
         val aceOfDiamonds = Card("AD")
-        assertTrue(isPontoon(listOf(jackOfSpades,aceOfDiamonds)))
+        assertTrue(listOf(jackOfSpades,aceOfDiamonds).isPontoon())
     }
     @Test
     fun `An Ace of Diamonds and a  Jack of spades is Pontoon`() {
         val jackOfSpades = Card("JS")
         val aceOfDiamonds = Card("AD")
-        assertTrue(isPontoon(listOf(aceOfDiamonds,jackOfSpades)))
+        assertTrue(listOf(aceOfDiamonds,jackOfSpades).isPontoon())
     }
     @Test
     fun `An Ace of Diamonds and a  ten of spades is not Pontoon`() {
         val tenOfSpades = Card("TS")
         val aceOfDiamonds = Card("AD")
-        assertFalse(isPontoon(listOf(aceOfDiamonds,tenOfSpades)))
+        assertFalse(listOf(aceOfDiamonds,tenOfSpades).isPontoon())
     }
     @Test
     fun `An Ace of Diamonds and a  Jack of spades and two of clubs is not Pontoon`() {
         val jackOfSpades = Card("JS")
         val aceOfDiamonds = Card("AD")
         val twoOfClubs = Card("2C")
-        assertFalse(isPontoon(listOf(aceOfDiamonds,jackOfSpades,twoOfClubs)))
+        assertFalse(listOf(aceOfDiamonds,jackOfSpades,twoOfClubs).isPontoon())
     }
     @Test
     fun `five cards that add up to less than 22 is five card trick`() {
@@ -153,7 +153,7 @@ class MainTest {
         val threeOfDiamonds = Card("3D")
         val twoOfSpades = Card("2S")
         val fiveOfHearts = Card("5H")
-        assertTrue(isFiveCardTrick(listOf(fiveOfHearts,twoOfSpades,twoOfClubs,threeOfDiamonds,aceOfDiamonds)))
+        assertTrue(listOf(fiveOfHearts,twoOfSpades,twoOfClubs,threeOfDiamonds,aceOfDiamonds).isFiveCardTrick())
     }
     @Test
     fun `four cards that add up to less than 22 is not five card trick`() {
@@ -161,7 +161,7 @@ class MainTest {
         val twoOfClubs = Card("2C")
         val threeOfDiamonds = Card("3D")
         val fiveOfHearst = Card("5H")
-        assertFalse(isFiveCardTrick(listOf(fiveOfHearst,twoOfClubs,threeOfDiamonds,aceOfDiamonds)))
+        assertFalse(listOf(fiveOfHearst,twoOfClubs,threeOfDiamonds,aceOfDiamonds).isFiveCardTrick())
     }
     @Test
     fun `six cards that add up to less than 22 is not five card trick`() {
@@ -171,7 +171,7 @@ class MainTest {
         val threeOfDiamonds = Card("3D")
         val twoOfSpades = Card("2S")
         val fiveOfHearts = Card("5H")
-        assertFalse(isFiveCardTrick(listOf(aceOfSpades,fiveOfHearts,twoOfSpades,twoOfClubs,threeOfDiamonds,aceOfDiamonds)))
+        assertFalse(listOf(aceOfSpades,fiveOfHearts,twoOfSpades,twoOfClubs,threeOfDiamonds,aceOfDiamonds).isFiveCardTrick())
     }
     @Test
     fun `five cards that add up to more than 21 is not five card trick`() {
@@ -180,7 +180,7 @@ class MainTest {
         val sevenOfDiamonds = Card("7D")
         val tenOfSpades = Card("Ts")
         val fiveOfHearts = Card("5H")
-        assertFalse(isFiveCardTrick(listOf(fiveOfHearts,tenOfSpades,twoOfClubs,sevenOfDiamonds,aceOfDiamonds)))
+        assertFalse(listOf(fiveOfHearts,tenOfSpades,twoOfClubs,sevenOfDiamonds,aceOfDiamonds).isFiveCardTrick())
     }
 
 }
