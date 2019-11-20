@@ -62,3 +62,5 @@ fun List<Card>.totalLessThan22():Int? {
 }
 
 fun isPontoon(cards:List<Card>):Boolean = (cards.size == 2) && ((cards[0].rank is Rank.Picture && cards[1].rank is Rank.Ace) || (cards[0].rank is Rank.Ace && cards[1].rank is Rank.Picture))
+
+fun isFiveCardTrick(cards:List<Card>):Boolean = ((cards.size == 5) && (cards.totalLessThan22() != null))

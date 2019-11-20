@@ -146,4 +146,41 @@ class MainTest {
         val twoOfClubs = Card("2C")
         assertFalse(isPontoon(listOf(aceOfDiamonds,jackOfSpades,twoOfClubs)))
     }
+    @Test
+    fun `five cards that add up to less than 22 is five card trick`() {
+        val aceOfDiamonds = Card("AD")
+        val twoOfClubs = Card("2C")
+        val threeOfDiamonds = Card("3D")
+        val twoOfSpades = Card("2S")
+        val fiveOfHearts = Card("5H")
+        assertTrue(isFiveCardTrick(listOf(fiveOfHearts,twoOfSpades,twoOfClubs,threeOfDiamonds,aceOfDiamonds)))
+    }
+    @Test
+    fun `four cards that add up to less than 22 is not five card trick`() {
+        val aceOfDiamonds = Card("AD")
+        val twoOfClubs = Card("2C")
+        val threeOfDiamonds = Card("3D")
+        val fiveOfHearst = Card("5H")
+        assertFalse(isFiveCardTrick(listOf(fiveOfHearst,twoOfClubs,threeOfDiamonds,aceOfDiamonds)))
+    }
+    @Test
+    fun `six cards that add up to less than 22 is not five card trick`() {
+        val aceOfDiamonds = Card("AD")
+        val aceOfSpades = Card("AS")
+        val twoOfClubs = Card("2C")
+        val threeOfDiamonds = Card("3D")
+        val twoOfSpades = Card("2S")
+        val fiveOfHearts = Card("5H")
+        assertFalse(isFiveCardTrick(listOf(aceOfSpades,fiveOfHearts,twoOfSpades,twoOfClubs,threeOfDiamonds,aceOfDiamonds)))
+    }
+    @Test
+    fun `five cards that add up to more than 21 is not five card trick`() {
+        val aceOfDiamonds = Card("AD")
+        val twoOfClubs = Card("2C")
+        val sevenOfDiamonds = Card("7D")
+        val tenOfSpades = Card("Ts")
+        val fiveOfHearts = Card("5H")
+        assertFalse(isFiveCardTrick(listOf(fiveOfHearts,tenOfSpades,twoOfClubs,sevenOfDiamonds,aceOfDiamonds)))
+    }
+
 }
