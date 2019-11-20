@@ -54,3 +54,9 @@ class Card(string:String) {
         this.suit = Suit.fromString(string.last().toString())
     }
 }
+
+fun List<Int>.plusCard(card: Card): List<Int> = card.rank.value().flatMap{  aceValue ->  this.map{aceValue + it}}
+
+fun List<Card>.totalLessThan22():Int? {
+    return this.fold(listOf(0)){acc, card -> acc.plusCard(card)}.filter{it < 22}.lastOrNull()
+}
