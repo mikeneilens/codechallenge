@@ -58,7 +58,10 @@ class Card(string:String) {
 fun List<Int>.plusCard(card: Card): List<Int> = card.rank.value().flatMap{  aceValue ->  this.map{aceValue + it}}
 
 fun List<Card>.totalLessThan22():Int? {
-    return this.fold(listOf(0)){acc, card -> acc.plusCard(card)}.filter{it < 22}.lastOrNull()
+    return this.fold(listOf(0)){acc, card -> acc.plusCard(card)}
+        .sorted()
+        .filter{it < 22}
+        .lastOrNull()
 }
 
 fun List<Card>.isPontoon():Boolean = (this.size == 2) && ((this[0].rank is Rank.Picture && this[1].rank is Rank.Ace) || (this[0].rank is Rank.Ace && this[1].rank is Rank.Picture))
