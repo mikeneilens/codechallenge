@@ -1,5 +1,4 @@
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertNull
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
 
@@ -121,5 +120,30 @@ class MainTest {
         val aceOfDiamonds = Card("AD")
         val aceOfSpades = Card("AS")
         assertEquals(13, listOf(aceOfClubs, aceOfDiamonds, aceOfSpades).totalLessThan22())
+    }
+    @Test
+    fun `A Jack of spades and an Ace of diamonds is Pontoon`() {
+        val jackOfSpades = Card("JS")
+        val aceOfDiamonds = Card("AD")
+        assertTrue(isPontoon(listOf(jackOfSpades,aceOfDiamonds)))
+    }
+    @Test
+    fun `An Ace of Diamonds and a  Jack of spades is Pontoon`() {
+        val jackOfSpades = Card("JS")
+        val aceOfDiamonds = Card("AD")
+        assertTrue(isPontoon(listOf(aceOfDiamonds,jackOfSpades)))
+    }
+    @Test
+    fun `An Ace of Diamonds and a  ten of spades is not Pontoon`() {
+        val tenOfSpades = Card("TS")
+        val aceOfDiamonds = Card("AD")
+        assertFalse(isPontoon(listOf(aceOfDiamonds,tenOfSpades)))
+    }
+    @Test
+    fun `An Ace of Diamonds and a  Jack of spades and two of clubs is not Pontoon`() {
+        val jackOfSpades = Card("JS")
+        val aceOfDiamonds = Card("AD")
+        val twoOfClubs = Card("2C")
+        assertFalse(isPontoon(listOf(aceOfDiamonds,jackOfSpades,twoOfClubs)))
     }
 }
