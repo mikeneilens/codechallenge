@@ -94,11 +94,11 @@ class MainTest {
         assertEquals(21, listOf(twoOfClubs, queenOfDiamonds, nineOfSpades).totalLessThan22())
     }
     @Test
-    fun `The total less than 22 of a list containing 2 of clubs and queen of diamonds and ten of spades is null`(){
+    fun `The total less than 22 of a list containing 2 of clubs and queen of diamonds and ten of spades is zero`(){
         val twoOfClubs = Card("2C")
         val queenOfDiamonds = Card("QD")
         val tenOfSpades = Card("TS")
-        assertNull(listOf(twoOfClubs, queenOfDiamonds, tenOfSpades).totalLessThan22())
+        assertEquals(0, listOf(twoOfClubs, queenOfDiamonds, tenOfSpades).totalLessThan22())
     }
     @Test
     fun `The total less than 22 of a list containing 2 of clubs and queen of diamonds and ace of spades is 13`(){
@@ -181,6 +181,102 @@ class MainTest {
         val tenOfSpades = Card("Ts")
         val fiveOfHearts = Card("5H")
         assertFalse(listOf(fiveOfHearts,tenOfSpades,twoOfClubs,sevenOfDiamonds,aceOfDiamonds).isFiveCardTrick())
+    }
+    @Test
+    fun `jack spades plus 7 of diamonds plus 6 of hearts is bust`() {
+        val jackOfSpades = Card("JS")
+        val sevenOfDiamonds = Card("7D")
+        val sixOfHearts = Card("6H")
+        assertTrue(listOf(jackOfSpades,sevenOfDiamonds,sixOfHearts).isBust())
+    }
+    @Test
+    fun `jack spades plus 7 of diamonds plus 4 of hearts is not bust`() {
+        val jackOfSpades = Card("JS")
+        val sevenOfDiamonds = Card("7D")
+        val fourOfHearts = Card("4H")
+        assertFalse(listOf(jackOfSpades,sevenOfDiamonds,fourOfHearts).isBust())
+    }
+    @Test
+    fun `Pontoon does not beat another Pontoon`() {
+        val jackOfSpades = Card("JS")
+        val aceOfDiamonds = Card("AD")
+        val kingOfSpades = Card("KS")
+        val aceOfHearts = Card("AH")
+        assertFalse(listOf(jackOfSpades, aceOfDiamonds).isWorthMoreThan(listOf(kingOfSpades, aceOfHearts)))
+    }
+    @Test
+    fun `Pontoon beats a five card trick`() {
+        val jackOfSpades = Card("JS")
+        val aceOfHearts = Card("AD")
+        val aceOfDiamonds = Card("AD")
+        val twoOfClubs = Card("2C")
+        val threeOfDiamonds = Card("3D")
+        val twoOfSpades = Card("2S")
+        val fiveOfHearts = Card("5H")
+        assertTrue(listOf(jackOfSpades, aceOfHearts).isWorthMoreThan(listOf(fiveOfHearts,twoOfSpades,twoOfClubs,threeOfDiamonds,aceOfDiamonds)))
+    }
+    @Test
+    fun `Five card trick does not beat a five card trick`() {
+        val aceOfHearts = Card("AD")
+        val twoOfHearts = Card("2H")
+        val threeOfHearts = Card("3H")
+        val twoOfDiamonds = Card("2D")
+        val fiveOfClubs = Card("5C")
+        val aceOfDiamonds = Card("AD")
+        val twoOfClubs = Card("2C")
+        val threeOfDiamonds = Card("3D")
+        val twoOfSpades = Card("2S")
+        val fiveOfHearts = Card("5H")
+        assertFalse(listOf(aceOfHearts,twoOfHearts,threeOfHearts,twoOfDiamonds,fiveOfClubs).isWorthMoreThan(listOf(fiveOfHearts,twoOfSpades,twoOfClubs,threeOfDiamonds,aceOfDiamonds)))
+    }
+    @Test
+    fun `Five card trick beats a hand which is not bust but is not a Pontoon or five card trick`() {
+        val aceOfHearts = Card("AH")
+        val twoOfHearts = Card("2H")
+        val threeOfHearts = Card("3H")
+        val twoOfDiamonds = Card("2D")
+        val fiveOfClubs = Card("5C")
+        val aceOfDiamonds = Card("AD")
+        val threeOfDiamonds = Card("3D")
+        assertTrue(listOf(aceOfHearts,twoOfHearts,threeOfHearts,twoOfDiamonds,fiveOfClubs).isWorthMoreThan(listOf(threeOfDiamonds,aceOfDiamonds)))
+    }
+    @Test
+    fun `hand which is not bust does not beat a hand of the same value`() {
+        val aceOfHearts = Card("AH")
+        val twoOfHearts = Card("2H")
+        val threeOfHearts = Card("3H")
+        val kingOfDiamonds = Card("KD")
+        val sixOfClubs = Card("6C")
+        assertFalse(listOf(aceOfHearts,twoOfHearts,threeOfHearts).isWorthMoreThan(listOf(kingOfDiamonds,sixOfClubs)))
+    }
+    @Test
+    fun `hand which is not bust does beat a hand of a lower value`() {
+        val aceOfHearts = Card("AH")
+        val twoOfHearts = Card("2H")
+        val threeOfHearts = Card("3H")
+        val kingOfDiamonds = Card("KD")
+        val fiveOfClubs = Card("5C")
+        assertTrue(listOf(aceOfHearts,twoOfHearts,threeOfHearts).isWorthMoreThan(listOf(kingOfDiamonds,fiveOfClubs)))
+    }
+    @Test
+    fun `hand which is not bust does beat a hand which is bust`() {
+        val aceOfHearts = Card("AH")
+        val twoOfHearts = Card("2H")
+        val threeOfHearts = Card("3H")
+        val kingOfDiamonds = Card("KD")
+        val fiveOfClubs = Card("5C")
+        val sevenOfClubs = Card("7C")
+        assertTrue(listOf(aceOfHearts,twoOfHearts,threeOfHearts).isWorthMoreThan(listOf(kingOfDiamonds,fiveOfClubs, sevenOfClubs)))
+    }
+    @Test
+    fun `hand which is bust does not beat a hand which is bust`() {
+        val kingOfHearts = Card("KH")
+        val nineOfHearts = Card("9H")
+        val threeOfHearts = Card("3H")
+        val kingOfDiamonds = Card("KD")
+        val fiveOfClubs = Card("5C")
+        val sevenOfClubs = Card("7C")
+        assertFalse(listOf(kingOfHearts,nineOfHearts,threeOfHearts).isWorthMoreThan(listOf(kingOfDiamonds,fiveOfClubs, sevenOfClubs)))
     }
 
 }
