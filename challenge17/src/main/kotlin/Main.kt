@@ -17,9 +17,11 @@ fun List<Card>.isBust():Boolean = (this.totalLessThan22()== 0)
 fun List<Card>.isFiveCardTrick():Boolean = ((this.size == 5) && (!this.isBust()))
 
 fun List<Card>.isWorthMoreThan(other:List<Card>):Boolean {
-    if (other.isPontoon()) return false
-    if (this.isPontoon()) return true
-    if (other.isFiveCardTrick()) return false
-    if (this.isFiveCardTrick()) return true
-    return (this.totalLessThan22() > other.totalLessThan22())
+    return when (true) {
+        other.isPontoon() -> false
+        this.isPontoon() -> true
+        other.isFiveCardTrick() -> false
+        this.isFiveCardTrick() -> true
+        else -> (this.totalLessThan22() > other.totalLessThan22())
+    }
 }
