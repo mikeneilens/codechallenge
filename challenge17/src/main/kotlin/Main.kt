@@ -24,12 +24,12 @@ val isFiveCardTrick = fun (cards:Cards):Boolean = ((cards.size == 5) && (!isBust
 
 val isWinnerRules = mapOf(isPontoon to "Pontoon", isFiveCardTrick to "Five Card Trick")
 
-fun Cards.isWorthMoreThan(other:Cards):Boolean {
+fun Cards.isWorthMoreThan(otherCards:Cards):Boolean {
     isWinnerRules.forEach { isWinner ->
-        if (isWinner.key(other)) return false
+        if (isWinner.key(otherCards)) return false
         if (isWinner.key(this)) return true
     }
-    return (this.totalLessThan22() > other.totalLessThan22())
+    return (this.totalLessThan22() > otherCards.totalLessThan22())
 }
 
 fun Cards.description():String {
