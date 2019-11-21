@@ -43,7 +43,7 @@ fun Cards.description():String {
 }
 
 //This adds a list of Ints to a list of Ints. E.g. [3,4,5] + [1,11] gives [(3+1),(3+11),(4+1),(4+11),(5+1),(5+11)] which is [4,14,5,15,6,16]
-fun List<Int>.plusCard(card:Card): List<Int> = card.rank.value().flatMap{  aceValue ->  this.map{aceValue + it}}
+fun List<Int>.plusCard(card:Card): List<Int> = card.rank.value().flatMap{  cardValue ->  this.map{listItem -> cardValue + listItem}}
 
 fun Cards.totalLessThan22():Int {
     return this.fold(listOf(0)){acc, card -> acc.plusCard(card)}
