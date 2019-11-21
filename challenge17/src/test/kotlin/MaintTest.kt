@@ -288,5 +288,95 @@ class MainTest {
         val sevenOfClubs = Card("7C")
         assertFalse(listOf(kingOfHearts,nineOfHearts,threeOfHearts).isWorthMoreThan(listOf(kingOfDiamonds,fiveOfClubs, sevenOfClubs)))
     }
+    @Test
+    fun `description of a Pontoon is Pontoon`() {
+        val jackOfSpades = Card("JS")
+        val aceOfDiamonds = Card("AD")
+        val cards = listOf(jackOfSpades,aceOfDiamonds)
+        assertEquals("Pontoon", cards.description())
+    }
+    @Test
+    fun `description of a five card trick is Five Card Trick`() {
+        val aceOfDiamonds = Card("AD")
+        val twoOfClubs = Card("2C")
+        val threeOfDiamonds = Card("3D")
+        val twoOfSpades = Card("2S")
+        val fiveOfHearts = Card("5H")
+        val cards = listOf(fiveOfHearts,twoOfSpades,twoOfClubs,threeOfDiamonds,aceOfDiamonds)
+        assertEquals("Five Card Trick", cards.description())
+    }
+    @Test
+    fun `description of a bust hand is Bust`() {
+        val jackOfSpades = Card("JS")
+        val sevenOfDiamonds = Card("7D")
+        val sixOfHearts = Card("6H")
+        val cards = listOf(jackOfSpades,sevenOfDiamonds,sixOfHearts)
+        assertEquals("Bust", cards.description())
+    }
+    @Test
+    fun `description of two cards worth a total of 17 is  Total value of 17`() {
+        val jackOfSpades = Card("JS")
+        val sevenOfDiamonds = Card("7D")
+        val cards = listOf(jackOfSpades,sevenOfDiamonds)
+        assertEquals("Total value of 17", cards.description())
+    }
+    @Test
+    fun `when player has pontoon and the dealer has 17 the result is player winning`() {
+        val jackOfSpades = Card("JS")
+        val aceOfDiamonds = Card("AD")
+        val playersCards = listOf(jackOfSpades,aceOfDiamonds)
+
+        val jackOfHearts = Card("JH")
+        val sevenOfDiamonds = Card("7D")
+        val dealersCards = listOf(jackOfHearts,sevenOfDiamonds)
+
+        val result = determineWhichCardsWin(playersCards,dealersCards)
+        assertEquals(Winner.Player, result.winner)
+        assertEquals("Player wins with Pontoon", result.description)
+    }
+
+    @Test
+    fun `when player has 17 and the dealer has 17 the result is dealer winning`() {
+        val jackOfSpades = Card("JS")
+        val sevenOfHearts = Card("7H")
+        val playersCards = listOf(jackOfSpades,sevenOfHearts)
+
+        val jackOfHearts = Card("JH")
+        val sevenOfDiamonds = Card("7D")
+        val dealersCards = listOf(jackOfHearts,sevenOfDiamonds)
+
+        val result = determineWhichCardsWin(playersCards,dealersCards)
+        assertEquals(Winner.Dealer, result.winner)
+        assertEquals("Dealer wins with Total value of 17", result.description)
+    }
+
+    @Test
+    fun `when player has JS and AD and the dealer has JH and 7D the result is player winning`() {
+        val jackOfSpades = "JS"
+        val aceOfDiamonds = "AD"
+        val playersCards = listOf(jackOfSpades,aceOfDiamonds)
+
+        val jackOfHearts = "JH"
+        val sevenOfDiamonds = "7D"
+        val dealersCards = listOf(jackOfHearts,sevenOfDiamonds)
+
+        val result = determineWhoHasWon(playersCards,dealersCards)
+        assertEquals(Winner.Player, result.winner)
+        assertEquals("Player wins with Pontoon", result.description)
+    }
+    @Test
+    fun `when player has JS and 7H and the dealer has JH and 7D the result is dealer winning`() {
+        val jackOfSpades = "JS"
+        val sevenOfHearts = "7H"
+        val playersCards = listOf(jackOfSpades,sevenOfHearts)
+
+        val jackOfHearts = "JH"
+        val sevenOfDiamonds = "7D"
+        val dealersCards = listOf(jackOfHearts,sevenOfDiamonds)
+
+        val result = determineWhoHasWon(playersCards,dealersCards)
+        assertEquals(Winner.Dealer, result.winner)
+        assertEquals("Dealer wins with Total value of 17", result.description)
+    }
 
 }
