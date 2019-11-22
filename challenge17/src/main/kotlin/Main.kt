@@ -13,10 +13,12 @@ fun determineWhoHasWon(_playersCards:List<String>, _dealersCards:List<String>):R
     return determineWhichCardsWin(playersCards,dealersCards)
 }
 
-fun determineWhichCardsWin(playersCards:Cards, dealersCards:Cards):Result {
-    if (playersCards.isWorthMoreThan(dealersCards)) return Result(Winner.Player,"Player wins with ${playersCards.description()}")
-    else return Result(Winner.Dealer,  "Dealer wins with ${dealersCards.description()}")
-}
+fun determineWhichCardsWin(playersCards:Cards, dealersCards:Cards) =
+    if (playersCards.isWorthMoreThan(dealersCards))
+        Result(Winner.Player,"Player wins with ${playersCards.description()}")
+    else
+        Result(Winner.Dealer,  "Dealer wins with ${dealersCards.description()}")
+
 
 val isPontoon = fun (cards:Cards):Boolean = (cards.size == 2) && ((cards[0].rank is Rank.Picture && cards[1].rank is Rank.Ace) || (cards[0].rank is Rank.Ace && cards[1].rank is Rank.Picture))
 val isBust = fun (cards:Cards):Boolean = (cards.totalLessThan22()== 0)
@@ -46,9 +48,7 @@ fun Cards.description():String {
 fun List<Int>.plusCard(card:Card): List<Int> = card.rank.value().flatMap{  cardValue ->  this.map{listItem -> cardValue + listItem}}
 
 fun Cards.totalLessThan22():Int {
-    return this.fold(listOf(0)){acc, card -> acc.plusCard(card)}
-        .sorted()
-        .filter{it < 22}
-        .lastOrNull() ?: 0
+    return this.fold(listOf(0)) { acc, card -> acc.plusCard(card) }
+        .sorted().lastOrNull { it < 22 } ?: 0
 }
 
