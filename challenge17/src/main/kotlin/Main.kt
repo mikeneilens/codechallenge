@@ -13,20 +13,22 @@ fun determineWhoHasWon(_playersCards:List<String>, _dealersCards:List<String>):R
     return determineWhichCardsWin(playersCards,dealersCards)
 }
 
-fun determineWhichCardsWin(playersCards:Cards, dealersCards:Cards) =
-    if (playersCards.isWorthMoreThan(dealersCards))
-        Result(Winner.Player,"Player wins with ${playersCards.description()}")
-    else
-        Result(Winner.Dealer,  "Dealer wins with ${dealersCards.description()}")
-
-
 val isPontoon = fun (cards:Cards):Boolean = (cards.size == 2) && ((cards[0].rank is Rank.Picture && cards[1].rank is Rank.Ace) || (cards[0].rank is Rank.Ace && cards[1].rank is Rank.Picture))
 val isBust = fun (cards:Cards):Boolean = (cards.totalLessThan22()== 0)
 val isFiveCardTrick = fun (cards:Cards):Boolean = ((cards.size == 5) && (!isBust(cards)))
 
+typealias IsWinnerRule = (Cards) -> Boolean
+typealias IsWinnerRules = Map<IsWinnerRule,String>
 val isWinnerRules = mapOf(isPontoon to "Pontoon", isFiveCardTrick to "Five Card Trick")
 
-fun Cards.isWorthMoreThan(otherCards:Cards):Boolean {
+fun determineWhichCardsWin(playersCards:Cards, dealersCards:Cards ) =
+    if (playersCards.isWorthMoreThan(dealersCards, isWinnerRules))
+        Result(Winner.Player,"Player wins with ${playersCards.description(isWinnerRules)}")
+    else
+        Result(Winner.Dealer,  "Dealer wins with ${dealersCards.description(isWinnerRules)}")
+
+
+fun Cards.isWorthMoreThan(otherCards:Cards, isWinnerRules:IsWinnerRules):Boolean {
     isWinnerRules.forEach { isWinner ->
         if (isWinner.key(otherCards)) return false
         if (isWinner.key(this)) return true
@@ -34,7 +36,7 @@ fun Cards.isWorthMoreThan(otherCards:Cards):Boolean {
     return (this.totalLessThan22() > otherCards.totalLessThan22())
 }
 
-fun Cards.description():String {
+fun Cards.description(isWinnerRules: IsWinnerRules):String {
     isWinnerRules.forEach { isWinner ->
         if (isWinner.key(this)) return isWinner.value
     }
