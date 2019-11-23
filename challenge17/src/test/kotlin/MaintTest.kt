@@ -127,21 +127,21 @@ class MainTest {
         val jackOfSpades = Card("JS")
         val aceOfDiamonds = Card("AD")
         val cards = listOf(jackOfSpades,aceOfDiamonds)
-        assertTrue(isPontoon(cards).isThisHand)
+        assertTrue(isPontoon(cards).isTheTypeOfHand)
     }
     @Test
     fun `An Ace of Diamonds and a  Jack of spades is Pontoon`() {
         val jackOfSpades = Card("JS")
         val aceOfDiamonds = Card("AD")
         val cards = listOf(aceOfDiamonds,jackOfSpades)
-        assertTrue(isPontoon(cards).isThisHand)
+        assertTrue(isPontoon(cards).isTheTypeOfHand)
     }
     @Test
     fun `An Ace of Diamonds and a  ten of spades is not Pontoon`() {
         val tenOfSpades = Card("TS")
         val aceOfDiamonds = Card("AD")
         val cards = listOf(aceOfDiamonds,tenOfSpades)
-        assertFalse(isPontoon(cards).isThisHand)
+        assertFalse(isPontoon(cards).isTheTypeOfHand)
     }
     @Test
     fun `An Ace of Diamonds and a  Jack of spades and two of clubs is not Pontoon`() {
@@ -149,7 +149,7 @@ class MainTest {
         val aceOfDiamonds = Card("AD")
         val twoOfClubs = Card("2C")
         val cards = listOf(aceOfDiamonds,jackOfSpades,twoOfClubs)
-        assertFalse(isPontoon(cards).isThisHand)
+        assertFalse(isPontoon(cards).isTheTypeOfHand)
     }
     @Test
     fun `five cards that add up to less than 22 is five card trick`() {
@@ -159,7 +159,7 @@ class MainTest {
         val twoOfSpades = Card("2S")
         val fiveOfHearts = Card("5H")
         val cards = listOf(fiveOfHearts,twoOfSpades,twoOfClubs,threeOfDiamonds,aceOfDiamonds)
-        assertTrue(isFiveCardTrick(cards).isThisHand)
+        assertTrue(isFiveCardTrick(cards).isTheTypeOfHand)
     }
     @Test
     fun `four cards that add up to less than 22 is not five card trick`() {
@@ -168,7 +168,7 @@ class MainTest {
         val threeOfDiamonds = Card("3D")
         val fiveOfHearst = Card("5H")
         val cards = listOf(fiveOfHearst,twoOfClubs,threeOfDiamonds,aceOfDiamonds)
-        assertFalse(isFiveCardTrick(cards).isThisHand)
+        assertFalse(isFiveCardTrick(cards).isTheTypeOfHand)
     }
     @Test
     fun `six cards that add up to less than 22 is not five card trick`() {
@@ -179,7 +179,7 @@ class MainTest {
         val twoOfSpades = Card("2S")
         val fiveOfHearts = Card("5H")
         val cards = listOf(aceOfSpades,fiveOfHearts,twoOfSpades,twoOfClubs,threeOfDiamonds,aceOfDiamonds)
-        assertFalse(isFiveCardTrick(cards).isThisHand)
+        assertFalse(isFiveCardTrick(cards).isTheTypeOfHand)
     }
     @Test
     fun `five cards that add up to more than 21 is not five card trick`() {
@@ -189,7 +189,7 @@ class MainTest {
         val tenOfSpades = Card("Ts")
         val fiveOfHearts = Card("5H")
         val cards = listOf(fiveOfHearts,tenOfSpades,twoOfClubs,sevenOfDiamonds,aceOfDiamonds)
-        assertFalse(isFiveCardTrick(cards).isThisHand)
+        assertFalse(isFiveCardTrick(cards).isTheTypeOfHand)
     }
     @Test
     fun `jack spades plus 7 of diamonds plus 6 of hearts is bust`() {
@@ -213,7 +213,7 @@ class MainTest {
         val sevenOfDiamonds = Card("7D")
         val sixOfHearts = Card("6H")
         val cards = listOf(jackOfSpades,sevenOfDiamonds,sixOfHearts)
-        assertFalse(isNotBust(cards).isThisHand)
+        assertFalse(isNotBust(cards).isTheTypeOfHand)
     }
     @Test
     fun `jack spades plus 7 of diamonds plus 4 of hearts is a hand which is notBust`() {
@@ -221,7 +221,7 @@ class MainTest {
         val sevenOfDiamonds = Card("7D")
         val fourOfHearts = Card("4H")
         val cards = listOf(jackOfSpades,sevenOfDiamonds,fourOfHearts)
-        assertTrue(isNotBust(cards).isThisHand)
+        assertTrue(isNotBust(cards).isTheTypeOfHand)
     }
     @Test
     fun `Pontoon does not beat another Pontoon`() {
