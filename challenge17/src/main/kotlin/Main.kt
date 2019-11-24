@@ -10,31 +10,16 @@ data class Result(val winner:Winner, val description:String)
 fun determineWhoHasWon(_playersCards:List<String>, _dealersCards:List<String>):Result {
     val playersCards = _playersCards.map(::Card)
     val dealersCards = _dealersCards.map(::Card)
-    return determineWhichCardsWin(playersCards,dealersCards)
-}
 
-class HandResult(val isTheTypeOfHand:Boolean, val value:Int=0)
-
-val isBust = fun (cards:Cards):Boolean = (cards.totalLessThan22()== 0)
-
-val isPontoon = fun (cards:Cards)=
-  HandResult(  (cards.size == 2) && ((cards[0].rank is Rank.Picture && cards[1].rank is Rank.Ace) || (cards[0].rank is Rank.Ace && cards[1].rank is Rank.Picture)))
-
-val isNotBust = fun (cards:Cards) = HandResult(!isBust(cards),  cards.totalLessThan22())
-
-val isFiveCardTrick = fun (cards:Cards) = HandResult(  ((cards.size == 5) && (!isBust(cards)) ))
-
-typealias HandChecker = (Cards) -> HandResult
-typealias HandCheckers = List<Pair<HandChecker,String>>
-
-val handCheckers = listOf(Pair(isPontoon,"Pontoon"), Pair(isFiveCardTrick,"Five Card Trick"),Pair(isNotBust,"Total value of"))
-
-fun determineWhichCardsWin(playersCards:Cards, dealersCards:Cards ) =
-    if (playerBeatsDealer(playersCards, dealersCards, handCheckers))
+    return if (playerBeatsDealer(playersCards, dealersCards, handCheckers))
         Result(Winner.Player,"Player wins with ${description(playersCards,handCheckers)}")
     else
         Result(Winner.Dealer,  "Dealer wins with ${description(dealersCards,handCheckers)}")
+}
 
+typealias HandCheckers = List<Pair<HandChecker,String>>
+
+val handCheckers = listOf(Pair(isPontoon,"Pontoon"), Pair(isFiveCardTrick,"Five Card Trick"),Pair(isNotBust,"Total value of"))
 
 fun playerBeatsDealer(playersCards:Cards, dealersCards:Cards, handCheckers:HandCheckers):Boolean {
     val result = handCheckers.mapNotNull { (check,_) ->
@@ -51,7 +36,7 @@ fun playerBeatsDealer(playersCards:Cards, dealersCards:Cards, handCheckers:HandC
 fun description(cards:Cards, handCheckers:HandCheckers):String {
     val result = handCheckers.mapNotNull{ (check,description) ->
         if (check(cards).isTheTypeOfHand)
-            if (check(cards).value > 0) "${description} ${check(cards).value}" else description
+            if (check(cards).value > 0) "$description ${check(cards).value}" else description
         else null
     }.firstOrNull()
     return result ?: "Bust"

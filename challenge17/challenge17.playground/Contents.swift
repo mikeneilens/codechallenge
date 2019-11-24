@@ -60,47 +60,6 @@ extension Cards {
             .sorted().last { $0 < 22 } ?? 0
     }
 }
-enum Winner{case Player;case Dealer}
-struct Result{let winner:Winner; let description:String}
-
-func playerBeatsDealer(playersCards:Cards, dealersCards:Cards, handCheckers:HandCheckers) -> Bool {
-    let result:Bool? = handCheckers.compactMap { (check,_) in
-        switch (true) {
-        case (check(playersCards).isTheTypeOfHand && check(dealersCards).isTheTypeOfHand): return (check(playersCards).value > check(dealersCards).value)
-        case (check(dealersCards).isTheTypeOfHand) : return false
-        case (check(playersCards).isTheTypeOfHand) : return true
-        default: return nil
-        }
-    }.first
-    return result ?? false
-}
-
-func description(cards:Cards, handCheckers:HandCheckers) -> String {
-    let result:String? = handCheckers.compactMap {(check,description) in
-        if (check(cards).isTheTypeOfHand)  {
-            if (check(cards).value > 0) {return  "\(description) \(check(cards).value)" } else {return description}
-        } else {
-            return nil
-        }
-    }.first
-    return result ?? "Bust"
-}
-
-func determineWhichCardsWin(playersCards:Cards, dealersCards:Cards ) -> Result {
-    if (playerBeatsDealer(playersCards: playersCards, dealersCards: dealersCards, handCheckers: handCheckers)) {
-        return Result(winner:.Player, description: "Player wins with \(description(cards: playersCards,handCheckers: handCheckers))")
-    }
-    else {
-        return Result(winner:.Dealer,description:"Dealer wins with \(description(cards: dealersCards,handCheckers: handCheckers))")
-    }
-}
-
-//This is the main function //////////////////////////////////////////////////////////////////
-func determineWhoHasWon(_playersCards:Array<String>, _dealersCards:Array<String>) -> Result {
-    let playersCards = _playersCards.map{Card($0)}
-    let dealersCards = _dealersCards.map{Card($0)}
-    return determineWhichCardsWin(playersCards: playersCards, dealersCards: dealersCards)
-}
 
 struct HandResult{let isTheTypeOfHand:Bool; let value:Int
     init(isTheTypeOfHand:Bool) {
@@ -133,8 +92,45 @@ func isNotBust(cards:Cards) -> HandResult {return HandResult(isTheTypeOfHand:!is
 
 typealias HandCheckers = Array<(HandChecker,String)>
 
+enum Winner{case Player;case Dealer}
+struct Result{let winner:Winner; let description:String}
+
+func playerBeatsDealer(playersCards:Cards, dealersCards:Cards, handCheckers:HandCheckers) -> Bool {
+    let result:Bool? = handCheckers.compactMap { (check,_) in
+        switch (true) {
+        case (check(playersCards).isTheTypeOfHand && check(dealersCards).isTheTypeOfHand): return (check(playersCards).value > check(dealersCards).value)
+        case (check(dealersCards).isTheTypeOfHand) : return false
+        case (check(playersCards).isTheTypeOfHand) : return true
+        default: return nil
+        }
+    }.first
+    return result ?? false
+}
+
+func description(cards:Cards, handCheckers:HandCheckers) -> String {
+    let result:String? = handCheckers.compactMap {(check,description) in
+        if (check(cards).isTheTypeOfHand)  {
+            if (check(cards).value > 0) {return  "\(description) \(check(cards).value)" } else {return description}
+        } else {
+            return nil
+        }
+    }.first
+    return result ?? "Bust"
+}
+
 let handCheckers:HandCheckers = [(isPontoon,"Pontoon"),(isFiveCardTrick,"Five Card Trick"),(isNotBust,"Total value of")]
 
+//This is the main function //////////////////////////////////////////////////////////////////
+func determineWhoHasWon(_playersCards:Array<String>, _dealersCards:Array<String>) -> Result {
+    let playersCards = _playersCards.map{Card($0)}
+    let dealersCards = _dealersCards.map{Card($0)}
+    if (playerBeatsDealer(playersCards: playersCards, dealersCards: dealersCards, handCheckers: handCheckers)) {
+        return Result(winner:.Player, description: "Player wins with \(description(cards: playersCards,handCheckers: handCheckers))")
+    }
+    else {
+        return Result(winner:.Dealer,description:"Dealer wins with \(description(cards: dealersCards,handCheckers: handCheckers))")
+    }
+}
 
 //Some simple tests
 let jackOfHearts = "JH"
