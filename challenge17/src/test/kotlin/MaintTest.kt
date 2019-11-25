@@ -197,7 +197,7 @@ class MainTest {
         val sevenOfDiamonds = Card("7D")
         val sixOfHearts = Card("6H")
         val cards = listOf(jackOfSpades,sevenOfDiamonds,sixOfHearts)
-        assertTrue(isBust(cards))
+        assertTrue(isBust(cards).isTheTypeOfHand)
     }
     @Test
     fun `jack spades plus 7 of diamonds plus 4 of hearts is not bust`() {
@@ -205,7 +205,7 @@ class MainTest {
         val sevenOfDiamonds = Card("7D")
         val fourOfHearts = Card("4H")
         val cards = listOf(jackOfSpades,sevenOfDiamonds,fourOfHearts)
-        assertFalse(isBust(cards))
+        assertFalse(isBust(cards).isTheTypeOfHand)
     }
     @Test
     fun `jack spades plus 7 of diamonds plus 6 of hearts is a hand which is not notBust`() {
@@ -352,7 +352,7 @@ class MainTest {
         val sevenOfDiamonds = Card("7D")
         val sixOfHearts = Card("6H")
         val cards = listOf(jackOfSpades,sevenOfDiamonds,sixOfHearts)
-        assertEquals("Bust", description(cards, handCheckers))
+        assertEquals("Bust but still wins", description(cards, handCheckers))
     }
     @Test
     fun `description of two cards worth a total of 17 is  Total value of 17`() {
@@ -390,5 +390,20 @@ class MainTest {
         assertEquals(Winner.Dealer, result.winner)
         assertEquals("Dealer wins with Total value of 17", result.description)
     }
+    @Test
+    fun `when player has bust and the dealer has bust the result is dealer winning`() {
+        val jackOfSpades = "JS"
+        val jackOfDiaonds = "JD"
+        val sevenOfHearts = "7H"
+        val playersCards = listOf(jackOfSpades,sevenOfHearts,jackOfDiaonds)
 
+        val jackOfHearts = "JH"
+        val kingOfHearts = "JH"
+        val sevenOfDiamonds = "7D"
+        val dealersCards = listOf(jackOfHearts,sevenOfDiamonds,kingOfHearts)
+
+        val result = determineWhoHasWon(playersCards,dealersCards)
+        assertEquals(Winner.Dealer, result.winner)
+        assertEquals("Dealer wins with Bust but still wins", result.description)
+    }
 }
