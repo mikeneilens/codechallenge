@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="MainTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-01-07T20:57:39" hostname="MacBook-Pro-2" time="0.086">
+  <properties/>
+  <testcase name="content on map which is a star is a fixture and content with a space is open()" classname="MainTest" time="0.027"/>
+  <testcase name="view ahead is more than one O if trolley is facing into a dead end corridor of more than one space()" classname="MainTest" time="0.017"/>
+  <testcase name="view ahead contains a left turn if there is a left turn()" classname="MainTest" time="0.001"/>
+  <testcase name="view ahead is one O if map is two characters and trolley is facing towards a space from any direction()" classname="MainTest" time="0.0"/>
+  <testcase name="calling function to move trolley with an initial referenceId returns a view that is one space shorter than before()" classname="MainTest" time="0.028"/>
+  <testcase name="view ahead contains a right and left turn and a cross roads if there is all three()" classname="MainTest" time="0.001"/>
+  <testcase name="rotating the trolley facing East Left leaves it facing North()" classname="MainTest" time="0.001"/>
+  <testcase name="view ahead is empty if map is one character()" classname="MainTest" time="0.001"/>
+  <testcase name="content outside of map is a fixture()" classname="MainTest" time="0.001"/>
+  <testcase name="calling function to move trolley with no initial referenceId returns a view from an initial position of 1,1()" classname="MainTest" time="0.001"/>
+  <testcase name="view ahead contains a right and left turn if there is both()" classname="MainTest" time="0.0"/>
+  <testcase name="attempting to move a trolley into a fixture leaves the trolley in the same position()" classname="MainTest" time="0.001"/>
+  <testcase name="view ahead contains a right turn if there is a right turn()" classname="MainTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

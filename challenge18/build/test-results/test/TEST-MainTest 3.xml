@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="MainTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2019-12-03T18:11:26" hostname="MacBook-Pro-2" time="0.047">
+  <properties/>
+  <testcase name="mapping a list of strings to a list of integers returns a list of integers()" classname="MainTest" time="0.036"/>
+  <testcase name="description of a list containing A, B is A B Null()" classname="MainTest" time="0.0"/>
+  <testcase name="description of a list containing A is A Null()" classname="MainTest" time="0.001"/>
+  <testcase name="adding C to a node containing A,B results in A,B,C()" classname="MainTest" time="0.001"/>
+  <testcase name="mapping a list of one string to a list of integers returns a list of one integers()" classname="MainTest" time="0.001"/>
+  <testcase name="adding B to a node containing A results in A,B()" classname="MainTest" time="0.0"/>
+  <testcase name="description of a list containing A, B, C is A B C Null()" classname="MainTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
