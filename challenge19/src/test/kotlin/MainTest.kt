@@ -6,10 +6,10 @@ class MainTest {
     @Test
     fun `content outside of map is a fixture`() {
         val mapOfShop = " "
-        assertEquals(Content.Fixture, mapOfShop.contentAt(Position(-1,0)))
-        assertEquals(Content.Fixture, mapOfShop.contentAt(Position(0,-1)))
-        assertEquals(Content.Fixture, mapOfShop.contentAt(Position(1,0)))
-        assertEquals(Content.Fixture, mapOfShop.contentAt(Position(0,1)))
+        assertEquals(MapContent.Fixture, mapOfShop.contentAt(Position(-1,0)))
+        assertEquals(MapContent.Fixture, mapOfShop.contentAt(Position(0,-1)))
+        assertEquals(MapContent.Fixture, mapOfShop.contentAt(Position(1,0)))
+        assertEquals(MapContent.Fixture, mapOfShop.contentAt(Position(0,1)))
     }
 
     @Test
@@ -18,15 +18,15 @@ class MainTest {
                 "***\n" +
                 "* *\n" +
                 "  *\n"
-        assertEquals(Content.Fixture, mapOfShop.contentAt(Position(0,0)))
-        assertEquals(Content.Fixture, mapOfShop.contentAt(Position(1,0)))
-        assertEquals(Content.Fixture, mapOfShop.contentAt(Position(2,0)))
-        assertEquals(Content.Fixture, mapOfShop.contentAt(Position(0,1)))
-        assertEquals(Content.Open, mapOfShop.contentAt(Position(1,1)))
-        assertEquals(Content.Fixture, mapOfShop.contentAt(Position(2,1)))
-        assertEquals(Content.Open, mapOfShop.contentAt(Position(0,2)))
-        assertEquals(Content.Open, mapOfShop.contentAt(Position(1,2)))
-        assertEquals(Content.Fixture, mapOfShop.contentAt(Position(2,2)))
+        assertEquals(MapContent.Fixture, mapOfShop.contentAt(Position(0,0)))
+        assertEquals(MapContent.Fixture, mapOfShop.contentAt(Position(1,0)))
+        assertEquals(MapContent.Fixture, mapOfShop.contentAt(Position(2,0)))
+        assertEquals(MapContent.Fixture, mapOfShop.contentAt(Position(0,1)))
+        assertEquals(MapContent.Open, mapOfShop.contentAt(Position(1,1)))
+        assertEquals(MapContent.Fixture, mapOfShop.contentAt(Position(2,1)))
+        assertEquals(MapContent.Open, mapOfShop.contentAt(Position(0,2)))
+        assertEquals(MapContent.Open, mapOfShop.contentAt(Position(1,2)))
+        assertEquals(MapContent.Fixture, mapOfShop.contentAt(Position(2,2)))
     }
 
     @Test
@@ -41,22 +41,22 @@ class MainTest {
         val positionEast = Position(0,0)
         val orientationEast = Orientation.East
         val mapDataForEast = "  "
-        assertEquals(listOf<String>("O"), mapDataForEast.viewAhead(positionEast, orientationEast))
+        assertEquals(listOf<String>("O"), mapDataForEast.viewAheadAt(positionEast, orientationEast))
 
         val positionWest = Position(1,0)
         val orientationWest = Orientation.West
         val mapDataForWest = "  "
-        assertEquals(listOf<String>("O"), mapDataForWest.viewAhead(positionWest, orientationWest))
+        assertEquals(listOf<String>("O"), mapDataForWest.viewAheadAt(positionWest, orientationWest))
 
         val positionSouth = Position(0,0)
         val orientationSouth = Orientation.South
         val mapDataForSouth = "  \n" + " *"
-        assertEquals(listOf<String>("O"), mapDataForSouth.viewAhead(positionSouth, orientationSouth))
+        assertEquals(listOf<String>("O"), mapDataForSouth.viewAheadAt(positionSouth, orientationSouth))
 
         val positionNorth = Position(0,1)
         val orientationNorth = Orientation.North
         val mapDataForNorth = " *\n" + "  "
-        assertEquals(listOf<String>("O"), mapDataForNorth.viewAhead(positionNorth, orientationNorth))
+        assertEquals(listOf<String>("O"), mapDataForNorth.viewAheadAt(positionNorth, orientationNorth))
     }
 
     @Test

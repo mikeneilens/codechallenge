@@ -1,27 +1,51 @@
 import org.hashids.Hashids
-
-typealias MapData = String
+import kotlin.random.Random
 
 data class Position(val x:Int, val y:Int) {
     operator fun plus(other:Position) = Position(x + other.x, y + other.y)
 }
 
-fun MapData.viewAhead(position:Position, orientation:Orientation):List<String>{
+typealias MapData = String
+
+enum class MapContent (val symbol:Char) {
+    Open(' '),
+    Fixture('*');
+    companion object{fun from(value:Char) = values().first{it.symbol == value} }
+}
+
+fun MapData.contentAt(position:Position):MapContent {
+    if (position.x < 0 || position.y < 0) return MapContent.Fixture
+
+    val rows = split("\n")
+    if (position.y >= rows.size) return MapContent.Fixture
+
+    val rowChars = rows[position.y].toList()
+    if (position.x >= rowChars.size) return MapContent.Fixture
+
+    return MapContent.from(rowChars[position.x])
+}
+
+enum class Output(val symbol:String) { Left("L"),Right("R"),Open("O") }
+
+fun MapData.viewAheadAt(position:Position, orientation:Orientation):List<String>{
     var newPosition = position
     var result = mutableListOf<String>()
-    while ( contentAt( newPosition + orientation.ahead) != Content.Fixture ) {
+    while ( contentAt( newPosition + orientation.ahead) != MapContent.Fixture ) {
         newPosition  += orientation.ahead
         var stringForPosition = Output.Open.symbol
-        if (contentAt( newPosition + orientation.left) == Content.Open) stringForPosition += Output.Left.symbol
-        if (contentAt( newPosition + orientation.right) == Content.Open) stringForPosition += Output.Right.symbol
+        if (contentAt( newPosition + orientation.left) == MapContent.Open) stringForPosition += Output.Left.symbol
+        if (contentAt( newPosition + orientation.right) == MapContent.Open) stringForPosition += Output.Right.symbol
         result.add(stringForPosition)
     }
     return result
 }
 
-enum class Command { M,L,R }
+fun MapData.startingPosition() = split("\n")
+    .mapIndexed{y, row -> row.toList().mapIndexed{x, char -> Pair(Position(x,y),char) } }
+    .flatMap{it}
+    .first{it.second == MapContent.Open.symbol}.first
 
-enum class Output(val symbol:String) { Left("L"),Right("R"),Open("O") }
+enum class Command { M,L,R }
 
 val moveNorth = Position(0,-1)
 val moveSouth = Position(0,1)
@@ -53,8 +77,6 @@ enum class Orientation (val value:Int, val ahead:Position, val left:Position, va
 
 data class Trolley(val position:Position, val orientation: Orientation, val trolleyId:Int) {
     val positionAhead = position + orientation.ahead
-    val positionToLeft = position + orientation.left
-    val positionToRight = position + orientation.right
 
     fun move() = Trolley (positionAhead, orientation, trolleyId)
     fun rotateLeft() = Trolley(position, orientation.turnLeft(), trolleyId)
@@ -62,14 +84,16 @@ data class Trolley(val position:Position, val orientation: Orientation, val trol
 
     fun toReferenceId(): String = hashids.encode(position.x.toLong() + 1, position.y.toLong() + 1, orientation.value.toLong(), trolleyId.toLong())
 
-    fun viewAhead(mapData:String) = mapData.viewAhead(position, orientation)
+    fun viewAhead(mapData:MapData) = mapData.viewAheadAt(position, orientation)
 
-    fun moveOrRotate(command:Command, mapData:String) =
+    fun moveOrRotate(command:Command, mapData:MapData) =
         when (command) {
-            Command.M ->if (mapData.contentAt(positionAhead) != Content.Fixture) move() else this
+            Command.M ->if (mapData.contentAt(positionAhead) != MapContent.Fixture) move() else this
             Command.L -> rotateLeft()
             Command.R -> rotateRight()
         }
+
+    fun viewAheadAndReferenceId(mapData:MapData) = Pair(viewAhead(mapData),toReferenceId())
 
     companion object {
         private val hashids = Hashids(SALT_FOR_HASH)
@@ -80,51 +104,18 @@ data class Trolley(val position:Position, val orientation: Orientation, val trol
     }
 }
 
-enum class Content (val symbol:Char) {
-    Open(' '),
-    Fixture('*');
-    companion object{fun from(value:Char) = values().first{it.symbol == value} }
-}
-
-fun MapData.contentAt(position:Position):Content {
-    if (position.x < 0 || position.y < 0) return Content.Fixture
-
-    val rows = split("\n")
-    if (position.y >= rows.size) return Content.Fixture
-
-    val rowChars = rows[position.y].toList()
-    if (position.x >= rowChars.size) return Content.Fixture
-
-    return Content.from(rowChars[position.x])
-}
-
-fun moveTrolley(command:Command, referenceId:String, _mapData:String): Pair<List<String>, String>{
+fun moveTrolley(_mapData:MapData):Pair<List<String>,String> {
     val mapData = if (_mapData.isEmpty()) defaultMapData else _mapData
-
-    val trolley = Trolley.from(referenceId)
-    val newTrolley = trolley.moveOrRotate(command,mapData)
-    val viewAhead = newTrolley.viewAhead(mapData)
-    val newReferenceId = newTrolley.toReferenceId()
-    return Pair(viewAhead, newReferenceId )
+    return Trolley(mapData.startingPosition(),Orientation.East, Random.nextInt(1,999999))
+            .viewAheadAndReferenceId(mapData)
 }
 
-
-fun moveTrolley(_mapData:String):Pair<List<String>,String> {
+fun moveTrolley(command:Command, referenceId:String, _mapData:MapData): Pair<List<String>, String>{
     val mapData = if (_mapData.isEmpty()) defaultMapData else _mapData
-    val startingPosition = mapData.startingPosition()
-    val orientation = Orientation.East
-    val trolleyId = 1234
-    val trolley = Trolley(startingPosition,orientation, trolleyId)
-    val viewAhead = trolley.viewAhead(mapData)
-    val referenceId = trolley.toReferenceId()
-    return Pair(viewAhead, referenceId)
+    return Trolley.from(referenceId)
+                  .moveOrRotate(command,mapData)
+                  .viewAheadAndReferenceId(mapData)
 }
-
-fun MapData.startingPosition() = split("\n")
-                                        .mapIndexed{y, row -> row.toList().mapIndexed{x, char -> Pair(Position(x,y),char) } }
-                                        .flatMap{it}
-                                        .first{it.second == Content.Open.symbol}.first
-
 
 val SALT_FOR_HASH  = "a random string"
 

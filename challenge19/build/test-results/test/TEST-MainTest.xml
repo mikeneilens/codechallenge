@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MainTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2020-01-09T09:03:29" hostname="MacBook-Pro-2" time="0.075">
+<testsuite name="MainTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2020-01-09T20:45:19" hostname="MacBook-Pro-2" time="0.085">
   <properties/>
-  <testcase name="content on map which is a star is a fixture and content with a space is open()" classname="MainTest" time="0.026"/>
-  <testcase name="view ahead is more than one O if trolley is facing into a dead end corridor of more than one space()" classname="MainTest" time="0.031"/>
-  <testcase name="view ahead contains a left turn if there is a left turn()" classname="MainTest" time="0.001"/>
-  <testcase name="view ahead is one O if map is two characters and trolley is facing towards a space from any direction()" classname="MainTest" time="0.001"/>
-  <testcase name="calling function to move trolley with an initial referenceId returns a view that is one space shorter than before()" classname="MainTest" time="0.007"/>
+  <testcase name="content on map which is a star is a fixture and content with a space is open()" classname="MainTest" time="0.027"/>
+  <testcase name="view ahead is more than one O if trolley is facing into a dead end corridor of more than one space()" classname="MainTest" time="0.034"/>
+  <testcase name="view ahead contains a left turn if there is a left turn()" classname="MainTest" time="0.0"/>
+  <testcase name="view ahead is one O if map is two characters and trolley is facing towards a space from any direction()" classname="MainTest" time="0.0"/>
+  <testcase name="calling function to move trolley with an initial referenceId returns a view that is one space shorter than before()" classname="MainTest" time="0.012"/>
   <testcase name="view ahead contains a right and left turn and a cross roads if there is all three()" classname="MainTest" time="0.001"/>
   <testcase name="rotating the trolley facing East Left leaves it facing North()" classname="MainTest" time="0.001"/>
   <testcase name="view ahead is empty if map is one character()" classname="MainTest" time="0.0"/>
