@@ -1,7 +1,22 @@
 import org.hashids.Hashids
 
+typealias MapData = String
+
 data class Position(val x:Int, val y:Int) {
     operator fun plus(other:Position) = Position(x + other.x, y + other.y)
+}
+
+fun MapData.viewAhead(position:Position, orientation:Orientation):List<String>{
+    var newPosition = position
+    var result = mutableListOf<String>()
+    while ( contentAt( newPosition + orientation.ahead) != Content.Fixture ) {
+        newPosition  += orientation.ahead
+        var stringForPosition = Output.Open.symbol
+        if (contentAt( newPosition + orientation.left) == Content.Open) stringForPosition += Output.Left.symbol
+        if (contentAt( newPosition + orientation.right) == Content.Open) stringForPosition += Output.Right.symbol
+        result.add(stringForPosition)
+    }
+    return result
 }
 
 enum class Command { M,L,R }
@@ -18,11 +33,6 @@ enum class Orientation (val value:Int, val ahead:Position, val left:Position, va
     South(2, moveSouth, moveEast, moveWest),
     West(3, moveWest, moveSouth, moveNorth),
     North(4, moveNorth, moveWest, moveEast);
-
-    val moveNorth = Position(0,-1)
-    val moveSouth = Position(0,1)
-    val moveWest = Position(-1,0)
-    val moveEast = Position(1,0)
 
     companion object{fun from(value:Int) = values().first{it.value == value} }
 
@@ -50,20 +60,9 @@ data class Trolley(val position:Position, val orientation: Orientation, val trol
     fun rotateLeft() = Trolley(position, orientation.turnLeft(), trolleyId)
     fun rotateRight() = Trolley(position, orientation.turnRight(), trolleyId)
 
-    fun toReferenceId(): String =   hashids.encode(position.x.toLong() + 1, position.y.toLong() + 1, orientation.value.toLong(), trolleyId.toLong())
+    fun toReferenceId(): String = hashids.encode(position.x.toLong() + 1, position.y.toLong() + 1, orientation.value.toLong(), trolleyId.toLong())
 
-    fun viewAhead(mapData:String):List<String>{
-        var movedTrolley = this
-        var result = mutableListOf<String>()
-        while ( mapData.contentAt( movedTrolley.positionAhead) != Content.Fixture ) {
-            movedTrolley  = movedTrolley.move()
-            var stringForPosition = Output.Open.symbol
-            if (mapData.contentAt( movedTrolley.positionToLeft) == Content.Open) stringForPosition += Output.Left.symbol
-            if (mapData.contentAt( movedTrolley.positionToRight) == Content.Open) stringForPosition += Output.Right.symbol
-            result.add(stringForPosition)
-        }
-        return result
-    }
+    fun viewAhead(mapData:String) = mapData.viewAhead(position, orientation)
 
     fun moveOrRotate(command:Command, mapData:String) =
         when (command) {
@@ -87,7 +86,7 @@ enum class Content (val symbol:Char) {
     companion object{fun from(value:Char) = values().first{it.symbol == value} }
 }
 
-fun String.contentAt(position:Position):Content {
+fun MapData.contentAt(position:Position):Content {
     if (position.x < 0 || position.y < 0) return Content.Fixture
 
     val rows = split("\n")
@@ -121,7 +120,7 @@ fun moveTrolley(_mapData:String):Pair<List<String>,String> {
     return Pair(viewAhead, referenceId)
 }
 
-fun String.startingPosition() = split("\n")
+fun MapData.startingPosition() = split("\n")
                                         .mapIndexed{y, row -> row.toList().mapIndexed{x, char -> Pair(Position(x,y),char) } }
                                         .flatMap{it}
                                         .first{it.second == Content.Open.symbol}.first

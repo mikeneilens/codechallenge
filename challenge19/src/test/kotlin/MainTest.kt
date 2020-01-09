@@ -37,6 +37,29 @@ class MainTest {
     }
 
     @Test
+    fun `view ahead from a position is one O if map is two characters and  is facing towards a space from any direction`() {
+        val positionEast = Position(0,0)
+        val orientationEast = Orientation.East
+        val mapDataForEast = "  "
+        assertEquals(listOf<String>("O"), mapDataForEast.viewAhead(positionEast, orientationEast))
+
+        val positionWest = Position(1,0)
+        val orientationWest = Orientation.West
+        val mapDataForWest = "  "
+        assertEquals(listOf<String>("O"), mapDataForWest.viewAhead(positionWest, orientationWest))
+
+        val positionSouth = Position(0,0)
+        val orientationSouth = Orientation.South
+        val mapDataForSouth = "  \n" + " *"
+        assertEquals(listOf<String>("O"), mapDataForSouth.viewAhead(positionSouth, orientationSouth))
+
+        val positionNorth = Position(0,1)
+        val orientationNorth = Orientation.North
+        val mapDataForNorth = " *\n" + "  "
+        assertEquals(listOf<String>("O"), mapDataForNorth.viewAhead(positionNorth, orientationNorth))
+    }
+
+    @Test
     fun `view ahead is one O if map is two characters and trolley is facing towards a space from any direction`() {
         val trolleyEast = Trolley(Position(0,0),Orientation.East,5312)
         val mapDataForEast = "  "
