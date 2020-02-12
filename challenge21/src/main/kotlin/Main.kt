@@ -12,7 +12,9 @@ fun SudokuGrid.numbersAlreadyUsed(index:Int) : Set<Int> {
     val col = index % 9
     val row = index / 9
     val region = index.region()
-    return numbersInCol(col).union(numbersInRow(row)).union(numbersInRegion(region))
+    return  numbersInCol(col)
+            .union(numbersInRow(row))
+            .union(numbersInRegion(region))
 }
 
 fun SudokuGrid.potentialNumbers(index:Int):Set<Int> {
