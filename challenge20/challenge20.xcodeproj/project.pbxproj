@@ -14,6 +14,8 @@
 		FB9C811123F1DEC4001891F9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB9C811023F1DEC4001891F9 /* Preview Assets.xcassets */; };
 		FB9C811423F1DEC4001891F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB9C811223F1DEC4001891F9 /* LaunchScreen.storyboard */; };
 		FB9C811F23F1DEC4001891F9 /* challenge20Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9C811E23F1DEC4001891F9 /* challenge20Tests.swift */; };
+		FB9C812A23F1DEF3001891F9 /* HttpRequestor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9C812923F1DEF3001891F9 /* HttpRequestor.swift */; };
+		FB9C812C23F1E9F4001891F9 /* RouteFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9C812B23F1E9F4001891F9 /* RouteFinder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		FB9C811A23F1DEC4001891F9 /* challenge20Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = challenge20Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB9C811E23F1DEC4001891F9 /* challenge20Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = challenge20Tests.swift; sourceTree = "<group>"; };
 		FB9C812023F1DEC4001891F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB9C812923F1DEF3001891F9 /* HttpRequestor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequestor.swift; sourceTree = "<group>"; };
+		FB9C812B23F1E9F4001891F9 /* RouteFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteFinder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,8 @@
 				FB9C811223F1DEC4001891F9 /* LaunchScreen.storyboard */,
 				FB9C811523F1DEC4001891F9 /* Info.plist */,
 				FB9C810F23F1DEC4001891F9 /* Preview Content */,
+				FB9C812923F1DEF3001891F9 /* HttpRequestor.swift */,
+				FB9C812B23F1E9F4001891F9 /* RouteFinder.swift */,
 			);
 			path = challenge20;
 			sourceTree = "<group>";
@@ -208,9 +214,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB9C812A23F1DEF3001891F9 /* HttpRequestor.swift in Sources */,
 				FB9C810823F1DEC2001891F9 /* AppDelegate.swift in Sources */,
 				FB9C810A23F1DEC2001891F9 /* SceneDelegate.swift in Sources */,
 				FB9C810C23F1DEC2001891F9 /* ContentView.swift in Sources */,
+				FB9C812C23F1E9F4001891F9 /* RouteFinder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
