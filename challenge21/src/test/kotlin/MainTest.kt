@@ -85,7 +85,7 @@ class MainTest {
     @Test
     fun `completeSudoku should complete it or return one with zeros for places where it is not possible to complete without exploring permutations`() {
         val result = data.completeSoduku()
-        val expectedReslt = listOf(
+        val expectedResult = listOf(
             7,4,9,3,1,2,6,8,5,
             6,1,2,8,5,8,7,3,4,
             3,4,8,6,7,9,2,1,5,
@@ -96,7 +96,7 @@ class MainTest {
             2,7,6,4,3,9,8,5,1,
             9,8,1,5,2,6,4,7,3
         )
-        println(result)
+        assertEquals(expectedResult,result)
     }
 }
 

@@ -27,10 +27,7 @@ fun SudokuGrid.numberToReplaceZero(index:Int):Int {
     return if (potentialNumbers.size == 1) potentialNumbers.first() else 0
 }
 
-fun SudokuGrid.replaceZeros():SudokuGrid = mapIndexed{ index, value -> Pair(index, value)  }
-    .fold(listOf<Int>()) { newGrid, (index, value) ->
-        newGrid + (if (value == 0) numberToReplaceZero(index) else value)
-    }
+fun SudokuGrid.replaceZeros():SudokuGrid = mapIndexed{ index, value ->  if (value == 0) numberToReplaceZero(index) else value }
 
 fun SudokuGrid.completeSoduku():SudokuGrid {
     val newSudoku = replaceZeros()
