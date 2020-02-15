@@ -13,11 +13,7 @@ fun SudokuGrid.numbersInRegion(region: Int)= mapIndexedNotNull(){index, value ->
 
 fun SudokuGrid.numbersAlreadyUsed(index:GridIndex)=  numbersInCol(index.col).union(numbersInRow(index.row)).union(numbersInRegion(index.region))
 
-
-fun SudokuGrid.potentialNumbers(index:GridIndex):Set<Int> {
-    val numbersAlreadyUsed = numbersAlreadyUsed(index)
-    return (1..9).mapNotNull { if (numbersAlreadyUsed.contains(it)) null else it }.toSet()
-}
+fun SudokuGrid.potentialNumbers(index:GridIndex):Set<Int> = (1..9).toSet().minus(numbersAlreadyUsed(index))
 
 fun SudokuGrid.indexesWithMoreThanOneAnswer()
         = mapIndexedNotNull() {index, value -> if (value == 0) Pair(index, potentialNumbers(index)) else null }
