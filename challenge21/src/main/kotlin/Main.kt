@@ -45,7 +45,6 @@ fun SudokuGrid.completeAllSodoku(alreadyCompleted:List<SudokuGrid> = listOf()):L
         return if (sudoku.isLegitimate()) alreadyCompleted + listOf(sudoku) else alreadyCompleted
 
     val indexesWithMoreThanOneAnswer = sudoku.indexesWithMoreThanOneAnswer()
-
     if (indexesWithMoreThanOneAnswer.isEmpty()) return alreadyCompleted
 
     val (indexToTry, valuesToTry) = indexesWithMoreThanOneAnswer.sortedBy { it.second.size }.first()
@@ -57,9 +56,7 @@ fun SudokuGrid.completeAllSodoku(alreadyCompleted:List<SudokuGrid> = listOf()):L
 
 fun SudokuGrid.replaceValue(replaceWith:Int, replaceAt:Int) = mapIndexed{index, value -> if (index == replaceAt) replaceWith else value }
 
-fun SudokuGrid.isLegitimate():Boolean
-        = (0..8).map{ !columnRowOrRegionContainsDuplicates(it)}
-        .takeWhile { it == true }.size == 9
+fun SudokuGrid.isLegitimate():Boolean = (0..8).map{ !columnRowOrRegionContainsDuplicates(it)}.all{it == true}
 
 fun List<Int>.containsDuplicates():Boolean =  (1..9).fold(false){ result, value -> result || filter{value == it}.size > 1}
 
