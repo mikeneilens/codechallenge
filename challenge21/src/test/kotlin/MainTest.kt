@@ -17,10 +17,10 @@ class MainTest {
     }
     @Test
     fun `region for indexes are calculated correctly`() {
-        assertEquals(0,20.region())
-        assertEquals(1,21.region())
-        assertEquals(4,30.region())
-        assertEquals(8,80.region())
+        assertEquals(0,20.region)
+        assertEquals(1,21.region)
+        assertEquals(4,30.region)
+        assertEquals(8,80.region)
     }
     @Test
     fun `numbersInRegion should return the numbers in the region`() {
