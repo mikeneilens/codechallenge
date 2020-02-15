@@ -18,10 +18,7 @@ fun SudokuGrid.potentialNumbers(index:GridIndex):Set<Int> = (1..9).toSet().minus
 fun SudokuGrid.indexesWithMoreThanOneAnswer()
         = mapIndexedNotNull() {index, value -> if (value == 0) Pair(index, potentialNumbers(index)) else null }
 
-fun SudokuGrid.numberToReplaceZero(index:GridIndex):Int {
-    val potentialNumbers = potentialNumbers(index)
-    return if (potentialNumbers.size == 1) potentialNumbers.first() else 0
-}
+fun SudokuGrid.numberToReplaceZero(index:GridIndex):Int = if (potentialNumbers(index).size == 1) potentialNumbers(index).first() else 0
 
 fun SudokuGrid.replaceZeros():SudokuGrid = mapIndexed{ index, value -> if (value == 0) numberToReplaceZero(index) else value }
 
