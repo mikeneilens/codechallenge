@@ -2,11 +2,11 @@ typealias SudokuGrid = List<Int>
 
 fun Int.region() = (this % 9) / 3 + 3 * (this / 27)
 
-fun SudokuGrid.numbersInRow(row: Int)= chunked(9)[row].toSet()
+fun SudokuGrid.numbersInRow(row: Int)= chunked(9)[row]
 
-fun SudokuGrid.numbersInCol(col: Int)= chunked(9).map{it[col]}.toSet()
+fun SudokuGrid.numbersInCol(col: Int)= chunked(9).map{it[col]}
 
-fun SudokuGrid.numbersInRegion(region: Int)= mapIndexedNotNull(){index, value ->   if (index.region() == region) value else null }.toSet()
+fun SudokuGrid.numbersInRegion(region: Int)= mapIndexedNotNull(){index, value ->   if (index.region() == region) value else null }
 
 fun SudokuGrid.numbersAlreadyUsed(index:Int) : Set<Int> {
     val col = index % 9
@@ -30,7 +30,7 @@ fun SudokuGrid.numberToReplaceZero(index:Int):Int {
     return if (potentialNumbers.size == 1) potentialNumbers.first() else 0
 }
 
-fun SudokuGrid.replaceZeros():SudokuGrid = mapIndexed{ index, value ->  if (value == 0) numberToReplaceZero(index) else value }
+fun SudokuGrid.replaceZeros():SudokuGrid = mapIndexed{ index, value -> if (value == 0) numberToReplaceZero(index) else value }
 
 fun SudokuGrid.completeSoduku():SudokuGrid {
     val newSudoku = replaceZeros()
@@ -38,39 +38,30 @@ fun SudokuGrid.completeSoduku():SudokuGrid {
     return newSudoku.completeSoduku()
 }
 
-fun SudokuGrid.completeAllSodoku(completed:List<SudokuGrid> = listOf()):List<SudokuGrid> {
+fun SudokuGrid.completeAllSodoku(alreadyCompleted:List<SudokuGrid> = listOf()):List<SudokuGrid> {
     val sudoku = completeSoduku()
 
     if (!sudoku.contains(0))
-        return if (sudoku.isLegitimate()) completed + listOf(sudoku)
-        else completed
+        return if (sudoku.isLegitimate()) alreadyCompleted + listOf(sudoku) else alreadyCompleted
 
     val indexesWithMoreThanOneAnswer = sudoku.indexesWithMoreThanOneAnswer()
 
-    if (indexesWithMoreThanOneAnswer.isEmpty()) return completed
+    if (indexesWithMoreThanOneAnswer.isEmpty()) return alreadyCompleted
 
-    val (indexToTry, solutionsToTry) = indexesWithMoreThanOneAnswer.sortedBy { it.second.size }.first()
+    val (indexToTry, valuesToTry) = indexesWithMoreThanOneAnswer.sortedBy { it.second.size }.first()
 
-    return solutionsToTry.flatMap{solution ->
-        val newSudoku = sudoku.mapIndexed{index, value -> if (index == indexToTry) solution else value }
-        newSudoku.completeAllSodoku(completed)
+    return valuesToTry.flatMap{valueToTry ->
+         sudoku.replaceValue(valueToTry, indexToTry).completeAllSodoku(alreadyCompleted)
     }
 }
 
-fun SudokuGrid.print() {
-    println(this.chunked(9)[0])
-    println(this.chunked(9)[1])
-    println(this.chunked(9)[2])
-    println(this.chunked(9)[3])
-    println(this.chunked(9)[4])
-    println(this.chunked(9)[5])
-    println(this.chunked(9)[6])
-}
+fun SudokuGrid.replaceValue(replaceWith:Int, replaceAt:Int) = mapIndexed{index, value -> if (index == replaceAt) replaceWith else value }
 
-fun SudokuGrid.isLegitimate():Boolean {
-    var legitimate = true
-    (0..8).forEach{ if  (numbersInRow(it).intersect( setOf(1,2,3,4,5,6,7,8,9)).size < 9 )  legitimate = false   }
-    (0..8).forEach{ if  (numbersInCol(it).intersect( setOf(1,2,3,4,5,6,7,8,9)).size < 9) legitimate = false   }
-    (0..8).forEach{ if  (numbersInRegion(it).intersect( setOf(1,2,3,4,5,6,7,8,9)).size < 9) legitimate = false   }
-    return legitimate
-}
+fun SudokuGrid.isLegitimate():Boolean
+        = (0..8).map{ !columnRowOrRegionContainsDuplicates(it)}
+        .takeWhile { it == true }.size == 9
+
+fun List<Int>.containsDuplicates():Boolean =  (1..9).fold(false){ result, value -> result || filter{value == it}.size > 1}
+
+fun SudokuGrid.columnRowOrRegionContainsDuplicates(index:Int)
+        = numbersInRow(index).containsDuplicates() || numbersInCol(index).containsDuplicates() || numbersInRegion(index).containsDuplicates()

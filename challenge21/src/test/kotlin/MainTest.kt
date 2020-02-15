@@ -1,29 +1,18 @@
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
 class MainTest {
-    val easyProblem = listOf(
-        7,0,9,0,0,2,6,8,0,
-        0,0,2,0,5,0,7,0,4,
-        0,0,0,0,0,0,2,0,0,
-        1,9,0,0,0,7,0,6,0,
-        8,6,7,1,9,5,0,4,0,
-        5,0,4,0,0,0,0,9,0,
-        4,3,5,7,8,0,0,2,0,
-        0,0,6,4,0,0,0,0,1,
-        9,8,0,5,0,6,0,0,3)
 
     @Test
     fun `numberInRow should return the numbers in a row`() {
         val result = easyProblem.numbersInRow(1)
-        val expectedResult = setOf(0,0,2,0,5,0,7,0,4)
+        val expectedResult = listOf(0,0,2,0,5,0,7,0,4)
         assertEquals(expectedResult,result)
     }
     @Test
     fun `numbersInCol should return the numbers in a column`() {
         val result = easyProblem.numbersInCol(1)
-        val expectedResult = setOf(0,0,0,9,6,0,3,0,8)
+        val expectedResult = listOf(0,0,0,9,6,0,3,0,8)
         assertEquals(expectedResult,result)
     }
     @Test
@@ -34,17 +23,17 @@ class MainTest {
         assertEquals(8,80.region())
     }
     @Test
-    fun `numbersInRefion should return the numbers in the region`() {
+    fun `numbersInRegion should return the numbers in the region`() {
         val result0 = easyProblem.numbersInRegion(0)
-        val expectedResult0 = setOf(7,0,9,0,0,2,0,0,0)
+        val expectedResult0 = listOf(7,0,9,0,0,2,0,0,0)
         assertEquals(expectedResult0,result0)
 
         val result4 = easyProblem.numbersInRegion(4)
-        val expectedResult4 = setOf(0,0,7,1,9,5,0,0,0)
+        val expectedResult4 = listOf(0,0,7,1,9,5,0,0,0)
         assertEquals(expectedResult4,result4)
 
         val result8 = easyProblem.numbersInRegion(8)
-        val expectedResult8 = setOf(0,2,0,0,0,1,0,0,3)
+        val expectedResult8 = listOf(0,2,0,0,0,1,0,0,3)
         assertEquals(expectedResult8,result8)
     }
     @Test
@@ -102,17 +91,7 @@ class MainTest {
     }
     @Test
     fun `completeAllSudoku should give an empty list if there are no solutions`() {
-        val unsolvable = listOf(
-            7,8,1,5,4,3,9,2,6,
-            0,0,6,1,7,9,5,0,0,
-            9,5,4,6,2,8,7,3,1,
-            6,9,5,8,3,7,2,1,4,
-            1,4,8,2,6,5,3,7,9,
-            3,2,7,9,1,4,8,0,0,
-            4,1,3,7,5,2,6,9,8,
-            0,0,2,0,0,0,4,0,0,
-            5,7,9,4,8,6,1,0,3
-        )
+
         val result = unsolvable.completeAllSodoku()
         val expectedResult = listOf<SudokuGrid>()
         assertEquals(expectedResult,result)
@@ -120,17 +99,6 @@ class MainTest {
 
     @Test
     fun `completeAllSudoku should solve a hard problem with one answer`() {
-        val hardProblem = listOf(
-            0,0,0,0,7,4,3,1,6,
-            0,0,0,6,0,3,8,4,0,
-            0,0,0,0,0,8,5,0,0,
-            7,2,5,8,0,0,0,3,4,
-            0,0,0,0,3,0,0,5,0,
-            0,0,0,0,0,2,7,9,8,
-            0,0,8,9,4,0,0,0,0,
-            0,4,0,0,8,5,9,0,0,
-            9,7,1,3,2,6,4,8,5
-        )
         val result = hardProblem.completeAllSodoku()
         val expectedResult = listOf(listOf(
             5,8,9,2,7,4,3,1,6,
@@ -145,19 +113,9 @@ class MainTest {
         ))
         assertEquals(expectedResult,result)
     }
+
     @Test
     fun `completeAllSudoku should solve a hard problem with more than one answer`() {
-        val multipleAnswerProblem = listOf(
-            0,8,0,0,0,9,7,4,3,
-            0,5,0,0,0,8,0,1,0,
-            0,1,0,0,0,0,0,0,0,
-            8,0,0,0,0,5,0,0,0,
-            0,0,0,8,0,4,0,0,0,
-            0,0,0,3,0,0,0,0,6,
-            0,0,0,0,0,0,0,7,0,
-            0,3,0,5,0,0,0,8,0,
-            9,7,2,4,0,0,0,5,0
-        )
 
         val results = multipleAnswerProblem.completeAllSodoku()
 
@@ -165,6 +123,14 @@ class MainTest {
             assertTrue(result.isLegitimate())
         }
 
+    }
+    @Test
+    fun `setIsLegitimate is true if set contains no more than one of values in range 1 to 9`() {
+        val legitimateList = listOf(1,2,3,4,5,6,7,8,9)
+        val notLegitimateList = listOf(1,2,2,3,4,5,6,7,8)
+
+        assertFalse(legitimateList.containsDuplicates())
+        assertTrue(notLegitimateList.containsDuplicates())
     }
 }
 
