@@ -6,15 +6,15 @@ val GridIndex.row get() = this / 9
 val GridIndex.region get() = (this % 9) / 3 + 3 * (this / 27)
 
 fun SudokuGrid.numbersInRow(row: Int)= chunked(9)[row]
-fun SudokuGrid.numbersInCol(col: Int)= mapIndexedNotNull(){index, value ->   if (index.col == col) value else null }
-fun SudokuGrid.numbersInRegion(region: Int)= mapIndexedNotNull(){index, value ->   if (index.region == region) value else null }
+fun SudokuGrid.numbersInCol(col: Int)= mapIndexedNotNull{index, value ->   if (index.col == col) value else null }
+fun SudokuGrid.numbersInRegion(region: Int)= mapIndexedNotNull{index, value ->   if (index.region == region) value else null }
 
 fun SudokuGrid.numbersAlreadyUsed(index:GridIndex)=  numbersInCol(index.col) union numbersInRow(index.row) union numbersInRegion(index.region)
 
 fun SudokuGrid.potentialNumbers(index:GridIndex) = (1..9).toSet() - numbersAlreadyUsed(index)
 
 fun SudokuGrid.indexesWithMoreThanOneAnswer()
-        = mapIndexedNotNull() {index, value -> if (value == 0) Pair(index, potentialNumbers(index)) else null }
+        = mapIndexedNotNull { index, value -> if (value == 0) Pair(index, potentialNumbers(index)) else null }
 
 fun SudokuGrid.numberToReplaceZero(index:GridIndex) = if (potentialNumbers(index).size == 1) potentialNumbers(index).first() else 0
 
@@ -45,7 +45,7 @@ fun SudokuGrid.replaceValue(replaceWith:Int, replaceAt:GridIndex) = mapIndexed{i
 
 val SudokuGrid.isComplete get() = !contains(0)
 
-val SudokuGrid.isLegitimate get() = (0..8).map{ !columnRowOrRegionContainsDuplicates(it)}.all{it == true}
+val SudokuGrid.isLegitimate get() = (0..8).map{ !columnRowOrRegionContainsDuplicates(it)}.all{ it }
 
 fun SudokuGrid.columnRowOrRegionContainsDuplicates(digit:Int)
         = numbersInRow(digit).containsDuplicates || numbersInCol(digit).containsDuplicates || numbersInRegion(digit).containsDuplicates
