@@ -138,6 +138,13 @@ class MainTest {
         assertFalse(legitimateList.containsDuplicates)
         assertTrue(notLegitimateList.containsDuplicates)
     }
+    @Test
+    fun `contains duplicates only returns true if the list contains more than one of a value in range 1 to 9`() {
+        assertTrue(listOf(1,2,3,4,6,7,4,0,0).containsDuplicates)
+        assertFalse(listOf(1,2,3,4,6,7,5,0,0).containsDuplicates)
+        assertFalse(listOf(0,0,0,0,0,0,0,0,0).containsDuplicates)
+    }
+
 }
 
 

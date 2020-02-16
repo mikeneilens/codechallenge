@@ -47,7 +47,7 @@ val SudokuGrid.isComplete get() = !contains(0)
 
 val SudokuGrid.isLegitimate get() = (0..8).map{ !columnRowOrRegionContainsDuplicates(it)}.all{it == true}
 
-val List<Int>.containsDuplicates get() =  (1..9).fold(false){ result, value -> result || filter{value == it}.size > 1}
-
 fun SudokuGrid.columnRowOrRegionContainsDuplicates(digit:Int)
         = numbersInRow(digit).containsDuplicates || numbersInCol(digit).containsDuplicates || numbersInRegion(digit).containsDuplicates
+
+val List<Int>.containsDuplicates get() =  (1..9).map{digit -> count{digit == it}}.any{it > 1}
