@@ -90,6 +90,12 @@ class MainTest {
         assertEquals(expectedResult,result)
     }
     @Test
+    fun `completeSudoku should stop before generating an illigitamte answer but doesnt always`() {
+        val result = dodgyProblem.completeSoduku()
+        assertFalse(result.isLegitimate)
+    }
+
+    @Test
     fun `completeAllSudoku should give an empty list if there are no solutions`() {
 
         val result = unsolvable.completeAllSodoku()
@@ -120,7 +126,7 @@ class MainTest {
         val results = multipleAnswerProblem.completeAllSodoku()
 
         results.forEachIndexed { index, result ->
-            assertTrue(result.isLegitimate())
+            assertTrue(result.isLegitimate)
         }
 
     }
@@ -129,8 +135,8 @@ class MainTest {
         val legitimateList = listOf(1,2,3,4,5,6,7,8,9)
         val notLegitimateList = listOf(1,2,2,3,4,5,6,7,8)
 
-        assertFalse(legitimateList.containsDuplicates())
-        assertTrue(notLegitimateList.containsDuplicates())
+        assertFalse(legitimateList.containsDuplicates)
+        assertTrue(notLegitimateList.containsDuplicates)
     }
 }
 
