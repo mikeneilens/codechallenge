@@ -20,4 +20,4 @@ If there are positions then using only the position with the least number of pot
 
 + Calls itself to find the solution using the updated grid. 
 
-n.b. its not strictly necessary to only try the position with the least number of values but using that approach the permutations generated may be extremely large.
+n.b. its not strictly necessary to only try the position with the least number of values but iterating over every position the permutations generated may be extremely large.
