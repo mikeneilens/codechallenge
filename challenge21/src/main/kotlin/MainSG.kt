@@ -14,8 +14,8 @@ fun solve_sudoku(grid:List<Int>):List<List<Int>> {
 
 }
 
-fun solve_it(board:MutableList<MutableList<Int>> ):MutableList<MutableList<Int>> {
-    var board = board
+fun solve_it(_board:MutableList<MutableList<Int>> ):MutableList<MutableList<Int>> {
+    var board = _board
     for (x in 0..8) {
         for (y in 0..8){
             if (board[y][x] == 0) {
