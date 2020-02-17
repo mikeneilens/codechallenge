@@ -3,7 +3,7 @@ typealias GridIndex = Int
 
 val GridIndex.col get() = this % 9
 val GridIndex.row get() = this / 9
-val GridIndex.region get() = (this % 9) / 3 + 3 * (this / 27)
+val GridIndex.region get() = col/3 + 3 * (row/3)
 
 fun SudokuGrid.numbersInRow(row: Int)= chunked(9)[row]
 fun SudokuGrid.numbersInCol(col: Int)= mapIndexedNotNull{index, value ->   if (index.col == col) value else null }
