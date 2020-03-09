@@ -12,14 +12,13 @@ abstract class LaptopDecorator  (val decoratedLaptop: Laptop,  val optionPrice:I
     override val price = decoratedLaptop.price + optionPrice
 
     init {
-        if (upgradeAlreadyAdded(decoratedLaptop)) throw Exception("Trying to add ${this::class} to $decoratedLaptop.  The laptop already has a ${this::class}")
+        if (upgradeAlreadyAdded(decoratedLaptop)) throw Exception("Trying to add $description to $decoratedLaptop.  The laptop already has a $description upgrade")
     }
 }
 
 fun LaptopDecorator.upgradeAlreadyAdded(laptopDecorator: Laptop):Boolean {
-    if (this::class == laptopDecorator::class) return true
     return when (laptopDecorator) {
-        is LaptopDecorator -> upgradeAlreadyAdded(laptopDecorator.decoratedLaptop)
+        is LaptopDecorator -> if (this.description == laptopDecorator.description) true else upgradeAlreadyAdded(laptopDecorator.decoratedLaptop)
         is Laptop -> false
         else -> false
     }
