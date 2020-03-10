@@ -16,13 +16,11 @@ abstract class LaptopDecorator  (val decoratedLaptop: Laptop,  val optionPrice:I
     }
 }
 
-fun LaptopDecorator.upgradeAlreadyAdded(laptopDecorator: Laptop):Boolean {
-    return when (laptopDecorator) {
+fun LaptopDecorator.upgradeAlreadyAdded(laptopDecorator: Laptop):Boolean =
+    when (laptopDecorator) {
         is LaptopDecorator -> if (this.description == laptopDecorator.description) true else upgradeAlreadyAdded(laptopDecorator.decoratedLaptop)
-        is Laptop -> false
         else -> false
     }
-}
 
 class ProcessorUpgrade(decoratedLaptop: Laptop, processorOption: ProcessorOption)
     : LaptopDecorator(decoratedLaptop, processorOption.price, processorOption.description, "Processor")
