@@ -36,6 +36,9 @@ class DriveUpgrade(decoratedLaptop: Laptop, driveOption: DriveOption )
 class GraphicsUpgrade(decoratedLaptop: Laptop, graphicsOption: GraphicsOption )
     : LaptopDecorator(decoratedLaptop, graphicsOption.price, graphicsOption.description, "Graphics Card")
 
+class BatteryUpgrade(decoratedLaptop: Laptop, optionPrice:Int )
+    : LaptopDecorator(decoratedLaptop, optionPrice, "", "Large Battery")
+
 class ShinyCaseUpgrade(decoratedLaptop: Laptop, optionPrice:Int )
     : LaptopDecorator(decoratedLaptop, optionPrice, "", "Shiny case")
 

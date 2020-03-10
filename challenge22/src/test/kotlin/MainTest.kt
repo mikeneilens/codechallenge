@@ -58,6 +58,18 @@ class MainTest {
     }
 
     @Test
+    fun `adding a battery upgrade to a basic laptop`() {
+        val basicLaptop: Laptop = BasicLaptop(400)
+        val laptopWithBatteryUpgrade: Laptop = BatteryUpgrade(basicLaptop, 120)
+
+        assertEquals(520, laptopWithBatteryUpgrade.price)
+        assertEquals("Basic Laptop (£400) +  Large Battery (£120)", "$laptopWithBatteryUpgrade" )
+
+        if (laptopWithBatteryUpgrade is ShinyCaseUpgrade) {
+            assertTrue(laptopWithBatteryUpgrade.decoratedLaptop == basicLaptop)
+        }
+    }
+@Test
     fun `adding a shiny case upgrade to a basic laptop`() {
         val basicLaptop: Laptop = BasicLaptop(400)
         val laptopWithCaseUpgrade: Laptop = ShinyCaseUpgrade(basicLaptop, 100)
