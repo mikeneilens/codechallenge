@@ -1,59 +1,48 @@
-enum class Upgrade {
-    none, memory, case, processor, disk, graphics, battery
+enum class Upgrade(val performUpgrade:(AnyLaptop)->AnyLaptop) {
+    Memory(memory), Case(case), Processor(processor), Disk(disk), Graphics(graphics), Battery(battery)
 }
 
-open class  AnyLaptop(val description: String, val cost: Double, val upgrade:Upgrade = Upgrade.none )
-
-class UpgradedLaptop(description:String, cost:Double, upgrade:Upgrade, val laptopBeingUpgraded:AnyLaptop): AnyLaptop(description, cost, upgrade) {
+open class  AnyLaptop(val description: String, val cost: Double, val upgrades:List<Upgrade> = listOf() ) {
     init {
-        if (laptopBeingUpgraded.upgradeAlreadyAdded(upgrade)) throw Exception("Laptop already upgraded with $upgrade")
+        if (upgrades.distinct().size < upgrades.size ) throw Exception("Laptop already upgraded with ${upgrades.last()}")
     }
 }
 
-fun AnyLaptop.upgradeAlreadyAdded(upgrade: Upgrade):Boolean =
-    when (this) {
-        is UpgradedLaptop -> if (this.upgrade == upgrade) true else laptopBeingUpgraded.upgradeAlreadyAdded(upgrade)
-        else -> false
-    }
+operator fun AnyLaptop.plus(other:Upgrade):AnyLaptop = other.performUpgrade(this)
 
-fun memory(laptopBeingUpgraded: AnyLaptop) = UpgradedLaptop(
+
+val memory = fun (laptopBeingUpgraded: AnyLaptop) = AnyLaptop(
     laptopBeingUpgraded.description + ", 16GB Memory",
     laptopBeingUpgraded.cost + 49.99,
-    Upgrade.memory,
-    laptopBeingUpgraded)
+    laptopBeingUpgraded.upgrades + Upgrade.Memory )
 
 
-fun case(laptopBeingUpgraded: AnyLaptop) = UpgradedLaptop(
+val case = fun (laptopBeingUpgraded: AnyLaptop) = AnyLaptop(
     laptopBeingUpgraded .description + ", Shiny Case",
     laptopBeingUpgraded.cost + 10.99,
-    Upgrade.case,
-    laptopBeingUpgraded
+    laptopBeingUpgraded.upgrades + Upgrade.Case
 )
 
-fun processor(laptopBeingUpgraded: AnyLaptop) = UpgradedLaptop(
+val processor = fun (laptopBeingUpgraded: AnyLaptop) = AnyLaptop(
     laptopBeingUpgraded.description + ", Processor Upgrade",
     laptopBeingUpgraded.cost + 54.99,
-    Upgrade.processor,
-    laptopBeingUpgraded
+    laptopBeingUpgraded.upgrades + Upgrade.Processor
 )
 
-fun disk(laptopBeingUpgraded: AnyLaptop) = UpgradedLaptop(
+val disk = fun (laptopBeingUpgraded: AnyLaptop) = AnyLaptop(
     laptopBeingUpgraded.description + ", 1TB Hard Disk",
     laptopBeingUpgraded.cost + 44.99,
-    Upgrade.disk,
-    laptopBeingUpgraded
+    laptopBeingUpgraded.upgrades + Upgrade.Disk
 )
 
-fun graphics(laptopBeingUpgraded: AnyLaptop) = UpgradedLaptop(
+val graphics = fun (laptopBeingUpgraded: AnyLaptop) = AnyLaptop(
     laptopBeingUpgraded.description + ", Gamer Graphics Card",
     laptopBeingUpgraded.cost + 67.99,
-    Upgrade.graphics,
-    laptopBeingUpgraded
+    laptopBeingUpgraded.upgrades + Upgrade.Graphics
 )
 
-fun battery(laptopBeingUpgraded: AnyLaptop) = UpgradedLaptop(
+val battery = fun (laptopBeingUpgraded: AnyLaptop) = AnyLaptop(
     laptopBeingUpgraded.description + ", Long Life Battery",
     laptopBeingUpgraded.cost + 67.99,
-    Upgrade.battery,
-    laptopBeingUpgraded
+    laptopBeingUpgraded.upgrades + Upgrade.Battery
 )
