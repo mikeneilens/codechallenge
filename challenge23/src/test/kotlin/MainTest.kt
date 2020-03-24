@@ -240,13 +240,22 @@ class MainTest {
 
         printResult(createPuzzle(words).first, words.map{it.text})
 
-        println("\n The answer:")
+        println("\n The answer revealed:")
         printResult(createPuzzle(words){"."}.first,words.map{it.text})
     }
 
+
     @Test
-    fun `createWordSearch creates a wordSearcg`() {
+    fun `createWordSearch and test if all clues can be found`() {
         val (puzzle, clues) = createWordSearch(testData)
         printResult(puzzle, clues)
+
+        val puzzleAsString = puzzle.fold(""){a, e -> a + e}
+        val solution = puzzleAsString.findPositionOfEachClue(clues)
+        assertEquals(10, solution.size)
+
+        println("The solution found for each clue is")
+        solution.forEach { println(it) }
+
     }
 }

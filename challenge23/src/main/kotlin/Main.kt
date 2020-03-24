@@ -102,6 +102,8 @@ fun createWordSearch(locationString:String,randomLetter:()->String = {letters[(0
 }
 
 fun printResult(listOfLetters:List<String>, clues:List<String>){
+    println("Puzzle and clues")
+    println("----------------")
     val rows = listOfLetters.chunked(14)
     rows.forEach { row -> println(row.fold(""){a,e -> a + e}) }
 
