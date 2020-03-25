@@ -7,7 +7,7 @@ fun String.letterAt(position:Position):String {
 }
 
 fun String.textAt(position:Position, direction:Direction, length:Int):String {
-     val letters = (0 until length).map{ this.letterAt(Position(position.x + it * direction.step.x, position.y + it * direction.step.y ))}
+     val letters = (0 until length).map{ this.letterAt(position + (direction.step * it))}
     return letters.fold(""){a,e -> a + e}
 }
 

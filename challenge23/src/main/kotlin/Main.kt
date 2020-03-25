@@ -1,5 +1,17 @@
 
-data class Position(val x:Int, val y:Int)
+data class Position(val x:Int, val y:Int) {
+
+    operator fun plus(other:Position) = Position(this.x + other.x, this.y + other.y)
+
+    operator fun times(num:Int) = Position(this.x * num, this.y * num)
+
+    companion object {
+        fun inRandomOrder(randomGenerator: List<Int> = listOf()):List<Position> {
+            val positions = (0..195).map{Position(it % 14, it / 14)}
+            return if (randomGenerator.isNotEmpty()) randomGenerator.map{positions[it]} else (0..195).shuffled().map{positions[it]}
+        }
+    }
+}
 
 enum class Direction(val step:Position) {
     HorizontalRight(Position(1,0)),
@@ -9,7 +21,12 @@ enum class Direction(val step:Position) {
     DiagonalDownRight(Position(1,1)),
     DiagonalDownLeft(Position(-1,1)),
     DiagonalUpRight(Position(1,-1)),
-    DiagonalUpLeft(Position(-1,-1)),
+    DiagonalUpLeft(Position(-1,-1));
+
+    companion object {
+        fun inRandomOrder(randomGenerator: List<Int> = listOf()) =
+            if (randomGenerator.isNotEmpty()) randomGenerator.map { values()[it] } else (0..7).shuffled().map {values()[it] }
+    }
 }
 
 data class Word(val letters:List<LetterWithPosition>) {
@@ -36,7 +53,7 @@ fun parseLocation(locationString: String): List<String> {
 
 fun String.toLettersWithPosition(startPosition: Position, direction: Direction): List<LetterWithPosition> =
     this.toList()
-        .mapIndexed{index, char -> LetterWithPosition(char.toString(),Position(startPosition.x + index * direction.step.x, startPosition.y + index * direction.step.y ))}
+        .mapIndexed{index, char -> LetterWithPosition(char.toString(), startPosition + (direction.step * index))}
 
 
 fun plainTextInRandomOrder(locationsData: String, randomGenerator: List<Int>): List<String> {
@@ -44,16 +61,8 @@ fun plainTextInRandomOrder(locationsData: String, randomGenerator: List<Int>): L
     return randomGenerator.map{listOfPlainText[it]}
 }
 
-fun positionsInRandomOrder(randomGenerator: List<Int>):List<Position> {
-    val positions = (0..13).flatMap{y -> (0..13).map{x -> Position(x,y)}}
-    return randomGenerator.map{positions[it]}
-}
-
-fun directionsInRandomOrder(randomGenerator: List<Int>)= randomGenerator.map{Direction.values()[it]}
-
 fun String.willFit(startPosition: Position, direction: Direction): Boolean {
-    val endX = startPosition.x + direction.step.x * (this.length - 1)
-    val endY = startPosition.y + direction.step.y * (this.length - 1)
+    val (endX, endY)= startPosition + (direction.step * (length - 1))
     return (endX in 0..13 && endY in  0..13)
 }
 
@@ -65,8 +74,8 @@ fun placeWords(locationString:String, qtyToPlace:Int = 10):List<Word> {
         if (listOfWords.size >= qtyToPlace) return listOfWords
         val plainText = listOfPlainText.first()
 
-        val randomPositions = positionsInRandomOrder((0..195).shuffled())
-        val randomDirections = directionsInRandomOrder((0..7).shuffled())
+        val randomPositions = Position.inRandomOrder()
+        val randomDirections = Direction.inRandomOrder()
 
         val possibleWords = (0..195).asSequence().map{ positionNdx ->
             (0..7).asSequence().mapNotNull{ directionNdx ->

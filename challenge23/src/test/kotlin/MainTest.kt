@@ -206,17 +206,17 @@ class MainTest {
         assertFalse(plainText.willFit(Position(1,5), Direction.VerticalUp ))
     }
     @Test
-    fun `positionsInRandomOrder returns a list of positions in the order set by the random number generator`() {
+    fun `Positions inRandomOrder returns a list of positions in the order set by the random number generator`() {
         val randomGenerator = listOf(1,0,2)
-        val result = positionsInRandomOrder(randomGenerator)
+        val result = Position.inRandomOrder(randomGenerator)
         assertEquals(Position(1,0), result[0])
         assertEquals(Position(0,0), result[1])
         assertEquals(Position(2,0), result[2])
     }
     @Test
-    fun `directionsInRandomOrder returns a list of directions in the order set by the random number generator`() {
+    fun `Directions inRandomOrder returns a list of directions in the order set by the random number generator`() {
         val randomGenerator = listOf(1,0,2)
-        val result = directionsInRandomOrder(randomGenerator)
+        val result = Direction.inRandomOrder(randomGenerator)
         assertEquals(Direction.HorizontalLeft, result[0])
         assertEquals(Direction.HorizontalRight, result[1])
         assertEquals(Direction.VerticalDown, result[2])
