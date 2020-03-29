@@ -1,7 +1,8 @@
+//This is the code to solve a puzzle given a string containing the puzzle and a list of strings containing the clues.
 
 fun String.letterAt(position:Position):String {
-    return if (position.x in 0..13 && position.y in  0..13) {
-        val index = position.x  + position.y * 14
+    return if (position.x in 0..(WIDTH - 1) && position.y in  0..(WIDTH - 1)) {
+        val index = position.x  + position.y * WIDTH
         this[index].toString()
     } else ""
 }
@@ -14,10 +15,10 @@ fun String.textAt(position:Position, direction:Direction, length:Int):String {
 fun String.wordFound(puzzle:String, position:Position, direction: Direction) = puzzle.textAt(position, direction, this.length) == this
 
 fun String.positionOf(text:String):Pair<Position,Direction>? {
-    return (0..195).flatMap { posNdx ->
+    return (0..SIZE).flatMap { posNdx ->
         Direction.values().mapNotNull { direction ->
-            if (text.wordFound(this, Position(posNdx % 14, posNdx / 14), direction)) {
-                Pair(Position(posNdx % 14, posNdx / 14), direction)
+            if (text.wordFound(this, Position(posNdx % WIDTH, posNdx / WIDTH), direction)) {
+                Pair(Position(posNdx % WIDTH, posNdx / WIDTH), direction)
             } else null
         }
     }.firstOrNull()

@@ -1,17 +1,26 @@
+//This is the code to create random puzzle.
+const val WIDTH = 14
+const val SIZE = WIDTH * WIDTH
+val RANDOMLETTERS = {"ABCDEFGHIJKLMNOPQRSTUVWXYZ".toList().map{it.toString()}[(0..25).random()]}
+
+typealias WordSearchGrid = MutableMap<Position, String>
 
 data class Position(val x:Int, val y:Int) {
 
-    operator fun plus(other:Position) = Position(this.x + other.x, this.y + other.y)
+    val  isValid = (x in 0 until WIDTH && y in 0 until WIDTH)
 
-    operator fun times(num:Int) = Position(this.x * num, this.y * num)
+    operator fun plus(other:Position) = Position(x + other.x, y + other.y)
+    operator fun times(num:Int) = Position(x * num, y * num)
 
     companion object {
         fun inRandomOrder(randomGenerator: List<Int> = listOf()):List<Position> {
-            val positions = (0..195).map{Position(it % 14, it / 14)}
-            return if (randomGenerator.isNotEmpty()) randomGenerator.map{positions[it]} else (0..195).shuffled().map{positions[it]}
+            val positions = (0 until SIZE).map{it.asPosition}
+            return if (randomGenerator.isNotEmpty()) randomGenerator.map{positions[it]} else (0 until SIZE).shuffled().map{positions[it]}
         }
     }
 }
+
+val Int.asPosition:Position get() = Position(this % WIDTH, this / WIDTH)
 
 enum class Direction(val step:Position) {
     HorizontalRight(Position(1,0)),
@@ -25,95 +34,70 @@ enum class Direction(val step:Position) {
 
     companion object {
         fun inRandomOrder(randomGenerator: List<Int> = listOf()) =
-            if (randomGenerator.isNotEmpty()) randomGenerator.map { values()[it] } else (0..7).shuffled().map {values()[it] }
+            if (randomGenerator.isNotEmpty()) randomGenerator.map { values()[it] } else (0 until values().size).shuffled().map {values()[it] }
     }
 }
 
-data class Word(val letters:List<LetterWithPosition>) {
-    val text:String  get() {
-        return letters.map{it.letter}.fold(""){result,char -> result + char}
-    }
-    fun letterAtPosition(requiredPosition:Position) = letters.first{letter -> letter.position == requiredPosition}.letter
-
-    fun doesNotConflictWith(listOfWords: List<Word>): Boolean {
-        val existingLettersWithPosition = listOfWords.flatMap { word -> word.letters}
-        return letters.none{letterWithPosition -> existingLettersWithPosition.any{it.position == letterWithPosition.position && letterWithPosition.letter != it.letter }}
-    }
-}
-
-data class LetterWithPosition(val letter:String, val position:Position)
-
-fun parseLocation(locationString: String): List<String> {
+fun parseIntoClues(locationString: String): List<String> {
     return locationString.split(",")
         .chunked(4)
         .map{it[0].replace(" ","")}
-        .filter{it.isNotEmpty() && it.length <= 10 }
+        .filter{it.isNotEmpty() && it.length <= 10 } //not part of the spec but only using location names with length of ten or less
         .map{it.toUpperCase()}
 }
 
-fun String.toLettersWithPosition(startPosition: Position, direction: Direction): List<LetterWithPosition> =
-    this.toList()
-        .mapIndexed{index, char -> LetterWithPosition(char.toString(), startPosition + (direction.step * index))}
+fun WordSearchGrid.clueConflictsWithGrid(text:String, position:Position, direction:Direction) = text.toList()
+        .mapIndexed{ndx, letter ->
+            val positionOnGrid = position + (direction.step * ndx)
+            Pair(positionOnGrid,letter.toString())}
+        .any{(position,letter) ->
+            containsKey(position)  && this[position] != letter  }
 
-
-fun plainTextInRandomOrder(locationsData: String, randomGenerator: List<Int>): List<String> {
-    val listOfPlainText = parseLocation(locationsData)
-    return randomGenerator.map{listOfPlainText[it]}
-}
+fun WordSearchGrid.addClue(clue:String, position:Position, direction:Direction) =
+    clue.toList()
+        .forEachIndexed { ndx, letter ->
+            val positionOnGrid = position + (direction.step * ndx)
+            this[positionOnGrid] = letter.toString()}
 
 fun String.willFit(startPosition: Position, direction: Direction): Boolean {
-    val (endX, endY)= startPosition + (direction.step * (length - 1))
-    return (endX in 0..13 && endY in  0..13)
+    val endPosition= startPosition + (direction.step * (length - 1))
+    return startPosition.isValid && endPosition.isValid
 }
 
-fun placeWords(locationString:String, qtyToPlace:Int = 10):List<Word> {
-    val numberOfPlainText = parseLocation(locationString).size
-    val listOfPlainText = plainTextInRandomOrder(locationString, (0 until numberOfPlainText).shuffled() )
+fun WordSearchGrid.placeCluesOnGrid(listOfClues:List<String>, positions:List<Position>? = null, directions:List<Direction>? = null) {
+    if (listOfClues.isEmpty()) return
+    val clue = listOfClues.first()
 
-    fun placeWords(listOfPlainText:List<String>, qtyToPlace:Int, listOfWords:List<Word> = mutableListOf()):List<Word> {
-        if (listOfWords.size >= qtyToPlace) return listOfWords
-        val plainText = listOfPlainText.first()
+    val randomPositions = positions ?: Position.inRandomOrder()
+    val randomDirections = directions ?:Direction.inRandomOrder()
 
-        val randomPositions = Position.inRandomOrder()
-        val randomDirections = Direction.inRandomOrder()
+    val validPositionsAndDirections = randomPositions.asSequence().flatMap{ position ->
+        randomDirections.asSequence().mapNotNull { direction ->
+            if (clue.willFit(position, direction)) {
+                if (clueConflictsWithGrid(clue, position, direction)) null else Pair(position, direction)
+            } else null
+        }}.take(1)
 
-        val possibleWords = (0..195).asSequence().map{ positionNdx ->
-            (0..7).asSequence().mapNotNull{ directionNdx ->
-                if (plainText.willFit(randomPositions[positionNdx], randomDirections[directionNdx])) {
-                    val word = Word(plainText.toLettersWithPosition(randomPositions[positionNdx], randomDirections[directionNdx]))
-                    if (word.doesNotConflictWith(listOfWords)) word else null
-                } else null
-            }
-        }.take(1).first().toList()
-
-        return if (possibleWords.isNotEmpty()) placeWords(listOfPlainText.drop(1), qtyToPlace, listOfWords + possibleWords.first())
-        else placeWords(listOfPlainText.drop(1), qtyToPlace, listOfWords )
+    if (validPositionsAndDirections.toList().isNotEmpty()) {
+        val (validPosition, validDirection) = validPositionsAndDirections.first()
+        addClue(clue, validPosition,validDirection)
     }
-    return placeWords(listOfPlainText,qtyToPlace)
+    placeCluesOnGrid(listOfClues.drop(1))
+
 }
 
-val letters = listOf("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z")
-
-fun createPuzzle(listOfWords: List<Word>, randomLetter:()->String = {letters[(0..25).random()]}):Pair<List<String>,List<Word>> {
-    val result = mutableListOf<String>()
-    for (ndx in (0..195)) {
-        val currentPosition = Position(ndx % 14, ndx / 14)
-        val word = listOfWords.firstOrNull{word -> word.letters.any{letter -> letter.position == currentPosition} }
-        if (word == null) result.add(randomLetter())  else result.add ( word.letterAtPosition(currentPosition))
-    }
-    return Pair(result, listOfWords)
-}
-
-fun createWordSearch(locationString:String,randomLetter:()->String = {letters[(0..25).random()]}):Pair<List<String>, List<String>> {
-    val listOfWords = placeWords(locationString)
-    val (puzzle, words ) =  createPuzzle(listOfWords,randomLetter)
-    return Pair(puzzle, words.map{it.text})
+fun createPuzzle(locations: String, randomLetter:()->String = RANDOMLETTERS):Pair<List<String>,List<String>> {
+    val wordSeachGrid:WordSearchGrid = mutableMapOf()
+    val clues = parseIntoClues(locations).shuffled().take(10)
+    wordSeachGrid.placeCluesOnGrid(clues)
+    val puzzle = (0 until SIZE).map { wordSeachGrid[it.asPosition] ?: randomLetter()}
+    return Pair(puzzle, clues)
 }
 
 fun printResult(listOfLetters:List<String>, clues:List<String>){
     println("Puzzle and clues")
     println("----------------")
-    val rows = listOfLetters.chunked(14)
+    val rows = listOfLetters.chunked(WIDTH)
     rows.forEach { row -> println(row.fold(""){a,e -> a + e}) }
 
     println("\n Clues:")
