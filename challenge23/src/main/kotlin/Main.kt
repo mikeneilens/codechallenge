@@ -46,7 +46,8 @@ fun parseIntoClues(locationString: String): List<String> {
         .map{it.toUpperCase()}
 }
 
-fun WordSearchGrid.clueConflictsWithGrid(text:String, position:Position, direction:Direction) = text.toList()
+fun WordSearchGrid.clueConflictsWithGrid(clue:String, position:Position, direction:Direction) =
+    clue.toList()
         .mapIndexed{ndx, letter ->
             val positionOnGrid = position + (direction.step * ndx)
             Pair(positionOnGrid,letter.toString())}
@@ -64,26 +65,27 @@ fun String.willFit(startPosition: Position, direction: Direction): Boolean {
     return startPosition.isValid && endPosition.isValid
 }
 
-fun WordSearchGrid.placeCluesOnGrid(listOfClues:List<String>, positions:List<Position>? = null, directions:List<Direction>? = null) {
-    if (listOfClues.isEmpty()) return
-    val clue = listOfClues.first()
-
+fun WordSearchGrid.placeClueOnGrid(clue:String, positions:List<Position>? = null, directions:List<Direction>? = null) {
     val randomPositions = positions ?: Position.inRandomOrder()
-    val randomDirections = directions ?:Direction.inRandomOrder()
+    val randomDirections = directions ?: Direction.inRandomOrder()
 
-    val validPositionsAndDirections = randomPositions.asSequence().flatMap{ position ->
+    val validPositionsAndDirections = randomPositions.asSequence().flatMap { position ->
         randomDirections.asSequence().mapNotNull { direction ->
             if (clue.willFit(position, direction)) {
                 if (clueConflictsWithGrid(clue, position, direction)) null else Pair(position, direction)
             } else null
-        }}.take(1)
-
+        }
+    }.take(1)
     if (validPositionsAndDirections.toList().isNotEmpty()) {
         val (validPosition, validDirection) = validPositionsAndDirections.first()
-        addClue(clue, validPosition,validDirection)
+        addClue(clue, validPosition, validDirection)
     }
-    placeCluesOnGrid(listOfClues.drop(1))
+}
 
+fun WordSearchGrid.placeCluesOnGrid(listOfClues:List<String>, positions:List<Position>? = null, directions:List<Direction>? = null) {
+    listOfClues.forEach { clue ->
+        placeClueOnGrid(clue, positions, directions)
+    }
 }
 
 fun createPuzzle(locations: String, randomLetter:()->String = RANDOMLETTERS):Pair<List<String>,List<String>> {

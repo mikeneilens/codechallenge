@@ -125,39 +125,67 @@ class MainTest {
 
     @Test
     fun `WordSearchGrid placeClueOnGrid will put single clue onto the grid using first position and first direction if can be placed there `() {
-        val clues = listOf("AB")
+        val clue = "AB"
         val wordSearchGrid:WordSearchGrid = mutableMapOf(Position(4,6) to "X")
         val randomPositions = listOf(Position(5,6))
         val randomDirections = listOf(Direction.HorizontalRight)
 
-        wordSearchGrid.placeCluesOnGrid(clues, positions = randomPositions, directions = randomDirections)
+        wordSearchGrid.placeClueOnGrid(clue, positions = randomPositions, directions = randomDirections)
 
         assertEquals("A", wordSearchGrid[Position(5,6)])
         assertEquals("B", wordSearchGrid[Position(6,6)])
     }
     @Test
     fun `WordSearchGrid placeClueOnGrid will put single clue onto the grid using second position and first direction if can be placed on first position `() {
-        val clues = listOf("AB")
+        val clue = "AB"
         val wordSearchGrid:WordSearchGrid = mutableMapOf(Position(5,6) to "X")
         val randomPositions = listOf(Position(5,6), Position(6,6) )
         val randomDirections = listOf(Direction.HorizontalRight)
 
-        wordSearchGrid.placeCluesOnGrid(clues, positions = randomPositions, directions = randomDirections)
+        wordSearchGrid.placeClueOnGrid(clue, positions = randomPositions, directions = randomDirections)
 
         assertEquals("A", wordSearchGrid[Position(6,6)])
         assertEquals("B", wordSearchGrid[Position(7,6)])
     }
     @Test
     fun `WordSearchGrid placeClueOnGrid will put single clue onto the grid using second direction and first position if can be placed using first direction `() {
-        val clues = listOf("AB")
+        val clue = "AB"
         val wordSearchGrid:WordSearchGrid = mutableMapOf(Position(5,6) to "X")
         val randomPositions = listOf(Position(4,6) )
+        val randomDirections = listOf(Direction.HorizontalRight, Direction.HorizontalLeft)
+
+        wordSearchGrid.placeClueOnGrid(clue, positions = randomPositions, directions = randomDirections)
+
+        assertEquals("A", wordSearchGrid[Position(4,6)])
+        assertEquals("B", wordSearchGrid[Position(3,6)])
+    }
+
+    @Test
+    fun `WordSearchGrid placeCluesOnGrid will put two clues onto the grid using first position for first clue and second position for second clue `() {
+        val clues = listOf("AB","XY")
+        val wordSearchGrid:WordSearchGrid = mutableMapOf()
+        val randomPositions = listOf(Position(4,6), Position(13,3) )
         val randomDirections = listOf(Direction.HorizontalRight, Direction.HorizontalLeft)
 
         wordSearchGrid.placeCluesOnGrid(clues, positions = randomPositions, directions = randomDirections)
 
         assertEquals("A", wordSearchGrid[Position(4,6)])
-        assertEquals("B", wordSearchGrid[Position(3,6)])
+        assertEquals("B", wordSearchGrid[Position(5,6)])
+
+        assertEquals("X", wordSearchGrid[Position(13,3)])
+        assertEquals("Y", wordSearchGrid[Position(12,3)])
+
+    }
+    @Test
+    fun `WordSearchGrid placeClueOnGrid will not put a clue on a grid if there is nowhere for it to go `() {
+        val clue = "AB"
+        val wordSearchGrid:WordSearchGrid = (0 until SIZE).map{it.asPosition to "X"}.toMap().toMutableMap()
+        val randomPositions = listOf(Position(5,6))
+        val randomDirections = listOf(Direction.HorizontalRight)
+
+        wordSearchGrid.placeClueOnGrid(clue, positions = randomPositions, directions = randomDirections)
+        assertFalse(wordSearchGrid.containsValue("A"))
+        assertFalse(wordSearchGrid.containsValue("B"))
     }
 
     @Test
