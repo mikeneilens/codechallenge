@@ -9,7 +9,7 @@ fun String.letterAt(position:Position):String {
 
 fun String.textAt(position:Position, direction:Direction, length:Int):String {
      val letters = (0 until length).map{ this.letterAt(position + (direction.step * it))}
-    return letters.fold(""){a,e -> a + e}
+    return letters.joinToString("")
 }
 
 fun String.wordFound(puzzle:String, position:Position, direction: Direction) = puzzle.textAt(position, direction, this.length) == this
@@ -17,7 +17,7 @@ fun String.wordFound(puzzle:String, position:Position, direction: Direction) = p
 fun String.positionOf(text:String):Pair<Position,Direction>? {
     return (0..SIZE).flatMap { posNdx ->
         Direction.values().mapNotNull { direction ->
-            if (text.wordFound(this, Position(posNdx % WIDTH, posNdx / WIDTH), direction)) {
+            if (text.wordFound(this, posNdx.asPosition, direction)) {
                 Pair(Position(posNdx % WIDTH, posNdx / WIDTH), direction)
             } else null
         }

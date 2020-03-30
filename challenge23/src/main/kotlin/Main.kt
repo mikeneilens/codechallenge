@@ -100,7 +100,7 @@ fun printResult(listOfLetters:List<String>, clues:List<String>){
     println("Puzzle and clues")
     println("----------------")
     val rows = listOfLetters.chunked(WIDTH)
-    rows.forEach { row -> println(row.fold(""){a,e -> a + e}) }
+    rows.forEach { row -> println(row.joinToString("")) }
 
     println("\n Clues:")
     println(clues)
