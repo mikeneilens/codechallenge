@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "E16D6F9A-3DED-4849-A0BC-D8B8CA841124"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C4E83E6B-5D90-4EA0-9CF5-A14237E6D67F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "challenge24/Main.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "getPair(cards:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "C4E83E6B-5D90-4EA0-9CF5-A14237E6D67F - c8a8486c2af0b5b3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "challenge24.getPair(cards: Swift.Array&lt;Swift.String&gt;) -&gt; Swift.Optional&lt;Swift.Array&lt;Swift.String&gt;&gt;"
+                  moduleName = "challenge24"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelneilens/Documents/GitHub/codechallenge/challenge24/challenge24/Main.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "343">
+               </Location>
+               <Location
+                  uuid = "C4E83E6B-5D90-4EA0-9CF5-A14237E6D67F - 830bcc925e30dc8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String, Swift.String) -&gt; Swift.Bool in challenge24.getPair(cards: Swift.Array&lt;Swift.String&gt;) -&gt; Swift.Optional&lt;Swift.Array&lt;Swift.String&gt;&gt;"
+                  moduleName = "challenge24"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelneilens/Documents/GitHub/codechallenge/challenge24/challenge24/Main.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "43">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "92FA6404-0087-4F5C-977D-38A978539D73"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "challenge24/Main.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "getPair(cards:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F8AA7CE8-CD43-4CD8-8AEE-7DC26FE5732F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "challenge24/Main.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "getTwoPair(cards:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
