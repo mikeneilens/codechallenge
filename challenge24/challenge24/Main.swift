@@ -25,6 +25,13 @@ extension String {
     var suit:String {
         return String(suffix(1))
     }
+    var aceLowRank:Int {
+        return  (rank == 14) ? 1 : rank
+    }
+}
+
+func getHighestCard(cards:Cards) -> Cards? {
+    return Array(cards.sorted{return $0.rank > $1.rank }.prefix(5))
 }
 
 func getPair(cards:Cards) -> Cards? {
@@ -47,14 +54,47 @@ func getStraight(cards:Cards) -> Cards? {
     return cards.removeDuplicateRank().getMatches(qty: 5, {$0.rank == $1.rank + 1})
 }
 
+func getAceLowStraight(cards:Cards) -> Cards? {
+    return cards.removeDuplicateRank().getMatches(qty: 5, {$0.aceLowRank == $1.aceLowRank + 1}, {$0.aceLowRank > $1.aceLowRank})
+}
+
+struct Hand:Equatable {
+    let cards:Cards
+    let handRank:Int
+    var value:String {return cards.value}
+    
+    static func > (left:Hand, right:Hand) -> Bool {
+        return (left.handRank > right.handRank || (left.handRank == right.handRank && left.value > right.value))
+    }
+}
 
 extension Cards {
+    
+    func bestHand()->Hand {
+        let rules = [
+                      (getStraight,5)
+                    , (getAceLowStraight,4)
+                    , (getThree,3)
+                    , (getTwoPair,2)
+                    , (getPair,1)
+                    , (getHighestCard,0)
+                    ]
+        let results:Array<Hand> = rules.compactMap{rule, handRank in
+            if let cards = rule(self) {
+                return Hand(cards:cards, handRank: handRank)
+            } else {
+                return nil
+            }
+        }
+        return results[0]
+    }
+    
+    //defaults to return when consecutive cards are the same
     func getMatches(qty:Int,_ matcher:(Card,Card)->Bool = { $0.rank == $1.rank}, _ sortBy:(Card,Card)->Bool = { $0.rank > $1.rank}) -> Cards? {
         let matches = sorted(by:sortBy)
             .reduce(Array<String>()){cardSequence, card in
                 if cardSequence.count == qty {return cardSequence}
                 if let lastCard = cardSequence.last {
-                    print("\(lastCard) \(card)")
                     if matcher(lastCard , card) {return cardSequence + [card]}
                 }
                 return [card]
@@ -62,7 +102,7 @@ extension Cards {
         return  (matches.count == qty ) ? matches : nil
     }
     
-    static func - (left:Cards, right:Cards) -> Cards {
+    static func - (left:Cards, right:Cards) -> Cards { //warning will remove cards that are identical.
         return Array(Set(left).subtracting(Set(right)))
     }
 
@@ -76,7 +116,11 @@ extension Cards {
         }
     }
     
-    func first(_ n:Int) -> Cards {
+    var value:String {
+        return reduce(""){result, card in result + String(format: "%02d", card.rank) }
+    }
+    
+    func first(_ n:Int) -> Cards { // avoids having to keep casting array slices back to arrays
         return Array(prefix(n))
     }
 }

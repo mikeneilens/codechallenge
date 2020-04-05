@@ -40,7 +40,7 @@ class challenge24Tests: XCTestCase {
     }
     func testGetTwoPair() throws {
         XCTAssertNil(getTwoPair(cards:["2C","4C","5D","6D","3H","6S"]))
-        XCTAssertEqual(["8C","8D","7C","7H","TS"], getTwoPair(cards:["8C","4C","8D","6D","7H","TS","7C"]))
+        XCTAssertEqual(["8C","8D","7H","7C","TS"], getTwoPair(cards:["8C","4C","8D","6D","7H","TS","7C"]))
         XCTAssertEqual(["TC","TS","8C","8D","7H"], getTwoPair(cards:["8C","TC","8D","6D","7H","TS","7C"]))
     }
     func testGetThree() throws {
@@ -52,7 +52,29 @@ class challenge24Tests: XCTestCase {
         XCTAssertEqual(["8C","7H","6D","5D","4C"], getStraight(cards:["8C","4C","5D","6D","7H","TS","JC"]))
         XCTAssertEqual(["TS","9C","8C","7H","6D"], getStraight(cards:["8C","4C","5D","6D","7H","TS","9C"]))
     }
-
+    func testGetAceLowStraight() throws {
+        XCTAssertNil(getAceLowStraight(cards:["AC","KC","QD","JD","TS","6S","7S"]))
+        XCTAssertEqual(["KC","QD","JD","TS","9S",], getAceLowStraight(cards:["AC","KC","QD","JD","TS","6S","9S"]))
+        XCTAssertEqual(["5D","4C","3D","2H","AS"], getAceLowStraight(cards:["8C","4C","5D","3D","2H","AS","9C"]))
+    }
+    func testHighestCard() throws {
+        XCTAssertEqual(["AC","KC","QD","JD","TS"], getHighestCard(cards:["QD","TS","AC","6S","JD","7S","KC"]))
+    }
+    func testCardValue() throws {
+        XCTAssertEqual("100403", ["TC","4H","3C"].value)
+        XCTAssertEqual("091011121314", ["9D","TC","JH","QS","KH","AS"].value)
+        XCTAssertTrue(["2C","2D","8H","7S","5D"].value > ["2C","2D","8S","6H","5S"].value  )
+    }
+    func testBestCard() throws {
+        XCTAssertEqual( Hand(cards: ["AC","KC","QD","JD","8S"], handRank: 0) , ["QD","8S","AC","6S","JD","7S","KC"].bestHand() )
+        XCTAssertEqual( Hand(cards: ["AC","KC","QD","JD","TS"], handRank: 5) , ["QD","TS","AC","6S","JD","7S","KC"].bestHand() )
+    }
+    func testHandGreaterThan() throws {
+        XCTAssertTrue( Hand(cards: ["AC","KC","QD","JD","TS"], handRank: 5) > Hand(cards: ["AC","KC","QD","JD","8S"], handRank: 0) )
+        XCTAssertTrue( Hand(cards: ["KC","QD","JD","TS","8S"], handRank: 0) > Hand(cards: ["KC","QD","JD","9S","8S"], handRank: 0) )
+        XCTAssertTrue( Hand(cards: ["AC","KC","QD","JD","TS"], handRank: 5) > Hand(cards: ["KC","QD","JD","TS","9H"], handRank: 5) )
+    }
+    
     func testRemoveDuplicateRank() throws {
         XCTAssertEqual(["3D","6C","TC"], ["TC","3D","6C"].removeDuplicateRank())
         XCTAssertEqual(["3D","6C","TC"], ["TC","3D","6C","TC","3D","6C"].removeDuplicateRank())
