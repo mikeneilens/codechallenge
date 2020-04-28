@@ -90,7 +90,11 @@ class MainTest {
         val newBottom  = listOf(46,47, 7,
                                          49,50, 4,
                                          52,53, 1)
+
         val expectedResult = listOf(newFront, newBack, newLeft, newRight, newTop, newBottom)
+        println(expectedResult)
+        println(cube.rotateLeftLayer())
+
         assertEquals(expectedResult, cube.rotateLeftLayer())
 
     }
@@ -137,8 +141,6 @@ class MainTest {
                                          49,50,51,
                                          28,31,34)
         val expectedResult = listOf(newFront, newBack, newLeft, newRight, newTop, newBottom)
-        println(expectedResult)
-        println(cube.rotateFrontLayer())
         assertEquals(expectedResult, cube.rotateFrontLayer())
 
     }
@@ -169,8 +171,6 @@ class MainTest {
     fun `rotating the top of a cube CW in original state` () {
         val result = rotateCube(listOf("GGGGGGGGG","YYYYYYYYY","OOOOOOOOO","RRRRRRRRR","WWWWWWWWW","BBBBBBBBB"),"Top","CW")
         val expectedResult = listOf("RRRGGGGGG","OOOYYYYYY","GGGOOOOOO","YYYRRRRRR","WWWWWWWWW","BBBBBBBBB")
-        println(result)
-        println(expectedResult)
         assertEquals(expectedResult, result)
     }
     @Test
@@ -202,5 +202,21 @@ class MainTest {
         val result = rotateCube(listOf("GGGGGGGGG","YYYYYYYYY","OOOOOOOOO","RRRRRRRRR","WWWWWWWWW","BBBBBBBBB"),"Front","CW")
         val expectedResult = listOf("GGGGGGGGG","YYYYYYYYY","OOBOOBOOB","WRRWRRWRR","WWWWWWOOO","BBBBBBRRR")
         assertEquals(expectedResult, result)
+    }
+    @Test
+    fun `rotating the back of a cube CW in original state` () {
+        val result = rotateCube(listOf("GGGGGGGGG","YYYYYYYYY","OOOOOOOOO","RRRRRRRRR","WWWWWWWWW","BBBBBBBBB"),"Back","CW")
+        val expectedResult = listOf("GGGGGGGGG", "YYYYYYYYY", "WOOWOOWOO", "RRBRRBRRB", "RRRWWWWWW", "OOOBBBBBB")
+        assertEquals(expectedResult, result)
+    }
+    @Test
+    fun `adding columns together`() {
+        val result = listOf(1,2,3) addColumn listOf(4,5,6)
+        val expectedResult = listOf(1,4,2,5,3,6)
+        assertEquals(expectedResult, result)
+
+        val result2 = listOf(1,4,2,5,3,6) addColumn listOf(7,8,9)
+        val expectedResult2 = listOf(1,4,7,2,5,8,3,6,9)
+        assertEquals(expectedResult2, result2)
     }
 }

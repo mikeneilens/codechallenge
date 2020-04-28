@@ -1,115 +1,98 @@
-const val FRONT = 0
-const val BACK  = 1
-const val LEFT = 2
-const val RIGHT = 3
-const val TOP = 4
-const val BOTTOM = 5
 
-fun Int.asX() = this % 3
-fun Int.asY() = this / 3
+typealias Cube<T> = List<List<T>>
+typealias Side<T> = List<T>
+
+val Int.x get() = this % 3
+val Int.y get() = this / 3
 fun Pair<Int, Int>.toInt() = first + second * 3
 
-fun <T>List<T>.rotateFaceRight(): List<T> {
-    return  mapIndexed{index, char -> Pair(Pair(2 - index.asY(), index.asX()), char) }
+val <T>Cube<T>.frontSide get() = this[0]
+val <T>Cube<T>.backSide get() = this[1]
+val <T>Cube<T>.leftSide get() = this[2]
+val <T>Cube<T>.rightSide get() = this[3]
+val <T>Cube<T>.topSide get() = this[4]
+val <T>Cube<T>.bottomSide get() = this[5]
+
+fun <T:Any>Side<T>.row(n:Int) = mapIndexedNotNull{ index,c -> if ((index / 3) == n) c else null }
+fun <T:Any>Side<T>.column(n:Int) = mapIndexedNotNull{ index, c -> if (index % 3 == n) c else null }
+
+infix fun <T>Side<T>.addColumn(other:Side<T>):Side<T> {
+    val chunks = chunked(size/3)
+    val otherChunks = other.chunked(other.size/3)
+    return chunks[0] + otherChunks[0] + chunks[1] + otherChunks[1] + chunks[2] + otherChunks[2]
+}
+
+fun <T>Side<T>.rotateFaceRight(): Side<T> {
+    return  mapIndexed{index, char -> Pair(Pair(2 - index.y, index.x), char) }
         .map{(position, char) -> Pair( position.toInt(), char ) }
         .sortedBy { it.first }
         .map{it.second}
 }
 
-fun <T>List<List<T>>.rotateTopLayer():List<List<T>> {
-    val top = this[TOP].rotateFaceRight()
-    val bottom = this[BOTTOM]
-    val front = this[RIGHT].take(3) + this[FRONT].drop(3)
-    val left = this[FRONT].take(3) + this[LEFT].drop(3)
-    val back = this[LEFT].take(3) + this[BACK].drop(3)
-    val right = this[BACK].take(3) + this[RIGHT].drop(3)
+fun <T:Any>Cube<T>.rotateTopLayer():List<List<T>> {
+    val top = topSide.rotateFaceRight()
+    val bottom = bottomSide
+    val front = rightSide.row(0) + frontSide.row(1) + frontSide.row(2)
+    val left =  frontSide.row(0) + leftSide.row(1) + leftSide.row(2)
+    val back =  leftSide.row(0) + backSide.row(1) + backSide.row(2)
+    val right = backSide.row(0) + rightSide.row(1) + rightSide.row(2)
 
     return listOf(front, back, left, right, top,bottom)
 }
 
-fun <T>List<List<T>>.rotateBottomLayer():List<List<T>> {
-    val top = this[TOP]
-    val bottom = this[BOTTOM].rotateFaceRight()
-    val front = this[FRONT].take(6) + this[LEFT].drop(6)
-    val right = this[RIGHT].take(6) + this[FRONT].drop(6)
-    val back = this[BACK].take(6) + this[RIGHT].drop(6)
-    val left = this[LEFT].take(6) + this[BACK].drop(6)
+fun <T:Any>Cube<T>.rotateBottomLayer():List<List<T>> {
+    val top = topSide
+    val bottom = bottomSide.rotateFaceRight()
+    val front = frontSide.row(0) + frontSide.row(1) + leftSide.row(2)
+    val right = rightSide.row(0) + rightSide.row(1) + frontSide.row(2)
+    val back = backSide.row(0) + backSide.row(1) + rightSide.row(2)
+    val left = leftSide.row(0) + leftSide.row(1) + backSide.row(2)
 
     return listOf(front, back, left, right, top,bottom)
 }
 
-fun <T>List<List<T>>.rotateLeftLayer():List<List<T>> {
-    val left = this[LEFT].rotateFaceRight()
-    val right = this[RIGHT]
-    val front = listOf(this[TOP][0], this[FRONT][1], this[FRONT][2],
-                               this[TOP][3], this[FRONT][4], this[FRONT][5],
-                               this[TOP][6], this[FRONT][7], this[FRONT][8])
-    val back = listOf(this[BACK][0], this[BACK][1], this[BOTTOM][2],
-                              this[BACK][3], this[BACK][4], this[BOTTOM][5],
-                              this[BACK][6], this[BACK][7], this[BOTTOM][8])
-    val top = listOf(this[BACK][8], this[TOP][1], this[TOP][2],
-                             this[BACK][5], this[TOP][4], this[TOP][5],
-                             this[BACK][2], this[TOP][7], this[TOP][8])
-    val bottom = listOf(this[BOTTOM][0], this[BOTTOM][1], this[FRONT][6],
-                                this[BOTTOM][3], this[BOTTOM][4], this[FRONT][3],
-                                this[BOTTOM][6], this[BOTTOM][7], this[FRONT][0])
+fun <T:Any>Cube<T>.rotateLeftLayer():List<List<T>> {
+    val left = leftSide.rotateFaceRight()
+    val right = rightSide
+
+    val front = topSide.column(0) addColumn frontSide.column(1) addColumn frontSide.column(2)
+    val back = backSide.column(0) addColumn backSide.column(1) addColumn bottomSide.column(2)
+    val top = backSide.column(2).reversed() addColumn topSide.column(1) addColumn topSide.column(2)
+    val bottom = bottomSide.column(0) addColumn bottomSide.column(1) addColumn frontSide.column(0).reversed()
 
     return listOf(front, back, left, right, top,bottom)
 }
 
-fun <T>List<List<T>>.rotateRightLayer():List<List<T>> {
-    val left = this[LEFT]
-    val right = this[RIGHT].rotateFaceRight()
-    val front = listOf(this[FRONT][0], this[FRONT][1], this[BOTTOM][6],
-                               this[FRONT][3], this[FRONT][4], this[BOTTOM][3],
-                               this[FRONT][6], this[FRONT][7], this[BOTTOM][0])
-    val back = listOf(this[TOP][8], this[BACK][1], this[BACK][2],
-                              this[TOP][5], this[BACK][4], this[BACK][5],
-                              this[TOP][2], this[BACK][7], this[BACK][8])
-    val top = listOf(this[TOP][0], this[TOP][1], this[FRONT][2],
-                             this[TOP][3], this[TOP][4], this[FRONT][5],
-                             this[TOP][6], this[TOP][7], this[FRONT][8])
-    val bottom = listOf(this[BACK][0], this[BOTTOM][1], this[BOTTOM][2],
-                                this[BACK][3], this[BOTTOM][4], this[BOTTOM][5],
-                                this[BACK][6], this[BOTTOM][7], this[BOTTOM][8])
+fun <T:Any>Cube<T>.rotateRightLayer():List<List<T>> {
+    val left = leftSide
+    val right = rightSide.rotateFaceRight()
+    val front = frontSide.column(0) addColumn frontSide.column(1) addColumn bottomSide.column(0).reversed()
+    val back = topSide.column(2).reversed() addColumn backSide.column(1) addColumn backSide.column(2)
+    val top = topSide.column(0) addColumn topSide.column(1) addColumn frontSide.column(2)
+    val bottom = backSide.column(0) addColumn bottomSide.column(1) addColumn bottomSide.column(2)
 
     return listOf(front, back, left, right, top,bottom)
 }
 
-fun <T>List<List<T>>.rotateFrontLayer():List<List<T>> {
-    val back = this[BACK]
-    val front = this[FRONT].rotateFaceRight()
-    val left = listOf(this[LEFT][0], this[LEFT][1], this[BOTTOM][8],
-                              this[LEFT][3], this[LEFT][4], this[BOTTOM][7],
-                              this[LEFT][6], this[LEFT][7], this[BOTTOM][6])
-    val right = listOf(this[TOP][6], this[RIGHT][1], this[RIGHT][2],
-                               this[TOP][7], this[RIGHT][4], this[RIGHT][5],
-                               this[TOP][8], this[RIGHT][7], this[RIGHT][8])
-    val top = listOf(this[TOP][0], this[TOP][1], this[TOP][2],
-                             this[TOP][3], this[TOP][4], this[TOP][5],
-                             this[LEFT][8], this[LEFT][5], this[LEFT][2])
-    val bottom = listOf(this[BOTTOM][0], this[BOTTOM][1], this[BOTTOM][2],
-                                this[BOTTOM][3], this[BOTTOM][4], this[BOTTOM][5],
-                                this[RIGHT][0], this[RIGHT][3], this[RIGHT][6])
+fun <T:Any>Cube<T>.rotateFrontLayer():List<List<T>> {
+    val back = backSide
+    val front = frontSide.rotateFaceRight()
+
+    val left = leftSide.column(0) addColumn leftSide.column(1) addColumn bottomSide.row(2).reversed()
+    val right = topSide.row(2) addColumn rightSide.column(1) addColumn rightSide.column(2)
+    val top = topSide.row(0) + topSide.row(1) + leftSide.column(2).reversed()
+    val bottom = bottomSide.row(0) + bottomSide.row(1) + rightSide.column(0)
 
     return listOf(front, back, left, right, top,bottom)
 }
 
-fun <T>List<List<T>>.rotateBackLayer():List<List<T>> {
-    val back = this[BACK].rotateFaceRight()
-    val front = this[FRONT]
-    val left = listOf(this[TOP][2], this[LEFT][1], this[LEFT][2],
-                              this[TOP][1], this[LEFT][4], this[LEFT][5],
-                              this[TOP][0], this[LEFT][7], this[LEFT][8])
-    val right = listOf(this[RIGHT][0], this[RIGHT][1], this[BOTTOM][0],
-                               this[RIGHT][3], this[RIGHT][4], this[BOTTOM][1],
-                               this[RIGHT][6], this[RIGHT][7], this[BOTTOM][2])
-    val top = listOf(this[RIGHT][2], this[RIGHT][5], this[RIGHT][8],
-                             this[TOP][3], this[TOP][4], this[TOP][5],
-                             this[TOP][6], this[TOP][7], this[TOP][8])
-    val bottom = listOf(this[LEFT][6], this[LEFT][3], this[LEFT][0],
-                                this[BOTTOM][3], this[BOTTOM][4], this[BOTTOM][5],
-                                this[BOTTOM][6], this[BOTTOM][7], this[BOTTOM][8])
+fun <T:Any>Cube<T>.rotateBackLayer():List<List<T>> {
+    val back = backSide.rotateFaceRight()
+    val front = frontSide
+    val left = topSide.row(0).reversed() addColumn leftSide.column(1) addColumn leftSide.column(2)
+    val right = rightSide.column(0) addColumn rightSide.column(1) addColumn bottomSide.row(0)
+    val top = rightSide.column(2) + topSide.row(1) + topSide.row(2)
+    val bottom = leftSide.column(0).reversed() + bottomSide.row(1) + bottomSide.row(2)
 
     return listOf(front, back, left, right, top,bottom)
 }
@@ -117,16 +100,16 @@ fun <T>List<List<T>>.rotateBackLayer():List<List<T>> {
 fun rotateCube(cube:List<String>, face:String, direction:String):List<String> {
 
     val cubeAsList = cube.map{it.toList()}
-    val rotator = when (face) {
-        "Front" ->  {cube:List<List<Char>> -> cube.rotateFrontLayer()}
-        "Back" ->  {cube:List<List<Char>> -> cube.rotateBackLayer()}
-        "Left" ->  {cube:List<List<Char>> -> cube.rotateLeftLayer()}
-        "Right" ->  {cube:List<List<Char>> -> cube.rotateRightLayer()}
-        "Top" ->  {cube:List<List<Char>> -> cube.rotateTopLayer()}
-        "Bottom" ->  {cube:List<List<Char>> -> cube.rotateBottomLayer()}
-        else ->  {cube:List<List<Char>> -> cube.rotateTopLayer()}
+    val rotateLayer = when (face) {
+        "Front" ->  {cube:Cube<Char> -> cube.rotateFrontLayer()}
+        "Back" ->  {cube:Cube<Char> -> cube.rotateBackLayer()}
+        "Left" ->  {cube:Cube<Char> -> cube.rotateLeftLayer()}
+        "Right" ->  {cube:Cube<Char> -> cube.rotateRightLayer()}
+        "Top" ->  {cube:Cube<Char> -> cube.rotateTopLayer()}
+        "Bottom" ->  {cube:Cube<Char> -> cube.rotateBottomLayer()}
+        else ->  {cube:Cube<Char> -> cube.rotateTopLayer()}
     }
-    val newCubeAsList =  if (direction == "CW") rotator(cubeAsList)  else rotator(rotator(rotator(cubeAsList)))
+    val newCubeAsList =  if (direction == "CW") rotateLayer(cubeAsList)  else rotateLayer(rotateLayer(rotateLayer(cubeAsList)))
     return newCubeAsList.map{it.joinToString ("")}
 
 }
