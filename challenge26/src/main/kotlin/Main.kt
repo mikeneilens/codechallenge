@@ -2,16 +2,18 @@
 typealias Cube<T> = List<List<T>>
 typealias Side<T> = List<T>
 
-val Int.x get() = this % 3
-val Int.y get() = this / 3
-fun Pair<Int, Int>.toInt() = first + second * 3
+data class Position(val x:Int, val y:Int, private val width:Int = 3) {
+    val toIndex get() = x + (y * width)
+    val rotated get() = Position( width - 1 - y , x)
+}
+fun newPosition(ndx:Int, width:Int = 3) = Position(ndx % width, ndx / width)
 
-val <T>Cube<T>.frontSide get() = this[0]
-val <T>Cube<T>.backSide get() = this[1]
-val <T>Cube<T>.leftSide get() = this[2]
-val <T>Cube<T>.rightSide get() = this[3]
-val <T>Cube<T>.topSide get() = this[4]
-val <T>Cube<T>.bottomSide get() = this[5]
+val <T>Cube<T>.frontSide get() = get(0)
+val <T>Cube<T>.backSide get() = get(1) //this[1]
+val <T>Cube<T>.leftSide get() = get(2)
+val <T>Cube<T>.rightSide get() = get(3)
+val <T>Cube<T>.topSide get() = get(4)
+val <T>Cube<T>.bottomSide get() = get(5)
 
 fun <T:Any>Side<T>.row(n:Int) = mapIndexedNotNull{ index,c -> if ((index / 3) == n) c else null }
 fun <T:Any>Side<T>.column(n:Int) = mapIndexedNotNull{ index, c -> if (index % 3 == n) c else null }
@@ -23,8 +25,8 @@ infix fun <T>Side<T>.addColumn(other:Side<T>):Side<T> {
 }
 
 fun <T>Side<T>.rotateFaceRight(): Side<T> {
-    return  mapIndexed{index, char -> Pair(Pair(2 - index.y, index.x), char) }
-        .map{(position, char) -> Pair( position.toInt(), char ) }
+    return  mapIndexed{index, char -> Pair(newPosition(index).rotated, char) }
+        .map{(position, char) -> Pair( position.toIndex, char ) }
         .sortedBy { it.first }
         .map{it.second}
 }
@@ -101,13 +103,13 @@ fun rotateCube(cube:List<String>, face:String, direction:String):List<String> {
 
     val cubeAsList = cube.map{it.toList()}
     val rotateLayer = when (face) {
-        "Front" ->  {cube:Cube<Char> -> cube.rotateFrontLayer()}
-        "Back" ->  {cube:Cube<Char> -> cube.rotateBackLayer()}
-        "Left" ->  {cube:Cube<Char> -> cube.rotateLeftLayer()}
-        "Right" ->  {cube:Cube<Char> -> cube.rotateRightLayer()}
-        "Top" ->  {cube:Cube<Char> -> cube.rotateTopLayer()}
-        "Bottom" ->  {cube:Cube<Char> -> cube.rotateBottomLayer()}
-        else ->  {cube:Cube<Char> -> cube.rotateTopLayer()}
+        "Front" ->  {c:Cube<Char> -> c.rotateFrontLayer()}
+        "Back" ->  {c:Cube<Char> -> c.rotateBackLayer()}
+        "Left" ->  {c:Cube<Char> -> c.rotateLeftLayer()}
+        "Right" ->  {c:Cube<Char> -> c.rotateRightLayer()}
+        "Top" ->  {c:Cube<Char> -> c.rotateTopLayer()}
+        "Bottom" ->  {c:Cube<Char> -> c.rotateBottomLayer()}
+        else ->  {c:Cube<Char> -> c.rotateTopLayer()}
     }
     val newCubeAsList =  if (direction == "CW") rotateLayer(cubeAsList)  else rotateLayer(rotateLayer(rotateLayer(cubeAsList)))
     return newCubeAsList.map{it.joinToString ("")}

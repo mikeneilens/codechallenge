@@ -3,25 +3,44 @@ import org.junit.jupiter.api.Test
 
 class MainTest {
 
-    val front = listOf( 1, 2, 3,
-                        4, 5, 6,
-                        7, 8, 9)
-    val back =  listOf(10,11,12,
+    private val front = listOf( 1, 2, 3,
+                                4, 5, 6,
+                                7, 8, 9)
+    private val back =  listOf(10,11,12,
                        13,14,15,
                        16,17,18)
-    val left =  listOf(19,20,21,
+    private val left =  listOf(19,20,21,
                        22,23,24,
                        25,26,27)
-    val right = listOf(28,29,30,
+    private val right = listOf(28,29,30,
                        31,32,33,
                        34,35,36)
-    val top =   listOf(37,38,39,
+    private val top =   listOf(37,38,39,
                        40,41,42,
                        43,44,45)
-    val bottom =listOf(46,47,48,
+    private val bottom =listOf(46,47,48,
                        49,50,51,
                        52,53,54)
-    val cube = listOf(front, back, left, right, top, bottom)
+    private val cube = listOf(front, back, left, right, top, bottom)
+
+    @Test
+    fun `new position creates a position correctly`() {
+        assertEquals(Position(0,0), newPosition(0))
+        assertEquals(Position(1,0), newPosition(1))
+        assertEquals(Position(2,0), newPosition(2))
+        assertEquals(Position(0,1), newPosition(3))
+        assertEquals(Position(1,2), newPosition(7))
+    }
+    @Test
+    fun `rotating a position creates a new position 90 degrees cw from the original`() {
+        assertEquals(Position(2,0), Position(0,0).rotated)
+        assertEquals(Position(2,1), Position(1,0).rotated)
+        assertEquals(Position(2,2), Position(2,0).rotated)
+        assertEquals(Position(1,0), Position(0,1).rotated)
+        assertEquals(Position(1,1), Position(1,1).rotated)
+        assertEquals(Position(1,2), Position(2,1).rotated)
+    }
+
     @Test
     fun `rotating a side gives a side rotated by 90 degrees`() {
         val expectedResult = listOf( 7, 4, 1,
@@ -92,8 +111,6 @@ class MainTest {
                                          52,53, 1)
 
         val expectedResult = listOf(newFront, newBack, newLeft, newRight, newTop, newBottom)
-        println(expectedResult)
-        println(cube.rotateLeftLayer())
 
         assertEquals(expectedResult, cube.rotateLeftLayer())
 
@@ -209,14 +226,45 @@ class MainTest {
         val expectedResult = listOf("GGGGGGGGG", "YYYYYYYYY", "WOOWOOWOO", "RRBRRBRRB", "RRRWWWWWW", "OOOBBBBBB")
         assertEquals(expectedResult, result)
     }
+
+    @Test
+    fun `column returns the correct column from a cube face`() {
+        assertEquals(listOf(1,4,7), front.column(0))
+        assertEquals(listOf(2,5,8), front.column(1))
+        assertEquals(listOf(3,6,9), front.column(2))
+    }
+
+    @Test
+    fun `row returns the correct row from a cube face`() {
+        assertEquals(listOf(1,2,3), front.row(0))
+        assertEquals(listOf(4,5,6), front.row(1))
+        assertEquals(listOf(7,8,9), front.row(2))
+    }
+
     @Test
     fun `adding columns together`() {
-        val result = listOf(1,2,3) addColumn listOf(4,5,6)
-        val expectedResult = listOf(1,4,2,5,3,6)
+        val col = listOf(1,
+                                  2,
+                                  3)
+        val otherCol = listOf(4,
+                                       5,
+                                       6)
+        val result = col addColumn otherCol
+        val expectedResult = listOf(1,4,
+                                             2,5,
+                                             3,6)
         assertEquals(expectedResult, result)
 
-        val result2 = listOf(1,4,2,5,3,6) addColumn listOf(7,8,9)
-        val expectedResult2 = listOf(1,4,7,2,5,8,3,6,9)
+        val col2 = listOf(1,4,
+                                   2,5,
+                                   3,6)
+        val otherCol2 =  listOf(7,
+                                         8,
+                                         9)
+        val result2 = col2 addColumn otherCol2
+        val expectedResult2 = listOf(1,4,7,
+                                              2,5,8,
+                                              3,6,9)
         assertEquals(expectedResult2, result2)
     }
 }
