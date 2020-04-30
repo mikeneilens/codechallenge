@@ -226,6 +226,12 @@ class MainTest {
         val expectedResult = listOf("GGGGGGGGG", "YYYYYYYYY", "WOOWOOWOO", "RRBRRBRRB", "RRRWWWWWW", "OOOBBBBBB")
         assertEquals(expectedResult, result)
     }
+    @Test
+    fun `rotating the back of a cube CCW in original state` () {
+        val result = rotateCube(listOf("GGGGGGGGG","YYYYYYYYY","OOOOOOOOO","RRRRRRRRR","WWWWWWWWW","BBBBBBBBB"),"Back","CCW")
+        val expectedResult = listOf("GGGGGGGGG", "YYYYYYYYY", "BOOBOOBOO", "RRWRRWRRW", "OOOWWWWWW", "RRRBBBBBB")
+        assertEquals(expectedResult, result)
+    }
 
     @Test
     fun `column returns the correct column from a cube face`() {
