@@ -33,12 +33,12 @@ class MainTest {
     }
     @Test
     fun `rotating a position creates a new position 90 degrees cw from the original`() {
-        assertEquals(Position(2,0), Position(0,0).rotated)
-        assertEquals(Position(2,1), Position(1,0).rotated)
-        assertEquals(Position(2,2), Position(2,0).rotated)
-        assertEquals(Position(1,0), Position(0,1).rotated)
-        assertEquals(Position(1,1), Position(1,1).rotated)
-        assertEquals(Position(1,2), Position(2,1).rotated)
+        assertEquals(Position(2,0), Position(0,0).rotatedCW)
+        assertEquals(Position(2,1), Position(1,0).rotatedCW)
+        assertEquals(Position(2,2), Position(2,0).rotatedCW)
+        assertEquals(Position(1,0), Position(0,1).rotatedCW)
+        assertEquals(Position(1,1), Position(1,1).rotatedCW)
+        assertEquals(Position(1,2), Position(2,1).rotatedCW)
     }
 
     @Test
@@ -46,7 +46,7 @@ class MainTest {
         val expectedResult = listOf( 7, 4, 1,
                                               8, 5, 2,
                                               9, 6, 3)
-        assertEquals(expectedResult, front.rotateFaceRight())
+        assertEquals(expectedResult, front.rotateFaceCW())
     }
     @Test
     fun `rotating the top layer results in a cube with a top rotated 90 degrees and top row of front, left, back and right moved`() {
@@ -68,7 +68,7 @@ class MainTest {
         val newBottom = bottom
         val expectedResult = listOf(newFront, newBack, newLeft, newRight, newTop, newBottom)
 
-        assertEquals(expectedResult, cube.rotateTopLayer())
+        assertEquals(expectedResult, cube.rotateTopLayerCW())
     }
     @Test
     fun `rotating the bottom layer results in a cube with a bottom rotated 90 degrees and bottom row of front, left, back and right moved`() {
@@ -89,7 +89,7 @@ class MainTest {
                                         53,50,47,
                                         54,51,48)
         val expectedResult = listOf(newFront, newBack, newLeft, newRight, newTop, newBottom)
-        assertEquals(expectedResult, cube.rotateBottomLayer())
+        assertEquals(expectedResult, cube.rotateBottomLayerCW())
     }
     @Test
     fun `rotating the left layer results in the left rotated 90 degrees with the left column of the top, front, bottom and back moved`() {
@@ -112,7 +112,7 @@ class MainTest {
 
         val expectedResult = listOf(newFront, newBack, newLeft, newRight, newTop, newBottom)
 
-        assertEquals(expectedResult, cube.rotateLeftLayer())
+        assertEquals(expectedResult, cube.rotateLeftLayerCW())
 
     }
 
@@ -135,7 +135,7 @@ class MainTest {
                                          13,50,51,
                                          16,53,54)
         val expectedResult = listOf(newFront, newBack, newLeft, newRight, newTop, newBottom)
-        assertEquals(expectedResult, cube.rotateRightLayer())
+        assertEquals(expectedResult, cube.rotateRightLayerCW())
 
     }
 
@@ -158,7 +158,7 @@ class MainTest {
                                          49,50,51,
                                          28,31,34)
         val expectedResult = listOf(newFront, newBack, newLeft, newRight, newTop, newBottom)
-        assertEquals(expectedResult, cube.rotateFrontLayer())
+        assertEquals(expectedResult, cube.rotateFrontLayerCW())
 
     }
     @Test
@@ -180,7 +180,7 @@ class MainTest {
                                          49,50,51,
                                          52,53,54)
         val expectedResult = listOf(newFront, newBack, newLeft, newRight, newTop, newBottom)
-        assertEquals(expectedResult, cube.rotateBackLayer())
+        assertEquals(expectedResult, cube.rotateBackLayerCW())
 
     }
 
@@ -266,7 +266,7 @@ class MainTest {
         val otherCol = listOf(4,
                                        5,
                                        6)
-        val result = col addColumn otherCol
+        val result = col addTo otherCol
         val expectedResult = listOf(1,4,
                                              2,5,
                                              3,6)
@@ -278,7 +278,7 @@ class MainTest {
         val otherCol2 =  listOf(7,
                                          8,
                                          9)
-        val result2 = col2 addColumn otherCol2
+        val result2 = col2 addTo otherCol2
         val expectedResult2 = listOf(1,4,7,
                                               2,5,8,
                                               3,6,9)
