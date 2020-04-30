@@ -100,9 +100,9 @@ val rotators:Map<String, Cube<Char>.()->Cube<Char>> = mapOf(
 
 fun rotateCube(cube:List<String>, face:String, direction:String):List<String> {
     if (direction != "CW" && direction != "CCW") return cube
-    val rotator = rotators[face] ?: return cube
+    val rotate = rotators[face] ?: return cube
 
     val cubeAsList = cube.map{it.toList()}
-    val newCubeAsList =  if (direction == "CW") cubeAsList.rotator()  else cubeAsList.rotator().rotator().rotator()
+    val newCubeAsList =  if (direction == "CW") cubeAsList.rotate()  else cubeAsList.rotate().rotate().rotate()
     return  newCubeAsList.map{it.joinToString ("")}
 }
