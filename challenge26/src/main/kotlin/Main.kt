@@ -61,14 +61,13 @@ fun <T:Any>Cube<T>.rotateLeftLayer():Cube<T> {
 }
 
 fun <T:Any>Cube<T>.rotateRightLayer():Cube<T> {
-    val left = leftSide
     val right = rightSide.rotateFaceRight()
     val front = frontSide.column(0) addColumn frontSide.column(1) addColumn bottomSide.column(0).reversed()
     val back = topSide.column(2).reversed() addColumn backSide.column(1) addColumn backSide.column(2)
     val top = topSide.column(0) addColumn topSide.column(1) addColumn frontSide.column(2)
     val bottom = backSide.column(0) addColumn bottomSide.column(1) addColumn bottomSide.column(2)
 
-    return listOf(front, back, left, right, top,bottom)
+    return listOf(front, back, leftSide, right, top,bottom)
 }
 
 fun <T:Any>Cube<T>.rotateFrontLayer():Cube<T> {
@@ -100,12 +99,10 @@ val rotators:Map<String, Cube<Char>.()->Cube<Char>> = mapOf(
                 "Bottom" to Cube<Char>::rotateBottomLayer)
 
 fun rotateCube(cube:List<String>, face:String, direction:String):List<String> {
+    if (direction != "CW" && direction != "CCW") return cube
+    val rotator = rotators[face] ?: return cube
+
     val cubeAsList = cube.map{it.toList()}
-    val layerRotator = rotators[face]
-    return if (layerRotator != null) {
-        val newCubeAsList =  if (direction == "CW") cubeAsList.layerRotator()  else cubeAsList.layerRotator().layerRotator().layerRotator()
-        newCubeAsList.map{it.joinToString ("")}
-    } else {
-        cube
-    }
+    val newCubeAsList =  if (direction == "CW") cubeAsList.rotator()  else cubeAsList.rotator().rotator().rotator()
+    return  newCubeAsList.map{it.joinToString ("")}
 }

@@ -232,7 +232,18 @@ class MainTest {
         val expectedResult = listOf("GGGGGGGGG", "YYYYYYYYY", "BOOBOOBOO", "RRWRRWRRW", "OOOWWWWWW", "RRRBBBBBB")
         assertEquals(expectedResult, result)
     }
-
+    @Test
+    fun `rotating the back of a cube in an invalid direction` () {
+        val result = rotateCube(listOf("GGGGGGGGG", "YYYYYYYYY", "BOOBOOBOO", "RRWRRWRRW", "OOOWWWWWW", "RRRBBBBBB"),"Back","X")
+        val expectedResult = listOf("GGGGGGGGG", "YYYYYYYYY", "BOOBOOBOO", "RRWRRWRRW", "OOOWWWWWW", "RRRBBBBBB")
+        assertEquals(expectedResult, result)
+    }
+    @Test
+    fun `rotating the face of a cube using an invalid face` () {
+        val result = rotateCube(listOf("GGGGGGGGG", "YYYYYYYYY", "BOOBOOBOO", "RRWRRWRRW", "OOOWWWWWW", "RRRBBBBBB"),"b","CW")
+        val expectedResult = listOf("GGGGGGGGG", "YYYYYYYYY", "BOOBOOBOO", "RRWRRWRRW", "OOOWWWWWW", "RRRBBBBBB")
+        assertEquals(expectedResult, result)
+    }
     @Test
     fun `column returns the correct column from a cube face`() {
         assertEquals(listOf(1,4,7), front.column(0))
