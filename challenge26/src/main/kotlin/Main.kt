@@ -1,6 +1,6 @@
 
-typealias Cube<T> = List<List<T>>
 typealias Side<T> = List<T>
+typealias Cube<T> = List<Side<T>>
 
 data class Position(val x:Int, val y:Int, private val width:Int = 3) {
     val toIndex get() = x + (y * width)
@@ -98,11 +98,13 @@ val rotators:Map<String, Cube<Char>.()->Cube<Char>> = mapOf(
                 "Top"    to Cube<Char>::rotateTopLayerCW,
                 "Bottom" to Cube<Char>::rotateBottomLayerCW)
 
-fun rotateCube(cube:List<String>, face:String, direction:String):List<String> {
-    if (direction != "CW" && direction != "CCW") return cube
-    val rotateClockwise = rotators[face] ?: return cube
+//returns data unchanged if parameters are invalid
+fun rotateCube(cubeAsStrings:List<String>, face:String, direction:String):List<String> {
+    if (direction != "CW" && direction != "CCW") return cubeAsStrings
+    val rotateClockwise = rotators[face] ?: return cubeAsStrings
 
-    val cubeAsList = cube.map{it.toList()}
-    val newCubeAsList =  if (direction == "CW") cubeAsList.rotateClockwise()  else cubeAsList.rotateClockwise().rotateClockwise().rotateClockwise()
-    return  newCubeAsList.map{it.joinToString ("")}
+    val cube = cubeAsStrings.map{it.toList()}
+    val newCube =  if (direction == "CW") cube.rotateClockwise()  else cube.rotateClockwise().rotateClockwise().rotateClockwise()
+
+    return  newCube.map{it.joinToString ("")}
 }
