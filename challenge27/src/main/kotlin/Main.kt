@@ -1,68 +1,42 @@
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.module.kotlin.readValue
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
-import java.io.IOException
-import java.net.URL
 
 typealias Shot = Position
-typealias Result = String
-typealias ResultMap = MutableMap<Shot, Result>
+typealias ResultMap = MutableMap<Position, Result>
 
 val mapper: ObjectMapper = ObjectMapper().registerKotlinModule().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
 
-data class Data(
-    val results: List<String>
-)
-
-interface Requester {
-    fun makeRequest(param:String="shots=E4"):List<Result>
-}
-
-object RequestObject:Requester {
-    override fun makeRequest(param:String):List<Result> {
-        val response = try {
-            URL("https://challenge27.appspot.com/?$param")
-                .openStream()
-                .bufferedReader()
-                .use { it.readText() }
-        } catch (e: IOException) {
-            "Error with ${e.message}."
-        }
-        val data:Data = mapper.readValue(response)
-        return data.results
-    }
-}
-
 val randomShots:List<Shot> = (0..99).toList().shuffled().map{it.toPosition()}
 
-fun fireShot(shots: List<Shot>, resultsMap: ResultMap, requester:Requester, player:String = "", game:String = ""): ResultMap {
+fun Config.fireShot(shots: List<Shot>, resultsMap: ResultMap): ResultMap {
     val shotsJoined = shots.joinToString("")
     var param = "shots=$shotsJoined"
     if (player.isNotEmpty()) param = "$param&player=$player"
     if (game.isNotEmpty()) param = "$param&game=$game"
-    val results = requester.makeRequest(param)
+    val results = makeRequest(param)
     results.forEachIndexed { index, result ->
         resultsMap[shots[index]] = result
     }
     return resultsMap
 }
-fun fireShotsUntilAllSunk(resultsMap: ResultMap, requester: Requester = RequestObject, noOfSquares:Int = 18, player:String = "", game:String = ""):ResultMap {
+
+fun Config.fireShotsUntilAllSunk(resultsMap: ResultMap, noOfSquares:Int = 18):ResultMap {
         var index = 0
         while (!resultsMap.allSunk(noOfSquares)) {
             val shot = randomShots[++index]
-            if (resultsMap[shot] == null) {
+            if (resultsMap[shot] !is Result) {
                 val shots = listOf(shot)
-                fireShot(shots,resultsMap, requester, player, game)
-                if (resultsMap[shot] == "H") {
+                fireShot(shots,resultsMap)
+                if (resultsMap[shot] == Result.Hit) {
                     val sunkenShip = shots
-                        .fireMoreShots(shot.above(), resultsMap, requester, player, game)
-                        .fireMoreShots(shot.below(), resultsMap, requester, player, game)
-                        .fireMoreShots(shot.toLeft(), resultsMap, requester, player, game)
-                        .fireMoreShots(shot.toRight(), resultsMap, requester, player, game)
+                        .fireMoreShots(shot.above(), resultsMap, this)
+                        .fireMoreShots(shot.below(), resultsMap, this)
+                        .fireMoreShots(shot.toLeft(), resultsMap, this)
+                        .fireMoreShots(shot.toRight(), resultsMap, this)
 
                     println("Ship sunk = $sunkenShip")
-                    resultsMap.surroundSunkenShipsWithWater()
+                    sunkenShip.surroundSunkenShipsWithWater(resultsMap)
                 }
             }
         }
@@ -70,43 +44,41 @@ fun fireShotsUntilAllSunk(resultsMap: ResultMap, requester: Requester = RequestO
         return resultsMap
 }
 
-// This returns all sucessful shots fired so far, i.e. shots resulting in H or S.
-fun List<Shot>.fireMoreShots(additionalShots:List<Shot>, resultsMap: ResultMap, requester:Requester, player:String = "", game:String = ""):List<Shot> {
+// This returns all successful shots fired so far, i.e. shots resulting in H or S.
+fun List<Shot>.fireMoreShots(additionalShots:List<Shot>, resultsMap: ResultMap, config:Config):List<Shot> {
 
     tailrec fun fireMoreShots(additionalShots:List<Shot> ,shots: List<Shot>, resultsMap: ResultMap, requester:Requester, player:String = "", game:String = ""):List<Shot> {
-        if (resultsMap[shots.last()] != "H" || additionalShots.isEmpty() || resultsMap[additionalShots.first()] != null ) return shots
+        if (resultsMap[shots.last()] != Result.Hit || additionalShots.isEmpty() || resultsMap[additionalShots.first()] is Result ) return shots
 
         val additionalShot =  additionalShots.first()
-        fireShot(shots + additionalShot, resultsMap, requester, player, game)
+        config.fireShot(shots + additionalShot, resultsMap)
         return if (resultsMap.hitOrSunk(additionalShot)) fireMoreShots(additionalShots.drop(1),shots + additionalShot, resultsMap, requester, player, game)
         else shots
     }
 
-    return fireMoreShots(additionalShots,this, resultsMap, requester, player, game)
+    return fireMoreShots(additionalShots,this, resultsMap, config)
 }
 
-fun ResultMap.surroundSunkenShipsWithWater(){
-    toList().forEach { (shot, result) ->
-        if (result == "S") {
-            val surroundingPositions = shot.surrounding()
-            surroundingPositions.forEach{position ->
-                if (this[position] == null) this[position] = "."
-            }
+fun List<Shot>.surroundSunkenShipsWithWater(resultsMap:ResultMap){
+    forEach { shot ->
+        val surroundingPositions = shot.surrounding()
+        surroundingPositions.forEach{position ->
+            if (resultsMap[position] !is Result) resultsMap[position] = Result.DMZ
         }
     }
 }
 
-fun ResultMap.allSunk(noOfSquares:Int) = (values.filter{it == "S" || it == "H"}.size == noOfSquares)
-fun ResultMap.hitOrSunk(shot:Shot) = this[shot] == "H" || this[shot] == "S"
+fun ResultMap.allSunk(noOfSquares:Int) = (values.filter{it == Result.Sunk || it == Result.Hit}.size == noOfSquares)
+fun ResultMap.hitOrSunk(shot:Shot) = this[shot] == Result.Hit || this[shot] == Result.Sunk
 
 fun ResultMap.print() {
 
-    println("Shots = ${values.count { it == "S" || it == "M" }}")
+    println("Shots = ${values.count { it == Result.Sunk || it == Result.Water }}")
     println()
     (0..9).forEach{col ->
         var data = ""
         (0..9).forEach{row ->
-            data += (this[Position(col,row)] ?: " ")
+            data += this[Position(col,row)]?.toString() ?: " "
         }
         println(data)
     }

@@ -13,13 +13,11 @@ Reading through each position:
 3. If its a hit find all positions to the left, to the right, above and below the sucessful position, sequenced moving away from the position.
 4. Stop firing if the ship is sunk.
 
-Surround any empty positions adjacent to 'S' on the map with water on the map so we know not to fire at them. 
+Surround any empty positions adjacent to sunk ships on the map with a DMZ on the map so we know not to fire at those positions. 
 
 Repeat until there are 18 'S's on the map.
 
 Thats it.
 
 #### Potential Improvements:
-The way the sunk ships are surrounded with water is a bit crude and repetitive.
-Could pass round the player/game/requester and maybe the mutable map as a single object.
 The code will try and find the biggest possible ship even if there are only destroyers left. Should be possbile to only fire off enough shots to sink the biggest remaining ship.
