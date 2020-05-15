@@ -14,309 +14,275 @@ class MainTest {
         override fun makeRequest(param:String):List<Result> = results[param] ?: listOf()
     }
     @Test
-    fun `coordinate for integet 0 should be A0`() {
-        assertEquals("A0", 0.asCoordinate())
+    fun `position for integet 0 should be A0`() {
+        assertEquals("A0", "${0.toPosition()}")
     }
     @Test
     fun `coordinate for integet 9 should be J0`() {
-        assertEquals("J0", 9.asCoordinate())
+        assertEquals("J0", "${9.toPosition()}")
     }
     @Test
     fun `coordinate for integet 90 should be A9`() {
-        assertEquals("A9", 90.asCoordinate())
+        assertEquals("A9", "${90.toPosition()}")
     }
     @Test
     fun `coordinate for integet 99 should be J9`() {
-        assertEquals("J9", 99.asCoordinate())
+        assertEquals("J9", "${99.toPosition()}")
     }
 
     @Test
-    fun `integer for coordinate A0 should be 0`() {
-        assertEquals(0, "A0".asInt())
+    fun `Positions toRight of last column is an empty list`() {
+        assertEquals(listOf<Position>(), Position(9,4).toRight() )
     }
     @Test
-    fun `integer for coordinate J0 should be 9`() {
-        assertEquals(9, "J0".asInt())
+    fun `Positions toRight of next to last column is a list containing last column`() {
+        assertEquals(listOf<Position>(Position(9,4)), Position(8,4).toRight() )
     }
     @Test
-    fun `integer for coordinate A9 should be 90`() {
-        assertEquals(90, "A9".asInt())
+    fun `Positions toRight of 7th column is a list containing 3 positions with asscending columns`() {
+        assertEquals(listOf<Position>(Position(7,4),Position(8,4),Position(9,4)), Position(6,4).toRight() )
+    }
+
+    @Test
+    fun `Positions toLeft of first column is an empty list`() {
+        assertEquals(listOf<Position>(), Position(0,4).toLeft() )
     }
     @Test
-    fun `integer for coordinate J9 should be 99`() {
-        assertEquals(99, "J9".asInt())
+    fun `Positions toLeft of 2nd column is a list containing first column`() {
+        assertEquals(listOf<Position>(Position(0,4)), Position(1,4).toLeft() )
+    }
+    @Test
+    fun `Positions toLeft of 4th column is a list containing 3 positions with descending columns`() {
+        assertEquals(listOf<Position>(Position(2,4),Position(1,4),Position(0,4)), Position(3,4).toLeft() )
+    }
+
+    @Test
+    fun `Positions Below last tow is an empty list`() {
+        assertEquals(listOf<Position>(), Position(5,9).below() )
+    }
+    @Test
+    fun `Positions below of next to last row is a list containing last row`() {
+        assertEquals(listOf<Position>(Position(5,9)), Position(5,8).below() )
+    }
+    @Test
+    fun `Positions below  7th row is a list containing 3 positions with asscending rows`() {
+        assertEquals(listOf<Position>(Position(5,7),Position(5,8),Position(5,9)), Position(5,6).below() )
+    }
+
+    @Test
+    fun `Positions above first row is an empty list`() {
+        assertEquals(listOf<Position>(), Position(5,0).above() )
+    }
+    @Test
+    fun `Positions above 2nd row is a list containing first row`() {
+        assertEquals(listOf<Position>(Position(5,0)), Position(5,1).above() )
+    }
+    @Test
+    fun `Positions above 4th row is a list containing 3 positions with descending rows`() {
+        assertEquals(listOf<Position>(Position(5,2),Position(5,1),Position(5,0)), Position(5,3).above() )
+    }
+    @Test
+    fun `There are 3 positions adjacent to position 0,0`() {
+        val positions = Position(0,0).surrounding()
+        assertEquals(3, positions.size )
+    }
+    @Test
+    fun `There are 3 positions adjacent to position 9,0`() {
+        val positions = Position(9,0).surrounding()
+        assertEquals(3, positions.size )
+    }
+    @Test
+    fun `There are 3 positions adjacent to position 0,9`() {
+        val positions = Position(0,9).surrounding()
+        assertEquals(3, positions.size )
+    }
+    @Test
+    fun `There are 3 positions adjacent to position 9,9`() {
+        val positions = Position(9,9).surrounding()
+        assertEquals(3, positions.size )
+    }
+    @Test
+    fun `There are 5 positions adjacent to position 5,0`() {
+        val positions = Position(5,0).surrounding()
+        assertEquals(5, positions.size )
+    }
+    @Test
+    fun `There are 5 positions adjacent to position 5,9`() {
+        val positions = Position(5,9).surrounding()
+        assertEquals(5, positions.size )
+    }
+    @Test
+    fun `There are 5 positions adjacent to position 0,5`() {
+        val positions = Position(0,5).surrounding()
+        assertEquals(5, positions.size )
+    }
+    @Test
+    fun `There are 5 positions adjacent to position 9,5`() {
+        val positions = Position(9,5).surrounding()
+        assertEquals(5, positions.size )
+    }
+    @Test
+    fun `There are 8 positions adjacent to position 1,1`() {
+        val positions = Position(1,1).surrounding()
+        assertEquals(8, positions.size )
+    }
+
+    @Test
+    fun `Fire more shots gives the original shot if the last shot is not 'H'`() {
+        val resultsMap:ResultMap = mutableMapOf(
+            Position(0,1) to "S"
+        )
+        val resultingShots = fireMoreShots(listOf(Position(1,1)),listOf(Position(0,1)), resultsMap, mockRequestor)
+        assertEquals(listOf(Position(0,1)), resultingShots)
+    }
+    @Test
+    fun `Fire more shots gives the original shot if there are no additional shots`() {
+        val resultsMap:ResultMap = mutableMapOf(
+            Position(0,1) to "H"
+        )
+        val resultingShots = fireMoreShots(listOf(),listOf(Position(0,1)), resultsMap, mockRequestor)
+        assertEquals(listOf(Position(0,1)), resultingShots)
+    }
+    @Test
+    fun `Fire more shots gives the original shot if the first additional shot is already on the map`() {
+        val resultsMap:ResultMap = mutableMapOf(
+            Position(0,1) to "H",
+            Position(1,1) to "M"
+        )
+        val resultingShots = fireMoreShots(listOf(Position(1,1)),listOf(Position(0,1)), resultsMap, mockRequestor)
+        assertEquals(listOf(Position(0,1)), resultingShots)
+    }
+    @Test
+    fun `Fire more shots gives the original shot if the first additional shot is a miss`() {
+        val resultsMap:ResultMap = mutableMapOf(
+            Position(0,1) to "H"
+        )
+        mockRequestor.results = mutableMapOf("shots=A1B1" to listOf("H","M"))
+        val resultingShots = fireMoreShots(listOf(Position(1,1)),listOf(Position(0,1)), resultsMap, mockRequestor)
+        assertEquals(listOf(Position(0,1)), resultingShots)
+    }
+    @Test
+    fun `Fire more shots gives the original shot plus the additional shot if the first additional shot is a hit`() {
+        val resultsMap:ResultMap = mutableMapOf(
+            Position(0,1) to "H"
+        )
+        mockRequestor.results = mutableMapOf("shots=A1B1" to listOf("H","H"))
+        val resultingShots = fireMoreShots(listOf(Position(1,1)),listOf(Position(0,1)), resultsMap, mockRequestor)
+        assertEquals(listOf(Position(0,1),Position(1,1)), resultingShots)
+    }
+    @Test
+    fun `Fire more shots gives the original shot plus the additional shot if the first additional shot is a hit and second additional shot is a miss`() {
+        val resultsMap:ResultMap = mutableMapOf(
+            Position(0,1) to "H"
+        )
+        mockRequestor.results = mutableMapOf("shots=A1B1" to listOf("H","H"),
+                                             "shots=A1B1C1" to listOf("H","H","M"))
+        val resultingShots = fireMoreShots(listOf(Position(1,1),Position(2,1)),listOf(Position(0,1)), resultsMap, mockRequestor)
+        assertEquals(listOf(Position(0,1),Position(1,1)), resultingShots)
+    }
+    @Test
+    fun `Fire more shots gives the original shot plus the additional shots if the first additional shot is a hit and second additional shot is a hit`() {
+        val resultsMap:ResultMap = mutableMapOf(
+            Position(0,1) to "H"
+        )
+        mockRequestor.results = mutableMapOf("shots=A1B1" to listOf("H","H"),
+                                             "shots=A1B1C1" to listOf("H","H","H"))
+        val resultingShots = fireMoreShots(listOf(Position(1,1),Position(2,1)),listOf(Position(0,1)), resultsMap, mockRequestor)
+        assertEquals(listOf(Position(0,1),Position(1,1),Position(2,1)), resultingShots)
+    }
+
+    @Test
+    fun `A destroyer is surrounded by water if there is no water around it already`() {
+        val resultsMap:ResultMap = mutableMapOf(
+            Position(1,1) to "S"
+        )
+        resultsMap.surroundSunkenShipsWithWater()
+        assertEquals(".", resultsMap[Position(0,0)])
+        assertEquals(".", resultsMap[Position(0,1)])
+        assertEquals(".", resultsMap[Position(0,2)])
+        assertEquals(".", resultsMap[Position(2,0)])
+        assertEquals(".", resultsMap[Position(2,1)])
+        assertEquals(".", resultsMap[Position(2,2)])
+        assertEquals(".", resultsMap[Position(1,0)])
+        assertEquals(".", resultsMap[Position(1,2)])
+        assertEquals("S", resultsMap[Position(1,1)])
+    }
+    @Test
+    fun `A destroyer is surrounded by water only in the places there is no water around it already`() {
+        val resultsMap:ResultMap = mutableMapOf(
+            Position(1,1) to "S" ,
+            Position(0,2) to "M",
+            Position(1,0) to "M"
+        )
+        resultsMap.surroundSunkenShipsWithWater()
+        assertEquals(".", resultsMap[Position(0,0)])
+        assertEquals(".", resultsMap[Position(0,1)])
+        assertEquals("M", resultsMap[Position(0,2)])
+        assertEquals(".", resultsMap[Position(2,0)])
+        assertEquals(".", resultsMap[Position(2,1)])
+        assertEquals(".", resultsMap[Position(2,2)])
+        assertEquals("M", resultsMap[Position(1,0)])
+        assertEquals(".", resultsMap[Position(1,2)])
+        assertEquals("S", resultsMap[Position(1,1)])
     }
 
     @Test
     fun `firing a shot that results in a miss puts a miss on the results map`() {
         val resultsMap:ResultMap = mutableMapOf()
         mockRequestor.results = mutableMapOf("shots=A0" to listOf("M"))
-        val result = fireShot(listOf("A0"),resultsMap, mockRequestor)
-        assertEquals("M", result["A0"])
+        val result = fireShot(listOf(Position(0,0)),resultsMap, mockRequestor)
+        assertEquals("M", result[Position(0,0)])
     }
     @Test
     fun `firing a shot that results in a hit puts a hit on the results map`() {
         val resultsMap:ResultMap = mutableMapOf()
         mockRequestor.results = mutableMapOf("shots=B4" to listOf("H"))
-        val result = fireShot(listOf("B4"),resultsMap, mockRequestor)
-        assertEquals("H", result["B4"])
+        val result = fireShot(listOf(Position(1,4)),resultsMap, mockRequestor)
+        assertEquals("H", result[Position(1,4)])
     }
     @Test
     fun `firing two shots that results in a hit and miss puts a hit and miss on the results map`() {
         val resultsMap:ResultMap = mutableMapOf()
         mockRequestor.results = mutableMapOf("shots=B4A0" to listOf("H","M"))
-        val result = fireShot(listOf("B4","A0"),resultsMap, mockRequestor)
-        assertEquals("H", result["B4"])
-        assertEquals("M", result["A0"])
+        val result = fireShot(listOf(Position(1,4),Position(0,0) ),resultsMap, mockRequestor)
+        assertEquals("H", result[Position(1,4)])
+        assertEquals("M", result[Position(0,0)])
     }
     @Test
     fun `firing shots until all ships are sunk returns a map with all ships sunk`() {
         val resultsMap:ResultMap = mutableMapOf()
-        mockRequestor.results =  (0..99).toList().shuffled().map{"shots=" + it.asCoordinate() to kotlin.collections.listOf("M") }.toMap().toMutableMap()
+        mockRequestor.results =  (0..99).toList().map{"shots=" + it.toPosition().toString() to kotlin.collections.listOf("M") }.toMap().toMutableMap()
         mockRequestor.results["shots=D4"] = listOf("H")
         mockRequestor.results["shots=D5"] = listOf("H")
         mockRequestor.results["shots=D6"] = listOf("H")
+        mockRequestor.results["shots=D5D4"] = listOf("H","H")
+        mockRequestor.results["shots=D6D5"] = listOf("H","H")
+        mockRequestor.results["shots=D6D5D4"] = listOf("H","H","H")
+        mockRequestor.results["shots=D4D5"] = listOf("H","H")
+        mockRequestor.results["shots=D5D6"] = listOf("H","H")
+        mockRequestor.results["shots=D4D5D6"] = listOf("H","H","H")
         val result = fireShotsUntilAllSunk(resultsMap, mockRequestor, 3)
-        assertEquals(3, result.values.filter{it == "H"}.size)
-    }
-
-    @Test
-    fun `firing more shots to the right when last shot hit and the square to the right is a ship results in square to the right being hit`() {
-        val resultsMap:ResultMap = mutableMapOf("D4" to "H")
-        val shots = listOf("D4")
-        mockRequestor.results["shots=D4E4"] = listOf("H","H")
-        val result = fireMoreShots(Shot::shotToRightOrNull, shots, resultsMap, mockRequestor)
-        assertEquals("H",resultsMap["D4"])
-        assertEquals("H",resultsMap["E4"])
-    }
-
-    @Test
-    fun `firing more shots to the right when last shot hit and the two squares to the right are ships results in both squares to the right being hit`() {
-        val resultsMap:ResultMap = mutableMapOf("D4" to "H")
-        val shots = listOf("D4")
-        mockRequestor.results["shots=D4E4"] = listOf("H","H")
-        mockRequestor.results["shots=D4E4F4"] = listOf("H","H","H")
-        val result = fireMoreShots(Shot::shotToRightOrNull, shots, resultsMap, mockRequestor)
-        assertEquals("H",resultsMap["D4"])
-        assertEquals("H",resultsMap["E4"])
-        assertEquals("H",resultsMap["F4"])
-    }
-    @Test
-    fun `firing more shots to the right when last shot hit and the two squares to the right are ship and sea results in one squares to the right being hit`() {
-        val resultsMap:ResultMap = mutableMapOf("D4" to "H")
-        val shots = listOf("D4")
-        mockRequestor.results["shots=D4E4"] = listOf("H","H")
-        mockRequestor.results["shots=D4E4F4"] = listOf("H","H","M")
-        val result = fireMoreShots(Shot::shotToRightOrNull, shots, resultsMap, mockRequestor)
-        assertEquals("H",resultsMap["D4"])
-        assertEquals("H",resultsMap["E4"])
-        assertEquals("M",resultsMap["F4"])
-    }
-
-    @Test
-    fun `firing more shots to the left when last shot hit and the square to the left is a ship results in square to the left being hit`() {
-        val resultsMap:ResultMap = mutableMapOf("D4" to "H")
-        val shots = listOf("D4")
-        mockRequestor.results["shots=D4C4"] = listOf("H","H")
-        val result = fireMoreShots(Shot::shotToLeftOrNull, shots, resultsMap, mockRequestor)
-        assertEquals("H",resultsMap["D4"])
-        assertEquals("H",resultsMap["C4"])
-        assertEquals(listOf("D4","C4"), result)
-    }
-
-    @Test
-    fun `firing more shots to the left when last shot hit and the two squares to the left are ships results in both squares to the left being hit`() {
-        val resultsMap:ResultMap = mutableMapOf("D4" to "H")
-        val shots = listOf("D4")
-        mockRequestor.results["shots=D4C4"] = listOf("H","H")
-        mockRequestor.results["shots=D4C4B4"] = listOf("H","H","H")
-        val result = fireMoreShots(Shot::shotToLeftOrNull, shots, resultsMap, mockRequestor)
-        assertEquals("H",resultsMap["D4"])
-        assertEquals("H",resultsMap["C4"])
-        assertEquals("H",resultsMap["B4"])
-        assertEquals(listOf("D4","C4","B4"), result)
-    }
-    @Test
-    fun `firing more shots to the left when last shot hit and the two squares to the left are ship and sea results in one squares to the left being hit`() {
-        val resultsMap:ResultMap = mutableMapOf("D4" to "H")
-        val shots = listOf("D4")
-        mockRequestor.results["shots=D4C4"] = listOf("H","H")
-        mockRequestor.results["shots=D4C4B4"] = listOf("H","H","M")
-        val result = fireMoreShots(Shot::shotToLeftOrNull, shots, resultsMap, mockRequestor)
-        assertEquals("H",resultsMap["D4"])
-        assertEquals("H",resultsMap["C4"])
-        assertEquals("M",resultsMap["B4"])
-        assertEquals(listOf("D4","C4"), result)
-    }
-    @Test
-    fun `firing more shots up when last shot hit and the three squares above contain ships`() {
-        val resultsMap:ResultMap = mutableMapOf("B5" to "H")
-        val shots = listOf("B5")
-        mockRequestor.results["shots=B5B4"] = listOf("H","H")
-        mockRequestor.results["shots=B5B4B3"] = listOf("H","H","H")
-        mockRequestor.results["shots=B5B4B3B2"] = listOf("H","H","H","H")
-        val result = fireMoreShots(Shot::shotUpOrNull, shots, resultsMap, mockRequestor)
-        assertEquals("H",resultsMap["B5"])
-        assertEquals("H",resultsMap["B4"])
-        assertEquals("H",resultsMap["B3"])
-        assertEquals("H",resultsMap["B2"])
-    }
-    @Test
-    fun `firing more shots down when last shot hit and the three squares below contain ships`() {
-        val resultsMap:ResultMap = mutableMapOf("B5" to "H")
-        val shots = listOf("B5")
-        mockRequestor.results["shots=B5B6"] = listOf("H","H")
-        mockRequestor.results["shots=B5B6B7"] = listOf("H","H","H")
-        mockRequestor.results["shots=B5B6B7B8"] = listOf("H","H","H","H")
-        val result = fireMoreShots(Shot::shotDownOrNull, shots, resultsMap, mockRequestor)
-        assertEquals("H",resultsMap["B5"])
-        assertEquals("H",resultsMap["B6"])
-        assertEquals("H",resultsMap["B7"])
-        assertEquals("H",resultsMap["B8"])
-    }
-    @Test
-    fun `shot to right or null gives null if the square two places to the right of the current position contains a ship `() {
-        val resultsMap:ResultMap = mutableMapOf("E5" to "H")
-        val shot = "C5"
-        assertEquals(null, shot.shotToRightOrNull(resultsMap))
-    }
-    @Test
-    fun `shot to right or null gives shot to right of current shot if the square the left of the current position contains a hit `() {
-        val resultsMap:ResultMap = mutableMapOf("B5" to "H")
-        val shot = "C5"
-        assertEquals("D5", shot.shotToRightOrNull(resultsMap))
-    }
-    @Test
-    fun `shot to right or null gives shot to right of current shot if the square the left of the current position is empty and positions above and below are empty `() {
-        val resultsMap:ResultMap = mutableMapOf()
-        val shot = "C5"
-        assertEquals("D5", shot.shotToRightOrNull(resultsMap))
-    }
-    @Test
-    fun `shot to right or null gives null if the square the left of the current position is empty and positions above contains a hit `() {
-        val resultsMap:ResultMap = mutableMapOf("C4" to "H")
-        val shot = "C5"
-        assertEquals(null, shot.shotToRightOrNull(resultsMap))
-    }
-    @Test
-    fun `shot to right or null gives null if the square the left of the current position is empty and positions below contains a hit `() {
-        val resultsMap:ResultMap = mutableMapOf("C6" to "H")
-        val shot = "C5"
-        assertEquals(null, shot.shotToRightOrNull(resultsMap))
-    }
-
-    //
-    @Test
-    fun `shot to left or null gives null if the square two places to the left of the current position contains a ship `() {
-        val resultsMap:ResultMap = mutableMapOf("A5" to "H")
-        val shot = "C5"
-        assertEquals(null, shot.shotToLeftOrNull(resultsMap))
-    }
-    @Test
-    fun `shot to left or null gives shot to left of current shot if the square the right of the current position contains a hit `() {
-        val resultsMap:ResultMap = mutableMapOf("D5" to "H")
-        val shot = "C5"
-        assertEquals("B5", shot.shotToLeftOrNull(resultsMap))
-    }
-    @Test
-    fun `shot to left or null gives shot to left of current shot if the square the right of the current position is empty and positions above and below are empty `() {
-        val resultsMap:ResultMap = mutableMapOf()
-        val shot = "C5"
-        assertEquals("B5", shot.shotToLeftOrNull(resultsMap))
-    }
-    @Test
-    fun `shot to left or null gives null if the square the right of the current position is empty and positions above contains a hit `() {
-        val resultsMap:ResultMap = mutableMapOf("C4" to "H")
-        val shot = "C5"
-        assertEquals(null, shot.shotToLeftOrNull(resultsMap))
-    }
-    @Test
-    fun `shot to left or null gives null if the square the right of the current position is empty and positions below contains a hit `() {
-        val resultsMap:ResultMap = mutableMapOf("C6" to "H")
-        val shot = "C5"
-        assertEquals(null, shot.shotToLeftOrNull(resultsMap))
-    }
-
-    @Test
-    fun `shot Up or null gives null if the square two places above the current position contains a ship `() {
-        val resultsMap:ResultMap = mutableMapOf("C3" to "H")
-        val shot = "C5"
-        assertEquals(null, shot.shotUpOrNull(resultsMap))
-    }
-    @Test
-    fun `shot Up or null gives shot above current shot if the square below the current position contains a hit `() {
-        val resultsMap:ResultMap = mutableMapOf("C6" to "H")
-        val shot = "C5"
-        assertEquals("C4", shot.shotUpOrNull(resultsMap))
-    }
-    @Test
-    fun `shot Up or null gives shot above current shot if the square below current position is empty and positions left and right of current shot are empty `() {
-        val resultsMap:ResultMap = mutableMapOf()
-        val shot = "C5"
-        assertEquals("C4", shot.shotUpOrNull(resultsMap))
-    }
-    @Test
-    fun `shot Up or null gives null if the square below current position is empty and position to right contains a hit `() {
-        val resultsMap:ResultMap = mutableMapOf("D5" to "H")
-        val shot = "C5"
-        assertEquals(null, shot.shotUpOrNull(resultsMap))
-    }
-    @Test
-    fun `shot Up or null gives null if below the current position is empty and positions to left contains a hit `() {
-        val resultsMap:ResultMap = mutableMapOf("B5" to "H")
-        val shot = "C5"
-        assertEquals(null, shot.shotUpOrNull(resultsMap))
-    }
-
-    @Test
-    fun `shot Down or null gives null if the square two places below the current position contains a ship `() {
-        val resultsMap:ResultMap = mutableMapOf("C7" to "H")
-        val shot = "C5"
-        assertEquals(null, shot.shotDownOrNull(resultsMap))
-    }
-    @Test
-    fun `shot Down or null gives shot below current shot if the square above the current position contains a hit `() {
-        val resultsMap:ResultMap = mutableMapOf("C4" to "H")
-        val shot = "C5"
-        assertEquals("C6", shot.shotDownOrNull(resultsMap))
-    }
-    @Test
-    fun `shot Up or null gives shot below current shot if the square above current position is empty and positions left and right of current shot are empty `() {
-        val resultsMap:ResultMap = mutableMapOf()
-        val shot = "C5"
-        assertEquals("C6", shot.shotDownOrNull(resultsMap))
-    }
-    @Test
-    fun `shot Down or null gives null if the square above current position is empty and position to right contains a hit `() {
-        val resultsMap:ResultMap = mutableMapOf("D5" to "H")
-        val shot = "C5"
-        assertEquals(null, shot.shotDownOrNull(resultsMap))
-    }
-    @Test
-    fun `shot Down or null gives null if below the current position is empty and positions to left contains a hit `() {
-        val resultsMap:ResultMap = mutableMapOf("B5" to "H")
-        val shot = "C5"
-        assertEquals(null, shot.shotDownOrNull(resultsMap))
+        assertEquals(3, result.values.filter{it == "H" || it == "S" }.size)
     }
 
     @Test
     fun `firing shots until all ships are sunk returns a map with all ships sunk when using real service`() {
         val resultsMap:ResultMap = mutableMapOf()
-        val result = fireShotsUntilAllSunk(resultsMap)
+        val result = fireShotsUntilAllSunk(resultsMap, player = "mike")
         assertEquals(18, result.values.filter{it == "H" || it == "S"}.size)
     }
 
     @Test
     fun `firing shots until all ships are sunk returns a map with all ships sunk when using real service with game1`() {
         val resultsMap:ResultMap = mutableMapOf()
-        val result = fireShotsUntilAllSunk(resultsMap, game = "game1")
+        val result = fireShotsUntilAllSunk(resultsMap, game = "game1", player = "mike")
         assertEquals(18, result.values.filter{it == "H" || it == "S"}.size)
     }
 
     @Test
     fun `firing shots until all ships are sunk returns a map with all ships sunk when using real service with game2`() {
         val resultsMap:ResultMap = mutableMapOf()
-        val result = fireShotsUntilAllSunk(resultsMap, game = "game2")
+        val result = fireShotsUntilAllSunk(resultsMap, game = "game2", player = "mike")
         assertEquals(18, result.values.filter{it == "H" || it == "S"}.size)
     }
 

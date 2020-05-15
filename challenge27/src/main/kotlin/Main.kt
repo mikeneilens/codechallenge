@@ -5,7 +5,7 @@ import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import java.io.IOException
 import java.net.URL
 
-typealias Shot = String
+typealias Shot = Position
 typealias Result = String
 typealias ResultMap = MutableMap<Shot, Result>
 
@@ -34,17 +34,7 @@ object RequestObject:Requester {
     }
 }
 
-val rows = listOf("A","B","C","D","E","F","G","H","I","J")
-val cols = listOf("0","1","2","3","4","5","6","7","8","9")
-
-fun Int.asCoordinate():Shot = rows[this % 10] + cols[this / 10]
-fun Shot.asInt():Int {
-    val rowAsInt =  rows.indexOf(this[0].toString())
-    val colAsInt =  cols.indexOf(this[1].toString())
-    return rowAsInt + colAsInt * 10
-}
-
-val randomShots:List<Shot> = (0..99).toList().shuffled().map{it.asCoordinate()}
+val randomShots:List<Shot> = (0..99).toList().shuffled().map{it.toPosition()}
 
 fun fireShot(shots: List<Shot>, resultsMap: ResultMap, requester:Requester, player:String = "", game:String = ""): ResultMap {
     val shotsJoined = shots.joinToString("")
@@ -65,10 +55,19 @@ fun fireShotsUntilAllSunk(resultsMap: ResultMap, requester: Requester = RequestO
                 val shots = listOf(shot)
                 fireShot(shots,resultsMap, requester, player, game)
                 if (resultsMap[shot] == "H") {
-                    fireMoreShots(Shot::shotToRightOrNull, shots, resultsMap, requester, player, game)
-                    fireMoreShots(Shot::shotToLeftOrNull, shots, resultsMap, requester, player, game)
-                    fireMoreShots(Shot::shotUpOrNull, shots, resultsMap, requester, player, game)
-                    fireMoreShots(Shot::shotDownOrNull, shots, resultsMap, requester, player, game)
+                    val positionsToLeft = shot.toLeft()
+                    val positionsToRight = shot.toRight()
+                    val positionsAbove = shot.above()
+                    val positionsBelow = shot.below()
+
+                    if (!resultsMap.alreadyAHorizontalShip(positionsToLeft, positionsToRight) ) {
+                        fireMoreShots(positionsAbove, shots, resultsMap, requester, player, game)
+                        fireMoreShots(positionsBelow, shots, resultsMap, requester, player, game)
+                    }
+                    if (!resultsMap.alreadyAVerticalShip(positionsAbove, positionsBelow)) {
+                        fireMoreShots(positionsToLeft, shots, resultsMap, requester, player, game)
+                        fireMoreShots(positionsToRight, shots, resultsMap, requester, player, game)
+                    }
 
                     resultsMap.sinkShips()
                     resultsMap.surroundSunkenShipsWithWater()
@@ -78,15 +77,18 @@ fun fireShotsUntilAllSunk(resultsMap: ResultMap, requester: Requester = RequestO
         return resultsMap
 }
 
-tailrec fun fireMoreShots(getAdditionalShot:Shot.(ResultMap) -> Shot? ,shots: List<Shot>, resultsMap: ResultMap, requester:Requester, player:String = "", game:String = ""):List<Shot> {
-    if (resultsMap[shots.last()] != "H" || shots.last().getAdditionalShot(resultsMap) == null ) return shots
+fun ResultMap.alreadyAHorizontalShip(positionsToLeft:List<Position>,positionsToRight:List<Position> ) =
+    (positionsToLeft.isNotEmpty() && hitOrSunk(positionsToLeft[0])) || (positionsToRight.isNotEmpty() && hitOrSunk(positionsToRight[0]) )
 
-    val additionalShot =  shots.last().getAdditionalShot(resultsMap)
-    if (additionalShot == null) return shots
+fun ResultMap.alreadyAVerticalShip(positionsAbove:List<Position>,positionsBelow:List<Position> ) =
+    (positionsAbove.isNotEmpty() && hitOrSunk(positionsAbove[0])) || (positionsBelow.isNotEmpty() && hitOrSunk(positionsBelow[0]))
 
+tailrec fun fireMoreShots(additionalShots:List<Shot> ,shots: List<Shot>, resultsMap: ResultMap, requester:Requester, player:String = "", game:String = ""):List<Shot> {
+    if (resultsMap[shots.last()] != "H" || additionalShots.isEmpty() || resultsMap[additionalShots.first()] != null ) return shots
+
+    val additionalShot =  additionalShots.first()
     fireShot(shots + additionalShot, resultsMap, requester, player, game)
-
-    return if (resultsMap.hitOrSunk(additionalShot)) fireMoreShots(getAdditionalShot,shots + additionalShot, resultsMap, requester, player, game)
+    return if (resultsMap.hitOrSunk(additionalShot)) fireMoreShots(additionalShots.drop(1),shots + additionalShot, resultsMap, requester, player, game)
     else shots
 }
 
@@ -97,63 +99,22 @@ fun ResultMap.sinkShips() {
 fun ResultMap.surroundSunkenShipsWithWater(){
     toList().forEach { (shot, result) ->
         if (result == "S") {
-            val locationToReplace = listOf(shot.toRowAbove, shot.toRowBelow, shot.toTheLeft, shot.toTheRight, shot.toLeftAndDown, shot.toLeftAndUp,shot.toRightAndDown, shot.toRightAndUp)
-            locationToReplace.forEach { replaceEmptyLocation(it)}
+            val surroundingPositions = shot.surrounding()
+            surroundingPositions.forEach{position ->
+                if (this[position] == null) this[position] = "."
+            }
         }
     }
-}
-fun ResultMap.replaceEmptyLocation(shot:Shot?) {
-    if (shot != null && this[shot] == null) this[shot] = "m"
-}
-
-fun Shot.shotToRightOrNull(resultsMap: ResultMap):Shot? {
-    if (toTheRight != null && toTheRight?.toTheRight != null && resultsMap.hitOrSunk(toTheRight?.toTheRight!!) ) return null
-    if (toTheLeft != null && resultsMap[toTheLeft!!] == "H" && toTheRight!= null && resultsMap[toTheRight!!] == null ) return toTheRight
-    if (( (toRowAbove != null  && resultsMap[toRowAbove!!] != "H") || toRowAbove == null) && ((toRowBelow != null && resultsMap[toRowBelow!!] != "H") || toRowBelow == null)) return toTheRight
-    return null
-}
-fun Shot.shotToLeftOrNull(resultsMap: ResultMap):Shot? {
-    if (toTheLeft != null && toTheLeft?.toTheLeft != null && resultsMap.hitOrSunk(toTheLeft?.toTheLeft!!) ) return null
-    if (toTheRight != null && resultsMap[toTheRight!!] == "H" && toTheLeft!= null && resultsMap[toTheLeft!!] == null ) return toTheLeft
-    if (( (toRowAbove != null  && resultsMap[toRowAbove!!] != "H") || toRowAbove == null) && ((toRowBelow != null && resultsMap[toRowBelow!!] != "H") || toRowBelow == null)) return toTheLeft
-    return null
-}
-fun Shot.shotUpOrNull(resultsMap: ResultMap):Shot? {
-    if (toRowAbove != null && toRowAbove?.toRowAbove != null && resultsMap.hitOrSunk(toRowAbove?.toRowAbove!!) ) return null
-    if (toRowBelow != null && resultsMap[toRowBelow!!] == "H" && toRowAbove!= null && resultsMap[toRowAbove!!] == null ) return toRowAbove
-    if (( (toTheLeft != null  && resultsMap[toTheLeft!!] != "H") || toTheLeft == null ) && ((toTheRight != null && resultsMap[toTheRight!!] != "H") || toTheRight == null)) return toRowAbove
-    return null
-}
-fun Shot.shotDownOrNull(resultsMap: ResultMap):Shot? {
-    if (toRowBelow != null && toRowBelow?.toRowBelow != null && resultsMap.hitOrSunk(toRowBelow?.toRowBelow!!) ) return null
-    if (toRowAbove != null && resultsMap[toRowAbove!!] == "H" && toRowBelow!= null && resultsMap[toRowBelow!!] == null ) return toRowBelow
-    if (( (toTheLeft != null  && resultsMap[toTheLeft!!] != "H") || toTheLeft == null ) && ((toTheRight != null && resultsMap[toTheRight!!] != "H") || toTheRight == null)) return toRowBelow
-    return null
 }
 
 fun ResultMap.allSunk(noOfSquares:Int) = (values.filter{it == "S" || it == "H"}.size == noOfSquares)
 fun ResultMap.hitOrSunk(shot:Shot) = this[shot] == "H" || this[shot] == "S"
 
-val Shot.toTheRight get() = if (this != "J9" && right[1] == this[1] ) right else null
-val Shot.toTheLeft get() = if (this != "A0" && left[1] == this[1] ) left else null
-val Shot.toRowAbove get() = if (this[1] != '0' && up[0] == this[0] ) up else null
-val Shot.toRowBelow get() = if (this[1] != '9' && down[0] == this[0] ) down else null
-val Shot.toRightAndDown:Shot? get() = if (toTheRight != null) toTheRight?.toRowBelow else null
-val Shot.toLeftAndDown:Shot? get() = if (toTheLeft != null) toTheLeft?.toRowBelow else null
-val Shot.toRightAndUp:Shot? get() = if (toTheRight != null) toTheRight?.toRowAbove else null
-val Shot.toLeftAndUp:Shot? get() = if (toTheLeft != null) toTheLeft?.toRowAbove else null
-
-
-val Shot.left get() = (asInt() - 1).asCoordinate()
-val Shot.right get() = (asInt() + 1).asCoordinate()
-val Shot.up get() = (asInt() - 10).asCoordinate()
-val Shot.down get()  = (asInt() + 10).asCoordinate()
-
 fun ResultMap.print() {
-    cols.forEach{number ->
+    (0..9).forEach{col ->
         var data = ""
-        rows.forEach{letter ->
-            data += (this["$letter$number"] ?: ".")
+        (0..9).forEach{row ->
+            data += (this[Position(col,row)] ?: ".")
         }
         println(data)
     }
