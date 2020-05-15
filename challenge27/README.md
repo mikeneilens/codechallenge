@@ -11,10 +11,9 @@ Reading through each position:
 1. Ignore the position if it already has a result on the map.
 2. Fire at the position
 3. If its a hit find all positions to the left, to the right, above and below the sucessful position, sequenced moving away from the position.
-4. If we know there is no ship above or below the position then try firing in the left or right positions. I think this maybe a pointless check.
-5. If we know there is no ship left or right of the position then try firing in the above or below positions. 
+4. Fire in available positions above and below the last hit. Stop firing if the ship is sunk.
+5. Fire in available positions to the left and right of the last hit. Stop firing if the ship is sunk. 
 
-After steps 3-5 we have sunk the ship so mark any hits on the map with an 'S'.
 Surround any empty positions adjacent to 'S' on the map with water on the map so we know not to fire at them. 
 
 Repeat until there are 18 'S's on the map.
@@ -22,5 +21,5 @@ Repeat until there are 18 'S's on the map.
 Thats it.
 
 Improvements:
-In theory could keep a record of ships that have been hit, e.g. its pointless firing more than 3 shots in a row if the 3 biggest shots are already sunk.
-Could also pass round the player/game/requester and maybe the mutable map as a single object.
+The way the sunk ships are surrounded with water is a bit crude and repetitive.
+Could pass round the player/game/requester and maybe the mutable map as a single object.

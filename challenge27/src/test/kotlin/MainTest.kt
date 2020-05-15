@@ -261,6 +261,7 @@ class MainTest {
         mockRequestor.results["shots=D4D5"] = listOf("H","H")
         mockRequestor.results["shots=D5D6"] = listOf("H","H")
         mockRequestor.results["shots=D4D5D6"] = listOf("H","H","H")
+        mockRequestor.results["shots=D5D4D6"] = listOf("H","H","H")
         val result = fireShotsUntilAllSunk(resultsMap, mockRequestor, 3)
         assertEquals(3, result.values.filter{it == "H" || it == "S" }.size)
     }

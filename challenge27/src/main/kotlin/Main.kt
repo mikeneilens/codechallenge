@@ -52,37 +52,24 @@ fun fireShotsUntilAllSunk(resultsMap: ResultMap, requester: Requester = RequestO
         while (!resultsMap.allSunk(noOfSquares)) {
             val shot = randomShots[++index]
             if (resultsMap[shot] == null) {
-                val shots = listOf(shot)
+                var shots = listOf(shot)
                 fireShot(shots,resultsMap, requester, player, game)
                 if (resultsMap[shot] == "H") {
-                    val positionsToLeft = shot.toLeft()
-                    val positionsToRight = shot.toRight()
-                    val positionsAbove = shot.above()
-                    val positionsBelow = shot.below()
+                    shots = fireMoreShots(shot.above(), shots, resultsMap, requester, player, game)
+                    shots = fireMoreShots(shot.below(), shots, resultsMap, requester, player, game)
+                    shots = fireMoreShots(shot.toLeft(), shots, resultsMap, requester, player, game)
+                    shots = fireMoreShots(shot.toRight(), shots, resultsMap, requester, player, game)
 
-                    if (!resultsMap.alreadyAHorizontalShip(positionsToLeft, positionsToRight) ) {
-                        fireMoreShots(positionsAbove, shots, resultsMap, requester, player, game)
-                        fireMoreShots(positionsBelow, shots, resultsMap, requester, player, game)
-                    }
-                    if (!resultsMap.alreadyAVerticalShip(positionsAbove, positionsBelow)) {
-                        fireMoreShots(positionsToLeft, shots, resultsMap, requester, player, game)
-                        fireMoreShots(positionsToRight, shots, resultsMap, requester, player, game)
-                    }
-
-                    resultsMap.sinkShips()
+                    println("Ship sunk = $shots")
                     resultsMap.surroundSunkenShipsWithWater()
                 }
             }
         }
+        println("Shots = ${resultsMap.values.count { it == "S" || it == "M" }}")
         return resultsMap
 }
 
-fun ResultMap.alreadyAHorizontalShip(positionsToLeft:List<Position>,positionsToRight:List<Position> ) =
-    (positionsToLeft.isNotEmpty() && hitOrSunk(positionsToLeft[0])) || (positionsToRight.isNotEmpty() && hitOrSunk(positionsToRight[0]) )
-
-fun ResultMap.alreadyAVerticalShip(positionsAbove:List<Position>,positionsBelow:List<Position> ) =
-    (positionsAbove.isNotEmpty() && hitOrSunk(positionsAbove[0])) || (positionsBelow.isNotEmpty() && hitOrSunk(positionsBelow[0]))
-
+// This returns all sucessful shots fired so far, i.e. shots resulting in H or S.
 tailrec fun fireMoreShots(additionalShots:List<Shot> ,shots: List<Shot>, resultsMap: ResultMap, requester:Requester, player:String = "", game:String = ""):List<Shot> {
     if (resultsMap[shots.last()] != "H" || additionalShots.isEmpty() || resultsMap[additionalShots.first()] != null ) return shots
 
@@ -90,10 +77,6 @@ tailrec fun fireMoreShots(additionalShots:List<Shot> ,shots: List<Shot>, results
     fireShot(shots + additionalShot, resultsMap, requester, player, game)
     return if (resultsMap.hitOrSunk(additionalShot)) fireMoreShots(additionalShots.drop(1),shots + additionalShot, resultsMap, requester, player, game)
     else shots
-}
-
-fun ResultMap.sinkShips() {
-    toList().forEach{(shot, result) -> if (result == "H") this[shot] = "S"}
 }
 
 fun ResultMap.surroundSunkenShipsWithWater(){
