@@ -21,3 +21,4 @@ Thats it.
 
 #### Potential Improvements:
 The code will try and find the biggest possible ship even if there are only destroyers left. Should be possbile to only fire off enough shots to sink the biggest remaining ship.
+The enum class Result which represents the value of each position in the map could do with a better name.
