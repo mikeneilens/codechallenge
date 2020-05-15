@@ -4,6 +4,10 @@ import java.net.URL
 
 class Config (private val requester:Requester = RequestObject, val game:String = "", val player:String = "") :Requester {
     override fun makeRequest(param: String) = requester.makeRequest(param)
+     val optionalParameters:String  by lazy {
+         (if (player.isNotEmpty()) "&player=$player" else "") +
+         (if (game.isNotEmpty()) "&game=$game" else "")
+    }
 }
 
 interface Requester {

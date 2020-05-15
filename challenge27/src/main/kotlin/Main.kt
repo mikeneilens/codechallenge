@@ -11,13 +11,9 @@ val randomShots:List<Shot> = (0..99).toList().shuffled().map{it.toPosition()}
 
 fun Config.fireShot(shots: List<Shot>, resultsMap: ResultMap): ResultMap {
     val shotsJoined = shots.joinToString("")
-    var param = "shots=$shotsJoined"
-    if (player.isNotEmpty()) param = "$param&player=$player"
-    if (game.isNotEmpty()) param = "$param&game=$game"
+    var param = "shots=$shotsJoined" + optionalParameters
     val results = makeRequest(param)
-    results.forEachIndexed { index, result ->
-        resultsMap[shots[index]] = result
-    }
+    shots.zip(results).forEach{(shot, result) -> resultsMap[shot] = result }
     return resultsMap
 }
 
