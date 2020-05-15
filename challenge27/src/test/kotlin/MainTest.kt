@@ -132,7 +132,8 @@ class MainTest {
         val resultsMap:ResultMap = mutableMapOf(
             Position(0,1) to "S"
         )
-        val resultingShots = fireMoreShots(listOf(Position(1,1)),listOf(Position(0,1)), resultsMap, mockRequestor)
+        val shots = listOf(Position(0,1))
+        val resultingShots = shots.fireMoreShots(listOf(Position(1,1)),resultsMap, mockRequestor)
         assertEquals(listOf(Position(0,1)), resultingShots)
     }
     @Test
@@ -140,7 +141,8 @@ class MainTest {
         val resultsMap:ResultMap = mutableMapOf(
             Position(0,1) to "H"
         )
-        val resultingShots = fireMoreShots(listOf(),listOf(Position(0,1)), resultsMap, mockRequestor)
+        val shots = listOf(Position(0,1))
+        val resultingShots = shots.fireMoreShots(listOf(),resultsMap, mockRequestor)
         assertEquals(listOf(Position(0,1)), resultingShots)
     }
     @Test
@@ -149,7 +151,8 @@ class MainTest {
             Position(0,1) to "H",
             Position(1,1) to "M"
         )
-        val resultingShots = fireMoreShots(listOf(Position(1,1)),listOf(Position(0,1)), resultsMap, mockRequestor)
+        val shots = listOf(Position(0,1))
+        val resultingShots = shots.fireMoreShots(listOf(Position(1,1)),resultsMap, mockRequestor)
         assertEquals(listOf(Position(0,1)), resultingShots)
     }
     @Test
@@ -158,7 +161,8 @@ class MainTest {
             Position(0,1) to "H"
         )
         mockRequestor.results = mutableMapOf("shots=A1B1" to listOf("H","M"))
-        val resultingShots = fireMoreShots(listOf(Position(1,1)),listOf(Position(0,1)), resultsMap, mockRequestor)
+        val shots = listOf(Position(0,1))
+        val resultingShots = shots.fireMoreShots(listOf(Position(1,1)),resultsMap, mockRequestor)
         assertEquals(listOf(Position(0,1)), resultingShots)
     }
     @Test
@@ -167,7 +171,8 @@ class MainTest {
             Position(0,1) to "H"
         )
         mockRequestor.results = mutableMapOf("shots=A1B1" to listOf("H","H"))
-        val resultingShots = fireMoreShots(listOf(Position(1,1)),listOf(Position(0,1)), resultsMap, mockRequestor)
+        val shots = listOf(Position(0,1))
+        val resultingShots = shots.fireMoreShots(listOf(Position(1,1)), resultsMap, mockRequestor)
         assertEquals(listOf(Position(0,1),Position(1,1)), resultingShots)
     }
     @Test
@@ -177,7 +182,8 @@ class MainTest {
         )
         mockRequestor.results = mutableMapOf("shots=A1B1" to listOf("H","H"),
                                              "shots=A1B1C1" to listOf("H","H","M"))
-        val resultingShots = fireMoreShots(listOf(Position(1,1),Position(2,1)),listOf(Position(0,1)), resultsMap, mockRequestor)
+        val shots = listOf(Position(0,1))
+        val resultingShots = shots.fireMoreShots(listOf(Position(1,1),Position(2,1)), resultsMap, mockRequestor)
         assertEquals(listOf(Position(0,1),Position(1,1)), resultingShots)
     }
     @Test
@@ -187,7 +193,8 @@ class MainTest {
         )
         mockRequestor.results = mutableMapOf("shots=A1B1" to listOf("H","H"),
                                              "shots=A1B1C1" to listOf("H","H","H"))
-        val resultingShots = fireMoreShots(listOf(Position(1,1),Position(2,1)),listOf(Position(0,1)), resultsMap, mockRequestor)
+        val shots = listOf(Position(0,1))
+        val resultingShots = shots.fireMoreShots(listOf(Position(1,1),Position(2,1)), resultsMap, mockRequestor)
         assertEquals(listOf(Position(0,1),Position(1,1),Position(2,1)), resultingShots)
     }
 
@@ -251,7 +258,7 @@ class MainTest {
     @Test
     fun `firing shots until all ships are sunk returns a map with all ships sunk`() {
         val resultsMap:ResultMap = mutableMapOf()
-        mockRequestor.results =  (0..99).toList().map{"shots=" + it.toPosition().toString() to kotlin.collections.listOf("M") }.toMap().toMutableMap()
+        mockRequestor.results =  (0..99).toList().map{"shots=" + it.toPosition().toString() to listOf("M") }.toMap().toMutableMap()
         mockRequestor.results["shots=D4"] = listOf("H")
         mockRequestor.results["shots=D5"] = listOf("H")
         mockRequestor.results["shots=D6"] = listOf("H")
@@ -269,14 +276,14 @@ class MainTest {
     @Test
     fun `firing shots until all ships are sunk returns a map with all ships sunk when using real service`() {
         val resultsMap:ResultMap = mutableMapOf()
-        val result = fireShotsUntilAllSunk(resultsMap, player = "mike")
+        val result = fireShotsUntilAllSunk(resultsMap, player = "mike1")
         assertEquals(18, result.values.filter{it == "H" || it == "S"}.size)
     }
 
     @Test
     fun `firing shots until all ships are sunk returns a map with all ships sunk when using real service with game1`() {
         val resultsMap:ResultMap = mutableMapOf()
-        val result = fireShotsUntilAllSunk(resultsMap, game = "game1", player = "mike")
+        val result = fireShotsUntilAllSunk(resultsMap, game = "game1", player = "mike1")
         assertEquals(18, result.values.filter{it == "H" || it == "S"}.size)
     }
 

@@ -52,31 +52,37 @@ fun fireShotsUntilAllSunk(resultsMap: ResultMap, requester: Requester = RequestO
         while (!resultsMap.allSunk(noOfSquares)) {
             val shot = randomShots[++index]
             if (resultsMap[shot] == null) {
-                var shots = listOf(shot)
+                val shots = listOf(shot)
                 fireShot(shots,resultsMap, requester, player, game)
                 if (resultsMap[shot] == "H") {
-                    shots = fireMoreShots(shot.above(), shots, resultsMap, requester, player, game)
-                    shots = fireMoreShots(shot.below(), shots, resultsMap, requester, player, game)
-                    shots = fireMoreShots(shot.toLeft(), shots, resultsMap, requester, player, game)
-                    shots = fireMoreShots(shot.toRight(), shots, resultsMap, requester, player, game)
+                    val sunkenShip = shots
+                        .fireMoreShots(shot.above(), resultsMap, requester, player, game)
+                        .fireMoreShots(shot.below(), resultsMap, requester, player, game)
+                        .fireMoreShots(shot.toLeft(), resultsMap, requester, player, game)
+                        .fireMoreShots(shot.toRight(), resultsMap, requester, player, game)
 
-                    println("Ship sunk = $shots")
+                    println("Ship sunk = $sunkenShip")
                     resultsMap.surroundSunkenShipsWithWater()
                 }
             }
         }
-        println("Shots = ${resultsMap.values.count { it == "S" || it == "M" }}")
+        resultsMap.print()
         return resultsMap
 }
 
 // This returns all sucessful shots fired so far, i.e. shots resulting in H or S.
-tailrec fun fireMoreShots(additionalShots:List<Shot> ,shots: List<Shot>, resultsMap: ResultMap, requester:Requester, player:String = "", game:String = ""):List<Shot> {
-    if (resultsMap[shots.last()] != "H" || additionalShots.isEmpty() || resultsMap[additionalShots.first()] != null ) return shots
+fun List<Shot>.fireMoreShots(additionalShots:List<Shot>, resultsMap: ResultMap, requester:Requester, player:String = "", game:String = ""):List<Shot> {
 
-    val additionalShot =  additionalShots.first()
-    fireShot(shots + additionalShot, resultsMap, requester, player, game)
-    return if (resultsMap.hitOrSunk(additionalShot)) fireMoreShots(additionalShots.drop(1),shots + additionalShot, resultsMap, requester, player, game)
-    else shots
+    tailrec fun fireMoreShots(additionalShots:List<Shot> ,shots: List<Shot>, resultsMap: ResultMap, requester:Requester, player:String = "", game:String = ""):List<Shot> {
+        if (resultsMap[shots.last()] != "H" || additionalShots.isEmpty() || resultsMap[additionalShots.first()] != null ) return shots
+
+        val additionalShot =  additionalShots.first()
+        fireShot(shots + additionalShot, resultsMap, requester, player, game)
+        return if (resultsMap.hitOrSunk(additionalShot)) fireMoreShots(additionalShots.drop(1),shots + additionalShot, resultsMap, requester, player, game)
+        else shots
+    }
+
+    return fireMoreShots(additionalShots,this, resultsMap, requester, player, game)
 }
 
 fun ResultMap.surroundSunkenShipsWithWater(){
@@ -94,10 +100,13 @@ fun ResultMap.allSunk(noOfSquares:Int) = (values.filter{it == "S" || it == "H"}.
 fun ResultMap.hitOrSunk(shot:Shot) = this[shot] == "H" || this[shot] == "S"
 
 fun ResultMap.print() {
+
+    println("Shots = ${values.count { it == "S" || it == "M" }}")
+    println()
     (0..9).forEach{col ->
         var data = ""
         (0..9).forEach{row ->
-            data += (this[Position(col,row)] ?: ".")
+            data += (this[Position(col,row)] ?: " ")
         }
         println(data)
     }
