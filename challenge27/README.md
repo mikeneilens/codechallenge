@@ -14,11 +14,11 @@ Reading through each position:
 4. Stop firing if the ship is sunk.
 
 Surround any empty positions adjacent to sunk ships on the map with a DMZ on the map so we know not to fire at those positions. 
+Remove the sunk sunk ship from a list of ships we are looking for.
 
-Repeat until there are 18 'S's on the map.
+Repeat until there are no ships left to sink.
 
 Thats it.
 
 #### Potential Improvements:
-The code will try and find the biggest possible ship even if there are only destroyers left. Should be possbile to only fire off enough shots to sink the biggest remaining ship.
-The enum class Result which represents the value of each position in the map could do with a better name.
+The enum class Known which represents the known value of each position in the map could do with a better name.

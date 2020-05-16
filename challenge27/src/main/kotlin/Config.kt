@@ -2,16 +2,29 @@ import com.fasterxml.jackson.module.kotlin.readValue
 import java.io.IOException
 import java.net.URL
 
-class Config (private val requester:Requester = RequestObject, val game:String = "", val player:String = "") :Requester {
+class Config (private val requester:Requester = RequestObject,
+              val game:String = "",
+              val player:String = "",
+              private val ships:MutableList<Int> = mutableListOf(5,4,3,2,2,1,1) ) :Requester {
+
     override fun makeRequest(param: String) = requester.makeRequest(param)
-     val optionalParameters:String  by lazy {
+
+    val optionalParameters:String  by lazy {
          (if (player.isNotEmpty()) "&player=$player" else "") +
          (if (game.isNotEmpty()) "&game=$game" else "")
     }
+
+    fun removeShip(positions:List<Position>) {
+        ships.remove(positions.size)
+    }
+
+    fun maxShipSize() = ships.max() ?: 0
+
+    fun allShipsSunk() = ships.isEmpty()
 }
 
 interface Requester {
-    fun makeRequest(param:String="shots=E4"):List<Result>
+    fun makeRequest(param:String="shots=E4"):List<Known>
 }
 
 data class WebServiceData(
@@ -19,7 +32,7 @@ data class WebServiceData(
 )
 
 object RequestObject:Requester {
-    override fun makeRequest(param:String):List<Result> {
+    override fun makeRequest(param:String):List<Known> {
         val response = try {
             URL("https://challenge27.appspot.com/?$param")
                 .openStream()
@@ -29,6 +42,6 @@ object RequestObject:Requester {
             "Error with ${e.message}."
         }
         val data:WebServiceData = mapper.readValue(response)
-        return data.results.map{it.toResult()}
+        return data.results.map{it.toKnown()}
     }
 }

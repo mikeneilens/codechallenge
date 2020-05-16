@@ -6,12 +6,12 @@ class MainTest {
     @Test
     fun `simple request`() {
         val result = RequestObject.makeRequest()
-        assertEquals(listOf(Result.Water), result)
+        assertEquals(listOf(Known.Water), result)
     }
 
     object MockRequester:Requester {
-        var results:MutableMap<String, List<Result>> = mutableMapOf()
-        override fun makeRequest(param:String):List<Result> = results[param] ?: listOf()
+        var results:MutableMap<String, List<Known>> = mutableMapOf()
+        override fun makeRequest(param:String):List<Known> = results[param] ?: listOf()
     }
     @Test
     fun `position for integer 0 should be A0`() {
@@ -126,170 +126,215 @@ class MainTest {
         val positions = Position(1,1).surrounding()
         assertEquals(8, positions.size )
     }
-
+    @Test
+    fun `Removing ship of length 5 from the list results in a max ship size of 4 `() {
+        val config = Config()
+        config.removeShip(listOf(Position(0,0),Position(1,0),Position(2,0),Position(3,0),Position(4,0)))
+        assertEquals(4, config.maxShipSize())
+    }
+    @Test
+    fun `Removing ship of length 4 from the list results in a max ship size of 5 `() {
+        val config = Config()
+        config.removeShip(listOf(Position(0,0),Position(1,0),Position(2,0),Position(3,0)))
+        assertEquals(5, config.maxShipSize())
+    }
+    @Test
+    fun `Removing ship of length 4 and then removing a ship of length 5 from the list results in a max ship size of 3 `() {
+        val config = Config()
+        config.removeShip(listOf(Position(0,0),Position(1,0),Position(2,0),Position(3,0)))
+        config.removeShip(listOf(Position(0,1),Position(1,1),Position(2,1),Position(3,1),Position(4,1)))
+        assertEquals(3, config.maxShipSize())
+    }
+    @Test
+    fun `Removing ship of length 2 and when there are 2 ships of length 2 results in a max ship length of 2 `() {
+        val config = Config(ships = mutableListOf(2,2,1))
+        config.removeShip(listOf(Position(0,0),Position(1,0)))
+        assertEquals(2, config.maxShipSize())
+    }
     @Test
     fun `Fire more shots gives the original shot if the last shot is not 'H'`() {
         val resultsMap:ResultMap = mutableMapOf(
-            Position(0,1) to Result.Sunk
+            Position(0,1) to Known.Sunk
         )
         val shots = listOf(Position(0,1))
+        val additionalShots = listOf(Position(1,1))
         val config = Config(MockRequester)
-        val resultingShots = shots.fireMoreShots(listOf(Position(1,1)),resultsMap, config)
+        val resultingShots = shots.fireMoreShots(additionalShots,resultsMap, config)
         assertEquals(listOf(Position(0,1)), resultingShots)
     }
     @Test
     fun `Fire more shots gives the original shot if there are no additional shots`() {
         val resultsMap:ResultMap = mutableMapOf(
-            Position(0,1) to Result.Hit
+            Position(0,1) to Known.Hit
         )
         val shots = listOf(Position(0,1))
+        val additionalShots = emptyList<Shot>()
         val config = Config(MockRequester)
-        val resultingShots = shots.fireMoreShots(listOf(),resultsMap, config)
+        val resultingShots = shots.fireMoreShots(additionalShots,resultsMap, config)
         assertEquals(listOf(Position(0,1)), resultingShots)
     }
     @Test
     fun `Fire more shots gives the original shot if the first additional shot is already on the map`() {
         val resultsMap:ResultMap = mutableMapOf(
-            Position(0,1) to Result.Hit,
-            Position(1,1) to Result.Water
+            Position(0,1) to Known.Hit,
+            Position(1,1) to Known.Water
         )
         val shots = listOf(Position(0,1))
+        val additionalShots = listOf(Position(1,1))
         val config = Config(MockRequester)
-        val resultingShots = shots.fireMoreShots(listOf(Position(1,1)),resultsMap, config)
+        val resultingShots = shots.fireMoreShots(additionalShots,resultsMap, config)
         assertEquals(listOf(Position(0,1)), resultingShots)
     }
     @Test
     fun `Fire more shots gives the original shot if the first additional shot is a miss`() {
         val resultsMap:ResultMap = mutableMapOf(
-            Position(0,1) to Result.Hit
+            Position(0,1) to Known.Hit
         )
-        MockRequester.results = mutableMapOf("shots=A1B1" to listOf(Result.Hit,Result.Water))
+        MockRequester.results = mutableMapOf("shots=A1B1" to listOf(Known.Hit,Known.Water))
         val shots = listOf(Position(0,1))
+        val additionalShots = listOf(Position(1,1))
         val config = Config(MockRequester)
-        val resultingShots = shots.fireMoreShots(listOf(Position(1,1)),resultsMap, config)
+        val resultingShots = shots.fireMoreShots(additionalShots,resultsMap, config)
         assertEquals(listOf(Position(0,1)), resultingShots)
     }
     @Test
     fun `Fire more shots gives the original shot plus the additional shot if the first additional shot is a hit`() {
         val resultsMap:ResultMap = mutableMapOf(
-            Position(0,1) to Result.Hit
+            Position(0,1) to Known.Hit
         )
-        MockRequester.results = mutableMapOf("shots=A1B1" to listOf(Result.Hit,Result.Hit))
+        MockRequester.results = mutableMapOf("shots=A1B1" to listOf(Known.Hit,Known.Hit))
         val shots = listOf(Position(0,1))
+        val additionalShots = listOf(Position(1,1))
         val config = Config(MockRequester)
-        val resultingShots = shots.fireMoreShots(listOf(Position(1,1)), resultsMap, config)
+        val resultingShots = shots.fireMoreShots(additionalShots, resultsMap, config)
         assertEquals(listOf(Position(0,1),Position(1,1)), resultingShots)
     }
     @Test
     fun `Fire more shots gives the original shot plus the additional shot if the first additional shot is a hit and second additional shot is a miss`() {
         val resultsMap:ResultMap = mutableMapOf(
-            Position(0,1) to Result.Hit
+            Position(0,1) to Known.Hit
         )
-        MockRequester.results = mutableMapOf("shots=A1B1" to listOf(Result.Hit,Result.Hit),
-                                             "shots=A1B1C1" to listOf(Result.Hit,Result.Hit,Result.Water))
+        MockRequester.results = mutableMapOf("shots=A1B1" to listOf(Known.Hit,Known.Hit),
+                                             "shots=A1B1C1" to listOf(Known.Hit,Known.Hit,Known.Water))
         val shots = listOf(Position(0,1))
+        val additionalShots = listOf(Position(1,1),Position(2,1))
         val config = Config(MockRequester)
-        val resultingShots = shots.fireMoreShots(listOf(Position(1,1),Position(2,1)), resultsMap, config)
+        val resultingShots = shots.fireMoreShots(additionalShots, resultsMap, config)
         assertEquals(listOf(Position(0,1),Position(1,1)), resultingShots)
     }
     @Test
     fun `Fire more shots gives the original shot plus the additional shots if the first additional shot is a hit and second additional shot is a hit`() {
         val resultsMap:ResultMap = mutableMapOf(
-            Position(0,1) to Result.Hit
+            Position(0,1) to Known.Hit
         )
-        MockRequester.results = mutableMapOf("shots=A1B1" to listOf(Result.Hit,Result.Hit),
-                                             "shots=A1B1C1" to listOf(Result.Hit,Result.Hit,Result.Hit))
+        MockRequester.results = mutableMapOf("shots=A1B1" to listOf(Known.Hit,Known.Hit),
+                                             "shots=A1B1C1" to listOf(Known.Hit,Known.Hit,Known.Hit))
         val shots = listOf(Position(0,1))
+        val additionalShots = listOf(Position(1,1),Position(2,1))
         val config = Config(MockRequester)
-        val resultingShots = shots.fireMoreShots(listOf(Position(1,1),Position(2,1)), resultsMap, config)
+        val resultingShots = shots.fireMoreShots(additionalShots, resultsMap, config)
         assertEquals(listOf(Position(0,1),Position(1,1),Position(2,1)), resultingShots)
+    }
+    @Test
+    fun `Fire more shots gives the original shot and one more shot if the largest ship left to find is a submarine`() {
+        val resultsMap:ResultMap = mutableMapOf(
+            Position(0,1) to Known.Hit
+        )
+        MockRequester.results = mutableMapOf("shots=A1B1" to listOf(Known.Hit, Known.Hit),
+                                             "shots=A1B1C1" to listOf(Known.Hit, Known.Hit, Known.Hit))
+        val shots = listOf(Position(0,1),Position(1,1))
+        val additionShots = listOf(Position(2,1))
+        val config = Config(MockRequester, ships = mutableListOf(2))
+        val resultingShots = shots.fireMoreShots(additionShots, resultsMap, config)
+        assertEquals(listOf(Position(0,1),Position(1,1)), resultingShots)
     }
 
     @Test
     fun `A destroyer is surrounded by water if there is no water around it already`() {
         val resultsMap:ResultMap = mutableMapOf(
-            Position(1,1) to Result.Sunk
+            Position(1,1) to Known.Sunk
         )
         listOf(Position(1,1)).surroundSunkenShipsWithWater(resultsMap)
-        assertEquals(Result.DMZ, resultsMap[Position(0,0)])
-        assertEquals(Result.DMZ, resultsMap[Position(0,1)])
-        assertEquals(Result.DMZ, resultsMap[Position(0,2)])
-        assertEquals(Result.DMZ, resultsMap[Position(2,0)])
-        assertEquals(Result.DMZ, resultsMap[Position(2,1)])
-        assertEquals(Result.DMZ, resultsMap[Position(2,2)])
-        assertEquals(Result.DMZ, resultsMap[Position(1,0)])
-        assertEquals(Result.DMZ, resultsMap[Position(1,2)])
-        assertEquals(Result.Sunk, resultsMap[Position(1,1)])
+        assertEquals(Known.DMZ, resultsMap[Position(0,0)])
+        assertEquals(Known.DMZ, resultsMap[Position(0,1)])
+        assertEquals(Known.DMZ, resultsMap[Position(0,2)])
+        assertEquals(Known.DMZ, resultsMap[Position(2,0)])
+        assertEquals(Known.DMZ, resultsMap[Position(2,1)])
+        assertEquals(Known.DMZ, resultsMap[Position(2,2)])
+        assertEquals(Known.DMZ, resultsMap[Position(1,0)])
+        assertEquals(Known.DMZ, resultsMap[Position(1,2)])
+        assertEquals(Known.Sunk, resultsMap[Position(1,1)])
     }
     @Test
     fun `A destroyer is surrounded by water only in the places there is no water around it already`() {
         val resultsMap:ResultMap = mutableMapOf(
-            Position(1,1) to Result.Sunk ,
-            Position(0,2) to Result.Water,
-            Position(1,0) to Result.Water
+            Position(1,1) to Known.Sunk ,
+            Position(0,2) to Known.Water,
+            Position(1,0) to Known.Water
         )
         listOf(Position(1,1)).surroundSunkenShipsWithWater(resultsMap)
-        assertEquals(Result.DMZ, resultsMap[Position(0,0)])
-        assertEquals(Result.DMZ, resultsMap[Position(0,1)])
-        assertEquals(Result.Water, resultsMap[Position(0,2)])
-        assertEquals(Result.DMZ, resultsMap[Position(2,0)])
-        assertEquals(Result.DMZ, resultsMap[Position(2,1)])
-        assertEquals(Result.DMZ, resultsMap[Position(2,2)])
-        assertEquals(Result.Water, resultsMap[Position(1,0)])
-        assertEquals(Result.DMZ, resultsMap[Position(1,2)])
-        assertEquals(Result.Sunk, resultsMap[Position(1,1)])
+        assertEquals(Known.DMZ, resultsMap[Position(0,0)])
+        assertEquals(Known.DMZ, resultsMap[Position(0,1)])
+        assertEquals(Known.Water, resultsMap[Position(0,2)])
+        assertEquals(Known.DMZ, resultsMap[Position(2,0)])
+        assertEquals(Known.DMZ, resultsMap[Position(2,1)])
+        assertEquals(Known.DMZ, resultsMap[Position(2,2)])
+        assertEquals(Known.Water, resultsMap[Position(1,0)])
+        assertEquals(Known.DMZ, resultsMap[Position(1,2)])
+        assertEquals(Known.Sunk, resultsMap[Position(1,1)])
     }
 
     @Test
     fun `firing a shot that results in a miss puts a miss on the results map`() {
         val resultsMap:ResultMap = mutableMapOf()
-        MockRequester.results = mutableMapOf("shots=A0" to listOf(Result.Water))
+        MockRequester.results = mutableMapOf("shots=A0" to listOf(Known.Water))
         val config = Config(MockRequester)
         val result = config.fireShot(listOf(Position(0,0)),resultsMap)
-        assertEquals(Result.Water, result[Position(0,0)])
+        assertEquals(Known.Water, result[Position(0,0)])
     }
     @Test
     fun `firing a shot that results in a hit puts a hit on the results map`() {
         val resultsMap:ResultMap = mutableMapOf()
-        MockRequester.results = mutableMapOf("shots=B4" to listOf(Result.Hit))
+        MockRequester.results = mutableMapOf("shots=B4" to listOf(Known.Hit))
         val config = Config(MockRequester)
         val result = config.fireShot(listOf(Position(1,4)),resultsMap)
-        assertEquals(Result.Hit, result[Position(1,4)])
+        assertEquals(Known.Hit, result[Position(1,4)])
     }
     @Test
     fun `firing two shots that results in a hit and miss puts a hit and miss on the results map`() {
         val resultsMap:ResultMap = mutableMapOf()
-        MockRequester.results = mutableMapOf("shots=B4A0" to listOf(Result.Hit,Result.Water))
+        MockRequester.results = mutableMapOf("shots=B4A0" to listOf(Known.Hit,Known.Water))
         val config = Config(MockRequester)
         val result = config.fireShot(listOf(Position(1,4),Position(0,0) ),resultsMap)
-        assertEquals(Result.Hit, result[Position(1,4)])
-        assertEquals(Result.Water, result[Position(0,0)])
+        assertEquals(Known.Hit, result[Position(1,4)])
+        assertEquals(Known.Water, result[Position(0,0)])
     }
     @Test
     fun `firing shots until all ships are sunk returns a map with all ships sunk`() {
         val resultsMap:ResultMap = mutableMapOf()
-        MockRequester.results =  (0..99).toList().map{"shots=" + it.toPosition().toString() to listOf(Result.Water) }.toMap().toMutableMap()
-        MockRequester.results["shots=D4"] = listOf(Result.Hit)
-        MockRequester.results["shots=D5"] = listOf(Result.Hit)
-        MockRequester.results["shots=D6"] = listOf(Result.Hit)
-        MockRequester.results["shots=D5D4"] = listOf(Result.Hit, Result.Hit)
-        MockRequester.results["shots=D6D5"] = listOf(Result.Hit,Result.Hit)
-        MockRequester.results["shots=D6D5D4"] = listOf(Result.Hit,Result.Hit,Result.Hit)
-        MockRequester.results["shots=D4D5"] = listOf(Result.Hit,Result.Hit)
-        MockRequester.results["shots=D5D6"] = listOf(Result.Hit,Result.Hit)
-        MockRequester.results["shots=D4D5D6"] = listOf(Result.Hit,Result.Hit,Result.Hit)
-        MockRequester.results["shots=D5D4D6"] = listOf(Result.Hit,Result.Hit,Result.Hit)
-        val config = Config(MockRequester)
-        val result = config.fireShotsUntilAllSunk(resultsMap, 3)
-        assertEquals(3, result.values.filter{it == Result.Hit || it == Result.Sunk }.size)
+        MockRequester.results =  (0..99).toList().map{"shots=" + it.toPosition().toString() to listOf(Known.Water) }.toMap().toMutableMap()
+        MockRequester.results["shots=D4"] = listOf(Known.Hit)
+        MockRequester.results["shots=D5"] = listOf(Known.Hit)
+        MockRequester.results["shots=D6"] = listOf(Known.Hit)
+        MockRequester.results["shots=D5D4"] = listOf(Known.Hit, Known.Hit)
+        MockRequester.results["shots=D6D5"] = listOf(Known.Hit,Known.Hit)
+        MockRequester.results["shots=D6D5D4"] = listOf(Known.Hit,Known.Hit,Known.Hit)
+        MockRequester.results["shots=D4D5"] = listOf(Known.Hit,Known.Hit)
+        MockRequester.results["shots=D5D6"] = listOf(Known.Hit,Known.Hit)
+        MockRequester.results["shots=D4D5D6"] = listOf(Known.Hit,Known.Hit,Known.Hit)
+        MockRequester.results["shots=D5D4D6"] = listOf(Known.Hit,Known.Hit,Known.Hit)
+        val config = Config(MockRequester, ships = mutableListOf(3) )
+        val result = config.fireShotsUntilAllSunk(resultsMap)
+        assertEquals(3, result.values.filter{it == Known.Hit || it == Known.Sunk }.size)
     }
 
+    //===== Integration tests ==============================================================================//
     @Test
     fun `firing shots until all ships are sunk returns a map with all ships sunk when using real service`() {
         val resultsMap:ResultMap = mutableMapOf()
         val config = Config()
         val result = config.fireShotsUntilAllSunk(resultsMap)
-        assertEquals(18, result.values.filter{it == Result.Hit || it == Result.Sunk}.size)
+        assertEquals(18, result.values.filter{it == Known.Hit || it == Known.Sunk}.size)
     }
 
     @Test
@@ -297,7 +342,7 @@ class MainTest {
         val resultsMap:ResultMap = mutableMapOf()
         val config = Config(game = "game1") // player = "mike1")
         val result = config.fireShotsUntilAllSunk(resultsMap)
-        assertEquals(18, result.values.filter{it == Result.Hit || it == Result.Sunk}.size)
+        assertEquals(18, result.values.filter{it == Known.Hit || it == Known.Sunk}.size)
     }
 
     @Test
@@ -305,7 +350,7 @@ class MainTest {
         val resultsMap:ResultMap = mutableMapOf()
         val config = Config(game = "game2") //, player = "mike1")
         val result = config.fireShotsUntilAllSunk(resultsMap)
-        assertEquals(18, result.values.filter{it == Result.Hit || it == Result.Sunk}.size)
+        assertEquals(18, result.values.filter{it == Known.Hit || it == Known.Sunk}.size)
     }
 
 }
