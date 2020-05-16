@@ -20,7 +20,7 @@ class Config (private val requester:Requester = RequestObject,
 
     fun maxShipSize() = ships.max() ?: 0
 
-    fun allShipsSunk() = ships.isEmpty()
+    fun noOfShipsRemaining() = ships.size
 }
 
 interface Requester {

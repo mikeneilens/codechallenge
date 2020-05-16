@@ -19,7 +19,7 @@ fun Config.fireShot(shots: List<Shot>, resultsMap: ResultMap): ResultMap {
 
 fun Config.fireShotsUntilAllSunk(resultsMap: ResultMap):ResultMap {
         var index = 0
-        while (!allShipsSunk()) {
+        while (noOfShipsRemaining() > 0) {
             val shot = randomShots[++index]
             if (resultsMap[shot] !is Known) {
                 val shots = listOf(shot)
@@ -51,7 +51,8 @@ fun List<Shot>.fireMoreShots(additionalShots:List<Shot>, resultsMap: ResultMap, 
 
     tailrec fun fireMoreShots(additionalShots:List<Shot> ,shots: List<Shot>, resultsMap: ResultMap, requester:Requester, player:String = "", game:String = ""):List<Shot> {
         //Return if last shot missed or sunk the ship, if there are no additional shots left, if the shots fired is as big as the largest ship or the result of the next shot is known.
-        if (resultsMap[shots.last()] != Known.Hit || additionalShots.isEmpty() || resultsMap[additionalShots.first()] is Known || (shots.size >= config.maxShipSize() ) ) return shots
+        if (resultsMap[shots.last()] == Known.Water || resultsMap[shots.last()] == Known.Sunk
+            || additionalShots.isEmpty() || resultsMap[additionalShots.first()] is Known || (shots.size >= config.maxShipSize() ) ) return shots
         val additionalShot =  additionalShots.first()
         config.fireShot(shots + additionalShot, resultsMap)
         return if (resultsMap.hitOrSunk(additionalShot)) fireMoreShots(additionalShots.drop(1),shots + additionalShot, resultsMap, requester, player, game)
