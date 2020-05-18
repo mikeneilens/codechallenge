@@ -32,7 +32,7 @@ data class WebServiceData(
 )
 
 object RequestObject:Requester {
-    override fun makeRequest(param:String):List<Known> =
+    override fun makeRequest(param:String) =
         mapper.readValue<WebServiceData>(
             try {
                 URL("https://challenge27.appspot.com/?$param")
