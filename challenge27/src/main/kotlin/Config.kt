@@ -32,16 +32,15 @@ data class WebServiceData(
 )
 
 object RequestObject:Requester {
-    override fun makeRequest(param:String):List<Known> {
-        val response = try {
-            URL("https://challenge27.appspot.com/?$param")
-                .openStream()
-                .bufferedReader()
-                .use { it.readText() }
-        } catch (e: IOException) {
-            "Error with ${e.message}."
-        }
-        val data:WebServiceData = mapper.readValue(response)
-        return data.results.map{it.toKnown()}
-    }
+    override fun makeRequest(param:String):List<Known> =
+        mapper.readValue<WebServiceData>(
+            try {
+                URL("https://challenge27.appspot.com/?$param")
+                    .openStream()
+                    .bufferedReader()
+                    .use { it.readText() }
+            } catch (e: IOException) {
+                "Error with ${e.message}."
+            }
+        ).results.map{it.toKnown()}
 }

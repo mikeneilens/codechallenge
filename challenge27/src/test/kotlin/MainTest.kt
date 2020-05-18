@@ -332,7 +332,7 @@ class MainTest {
     @Test
     fun `firing shots until all ships are sunk returns a map with all ships sunk when using real service`() {
         val resultsMap:ResultMap = mutableMapOf()
-        val config = Config()
+        val config = Config(player = "mike")
         val result = config.fireShotsUntilAllSunk(resultsMap)
         assertEquals(18, result.values.filter{it == Known.Hit || it == Known.Sunk}.size)
     }
