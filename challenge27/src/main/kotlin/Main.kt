@@ -1,23 +1,14 @@
-import com.fasterxml.jackson.databind.DeserializationFeature
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.module.kotlin.registerKotlinModule
-
 typealias Shot = Position
 typealias ResultMap = MutableMap<Position, Known>
 
-val mapper: ObjectMapper = ObjectMapper().registerKotlinModule().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-
-val randomShots:List<Shot> = (0..99).toList().shuffled().map{it.toPosition()}
-
-fun Config.fireShot(shots: List<Shot>, resultsMap: ResultMap): ResultMap {
+fun Config.fireShot(shots: List<Shot>, resultsMap: ResultMap) {
     val shotsJoined = shots.joinToString("")
-    var param = "shots=$shotsJoined" + optionalParameters
+    val param = "shots=$shotsJoined$optionalParameters"
     val results = makeRequest(param)
     shots.zip(results).forEach{(shot, result) -> resultsMap[shot] = result }
-    return resultsMap
 }
 
-fun Config.fireShotsUntilAllSunk(resultsMap: ResultMap):ResultMap {
+fun Config.fireShotsUntilAllSunk(resultsMap: ResultMap) {
         var index = 0
         while (noOfShipsRemaining() > 0) {
             val shot = randomShots[++index]
@@ -37,7 +28,6 @@ fun Config.fireShotsUntilAllSunk(resultsMap: ResultMap):ResultMap {
             }
         }
         resultsMap.print()
-        return resultsMap
 }
 
 fun Config.sinkShip(sunkenShip:List<Shot>, resultsMap: ResultMap) {
@@ -62,14 +52,13 @@ fun List<Shot>.fireMoreShots(additionalShots:List<Shot>, resultsMap: ResultMap, 
     return fireMoreShots(additionalShots,this, resultsMap, config)
 }
 
-fun List<Shot>.surroundSunkenShipsWithWater(resultsMap:ResultMap){
+fun List<Shot>.surroundSunkenShipsWithWater(resultsMap:ResultMap) =
     forEach { shot ->
-        val surroundingPositions = shot.surrounding()
-        surroundingPositions.forEach{position ->
+        shot.surroundingPositions().forEach{position ->
             if (resultsMap[position] !is Known) resultsMap[position] = Known.DMZ
         }
     }
-}
+
 
 fun ResultMap.hitOrSunk(shot:Shot) = this[shot] == Known.Hit || this[shot] == Known.Sunk
 

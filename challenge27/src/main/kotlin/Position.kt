@@ -23,7 +23,7 @@ data class Position(val col:Int, val row:Int) {
             val next = Position(col, row + 1)
             next.below(positions + next )
         }
-    fun surrounding():List<Position> {
+    fun surroundingPositions():List<Position> {
         val result = mutableListOf<Position>()
         for (colOffset in (-1..1)) {
             for (rowOffset in (-1..1)) {
@@ -37,7 +37,7 @@ data class Position(val col:Int, val row:Int) {
         return result
     }
 
-    override fun toString(): String = cols[col] + rows[row]
+    override fun toString(): String = "${cols[col]}${rows[row]}"
 
     companion object {
         val cols = listOf("A","B","C","D","E","F","G","H","I","J")

@@ -83,47 +83,47 @@ class MainTest {
     }
     @Test
     fun `There are 3 positions adjacent to position 0,0`() {
-        val positions = Position(0,0).surrounding()
+        val positions = Position(0,0).surroundingPositions()
         assertEquals(3, positions.size )
     }
     @Test
     fun `There are 3 positions adjacent to position 9,0`() {
-        val positions = Position(9,0).surrounding()
+        val positions = Position(9,0).surroundingPositions()
         assertEquals(3, positions.size )
     }
     @Test
     fun `There are 3 positions adjacent to position 0,9`() {
-        val positions = Position(0,9).surrounding()
+        val positions = Position(0,9).surroundingPositions()
         assertEquals(3, positions.size )
     }
     @Test
     fun `There are 3 positions adjacent to position 9,9`() {
-        val positions = Position(9,9).surrounding()
+        val positions = Position(9,9).surroundingPositions()
         assertEquals(3, positions.size )
     }
     @Test
     fun `There are 5 positions adjacent to position 5,0`() {
-        val positions = Position(5,0).surrounding()
+        val positions = Position(5,0).surroundingPositions()
         assertEquals(5, positions.size )
     }
     @Test
     fun `There are 5 positions adjacent to position 5,9`() {
-        val positions = Position(5,9).surrounding()
+        val positions = Position(5,9).surroundingPositions()
         assertEquals(5, positions.size )
     }
     @Test
     fun `There are 5 positions adjacent to position 0,5`() {
-        val positions = Position(0,5).surrounding()
+        val positions = Position(0,5).surroundingPositions()
         assertEquals(5, positions.size )
     }
     @Test
     fun `There are 5 positions adjacent to position 9,5`() {
-        val positions = Position(9,5).surrounding()
+        val positions = Position(9,5).surroundingPositions()
         assertEquals(5, positions.size )
     }
     @Test
     fun `There are 8 positions adjacent to position 1,1`() {
-        val positions = Position(1,1).surrounding()
+        val positions = Position(1,1).surroundingPositions()
         assertEquals(8, positions.size )
     }
     @Test
@@ -289,25 +289,25 @@ class MainTest {
         val resultsMap:ResultMap = mutableMapOf()
         MockRequester.results = mutableMapOf("shots=A0" to listOf(Known.Water))
         val config = Config(MockRequester)
-        val result = config.fireShot(listOf(Position(0,0)),resultsMap)
-        assertEquals(Known.Water, result[Position(0,0)])
+        config.fireShot(listOf(Position(0,0)),resultsMap)
+        assertEquals(Known.Water, resultsMap[Position(0,0)])
     }
     @Test
     fun `firing a shot that results in a hit puts a hit on the results map`() {
         val resultsMap:ResultMap = mutableMapOf()
         MockRequester.results = mutableMapOf("shots=B4" to listOf(Known.Hit))
         val config = Config(MockRequester)
-        val result = config.fireShot(listOf(Position(1,4)),resultsMap)
-        assertEquals(Known.Hit, result[Position(1,4)])
+        config.fireShot(listOf(Position(1,4)),resultsMap)
+        assertEquals(Known.Hit, resultsMap[Position(1,4)])
     }
     @Test
     fun `firing two shots that results in a hit and miss puts a hit and miss on the results map`() {
         val resultsMap:ResultMap = mutableMapOf()
         MockRequester.results = mutableMapOf("shots=B4A0" to listOf(Known.Hit,Known.Water))
         val config = Config(MockRequester)
-        val result = config.fireShot(listOf(Position(1,4),Position(0,0) ),resultsMap)
-        assertEquals(Known.Hit, result[Position(1,4)])
-        assertEquals(Known.Water, result[Position(0,0)])
+        config.fireShot(listOf(Position(1,4),Position(0,0) ),resultsMap)
+        assertEquals(Known.Hit, resultsMap[Position(1,4)])
+        assertEquals(Known.Water, resultsMap[Position(0,0)])
     }
     @Test
     fun `firing shots until all ships are sunk returns a map with all ships sunk`() {
@@ -324,33 +324,33 @@ class MainTest {
         MockRequester.results["shots=D4D5D6"] = listOf(Known.Hit,Known.Hit,Known.Hit)
         MockRequester.results["shots=D5D4D6"] = listOf(Known.Hit,Known.Hit,Known.Hit)
         val config = Config(MockRequester, ships = mutableListOf(3) )
-        val result = config.fireShotsUntilAllSunk(resultsMap)
-        assertEquals(3, result.values.filter{it == Known.Hit || it == Known.Sunk }.size)
+        config.fireShotsUntilAllSunk(resultsMap)
+        assertEquals(3, resultsMap.values.filter{it == Known.Hit || it == Known.Sunk }.size)
     }
 
     //===== Integration tests ==============================================================================//
     @Test
     fun `firing shots until all ships are sunk returns a map with all ships sunk when using real service`() {
         val resultsMap:ResultMap = mutableMapOf()
-        val config = Config(player = "mike")
-        val result = config.fireShotsUntilAllSunk(resultsMap)
-        assertEquals(18, result.values.filter{it == Known.Hit || it == Known.Sunk}.size)
+        val config = Config()//player = "mike")
+        config.fireShotsUntilAllSunk(resultsMap)
+        assertEquals(18, resultsMap.values.filter{it == Known.Hit || it == Known.Sunk}.size)
     }
 
     @Test
     fun `firing shots until all ships are sunk returns a map with all ships sunk when using real service with game1`() {
         val resultsMap:ResultMap = mutableMapOf()
         val config = Config(game = "game1") // player = "mike1")
-        val result = config.fireShotsUntilAllSunk(resultsMap)
-        assertEquals(18, result.values.filter{it == Known.Hit || it == Known.Sunk}.size)
+        config.fireShotsUntilAllSunk(resultsMap)
+        assertEquals(18, resultsMap.values.filter{it == Known.Hit || it == Known.Sunk}.size)
     }
 
     @Test
     fun `firing shots until all ships are sunk returns a map with all ships sunk when using real service with game2`() {
         val resultsMap:ResultMap = mutableMapOf()
         val config = Config(game = "game2") //, player = "mike1")
-        val result = config.fireShotsUntilAllSunk(resultsMap)
-        assertEquals(18, result.values.filter{it == Known.Hit || it == Known.Sunk}.size)
+        config.fireShotsUntilAllSunk(resultsMap)
+        assertEquals(18, resultsMap.values.filter{it == Known.Hit || it == Known.Sunk}.size)
     }
 
 }
