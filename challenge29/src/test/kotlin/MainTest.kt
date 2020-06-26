@@ -22,4 +22,30 @@ class MainTest {
         assertTrue(naiveSearch(list, 4))
     }
 
+    @Test
+    fun `binary search returns false if list is empty`() {
+        val list = emptyList<Int>()
+        assertFalse(binarySearch(list, 6))
+    }
+    @Test
+    fun `binary searching a list returns false if list is not empty but doesn't contain the item`() {
+        val list = listOf(3,4,5)
+        assertFalse(binarySearch(list, 6))
+    }
+    @Test
+    fun `binary searching a list returns true if the list contain the item at the start`() {
+        val list = listOf(1,2,3,4,5,6)
+        assertTrue(binarySearch(list, 1))
+    }
+    @Test
+    fun `binary searching a list returns true if the list contain the item at the end`() {
+        val list = listOf(1,2,3,4,5,6)
+        assertTrue(binarySearch(list, 6))
+    }
+    @Test
+    fun `binary searching a list returns true if the list contain the item at the middle`() {
+        val list = listOf(1,2,3,4,5,6)
+        assertTrue(binarySearch(list, 4))
+    }
+
 }
