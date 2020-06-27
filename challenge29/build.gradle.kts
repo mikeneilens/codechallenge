@@ -12,7 +12,7 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     testImplementation("org.junit.jupiter:junit-jupiter:5.6.0")
-    compile( "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.+")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.6")
 }
 
 tasks {

@@ -1,3 +1,6 @@
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.runBlocking
 
 fun naiveSearch(list: List<Int>, value:Int): Boolean {
     if (list.isEmpty()) return false
@@ -6,7 +9,6 @@ fun naiveSearch(list: List<Int>, value:Int): Boolean {
 }
 
 fun binarySearch(list: List<Int>, value:Int): Boolean {
-    println(".")
     if (list.isEmpty()) return false
     if (list.size == 1) return (list.first() == value)
     if (value == list.midValue ) return true
@@ -51,3 +53,26 @@ fun merge(list1:List<Int>, list2:List<Int>, result:List<Int> = listOf()) : List<
         merge(list1, list2.drop(1), result + list2.first())
     }
 }
+
+fun mergeSortConcurrent(list:List<Int>):List<Int> = runBlocking {
+    return@runBlocking mergeSortConcurrent(this, list)
+}
+
+suspend fun mergeSortConcurrent(coroutineScope:CoroutineScope, list:List<Int>):List<Int> {
+    if (list.size < 2) return list
+    val firstHalfSorted = coroutineScope.async { mergeSortConcurrent(coroutineScope, list.firstHalf()) }
+    val secondHalfSorted = coroutineScope.async { mergeSortConcurrent(coroutineScope, list.secondHalf()) }
+    return merge( firstHalfSorted.await(), secondHalfSorted.await())
+}
+
+fun mergeSortNotConcurrent(list:List<Int>):List<Int> = runBlocking {
+    return@runBlocking mergeSortNotConcurrent(this, list)
+}
+
+suspend fun mergeSortNotConcurrent(coroutineScope:CoroutineScope, list:List<Int>):List<Int> = runBlocking  {
+    if (list.size < 2) return@runBlocking list
+    val firstHalfSorted = mergeSortNotConcurrent(coroutineScope, list.firstHalf())
+    val secondHalfSorted = mergeSortNotConcurrent(coroutineScope, list.secondHalf())
+    return@runBlocking merge( firstHalfSorted, secondHalfSorted)
+}
+

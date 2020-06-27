@@ -1,9 +1,11 @@
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
-val testList = listOf(914,161,396,490,978,831,534,813,644,642,312,143,688,637,333,89,250,426,290,39,330,826,3,63,598,751,700,19,104,794,729,212,565,490,903,55,97,81,260,4,458,729,90,673,75,476,697,448,411,976,527,87,496,929,955,800,786,411,263,5,852,806,51,537,804,833,627,357,731,259,702,942,942,224,79,385,220,771,878,894,824,82,225,843,540,131,300,712,615,937,69,271,28,400,29,161,194,704,820,555)
+val testList = listOf(914,161,396,490,978,831,534,813,644,642,312,143,688,637,333,89,250,426,290,39,330,826,3,63,598,751,700,19,104,794,729,212,565,490,903,55,97,81,260,4,458,729,90,673,75,476,697,448,411,976,527,87,496,929,955,800,786,411,263,5,852,806,51,537,804,833,627,357,731,259,702,942,942,224,79,385,220,771,878,894,824,82,225,843,540,131,300,712,615,161,69,271,28,400,29,161,194,704,820,555)
 
 class MainTest {
+    val testData = (testList + testList + testList + testList + testList + testList + testList + testList + testList + testList).shuffled()
+    val sortedTestData = testData.sorted()
 
     @Test
     fun `naive searching a list returns false if list is empty`() {
@@ -146,11 +148,28 @@ class MainTest {
         assertEquals(listOf(1,3,4,4), mergeSort(list))
 
     }
+
     @Test
     fun `merge sort returns a long list of items sorted correctly`() {
-        val expectedResult = testList.sorted()
-        assertEquals(expectedResult, mergeSort(testList))
-
+        println("Starting merge sort")
+        val startTime = System.currentTimeMillis()
+        assertEquals(sortedTestData, mergeSort(testData))
+        println("Approx elapsed ${System.currentTimeMillis() - startTime} ")
     }
 
+    @Test
+    fun `merge sort aysynch returns a long list of items sorted correctly`() {
+        println("Starting merge sort using coroutine")
+        val startTime = System.currentTimeMillis()
+        assertEquals(sortedTestData, mergeSortConcurrent(testData))
+        println("Approx elapsed ${System.currentTimeMillis() - startTime} ")
+    }
+
+    @Test
+    fun `merge sort not conccurrent returns a long list of items sorted correctly`() {
+        println("Starting merge sort using coroutine but not processing each branch of the sort concurrently")
+        val startTime = System.currentTimeMillis()
+        assertEquals(sortedTestData, mergeSortNotConcurrent(testData))
+        println("Approx elapsed ${System.currentTimeMillis() - startTime} ")
+    }
 }
