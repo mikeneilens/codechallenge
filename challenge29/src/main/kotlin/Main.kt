@@ -1,5 +1,6 @@
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 
 fun naiveSearch(list: List<Int>, value:Int): Boolean {
@@ -18,6 +19,8 @@ fun binarySearch(list: List<Int>, value:Int): Boolean {
 val List<Int>.midValue:Int  get() = get(size/2)
 fun List<Int>.firstHalf():List<Int> = dropLast(size - size / 2)
 fun List<Int>.secondHalf():List<Int> = drop(size / 2)
+
+//==============================================================================================================
 
 tailrec fun insertionSort(list: List<Int>, result:List<Int> = emptyList()): List<Int> {
     val itemsToAdd = list.findAllMinimums(result)
@@ -38,6 +41,8 @@ fun List<Int>.findAllMinimums(newList:List<Int> = emptyList()):List<Int> {
     return result
 }
 
+//==============================================================================================================
+
 fun mergeSort(list:List<Int>):List<Int> {
     if (list.size < 2) return list
     return merge( mergeSort(list.firstHalf()), mergeSort(list.secondHalf()))
@@ -54,25 +59,33 @@ fun merge(list1:List<Int>, list2:List<Int>, result:List<Int> = listOf()) : List<
     }
 }
 
+
+//-----  Version using coroutines ------//
+
 fun mergeSortConcurrent(list:List<Int>):List<Int> = runBlocking {
     return@runBlocking mergeSortConcurrent(this, list)
 }
 
 suspend fun mergeSortConcurrent(coroutineScope:CoroutineScope, list:List<Int>):List<Int> {
+    delay(10)
     if (list.size < 2) return list
     val firstHalfSorted = coroutineScope.async { mergeSortConcurrent(coroutineScope, list.firstHalf()) }
     val secondHalfSorted = coroutineScope.async { mergeSortConcurrent(coroutineScope, list.secondHalf()) }
     return merge( firstHalfSorted.await(), secondHalfSorted.await())
 }
 
+//-----  Version using coroutines that process first and second half of the list sequentially------//
+
 fun mergeSortNotConcurrent(list:List<Int>):List<Int> = runBlocking {
     return@runBlocking mergeSortNotConcurrent(this, list)
 }
 
-suspend fun mergeSortNotConcurrent(coroutineScope:CoroutineScope, list:List<Int>):List<Int> = runBlocking  {
-    if (list.size < 2) return@runBlocking list
+//suspend is not needed as this is non-blocking unless you want to add a delay.
+suspend fun mergeSortNotConcurrent(coroutineScope:CoroutineScope, list:List<Int>):List<Int> {
+    delay(10)
+    if (list.size < 2) return list
     val firstHalfSorted = mergeSortNotConcurrent(coroutineScope, list.firstHalf())
     val secondHalfSorted = mergeSortNotConcurrent(coroutineScope, list.secondHalf())
-    return@runBlocking merge( firstHalfSorted, secondHalfSorted)
+    return merge( firstHalfSorted, secondHalfSorted)
 }
 
