@@ -170,6 +170,12 @@ class MainTest {
     }
 
     @Test
+    fun `merge sort with coroutine returns a list of four if sorting a list of four that is not already in the correct order`() {
+        val list = listOf(4,3,4,1)
+        assertEquals(listOf(1,3,4,4), mergeSortConcurrent(list))
+    }
+
+    @Test
     fun `merge sort with loop returns an empty list if sorting an empty list`() {
         val list = emptyList<Int>()
         assertEquals(emptyList<Int>(), mergeSort(list))
@@ -200,6 +206,12 @@ class MainTest {
     }
 
     @Test
+    fun `merge sort with coroutines that calls merge sort using loop`() {
+        val list = listOf(4,3,4,1)
+        assertEquals(listOf(1,3,4,4), mergeSortHybrid(list))
+    }
+
+    @Test
     fun `compare different types of merge sorts 1000 items`() {
         println("testing with 1000 items.....")
         val startTimeSimple = System.currentTimeMillis()
@@ -208,12 +220,12 @@ class MainTest {
         val startTimeAsynch = System.currentTimeMillis()
         assertEquals(sortedTestData, mergeSortConcurrent(testData))
         println("Concurrent merge sort elapsed: ${System.currentTimeMillis() - startTimeAsynch} ")
-        val startTimeSynch = System.currentTimeMillis()
-        assertEquals(sortedTestData, mergeSortConcurrent(testData))
-        println("Corountine not concurrent merge sort elapsed: ${System.currentTimeMillis() - startTimeSynch} ")
         val startTimeLoop = System.currentTimeMillis()
         assertEquals(sortedTestData, mergeSortLoop(testData))
         println("Loop merge sort elapsed: ${System.currentTimeMillis() - startTimeLoop} ")
+        val startTimeHybrid = System.currentTimeMillis()
+        assertEquals(sortedTestData, mergeSortHybrid(testData))
+        println("Part concurrent, part Loop merge sort elapsed: ${System.currentTimeMillis() - startTimeHybrid} ")
     }
 
     @Test
@@ -225,11 +237,12 @@ class MainTest {
         val startTimeAsynch = System.currentTimeMillis()
         assertEquals(sortedTestData10000, mergeSortConcurrent(testData10000))
         println("Concurrent merge sort elapsed: ${System.currentTimeMillis() - startTimeAsynch} ")
-        val startTimeSynch = System.currentTimeMillis()
-        assertEquals(sortedTestData10000, mergeSortConcurrent(testData10000))
-        println("Corountine not concurrent merge sort elapsed: ${System.currentTimeMillis() - startTimeSynch} ")
         val startTimeLoop = System.currentTimeMillis()
         assertEquals(sortedTestData10000, mergeSortLoop(testData10000))
         println("Loop merge sort elapsed: ${System.currentTimeMillis() - startTimeLoop} ")
+        val startTimeHybrid = System.currentTimeMillis()
+        assertEquals(sortedTestData10000, mergeSortHybrid(testData10000))
+        println("Part concurrent, part Loop merge sort elapsed: ${System.currentTimeMillis() - startTimeHybrid} ")
+
     }
 }

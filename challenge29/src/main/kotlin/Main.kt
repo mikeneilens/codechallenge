@@ -1,4 +1,5 @@
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 
@@ -73,23 +74,7 @@ suspend fun mergeSortConcurrent(coroutineScope:CoroutineScope, list:List<Int>):L
     return merge( firstHalfSorted.await(), secondHalfSorted.await())
 }
 
-//-----  Version using coroutines that process first and second half of the list sequentially------//
-
-fun mergeSortNotConcurrent(list:List<Int>):List<Int> = runBlocking {
-    return@runBlocking mergeSortNotConcurrent(this, list)
-}
-
-//suspend is not needed as this is non-blocking unless you want to add a delay.
-suspend fun mergeSortNotConcurrent(coroutineScope:CoroutineScope, list:List<Int>):List<Int> {
-    //delay(10)
-    if (list.size < 2) return list
-    val firstHalfSorted = mergeSortNotConcurrent(coroutineScope, list.firstHalf())
-    val secondHalfSorted = mergeSortNotConcurrent(coroutineScope, list.secondHalf())
-    return merge( firstHalfSorted, secondHalfSorted)
-}
-
 //----- Version that uses a loop ------//
-
 fun mergeSortLoop(list:List<Int>):List<Int> {
     var listOfLists = list.map{listOf(it)}
 
@@ -106,4 +91,18 @@ fun mergeSortLoop(list:List<Int>):List<Int> {
         listOfLists = mutableList
     }
     return listOfLists[0]
+}
+
+//-----  Version using coroutines for first two legs  ------//
+
+fun mergeSortHybrid(list:List<Int>):List<Int> = runBlocking {
+    return@runBlocking mergeSortHybrid(this, list)
+}
+
+suspend fun mergeSortHybrid(coroutineScope:CoroutineScope, list:List<Int>):List<Int> {
+    //delay(10)
+    if (list.size < 2) return list
+    val firstHalfSorted = coroutineScope.async { mergeSortLoop( list.firstHalf()) }
+    val secondHalfSorted = coroutineScope.async { mergeSortLoop( list.secondHalf()) }
+    return merge( firstHalfSorted.await(), secondHalfSorted.await())
 }
