@@ -1,6 +1,5 @@
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.async
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 
 fun naiveSearch(list: List<Int>, value:Int): Boolean {
@@ -48,7 +47,7 @@ fun mergeSort(list:List<Int>):List<Int> {
     return merge( mergeSort(list.firstHalf()), mergeSort(list.secondHalf()))
 }
 
-fun merge(list1:List<Int>, list2:List<Int>, result:List<Int> = listOf()) : List<Int> {
+tailrec fun merge(list1:List<Int>, list2:List<Int>, result:List<Int> = listOf()) : List<Int> {
     if (list1.isEmpty() && list2.isEmpty()) return result
     if (list1.isEmpty()) return result + list2
     if (list2.isEmpty()) return result + list1
@@ -67,7 +66,7 @@ fun mergeSortConcurrent(list:List<Int>):List<Int> = runBlocking {
 }
 
 suspend fun mergeSortConcurrent(coroutineScope:CoroutineScope, list:List<Int>):List<Int> {
-    delay(10)
+    //delay(10)
     if (list.size < 2) return list
     val firstHalfSorted = coroutineScope.async { mergeSortConcurrent(coroutineScope, list.firstHalf()) }
     val secondHalfSorted = coroutineScope.async { mergeSortConcurrent(coroutineScope, list.secondHalf()) }
@@ -82,10 +81,29 @@ fun mergeSortNotConcurrent(list:List<Int>):List<Int> = runBlocking {
 
 //suspend is not needed as this is non-blocking unless you want to add a delay.
 suspend fun mergeSortNotConcurrent(coroutineScope:CoroutineScope, list:List<Int>):List<Int> {
-    delay(10)
+    //delay(10)
     if (list.size < 2) return list
     val firstHalfSorted = mergeSortNotConcurrent(coroutineScope, list.firstHalf())
     val secondHalfSorted = mergeSortNotConcurrent(coroutineScope, list.secondHalf())
     return merge( firstHalfSorted, secondHalfSorted)
 }
 
+//----- Version that uses a loop ------//
+
+fun mergeSortLoop(list:List<Int>):List<Int> {
+    var listOfLists = list.map{listOf(it)}
+
+    while (listOfLists.size > 1) {
+        val mutableList = mutableListOf<List<Int>>()
+
+        for (index in 0 until listOfLists.size step 2 ) {
+            if (index < listOfLists.lastIndex) {
+                mutableList.add(merge(listOfLists[index],listOfLists[index + 1]))
+            } else {
+                mutableList.add(listOfLists[index])
+            }
+        }
+        listOfLists = mutableList
+    }
+    return listOfLists[0]
+}

@@ -88,9 +88,11 @@ class MainTest {
     }
     @Test
     fun `insertion sort returns a long list of items sorted correctly`() {
+        println("Starting insertion sort")
+        val startTime = System.currentTimeMillis()
         val expectedResult = testList.sorted()
         assertEquals(expectedResult, insertionSort(testList))
-
+        println("Approx elapsed ${System.currentTimeMillis() - startTime} ")
     }
 
     @Test
@@ -172,4 +174,43 @@ class MainTest {
         assertEquals(sortedTestData, mergeSortNotConcurrent(testData))
         println("Approx elapsed ${System.currentTimeMillis() - startTime} ")
     }
+
+    @Test
+    fun `merge sort with loop returns an empty list if sorting an empty list`() {
+        val list = emptyList<Int>()
+        assertEquals(emptyList<Int>(), mergeSort(list))
+
+    }
+    @Test
+    fun `merge sort with loop returns a list of one if sorting a list of one`() {
+        val list = listOf(1)
+        assertEquals(listOf(1), mergeSortLoop(list))
+
+    }
+    @Test
+    fun `merge sort with loop returns a list of two if sorting a list of two that is already in the correct order`() {
+        val list = listOf(3,4)
+        assertEquals(listOf(3,4), mergeSortLoop(list))
+
+    }
+    @Test
+    fun `merge sort with loop returns a list of two if sorting a list of two that is not already in the correct order`() {
+        val list = listOf(4,3)
+        assertEquals(listOf(3,4), mergeSortLoop(list))
+
+    }
+    @Test
+    fun `merge sort with loop returns a list of four if sorting a list of four that is not already in the correct order`() {
+        val list = listOf(4,3,4,1)
+        assertEquals(listOf(1,3,4,4), mergeSortLoop(list))
+
+    }
+    @Test
+    fun `merge sort with loop returns a long list of items sorted correctly`() {
+        println("Starting merge sort with loop")
+        val startTime = System.currentTimeMillis()
+        assertEquals(sortedTestData, mergeSortLoop(testData))
+        println("Approx elapsed ${System.currentTimeMillis() - startTime} ")
+    }
+
 }
