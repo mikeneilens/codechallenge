@@ -6,7 +6,7 @@ After much experimentation I decided the Bounded Context was the customer reserv
 
 This resulted in these principle classes: 
 
-+ **Location** : Each Partnership Location where people can reserve a space
++ **Location** : Each Partnership Location where people can reserve a space. Just contains an id and description.
 
 + **LocatinForADate**: Contains each space in a Location on a particular date
 
