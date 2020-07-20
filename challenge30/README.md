@@ -12,7 +12,7 @@ This resulted in these principle classes:
 
 + **Space**: This is the specification for a space. It contains a string and the amount available. It does not describe the actual physical entity so has no id.
 
-+ **Slot**: This is a time slot, but its just a description. I originally gave it an id but it served no purpose in the model. 
++ **Slot**: This is a time slot, but its just a description. I originally gave it an id but it served no purpose in the model although probably is needed to allow for the booking system changing the text. 
 
 + **Booking**: This describes the reservation. Maybe it should be called Reservation! Customers can reserve a space (e.g. Room for 8 people) and one or more time slots (e.g. "9am - 1pm" and "1pm -5pm") for a date/location.
 
