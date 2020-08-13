@@ -1,3 +1,4 @@
+
 fun naiveSearch(list: List<Int>, value:Int): Boolean {
     if (list.isEmpty()) return false
     return if (list.first() == value) true
