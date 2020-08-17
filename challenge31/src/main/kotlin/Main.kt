@@ -8,7 +8,8 @@ val operators = mapOf<String,(Double, Double)->Double>(
     "-" to {p1,p2 -> p1 - p2}
 )
 
-data class CalcNode(var value:Double, var operator:String, var nextCalcNode:CalcNode? = null) {
+
+class CalcNode(var value:Double, var operator:String, var nextCalcNode:CalcNode? = null) {
 
     operator fun plus(other:CalcNode):CalcNode{ //adds a part to the end of the list, returning the root
         findLastPart().apply{ nextCalcNode = other}
@@ -21,13 +22,18 @@ data class CalcNode(var value:Double, var operator:String, var nextCalcNode:Calc
 
 operator fun CalcNode?.plus(other:CalcNode)= this?.let { it + other} ?: other
 
-fun calculate(expression: String): Result<Double> {
+sealed class Result {
+    class Success(val value: Double) : Result()
+    class InvalidNumber(val message: String) : Result()
+}
+
+fun calculate(expression: String): Result {
     try {
-        var calcNode = parse(expression) //this will throw an exception if invalid characters are found.
-        return Result.success(calculate(calcNode))
+        val calcNode = parse(expression) //this will throw an exception if invalid characters are found.
+        return Result.Success(calculate(calcNode))
     }
-    catch (exception: Exception) {
-        return Result.failure(exception)
+    catch (exception: NumberFormatException) {
+        return Result.InvalidNumber(exception.toString())
     }
 }
 fun calculate(rootCalcNode: CalcNode): Double {
@@ -69,12 +75,12 @@ fun parse(expression:String):CalcNode {
 
 // ++++++++++++++++++++++++++++++++++ Bonus challenge ++++++++++++++++++++++//
 
-fun calculateWithParenthesis(expression: String): Result<Double> {
+fun calculateWithParenthesis(expression: String): Result {
     if (expression.containsParenthesis()) {
         val expressionWithinParenthesis = expression.getFirstExpressionWithinParenthesis()
         val valueWithinParenthesis = calculate(expressionWithinParenthesis)
-        if (valueWithinParenthesis.isSuccess) {
-            val newExpression = expression.replaceFirst("($expressionWithinParenthesis)","${valueWithinParenthesis.getOrNull()}")
+        if (valueWithinParenthesis is Result.Success) {
+            val newExpression = expression.replaceFirst("($expressionWithinParenthesis)","${valueWithinParenthesis.value}")
             return calculateWithParenthesis(newExpression)
         } else {
             return valueWithinParenthesis  //this is a failure

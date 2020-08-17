@@ -1,4 +1,5 @@
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import java.lang.NumberFormatException
@@ -103,8 +104,9 @@ class MainTest {
     fun `when string contains 3 X 4 divide 2 + 1 the result is seven`(){
         val expression = "3 X 4 / 2 + 1"
         val result = calculate(expression)
-        assertTrue(result. isSuccess)
-        assertEquals(7.0, result.getOrNull() )
+
+        assertTrue(result  is Result.Success)
+        assertEquals(7.0, (result as Result.Success).value )
     }
     // ++++++++++++++++++++++++++++++++++ Bonus challenge ++++++++++++++++++++++//
     @Test
@@ -127,55 +129,56 @@ class MainTest {
     fun `when string contains 20 between parenthisis the result is 20`() {
         val expression = "(20)"
         val result = calculateWithParenthesis(expression)
-        assertTrue(result. isSuccess)
-        assertEquals(20.0, result.getOrNull() )
+        assertTrue(result  is Result.Success)
+        assertEquals(20.0, (result as Result.Success).value )
     }
     @Test
     fun `when string contains 20 between nested parenthisis the result is 20`() {
         val expression = "((20))"
         val result = calculateWithParenthesis(expression)
-        assertTrue(result. isSuccess)
-        assertEquals(20.0, result.getOrNull() )
+        assertTrue(result  is Result.Success)
+        assertEquals(20.0, (result as Result.Success).value )
     }
     @Test
     fun `when string contains 2 + 3 between nested parenthisis the result is 5`() {
         val expression = "(2 + 3)"
         val result = calculateWithParenthesis(expression)
-        assertTrue(result. isSuccess)
-        assertEquals(5.0, result.getOrNull() )
+        assertTrue(result  is Result.Success)
+        assertEquals(5.0, (result as Result.Success).value )
     }
     @Test
     fun `when string contains 2 plus 3 between nested parenthisis the result is failure`() {
         val expression = "(2 plus 3)"
         val result = calculateWithParenthesis(expression)
-        assertTrue(result. isFailure)
+        assertEquals("java.lang.NumberFormatException: For input string: \"2plus3\"", (result as Result.InvalidNumber).message)
+        assertTrue(result is Result.InvalidNumber)
     }
     @Test
     fun `when string contains 2 + 3 between nested parenthisis multiplied by 3  the result is 15`() {
         val expression = "(2 + 3) X 3"
         val result = calculateWithParenthesis(expression)
-        assertTrue(result. isSuccess)
-        assertEquals(15.0, result.getOrNull() )
+        assertTrue(result  is Result.Success)
+        assertEquals(15.0, (result as Result.Success).value )
     }
     @Test
     fun `when string contains 2 + 3 between nested parenthisis multiplied by 1 + 3 in parenthesis  the result is 20`() {
         val expression = "(2 + 3) X (1 + 3)"
         val result = calculateWithParenthesis(expression)
-        assertTrue(result. isSuccess)
-        assertEquals(20.0, result.getOrNull() )
+        assertTrue(result  is Result.Success)
+        assertEquals(20.0, (result as Result.Success).value )
     }
     @Test
     fun `when string contains 5 ** and 2 - 1 between nested parenthisis multiplied by 2 + 1 in parenthesis  the result is 125`() {
         val expression = "5 ** ((2 - 1) X (1 + 2))"
         val result = calculateWithParenthesis(expression)
-        assertTrue(result. isSuccess)
-        assertEquals(125.0, result.getOrNull() )
+        assertTrue(result  is Result.Success)
+        assertEquals(125.0, (result as Result.Success).value )
     }
     @Test
     fun `when string contains 5 ** and 2 - 1 between nested parenthisis and then multiplied by 2 + 1 in parenthesis  the result is 15`() {
         val expression = "5 ** (2 - 1) X (1 + 2)"
         val result = calculateWithParenthesis(expression)
-        assertTrue(result. isSuccess)
-        assertEquals(15.0, result.getOrNull() )
+        assertTrue(result  is Result.Success)
+        assertEquals(15.0, (result as Result.Success).value )
     }
 }

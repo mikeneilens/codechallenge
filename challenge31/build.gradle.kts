@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.3.72"
+    kotlin("jvm") version "1.4.0"
 }
 
 group = "org.example"
@@ -17,7 +17,6 @@ dependencies {
 tasks {
     compileKotlin {
         kotlinOptions.jvmTarget = "1.8"
-        kotlinOptions.freeCompilerArgs = listOf("-Xallow-result-return-type")
     }
     compileTestKotlin {
         kotlinOptions.jvmTarget = "1.8"
