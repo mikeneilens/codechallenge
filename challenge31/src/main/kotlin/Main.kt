@@ -16,55 +16,66 @@ class CalcNode(var value:Double, var operator:String, var nextCalcNode:CalcNode?
         return this
     }
 
-    fun findLastPart():CalcNode = nextCalcNode?.let{ it.findLastPart() } ?: this
+    fun findLastPart():CalcNode = nextCalcNode?.findLastPart() ?: this
 
+    fun clone():CalcNode {
+        val clonedNext = nextCalcNode?.clone()
+        return CalcNode(this.value, this.operator, clonedNext)
+    }
+
+    fun calculate():Double {
+        val root = clone()
+        operators.forEach { operator ->
+            var calcNode = root
+            while (calcNode.nextCalcNode != null) {
+                if (calcNode.operator == operator.key) {
+                    calcNode.combineNodes(operator.value)
+                } else {
+                    calcNode = calcNode.nextCalcNode ?: calcNode
+                }
+            }
+        }
+        return root.value
+    }
+
+    private fun combineNodes(calculation: (Double, Double) -> Double) {
+        nextCalcNode?.let { nextCalcNode ->
+            value = calculation(value, nextCalcNode.value)
+            operator = nextCalcNode.operator
+            this.nextCalcNode = nextCalcNode.nextCalcNode
+        }
+    }
+
+    override fun toString(): String = "$value$operator${nextCalcNode ?: ""}"
 }
 
 operator fun CalcNode?.plus(other:CalcNode)= this?.let { it + other} ?: other
 
-sealed class Result {
-    class Success(val value: Double) : Result()
-    class InvalidNumber(val message: String) : Result()
-}
+sealed class Result
+class Success(val value: Double) : Result()
+class InvalidNumber(val message: String) : Result()
 
 fun calculate(expression: String): Result {
-    try {
+    return try {
         val calcNode = parse(expression) //this will throw an exception if invalid characters are found.
-        return Result.Success(calculate(calcNode))
+        Success(calcNode.calculate())
     }
     catch (exception: NumberFormatException) {
-        return Result.InvalidNumber(exception.toString())
+        InvalidNumber(exception.toString())
     }
-}
-fun calculate(rootCalcNode: CalcNode): Double {
-    operators.forEach { operator ->
-        var calcNode = rootCalcNode
-        while (calcNode.nextCalcNode != null) {
-            if (calcNode.operator == operator.key) {
-                calcNode.nextCalcNode?.let { nextPart ->
-                    calcNode.value = operator.value( calcNode.value , nextPart.value)
-                    calcNode.operator = nextPart.operator
-                    calcNode.nextCalcNode = nextPart.nextCalcNode
-                }
-            } else {
-                calcNode = calcNode.nextCalcNode ?: calcNode
-            }
-        }
-    }
-
-    return rootCalcNode.value
 }
 
 fun parse(expression:String):CalcNode {
-    val chars = expression.withZeroPrefix()
+    val chars = expression
         .replace(" ","")
         .replace("**","*")
+        .withZeroPrefix()
         .toList().map{it.toString()}
     var calcNode:CalcNode? = null
     var numberText = ""
     chars.forEach {char ->
-        if (operators.keys.contains(char)) {
-            calcNode =  calcNode+ CalcNode(numberText.toDouble(),char)
+        if (operators[char] != null) {
+            calcNode += CalcNode(numberText.toDouble(), char) //throws if expression is badly formed
             numberText = ""
         } else {
             numberText += char
@@ -75,29 +86,28 @@ fun parse(expression:String):CalcNode {
 
 // ++++++++++++++++++++++++++++++++++ Bonus challenge ++++++++++++++++++++++//
 
-fun calculateWithParenthesis(expression: String): Result {
+fun calculateWithParenthesis(expression: String): Result =
     if (expression.containsParenthesis()) {
         val expressionWithinParenthesis = expression.getFirstExpressionWithinParenthesis()
         val valueWithinParenthesis = calculate(expressionWithinParenthesis)
-        if (valueWithinParenthesis is Result.Success) {
+        if (valueWithinParenthesis is Success) {
             val newExpression = expression.replaceFirst("($expressionWithinParenthesis)","${valueWithinParenthesis.value}")
-            return calculateWithParenthesis(newExpression)
+            calculateWithParenthesis(newExpression)
         } else {
-            return valueWithinParenthesis  //this is a failure
+            valueWithinParenthesis  //this is a failure
         }
     } else {
-        return calculate(expression)
+        calculate(expression)
     }
-}
+
 
 fun String.containsParenthesis() = contains(')')
 
-fun String.getFirstExpressionWithinParenthesis():String {
-    return  subSequence(indexOfFirstOpen + 1, indexOfFirstClose ).toString()
-}
+fun String.getFirstExpressionWithinParenthesis() = subSequence(indexOfFirstOpen + 1, indexOfFirstClose ).toString()
 
-fun String.indexOfFirstBefore(index:Int, f:(Char)->Boolean )=
-    index - 1 - (0..(index-1)).reversed().takeWhile { !f(get(it)) }.size
+fun String.indexOfFirstBefore(index:Int, predicate:(Char)->Boolean )=
+    index - 1 - (0 until index).reversed().takeWhile { !predicate(get(it)) }.size
+
 
 val String.indexOfFirstClose get() = indexOfFirst{it == ')'}
 val String.indexOfFirstOpen get() = indexOfFirstBefore(indexOfFirstClose){it == '('}
