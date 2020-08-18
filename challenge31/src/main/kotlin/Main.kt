@@ -1,6 +1,8 @@
 import kotlin.math.pow
 
-val operators = mapOf<String,(Double, Double)->Double>(
+typealias Calculation = (Double, Double)->Double
+
+val operators = mapOf<String,Calculation>(
     "*" to {p1,p2 -> p1.pow(p2)},
     "X" to {p1,p2 -> p1 * p2},
     "/" to {p1,p2 -> p1 / p2},
@@ -11,17 +13,14 @@ val operators = mapOf<String,(Double, Double)->Double>(
 
 class CalcNode(var value:Double, var operator:String, var nextCalcNode:CalcNode? = null) {
 
-    operator fun plus(other:CalcNode):CalcNode{ //adds a part to the end of the list, returning the root
-        findLastPart().apply{ nextCalcNode = other}
+    operator fun plus(other:CalcNode):CalcNode{ //adds a node to the end of the list, returning the root
+        findLastNode().apply{ nextCalcNode = other}
         return this
     }
 
-    fun findLastPart():CalcNode = nextCalcNode?.findLastPart() ?: this
+    fun findLastNode():CalcNode = nextCalcNode?.findLastNode() ?: this
 
-    fun clone():CalcNode {
-        val clonedNext = nextCalcNode?.clone()
-        return CalcNode(this.value, this.operator, clonedNext)
-    }
+    fun clone():CalcNode = CalcNode(this.value, this.operator, nextCalcNode?.clone()) //co¡pies a list
 
     fun calculate():Double {
         val root = clone()
@@ -29,7 +28,7 @@ class CalcNode(var value:Double, var operator:String, var nextCalcNode:CalcNode?
             var calcNode = root
             while (calcNode.nextCalcNode != null) {
                 if (calcNode.operator == operator.key) {
-                    calcNode.combineNodes(operator.value)
+                    calcNode.mergeNodes(operator.value)
                 } else {
                     calcNode = calcNode.nextCalcNode ?: calcNode
                 }
@@ -38,7 +37,7 @@ class CalcNode(var value:Double, var operator:String, var nextCalcNode:CalcNode?
         return root.value
     }
 
-    private fun combineNodes(calculation: (Double, Double) -> Double) {
+    private fun mergeNodes(calculation: Calculation) { //combines the node with the next node, applying the calculation to the values in each node
         nextCalcNode?.let { nextCalcNode ->
             value = calculation(value, nextCalcNode.value)
             operator = nextCalcNode.operator

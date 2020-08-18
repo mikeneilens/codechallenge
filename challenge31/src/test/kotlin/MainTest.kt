@@ -43,17 +43,17 @@ class MainTest {
     @Test
     fun `find last calcNode of list containing 2 items`() {
         val calcNode = CalcNode(1.0, "+", CalcNode(2.0, "") )
-        assertEquals(2.0, calcNode.findLastPart().value)
+        assertEquals(2.0, calcNode.findLastNode().value)
     }
     @Test
     fun `find last calcNode of list containing 3 items`() {
         val calcNode = CalcNode(1.0, "+", CalcNode(2.0, "+",CalcNode(3.0, "") ) )
-        assertEquals(3.0, calcNode.findLastPart().value)
+        assertEquals(3.0, calcNode.findLastNode().value)
     }
     @Test
     fun `append calcNode to a list containing 3 items`() {
         val calcNode = CalcNode(1.0, "+", CalcNode(2.0, "+",CalcNode(3.0, "") ) )+ CalcNode(4.0,"")
-        assertEquals(4.0, calcNode.findLastPart().value)
+        assertEquals(4.0, calcNode.findLastNode().value)
     }
     @Test
     fun `when list contains 3 + 2 + 1 the result is six`() {
