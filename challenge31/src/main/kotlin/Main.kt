@@ -1,102 +1,78 @@
 import kotlin.math.pow
 
-typealias Calculation = (Double, Double)->Double
+typealias Calculation = (Double, Double) -> Double
 
-val operators = mapOf<String,Calculation>(
-    "*" to {p1,p2 -> p1.pow(p2)},
-    "X" to {p1,p2 -> p1 * p2},
-    "/" to {p1,p2 -> p1 / p2},
-    "+" to {p1,p2 -> p1 + p2},
-    "-" to {p1,p2 -> p1 - p2}
-)
-
-
-class CalcNode(var value:Double, var operator:String, var nextCalcNode:CalcNode? = null) {
-
-    operator fun plus(other:CalcNode):CalcNode{ //adds a node to the end of the list, returning the root
-        findLastNode().apply{ nextCalcNode = other}
-        return this
-    }
-
-    fun findLastNode():CalcNode = nextCalcNode?.findLastNode() ?: this
-
-    fun clone():CalcNode = CalcNode(this.value, this.operator, nextCalcNode?.clone()) //co¡pies a list
-
-    fun calculate():Double {
-        val root = clone()
-        operators.forEach { operator ->
-            var calcNode = root
-            while (calcNode.nextCalcNode != null) {
-                if (calcNode.operator == operator.key) {
-                    calcNode.mergeNodes(operator.value)
-                } else {
-                    calcNode = calcNode.nextCalcNode ?: calcNode
-                }
-            }
-        }
-        return root.value
-    }
-
-    private fun mergeNodes(calculation: Calculation) { //combines the node with the next node, applying the calculation to the values in each node
-        nextCalcNode?.let { nextCalcNode ->
-            value = calculation(value, nextCalcNode.value)
-            operator = nextCalcNode.operator
-            this.nextCalcNode = nextCalcNode.nextCalcNode
-        }
-    }
-
-    override fun toString(): String = "$value$operator${nextCalcNode ?: ""}"
+enum class Operator(val symbol:String,  val calculation: Calculation) {
+    Power("**",{ p1, p2 -> p1.pow(p2)}),
+    Multiply ("X", { p1, p2 -> p1 * p2}),
+    Divide ("/", { p1, p2 -> p1 / p2}),
+    Add ("+", { p1, p2 -> p1 + p2}),
+    Minus ("-",{ p1, p2 -> p1 - p2})
 }
-
-operator fun CalcNode?.plus(other:CalcNode)= this?.let { it + other} ?: other
 
 sealed class Result
 class Success(val value: Double) : Result()
 class InvalidNumber(val message: String) : Result()
 
-fun calculate(expression: String): Result {
-    return try {
-        val calcNode = parse(expression) //this will throw an exception if invalid characters are found.
-        Success(calcNode.calculate())
+fun Char.isPartOfNumber() = "0123456789.".contains(this)
+
+fun String.textNumberAfter(index:Int):String {
+    var end = index + 1
+    while (end < length && get(end).isPartOfNumber()) {
+        end++
     }
-    catch (exception: NumberFormatException) {
+    return subSequence(index + 1, end).toString()
+}
+fun String.textNumberBefore(index:Int):String {
+    val reversedString = reversed()
+    val reversedIndex = length - index - 1
+    return reversedString.textNumberAfter(reversedIndex).reversed()
+}
+
+fun String.calculate():Result {
+    return try {
+        var result = this.replace(" ","").withZeroPrefix()
+        Operator.values().forEach {
+            result = result.calculate(it)
+        }
+        Success( result.toDouble())
+    }
+    catch (exception:NumberFormatException) {
         InvalidNumber(exception.toString())
     }
 }
-
-fun parse(expression:String):CalcNode {
-    val chars = expression
-        .replace(" ","")
-        .replace("**","*")
-        .withZeroPrefix()
-        .toList().map{it.toString()}
-    var calcNode:CalcNode? = null
-    var numberText = ""
-    chars.forEach {char ->
-        if (operators[char] != null) {
-            calcNode += CalcNode(numberText.toDouble(), char) //throws if expression is badly formed
-            numberText = ""
-        } else {
-            numberText += char
-        }
+fun String.calculate(operator:Operator):String {
+    var string = this
+    while (string.contains(operator.symbol)) {
+        val indexOfSymbol = string.indexOf(operator.symbol)
+        if (indexOfSymbol == 0) return string // needed for when first number in the string is negative
+        string = string.substituteCalculatedValue(indexOfSymbol, operator)
     }
-    return calcNode + CalcNode(numberText.toDouble(),"")
+    return string
+}
+
+fun String.substituteCalculatedValue(indexOfSymbol:Int, operator: Operator):String {
+    val endIndexOfSymbol = indexOfSymbol + operator.symbol.length - 1
+    val number1 = textNumberBefore(indexOfSymbol)
+    val number2 = textNumberAfter(endIndexOfSymbol)
+    val newNumber = operator.calculation(number1.toDouble(),number2.toDouble()).toString()
+    return replace("$number1${operator.symbol}$number2",newNumber)
 }
 
 // ++++++++++++++++++++++++++++++++++ Bonus challenge ++++++++++++++++++++++//
 
-fun calculateWithParenthesis(expression: String): Result =
-    if (expression.containsParenthesis()) {
-        val expressionWithinParenthesis = expression.getFirstExpressionWithinParenthesis()
-        val valueWithinParenthesis = calculate(expressionWithinParenthesis)
+fun String.calculateWithParenthesis(): Result =
+    if (containsParenthesis()) {
+        val expressionWithinParenthesis = getFirstExpressionWithinParenthesis()
+        val valueWithinParenthesis = expressionWithinParenthesis.calculate()
         if (valueWithinParenthesis is Success) {
-            val newExpression = expression.replaceFirst("($expressionWithinParenthesis)","${valueWithinParenthesis.value}")
-            calculateWithParenthesis(newExpression)
+            val newExpression = replaceFirst("($expressionWithinParenthesis)","${valueWithinParenthesis.value}")
+            newExpression.calculateWithParenthesis()
         } else {
             valueWithinParenthesis  //this is a failure
         }
     } else {
-        calculate(expression)
+        calculate()
     }
 
 
