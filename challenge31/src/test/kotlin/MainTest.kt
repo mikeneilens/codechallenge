@@ -4,43 +4,43 @@ import org.junit.jupiter.api.Test
 
 class MainTest {
     @Test
-    fun `textNumberAfter index position 0 is 1point234`() {
-        val result = "+1.234".textNumberAfter(0)
+    fun `numberAfter index position 0 is 1point234`() {
+        val result = "+1.234".numberAfter(0)
         assertEquals("1.234", result)
     }
     @Test
-    fun `textNumberAfter index position 0 is error if index at end of string`() {
-        val result = "+".textNumberAfter(0)
+    fun `numberAfter index position 0 is error if index at end of string`() {
+        val result = "+".numberAfter(0)
         assertEquals("", result)
     }
     @Test
-    fun `textNumberAfter index position 0 is error if no number`() {
-        val result = "+ ".textNumberAfter(0)
+    fun `numberAfter index position 0 is error if no number`() {
+        val result = "+ ".numberAfter(0)
         assertEquals("", result)
     }
     @Test
-    fun `textNumberAfter index position 0 is 1point234 if next number is not the last in the string`() {
-        val result = "+1.234X4.567".textNumberAfter(0)
+    fun `numberAfter index position 0 is 1point234 if next number is not the last in the string`() {
+        val result = "+1.234X4.567".numberAfter(0)
         assertEquals("1.234", result)
     }
     @Test
-    fun `textNumberBefore index position 5 is 1point234`() {
-        val result = "1.234+".textNumberBefore(5)
+    fun `numberBefore index position 5 is 1point234`() {
+        val result = "1.234+".numberBefore(5)
         assertEquals("1.234", result)
     }
     @Test
-    fun `textNumberBefore index position 12 is 1point234 when there is another number before it`() {
-        val result = "3.4567X1.234".textNumberBefore(12)
+    fun `numberBefore index position 12 is 1point234 when there is another number before it`() {
+        val result = "3.4567X1.234".numberBefore(12)
         assertEquals("1.234", result)
     }
     @Test
     fun `numberBeFore index position 5 is error if no number`() {
-        val result = "ABCDE+".textNumberAfter(5)
+        val result = "ABCDE+".numberAfter(5)
         assertEquals("", result)
     }
     @Test
     fun `numberBeFore index position 0 is error if no number`() {
-        val result = "+".textNumberAfter(0)
+        val result = "+".numberAfter(0)
         assertEquals("", result)
     }
 

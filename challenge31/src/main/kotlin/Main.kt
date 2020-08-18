@@ -16,17 +16,17 @@ class InvalidNumber(val message: String) : Result()
 
 fun Char.isPartOfNumber() = "0123456789.".contains(this)
 
-fun String.textNumberAfter(index:Int):String {
+fun String.numberAfter(index:Int):String {
     var end = index + 1
     while (end < length && get(end).isPartOfNumber()) {
         end++
     }
     return subSequence(index + 1, end).toString()
 }
-fun String.textNumberBefore(index:Int):String {
+fun String.numberBefore(index:Int):String {
     val reversedString = reversed()
     val reversedIndex = length - index - 1
-    return reversedString.textNumberAfter(reversedIndex).reversed()
+    return reversedString.numberAfter(reversedIndex).reversed()
 }
 
 fun String.calculate():Result {
@@ -44,17 +44,17 @@ fun String.calculate():Result {
 fun String.calculate(operator:Operator):String {
     var string = this
     while (string.contains(operator.symbol)) {
-        val indexOfSymbol = string.indexOf(operator.symbol)
-        if (indexOfSymbol == 0) return string // needed for when first number in the string is negative
-        string = string.substituteCalculatedValue(indexOfSymbol, operator)
+        val startIndexOfSymbol = string.indexOf(operator.symbol)
+        if (startIndexOfSymbol == 0) return string // needed for when first number in the string is negative
+        string = string.substituteCalculatedValue(startIndexOfSymbol, operator)
     }
     return string
 }
 
-fun String.substituteCalculatedValue(indexOfSymbol:Int, operator: Operator):String {
-    val endIndexOfSymbol = indexOfSymbol + operator.symbol.length - 1
-    val number1 = textNumberBefore(indexOfSymbol)
-    val number2 = textNumberAfter(endIndexOfSymbol)
+fun String.substituteCalculatedValue(startIndexOfSymbol:Int, operator: Operator):String {
+    val endIndexOfSymbol = startIndexOfSymbol + operator.symbol.length - 1
+    val number1 = numberBefore(startIndexOfSymbol)
+    val number2 = numberAfter(endIndexOfSymbol)
     val newNumber = operator.calculation(number1.toDouble(),number2.toDouble()).toString()
     return replace("$number1${operator.symbol}$number2",newNumber)
 }
