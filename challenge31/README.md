@@ -6,7 +6,7 @@ The algorithm is:
 
 For each symbol (i.e. **, X, /, +, -):
 + Find each occuracnce of the symbol.
-+ Repeat until the symbol isn't foud in the string:
++ Repeat until the symbol isn't found in the string:
     + Find the text containing the number before and after the symbol. 
     + Obtain a new number by applying the operator for the symbol to the two numbers.
     + Replace $firstNumber$symbol$secondNumber with the new number.
