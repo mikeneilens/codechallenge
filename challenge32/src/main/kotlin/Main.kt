@@ -3,22 +3,21 @@ import java.time.LocalDate
 
 data class Claim( val amount:Int, val claimDetails:List<String>)
 
-fun calcStandbyClaim(date: LocalDate, duration: Double, calloutLevel:String, result:Claim = Claim(0, emptyList()) ): Claim {
-    if (duration <= 0.0) return result
+fun calcStandbyClaim(date: LocalDate, duration: Double, calloutLevel:String, offset:Double = 0.0, result:Claim = Claim(0, emptyList()) ): Claim {
+    if (offset >= duration) return result
+
+    val dateOfShift = date.plusDays(offset.toLong())
 
     val newResult = Claim(
-        result.amount + rates.claim(date.shiftType, calloutLevel),
-        result.claimDetails + "$date, ${rates.description(date.shiftType, calloutLevel)}"
+        result.amount + rates.claim(dateOfShift.shiftType, calloutLevel),
+        result.claimDetails + "$dateOfShift, ${rates.description(dateOfShift.shiftType, calloutLevel)}"
     )
 
-    return if (date.isWeekend() || date.isBankHoliday())
-        calcStandbyClaim(date.calcDate(duration), duration - 0.5, calloutLevel, newResult)
+    return if (dateOfShift.isWeekend() || dateOfShift.isBankHoliday())
+        calcStandbyClaim(date, duration , calloutLevel, offset + 0.5,  newResult)
     else
-        calcStandbyClaim(date.plusDays(1), duration - 1.0, calloutLevel, newResult)
+        calcStandbyClaim(date, duration , calloutLevel, offset + 1.0, newResult)
 }
-
-fun LocalDate.calcDate(duration:Double) = if (duration.isInt()) this else this.plusDays(1)
-fun Double.isInt() = ((this * 2).toInt() % 2) == 0
 
 val LocalDate.shiftType:ShiftType get() {
     if (isBankHoliday()) return ShiftType.BANK_HOLIDAY

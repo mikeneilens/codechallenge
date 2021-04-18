@@ -70,7 +70,10 @@ class MainTest {
     @Test
     fun `standby claim for 2 day at A Level on Mon to Thursday which is not a holiday is weekday rate`() {
         val result = calcStandbyClaim(LocalDate.parse("2021-04-19"),2.0,"A")
-        val expectedResult = Claim(MON_TO_THU_RATE_A * 2,listOf("2021-04-19, Week day rate A, £25","2021-04-20, Week day rate A, £25"))
+        val expectedResult = Claim(MON_TO_THU_RATE_A * 2,
+            listOf(
+                "2021-04-19, Week day rate A, £25",
+                "2021-04-20, Week day rate A, £25"))
         assertEquals(expectedResult, result)
     }
 
@@ -95,6 +98,26 @@ class MainTest {
                 "2021-04-18, Weekend rate A, £40",
                 "2021-04-19, Week day rate A, £25",
             ))
+        assertEquals(expectedResult, result)
+    }
+
+    @Test
+    fun `standby claim for 1 and a half days at A Level starting on Friday which is not a holiday is weekend rate spread over 2 shifts`() {
+        val result = calcStandbyClaim(LocalDate.parse("2021-04-16"),1.5,"A")
+        val expectedResult = Claim(WEEKEND_RATE_A * 2,
+            listOf("2021-04-16, Weekend rate A, £40",
+                "2021-04-17, Weekend rate A, £40"))
+        assertEquals(expectedResult, result)
+    }
+
+    @Test
+    fun `standby claim for 1 and a half days at A Level starting on Saturday is weekend rate spread over 3 shifts`() {
+        val result = calcStandbyClaim(LocalDate.parse("2021-04-17"),1.5,"A")
+        val expectedResult = Claim(WEEKEND_RATE_A * 3,
+            listOf(
+                "2021-04-17, Weekend rate A, £40",
+                "2021-04-17, Weekend rate A, £40",
+                "2021-04-18, Weekend rate A, £40"))
         assertEquals(expectedResult, result)
     }
 }
