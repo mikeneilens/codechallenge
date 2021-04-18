@@ -32,7 +32,12 @@ val LocalDate.noOfShifts:Int get() = if (isWeekend() || isBankHoliday()) 2 else 
 fun LocalDate.isFriday() = dayOfWeek == DayOfWeek.FRIDAY
 fun LocalDate.isWeekend() = dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY
 fun LocalDate.isBankHoliday() = listOf(
+    LocalDate.parse("2021-01-01"),
     LocalDate.parse("2021-04-02"),
     LocalDate.parse("2021-04-05"),
+    LocalDate.parse("2021-05-03"),
+    LocalDate.parse("2021-08-30"),
+    LocalDate.parse("2021-12-27"),
+    LocalDate.parse("2021-12-28"),
 ).contains(this)
 

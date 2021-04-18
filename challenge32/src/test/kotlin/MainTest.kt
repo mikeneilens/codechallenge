@@ -194,4 +194,59 @@ class MainTest {
                 "2021-04-18, Weekend rate A, £40" ))
         assertEquals(expectedResult, result)
     }
+    @Test
+    fun `standby claim for a complete week at A level is 300 pounds`() {
+        val result = calcStandbyClaim(LocalDate.parse("2021-04-19"),7.0,"A")
+        val expectedResult = Claim(300, listOf(
+            "2021-04-19, Week day rate A, £25",
+            "2021-04-20, Week day rate A, £25",
+            "2021-04-21, Week day rate A, £25",
+            "2021-04-22, Week day rate A, £25",
+            "2021-04-23, Weekend rate A, £40",
+            "2021-04-24, Weekend rate A, £40",
+            "2021-04-24, Weekend rate A, £40",
+            "2021-04-25, Weekend rate A, £40",
+            "2021-04-25, Weekend rate A, £40" ))
+        assertEquals(expectedResult, result)
+    }
+    @Test
+    fun `standby claim for a complete week that includes one bank holiday at A level is 435 pounds`() {
+        val result = calcStandbyClaim(LocalDate.parse("2021-04-03"),7.0,"A")
+        val expectedResult = Claim(435, listOf(
+            "2021-04-03, Weekend rate A, £40",
+            "2021-04-03, Weekend rate A, £40",
+            "2021-04-04, Weekend rate A, £40",
+            "2021-04-04, Weekend rate A, £40",
+            "2021-04-05, Bank holiday rate A, £80",
+            "2021-04-05, Bank holiday rate A, £80",
+            "2021-04-06, Week day rate A, £25",
+            "2021-04-07, Week day rate A, £25",
+            "2021-04-08, Week day rate A, £25",
+            "2021-04-09, Weekend rate A, £40",
+             ))
+        assertEquals(expectedResult, result)
+    }
+    @Test
+    fun `standby claim for a complete week that includes one bank holiday at B level is 435 pounds`() {
+        val result = calcStandbyClaim(LocalDate.parse("2021-04-03"),7.0,"B")
+        val expectedResult = Claim(270, listOf(
+            "2021-04-03, Weekend rate B, £25",
+            "2021-04-03, Weekend rate B, £25",
+            "2021-04-04, Weekend rate B, £25",
+            "2021-04-04, Weekend rate B, £25",
+            "2021-04-05, Bank holiday rate B, £50",
+            "2021-04-05, Bank holiday rate B, £50",
+            "2021-04-06, Week day rate B, £15",
+            "2021-04-07, Week day rate B, £15",
+            "2021-04-08, Week day rate B, £15",
+            "2021-04-09, Weekend rate B, £25",
+        ))
+        assertEquals(expectedResult, result)
+    }
+    @Test
+    fun `standby claim for a complete calendar year is 16555 pounds`() {
+        val result = calcStandbyClaim(LocalDate.parse("2021-01-01"), 365.0, "A")
+        assertEquals(16555, result.amount)
+    }
+
 }
