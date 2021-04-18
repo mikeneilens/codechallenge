@@ -4,7 +4,7 @@ import java.time.LocalDate
 data class Claim( val amount:Int, val claimDetails:List<String>)
 
 enum class ShiftType {
-    MON_TO_THU,WEEKEND, BANK_HOLIDAY
+    MON_TO_THU,WEEKEND_OR_FRIDAY, BANK_HOLIDAY
 }
 
 fun calcStandbyClaim(date: LocalDate, duration: Double, calloutLevel:String, offset:Double = 0.0, totalClaim:Claim = Claim(0, emptyList()) ): Claim {
@@ -22,8 +22,8 @@ fun calcStandbyClaim(date: LocalDate, duration: Double, calloutLevel:String, off
 
 val LocalDate.shiftType:ShiftType get() {
     if (isBankHoliday()) return ShiftType.BANK_HOLIDAY
-    if (isFriday()) return ShiftType.WEEKEND
-    if (isWeekend()) return ShiftType.WEEKEND
+    if (isFriday()) return ShiftType.WEEKEND_OR_FRIDAY
+    if (isWeekend()) return ShiftType.WEEKEND_OR_FRIDAY
     return ShiftType.MON_TO_THU
 }
 
@@ -31,5 +31,8 @@ val LocalDate.noOfShifts:Int get() = if (isWeekend() || isBankHoliday()) 2 else 
 
 fun LocalDate.isFriday() = dayOfWeek == DayOfWeek.FRIDAY
 fun LocalDate.isWeekend() = dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY
-fun LocalDate.isBankHoliday() = this == LocalDate.parse("2021-04-02")
+fun LocalDate.isBankHoliday() = listOf(
+    LocalDate.parse("2021-04-02"),
+    LocalDate.parse("2021-04-05"),
+).contains(this)
 
