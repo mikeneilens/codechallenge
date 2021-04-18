@@ -1,6 +1,3 @@
-enum class ShiftType {
-    MON_TO_THU,WEEKEND, BANK_HOLIDAY
-}
 
 const val MON_TO_THU_RATE_A = 25
 const val WEEKEND_RATE_A = 40

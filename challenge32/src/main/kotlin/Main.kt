@@ -3,20 +3,21 @@ import java.time.LocalDate
 
 data class Claim( val amount:Int, val claimDetails:List<String>)
 
-fun calcStandbyClaim(date: LocalDate, duration: Double, calloutLevel:String, offset:Double = 0.0, result:Claim = Claim(0, emptyList()) ): Claim {
-    if (offset >= duration) return result
+enum class ShiftType {
+    MON_TO_THU,WEEKEND, BANK_HOLIDAY
+}
+
+fun calcStandbyClaim(date: LocalDate, duration: Double, calloutLevel:String, offset:Double = 0.0, totalClaim:Claim = Claim(0, emptyList()) ): Claim {
+    if (offset >= duration) return totalClaim
 
     val dateOfShift = date.plusDays(offset.toLong())
 
-    val newResult = Claim(
-        result.amount + rates.claim(dateOfShift.shiftType, calloutLevel),
-        result.claimDetails + "$dateOfShift, ${rates.description(dateOfShift.shiftType, calloutLevel)}"
+    val newTotalClaim = Claim(
+        totalClaim.amount + rates.claim(dateOfShift.shiftType, calloutLevel),
+        totalClaim.claimDetails + "$dateOfShift, ${rates.description(dateOfShift.shiftType, calloutLevel)}"
     )
 
-    return if (dateOfShift.isWeekend() || dateOfShift.isBankHoliday())
-        calcStandbyClaim(date, duration , calloutLevel, offset + 0.5,  newResult)
-    else
-        calcStandbyClaim(date, duration , calloutLevel, offset + 1.0, newResult)
+    return calcStandbyClaim(date, duration , calloutLevel, offset + 1.0 / dateOfShift.noOfShifts,  newTotalClaim)
 }
 
 val LocalDate.shiftType:ShiftType get() {
@@ -25,6 +26,8 @@ val LocalDate.shiftType:ShiftType get() {
     if (isWeekend()) return ShiftType.WEEKEND
     return ShiftType.MON_TO_THU
 }
+
+val LocalDate.noOfShifts:Int get() = if (isWeekend() || isBankHoliday()) 2 else 1
 
 fun LocalDate.isFriday() = dayOfWeek == DayOfWeek.FRIDAY
 fun LocalDate.isWeekend() = dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY
