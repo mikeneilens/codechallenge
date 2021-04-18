@@ -1,18 +1,14 @@
 import java.time.DayOfWeek
 import java.time.LocalDate
 
-const val MON_TO_THU_RATE_A = 25
-const val WEEKEND_RATE_A = 40
-const val BANK_HOLIDAY_RATE_A = 80
-
 data class Claim( val amount:Int, val claimDetails:List<String>)
 
 fun calcStandbyClaim(date: LocalDate, duration: Int, calloutLevel:String): Claim {
-    if (date.isBankHoliday()) return Claim(BANK_HOLIDAY_RATE_A * 2,listOf("2021-04-02, Bank holiday rate A, £80","2021-04-02, Bank holiday rate A, £80"))
-    if (date.dayOfWeek == DayOfWeek.FRIDAY) return Claim(WEEKEND_RATE_A,listOf("2021-04-16, Weekend rate A, £40"))
-    if (date.dayOfWeek == DayOfWeek.SATURDAY) return Claim(WEEKEND_RATE_A * 2,listOf("2021-04-17, Weekend rate A, £40","2021-04-17, Weekend rate A, £40"))
-    if (date.dayOfWeek == DayOfWeek.SUNDAY) return Claim(WEEKEND_RATE_A * 2,listOf("2021-04-18, Weekend rate A, £40","2021-04-18, Weekend rate A, £40"))
-    return Claim(MON_TO_THU_RATE_A,listOf("2021-04-19, Week day rate A, £25"))
+    if (date.isBankHoliday()) return Claim(rates.claim(ShiftType.BANK_HOLIDAY,"A") * 2,listOf("2021-04-02, ${rates.description(ShiftType.BANK_HOLIDAY,"A")}","2021-04-02, ${rates.description(ShiftType.BANK_HOLIDAY,"A")}"))
+    if (date.dayOfWeek == DayOfWeek.FRIDAY) return Claim(rates.claim(ShiftType.WEEKEND,"A") ,listOf("2021-04-16, ${rates.description(ShiftType.WEEKEND,"A")}"))
+    if (date.dayOfWeek == DayOfWeek.SATURDAY) return Claim(rates.claim(ShiftType.WEEKEND,"A") * 2,listOf("2021-04-17, ${rates.description(ShiftType.WEEKEND,"A")}","2021-04-17, ${rates.description(ShiftType.WEEKEND,"A")}"))
+    if (date.dayOfWeek == DayOfWeek.SUNDAY) return Claim(rates.claim(ShiftType.WEEKEND,"A") * 2,listOf("2021-04-18, ${rates.description(ShiftType.WEEKEND,"A")}","2021-04-18, ${rates.description(ShiftType.WEEKEND,"A")}"))
+    return Claim(rates.claim(ShiftType.MON_TO_THU,"A") ,listOf("2021-04-19, ${rates.description(ShiftType.MON_TO_THU,"A")}"))
 }
 
 fun LocalDate.isBankHoliday() = this == LocalDate.parse("2021-04-02")
