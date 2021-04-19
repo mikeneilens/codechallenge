@@ -29,7 +29,7 @@ fun Map<RotaItem, Int>.amount(shiftType:ShiftType, calloutLevel: String):Int {
     return get(rotaItem) ?: 0
 }
 
-fun Map<RotaItem, Int>.detail(shiftType:ShiftType, calloutLevel: String, dateOfShift:LocalDate):String {
+fun Map<RotaItem, Int>.detail(shiftType:ShiftType, calloutLevel: String, dateOfShift:ClaimDate):String {
     val rotaItem =  RotaItem(shiftType,calloutLevel)
     val value = amount(shiftType,calloutLevel)
     return "$dateOfShift, ${rotaItem.description()}, £$value"
