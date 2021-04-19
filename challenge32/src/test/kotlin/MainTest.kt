@@ -294,4 +294,13 @@ class MainTest {
         assertTrue(isNewYearsDayHoliday(LocalDate.parse("2023-01-02")))
         assertFalse(isNewYearsDayHoliday(LocalDate.parse("2023-01-01")))
     }
+    @Test
+    fun `when 1st may is on a Monday then 1st May is a bank holiday`() {
+        assertTrue(isMayDayHoliday(LocalDate.parse("2023-05-01")))
+    }
+    @Test
+    fun `when 1st may is on a Tuesday then 7th May is a bank holiday but 1st of may is not a holiday`() {
+        assertTrue(isMayDayHoliday(LocalDate.parse("2018-05-07")))
+        assertFalse(isMayDayHoliday(LocalDate.parse("2018-05-01")))
+    }
 }

@@ -72,5 +72,12 @@ fun isNewYearsDayHoliday(date: LocalDate): Boolean {
     } else false
 }
 
+fun isMayDayHoliday(date: LocalDate): Boolean {
+    return if (date.month == Month.MAY && date.dayOfWeek == DayOfWeek.MONDAY) {
+        if (date.dayOfMonth < 8 ) true
+        else false
+    } else false
+}
+
 
 
