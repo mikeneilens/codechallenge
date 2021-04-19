@@ -226,6 +226,7 @@ class MainTest {
              ))
         assertEquals(expectedResult, result)
     }
+
     @Test
     fun `standby claim for a complete week that includes one bank holiday at B level is 435 pounds`() {
         val result = calcStandbyClaim(LocalDate.parse("2021-04-03"),7.0,"B")
@@ -243,10 +244,12 @@ class MainTest {
         ))
         assertEquals(expectedResult, result)
     }
+
     @Test
-    fun `standby claim for a complete calendar year is 16555 pounds`() {
+    fun `standby claim for a complete calendar year is 16690 pounds`() {
         val result = calcStandbyClaim(LocalDate.parse("2021-01-01"), 365.0, "A")
-        assertEquals(16555, result.amount)
+        assertEquals(16690, result.amount)
     }
 
+    //---- Tests for calculating bank holidays dynamically //
 }

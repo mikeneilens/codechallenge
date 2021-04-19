@@ -1,3 +1,4 @@
+import java.time.LocalDate
 
 const val MON_TO_THU_RATE_A = 25
 const val WEEKEND_RATE_A = 40
@@ -23,13 +24,13 @@ val rates = mapOf<RotaItem,Int>(
     RotaItem(ShiftType.BANK_HOLIDAY,"B") to BANK_HOLIDAY_RATE_B,
 )
 
-fun Map<RotaItem, Int>.claim(shiftType:ShiftType, calloutLevel: String):Int {
+fun Map<RotaItem, Int>.amount(shiftType:ShiftType, calloutLevel: String):Int {
     val rotaItem =  RotaItem(shiftType,calloutLevel)
     return get(rotaItem) ?: 0
 }
 
-fun Map<RotaItem, Int>.description(shiftType:ShiftType, calloutLevel: String):String {
+fun Map<RotaItem, Int>.detail(shiftType:ShiftType, calloutLevel: String, dateOfShift:LocalDate):String {
     val rotaItem =  RotaItem(shiftType,calloutLevel)
-    val value = claim(shiftType,calloutLevel)
-    return "${rotaItem.description()}, £$value"
+    val value = amount(shiftType,calloutLevel)
+    return "$dateOfShift, ${rotaItem.description()}, £$value"
 }

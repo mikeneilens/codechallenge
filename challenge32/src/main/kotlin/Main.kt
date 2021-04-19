@@ -15,8 +15,8 @@ fun calcStandbyClaim(date: LocalDate, duration: Double, calloutLevel:String): Cl
 
     while (offset < duration) {
         val dateOfShift = date.plusDays(offset.toLong())
-        amount += rates.claim(dateOfShift.shiftType, calloutLevel)
-        details.add("$dateOfShift, ${rates.description(dateOfShift.shiftType, calloutLevel)}")
+        amount += rates.amount(dateOfShift.shiftType, calloutLevel)
+        details.add(rates.detail(dateOfShift.shiftType, calloutLevel, dateOfShift))
         offset += 1.0 / dateOfShift.noOfShifts
     }
 
@@ -39,6 +39,7 @@ fun LocalDate.isBankHoliday() = listOf(
     LocalDate.parse("2021-04-02"),
     LocalDate.parse("2021-04-05"),
     LocalDate.parse("2021-05-03"),
+    LocalDate.parse("2021-05-31"),
     LocalDate.parse("2021-08-30"),
     LocalDate.parse("2021-12-27"),
     LocalDate.parse("2021-12-28"),
