@@ -7,17 +7,20 @@ enum class ShiftType {
     MON_TO_THU,WEEKEND_OR_FRIDAY, BANK_HOLIDAY
 }
 
-fun calcStandbyClaim(date: LocalDate, duration: Double, calloutLevel:String, offset:Double = 0.0, totalClaim:Claim = Claim(0, emptyList()) ): Claim {
-    if (offset >= duration) return totalClaim
+fun calcStandbyClaim(date: LocalDate, duration: Double, calloutLevel:String): Claim {
 
-    val dateOfShift = date.plusDays(offset.toLong())
+    var amount = 0
+    val details = mutableListOf<String>()
+    var offset = 0.0
 
-    val newTotalClaim = Claim(
-        totalClaim.amount + rates.claim(dateOfShift.shiftType, calloutLevel),
-        totalClaim.claimDetails + "$dateOfShift, ${rates.description(dateOfShift.shiftType, calloutLevel)}"
-    )
+    while (offset < duration) {
+        val dateOfShift = date.plusDays(offset.toLong())
+        amount += rates.claim(dateOfShift.shiftType, calloutLevel)
+        details.add("$dateOfShift, ${rates.description(dateOfShift.shiftType, calloutLevel)}")
+        offset += 1.0 / dateOfShift.noOfShifts
+    }
 
-    return calcStandbyClaim(date, duration , calloutLevel, offset + 1.0 / dateOfShift.noOfShifts,  newTotalClaim)
+    return Claim(amount, details)
 }
 
 val LocalDate.shiftType:ShiftType get() {
