@@ -303,4 +303,49 @@ class MainTest {
         assertTrue(isMayDayHoliday(LocalDate.parse("2018-05-07")))
         assertFalse(isMayDayHoliday(LocalDate.parse("2018-05-01")))
     }
+    @Test
+    fun `when 25th may is on a Monday then 25th May is a bank holiday`() {
+        assertTrue(isSpringHoliday(LocalDate.parse("2020-05-25")))
+    }
+    @Test
+    fun `when 31st may is on a Monday then 31st May is a bank holiday`() {
+        assertTrue(isSpringHoliday(LocalDate.parse("2021-05-31")))
+    }
+    @Test
+    fun `when 25th august is on a Monday then 25th august is a bank holiday`() {
+        assertTrue(isSummerHoliday(LocalDate.parse("2014-08-25")))
+    }
+    @Test
+    fun `when 31st august is on a Monday then 31st august is a bank holiday`() {
+        assertTrue(isSummerHoliday(LocalDate.parse("2020-08-31")))
+    }
+    @Test
+    fun `Easter sunday in 2014 is 20 April`() {
+        assertEquals(LocalDate.parse("2014-04-20"), getEasterSunday(2014) )
+    }
+    @Test
+    fun `Easter sunday in 2021 is 4 April`() {
+        assertEquals(LocalDate.parse("2021-04-04"), getEasterSunday(2021) )
+    }
+    @Test
+    fun `Easter sunday in 2016 is 4 April`() {
+        assertEquals(LocalDate.parse("2016-03-27"), getEasterSunday(2016) )
+    }
+
+    @Test
+    fun `21st April 2014 is an Easter Monday holiday`() {
+        assertTrue(isEasterMondayHoliday(LocalDate.parse("2014-04-21")))
+    }
+    @Test
+    fun `28th March 2016 is an Easter Monday holiday`() {
+        assertTrue(isEasterMondayHoliday(LocalDate.parse("2016-03-28")))
+    }
+    @Test
+    fun `18th April 2014 is an Good Friday holiday`() {
+        assertTrue(isGoodFridayHoliday(LocalDate.parse("2014-04-18")))
+    }
+    @Test
+    fun `25th March 2016 is an Good Friday holiday`() {
+        assertTrue(isGoodFridayHoliday(LocalDate.parse("2016-03-25")))
+    }
 }
