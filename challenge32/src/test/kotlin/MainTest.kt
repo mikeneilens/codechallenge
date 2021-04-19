@@ -1,4 +1,5 @@
-import org.junit.jupiter.api.Assertions.assertEquals
+import com.sun.org.apache.xpath.internal.operations.Bool
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.time.LocalDate
 
@@ -252,4 +253,30 @@ class MainTest {
     }
 
     //---- Tests for calculating bank holidays dynamically //
+    @Test
+    fun `when chistmas day is a Wednesday then there is a bank holiday on 25th decemeber and 26th december`() {
+        assertTrue(isChristmasDayHoliday(LocalDate.parse("2019-12-25")))
+        assertTrue(isBoxingDayHoliday(LocalDate.parse("2019-12-26")))
+
+    }
+    @Test
+    fun `when chistmas day is a Friday then there is a bank holiday on 25th decemeber and 28th december but not 26th December`() {
+        assertTrue(isChristmasDayHoliday(LocalDate.parse("2020-12-25")))
+        assertTrue(isBoxingDayHoliday(LocalDate.parse("2020-12-28")))
+        assertFalse(isBoxingDayHoliday(LocalDate.parse("2020-12-26")))
+    }
+    @Test
+    fun `when chistmas day is a Saturday then there is a bank holiday on 27th decemeber and 28th december but not on 25th or 26th December`() {
+        assertTrue(isChristmasDayHoliday(LocalDate.parse("2021-12-27")))
+        assertTrue(isBoxingDayHoliday(LocalDate.parse("2021-12-28")))
+        assertFalse(isChristmasDayHoliday(LocalDate.parse("2021-12-25")))
+        assertFalse(isBoxingDayHoliday(LocalDate.parse("2021-12-26")))
+    }
+    @Test
+    fun `when chistmas day is a Sunday then there is a bank holiday on 26th decemeber and 27th december but not on 25th December`() {
+        assertTrue(isChristmasDayHoliday(LocalDate.parse("2022-12-26")))
+        assertTrue(isBoxingDayHoliday(LocalDate.parse("2022-12-27")))
+        assertFalse(isChristmasDayHoliday(LocalDate.parse("2022-12-25")))
+        assertFalse(isBoxingDayHoliday(LocalDate.parse("2022-12-26")))
+    }
 }

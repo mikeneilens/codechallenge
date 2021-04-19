@@ -1,5 +1,6 @@
 import java.time.DayOfWeek
 import java.time.LocalDate
+import java.time.Month
 
 data class Claim( val amount:Int, val claimDetails:List<String>)
 
@@ -44,4 +45,25 @@ fun LocalDate.isBankHoliday() = listOf(
     LocalDate.parse("2021-12-27"),
     LocalDate.parse("2021-12-28"),
 ).contains(this)
+
+fun isChristmasDayHoliday(date: LocalDate): Boolean {
+    return if (date.month == Month.DECEMBER) {
+        if (date.dayOfMonth == 25 && !date.isWeekend()) true
+        else if (date.dayOfMonth == 26 && date.dayOfWeek == DayOfWeek.MONDAY) true
+        else if (date.dayOfMonth == 27 && date.dayOfWeek == DayOfWeek.MONDAY) true
+        else false
+    } else false
+}
+fun isBoxingDayHoliday(date: LocalDate): Boolean {
+    return if (date.month == Month.DECEMBER) {
+        val x = date.dayOfWeek
+        if (date.dayOfMonth == 28 && date.dayOfWeek == DayOfWeek.MONDAY) true
+        else if (date.dayOfMonth == 27 && date.dayOfWeek == DayOfWeek.TUESDAY) true
+        else if (date.dayOfMonth == 26 && date.dayOfWeek == DayOfWeek.MONDAY) false
+        else if (date.dayOfMonth == 26 && !date.isWeekend()) true
+        else false
+    } else false
+}
+
+
 
