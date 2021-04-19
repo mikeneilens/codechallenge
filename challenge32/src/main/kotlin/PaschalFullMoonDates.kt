@@ -1,0 +1,21 @@
+val paschalFullMoonDates = listOf(
+    Pair("04",14),
+    Pair("04",3),
+    Pair("03",23),
+    Pair("04",11),
+    Pair("03",31),
+    Pair("04",18),
+    Pair("04",8),
+    Pair("03",28),
+    Pair("04",16),
+    Pair("04",5),
+    Pair("03",25),
+    Pair("04",13),
+    Pair("04",2),
+    Pair("03",22),
+    Pair("04",10),
+    Pair("03",30),
+    Pair("04",17),
+    Pair("04",7),
+    Pair("03",27)
+)

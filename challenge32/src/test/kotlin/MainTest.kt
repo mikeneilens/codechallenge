@@ -348,4 +348,17 @@ class MainTest {
     fun `25th March 2016 is an Good Friday holiday`() {
         assertTrue(isGoodFridayHoliday(LocalDate.parse("2016-03-25")))
     }
+
+    @Test
+    fun `check that all bank holidays in 2021 return as true when checking if they are holidays`() {
+        assertTrue(LocalDate.parse("2021-01-01").isBankHoliday())
+        assertFalse(LocalDate.parse("2021-01-02").isBankHoliday())
+        assertTrue(LocalDate.parse("2021-04-02").isBankHoliday())
+        assertTrue(LocalDate.parse("2021-04-05").isBankHoliday())
+        assertTrue(LocalDate.parse("2021-05-03").isBankHoliday())
+        assertTrue(LocalDate.parse("2021-05-31").isBankHoliday())
+        assertTrue(LocalDate.parse("2021-08-30").isBankHoliday())
+        assertTrue(LocalDate.parse("2021-12-27").isBankHoliday())
+        assertTrue(LocalDate.parse("2021-12-28").isBankHoliday())
+    }
 }

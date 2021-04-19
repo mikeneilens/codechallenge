@@ -35,23 +35,25 @@ val LocalDate.noOfShifts:Int get() = if (isWeekend() || isBankHoliday()) 2 else 
 
 fun LocalDate.isFriday() = dayOfWeek == DayOfWeek.FRIDAY
 fun LocalDate.isWeekend() = dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY
-fun LocalDate.isBankHoliday() = listOf(
-    LocalDate.parse("2021-01-01"),
-    LocalDate.parse("2021-04-02"),
-    LocalDate.parse("2021-04-05"),
-    LocalDate.parse("2021-05-03"),
-    LocalDate.parse("2021-05-31"),
-    LocalDate.parse("2021-08-30"),
-    LocalDate.parse("2021-12-27"),
-    LocalDate.parse("2021-12-28"),
-).contains(this)
+
+val holidayValidators = listOf(
+    ::isChristmasDayHoliday
+    ,::isBoxingDayHoliday
+    ,::isNewYearsDayHoliday
+    ,::isGoodFridayHoliday
+    ,::isEasterMondayHoliday
+    ,::isMayDayHoliday
+    ,::isSpringHoliday
+    ,::isSummerHoliday
+)
+
+fun LocalDate.isBankHoliday():Boolean = holidayValidators.map{it(this)}.contains(true)
 
 fun isChristmasDayHoliday(date: LocalDate): Boolean {
     return if (date.month == Month.DECEMBER) {
         if (date.dayOfMonth == 25 && !date.isWeekend()) true
         else if (date.dayOfMonth == 26 && date.dayOfWeek == DayOfWeek.MONDAY) true
-        else if (date.dayOfMonth == 27 && date.dayOfWeek == DayOfWeek.MONDAY) true
-        else false
+        else (date.dayOfMonth == 27 && date.dayOfWeek == DayOfWeek.MONDAY)
     } else false
 }
 fun isBoxingDayHoliday(date: LocalDate): Boolean {
@@ -60,81 +62,44 @@ fun isBoxingDayHoliday(date: LocalDate): Boolean {
         else if (date.dayOfMonth == 27 && date.dayOfWeek == DayOfWeek.TUESDAY) true
         else if (date.dayOfMonth == 28 && date.dayOfWeek == DayOfWeek.TUESDAY) true
         else if (date.dayOfMonth == 26 && date.dayOfWeek == DayOfWeek.MONDAY) false
-        else if (date.dayOfMonth == 26 && !date.isWeekend()) true
-        else false
+        else (date.dayOfMonth == 26 && !date.isWeekend())
     } else false
 }
 fun isNewYearsDayHoliday(date: LocalDate): Boolean {
     return if (date.month == Month.JANUARY) {
         if (date.dayOfMonth == 1 && !date.isWeekend()) true
         else if (date.dayOfMonth == 2 && date.dayOfWeek == DayOfWeek.MONDAY) true
-        else if (date.dayOfMonth == 3 && date.dayOfWeek == DayOfWeek.MONDAY) true
-        else false
+        else (date.dayOfMonth == 3 && date.dayOfWeek == DayOfWeek.MONDAY)
     } else false
 }
 
-fun isMayDayHoliday(date: LocalDate): Boolean {
-    return if (date.month == Month.MAY && date.dayOfWeek == DayOfWeek.MONDAY) {
-        if (date.dayOfMonth < 8 ) true
-        else false
-    } else false
-}
+fun isMayDayHoliday(date: LocalDate) =
+    date.month == Month.MAY && date.dayOfWeek == DayOfWeek.MONDAY && date.dayOfMonth < 8
 
-fun isSpringHoliday(date: LocalDate): Boolean {
-    return if (date.month == Month.MAY && date.dayOfWeek == DayOfWeek.MONDAY) {
-        if (date.dayOfMonth > 24) true
-        else false
-    } else false
-}
+fun isSpringHoliday(date: LocalDate) =
+    date.month == Month.MAY && date.dayOfWeek == DayOfWeek.MONDAY && date.dayOfMonth > 24
 
-fun isSummerHoliday(date: LocalDate): Boolean {
-    return if (date.month == Month.AUGUST && date.dayOfWeek == DayOfWeek.MONDAY) {
-        if (date.dayOfMonth > 24) true
-        else false
-    } else false
-}
+fun isSummerHoliday(date: LocalDate) =
+    date.month == Month.AUGUST && date.dayOfWeek == DayOfWeek.MONDAY && date.dayOfMonth > 24
 
-fun isEasterMondayHoliday(date: LocalDate): Boolean {
-    return date == getEasterSunday(date.year).plusDays(1)
-}
+fun isEasterMondayHoliday(date: LocalDate) =
+    date == getEasterSunday(date.year).plusDays(1)
 
-fun isGoodFridayHoliday(date: LocalDate): Boolean {
-    return date == getEasterSunday(date.year).minusDays(2)
-}
-
-val easterDates = listOf(
-    Pair("04",14),
-    Pair("04",3),
-    Pair("03",23),
-    Pair("04",11),
-    Pair("03",31),
-    Pair("04",18),
-    Pair("04",8),
-    Pair("03",28),
-    Pair("04",16),
-    Pair("04",5),
-    Pair("03",25),
-    Pair("04",13),
-    Pair("04",2),
-    Pair("03",22),
-    Pair("04",10),
-    Pair("03",30),
-    Pair("04",17),
-    Pair("04",7),
-    Pair("03",27)
-)
+fun isGoodFridayHoliday(date: LocalDate) =
+    date == getEasterSunday(date.year).minusDays(2)
 
 fun getEasterSunday(year:Int):LocalDate {
-    val (month, day) = easterDates[year % 19 ]
-    val lookupDate = LocalDate.parse("$year-$month-$day")
-    return when (lookupDate.dayOfWeek) {
-        DayOfWeek.SUNDAY -> lookupDate.plusDays(7)
-        DayOfWeek.MONDAY -> lookupDate.plusDays(6)
-        DayOfWeek.TUESDAY -> lookupDate.plusDays(5)
-        DayOfWeek.WEDNESDAY -> lookupDate.plusDays(4)
-        DayOfWeek.THURSDAY -> lookupDate.plusDays(3)
-        DayOfWeek.FRIDAY -> lookupDate.plusDays(2)
-        DayOfWeek.SATURDAY -> lookupDate.plusDays(1)
+    val (month, day) = paschalFullMoonDates[year % 19 ]
+    val paschalFullMoonDate = LocalDate.parse("$year-$month-$day")
+    return when (paschalFullMoonDate.dayOfWeek) {
+        DayOfWeek.SUNDAY -> paschalFullMoonDate.plusDays(7)
+        DayOfWeek.MONDAY -> paschalFullMoonDate.plusDays(6)
+        DayOfWeek.TUESDAY -> paschalFullMoonDate.plusDays(5)
+        DayOfWeek.WEDNESDAY -> paschalFullMoonDate.plusDays(4)
+        DayOfWeek.THURSDAY -> paschalFullMoonDate.plusDays(3)
+        DayOfWeek.FRIDAY -> paschalFullMoonDate.plusDays(2)
+        DayOfWeek.SATURDAY -> paschalFullMoonDate.plusDays(1)
+        else -> paschalFullMoonDate.plusDays(1)
     }
 }
 
