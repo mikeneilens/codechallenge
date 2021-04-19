@@ -8,7 +8,7 @@ enum class ShiftType {
     MON_TO_THU,WEEKEND_OR_FRIDAY, BANK_HOLIDAY
 }
 
-fun calcStandbyClaim(date: LocalDate, duration: Double, calloutLevel:String): Claim {
+fun calcStandbyClaim(date: LocalDate, duration: Double, callOutLevel:String): Claim {
 
     var amount = 0
     val details = mutableListOf<String>()
@@ -16,8 +16,8 @@ fun calcStandbyClaim(date: LocalDate, duration: Double, calloutLevel:String): Cl
 
     while (offset < duration) {
         val dateOfShift = date.plusDays(offset.toLong())
-        amount += rates.amount(dateOfShift.shiftType, calloutLevel)
-        details.add(rates.detail(dateOfShift.shiftType, calloutLevel, dateOfShift))
+        amount += rates.amount(dateOfShift.shiftType, callOutLevel)
+        details.add(rates.detail(dateOfShift.shiftType, callOutLevel, dateOfShift))
         offset += 1.0 / dateOfShift.noOfShifts
     }
 
@@ -49,28 +49,32 @@ val holidayValidators = listOf(
 
 fun LocalDate.isBankHoliday():Boolean = holidayValidators.map{it(this)}.contains(true)
 
-fun isChristmasDayHoliday(date: LocalDate): Boolean {
-    return if (date.month == Month.DECEMBER) {
-        if (date.dayOfMonth == 25 && !date.isWeekend()) true
-        else if (date.dayOfMonth == 26 && date.dayOfWeek == DayOfWeek.MONDAY) true
-        else (date.dayOfMonth == 27 && date.dayOfWeek == DayOfWeek.MONDAY)
-    } else false
+fun isChristmasDayHoliday(date: LocalDate) = (date == getChristmasDay(date.year))
+
+fun getChristmasDay(year:Int):LocalDate {
+    val december25 = LocalDate.parse("$year-12-25")
+    if (december25.dayOfWeek == DayOfWeek.SATURDAY) return december25.plusDays(2)
+    if (december25.dayOfWeek == DayOfWeek.SUNDAY) return december25.plusDays(1)
+    return december25
 }
-fun isBoxingDayHoliday(date: LocalDate): Boolean {
-    return if (date.month == Month.DECEMBER) {
-        if (date.dayOfMonth == 28 && date.dayOfWeek == DayOfWeek.MONDAY) true
-        else if (date.dayOfMonth == 27 && date.dayOfWeek == DayOfWeek.TUESDAY) true
-        else if (date.dayOfMonth == 28 && date.dayOfWeek == DayOfWeek.TUESDAY) true
-        else if (date.dayOfMonth == 26 && date.dayOfWeek == DayOfWeek.MONDAY) false
-        else (date.dayOfMonth == 26 && !date.isWeekend())
-    } else false
+
+fun isBoxingDayHoliday(date: LocalDate) = (date == getBoxingDay(date.year))
+
+fun getBoxingDay(year:Int):LocalDate {
+    val december26 = LocalDate.parse("$year-12-26")
+    if (december26.dayOfWeek == DayOfWeek.SATURDAY) return december26.plusDays(2)
+    if (december26.dayOfWeek == DayOfWeek.SUNDAY) return december26.plusDays(2)
+    if (december26.dayOfWeek == DayOfWeek.MONDAY) return december26.plusDays(1)
+    return december26
 }
-fun isNewYearsDayHoliday(date: LocalDate): Boolean {
-    return if (date.month == Month.JANUARY) {
-        if (date.dayOfMonth == 1 && !date.isWeekend()) true
-        else if (date.dayOfMonth == 2 && date.dayOfWeek == DayOfWeek.MONDAY) true
-        else (date.dayOfMonth == 3 && date.dayOfWeek == DayOfWeek.MONDAY)
-    } else false
+
+fun isNewYearsDayHoliday(date: LocalDate) = (date == getNewYearsDay(date.year))
+
+fun getNewYearsDay(year:Int):LocalDate {
+    val january01 = LocalDate.parse("$year-01-01")
+    if (january01.dayOfWeek == DayOfWeek.SATURDAY) return january01.plusDays(2)
+    if (january01.dayOfWeek == DayOfWeek.SUNDAY) return january01.plusDays(1)
+    return january01
 }
 
 fun isMayDayHoliday(date: LocalDate) =

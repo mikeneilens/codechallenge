@@ -1,4 +1,3 @@
-import com.sun.org.apache.xpath.internal.operations.Bool
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.time.LocalDate
@@ -37,7 +36,7 @@ class MainTest {
     }
 
     @Test
-    fun `standby claim for 1 day at A Level on a bankholiday is twice the bankholiday rate`() {
+    fun `standby claim for 1 day at A Level on a bank holiday is twice the bank holiday rate`() {
         val result = calcStandbyClaim(LocalDate.parse("2021-04-02"),1.0,"A")
         val expectedSaturdayResult = Claim(BANK_HOLIDAY_RATE_A * 2,
             listOf(
@@ -76,7 +75,7 @@ class MainTest {
     }
 
     @Test
-    fun `standby claim for 1 day at B Level on a bankholiday is twice the bankholiday rate`() {
+    fun `standby claim for 1 day at B Level on a bank holiday is twice the bank holiday rate`() {
         val result = calcStandbyClaim(LocalDate.parse("2021-04-02"),1.0,"B")
         val expectedSaturdayResult = Claim(BANK_HOLIDAY_RATE_B * 2,listOf(
             "2021-04-02, Bank holiday rate B, £50",
@@ -171,7 +170,7 @@ class MainTest {
     }
 
     @Test
-    fun `standby claim for 1 day for an invalid callout Level of C on Mon to Thursday which is not a holiday is zero`() {
+    fun `standby claim for 1 day for an invalid call out Level of C on Mon to Thursday which is not a holiday is zero`() {
         val result = calcStandbyClaim(LocalDate.parse("2021-04-19"),1.0,"C")
         val expectedResult = Claim(0,listOf("2021-04-19, Week day rate C, £0"))
         assertEquals(expectedResult, result)
@@ -187,7 +186,7 @@ class MainTest {
     }
 
     @Test
-    fun `standby claim for an invalid duration of 1 and a third day at A Level on Weekend is eounded up to 3 X weekend rate`() {
+    fun `standby claim for an invalid duration of 1 and a third day at A Level on Weekend is rounded up to 3 X weekend rate`() {
         val result = calcStandbyClaim(LocalDate.parse("2021-04-17"),1.3,"A")
         val expectedResult = Claim(WEEKEND_RATE_A * 3, listOf(
                 "2021-04-17, Weekend rate A, £40",
@@ -254,26 +253,26 @@ class MainTest {
 
     //---- Tests for calculating bank holidays dynamically //
     @Test
-    fun `when chistmas day is a Wednesday then there is a bank holiday on 25th decemeber and 26th december`() {
+    fun `when christmas day is a Wednesday then there is a bank holiday on 25th december and 26th december`() {
         assertTrue(isChristmasDayHoliday(LocalDate.parse("2019-12-25")))
         assertTrue(isBoxingDayHoliday(LocalDate.parse("2019-12-26")))
 
     }
     @Test
-    fun `when chistmas day is a Friday then there is a bank holiday on 25th decemeber and 28th december but not 26th December`() {
+    fun `when christmas day is a Friday then there is a bank holiday on 25th december and 28th december but not 26th December`() {
         assertTrue(isChristmasDayHoliday(LocalDate.parse("2020-12-25")))
         assertTrue(isBoxingDayHoliday(LocalDate.parse("2020-12-28")))
         assertFalse(isBoxingDayHoliday(LocalDate.parse("2020-12-26")))
     }
     @Test
-    fun `when chistmas day is a Saturday then there is a bank holiday on 27th decemeber and 28th december but not on 25th or 26th December`() {
+    fun `when christmas day is a Saturday then there is a bank holiday on 27th december and 28th december but not on 25th or 26th December`() {
         assertTrue(isChristmasDayHoliday(LocalDate.parse("2021-12-27")))
         assertTrue(isBoxingDayHoliday(LocalDate.parse("2021-12-28")))
         assertFalse(isChristmasDayHoliday(LocalDate.parse("2021-12-25")))
         assertFalse(isBoxingDayHoliday(LocalDate.parse("2021-12-26")))
     }
     @Test
-    fun `when chistmas day is a Sunday then there is a bank holiday on 26th decemeber and 27th december but not on 25th December`() {
+    fun `when christmas day is a Sunday then there is a bank holiday on 26th december and 27th december but not on 25th December`() {
         assertTrue(isChristmasDayHoliday(LocalDate.parse("2022-12-26")))
         assertTrue(isBoxingDayHoliday(LocalDate.parse("2022-12-27")))
         assertFalse(isChristmasDayHoliday(LocalDate.parse("2022-12-25")))
