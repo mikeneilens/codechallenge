@@ -56,11 +56,18 @@ fun isChristmasDayHoliday(date: LocalDate): Boolean {
 }
 fun isBoxingDayHoliday(date: LocalDate): Boolean {
     return if (date.month == Month.DECEMBER) {
-        val x = date.dayOfWeek
         if (date.dayOfMonth == 28 && date.dayOfWeek == DayOfWeek.MONDAY) true
         else if (date.dayOfMonth == 27 && date.dayOfWeek == DayOfWeek.TUESDAY) true
         else if (date.dayOfMonth == 26 && date.dayOfWeek == DayOfWeek.MONDAY) false
         else if (date.dayOfMonth == 26 && !date.isWeekend()) true
+        else false
+    } else false
+}
+fun isNewYearsDayHoliday(date: LocalDate): Boolean {
+    return if (date.month == Month.JANUARY) {
+        if (date.dayOfMonth == 1 && !date.isWeekend()) true
+        else if (date.dayOfMonth == 2 && date.dayOfWeek == DayOfWeek.MONDAY) true
+        else if (date.dayOfMonth == 3 && date.dayOfWeek == DayOfWeek.MONDAY) true
         else false
     } else false
 }

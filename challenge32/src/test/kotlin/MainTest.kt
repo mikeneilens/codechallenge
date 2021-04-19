@@ -279,4 +279,19 @@ class MainTest {
         assertFalse(isChristmasDayHoliday(LocalDate.parse("2022-12-25")))
         assertFalse(isBoxingDayHoliday(LocalDate.parse("2022-12-26")))
     }
+
+    @Test
+    fun `when new years day is on a week day then`() {
+        assertTrue(isNewYearsDayHoliday(LocalDate.parse("2021-01-01")))
+    }
+    @Test
+    fun `when new years day is on a saturday then 3rd Jan is a holiday but 1st of Jan is not a holiday`() {
+        assertTrue(isNewYearsDayHoliday(LocalDate.parse("2022-01-03")))
+        assertFalse(isNewYearsDayHoliday(LocalDate.parse("2022-01-01")))
+    }
+    @Test
+    fun `when new years day is on a sunday then 2nd Jan is a holiday but 1st of Jan is not a holiday`() {
+        assertTrue(isNewYearsDayHoliday(LocalDate.parse("2023-01-02")))
+        assertFalse(isNewYearsDayHoliday(LocalDate.parse("2023-01-01")))
+    }
 }
