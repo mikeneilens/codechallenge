@@ -47,7 +47,7 @@ val holidayValidators = listOf(
     ,::isSummerHoliday
 )
 
-fun LocalDate.isBankHoliday():Boolean = holidayValidators.map{it(this)}.contains(true)
+fun LocalDate.isBankHoliday():Boolean = holidayValidators.any{it(this)}
 
 fun isChristmasDayHoliday(date: LocalDate) = (date == getChristmasDay(date.year))
 
