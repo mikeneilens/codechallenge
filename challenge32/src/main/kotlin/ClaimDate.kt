@@ -5,7 +5,7 @@ import java.time.Month
 data class ClaimDate(private val value:String) {
 
     private val localDate = LocalDate.parse(value)
-    val dayOfWeek  = localDate.dayOfWeek
+    val dayOfWeek:DayOfWeek = localDate.dayOfWeek
     val dayOfMonth = localDate.dayOfMonth
     val month: Month = localDate.month
     val year = localDate.year
