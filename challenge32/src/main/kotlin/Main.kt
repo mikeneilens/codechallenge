@@ -1,7 +1,10 @@
-import java.time.DayOfWeek
-import java.time.Month
+data class Claim( val amount:Int = 0, val claimDetails:List<String> = emptyList()) {
 
-data class Claim( val amount:Int, val claimDetails:List<String>)
+    constructor(dateOfShift:ClaimDate, shiftType:ShiftType, callOutLevel:String )
+            :this(rates.amount(shiftType, callOutLevel),listOf(rates.detail(shiftType, callOutLevel, dateOfShift)))
+
+    operator fun plus(other:Claim) = Claim(this.amount + other.amount, this.claimDetails + other.claimDetails)
+}
 
 enum class ShiftType {
     MON_TO_THU,WEEKEND_OR_FRIDAY,BANK_HOLIDAY
@@ -9,18 +12,16 @@ enum class ShiftType {
 
 fun calcStandbyClaim(date: ClaimDate, duration: Double, callOutLevel:String): Claim {
 
-    var amount = 0
-    val details = mutableListOf<String>()
     var noOfDays = 0.0
+    var claim = Claim()
 
     while (noOfDays < duration) {
         val dateOfShift = date + noOfDays
-        amount += rates.amount(shiftType(dateOfShift), callOutLevel)
-        details.add(rates.detail(shiftType(dateOfShift), callOutLevel, dateOfShift))
+        claim += Claim(dateOfShift, shiftType(dateOfShift), callOutLevel)
         noOfDays += 1.0 / noOfShifts(dateOfShift)
     }
 
-    return Claim(amount, details)
+    return claim
 }
 
 fun shiftType(dateOfShift: ClaimDate):ShiftType  {
