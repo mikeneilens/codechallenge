@@ -4,7 +4,7 @@ data class Claim( val amount:Int = 0, val claimDetails:List<String> = emptyList(
 
 }
 
-class TypeOfShift(val noOfShifts:Int, val rates:Map<String, Int>, val description:String, val useIf:(ClaimDate)->Boolean) {
+class TypeOfShift(val noOfShifts:Int, val rates:Map<String, Int>, val description:String, val isApplicable:(ClaimDate)->Boolean) {
     fun description(dateOfShift:ClaimDate, callOutLevel:String) = "$dateOfShift, $description $callOutLevel, £${rates[callOutLevel] ?: 0}"
 }
 
@@ -12,9 +12,8 @@ val BANK_HOLIDAY = TypeOfShift(2, mapOf("A" to BANK_HOLIDAY_RATE_A, "B" to BANK_
 val FRIDAY = TypeOfShift (1, mapOf("A" to WEEKEND_RATE_A, "B" to WEEKEND_RATE_B), "Weekend rate", ClaimDate::isFriday )
 val WEEKEND = TypeOfShift(2, mapOf("A" to WEEKEND_RATE_A, "B" to WEEKEND_RATE_B), "Weekend rate", ClaimDate::isWeekend)
 val MON_TO_THU = TypeOfShift(1, mapOf("A" to MON_TO_THU_RATE_A,"B" to MON_TO_THU_RATE_B), "Week day rate", { _ -> true })
-val typeOfShifts = listOf(BANK_HOLIDAY, FRIDAY, WEEKEND, MON_TO_THU)
 
-fun typeOfShiftForDate(dateOfShift:ClaimDate):TypeOfShift = typeOfShifts.first {it.useIf(dateOfShift)}
+fun typeOfShiftForDate(dateOfShift:ClaimDate):TypeOfShift = listOf(BANK_HOLIDAY, FRIDAY, WEEKEND, MON_TO_THU).first {it.isApplicable(dateOfShift)}
 
 fun createClaim(dateOfShift:ClaimDate, typeOfShift:TypeOfShift, callOutLevel:String)
     = Claim(typeOfShift.rates[callOutLevel] ?: 0,listOf(typeOfShift.description(dateOfShift, callOutLevel)))
