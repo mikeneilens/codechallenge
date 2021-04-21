@@ -1,38 +1,39 @@
 data class Claim( val amount:Int = 0, val claimDetails:List<String> = emptyList()) {
 
-    constructor(dateOfShift:ClaimDate, typeOfShift:TypeOfShift, callOutLevel:String )
-            :this(rates.amount(typeOfShift, callOutLevel),listOf(rates.detail(typeOfShift, callOutLevel, dateOfShift)))
-
     operator fun plus(other:Claim) = Claim(this.amount + other.amount, this.claimDetails + other.claimDetails)
+
 }
 
-enum class TypeOfShift {
-    MON_TO_THU,WEEKEND_OR_FRIDAY,BANK_HOLIDAY
+sealed class TypeOfShift(val noOfShifts:Int, val rates:Map<String, Int>, val description:String) {
+    class MON_TO_THU(noOfShifts: Int):TypeOfShift(noOfShifts, mapOf("A" to MON_TO_THU_RATE_A,"B" to MON_TO_THU_RATE_B), "Week day rate")
+    class WEEKEND_OR_FRIDAY(noOfShifts: Int):TypeOfShift(noOfShifts, mapOf("A" to WEEKEND_RATE_A, "B" to WEEKEND_RATE_B), "Weekend rate")
+    class BANK_HOLIDAY(noOfShifts: Int):TypeOfShift(noOfShifts, mapOf("A" to BANK_HOLIDAY_RATE_A, "B" to BANK_HOLIDAY_RATE_B), "Bank holiday rate")
+
+    fun description(dateOfShift:ClaimDate, callOutLevel:String) = "$dateOfShift, $description $callOutLevel, £${rates[callOutLevel] ?: 0}"
 }
+
+fun createClaim(dateOfShift:ClaimDate, typeOfShift:TypeOfShift, callOutLevel:String)
+    = Claim(typeOfShift.rates[callOutLevel] ?: 0,listOf(typeOfShift.description(dateOfShift, callOutLevel)))
 
 fun calcStandbyClaim(date:ClaimDate, duration:Double, callOutLevel:String): Claim {
-
     var noOfDays = 0.0
     var claim = Claim()
 
     while (noOfDays < duration) {
         val dateOfShift = date + noOfDays
-        claim += Claim(dateOfShift, typeOfShift(dateOfShift), callOutLevel)
-        noOfDays += 1.0 / noOfShifts(dateOfShift)
+        claim += createClaim(dateOfShift, typeOfShift(dateOfShift), callOutLevel)
+        noOfDays += 1.0 / typeOfShift(dateOfShift).noOfShifts
     }
 
     return claim
 }
 
 fun typeOfShift(dateOfShift:ClaimDate):TypeOfShift  {
-    if (dateOfShift.isBankHoliday()) return TypeOfShift.BANK_HOLIDAY
-    if (dateOfShift.isFriday()) return TypeOfShift.WEEKEND_OR_FRIDAY
-    if (dateOfShift.isWeekend()) return TypeOfShift.WEEKEND_OR_FRIDAY
-    return TypeOfShift.MON_TO_THU
+    if (dateOfShift.isBankHoliday()) return TypeOfShift.BANK_HOLIDAY(2)
+    if (dateOfShift.isFriday()) return TypeOfShift.WEEKEND_OR_FRIDAY(1)
+    if (dateOfShift.isWeekend()) return TypeOfShift.WEEKEND_OR_FRIDAY(2)
+    return TypeOfShift.MON_TO_THU(1)
 }
-
-fun noOfShifts(dateOfShift:ClaimDate) = if (dateOfShift.isWeekend() || dateOfShift.isBankHoliday()) 2 else 1
-
 
 
 
