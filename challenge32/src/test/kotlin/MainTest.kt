@@ -325,7 +325,7 @@ class MainTest {
         assertEquals(ClaimDate("2021-04-04"), easterSunday(2021) )
     }
     @Test
-    fun `Easter sunday in 2016 is 4 April`() {
+    fun `Easter sunday in 2016 is 27 March`() {
         assertEquals(ClaimDate("2016-03-27"), easterSunday(2016) )
     }
 
