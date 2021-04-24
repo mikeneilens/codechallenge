@@ -45,10 +45,6 @@ fun isEasterMondayHoliday(date:ClaimDate) = date == (easterSunday(date.year) + 1
 
 fun isGoodFridayHoliday(date: ClaimDate) = date == (easterSunday(date.year) - 2)
 
-fun easterSunday(year:Int):ClaimDate {
-    val (month, day) = paschalFullMoonDates[year % 19]
-    val paschalFullMoonDate = ClaimDate("$year-$month-$day")
-    return sundayBefore(paschalFullMoonDate) + 7
-}
+fun easterSunday(year:Int):ClaimDate = sundayBefore(paschalFullMoonDates.with(year)) + 7
 
 fun sundayBefore(claimDate:ClaimDate) = claimDate - (claimDate.dayOfWeek.value % 7)
