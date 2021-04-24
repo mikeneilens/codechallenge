@@ -20,4 +20,4 @@ val paschalFullMoonDates = listOf(
     "03-27"
 )
 
-fun List<String>.with(year:Int) = ClaimDate("$year-${get(year % 19)}")
+fun List<String>.dateWith(year:Int) = ClaimDate("$year-${get(year % 19)}")
