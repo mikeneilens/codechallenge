@@ -45,6 +45,6 @@ fun isEasterMondayHoliday(date:ClaimDate) = date == (easterSunday(date.year) + 1
 
 fun isGoodFridayHoliday(date: ClaimDate) = date == (easterSunday(date.year) - 2)
 
-fun easterSunday(year:Int):ClaimDate = sundayBefore(paschalFullMoonDates.with(year)) + 7
+fun easterSunday(year:Int):ClaimDate = sundayAfter(paschalFullMoonDates.with(year))
 
-fun sundayBefore(claimDate:ClaimDate) = claimDate - (claimDate.dayOfWeek.value % 7)
+fun sundayAfter(claimDate:ClaimDate) = claimDate - (claimDate.dayOfWeek.value % 7) + 7
