@@ -3,12 +3,12 @@ import kotlinx.datetime.*
 data class ClaimDate(private val value:String) {
 
     private val localDate = LocalDate.parse(value)
-    val dayOfWeek:DayOfWeek = localDate.dayOfWeek
+    val dayOfWeek = localDate.dayOfWeek
     val dayOfMonth = localDate.dayOfMonth
-    val month: Month = localDate.month
+    val month = localDate.month
     val year = localDate.year
 
-    override fun toString(): String = value
+    override fun toString() = value
     operator fun plus(days:Number) = localDate.plus(days.toLong(), DateTimeUnit.DAY).toClaimDate()
     operator fun minus(days:Number) = localDate.plus(-days.toLong(), DateTimeUnit.DAY).toClaimDate()
 
