@@ -1,5 +1,5 @@
-import java.time.DayOfWeek
-import java.time.Month
+import kotlinx.datetime.DayOfWeek
+import kotlinx.datetime.Month
 
 val holidayValidators = listOf(
     ::isNewYearsDayHoliday,

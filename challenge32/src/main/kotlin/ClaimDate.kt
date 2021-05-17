@@ -1,6 +1,4 @@
-import java.time.DayOfWeek
-import java.time.LocalDate
-import java.time.Month
+import kotlinx.datetime.*
 
 data class ClaimDate(private val value:String) {
 
@@ -11,8 +9,8 @@ data class ClaimDate(private val value:String) {
     val year = localDate.year
 
     override fun toString(): String = value
-    operator fun plus(days:Number) = localDate.plusDays(days.toLong()).toClaimDate()
-    operator fun minus(days:Number) = localDate.minusDays(days.toLong()).toClaimDate()
+    operator fun plus(days:Number) = localDate.plus(days.toLong(), DateTimeUnit.DAY).toClaimDate()
+    operator fun minus(days:Number) = localDate.plus(-days.toLong(), DateTimeUnit.DAY).toClaimDate()
 
     fun isFriday() = dayOfWeek == DayOfWeek.FRIDAY
     fun isWeekend() = dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY
