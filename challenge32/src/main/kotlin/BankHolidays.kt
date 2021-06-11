@@ -1,6 +1,10 @@
 import kotlinx.datetime.DayOfWeek
 import kotlinx.datetime.Month
 
+fun interface BankHolidayChecker {
+    fun check(claim:ClaimDate):Boolean
+}
+
 val holidayValidators = listOf(
     ::isNewYearsDayHoliday,
     ::isGoodFridayHoliday,
