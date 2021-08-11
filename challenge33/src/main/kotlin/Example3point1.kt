@@ -10,13 +10,12 @@ open class Item(
     fun addProvision(anItem:Item) = provisions.add(anItem)
     fun addDependency(anItem:Item) = dependencies.add(anItem)
 
-    override fun toString(): String {
-        var output = "id: $id"
-        return id +  uses.toString(id, "uses") + provisions.toString(id, "provisions") + dependencies.toString(id, "dependent on")
-    }
+    override fun toString(): String =
+       id +  uses.toString(id, "uses") + provisions.toString(id, "provisions") + dependencies.toString(id, "dependent on")
+
 }
 
-fun List<Item>.toString(id:String, title:String) = if (isNotEmpty()) "\n  $id $title: " + map{"${it.toString()}"}.joinToString("\n")  else ""
+fun List<Item>.toString(id:String, title:String) = if (isNotEmpty()) "\n  $id $title: " + map{"$it"}.joinToString("\n")  else ""
 
 class Acid(id:Id = "Acid", var type:String = "", var grade:Int = 0):Item(id)
 class Electricity(id:Id = "Electricity", var power:Int):Item(id)
