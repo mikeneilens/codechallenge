@@ -6,6 +6,7 @@ class TestExample3point1 {
 
     @Test
     fun `test initial version`() {
+        Configuration.reset()
         example3point1()
         println(Configuration)
 

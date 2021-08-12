@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 class TestExample3point2part2 {
     @Test
     fun `test initial version`() {
+        Configuration.reset()
         example3point2part2()
         println(Configuration)
 
