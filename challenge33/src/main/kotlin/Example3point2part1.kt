@@ -29,7 +29,6 @@ fun uses(resource:Item) {
 
 fun uses(acid:Acid) {
     currentAcid = acid
-    currentItem = acid
     currentItem.addUsage(currentAcid)
 }
 
