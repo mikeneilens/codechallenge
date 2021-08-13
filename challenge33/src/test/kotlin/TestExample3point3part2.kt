@@ -1,10 +1,10 @@
-import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
 
-class TestExample3point3part1 {
+class TestExample3point3part2 {
     @Test
     fun `test initial version`() {
-        val configuration = example3point3part1()
+        val configuration = example3point3part2()
         println(configuration)
 
         val secure_air_vent =  configuration["secure_air_vent"]
@@ -39,5 +39,4 @@ class TestExample3point3part1 {
         assertEquals(1, small_power_plant.dependencies.size)
         assertEquals(secure_air_vent, small_power_plant.dependencies[0])
     }
-
 }

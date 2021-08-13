@@ -12,6 +12,8 @@ open class Item(
 
     override fun toString(): String =
         "$id ${uses.toString(id, "uses")} ${provisions.toString(id, "provisions")} ${dependencies.toString(id, "dependent on")}"
+
+    override fun equals(other: Any?) = (other is Item) && (this.id == other.id)
 }
 
 data class Acid( override val id:Id = "Acid", var type:String = "", var grade:Int = 0):Item(id)

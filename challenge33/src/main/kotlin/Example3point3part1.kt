@@ -1,17 +1,18 @@
-fun example3point3part1() {
-    Configuration.item("secure_air_vent")
-    Configuration.item("acid_bath")
+fun example3point3part1():Configuration {
+    configuration.item("secure_air_vent")
+    configuration.item("acid_bath")
         .uses(Acid()
             .setType("hcl")
             .setGrade(5))
         .uses(Electricity(power = 12))
-    Configuration.item("camera").uses(Electricity(power = 1))
-    Configuration.item("small_power_plant")
+    configuration.item("camera").uses(Electricity(power = 1))
+    configuration.item("small_power_plant")
         .provides(Electricity(power = 11))
         .dependsOn("secure_air_vent")
+    return configuration
 }
 
-fun Configuration.Companion.item(id:Id):Item {
+fun Configuration.item(id:Id):Item {
     val item = Item(id)
     addItem(item)
     return item
@@ -25,7 +26,7 @@ fun Item.provides(item:Item):Item {
     return this
 }
 fun Item.dependsOn(id:Id):Item {
-    val item = Configuration[id]
+    val item = configuration[id]
     addDependency(item)
     return this
 }

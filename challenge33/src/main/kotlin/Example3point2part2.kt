@@ -1,5 +1,5 @@
 
-fun example3point2part2(){
+fun example3point2part2():Configuration{
     item("secure_air_vent")
     item("acid_bath")
     val acidBathAcid = Acid()
@@ -12,6 +12,7 @@ fun example3point2part2(){
     item("small_power_plant")
     provides("small_power_plant", Electricity(power= 11))
     depends("small_power_plant", "secure_air_vent")
+    return configuration
 }
 
 fun acidType(acid: Acid, type: String) {
@@ -21,11 +22,11 @@ fun acidGrade(acid: Acid, grade: Int) {
     acid.grade = grade
 }
 fun uses(id:Id, item:Item) {
-    Configuration[id].addUsage(item)
+    configuration[id].addUsage(item)
 }
 fun provides(id:Id, item:Item) {
-    Configuration[id].addProvision(item)
+    configuration[id].addProvision(item)
 }
 fun depends(id:Id, dependency:String) {
-    Configuration[id].addDependency(Configuration[dependency])
+    configuration[id].addDependency(configuration[dependency])
 }
