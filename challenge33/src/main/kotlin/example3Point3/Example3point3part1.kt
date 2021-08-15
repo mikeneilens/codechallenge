@@ -1,13 +1,19 @@
-fun example3point3part1():Configuration {
+package example3Point3
+import model.*
+
+val configuration = Configuration()
+
+fun example3point3part1(): Configuration {
     configuration.item("secure_air_vent")
     configuration.item("acid_bath")
-        .uses(Acid()
+        .uses(
+            Acid()
             .setType("hcl")
             .setGrade(5))
-        .uses(Electricity(power = 12))
-    configuration.item("camera").uses(Electricity(power = 1))
+        .uses(Electricity(12))
+    configuration.item("camera").uses(Electricity(1))
     configuration.item("small_power_plant")
-        .provides(Electricity(power = 11))
+        .provides(Electricity(11))
         .dependsOn("secure_air_vent")
     return configuration
 }

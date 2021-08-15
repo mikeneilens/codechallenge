@@ -1,3 +1,5 @@
+import example3point2.example3point2part2
+import model.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertEquals
 

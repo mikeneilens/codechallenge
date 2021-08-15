@@ -1,4 +1,7 @@
-fun example3point3part2():Configuration {
+package example3Point3
+import model.*
+
+fun example3point3part2(): Configuration {
     val configurationBuilder = ConfigurationBuilder()
 
     configurationBuilder.item("secure_air_vent")
@@ -6,10 +9,10 @@ fun example3point3part2():Configuration {
         .uses(Acid()
             .setType("hcl")
             .setGrade(5))
-        .uses(Electricity(power = 12))
-    configurationBuilder.item("camera").uses(Electricity(power = 1))
+        .uses(Electricity(12))
+    configurationBuilder.item("camera").uses(Electricity(1))
     configurationBuilder.item("small_power_plant")
-        .provides(Electricity(power = 11))
+        .provides(Electricity(11))
         .dependsOn("secure_air_vent")
 
     return configurationBuilder.configuration

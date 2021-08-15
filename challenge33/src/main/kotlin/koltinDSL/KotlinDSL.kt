@@ -1,21 +1,24 @@
+package koltinDSL
+import model.*
+import model.Configuration
 
 fun kotlinDSL(): Configuration =
     ConfigBuilder.build {
 
         addItem("secure_air_vent")
         addItem("acid_bath") {
-            whichUsesAcid(){
+            usesAcid(){
                 withType("hcl")
                 withGrade(5)
             }
-            whichUses(Electricity(power = 12))
+            uses(Electricity(12))
         }
         addItem("camera") {
-            whichUses(Electricity(power = 1))
+            uses(Electricity(1))
         }
         addItem("small_power_plant") {
-            whichProvides(Electricity(power = 11))
-            whichDependsOn("secure_air_vent")
+            provides(Electricity(11))
+            dependsOn("secure_air_vent")
         }
     }
 
@@ -27,10 +30,10 @@ class ConfigBuilder {
         val item = Item(id)
         config.addItem(item)
     }
-    fun addItem(id:Id, init:ItemBuilder2.()->Unit) {
+    fun addItem(id:Id, init:ItemBuilder.()->Unit) {
         val item = Item(id)
         config.addItem(item)
-        ItemBuilder2(item).apply(init)
+        ItemBuilder(item).apply(init)
     }
 
     companion object {
@@ -43,18 +46,18 @@ class ConfigBuilder {
     }
 }
 
-class ItemBuilder2(private val item:Item) {
-    fun whichUses(anItem:Item) {
+class ItemBuilder(private val item:Item) {
+    fun uses(anItem:Item) {
         this.item.addUsage(anItem)
     }
-    fun whichDependsOn(id:Id) {
+    fun dependsOn(id:Id) {
         val anItem = Item(id)
         this.item.addDependency(anItem)
     }
-    fun whichProvides(anItem:Item) {
+    fun provides(anItem:Item) {
         this.item.addProvision(anItem)
     }
-    fun whichUsesAcid(acidBuilder:AcidBuilder.()->Unit) {
+    fun usesAcid(acidBuilder:AcidBuilder.()->Unit) {
         val acid = Acid()
         this.item.addUsage(acid)
         AcidBuilder(acid).apply(acidBuilder)

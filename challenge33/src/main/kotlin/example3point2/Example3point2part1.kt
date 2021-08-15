@@ -1,9 +1,11 @@
+package example3point2
+import model.*
 
 val configuration = Configuration()
 var currentItem = Item("")
 var currentAcid = Acid()
 
-fun example3point2():Configuration{
+fun example3point2(): Configuration {
     item("secure_air_vent")
     item("acid_bath")
     uses(Acid())
@@ -11,9 +13,9 @@ fun example3point2():Configuration{
     acidGrade(5)
     uses(Electricity(power= 12))
     item("camera")
-    uses(Electricity(power = 1))
+    uses(Electricity(1))
     item("small_power_plant")
-    provides(Electricity(power = 11))
+    provides(Electricity(11))
     dependsOn("secure_air_vent")
     return configuration
 }

@@ -1,3 +1,5 @@
+package model
+
 typealias Id = String
 
 open class Item(
@@ -16,8 +18,8 @@ open class Item(
     override fun equals(other: Any?) = (other is Item) && (this.id == other.id)
 }
 
-data class Acid( override val id:Id = "Acid", var type:String = "", var grade:Int = 0):Item(id)
-data class Electricity(override val id:Id = "Electricity", var power:Int):Item(id)
+data class Acid( var type:String = "", var grade:Int = 0):Item("Acid")
+data class Electricity( var power:Int):Item("Electricity")
 
 fun List<Item>.toString(id:String, title:String) = if (isNotEmpty()) "\n  $id $title: " + joinToString(",") { "$it" } else ""
 
