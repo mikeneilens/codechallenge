@@ -17,7 +17,7 @@ fun kotlinDSL(): Configuration =
             whichProvides(Electricity(power = 11))
             whichDependsOn("secure_air_vent")
         }
-    }.config
+    }
 
 
 class ConfigBuilder {
@@ -34,10 +34,10 @@ class ConfigBuilder {
     }
 
     companion object {
-        fun build(init:ConfigBuilder.()->Unit): ConfigBuilder {
+        fun build(init:ConfigBuilder.()->Unit): Configuration {
             val configBuilder = ConfigBuilder()
             init(configBuilder)
-            return configBuilder
+            return configBuilder.config
         }
 
     }
