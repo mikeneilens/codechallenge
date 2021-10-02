@@ -8,11 +8,6 @@ class Cache<Key, Value> where Key : Hashable{
     }
 }
 
-let f:(Int)->String = { k in
-        print(k)
-        return "done"
-}
-
 func  memoize<Key:Hashable, Value> (_ function: @escaping (Key) -> Value, using cache: Cache<Key,Value> = Cache<Key,Value>()  ) -> (Key) -> Value {
     
     return { p in
