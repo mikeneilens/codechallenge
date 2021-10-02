@@ -8,19 +8,22 @@ class Cache<Key, Value> where Key : Hashable{
     }
 }
 
+let f:(Int)->String = { k in
+        print(k)
+        return "done"
+}
+
 func  memoize<Key:Hashable, Value> (_ function: @escaping (Key) -> Value, using cache: Cache<Key,Value> = Cache<Key,Value>()  ) -> (Key) -> Value {
-        
-    func functionUsingCache(n:Key) -> Value {
-        if let result = cache[n] {
+    
+    return { p in
+        if let result = cache[p] {
             return result
         } else {
-            let result = function(n)
-            cache[n] = result
+            let result = function(p)
+            cache[p] = result
             return result
         }
     }
-    
-    return functionUsingCache
 }
 
 class MemoizeTests: XCTestCase {
