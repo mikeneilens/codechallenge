@@ -44,13 +44,19 @@ class MemoizeTests: XCTestCase {
         XCTAssertEqual("The wrong answer!", functionWithMemory(56))
     }
     func testThatResultsAreAlwaysCached() {
-        func random(_ n:Int) -> Int {Int.random(in: 1..<n)}
-        let functionWithMemory = memoize(random)
-        let firstResult = functionWithMemory(100000)
-        let result2 = functionWithMemory(100000)
-        let result3 = functionWithMemory(100000)
-        XCTAssertEqual(firstResult, result2) //This could fail, although its very unlikely
-        XCTAssertEqual(firstResult, result3) //This could fail, although its very unlikely
+        var x = 2
+        func addNtoX(_ n:Int) -> Int {n + x}
+        XCTAssertEqual(5, addNtoX(3) )
+        x = 4
+        XCTAssertEqual(7, addNtoX(3) )
+        XCTAssertEqual(8, addNtoX(4) )
+        //repeat test with memoized function
+        let functionWithMemory = memoize(addNtoX)
+        x = 2
+        XCTAssertEqual(5, functionWithMemory(3))
+        x = 4
+        XCTAssertEqual(5, functionWithMemory(3))
+        XCTAssertEqual(8, functionWithMemory(4))
     }
 
 }
