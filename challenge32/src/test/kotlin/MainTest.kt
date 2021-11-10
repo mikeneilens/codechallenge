@@ -244,77 +244,164 @@ class MainTest {
     }
 
     @Test
+    fun `standby claim when Christmas day is on a Saturday or a Sunday is calcualted using bank holiday rate`() {
+        val saturdayResult = calcStandbyClaim(ClaimDate("2021-12-25"),1.0,"A")
+        val expectedSaturdayResult = Claim(160, listOf(
+            "2021-12-25, Bank holiday rate A, £80",
+            "2021-12-25, Bank holiday rate A, £80",
+        ))
+        assertEquals(expectedSaturdayResult, saturdayResult)
+
+        val sundayResult = calcStandbyClaim(ClaimDate("2022-12-25"),1.0,"A")
+        val expectedSundayResult = Claim(160, listOf(
+            "2022-12-25, Bank holiday rate A, £80",
+            "2022-12-25, Bank holiday rate A, £80",
+        ))
+        assertEquals(expectedSundayResult, sundayResult)
+    }
+
+    @Test
+    fun `standby claim when boxing day is on a Saturday or a Sunday is calcualted using bank holiday rate`() {
+        val saturdayResult = calcStandbyClaim(ClaimDate("2020-12-26"),1.0,"A")
+        val expectedSaturdayResult = Claim(160, listOf(
+            "2020-12-26, Bank holiday rate A, £80",
+            "2020-12-26, Bank holiday rate A, £80",
+        ))
+        assertEquals(expectedSaturdayResult, saturdayResult)
+
+        val sundayResult = calcStandbyClaim(ClaimDate("2021-12-26"),1.0,"A")
+        val expectedSundayResult = Claim(160, listOf(
+            "2021-12-26, Bank holiday rate A, £80",
+            "2021-12-26, Bank holiday rate A, £80",
+        ))
+        assertEquals(expectedSundayResult, sundayResult)
+    }
+
+    @Test
+    fun `standby claim when New Years day is on a Saturday or a Sunday is calcualted using bank holiday rate`() {
+        val saturdayResult = calcStandbyClaim(ClaimDate("2022-01-01"),1.0,"A")
+        val expectedSaturdayResult = Claim(160, listOf(
+            "2022-01-01, Bank holiday rate A, £80",
+            "2022-01-01, Bank holiday rate A, £80",
+        ))
+        assertEquals(expectedSaturdayResult, saturdayResult)
+
+        val sundayResult = calcStandbyClaim(ClaimDate("2023-01-01"),1.0,"A")
+        val expectedSundayResult = Claim(160, listOf(
+            "2023-01-01, Bank holiday rate A, £80",
+            "2023-01-01, Bank holiday rate A, £80",
+        ))
+        assertEquals(expectedSundayResult, sundayResult)
+    }
+
+    @Test
+    fun `standby claim for Monday after Christmas when Christmas day is on a Saturday is calcualted using weekend rate`() {
+        val result = calcStandbyClaim(ClaimDate("2021-12-27"),1.0,"A")
+        val expectedResult = Claim(80, listOf(
+            "2021-12-27, Weekend rate A, £40",
+            "2021-12-27, Weekend rate A, £40",
+        ))
+        assertEquals(expectedResult, result)
+    }
+    @Test
+    fun `standby claim for Monday after Christmas when Christmas day is on a Sunday is calcualted using bank holiday rate`() {
+        val result = calcStandbyClaim(ClaimDate("2022-12-26"),1.0,"A")
+        val expectedResult = Claim(160, listOf(
+            "2022-12-26, Bank holiday rate A, £80",
+            "2022-12-26, Bank holiday rate A, £80",
+        ))
+        assertEquals(expectedResult, result)
+    }
+    @Test
+    fun `standby claim for Tuesday after Christmas when Christmas day is on a Sunday is calcualted using weekend rate`() {
+        val result = calcStandbyClaim(ClaimDate("2022-12-27"),1.0,"A")
+        val expectedResult = Claim(80, listOf(
+            "2022-12-27, Weekend rate A, £40",
+            "2022-12-27, Weekend rate A, £40",
+        ))
+        assertEquals(expectedResult, result)
+    }
+    @Test
+    fun `standby claim for Monday after Christmas when Boxing day is on a Saturday is calcualted using weekend rate`() {
+        val result = calcStandbyClaim(ClaimDate("2020-12-28"),1.0,"A")
+        val expectedResult = Claim(80, listOf(
+            "2020-12-28, Weekend rate A, £40",
+            "2020-12-28, Weekend rate A, £40",
+        ))
+        assertEquals(expectedResult, result)
+    }
+
+    @Test
     fun `standby claim for a complete calendar year is 16690 pounds`() {
         val result = calcStandbyClaim(ClaimDate("2021-01-01"), 365.0, "A")
         assertEquals(16690, result.amount)
     }
-
     //---- Tests for calculating bank holidays dynamically //
     @Test
     fun `when christmas day is a Wednesday then there is a bank holiday on 25th december and 26th december`() {
-        assertTrue(isChristmasDayHoliday(ClaimDate("2019-12-25")))
-        assertTrue(isBoxingDayHoliday(ClaimDate("2019-12-26")))
+        assertTrue(ClaimDate("2019-12-25").isChristmasDayHoliday())
+        assertTrue(ClaimDate("2019-12-26").isBoxingDayHoliday())
 
     }
     @Test
     fun `when christmas day is a Friday then there is a bank holiday on 25th december and 28th december but not 26th December`() {
-        assertTrue(isChristmasDayHoliday(ClaimDate("2020-12-25")))
-        assertTrue(isBoxingDayHoliday(ClaimDate("2020-12-28")))
-        assertFalse(isBoxingDayHoliday(ClaimDate("2020-12-26")))
+        assertTrue(ClaimDate("2020-12-25").isChristmasDayHoliday())
+        assertTrue(ClaimDate("2020-12-28").isBoxingDayHoliday())
+        assertFalse(ClaimDate("2020-12-26").isBoxingDayHoliday())
     }
     @Test
     fun `when christmas day is a Saturday then there is a bank holiday on 27th december and 28th december but not on 25th or 26th December`() {
-        assertTrue(isChristmasDayHoliday(ClaimDate("2021-12-27")))
-        assertTrue(isBoxingDayHoliday(ClaimDate("2021-12-28")))
-        assertFalse(isChristmasDayHoliday(ClaimDate("2021-12-25")))
-        assertFalse(isBoxingDayHoliday(ClaimDate("2021-12-26")))
+        assertTrue(ClaimDate("2021-12-27").isChristmasDayHoliday())
+        assertTrue(ClaimDate("2021-12-28").isBoxingDayHoliday())
+        assertFalse(ClaimDate("2021-12-25").isChristmasDayHoliday())
+        assertFalse(ClaimDate("2021-12-26").isBoxingDayHoliday())
     }
     @Test
     fun `when christmas day is a Sunday then there is a bank holiday on 26th december and 27th december but not on 25th December`() {
-        assertTrue(isChristmasDayHoliday(ClaimDate("2022-12-26")))
-        assertTrue(isBoxingDayHoliday(ClaimDate("2022-12-27")))
-        assertFalse(isChristmasDayHoliday(ClaimDate("2022-12-25")))
-        assertFalse(isBoxingDayHoliday(ClaimDate("2022-12-26")))
+        assertTrue(ClaimDate("2022-12-26").isChristmasDayHoliday())
+        assertTrue(ClaimDate("2022-12-27").isBoxingDayHoliday())
+        assertFalse(ClaimDate("2022-12-25").isChristmasDayHoliday())
+        assertFalse(ClaimDate("2022-12-26").isBoxingDayHoliday())
     }
 
     @Test
     fun `when new years day is on a week day then`() {
-        assertTrue(isNewYearsDayHoliday(ClaimDate("2021-01-01")))
+        assertTrue(ClaimDate("2021-01-01").isNewYearsDayHoliday())
     }
     @Test
     fun `when new years day is on a saturday then 3rd Jan is a holiday but 1st of Jan is not a holiday`() {
-        assertTrue(isNewYearsDayHoliday(ClaimDate("2022-01-03")))
-        assertFalse(isNewYearsDayHoliday(ClaimDate("2022-01-01")))
+        assertTrue(ClaimDate("2022-01-03").isNewYearsDayHoliday())
+        assertFalse(ClaimDate("2022-01-01").isNewYearsDayHoliday())
     }
     @Test
     fun `when new years day is on a sunday then 2nd Jan is a holiday but 1st of Jan is not a holiday`() {
-        assertTrue(isNewYearsDayHoliday(ClaimDate("2023-01-02")))
-        assertFalse(isNewYearsDayHoliday(ClaimDate("2023-01-01")))
+        assertTrue(ClaimDate("2023-01-02").isNewYearsDayHoliday())
+        assertFalse(ClaimDate("2023-01-01").isNewYearsDayHoliday())
     }
     @Test
     fun `when 1st may is on a Monday then 1st May is a bank holiday`() {
-        assertTrue(isMayDayHoliday(ClaimDate("2023-05-01")))
+        assertTrue(ClaimDate("2023-05-01").isMayDayHoliday())
     }
     @Test
     fun `when 1st may is on a Tuesday then 7th May is a bank holiday but 1st of may is not a holiday`() {
-        assertTrue(isMayDayHoliday(ClaimDate("2018-05-07")))
-        assertFalse(isMayDayHoliday(ClaimDate("2018-05-01")))
+        assertTrue(ClaimDate("2018-05-07").isMayDayHoliday())
+        assertFalse(ClaimDate("2018-05-01").isMayDayHoliday())
     }
     @Test
     fun `when 25th may is on a Monday then 25th May is a bank holiday`() {
-        assertTrue(isSpringHoliday(ClaimDate("2020-05-25")))
+        assertTrue(ClaimDate("2020-05-25").isSpringHoliday())
     }
     @Test
     fun `when 31st may is on a Monday then 31st May is a bank holiday`() {
-        assertTrue(isSpringHoliday(ClaimDate("2021-05-31")))
+        assertTrue(ClaimDate("2021-05-31").isSpringHoliday())
     }
     @Test
     fun `when 25th august is on a Monday then 25th august is a bank holiday`() {
-        assertTrue(isSummerHoliday(ClaimDate("2014-08-25")))
+        assertTrue(ClaimDate("2014-08-25").isSummerHoliday())
     }
     @Test
     fun `when 31st august is on a Monday then 31st august is a bank holiday`() {
-        assertTrue(isSummerHoliday(ClaimDate("2020-08-31")))
+        assertTrue(ClaimDate("2020-08-31").isSummerHoliday())
     }
     @Test
     fun `Easter sunday in 2014 is 20 April`() {
@@ -331,19 +418,19 @@ class MainTest {
 
     @Test
     fun `21st April 2014 is an Easter Monday holiday`() {
-        assertTrue(isEasterMondayHoliday(ClaimDate("2014-04-21")))
+        assertTrue(ClaimDate("2014-04-21").isEasterMondayHoliday())
     }
     @Test
     fun `28th March 2016 is an Easter Monday holiday`() {
-        assertTrue(isEasterMondayHoliday(ClaimDate("2016-03-28")))
+        assertTrue(ClaimDate("2016-03-28").isEasterMondayHoliday())
     }
     @Test
     fun `18th April 2014 is a Good Friday holiday`() {
-        assertTrue(isGoodFridayHoliday(ClaimDate("2014-04-18")))
+        assertTrue(ClaimDate("2014-04-18").isGoodFridayHoliday())
     }
     @Test
     fun `25th March 2016 is a Good Friday holiday`() {
-        assertTrue(isGoodFridayHoliday(ClaimDate("2016-03-25")))
+        assertTrue(ClaimDate("2016-03-25").isGoodFridayHoliday())
     }
 
     @Test

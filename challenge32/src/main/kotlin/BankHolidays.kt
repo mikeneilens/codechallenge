@@ -1,24 +1,20 @@
 import kotlinx.datetime.DayOfWeek
 import kotlinx.datetime.Month
 
-fun interface BankHolidayChecker {
-    fun check(claim:ClaimDate):Boolean
-}
-
 val holidayValidators = listOf(
-    ::isNewYearsDayHoliday,
-    ::isGoodFridayHoliday,
-    ::isEasterMondayHoliday,
-    ::isMayDayHoliday,
-    ::isSpringHoliday,
-    ::isSummerHoliday,
-    ::isChristmasDayHoliday,
-    ::isBoxingDayHoliday,
+    ClaimDate::isNewYearsDayHoliday,
+    ClaimDate::isGoodFridayHoliday,
+    ClaimDate::isEasterMondayHoliday,
+    ClaimDate::isMayDayHoliday,
+    ClaimDate::isSpringHoliday,
+    ClaimDate::isSummerHoliday,
+    ClaimDate::isChristmasDayHoliday,
+    ClaimDate::isBoxingDayHoliday,
 )
 
 fun ClaimDate.isBankHoliday() = holidayValidators.any{it(this)}
 
-fun isChristmasDayHoliday(date:ClaimDate) = (date == christmasDayHoliday(date.year))
+fun ClaimDate.isChristmasDayHoliday() = (this == christmasDayHoliday(this.year))
 
 fun christmasDayHoliday(year:Int) = weekdayOnOrAfter(ClaimDate("$year-12-25"))
 
@@ -28,26 +24,26 @@ fun weekdayOnOrAfter(date:ClaimDate) = when (date.dayOfWeek) {
     else -> date
 }
 
-fun isBoxingDayHoliday(date:ClaimDate) = (date == boxingDayHoliday(date.year))
+fun ClaimDate.isBoxingDayHoliday() = (this == boxingDayHoliday(this.year))
 
 fun boxingDayHoliday(year:Int):ClaimDate =  weekdayOnOrAfter(christmasDayHoliday(year) + 1)
 
-fun isNewYearsDayHoliday(date:ClaimDate) = (date == newYearsDayHoliday(date.year))
+fun ClaimDate.isNewYearsDayHoliday() = (this == newYearsDayHoliday(this.year))
 
 fun newYearsDayHoliday(year:Int) = weekdayOnOrAfter(ClaimDate("$year-01-01"))
 
-fun isMayDayHoliday(date:ClaimDate) =
-    date.month == Month.MAY && date.dayOfWeek == DayOfWeek.MONDAY && date.dayOfMonth < 8
+fun ClaimDate.isMayDayHoliday() =
+    month == Month.MAY && dayOfWeek == DayOfWeek.MONDAY && dayOfMonth < 8
 
-fun isSpringHoliday(date:ClaimDate) =
-    date.month == Month.MAY && date.dayOfWeek == DayOfWeek.MONDAY && date.dayOfMonth > 24
+fun ClaimDate.isSpringHoliday() =
+    month == Month.MAY && dayOfWeek == DayOfWeek.MONDAY && dayOfMonth > 24
 
-fun isSummerHoliday(date:ClaimDate) =
-    date.month == Month.AUGUST && date.dayOfWeek == DayOfWeek.MONDAY && date.dayOfMonth > 24
+fun ClaimDate.isSummerHoliday() =
+    month == Month.AUGUST && dayOfWeek == DayOfWeek.MONDAY && dayOfMonth > 24
 
-fun isEasterMondayHoliday(date:ClaimDate) = date == (easterSunday(date.year) + 1)
+fun ClaimDate.isEasterMondayHoliday() = this == (easterSunday(this.year) + 1)
 
-fun isGoodFridayHoliday(date: ClaimDate) = date == (easterSunday(date.year) - 2)
+fun ClaimDate.isGoodFridayHoliday() = this == (easterSunday(this.year) - 2)
 
 fun easterSunday(year:Int):ClaimDate = sundayAfter(paschalFullMoonDates.dateWith(year))
 
