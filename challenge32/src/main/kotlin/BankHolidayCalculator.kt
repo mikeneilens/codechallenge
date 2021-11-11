@@ -9,7 +9,7 @@ interface BankHolidayCalculator {
 }
 
 object UKHolidayCalculator:BankHolidayCalculator {
-    val holidayValidators by lazy { listOf(
+    private val holidayValidators by lazy { listOf(
         ::isNewYearsDayHoliday,
         ::isGoodFridayHoliday,
         ::isEasterMondayHoliday,

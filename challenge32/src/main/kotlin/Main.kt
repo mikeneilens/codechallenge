@@ -6,24 +6,24 @@ class TypeOfShift(val noOfShifts:Int, val rates:Map<String, Int>, private val de
     fun description(dateOfShift:ClaimDate, callOutLevel:String) = "$dateOfShift, $description $callOutLevel, £${rates[callOutLevel] ?: 0}"
 }
 
-fun isBankHolidayShift(claimDate: ClaimDate) =
-    claimDate.isBankHoliday && !claimDate.isChristmasDayHoliday && !claimDate.isBoxingDayHoliday && !claimDate.isNewYearsDayHoliday
-            || claimDate.isChristmasDay
-            || claimDate.isBoxingDay
-            || claimDate.isNewYearsDay
-            || (claimDate.isChristmasDayHoliday && !claimDate.christmasDayIsAtTheWeekend)
-            || (claimDate.isBoxingDayHoliday && !claimDate.boxingDayIsAtTheWeekend && !claimDate.christmasDayIsAtTheWeekend)
-            || (claimDate.isNewYearsDayHoliday && !claimDate.christmasDayIsAtTheWeekend)
+fun ClaimDate.isBankHolidayShift() =
+    isBankHoliday && !isChristmasDayHoliday && !isBoxingDayHoliday && !isNewYearsDayHoliday
+            || isChristmasDay
+            || isBoxingDay
+            || isNewYearsDay
+            || (isChristmasDayHoliday && !christmasDayIsAtTheWeekend)
+            || (isBoxingDayHoliday && !boxingDayIsAtTheWeekend && !christmasDayIsAtTheWeekend)
+            || (isNewYearsDayHoliday && !christmasDayIsAtTheWeekend)
 
-fun isWeekendShift(claimDate: ClaimDate) =
-    (claimDate.isChristmasDayHoliday && claimDate.christmasDayIsAtTheWeekend)
-            || (claimDate.isBoxingDayHoliday && (claimDate.christmasDayIsAtTheWeekend || claimDate.boxingDayIsAtTheWeekend))
-            || (claimDate.isNewYearsDayHoliday && claimDate.christmasDayIsAtTheWeekend && claimDate.boxingDayIsAtTheWeekend)
-            || claimDate.isWeekend
+fun ClaimDate.isWeekendShift() =
+    (isChristmasDayHoliday && christmasDayIsAtTheWeekend)
+            || (isBoxingDayHoliday && (christmasDayIsAtTheWeekend || boxingDayIsAtTheWeekend))
+            || (isNewYearsDayHoliday && christmasDayIsAtTheWeekend && boxingDayIsAtTheWeekend)
+            || isWeekend
 
-val BANK_HOLIDAY = TypeOfShift(2, mapOf("A" to BANK_HOLIDAY_RATE_A, "B" to BANK_HOLIDAY_RATE_B), "Bank holiday rate", ::isBankHolidayShift)
+val BANK_HOLIDAY = TypeOfShift(2, mapOf("A" to BANK_HOLIDAY_RATE_A, "B" to BANK_HOLIDAY_RATE_B), "Bank holiday rate", ClaimDate::isBankHolidayShift)
 val FRIDAY = TypeOfShift (1, mapOf("A" to WEEKEND_RATE_A, "B" to WEEKEND_RATE_B), "Weekend rate", ClaimDate::isFriday )
-val WEEKEND = TypeOfShift(2, mapOf("A" to WEEKEND_RATE_A, "B" to WEEKEND_RATE_B), "Weekend rate", ::isWeekendShift)
+val WEEKEND = TypeOfShift(2, mapOf("A" to WEEKEND_RATE_A, "B" to WEEKEND_RATE_B), "Weekend rate", ClaimDate::isWeekendShift)
 val MON_TO_THU = TypeOfShift(1, mapOf("A" to MON_TO_THU_RATE_A,"B" to MON_TO_THU_RATE_B), "Week day rate") { true }
 
 fun typeOfShiftForDate(dateOfShift:ClaimDate):TypeOfShift = listOf(BANK_HOLIDAY, FRIDAY, WEEKEND, MON_TO_THU).first {it.isApplicable(dateOfShift)}
