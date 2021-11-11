@@ -7,18 +7,18 @@ class TypeOfShift(val noOfShifts:Int, val rates:Map<String, Int>, private val de
 }
 
 fun isBankHolidayShift(claimDate: ClaimDate) =
-    claimDate.isBankHoliday() && !claimDate.isChristmasDayHoliday() && !claimDate.isBoxingDayHoliday() && !claimDate.isNewYearsDayHoliday()
+    claimDate.isBankHoliday && !claimDate.isChristmasDayHoliday && !claimDate.isBoxingDayHoliday && !claimDate.isNewYearsDayHoliday
             || claimDate.isChristmasDay
             || claimDate.isBoxingDay
             || claimDate.isNewYearsDay
-            || (claimDate.isChristmasDayHoliday() && !claimDate.christmasDayIsAtTheWeekend)
-            || (claimDate.isBoxingDayHoliday() && !claimDate.boxingDayIsAtTheWeekend && !claimDate.christmasDayIsAtTheWeekend)
-            || (claimDate.isNewYearsDayHoliday() && !claimDate.christmasDayIsAtTheWeekend)
+            || (claimDate.isChristmasDayHoliday && !claimDate.christmasDayIsAtTheWeekend)
+            || (claimDate.isBoxingDayHoliday && !claimDate.boxingDayIsAtTheWeekend && !claimDate.christmasDayIsAtTheWeekend)
+            || (claimDate.isNewYearsDayHoliday && !claimDate.christmasDayIsAtTheWeekend)
 
 fun isWeekendShift(claimDate: ClaimDate) =
-    (claimDate.isChristmasDayHoliday() && claimDate.christmasDayIsAtTheWeekend)
-            || (claimDate.isBoxingDayHoliday() && (claimDate.christmasDayIsAtTheWeekend || claimDate.boxingDayIsAtTheWeekend))
-            || (claimDate.isNewYearsDayHoliday() && claimDate.christmasDayIsAtTheWeekend && claimDate.boxingDayIsAtTheWeekend)
+    (claimDate.isChristmasDayHoliday && claimDate.christmasDayIsAtTheWeekend)
+            || (claimDate.isBoxingDayHoliday && (claimDate.christmasDayIsAtTheWeekend || claimDate.boxingDayIsAtTheWeekend))
+            || (claimDate.isNewYearsDayHoliday && claimDate.christmasDayIsAtTheWeekend && claimDate.boxingDayIsAtTheWeekend)
             || claimDate.isWeekend
 
 val BANK_HOLIDAY = TypeOfShift(2, mapOf("A" to BANK_HOLIDAY_RATE_A, "B" to BANK_HOLIDAY_RATE_B), "Bank holiday rate", ::isBankHolidayShift)

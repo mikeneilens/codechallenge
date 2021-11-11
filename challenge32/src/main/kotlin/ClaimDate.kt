@@ -1,6 +1,6 @@
 import kotlinx.datetime.*
 
-data class ClaimDate(private val value:String) {
+data class ClaimDate(private val value:String, val holidayCalculator: BankHolidayCalculator = UKHolidayCalculator) {
 
     private val localDate = LocalDate.parse(value)
     val dayOfWeek = localDate.dayOfWeek
@@ -19,6 +19,10 @@ data class ClaimDate(private val value:String) {
     val isBoxingDay = dayOfMonth == 26 && month == Month.DECEMBER
     val isNewYearsDay = dayOfMonth == 1 && month == Month.JANUARY
 
+    val isBankHoliday by lazy { holidayCalculator.isBankHoliday(this)}
+    val isChristmasDayHoliday by lazy { holidayCalculator.isChristmasDayHoliday(this)}
+    val isBoxingDayHoliday by lazy { holidayCalculator.isBoxingDayHoliday(this)}
+    val isNewYearsDayHoliday by lazy { holidayCalculator.isNewYearsDayHoliday(this)}
     val christmasDayIsAtTheWeekend  by lazy {ClaimDate("$year-12-25").isWeekend}
     val boxingDayIsAtTheWeekend by lazy {ClaimDate("$year-12-26").isWeekend}
 

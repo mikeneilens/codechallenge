@@ -339,110 +339,110 @@ class MainTest {
     //---- Tests for calculating bank holidays dynamically //
     @Test
     fun `when christmas day is a Wednesday then there is a bank holiday on 25th december and 26th december`() {
-        assertTrue(ClaimDate("2019-12-25").isChristmasDayHoliday())
-        assertTrue(ClaimDate("2019-12-26").isBoxingDayHoliday())
+        assertTrue(UKHolidayCalculator.isChristmasDayHoliday(ClaimDate("2019-12-25")))
+        assertTrue(UKHolidayCalculator.isBoxingDayHoliday(ClaimDate("2019-12-26")))
 
     }
     @Test
     fun `when christmas day is a Friday then there is a bank holiday on 25th december and 28th december but not 26th December`() {
-        assertTrue(ClaimDate("2020-12-25").isChristmasDayHoliday())
-        assertTrue(ClaimDate("2020-12-28").isBoxingDayHoliday())
-        assertFalse(ClaimDate("2020-12-26").isBoxingDayHoliday())
+        assertTrue(UKHolidayCalculator.isChristmasDayHoliday(ClaimDate("2020-12-25")))
+        assertTrue(UKHolidayCalculator.isBoxingDayHoliday(ClaimDate("2020-12-28")))
+        assertFalse(UKHolidayCalculator.isBoxingDayHoliday(ClaimDate("2020-12-26")))
     }
     @Test
     fun `when christmas day is a Saturday then there is a bank holiday on 27th december and 28th december but not on 25th or 26th December`() {
-        assertTrue(ClaimDate("2021-12-27").isChristmasDayHoliday())
-        assertTrue(ClaimDate("2021-12-28").isBoxingDayHoliday())
-        assertFalse(ClaimDate("2021-12-25").isChristmasDayHoliday())
-        assertFalse(ClaimDate("2021-12-26").isBoxingDayHoliday())
+        assertTrue(UKHolidayCalculator.isChristmasDayHoliday(ClaimDate("2021-12-27")))
+        assertTrue(UKHolidayCalculator.isBoxingDayHoliday(ClaimDate("2021-12-28")))
+        assertFalse(UKHolidayCalculator.isChristmasDayHoliday(ClaimDate("2021-12-25")))
+        assertFalse(UKHolidayCalculator.isBoxingDayHoliday(ClaimDate("2021-12-26")))
     }
     @Test
     fun `when christmas day is a Sunday then there is a bank holiday on 26th december and 27th december but not on 25th December`() {
-        assertTrue(ClaimDate("2022-12-26").isChristmasDayHoliday())
-        assertTrue(ClaimDate("2022-12-27").isBoxingDayHoliday())
-        assertFalse(ClaimDate("2022-12-25").isChristmasDayHoliday())
-        assertFalse(ClaimDate("2022-12-26").isBoxingDayHoliday())
+        assertTrue(UKHolidayCalculator.isChristmasDayHoliday(ClaimDate("2022-12-26")))
+        assertTrue(UKHolidayCalculator.isBoxingDayHoliday(ClaimDate("2022-12-27")))
+        assertFalse(UKHolidayCalculator.isChristmasDayHoliday(ClaimDate("2022-12-25")))
+        assertFalse(UKHolidayCalculator.isBoxingDayHoliday(ClaimDate("2022-12-26")))
     }
 
     @Test
     fun `when new years day is on a week day then`() {
-        assertTrue(ClaimDate("2021-01-01").isNewYearsDayHoliday())
+        assertTrue(UKHolidayCalculator.isNewYearsDayHoliday(ClaimDate("2021-01-01")))
     }
     @Test
     fun `when new years day is on a saturday then 3rd Jan is a holiday but 1st of Jan is not a holiday`() {
-        assertTrue(ClaimDate("2022-01-03").isNewYearsDayHoliday())
-        assertFalse(ClaimDate("2022-01-01").isNewYearsDayHoliday())
+        assertTrue(UKHolidayCalculator.isNewYearsDayHoliday(ClaimDate("2022-01-03")))
+        assertFalse(UKHolidayCalculator.isNewYearsDayHoliday(ClaimDate("2022-01-01")))
     }
     @Test
     fun `when new years day is on a sunday then 2nd Jan is a holiday but 1st of Jan is not a holiday`() {
-        assertTrue(ClaimDate("2023-01-02").isNewYearsDayHoliday())
-        assertFalse(ClaimDate("2023-01-01").isNewYearsDayHoliday())
+        assertTrue(UKHolidayCalculator.isNewYearsDayHoliday(ClaimDate("2023-01-02")))
+        assertFalse(UKHolidayCalculator.isNewYearsDayHoliday(ClaimDate("2023-01-01")))
     }
     @Test
     fun `when 1st may is on a Monday then 1st May is a bank holiday`() {
-        assertTrue(ClaimDate("2023-05-01").isMayDayHoliday())
+        assertTrue(UKHolidayCalculator.isMayDayHoliday(ClaimDate("2023-05-01")))
     }
     @Test
     fun `when 1st may is on a Tuesday then 7th May is a bank holiday but 1st of may is not a holiday`() {
-        assertTrue(ClaimDate("2018-05-07").isMayDayHoliday())
-        assertFalse(ClaimDate("2018-05-01").isMayDayHoliday())
+        assertTrue(UKHolidayCalculator.isMayDayHoliday(ClaimDate("2018-05-07")))
+        assertFalse(UKHolidayCalculator.isMayDayHoliday(ClaimDate("2018-05-01")))
     }
     @Test
     fun `when 25th may is on a Monday then 25th May is a bank holiday`() {
-        assertTrue(ClaimDate("2020-05-25").isSpringHoliday())
+        assertTrue(UKHolidayCalculator.isSpringHoliday(ClaimDate("2020-05-25")))
     }
     @Test
     fun `when 31st may is on a Monday then 31st May is a bank holiday`() {
-        assertTrue(ClaimDate("2021-05-31").isSpringHoliday())
+        assertTrue(UKHolidayCalculator.isSpringHoliday(ClaimDate("2021-05-31")))
     }
     @Test
     fun `when 25th august is on a Monday then 25th august is a bank holiday`() {
-        assertTrue(ClaimDate("2014-08-25").isSummerHoliday())
+        assertTrue(UKHolidayCalculator.isSummerHoliday(ClaimDate("2014-08-25")))
     }
     @Test
     fun `when 31st august is on a Monday then 31st august is a bank holiday`() {
-        assertTrue(ClaimDate("2020-08-31").isSummerHoliday())
+        assertTrue(UKHolidayCalculator.isSummerHoliday(ClaimDate("2020-08-31")))
     }
     @Test
     fun `Easter sunday in 2014 is 20 April`() {
-        assertEquals(ClaimDate("2014-04-20"), easterSunday(2014) )
+        assertEquals(ClaimDate("2014-04-20"), UKHolidayCalculator.easterSunday(2014) )
     }
     @Test
     fun `Easter sunday in 2021 is 4 April`() {
-        assertEquals(ClaimDate("2021-04-04"), easterSunday(2021) )
+        assertEquals(ClaimDate("2021-04-04"), UKHolidayCalculator.easterSunday(2021) )
     }
     @Test
     fun `Easter sunday in 2016 is 27 March`() {
-        assertEquals(ClaimDate("2016-03-27"), easterSunday(2016) )
+        assertEquals(ClaimDate("2016-03-27"), UKHolidayCalculator.easterSunday(2016) )
     }
 
     @Test
     fun `21st April 2014 is an Easter Monday holiday`() {
-        assertTrue(ClaimDate("2014-04-21").isEasterMondayHoliday())
+        assertTrue(UKHolidayCalculator.isEasterMondayHoliday(ClaimDate("2014-04-21")))
     }
     @Test
     fun `28th March 2016 is an Easter Monday holiday`() {
-        assertTrue(ClaimDate("2016-03-28").isEasterMondayHoliday())
+        assertTrue(UKHolidayCalculator.isEasterMondayHoliday(ClaimDate("2016-03-28")))
     }
     @Test
     fun `18th April 2014 is a Good Friday holiday`() {
-        assertTrue(ClaimDate("2014-04-18").isGoodFridayHoliday())
+        assertTrue(UKHolidayCalculator.isGoodFridayHoliday(ClaimDate("2014-04-18")))
     }
     @Test
     fun `25th March 2016 is a Good Friday holiday`() {
-        assertTrue(ClaimDate("2016-03-25").isGoodFridayHoliday())
+        assertTrue(UKHolidayCalculator.isGoodFridayHoliday(ClaimDate("2016-03-25")))
     }
 
     @Test
     fun `check that all bank holidays in 2021 return as true when checking if they are holidays`() {
-        assertTrue(ClaimDate("2021-01-01").isBankHoliday())
-        assertFalse(ClaimDate("2021-01-02").isBankHoliday())
-        assertTrue(ClaimDate("2021-04-02").isBankHoliday())
-        assertTrue(ClaimDate("2021-04-05").isBankHoliday())
-        assertTrue(ClaimDate("2021-05-03").isBankHoliday())
-        assertTrue(ClaimDate("2021-05-31").isBankHoliday())
-        assertTrue(ClaimDate("2021-08-30").isBankHoliday())
-        assertTrue(ClaimDate("2021-12-27").isBankHoliday())
-        assertTrue(ClaimDate("2021-12-28").isBankHoliday())
+        assertTrue(UKHolidayCalculator.isBankHoliday(ClaimDate("2021-01-01")))
+        assertFalse(UKHolidayCalculator.isBankHoliday(ClaimDate("2021-01-02")))
+        assertTrue(UKHolidayCalculator.isBankHoliday(ClaimDate("2021-04-02")))
+        assertTrue(UKHolidayCalculator.isBankHoliday(ClaimDate("2021-04-05")))
+        assertTrue(UKHolidayCalculator.isBankHoliday(ClaimDate("2021-05-03")))
+        assertTrue(UKHolidayCalculator.isBankHoliday(ClaimDate("2021-05-31")))
+        assertTrue(UKHolidayCalculator.isBankHoliday(ClaimDate("2021-08-30")))
+        assertTrue(UKHolidayCalculator.isBankHoliday(ClaimDate("2021-12-27")))
+        assertTrue(UKHolidayCalculator.isBankHoliday(ClaimDate("2021-12-28")))
     }
 }
