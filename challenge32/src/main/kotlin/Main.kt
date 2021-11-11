@@ -18,7 +18,7 @@ fun ClaimDate.isBankHolidayShift() =
 fun ClaimDate.isWeekendShift() =
     (isChristmasDayHoliday && christmasDayIsAtTheWeekend)
             || (isBoxingDayHoliday && (christmasDayIsAtTheWeekend || boxingDayIsAtTheWeekend))
-            || (isNewYearsDayHoliday && christmasDayIsAtTheWeekend && boxingDayIsAtTheWeekend)
+            || (isNewYearsDayHoliday && christmasDayIsAtTheWeekend)
             || isWeekend
 
 val BANK_HOLIDAY = TypeOfShift(2, mapOf("A" to BANK_HOLIDAY_RATE_A, "B" to BANK_HOLIDAY_RATE_B), "Bank holiday rate", ClaimDate::isBankHolidayShift)
