@@ -1,3 +1,4 @@
+import kotlinx.datetime.LocalDate
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
@@ -405,15 +406,15 @@ class MainTest {
     }
     @Test
     fun `Easter sunday in 2014 is 20 April`() {
-        assertEquals(ClaimDate("2014-04-20"), UKHolidayCalculator.easterSunday(2014) )
+        assertEquals(LocalDate(2014,4,20), UKHolidayCalculator.easterSunday(2014) )
     }
     @Test
     fun `Easter sunday in 2021 is 4 April`() {
-        assertEquals(ClaimDate("2021-04-04"), UKHolidayCalculator.easterSunday(2021) )
+        assertEquals(LocalDate(2021,4,4), UKHolidayCalculator.easterSunday(2021) )
     }
     @Test
     fun `Easter sunday in 2016 is 27 March`() {
-        assertEquals(ClaimDate("2016-03-27"), UKHolidayCalculator.easterSunday(2016) )
+        assertEquals(LocalDate(2016,3,27), UKHolidayCalculator.easterSunday(2016) )
     }
 
     @Test
