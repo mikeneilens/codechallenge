@@ -1,8 +1,8 @@
-typealias LetterChecker = (guessLetter: Char, answerLetter: Char, qtyOfEachLetter: MutableMap<Char, Int>) -> Boolean
+typealias LetterChecker = (guessLetter: Char, answerLetter: Char, qtyOfEachLetter: Map<Char, Int>) -> Boolean
 
-val isGreen = {guessLetter: Char, answerLetter: Char, _: MutableMap<Char, Int> -> guessLetter == answerLetter}
+val isGreen = {guessLetter: Char, answerLetter: Char, _: Map<Char, Int> -> guessLetter == answerLetter}
 
-val isYellow = {guessLetter: Char, answerLetter: Char, qtyOfEachLetter: MutableMap<Char, Int> ->
+val isYellow = {guessLetter: Char, answerLetter: Char, qtyOfEachLetter: Map<Char, Int> ->
     ( guessLetter != answerLetter ) && ( guessLetter in qtyOfEachLetter ) && ( qtyOfEachLetter.getValue(guessLetter) > 0 ) }
 
 fun wordleResult(guess: String, answer: String):List<String> {
