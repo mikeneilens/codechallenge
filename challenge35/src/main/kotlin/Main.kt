@@ -16,10 +16,9 @@ fun wordleResult(guess: String, answer: String):List<String> {
 private fun updateResult(colour: String, guess: String, answer: String, qtyOfEachLetter: MutableMap<Char, Int>, result: MutableList<String>, isValidLetter: LetterChecker) {
     guess.forEachIndexed { index, guessLetter ->
         if (isValidLetter(guessLetter, answer[index], qtyOfEachLetter)) {
-            qtyOfEachLetter[guessLetter] = qtyOfEachLetter.getValue(guessLetter) - 1
             result[index] = colour
+            qtyOfEachLetter[guessLetter] = qtyOfEachLetter.getValue(guessLetter) - 1
         }
     }
 }
-
 
