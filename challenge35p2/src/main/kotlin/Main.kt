@@ -1,53 +1,32 @@
-enum class GuessResult{Green, Yellow, Grey}
+//part one
 
-data class Guess(val word:String, val result:List<GuessResult>)
+typealias LetterChecker = (guessLetter: Char, answerLetter: Char, qtyOfEachLetter: Map<Char, Int>) -> Boolean
 
-fun findAnswers(answers:List<String>, guesses:List<Guess>  ) =
-    answers.map{answer -> answer.filterAllGuesses(guesses) }.filter{!it.contains('!')}
+val isGreen = {guessLetter: Char, answerLetter: Char, _: Map<Char, Int> -> guessLetter == answerLetter}
 
-fun String.filterAllGuesses(guesses:List<Guess>):String {
-    if (guesses.isEmpty()) return this
-    val filteredAnswer = filterGreen(guesses.first())
-        .filterYellow(guesses.first())
-        .filterYellow2(guesses.first())
-        .filterGrey(guesses.first())
-    if (filteredAnswer.contains('!')) return filteredAnswer
-    else return filterAllGuesses(guesses.drop(1))
+val isYellow = {guessLetter: Char, answerLetter: Char, qtyOfEachLetter: Map<Char, Int> ->
+    ( guessLetter != answerLetter ) && ( guessLetter in qtyOfEachLetter ) && ( qtyOfEachLetter.getValue(guessLetter) > 0 ) }
+
+fun wordleResult(guess: String, answer: String):List<String> {
+    val result = guess.map{"GREY"}.toMutableList()
+    val qtyOfEachLetter = answer.groupingBy { it }.eachCount().toMutableMap()
+    updateResult("GREEN", guess, answer, qtyOfEachLetter, result, isGreen)
+    updateResult("YELLOW", guess, answer, qtyOfEachLetter, result, isYellow)
+    return result
 }
 
-//Any letters in the guess that are green need to match the answer. Replace matches with _. Replace errors with !
-fun String.filterGreen(guess: Guess) =
-    guess.result.mapIndexed { index, result ->
-        if (result != GuessResult.Green) this[index]
-        else if (guess.word[index] == this[index]) '_' else '!'
-    }.joinToString("")
-
-//Any letters in the answer that are yellow must not match the answer. Replace errors with !.
-fun String.filterYellow(guess: Guess) =
-    guess.result.mapIndexed { index, result ->
-        if (result != GuessResult.Yellow) this[index]
-        else if (guess.word[index] == this[index]) '!' else this[index]
-    }.joinToString("")
-
-//Any letters in the answer that are yellow must be in the answer. Replace matcheswith _. If no matches write out !!!!.
-fun String.filterYellow2(guess: Guess):String {
-    var output = this
-    guess.result.forEachIndexed {index, result ->
-        if (result == GuessResult.Yellow)
-            if (guess.word[index] in output ) output = output.replaceFirst(guess.word[index],'_')
-            else output = output.map{'!'}.joinToString("")
+private fun updateResult(colour: String, guess: String, answer: String, qtyOfEachLetter: MutableMap<Char, Int>, result: MutableList<String>, isValidLetter: LetterChecker) {
+    guess.forEachIndexed { index, guessLetter ->
+        if (isValidLetter(guessLetter, answer[index], qtyOfEachLetter)) {
+            result[index] = colour
+            qtyOfEachLetter[guessLetter] = qtyOfEachLetter.getValue(guessLetter) - 1
+        }
     }
-    return output
 }
 
-//Any letters in the answer are grey must not be in the answer. Replace any grey letters in the answer with !.
-fun String.filterGrey(guess: Guess):String {
-    var output = this
-    guess.result.forEachIndexed {index, result ->
-        if (result == GuessResult.Grey)
-            if (guess.word[index] in output ) output = output.replaceFirst(guess.word[index],'!')
-    }
-    return output
-}
+//part two
+
+fun findAnswers(answers:List<String>, guesses:List<Pair<String, List<String>>>) =
+    answers.filter{answer -> guesses.all{ (guess, matches) ->  wordleResult(guess, answer) == matches }}
 
 
