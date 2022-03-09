@@ -3,7 +3,7 @@ enum class GuessResult{Green, Yellow, Grey}
 data class Guess(val word:String, val result:List<GuessResult>)
 
 fun findAnswers(answers:List<String>, guesses:List<Guess>  ) =
-    answers.map{answer -> answer.filterAllGuesses(guesses) }.filter{it != ""}
+    answers.map{answer -> answer.filterAllGuesses(guesses) }.filter{!it.contains('!')}
 
 fun String.filterAllGuesses(guesses:List<Guess>):String {
     if (guesses.isEmpty()) return this
@@ -11,7 +11,7 @@ fun String.filterAllGuesses(guesses:List<Guess>):String {
         .filterYellow(guesses.first())
         .filterYellow2(guesses.first())
         .filterGrey(guesses.first())
-    if (filteredAnswer.contains('!')) return ""
+    if (filteredAnswer.contains('!')) return filteredAnswer
     else return filterAllGuesses(guesses.drop(1))
 }
 

@@ -33,29 +33,29 @@ class MainTest: StringSpec({
         val guessDdd = Guess("ddd", listOf(GuessResult.Grey,GuessResult.Grey, GuessResult.Grey))
         "abc".filterAllGuesses(listOf(guessAde,guessBac,guessDdd)) shouldBe "abc"
     }
-    "abc filtered with guess ade where a is green and d is green and dad where a is yellow and ddd with all are grey gives empty string"{
+    "abc filtered with guess ade where a is green and d is green and dad where a is yellow and ddd with all are grey gives _!c"{
         val guessAde = Guess("ade", listOf(GuessResult.Green,GuessResult.Green, GuessResult.Grey))
         val guessBac = Guess("dad", listOf(GuessResult.Grey,GuessResult.Yellow, GuessResult.Grey))
         val guessDdd = Guess("ddd", listOf(GuessResult.Grey,GuessResult.Grey, GuessResult.Grey))
-        "abc".filterAllGuesses(listOf(guessAde,guessBac,guessDdd)) shouldBe ""
+        "abc".filterAllGuesses(listOf(guessAde,guessBac,guessDdd)) shouldBe "_!c"
     }
-    "abc filtered with guess ade where a is green and d is grey and daa where both a is yellow and ddd with all are grey gives empty string"{
+    "abc filtered with guess ade where a is green and d is grey and daa where both a is yellow and ddd with all are grey gives _!c"{
         val guessAde = Guess("ade", listOf(GuessResult.Green,GuessResult.Green, GuessResult.Grey))
         val guessBac = Guess("daa", listOf(GuessResult.Grey,GuessResult.Yellow, GuessResult.Yellow))
         val guessDdd = Guess("ddd", listOf(GuessResult.Grey,GuessResult.Grey, GuessResult.Grey))
-        "abc".filterAllGuesses(listOf(guessAde,guessBac,guessDdd)) shouldBe ""
+        "abc".filterAllGuesses(listOf(guessAde,guessBac,guessDdd)) shouldBe "_!c"
     }
-    "abc filtered with guess ade where a is green and d is grey and dad where second d is green and ddd with all are grey gives empty string"{
+    "abc filtered with guess ade where a is green and d is grey and dad where second d is green and ddd with all are grey gives _!c"{
         val guessAde = Guess("ade", listOf(GuessResult.Green,GuessResult.Green, GuessResult.Grey))
         val guessBac = Guess("dad", listOf(GuessResult.Grey,GuessResult.Yellow, GuessResult.Green))
         val guessDdd = Guess("ddd", listOf(GuessResult.Grey,GuessResult.Grey, GuessResult.Grey))
-        "abc".filterAllGuesses(listOf(guessAde,guessBac,guessDdd)) shouldBe ""
+        "abc".filterAllGuesses(listOf(guessAde,guessBac,guessDdd)) shouldBe "_!c"
     }
-    "abc filtered with guess ade where a is green and dad where a is yellow and dcd with all are grey gives empty string"{
+    "abc filtered with guess ade where a is green and dad where a is yellow and dcd with all are grey gives !bc"{
         val guessAde = Guess("ade", listOf(GuessResult.Green,GuessResult.Grey, GuessResult.Grey))
         val guessBac = Guess("dad", listOf(GuessResult.Grey,GuessResult.Yellow, GuessResult.Grey))
         val guessDdd = Guess("dda", listOf(GuessResult.Grey,GuessResult.Grey, GuessResult.Grey))
-        "abc".filterAllGuesses(listOf(guessAde,guessBac,guessDdd)) shouldBe ""
+        "abc".filterAllGuesses(listOf(guessAde,guessBac,guessDdd)) shouldBe "!bc"
     }
     "answers abcd, abdc, wxyz match against guesses abaa (green, green, grey, grey) and adfa (green, yellow, grey, grey) gives abcd, abdc" {
         val guessAbaa = Guess("abaa", listOf(GuessResult.Green, GuessResult.Green, GuessResult.Grey, GuessResult.Grey))
@@ -66,5 +66,10 @@ class MainTest: StringSpec({
         val guessAbaa = Guess("abaa", listOf(GuessResult.Green, GuessResult.Green, GuessResult.Grey, GuessResult.Grey))
         val guessAdfc = Guess("adfc", listOf(GuessResult.Green, GuessResult.Yellow, GuessResult.Grey, GuessResult.Green))
         findAnswers(answers = listOf("abcd", "abdc", "wxyz"), guesses = listOf(guessAbaa, guessAdfc)) shouldBe listOf("abdc")
+    }
+    "test eerie (yellow, grey, grey, yellow, green) and about (grey, grey, grey, grey, grey) using full word list " {
+        val eerie = Guess("eerie",listOf(GuessResult.Yellow,GuessResult.Grey,GuessResult.Grey,GuessResult.Yellow,GuessResult.Green))
+        val about = Guess("about",listOf(GuessResult.Grey,GuessResult.Grey,GuessResult.Grey,GuessResult.Grey,GuessResult.Grey))
+        findAnswers(wordList, listOf(eerie, about)) shouldBe listOf("deice", "diene", "kieve", "liege", "lieve", "mieve", "neive", "niece", "nieve", "peise", "peize", "piece", "seine", "seise", "seize", "siege", "sieve", "weise", "weize")
     }
 })
