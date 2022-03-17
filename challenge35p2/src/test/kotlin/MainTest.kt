@@ -12,4 +12,10 @@ class MainTest: StringSpec({
         val torch = Pair("torch",listOf("YELLOW","GREEN","GREY","GREY","GREEN"))
         findAnswers(wordList, listOf(least, torch)) shouldBe listOf("booth", "fouth", "fowth", "month", "mouth", "youth")
     }
+    "test least (grey, yello, grey, grey,grey) wreck (grey,grey,yellow,grey,grey), given (grey,yellow,green,yellow,grey) " {
+        val least = Pair("least", listOf("GREY","YELLOW","GREY","GREY","GREY"))
+        val wreck = Pair("wreck",listOf("GREY","GREY","YELLOW","GREY","GREY"))
+        val given = Pair("given",listOf("GREY","YELLOW","GREEN","YELLOW","GREY"))
+        findAnswers(wordList, listOf(least, wreck, given)) shouldBe listOf("dovie", "juvie", "movie")
+    }
 })
