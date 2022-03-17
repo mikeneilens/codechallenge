@@ -27,6 +27,6 @@ private fun updateResult(colour: String, guess: String, answer: String, qtyOfEac
 //part two
 
 fun findAnswers(answers:List<String>, guesses:List<Pair<String, List<String>>>) =
-    answers.filter{answer -> guesses.all{ (guess, matches) ->  wordleResult(guess, answer) == matches }}
+     answers.filter{answer -> guesses.all{ (guess, matches) ->  wordleResult(guess, answer) == matches }}
 
 
