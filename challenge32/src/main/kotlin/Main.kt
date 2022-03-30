@@ -32,7 +32,7 @@ fun createClaim(dateOfShift:ClaimDate, typeOfShift:TypeOfShift, callOutLevel:Str
     = Claim(typeOfShift.rates[callOutLevel] ?: 0,listOf(typeOfShift.description(dateOfShift, callOutLevel)))
 
 fun calcStandbyClaim(date:ClaimDate, duration:Double, callOutLevel:String): Claim {
-    val calculateClaimForEachShift = {dateOfShift:ClaimDate -> createClaim(dateOfShift, typeOfShiftForDate(dateOfShift), callOutLevel)}
+    val calculateClaimForEachShift = {dateOfShift:DateRange -> createClaim(dateOfShift.start, typeOfShiftForDate(dateOfShift.start), callOutLevel)}
     return  datesOfShifts(date, duration)
         .map (calculateClaimForEachShift)
         .sumClaims()
@@ -40,11 +40,13 @@ fun calcStandbyClaim(date:ClaimDate, duration:Double, callOutLevel:String): Clai
 
 fun List<Claim>.sumClaims() = fold(Claim()) { result, claim -> result + claim }
 
-tailrec fun datesOfShifts(date:ClaimDate, duration:Double, noOfDays:Double = 0.0, result:List<ClaimDate> = emptyList() ):List<ClaimDate> =
+data class DateRange(val start:ClaimDate, val end:ClaimDate)
+
+tailrec fun datesOfShifts(dateRange:ClaimDate, duration:Double, noOfDays:Double = 0.0, result:List<DateRange> = emptyList() ):List<DateRange> =
     if (noOfDays >= duration) result
     else {
-        val dateOfShift = date + noOfDays
-        datesOfShifts(date, duration, noOfDays + 1.0 / typeOfShiftForDate(dateOfShift).noOfShifts, result + dateOfShift )
+        val dateOfShift = dateRange + noOfDays
+        datesOfShifts(dateRange, duration, noOfDays + 1.0 / typeOfShiftForDate(dateOfShift).noOfShifts, result + DateRange(dateOfShift, dateOfShift))
     }
 
 

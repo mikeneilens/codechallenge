@@ -6,14 +6,14 @@ class MainTest {
     @Test
     fun `standby claim for 1 day at A Level on Mon to Thursday which is not a holiday is weekday rate`() {
         val result = calcStandbyClaim(ClaimDate("2021-04-19"),1.0,"A")
-        val expectedResult = Claim(MON_TO_THU_RATE_A,listOf("2021-04-19, Week day rate A, £25"))
+        val expectedResult = Claim(MON_TO_THU_RATE_A,listOf("2021-04-19, Week day rate A, £${MON_TO_THU_RATE_A}"))
         assertEquals(expectedResult, result)
     }
 
     @Test
     fun `standby claim for 1 day at A Level on Friday which is not a holiday is weekend rate`() {
         val result = calcStandbyClaim(ClaimDate("2021-04-16"),1.0,"A")
-        val expectedResult = Claim(WEEKEND_RATE_A,listOf("2021-04-16, Weekend rate A, £40"))
+        val expectedResult = Claim(WEEKEND_RATE_A,listOf("2021-04-16, Weekend rate A, £${WEEKEND_RATE_A}"))
         assertEquals(expectedResult, result)
     }
 
@@ -22,15 +22,15 @@ class MainTest {
         val saturdayResult = calcStandbyClaim(ClaimDate("2021-04-17"),1.0,"A")
         val expectedSaturdayResult = Claim(WEEKEND_RATE_A * 2,
             listOf(
-                "2021-04-17, Weekend rate A, £40",
-                "2021-04-17, Weekend rate A, £40"))
+                "2021-04-17, Weekend rate A, £${WEEKEND_RATE_A}",
+                "2021-04-17, Weekend rate A, £${WEEKEND_RATE_A}"))
         assertEquals(expectedSaturdayResult, saturdayResult)
 
         val sundayResult = calcStandbyClaim(ClaimDate("2021-04-18"),1.0,"A")
         val expectedSundayResult = Claim(WEEKEND_RATE_A * 2,
             listOf(
-                "2021-04-18, Weekend rate A, £40",
-                "2021-04-18, Weekend rate A, £40"))
+                "2021-04-18, Weekend rate A, £${WEEKEND_RATE_A}",
+                "2021-04-18, Weekend rate A, £${WEEKEND_RATE_A}"))
         assertEquals(expectedSundayResult, sundayResult)
     }
 
@@ -39,21 +39,21 @@ class MainTest {
         val result = calcStandbyClaim(ClaimDate("2021-04-02"),1.0,"A")
         val expectedSaturdayResult = Claim(BANK_HOLIDAY_RATE_A * 2,
             listOf(
-                "2021-04-02, Bank holiday rate A, £80",
-                "2021-04-02, Bank holiday rate A, £80"))
+                "2021-04-02, Bank holiday rate A, £${BANK_HOLIDAY_RATE_A}",
+                "2021-04-02, Bank holiday rate A, £${BANK_HOLIDAY_RATE_A}"))
         assertEquals(expectedSaturdayResult, result)
     }
 @Test
     fun `standby claim for 1 day at B Level on Mon to Thursday which is not a holiday is weekday rate`() {
         val result = calcStandbyClaim(ClaimDate("2021-04-19"),1.0,"B")
-        val expectedResult = Claim(MON_TO_THU_RATE_B,listOf("2021-04-19, Week day rate B, £15"))
+        val expectedResult = Claim(MON_TO_THU_RATE_B,listOf("2021-04-19, Week day rate B, £${MON_TO_THU_RATE_B}"))
         assertEquals(expectedResult, result)
     }
 
     @Test
     fun `standby claim for 1 day at B Level on Friday which is not a holiday is weekend rate`() {
         val result = calcStandbyClaim(ClaimDate("2021-04-16"),1.0,"B")
-        val expectedResult = Claim(WEEKEND_RATE_B,listOf("2021-04-16, Weekend rate B, £25"))
+        val expectedResult = Claim(WEEKEND_RATE_B,listOf("2021-04-16, Weekend rate B, £${WEEKEND_RATE_B}"))
         assertEquals(expectedResult, result)
     }
 
@@ -62,14 +62,14 @@ class MainTest {
         val saturdayResult = calcStandbyClaim(ClaimDate("2021-04-17"),1.0,"B")
         val expectedSaturdayResult = Claim(WEEKEND_RATE_B * 2,
             listOf(
-                "2021-04-17, Weekend rate B, £25",
-                "2021-04-17, Weekend rate B, £25"))
+                "2021-04-17, Weekend rate B, £${WEEKEND_RATE_B}",
+                "2021-04-17, Weekend rate B, £${WEEKEND_RATE_B}"))
         assertEquals(expectedSaturdayResult, saturdayResult)
 
         val sundayResult = calcStandbyClaim(ClaimDate("2021-04-18"),1.0,"B")
         val expectedSundayResult = Claim(WEEKEND_RATE_B * 2,listOf(
-            "2021-04-18, Weekend rate B, £25",
-            "2021-04-18, Weekend rate B, £25"))
+            "2021-04-18, Weekend rate B, £${WEEKEND_RATE_B}",
+            "2021-04-18, Weekend rate B, £${WEEKEND_RATE_B}"))
         assertEquals(expectedSundayResult, sundayResult)
     }
 
@@ -77,8 +77,8 @@ class MainTest {
     fun `standby claim for 1 day at B Level on a bank holiday is twice the bank holiday rate`() {
         val result = calcStandbyClaim(ClaimDate("2021-04-02"),1.0,"B")
         val expectedSaturdayResult = Claim(BANK_HOLIDAY_RATE_B * 2,listOf(
-            "2021-04-02, Bank holiday rate B, £50",
-            "2021-04-02, Bank holiday rate B, £50"))
+            "2021-04-02, Bank holiday rate B, £${BANK_HOLIDAY_RATE_B}",
+            "2021-04-02, Bank holiday rate B, £${BANK_HOLIDAY_RATE_B}"))
         assertEquals(expectedSaturdayResult, result)
     }
 
@@ -87,8 +87,8 @@ class MainTest {
         val result = calcStandbyClaim(ClaimDate("2021-04-19"),2.0,"A")
         val expectedResult = Claim(MON_TO_THU_RATE_A * 2,
             listOf(
-                "2021-04-19, Week day rate A, £25",
-                "2021-04-20, Week day rate A, £25"))
+                "2021-04-19, Week day rate A, £${MON_TO_THU_RATE_A}",
+                "2021-04-20, Week day rate A, £${MON_TO_THU_RATE_A}"))
         assertEquals(expectedResult, result)
     }
 
@@ -96,9 +96,9 @@ class MainTest {
     fun `standby claim for 2 day at A Level starting on Friday which is not a holiday is weekend rate spread over 3 shifts`() {
         val result = calcStandbyClaim(ClaimDate("2021-04-16"),2.0,"A")
         val expectedResult = Claim(WEEKEND_RATE_A * 3,
-            listOf("2021-04-16, Weekend rate A, £40",
-                "2021-04-17, Weekend rate A, £40",
-                "2021-04-17, Weekend rate A, £40"))
+            listOf("2021-04-16, Weekend rate A, £${WEEKEND_RATE_A}",
+                "2021-04-17, Weekend rate A, £${WEEKEND_RATE_A}",
+                "2021-04-17, Weekend rate A, £${WEEKEND_RATE_A}"))
         assertEquals(expectedResult, result)
     }
 
@@ -106,12 +106,12 @@ class MainTest {
     fun `standby claim for 4 day at A Level starting on Friday which is not a holiday is weekend rate spread over 3 shifts`() {
         val result = calcStandbyClaim(ClaimDate("2021-04-16"),4.0,"A")
         val expectedResult = Claim(WEEKEND_RATE_A * 5 + MON_TO_THU_RATE_A,
-            listOf("2021-04-16, Weekend rate A, £40",
-                "2021-04-17, Weekend rate A, £40",
-                "2021-04-17, Weekend rate A, £40",
-                "2021-04-18, Weekend rate A, £40",
-                "2021-04-18, Weekend rate A, £40",
-                "2021-04-19, Week day rate A, £25",
+            listOf("2021-04-16, Weekend rate A, £${WEEKEND_RATE_A}",
+                "2021-04-17, Weekend rate A, £${WEEKEND_RATE_A}",
+                "2021-04-17, Weekend rate A, £${WEEKEND_RATE_A}",
+                "2021-04-18, Weekend rate A, £${WEEKEND_RATE_A}",
+                "2021-04-18, Weekend rate A, £${WEEKEND_RATE_A}",
+                "2021-04-19, Week day rate A, £${MON_TO_THU_RATE_A}",
             ))
         assertEquals(expectedResult, result)
     }
@@ -120,14 +120,14 @@ class MainTest {
     fun `standby claim for 4 day at A Level starting on Friday which is a holiday is bank holiday rate X 4 and weekend rate X 4`() {
         val result = calcStandbyClaim(ClaimDate("2021-04-02"),4.0,"A")
         val expectedResult = Claim(WEEKEND_RATE_A * 4 + BANK_HOLIDAY_RATE_A * 4,
-            listOf("2021-04-02, Bank holiday rate A, £80",
-                "2021-04-02, Bank holiday rate A, £80",
-                "2021-04-03, Weekend rate A, £40",
-                "2021-04-03, Weekend rate A, £40",
-                "2021-04-04, Weekend rate A, £40",
-                "2021-04-04, Weekend rate A, £40",
-                "2021-04-05, Bank holiday rate A, £80",
-                "2021-04-05, Bank holiday rate A, £80",
+            listOf("2021-04-02, Bank holiday rate A, £${BANK_HOLIDAY_RATE_A}",
+                "2021-04-02, Bank holiday rate A, £${BANK_HOLIDAY_RATE_A}",
+                "2021-04-03, Weekend rate A, £${WEEKEND_RATE_A}",
+                "2021-04-03, Weekend rate A, £${WEEKEND_RATE_A}",
+                "2021-04-04, Weekend rate A, £${WEEKEND_RATE_A}",
+                "2021-04-04, Weekend rate A, £${WEEKEND_RATE_A}",
+                "2021-04-05, Bank holiday rate A, £${BANK_HOLIDAY_RATE_A}",
+                "2021-04-05, Bank holiday rate A, £${BANK_HOLIDAY_RATE_A}",
             ))
         assertEquals(expectedResult, result)
     }
@@ -137,15 +137,15 @@ class MainTest {
         val result = calcStandbyClaim(ClaimDate("2021-04-01"),5.0,"A")
         val expectedResult = Claim(MON_TO_THU_RATE_A + WEEKEND_RATE_A * 4 + BANK_HOLIDAY_RATE_A * 4,
             listOf(
-                "2021-04-01, Week day rate A, £25",
-                "2021-04-02, Bank holiday rate A, £80",
-                "2021-04-02, Bank holiday rate A, £80",
-                "2021-04-03, Weekend rate A, £40",
-                "2021-04-03, Weekend rate A, £40",
-                "2021-04-04, Weekend rate A, £40",
-                "2021-04-04, Weekend rate A, £40",
-                "2021-04-05, Bank holiday rate A, £80",
-                "2021-04-05, Bank holiday rate A, £80",
+                "2021-04-01, Week day rate A, £${MON_TO_THU_RATE_A}",
+                "2021-04-02, Bank holiday rate A, £${BANK_HOLIDAY_RATE_A}",
+                "2021-04-02, Bank holiday rate A, £${BANK_HOLIDAY_RATE_A}",
+                "2021-04-03, Weekend rate A, £${WEEKEND_RATE_A}",
+                "2021-04-03, Weekend rate A, £${WEEKEND_RATE_A}",
+                "2021-04-04, Weekend rate A, £${WEEKEND_RATE_A}",
+                "2021-04-04, Weekend rate A, £${WEEKEND_RATE_A}",
+                "2021-04-05, Bank holiday rate A, £${BANK_HOLIDAY_RATE_A}",
+                "2021-04-05, Bank holiday rate A, £${BANK_HOLIDAY_RATE_A}",
             ))
         assertEquals(expectedResult, result)
     }
@@ -153,8 +153,8 @@ class MainTest {
     fun `standby claim for 1 and a half days at A Level starting on Friday which is not a holiday is weekend rate spread over 2 shifts`() {
         val result = calcStandbyClaim(ClaimDate("2021-04-16"),1.5,"A")
         val expectedResult = Claim(WEEKEND_RATE_A * 2, listOf(
-            "2021-04-16, Weekend rate A, £40",
-            "2021-04-17, Weekend rate A, £40"))
+            "2021-04-16, Weekend rate A, £${WEEKEND_RATE_A}",
+            "2021-04-17, Weekend rate A, £${WEEKEND_RATE_A}"))
         assertEquals(expectedResult, result)
     }
 
@@ -162,9 +162,9 @@ class MainTest {
     fun `standby claim for 1 and a half days at A Level starting on Saturday is weekend rate spread over 3 shifts`() {
         val result = calcStandbyClaim(ClaimDate("2021-04-17"),1.5,"A")
         val expectedResult = Claim(WEEKEND_RATE_A * 3, listOf(
-            "2021-04-17, Weekend rate A, £40",
-            "2021-04-17, Weekend rate A, £40",
-            "2021-04-18, Weekend rate A, £40"))
+            "2021-04-17, Weekend rate A, £${WEEKEND_RATE_A}",
+            "2021-04-17, Weekend rate A, £${WEEKEND_RATE_A}",
+            "2021-04-18, Weekend rate A, £${WEEKEND_RATE_A}"))
         assertEquals(expectedResult, result)
     }
 
@@ -179,8 +179,8 @@ class MainTest {
     fun `standby claim for an invalid duration of 1 and a third day at A Level on Mon to Thursday which is not a holiday is rounded up to 2 X weekday rate`() {
         val result = calcStandbyClaim(ClaimDate("2021-04-19"),1.3,"A")
         val expectedResult = Claim(MON_TO_THU_RATE_A * 2,listOf(
-            "2021-04-19, Week day rate A, £25",
-            "2021-04-20, Week day rate A, £25" ))
+            "2021-04-19, Week day rate A, £${MON_TO_THU_RATE_A}",
+            "2021-04-20, Week day rate A, £${MON_TO_THU_RATE_A}" ))
         assertEquals(expectedResult, result)
     }
 
@@ -188,58 +188,58 @@ class MainTest {
     fun `standby claim for an invalid duration of 1 and a third day at A Level on Weekend is rounded up to 3 X weekend rate`() {
         val result = calcStandbyClaim(ClaimDate("2021-04-17"),1.3,"A")
         val expectedResult = Claim(WEEKEND_RATE_A * 3, listOf(
-                "2021-04-17, Weekend rate A, £40",
-                "2021-04-17, Weekend rate A, £40",
-                "2021-04-18, Weekend rate A, £40" ))
+                "2021-04-17, Weekend rate A, £${WEEKEND_RATE_A}",
+                "2021-04-17, Weekend rate A, £${WEEKEND_RATE_A}",
+                "2021-04-18, Weekend rate A, £${WEEKEND_RATE_A}" ))
         assertEquals(expectedResult, result)
     }
     @Test
     fun `standby claim for a complete week at A level is 300 pounds`() {
         val result = calcStandbyClaim(ClaimDate("2021-04-19"),7.0,"A")
-        val expectedResult = Claim(300, listOf(
-            "2021-04-19, Week day rate A, £25",
-            "2021-04-20, Week day rate A, £25",
-            "2021-04-21, Week day rate A, £25",
-            "2021-04-22, Week day rate A, £25",
-            "2021-04-23, Weekend rate A, £40",
-            "2021-04-24, Weekend rate A, £40",
-            "2021-04-24, Weekend rate A, £40",
-            "2021-04-25, Weekend rate A, £40",
-            "2021-04-25, Weekend rate A, £40" ))
+        val expectedResult = Claim(420, listOf(
+            "2021-04-19, Week day rate A, £${MON_TO_THU_RATE_A}",
+            "2021-04-20, Week day rate A, £${MON_TO_THU_RATE_A}",
+            "2021-04-21, Week day rate A, £${MON_TO_THU_RATE_A}",
+            "2021-04-22, Week day rate A, £${MON_TO_THU_RATE_A}",
+            "2021-04-23, Weekend rate A, £${WEEKEND_RATE_A}",
+            "2021-04-24, Weekend rate A, £${WEEKEND_RATE_A}",
+            "2021-04-24, Weekend rate A, £${WEEKEND_RATE_A}",
+            "2021-04-25, Weekend rate A, £${WEEKEND_RATE_A}",
+            "2021-04-25, Weekend rate A, £${WEEKEND_RATE_A}" ))
         assertEquals(expectedResult, result)
     }
     @Test
-    fun `standby claim for a complete week that includes one bank holiday at A level is 435 pounds`() {
+    fun `standby claim for a complete week that includes one bank holiday at A level is 609 pounds`() {
         val result = calcStandbyClaim(ClaimDate("2021-04-03"),7.0,"A")
-        val expectedResult = Claim(435, listOf(
-            "2021-04-03, Weekend rate A, £40",
-            "2021-04-03, Weekend rate A, £40",
-            "2021-04-04, Weekend rate A, £40",
-            "2021-04-04, Weekend rate A, £40",
-            "2021-04-05, Bank holiday rate A, £80",
-            "2021-04-05, Bank holiday rate A, £80",
-            "2021-04-06, Week day rate A, £25",
-            "2021-04-07, Week day rate A, £25",
-            "2021-04-08, Week day rate A, £25",
-            "2021-04-09, Weekend rate A, £40",
+        val expectedResult = Claim(609, listOf(
+            "2021-04-03, Weekend rate A, £${WEEKEND_RATE_A}",
+            "2021-04-03, Weekend rate A, £${WEEKEND_RATE_A}",
+            "2021-04-04, Weekend rate A, £${WEEKEND_RATE_A}",
+            "2021-04-04, Weekend rate A, £${WEEKEND_RATE_A}",
+            "2021-04-05, Bank holiday rate A, £$BANK_HOLIDAY_RATE_A",
+            "2021-04-05, Bank holiday rate A, £${BANK_HOLIDAY_RATE_A}",
+            "2021-04-06, Week day rate A, £${MON_TO_THU_RATE_A}",
+            "2021-04-07, Week day rate A, £${MON_TO_THU_RATE_A}",
+            "2021-04-08, Week day rate A, £${MON_TO_THU_RATE_A}",
+            "2021-04-09, Weekend rate A, £${WEEKEND_RATE_A}",
              ))
         assertEquals(expectedResult, result)
     }
 
     @Test
-    fun `standby claim for a complete week that includes one bank holiday at B level is 435 pounds`() {
+    fun `standby claim for a complete week that includes one bank holiday at B level is 270 pounds`() {
         val result = calcStandbyClaim(ClaimDate("2021-04-03"),7.0,"B")
-        val expectedResult = Claim(270, listOf(
-            "2021-04-03, Weekend rate B, £25",
-            "2021-04-03, Weekend rate B, £25",
-            "2021-04-04, Weekend rate B, £25",
-            "2021-04-04, Weekend rate B, £25",
-            "2021-04-05, Bank holiday rate B, £50",
-            "2021-04-05, Bank holiday rate B, £50",
-            "2021-04-06, Week day rate B, £15",
-            "2021-04-07, Week day rate B, £15",
-            "2021-04-08, Week day rate B, £15",
-            "2021-04-09, Weekend rate B, £25",
+        val expectedResult = Claim(378, listOf(
+            "2021-04-03, Weekend rate B, £${WEEKEND_RATE_B}",
+            "2021-04-03, Weekend rate B, £${WEEKEND_RATE_B}",
+            "2021-04-04, Weekend rate B, £${WEEKEND_RATE_B}",
+            "2021-04-04, Weekend rate B, £${WEEKEND_RATE_B}",
+            "2021-04-05, Bank holiday rate B, £${BANK_HOLIDAY_RATE_B}",
+            "2021-04-05, Bank holiday rate B, £${BANK_HOLIDAY_RATE_B}",
+            "2021-04-06, Week day rate B, £${MON_TO_THU_RATE_B}",
+            "2021-04-07, Week day rate B, £${MON_TO_THU_RATE_B}",
+            "2021-04-08, Week day rate B, £${MON_TO_THU_RATE_B}",
+            "2021-04-09, Weekend rate B, £${WEEKEND_RATE_B}",
         ))
         assertEquals(expectedResult, result)
     }
@@ -247,16 +247,16 @@ class MainTest {
     @Test
     fun `standby claim when Christmas day is on a Saturday or a Sunday is calcualted using bank holiday rate`() {
         val saturdayResult = calcStandbyClaim(ClaimDate("2021-12-25"),1.0,"A")
-        val expectedSaturdayResult = Claim(160, listOf(
-            "2021-12-25, Bank holiday rate A, £80",
-            "2021-12-25, Bank holiday rate A, £80",
+        val expectedSaturdayResult = Claim(2 * BANK_HOLIDAY_RATE_A, listOf(
+            "2021-12-25, Bank holiday rate A, £${BANK_HOLIDAY_RATE_A}",
+            "2021-12-25, Bank holiday rate A, £${BANK_HOLIDAY_RATE_A}",
         ))
         assertEquals(expectedSaturdayResult, saturdayResult)
 
         val sundayResult = calcStandbyClaim(ClaimDate("2022-12-25"),1.0,"A")
-        val expectedSundayResult = Claim(160, listOf(
-            "2022-12-25, Bank holiday rate A, £80",
-            "2022-12-25, Bank holiday rate A, £80",
+        val expectedSundayResult = Claim(2 * BANK_HOLIDAY_RATE_A, listOf(
+            "2022-12-25, Bank holiday rate A, £${BANK_HOLIDAY_RATE_A}",
+            "2022-12-25, Bank holiday rate A, £${BANK_HOLIDAY_RATE_A}",
         ))
         assertEquals(expectedSundayResult, sundayResult)
     }
@@ -264,16 +264,16 @@ class MainTest {
     @Test
     fun `standby claim when boxing day is on a Saturday or a Sunday is calcualted using bank holiday rate`() {
         val saturdayResult = calcStandbyClaim(ClaimDate("2020-12-26"),1.0,"A")
-        val expectedSaturdayResult = Claim(160, listOf(
-            "2020-12-26, Bank holiday rate A, £80",
-            "2020-12-26, Bank holiday rate A, £80",
+        val expectedSaturdayResult = Claim(2 * BANK_HOLIDAY_RATE_A, listOf(
+            "2020-12-26, Bank holiday rate A, £${BANK_HOLIDAY_RATE_A}",
+            "2020-12-26, Bank holiday rate A, £${BANK_HOLIDAY_RATE_A}",
         ))
         assertEquals(expectedSaturdayResult, saturdayResult)
 
         val sundayResult = calcStandbyClaim(ClaimDate("2021-12-26"),1.0,"A")
-        val expectedSundayResult = Claim(160, listOf(
-            "2021-12-26, Bank holiday rate A, £80",
-            "2021-12-26, Bank holiday rate A, £80",
+        val expectedSundayResult = Claim(2 * BANK_HOLIDAY_RATE_A, listOf(
+            "2021-12-26, Bank holiday rate A, £${BANK_HOLIDAY_RATE_A}",
+            "2021-12-26, Bank holiday rate A, £${BANK_HOLIDAY_RATE_A}",
         ))
         assertEquals(expectedSundayResult, sundayResult)
     }
@@ -281,16 +281,16 @@ class MainTest {
     @Test
     fun `standby claim when New Years day is on a Saturday or a Sunday is calcualted using bank holiday rate`() {
         val saturdayResult = calcStandbyClaim(ClaimDate("2022-01-01"),1.0,"A")
-        val expectedSaturdayResult = Claim(160, listOf(
-            "2022-01-01, Bank holiday rate A, £80",
-            "2022-01-01, Bank holiday rate A, £80",
+        val expectedSaturdayResult = Claim(2 * BANK_HOLIDAY_RATE_A, listOf(
+            "2022-01-01, Bank holiday rate A, £${BANK_HOLIDAY_RATE_A}",
+            "2022-01-01, Bank holiday rate A, £${BANK_HOLIDAY_RATE_A}",
         ))
         assertEquals(expectedSaturdayResult, saturdayResult)
 
         val sundayResult = calcStandbyClaim(ClaimDate("2023-01-01"),1.0,"A")
-        val expectedSundayResult = Claim(160, listOf(
-            "2023-01-01, Bank holiday rate A, £80",
-            "2023-01-01, Bank holiday rate A, £80",
+        val expectedSundayResult = Claim(2 * BANK_HOLIDAY_RATE_A, listOf(
+            "2023-01-01, Bank holiday rate A, £${BANK_HOLIDAY_RATE_A}",
+            "2023-01-01, Bank holiday rate A, £${BANK_HOLIDAY_RATE_A}",
         ))
         assertEquals(expectedSundayResult, sundayResult)
     }
@@ -298,44 +298,44 @@ class MainTest {
     @Test
     fun `standby claim for Monday after Christmas when Christmas day is on a Saturday is calcualted using weekend rate`() {
         val result = calcStandbyClaim(ClaimDate("2021-12-27"),1.0,"A")
-        val expectedResult = Claim(80, listOf(
-            "2021-12-27, Weekend rate A, £40",
-            "2021-12-27, Weekend rate A, £40",
+        val expectedResult = Claim(2 * WEEKEND_RATE_A, listOf(
+            "2021-12-27, Weekend rate A, £${WEEKEND_RATE_A}",
+            "2021-12-27, Weekend rate A, £${WEEKEND_RATE_A}",
         ))
         assertEquals(expectedResult, result)
     }
     @Test
     fun `standby claim for Monday after Christmas when Christmas day is on a Sunday is calcualted using bank holiday rate`() {
         val result = calcStandbyClaim(ClaimDate("2022-12-26"),1.0,"A")
-        val expectedResult = Claim(160, listOf(
-            "2022-12-26, Bank holiday rate A, £80",
-            "2022-12-26, Bank holiday rate A, £80",
+        val expectedResult = Claim(2 * BANK_HOLIDAY_RATE_A, listOf(
+            "2022-12-26, Bank holiday rate A, £${BANK_HOLIDAY_RATE_A}",
+            "2022-12-26, Bank holiday rate A, £${BANK_HOLIDAY_RATE_A}",
         ))
         assertEquals(expectedResult, result)
     }
     @Test
     fun `standby claim for Tuesday after Christmas when Christmas day is on a Sunday is calcualted using weekend rate`() {
         val result = calcStandbyClaim(ClaimDate("2022-12-27"),1.0,"A")
-        val expectedResult = Claim(80, listOf(
-            "2022-12-27, Weekend rate A, £40",
-            "2022-12-27, Weekend rate A, £40",
+        val expectedResult = Claim(2 * WEEKEND_RATE_A, listOf(
+            "2022-12-27, Weekend rate A, £${WEEKEND_RATE_A}",
+            "2022-12-27, Weekend rate A, £${WEEKEND_RATE_A}",
         ))
         assertEquals(expectedResult, result)
     }
     @Test
     fun `standby claim for Monday after Christmas when Boxing day is on a Saturday is calcualted using weekend rate`() {
         val result = calcStandbyClaim(ClaimDate("2020-12-28"),1.0,"A")
-        val expectedResult = Claim(80, listOf(
-            "2020-12-28, Weekend rate A, £40",
-            "2020-12-28, Weekend rate A, £40",
+        val expectedResult = Claim(2 * WEEKEND_RATE_A, listOf(
+            "2020-12-28, Weekend rate A, £${WEEKEND_RATE_A}",
+            "2020-12-28, Weekend rate A, £${WEEKEND_RATE_A}",
         ))
         assertEquals(expectedResult, result)
     }
 
     @Test
-    fun `standby claim for a complete calendar year is 16690 pounds`() {
+    fun `standby claim for a complete calendar year is 23366 pounds`() {
         val result = calcStandbyClaim(ClaimDate("2021-01-01"), 365.0, "A")
-        assertEquals(16690, result.amount)
+        assertEquals(23366, result.amount)
     }
     //---- Tests for calculating bank holidays dynamically //
     @Test
