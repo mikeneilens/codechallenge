@@ -12,12 +12,12 @@ object ControlGroup:Filter {
     override val shouldInclude = {_: OperatingSystemVersion? -> true}
 }
 
-class OsVersionEquals( _osVersion: OperatingSystemVersion):Filter {
-    override val shouldInclude = {osVersion: OperatingSystemVersion? -> _osVersion.equals(osVersion) }
+class OsVersionEquals(cardOsVersion: OperatingSystemVersion):Filter {
+    override val shouldInclude = {userOsVersion: OperatingSystemVersion? -> cardOsVersion.equals(userOsVersion) }
 }
 
-class OsVersionGreaterThan(_osVersion: OperatingSystemVersion):Filter {
-    override val shouldInclude = {osVersion: OperatingSystemVersion? -> osVersion?.greaterThan(_osVersion) ?: false}
+class OsVersionGreaterThan(cardOsVersion: OperatingSystemVersion):Filter {
+    override val shouldInclude = {userOsVersion: OperatingSystemVersion? -> userOsVersion?.greaterThan(cardOsVersion) ?: false}
 }
 /* filters to add
 osVersionMajorEquals
