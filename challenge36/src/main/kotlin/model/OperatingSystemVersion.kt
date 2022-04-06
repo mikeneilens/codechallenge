@@ -1,3 +1,5 @@
+package model
+
 data class OperatingSystemVersion(val majorVersion:Int, val minorVersion:Int, val patchVersion:Int) {
     override fun equals(other: Any?) = other is OperatingSystemVersion
             && other.majorVersion == this.majorVersion

@@ -1,7 +1,12 @@
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.beInstanceOf
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.decodeFromString
+import model.*
+import java.lang.IllegalArgumentException
 
 class DTOTest: StringSpec({
     "card with no filters parses correctly" {
@@ -127,5 +132,62 @@ class DTOTest: StringSpec({
     }
     "the full input json should parse correctly" {
         val cardData = Json.decodeFromString<List<DTO.Card>>(inputJson)
+        cardData.size shouldBe 8
+    }
+
+    "filter DTO with value 1.2.3 is converted to a operationSystemVersion correctly"{
+        val dtoValue = DTO.Filter("test", "1.2.3")
+        dtoValue.operatingSystemValue() shouldBe OperatingSystemVersion(1,2,3)
+    }
+    "filter DTO with no value throws an error if trying to convert it to an operatingSystemVersion"{
+        val exception = shouldThrow<IllegalArgumentException> {
+            DTO.Filter("test_filter", null, null).operatingSystemValue()
+        }
+        exception.message shouldBe "filter test_filter had no value for operating system"
+    }
+    "filter DTO with non-numeric value throws an error if trying to convert it to an operatingSystemVersion"{
+        val exception = shouldThrow<IllegalArgumentException> {
+            DTO.Filter("test_filter", "a.b.c", null).operatingSystemValue()
+        }
+        exception.message shouldBe "illegal operating system value a.b.c"
+    }
+    "filter DTO with no patch version throws an error if trying to convert it to an operatingSystemVersion"{
+        val exception = shouldThrow<IllegalArgumentException> {
+            DTO.Filter("test_filter", "1.2", null).operatingSystemValue()
+        }
+        exception.message shouldBe "illegal operating system value 1.2"
+    }
+    "DTO.Card can be used to create a Card when there is no filters" {
+        val card =  createCard(DTO.Card("id1","cardType1","name1",null))
+        card.id shouldBe "id1"
+        card.cardType shouldBe "cardType1"
+        card.name shouldBe "name1"
+        card.filtering.groupId shouldBe null
+        card.filtering.filters.size shouldBe 0
+    }
+    "DTO.Card can be used to create a Card when there is valid filters" {
+        val filtering = DTO.Filtering("groupId1", listOf(DTO.Filter("controlGroup"),DTO.Filter("osVersionEquals","1.2.3")))
+        val card =  createCard(DTO.Card("id1","cardType1","name1",filtering))
+        card.id shouldBe "id1"
+        card.cardType shouldBe "cardType1"
+        card.name shouldBe "name1"
+        card.filtering.groupId shouldBe "groupId1"
+        val filtersForCard = card.filtering.filters
+        filtersForCard.size shouldBe 2
+        filtersForCard[0] shouldBe ControlGroup
+        filtersForCard[1] should beInstanceOf<OsVersionEquals>()
+    }
+    "DTO.Card throws an error creating a Card when there is an invalid filters" {
+        val filtering = DTO.Filtering("groupId1", listOf(DTO.Filter("control_Group"),DTO.Filter("osVersionEquals","1.2.3")))
+        val exception = shouldThrow<IllegalArgumentException> {
+            createCard(DTO.Card("id1", "cardType1", "name1", filtering))
+        }
+        exception.message shouldBe "invalid filter control_Group"
+    }
+    "should be possible to convert list of cards on input json to a list of cards " {
+        val dtoCards = Json.decodeFromString<List<DTO.Card>>(inputJson)
+        val cards = dtoCards.map{createCard(it)}
+        cards.size shouldBe 8
+        cards[0].id shouldBe "card1"
     }
 })

@@ -1,31 +1,21 @@
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
+import model.*
 
-
-data class UserDetails(val osVersion:OperatingSystemVersion?)
-
-data class CardData(val id:String, val cardType:String, val name:String)
-
-data class Filtering(val groupId:String, val filters:List<Filter>)
-
-interface Filter {
-    fun shouldInclude(osVersion:OperatingSystemVersion):Boolean
+fun filterUserDetails(userDetails: UserDetails, json: String):List<Card> {
+    val cards = Json.decodeFromString<List<DTO.Card>>(json).map(::createCard)
+    return filterUserDetails(userDetails, cards )
 }
 
-object controlGroup:Filter {
-    override fun shouldInclude(osVersion: OperatingSystemVersion) = true
-}
-class osVersionEquals(val osVersion:OperatingSystemVersion):Filter {
-    override fun shouldInclude(osVersion: OperatingSystemVersion) = this.osVersion.equals(osVersion)
-}
-class osVersionGreaterThan(val osVersion:OperatingSystemVersion):Filter {
-    override fun shouldInclude(osVersion: OperatingSystemVersion) = osVersion.greaterThan(this.osVersion)
-}
-/*
-osVersionMajorEquals
-osVersionMinorEquals
+fun filterUserDetails(userDetails: UserDetails, cards: List<Card>):List<Card> =
+    cards.filter{ applyFilter(userDetails, it) }
+        .removeControlGroupIfAnyCardsFiltered()
 
-osVersionMajorGreaterThan
-osVersionMinorGreaterThan
-osVersionLessThan
-osVersionMajorLessThan
-osVersionMinorLessThan
-*/
+fun applyFilter(userDetails: UserDetails, card:Card):Boolean =
+    card.filtering.filters.any { filter -> filter.shouldInclude(userDetails.osVersion) } || card.filtering.filters.isEmpty()
+
+fun List<Card>.removeControlGroupIfAnyCardsFiltered():List<Card> =
+    if (any{card ->  card.filtering.filters.filter{filter -> filter != ControlGroup }.isNotEmpty()})
+        filter{ card -> card.filtering.filters.none {filter -> filter == ControlGroup }}
+    else this
+

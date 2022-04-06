@@ -1,5 +1,6 @@
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
+import model.OperatingSystemVersion
 
 class OperatingSystemVersionTest: StringSpec ({
     "operating system version 1.2.3 is equal to operating system version 1.2.3" {
