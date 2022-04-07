@@ -8,17 +8,22 @@ fun filterUserDetails(userDetails: UserDetails, json: String):List<Card> {
 }
 
 fun filterUserDetails(userDetails: UserDetails, cards: List<Card>):List<Card> =
-    cards.filter{ applyFilter(userDetails, it) }
-        .removeControlGroupIfAnyCardsFiltered()
+    cards.matchCardsAgainstUserDetails(userDetails)
+        .removeControlGroupIfAnyCardsFilteredWithSameGroupId()
         .removeDuplicateGroupId()
 
-fun applyFilter(userDetails: UserDetails, card:Card):Boolean =
-    card.filtering.filters.any { filter -> filter.shouldInclude(userDetails.osVersion) } || card.filtering.filters.isEmpty()
+fun List<Card>.matchCardsAgainstUserDetails(userDetails: UserDetails) = filter{card -> applyFilter(userDetails, card) }
 
-fun List<Card>.removeControlGroupIfAnyCardsFiltered():List<Card> =
-    if (any{card ->  card.filtering.filters.filter{filter -> filter != ControlGroup }.isNotEmpty()})
-        filter{ card -> card.filtering.filters.none {filter -> filter == ControlGroup }}
-    else this
+fun applyFilter(userDetails: UserDetails, card:Card):Boolean =
+    card.filtering.filters.any {filter -> filter.shouldInclude(userDetails.osVersion) } || card.filtering.filters.isEmpty()
+
+fun List<Card>.removeControlGroupIfAnyCardsFilteredWithSameGroupId():List<Card> =
+    filter{card -> card.filtering.filters.none(Filter::isControlGroup) || !listContainsFilterWithSameGroupId(card)  }
+
+fun List<Card>.listContainsFilterWithSameGroupId(card: Card):Boolean {
+    val groupId = card.filtering.groupId
+    return any{cardInList -> cardInList.filtering.groupId == groupId && cardInList.filtering.filters.none(Filter::isControlGroup)}
+}
 
 fun List<Card>.removeDuplicateGroupId():List<Card> {
     val indexForGroupId = getFirstIndexForEachGroupId()

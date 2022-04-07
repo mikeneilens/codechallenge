@@ -41,18 +41,18 @@ fun createCard(card:DTO.Card): Card {
     val name = card.name
     val filtering =  if (card.filtering != null ) {
         val groupId = card.filtering.groupId
-        val filters = card.filtering.filters?.map{ filter ->
-            when (filter.filter) {
-                "controlGroup" -> ControlGroup
-                "osVersionEquals" -> OsVersionEquals(filter.operatingSystemValue())
-                "osVersionGreaterThan" -> OsVersionGreaterThan(filter.operatingSystemValue())
-                else -> throw IllegalArgumentException("invalid filter ${filter.filter}")
-            }
-        } ?: emptyList()
+        val filters = card.filtering.filters?.map(DTO.Filter::toFilter) ?: emptyList()
         Filtering(groupId, filters)
     } else Filtering(null, emptyList())
     return Card(id, cardType, name, filtering)
 }
+
+fun DTO.Filter.toFilter() = when (filter) {
+        "controlGroup" -> ControlGroup
+        "osVersionEquals" -> OsVersionEquals(operatingSystemValue())
+        "osVersionGreaterThan" -> OsVersionGreaterThan(operatingSystemValue())
+        else -> throw IllegalArgumentException("invalid filter ${filter}")
+    }
 
 fun String.toOperatingSystemVersion(): OperatingSystemVersion {
     val parts = split(".")

@@ -6,6 +6,8 @@ data class Filtering(val groupId:String?, val filters:List<Filter>)
 
 interface Filter {
     val shouldInclude: (OperatingSystemVersion?) -> Boolean
+
+    fun isControlGroup() = this == ControlGroup
 }
 
 object ControlGroup:Filter {
@@ -13,7 +15,7 @@ object ControlGroup:Filter {
 }
 
 class OsVersionEquals(cardOsVersion: OperatingSystemVersion):Filter {
-    override val shouldInclude = {userOsVersion: OperatingSystemVersion? -> cardOsVersion.equals(userOsVersion) }
+    override val shouldInclude = {userOsVersion: OperatingSystemVersion? -> cardOsVersion == userOsVersion }
 }
 
 class OsVersionGreaterThan(cardOsVersion: OperatingSystemVersion):Filter {
