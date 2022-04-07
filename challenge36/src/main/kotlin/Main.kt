@@ -20,16 +20,16 @@ fun applyFilter(userDetails: UserDetails, card:Card):Boolean =
 fun List<Card>.removeControlGroupIfAnyCardsFilteredWithSameGroupId():List<Card> =
     filter{card -> card.filtering.filters.none(Filter::isControlGroup) || !listContainsFilterWithSameGroupId(card)  }
 
-fun List<Card>.listContainsFilterWithSameGroupId(card: Card):Boolean {
+private fun List<Card>.listContainsFilterWithSameGroupId(card: Card):Boolean {
     val groupId = card.filtering.groupId
     return any{cardInList -> cardInList.filtering.groupId == groupId && cardInList.filtering.filters.none(Filter::isControlGroup)}
 }
 
 fun List<Card>.removeDuplicateGroupId():List<Card> {
-    val indexForGroupId = getFirstIndexForEachGroupId()
-    return foldIndexed(emptyList()) { index, cards, card ->
+    val firstIndexForGroupId = getFirstIndexForEachGroupId()
+    return filterIndexed { index, card ->
         val groupId = card.filtering.groupId
-        if (groupId != null && indexForGroupId[groupId] != index ) cards else cards + card
+        groupId == null || (firstIndexForGroupId[groupId] == index)
     }
 }
 
