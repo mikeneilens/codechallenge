@@ -1,5 +1,7 @@
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 import model.*
 
 class MainTest:StringSpec ({
@@ -89,5 +91,49 @@ class MainTest:StringSpec ({
         result[0] shouldBe card0
         result[1] shouldBe card1
         result[2] shouldBe card4
+    }
+
+    //Alternate solution
+    "Alternate when model.UserDetails osVersion is nil the filtered list of cards is: ['Carousel', 'Banner', 'New departments list default']" {
+        val userDetails = UserDetails(null)
+        val cards = Json.decodeFromString<List<DTO.Card>>(inputJson).map(::createCard)
+        val filteredCards = CardChecker(userDetails, cards).filterUserDetails()
+        filteredCards.size shouldBe  3
+        filteredCards[0].name shouldBe "Carousel"
+        filteredCards[1].name shouldBe "Banner"
+        filteredCards[2].name shouldBe "New departments list default"
+    }
+
+    "Alternate when model.UserDetails osVersion is “15.0.0” the filtered list of cards is: ['Carousel', 'Banner', 'Recommendations1', 'New departments list 15', 'Banner2']"{
+        val userDetails = UserDetails(OperatingSystemVersion(15,0,0))
+        val cards = Json.decodeFromString<List<DTO.Card>>(inputJson).map(::createCard)
+        val filteredCards = CardChecker(userDetails, cards).filterUserDetails()
+        filteredCards.size shouldBe  5
+        filteredCards[0].name shouldBe "Carousel"
+        filteredCards[1].name shouldBe "Banner"
+        filteredCards[2].name shouldBe "Recommendations1"
+        filteredCards[3].name shouldBe "New departments list 15"
+        filteredCards[4].name shouldBe "Banner2"
+    }
+
+    "Alternate model.UserDetails osVersion is “14.0.1” the filtered list of cards is: ['Carousel', 'Banner', 'New departments list default', 'Recommendations2']"{
+        val userDetails = UserDetails(OperatingSystemVersion(14,0,1))
+        val cards = Json.decodeFromString<List<DTO.Card>>(inputJson).map(::createCard)
+        val filteredCards = CardChecker(userDetails, cards).filterUserDetails()
+        filteredCards.size shouldBe  4
+        filteredCards[0].name shouldBe "Carousel"
+        filteredCards[1].name shouldBe "Banner"
+        filteredCards[2].name shouldBe "New departments list default"
+        filteredCards[3].name shouldBe "Recommendations2"
+    }
+
+    "Alternate model.UserDetails osVersion is “13.0.0” the filtered list of cards is: ['Carousel', 'Banner', 'Old departments']"{
+        val userDetails = UserDetails(OperatingSystemVersion(13,0,0))
+        val cards = Json.decodeFromString<List<DTO.Card>>(inputJson).map(::createCard)
+        val filteredCards = CardChecker(userDetails, cards).filterUserDetails()
+        filteredCards.size shouldBe  3
+        filteredCards[0].name shouldBe "Carousel"
+        filteredCards[1].name shouldBe "Banner"
+        filteredCards[2].name shouldBe "Old departments list"
     }
 })
