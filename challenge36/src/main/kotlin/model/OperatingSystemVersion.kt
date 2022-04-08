@@ -6,7 +6,7 @@ data class OperatingSystemVersion(val majorVersion:Int, val minorVersion:Int, va
             && other.minorVersion == this.minorVersion
             && other.patchVersion == this.patchVersion
 
-    fun greaterThan(other: Any?) = other is OperatingSystemVersion &&
+    infix fun greaterThan(other: Any?) = other is OperatingSystemVersion &&
             (this.majorVersion > other.majorVersion
                     || this.majorVersion == other.majorVersion && this.minorVersion > other.minorVersion
                     || this.majorVersion == other.majorVersion && this.minorVersion == other.minorVersion && this.patchVersion > other.patchVersion

@@ -24,6 +24,6 @@ class FilterTest: StringSpec ({
         OsVersionGreaterThan(oS_1_2_3).shouldInclude(oS_1_2_3) shouldBe false
     }
     "when a users operatingsystem is less than the operating system of OsVersionGreaterThan always returns true" {
-        OsVersionGreaterThan(oS_1_2_4).shouldInclude(oS_1_2_3) shouldBe false
+        OsVersionGreaterThan(oS_1_2_3).shouldInclude(oS_1_2_4) shouldBe true
     }
 })
