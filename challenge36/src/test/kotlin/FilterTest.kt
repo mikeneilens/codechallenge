@@ -1,8 +1,6 @@
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
-import model.OperatingSystemVersion
-import model.OsVersionEquals
-import model.OsVersionGreaterThan
+import model.*
 
 class FilterTest: StringSpec ({
     val oS_1_2_3 = OperatingSystemVersion(1,2,3)

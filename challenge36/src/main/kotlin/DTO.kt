@@ -14,11 +14,7 @@ class DTO {
         val filter: String,
         val value: String? = null,
         val range: FilterRange? = null
-    ) {
-        fun operatingSystemValue() =
-            if (value == null) throw IllegalArgumentException("filter ${filter} had no value for operating system")
-            else  value.toOperatingSystemVersion()
-    }
+    )
 
     @Serializable
     data class Filtering(
@@ -51,8 +47,12 @@ fun DTO.Filter.toFilter() = when (filter) {
         "controlGroup" -> ControlGroup
         "osVersionEquals" -> OsVersionEquals(operatingSystemValue())
         "osVersionGreaterThan" -> OsVersionGreaterThan(operatingSystemValue())
-        else -> throw IllegalArgumentException("invalid filter ${filter}")
+        else -> throw IllegalArgumentException("invalid filter $filter")
     }
+
+fun DTO.Filter.operatingSystemValue() =
+    value?.toOperatingSystemVersion()
+        ?: throw IllegalArgumentException("filter $filter had no value for operating system")
 
 fun String.toOperatingSystemVersion(): OperatingSystemVersion {
     val parts = split(".")

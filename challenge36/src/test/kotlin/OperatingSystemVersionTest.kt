@@ -4,13 +4,13 @@ import model.OperatingSystemVersion
 
 class OperatingSystemVersionTest: StringSpec ({
     "operating system version 1.2.3 is equal to operating system version 1.2.3" {
-        OperatingSystemVersion(1,2,3).equals(OperatingSystemVersion(1,2,3)) shouldBe true
+        (OperatingSystemVersion(1, 2, 3) == OperatingSystemVersion(1, 2, 3)) shouldBe true
     }
     "operating system version 1.2.3 is not equal to operating system version 1.2.4" {
-        OperatingSystemVersion(1,2,3).equals(OperatingSystemVersion(1,2,4)) shouldBe false
+        (OperatingSystemVersion(1, 2, 3) == OperatingSystemVersion(1, 2, 4)) shouldBe false
     }
     "operating system version 1.2.3 is not equal to operating system version 1.3.3" {
-        OperatingSystemVersion(1,2,3).equals(OperatingSystemVersion(1,3,3)) shouldBe false
+        (OperatingSystemVersion(1, 2, 3) == OperatingSystemVersion(1, 3, 3)) shouldBe false
     }
 
     "operating system version 1.2.3 is not greater than operating system version 1.2.3" {
