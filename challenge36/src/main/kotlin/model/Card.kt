@@ -14,7 +14,7 @@ object ControlGroup:Filter {
     override val shouldInclude = {_: OperatingSystemVersion? -> true}
 }
 
-class OsVersionEquals(cardOsVersion: OperatingSystemVersion):Filter {
+class OsVersionEquals( cardOsVersion: OperatingSystemVersion):Filter {
     override val shouldInclude = {userOsVersion: OperatingSystemVersion? -> cardOsVersion == userOsVersion }
 }
 

@@ -15,7 +15,7 @@ fun filterUserDetails(userDetails: UserDetails, cards: List<Card>):List<Card> =
 fun List<Card>.matchCardsAgainstUserDetails(userDetails: UserDetails) = filter{card -> applyFilter(userDetails, card) }
 
 fun applyFilter(userDetails: UserDetails, card:Card):Boolean =
-    card.filtering.filters.any {filter -> filter.shouldInclude(userDetails.osVersion) } || card.filtering.filters.isEmpty()
+    card.filtering.filters.isEmpty() || card.filtering.filters.any {filter -> filter.shouldInclude(userDetails.osVersion) }
 
 fun List<Card>.removeControlGroupIfAnyCardsFilteredWithSameGroupId():List<Card> =
     filter{card -> card.filtering.filters.none(Filter::isControlGroup) || !listContainsFilterWithSameGroupId(card)  }
