@@ -24,4 +24,12 @@ class MainTest: StringSpec ({
     "using the answer guesser for part four gives a score of 1755" {
         partFour(wordList) shouldBe 1755
     }
+    "using the custom answer guesser" {
+        fun answerGuesser(wordList: List<String>, guesses: Set<Pair<String, List<String>>>):String {
+            if (guesses.none{it.first == "plant"}) return "plant"
+            if (guesses.none{it.first == "crowd"}) return "crowd"
+            return wordList[wordList.size/2]
+        }
+        partThree(wordList,::answerGuesser) shouldBe 9016
+    }
 })

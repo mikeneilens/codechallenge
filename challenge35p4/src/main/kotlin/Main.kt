@@ -60,9 +60,12 @@ tailrec fun guessAnswer(wordToGuess:String, wordList:List<String>, guesses:Set<P
 
 //part four
 
-fun answerGuesserP4(wordList: List<String>, guesses: Set<Pair<String, List<String>>>):String {
-    if (guesses.none{it.first == "soare"}) return "soare"
-    if (guesses.none{it.first == "input"}) return "input"
+fun answerGuesserP4(wordList: List<String>, guesses: Set<Pair<String, List<String>>>):String =
+    answerGuesserP4(wordList, guesses, "soare","input")
+
+fun answerGuesserP4(wordList: List<String>, guesses: Set<Pair<String, List<String>>>,word1:String, word2:String):String {
+    if (guesses.none{it.first == word1}) return word1
+    if (guesses.none{it.first == word2}) return word2
     return wordList.first()
 }
 
