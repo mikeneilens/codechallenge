@@ -43,42 +43,49 @@ private fun List<Card>.getFirstIndexForEachGroupId(): Map<String, Int> {
 
 //alternate solution that iterates through the list of cards twice...
 
-class CardChecker(val userDetails: UserDetails, val cards: List<Card>) {
-    val firstIndexForGroupIdFilter = mutableMapOf<String, Int>()
-    val firstIndexForGroupIdControlGroup = mutableMapOf<String, Int>()
+interface CardAnalyser {
+    fun updateWithCard(card:Card, index:Int)
+    fun shouldInclude(card: Card, index: Int):Boolean
+}
 
-    fun filterUserDetails():List<Card> = matchCardsAgainstUserDetails().filterIndexed {index, card -> isNotADuplicate(index, card)}
+class DuplicateAnalyser:CardAnalyser {
+    val indexForGroupIdFilter = mutableMapOf<String, Int>()
+    val indexForGroupIdControlGroup = mutableMapOf<String, Int>()
+
+    override fun updateWithCard(card:Card, index:Int) {
+        if (card.filtering.groupId != null) {
+            if (ControlGroup in card.filtering.filters && card.filtering.groupId !in indexForGroupIdFilter) {
+                indexForGroupIdControlGroup.putIfAbsent(card.filtering.groupId, index )
+            }  else {
+                indexForGroupIdFilter.putIfAbsent(card.filtering.groupId, index)
+                indexForGroupIdControlGroup.remove(card.filtering.groupId)
+            }
+        }
+    }
+
+    override fun shouldInclude(card: Card, index: Int) =
+        if (card.filtering.groupId != null) {
+            if (ControlGroup in card.filtering.filters) {
+                (index == indexForGroupIdControlGroup[card.filtering.groupId])
+            } else {
+                (index == indexForGroupIdFilter[card.filtering.groupId])
+            }
+        } else true
+}
+
+class CardChecker(val userDetails: UserDetails, val cards: List<Card>, val cardAnalyser:CardAnalyser = DuplicateAnalyser()) {
+
+    fun filterUserDetails():List<Card> = matchCardsAgainstUserDetails().filterIndexed {index, card -> cardAnalyser.shouldInclude(card, index)}
 
     fun matchCardsAgainstUserDetails():List<Card> {
         var index = 0
-        firstIndexForGroupIdFilter.clear()
-        firstIndexForGroupIdControlGroup.clear()
         return cards.filter { card ->
             if (applyFilter(userDetails, card)) {
-                addCardToMap(card, index++)
+                cardAnalyser.updateWithCard(card, index++)
                 true
             } else false
         }
     }
 
-    fun addCardToMap(card:Card, index:Int) {
-        if (card.filtering.groupId != null) {
-            if (ControlGroup in card.filtering.filters) {
-                firstIndexForGroupIdControlGroup.putIfAbsent(card.filtering.groupId, index )
-            }  else {
-                firstIndexForGroupIdFilter.putIfAbsent(card.filtering.groupId, index)
-            }
-        }
-    }
-
-    fun isNotADuplicate(index:Int, card:Card) =
-        if (card.filtering.groupId == null) true
-        else {
-            if (ControlGroup in card.filtering.filters) {
-                (card.filtering.groupId !in firstIndexForGroupIdFilter) && (index == firstIndexForGroupIdControlGroup[card.filtering.groupId])
-            } else {
-                (index == firstIndexForGroupIdFilter[card.filtering.groupId])
-            }
-        }
 }
 
