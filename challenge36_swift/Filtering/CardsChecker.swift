@@ -18,16 +18,16 @@ func filterUserDetails(userDetails: UserDetails, cards: Array<Card> ) -> Array<C
 }
 
 func matchCardsAgainstUserDetails( userDetails: UserDetails, cards: Array<Card> ) -> InitialResult {
-    let groupIdPosition = GroupIdPosition()
+    let groupIdCardPosition = GroupIdCardPosition()
     var filteredCards = Array<Card>()
 
     for card in cards {
         if applyFilter(card: card, userDetails: userDetails) {
-            groupIdPosition.updateWith(card: card, at: filteredCards.count)
+            groupIdCardPosition.updateWith(card: card, at: filteredCards.count)
             filteredCards.append(card)
         }
     }
-    return InitialResult(cards: filteredCards, groupIdPosition: groupIdPosition)
+    return InitialResult(cards: filteredCards, groupIdPosition: groupIdCardPosition)
 }
 
 func applyFilter(card: Card, userDetails: UserDetails) -> Bool {
@@ -36,7 +36,7 @@ func applyFilter(card: Card, userDetails: UserDetails) -> Bool {
 
 struct InitialResult {
     let cards: Array<Card>
-    let groupIdPosition: GroupIdPosition
+    let groupIdPosition: GroupIdCardPosition
         
     func removeDuplicateGroupIds() -> Array<Card> {
         var result = Array<Card>()
@@ -47,7 +47,7 @@ struct InitialResult {
     }
 }
     
-class GroupIdPosition {
+class GroupIdCardPosition {
     var forFilters = Dictionary<String, Int>()
     var forControlGroups = Dictionary<String, Int>()
     
