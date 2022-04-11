@@ -48,6 +48,21 @@ interface CardAnalyser {
     fun shouldInclude(card: Card, index: Int):Boolean
 }
 
+class CardChecker(val userDetails: UserDetails, val cards: List<Card>, val cardAnalyser:CardAnalyser = DuplicateAnalyser()) {
+
+    fun filterUserDetails():List<Card> = matchCardsAgainstUserDetails().filterIndexed {index, card -> cardAnalyser.shouldInclude(card, index)}
+
+    fun matchCardsAgainstUserDetails():List<Card> {
+        var index = 0
+        return cards.filter { card ->
+            if (applyFilter(userDetails, card)) {
+                cardAnalyser.updateWithCard(card, index++)
+                true
+            } else false
+        }
+    }
+}
+
 class DuplicateAnalyser:CardAnalyser {
     val indexForGroupIdFilter = mutableMapOf<String, Int>()
     val indexForGroupIdControlGroup = mutableMapOf<String, Int>()
@@ -71,21 +86,5 @@ class DuplicateAnalyser:CardAnalyser {
                 (index == indexForGroupIdFilter[card.filtering.groupId])
             }
         } else true
-}
-
-class CardChecker(val userDetails: UserDetails, val cards: List<Card>, val cardAnalyser:CardAnalyser = DuplicateAnalyser()) {
-
-    fun filterUserDetails():List<Card> = matchCardsAgainstUserDetails().filterIndexed {index, card -> cardAnalyser.shouldInclude(card, index)}
-
-    fun matchCardsAgainstUserDetails():List<Card> {
-        var index = 0
-        return cards.filter { card ->
-            if (applyFilter(userDetails, card)) {
-                cardAnalyser.updateWithCard(card, index++)
-                true
-            } else false
-        }
-    }
-
 }
 
