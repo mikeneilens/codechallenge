@@ -17,17 +17,22 @@ func filterUserDetails(userDetails: UserDetails, cards: Array<Card> ) -> Array<C
     return initialResult.removeDuplicateGroupIds()
 }
 
+protocol CardAnalyser{
+    func updateWith(card: Card, at index: Int)
+    func shouldSelect(card :Card, at index:Int) -> Bool
+}
+
 func matchCardsAgainstUserDetails( userDetails: UserDetails, cards: Array<Card> ) -> InitialResult {
-    let groupIdCardPosition = GroupIdCardPosition()
     var filteredCards = Array<Card>()
+    let cardAnalyser:CardAnalyser = GroupIdCardPosition()
 
     for card in cards {
         if applyFilter(card: card, userDetails: userDetails) {
-            groupIdCardPosition.updateWith(card: card, at: filteredCards.count)
+            cardAnalyser.updateWith(card: card, at: filteredCards.count)
             filteredCards.append(card)
         }
     }
-    return InitialResult(cards: filteredCards, groupIdPosition: groupIdCardPosition)
+    return InitialResult(cards: filteredCards, cardAnalyser: cardAnalyser)
 }
 
 func applyFilter(card: Card, userDetails: UserDetails) -> Bool {
@@ -36,18 +41,18 @@ func applyFilter(card: Card, userDetails: UserDetails) -> Bool {
 
 struct InitialResult {
     let cards: Array<Card>
-    let groupIdPosition: GroupIdCardPosition
+    let cardAnalyser: CardAnalyser
         
     func removeDuplicateGroupIds() -> Array<Card> {
         var result = Array<Card>()
         for (index, card) in cards.enumerated() {
-            if groupIdPosition.isNotADuplicate(card: card, at: index) { result.append(card) }
+            if cardAnalyser.shouldSelect(card: card, at: index) { result.append(card) }
         }
         return result
     }
 }
     
-class GroupIdCardPosition {
+class GroupIdCardPosition: CardAnalyser {
     var forFilters = Dictionary<String, Int>()
     var forControlGroups = Dictionary<String, Int>()
     
@@ -62,7 +67,7 @@ class GroupIdCardPosition {
         }
     }
     
-    func isNotADuplicate(card: Card, at index: Int) -> Bool {
+    func shouldSelect(card: Card, at index: Int) -> Bool {
         if  let groupId = card.filtering.groupId  {
             return (card.filtering.containsControlGroup()) ? (index == forControlGroups[groupId]) : (index == forFilters[groupId])
         }

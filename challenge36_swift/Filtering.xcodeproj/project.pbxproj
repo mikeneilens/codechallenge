@@ -15,9 +15,9 @@
 		D57FB8BD27F7261A004074BF /* OperatingSystemVersion+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57FB8BC27F7261A004074BF /* OperatingSystemVersion+Validation.swift */; };
 		D57FB8C227F72668004074BF /* input.json in Resources */ = {isa = PBXBuildFile; fileRef = D57FB8C027F72648004074BF /* input.json */; };
 		FB65274828043F8600672361 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB65274728043F8600672361 /* Utility.swift */; };
-		FB65274A28043FE000672361 /* Dto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB65274928043FE000672361 /* Dto.swift */; };
 		FB65274C2804402100672361 /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB65274B2804402100672361 /* Mapper.swift */; };
 		FB65274E2804406100672361 /* CardsChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB65274D2804406100672361 /* CardsChecker.swift */; };
+		FB6527502804437400672361 /* Dto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB65274F2804437400672361 /* Dto.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,9 +40,9 @@
 		D57FB8BC27F7261A004074BF /* OperatingSystemVersion+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OperatingSystemVersion+Validation.swift"; sourceTree = "<group>"; };
 		D57FB8C027F72648004074BF /* input.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = input.json; sourceTree = "<group>"; };
 		FB65274728043F8600672361 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
-		FB65274928043FE000672361 /* Dto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dto.swift; sourceTree = "<group>"; };
 		FB65274B2804402100672361 /* Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
 		FB65274D2804406100672361 /* CardsChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsChecker.swift; sourceTree = "<group>"; };
+		FB65274F2804437400672361 /* Dto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,12 +87,12 @@
 			children = (
 				D57FB8A127F725B8004074BF /* Filtering.h */,
 				D57FB8A227F725B8004074BF /* Filtering.docc */,
+				FB65274F2804437400672361 /* Dto.swift */,
 				D57FB8BA27F72606004074BF /* Models.swift */,
 				D57FB8BC27F7261A004074BF /* OperatingSystemVersion+Validation.swift */,
-				FB65274728043F8600672361 /* Utility.swift */,
-				FB65274928043FE000672361 /* Dto.swift */,
 				FB65274B2804402100672361 /* Mapper.swift */,
 				FB65274D2804406100672361 /* CardsChecker.swift */,
+				FB65274728043F8600672361 /* Utility.swift */,
 			);
 			path = Filtering;
 			sourceTree = "<group>";
@@ -221,7 +221,7 @@
 				D57FB8BB27F72606004074BF /* Models.swift in Sources */,
 				FB65274828043F8600672361 /* Utility.swift in Sources */,
 				FB65274C2804402100672361 /* Mapper.swift in Sources */,
-				FB65274A28043FE000672361 /* Dto.swift in Sources */,
+				FB6527502804437400672361 /* Dto.swift in Sources */,
 				D57FB8A327F725B8004074BF /* Filtering.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
