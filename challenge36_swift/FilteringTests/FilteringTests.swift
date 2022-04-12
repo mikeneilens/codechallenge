@@ -78,7 +78,7 @@ class FilteringTests: XCTestCase {
         let cards = try parseJson(input).map(createCard)
         let userDetails = UserDetails(osVersion: nil)
         
-        let result = filterUserDetails(userDetails: userDetails, cards: cards)
+        let result = CardsChecker().filterUserDetails(userDetails: userDetails, cards: cards)
         XCTAssertEqual(["Carousel", "Banner", "New departments list default"], result.map { $0.name })
     }
     
@@ -90,7 +90,7 @@ class FilteringTests: XCTestCase {
         let cards = try parseJson(input).map(createCard)
         let userDetails = UserDetails(osVersion: OperatingSystemVersion(majorVersion: 15, minorVersion: 0, patchVersion: 0))
         
-        let result = filterUserDetails(userDetails: userDetails, cards: cards)
+        let result = CardsChecker().filterUserDetails(userDetails: userDetails, cards: cards)
         XCTAssertEqual(["Carousel", "Banner", "Recommendations1", "New departments list 15", "Banner2"], result.map { $0.name })
     }
  
@@ -102,7 +102,7 @@ class FilteringTests: XCTestCase {
         let cards = try parseJson(input).map(createCard)
         let userDetails = UserDetails(osVersion: OperatingSystemVersion(majorVersion: 14, minorVersion: 0, patchVersion: 1))
         
-        let result = filterUserDetails(userDetails: userDetails, cards: cards)
+        let result = CardsChecker().filterUserDetails(userDetails: userDetails, cards: cards)
         XCTAssertEqual(["Carousel", "Banner", "New departments list default", "Recommendations2"], result.map { $0.name })
     }
  
@@ -114,7 +114,7 @@ class FilteringTests: XCTestCase {
         let cards = try parseJson(input).map(createCard)
         let userDetails = UserDetails(osVersion: OperatingSystemVersion(majorVersion: 13, minorVersion: 0, patchVersion: 0))
         
-        let result = filterUserDetails(userDetails: userDetails, cards: cards)
+        let result = CardsChecker().filterUserDetails(userDetails: userDetails, cards: cards)
         XCTAssertEqual(["Carousel", "Banner", "Old departments list"], result.map { $0.name })
     }
  

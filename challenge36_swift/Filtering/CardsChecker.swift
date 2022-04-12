@@ -9,12 +9,7 @@ import Foundation
 
 func filterUserDetails(userDetails: UserDetails, cardData: String ) throws -> Array<Card> {
     let cards = try parseJson(cardData).map(createCard(card:))
-    return filterUserDetails(userDetails: userDetails, cards: cards )
-}
-
-func filterUserDetails(userDetails: UserDetails, cards: Array<Card> ) -> Array<Card> {
-    let initialResult = matchCardsAgainstUserDetails(userDetails: userDetails, cards: cards)
-    return initialResult.removeDuplicateGroupIds()
+    return CardsChecker().filterUserDetails(userDetails: userDetails, cards: cards )
 }
 
 protocol CardAnalyser{
@@ -22,36 +17,40 @@ protocol CardAnalyser{
     func shouldSelect(card :Card, at index:Int) -> Bool
 }
 
-func matchCardsAgainstUserDetails( userDetails: UserDetails, cards: Array<Card> ) -> InitialResult {
-    var filteredCards = Array<Card>()
+struct CardsChecker {
     let cardAnalyser:CardAnalyser = GroupIdCardPosition()
 
-    for card in cards {
-        if applyFilter(card: card, userDetails: userDetails) {
-            cardAnalyser.updateWith(card: card, at: filteredCards.count)
-            filteredCards.append(card)
-        }
+    func filterUserDetails(userDetails: UserDetails, cards: Array<Card> ) -> Array<Card> {
+        let filteredCards = matchCardsAgainstUserDetails(userDetails: userDetails, cards: cards)
+        return removeDuplicateGroupIds(cards: filteredCards)
     }
-    return InitialResult(cards: filteredCards, cardAnalyser: cardAnalyser)
-}
 
-func applyFilter(card: Card, userDetails: UserDetails) -> Bool {
-    card.filtering.filters.count == 0 || card.filtering.filters.contains{filter in filter.shouldInclude(userDetails.osVersion) }
-}
+    func matchCardsAgainstUserDetails( userDetails: UserDetails, cards: Array<Card> ) -> Array<Card> {
+        var filteredCards = Array<Card>()
 
-struct InitialResult {
-    let cards: Array<Card>
-    let cardAnalyser: CardAnalyser
-        
-    func removeDuplicateGroupIds() -> Array<Card> {
+        for card in cards {
+            if applyFilter(card: card, userDetails: userDetails) {
+                cardAnalyser.updateWith(card: card, at: filteredCards.count)
+                filteredCards.append(card)
+            }
+        }
+        return filteredCards
+    }
+
+    func applyFilter(card: Card, userDetails: UserDetails) -> Bool {
+        card.filtering.filters.count == 0 || card.filtering.filters.contains{filter in filter.shouldInclude(userDetails.osVersion) }
+    }
+
+    func removeDuplicateGroupIds(cards: Array<Card>) -> Array<Card> {
         var result = Array<Card>()
         for (index, card) in cards.enumerated() {
             if cardAnalyser.shouldSelect(card: card, at: index) { result.append(card) }
         }
         return result
     }
+
 }
-    
+
 class GroupIdCardPosition: CardAnalyser {
     var forFilters = Dictionary<String, Int>()
     var forControlGroups = Dictionary<String, Int>()
