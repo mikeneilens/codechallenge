@@ -28,6 +28,18 @@ class MainTest: StringSpec({
                     setOf(Apple, Orange))
     }
 
+    "A list of one Apple and one Oranges and one Pear creates 7 combinations" {
+        possibleLunch(listOf(Apple, Orange, Pear)) shouldBe
+                setOf(
+                    setOf(Apple),
+                    setOf(Orange),
+                    setOf(Pear),
+                    setOf(Apple, Orange),
+                    setOf(Apple, Pear),
+                    setOf(Orange, Pear),
+                    setOf(Apple, Orange, Pear))
+    }
+
     "A list of five fruit generates 31 different combinations" {
         possibleLunch(listOf(Apple, Orange, Pear, Grapes, Nectarine)).size shouldBe 31
     }

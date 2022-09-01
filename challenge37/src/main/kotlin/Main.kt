@@ -5,4 +5,3 @@ fun possibleLunch(fruits:List<Fruit>, result:Set<Set<Fruit>> = setOf()):Set<Set<
         val lunches = result + result.map{ it + fruits.first()} + setOf(setOf(fruits.first())) 
         possibleLunch(fruits.drop(1), lunches)
     }
-
