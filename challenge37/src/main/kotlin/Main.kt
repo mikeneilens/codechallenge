@@ -12,7 +12,7 @@ fun possibleLunch(fruits:List<Fruit>, result:Set<Lunches> = emptySet()):Set<Lunc
 private fun Set<Lunches>.addFruit(fruit: Fruit) = this + map { it + fruit } + setOf(setOf(fruit))
 
 //optimised version
-fun possibleLunch2(fruits:List<Fruit>):List<List<Fruit>> =
+fun possibleLunch2(fruits:List<Fruit>) =
     (1 until fruits.numberOfCombinations)
         .map{it.toString(2)}
         .map { binary ->
