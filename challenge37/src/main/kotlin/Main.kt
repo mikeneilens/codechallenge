@@ -2,14 +2,9 @@ import kotlin.math.pow
 
 typealias Lunches = Set<Fruit>
 
-fun possibleLunch(fruits:List<Fruit>, result:Set<Lunches> = emptySet()):Set<Lunches> =
-    if (fruits.isEmpty()) result
-    else {
-        val lunches = result.addFruit(fruits.first())
-        possibleLunch(fruits.drop(1), lunches)
-    }
+fun possibleLunch(fruits:List<Fruit>):Set<Lunches> = fruits.fold(emptySet(), ::addFruit)
 
-private fun Set<Lunches>.addFruit(fruit: Fruit) = this + map { it + fruit } + setOf(setOf(fruit))
+private fun addFruit(allLunches:Set<Lunches>, fruit: Fruit) = allLunches + allLunches.map { it + fruit } + setOf(setOf(fruit))
 
 //optimised version
 fun possibleLunch2(fruits:List<Fruit>) =
