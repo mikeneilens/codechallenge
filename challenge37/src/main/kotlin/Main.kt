@@ -4,12 +4,12 @@ typealias Lunches = Set<Fruit>
 
 fun possibleLunch(fruits:List<Fruit>):Set<Lunches> = fruits.fold(emptySet(), ::addFruit)
 
-private fun addFruit(allLunches:Set<Lunches>, fruit: Fruit) = allLunches + allLunches.map { it + fruit } + setOf(setOf(fruit))
+private fun addFruit(allLunches:Set<Lunches>, fruit: Fruit) = allLunches + allLunches.map{ lunch -> lunch + fruit } + setOf(setOf(fruit))
 
 //optimised version
 fun possibleLunch2(fruits:List<Fruit>) =
     (1 until fruits.numberOfCombinations)
-        .map{it.toString(2)}
+        .map{ it.toString(2)}
         .map { binary ->
             binary.mapIndexedNotNull{digit, digitValue -> fruitForDigit(digit, binary.length, digitValue, fruits)}
         }
