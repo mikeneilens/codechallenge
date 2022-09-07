@@ -2,9 +2,10 @@ import kotlin.math.pow
 
 typealias Lunches = Set<Fruit>
 
-fun possibleLunch(fruits:List<Fruit>):Set<Lunches> = fruits.fold(emptySet(), ::addFruit)
+fun possibleLunch(fruits:List<Fruit>) = fruits.fold(emptySet(), ::addFruit)
 
-private fun addFruit(allLunches:Set<Lunches>, fruit: Fruit) = allLunches + allLunches.map{ lunch -> lunch + fruit } + setOf(setOf(fruit))
+fun addFruit(allLunches:Set<Lunches>, fruit: Fruit) =
+    allLunches + allLunches.map{ lunch -> lunch + fruit } + setOf(setOf(fruit))
 
 //optimised version
 fun possibleLunch2(fruits:List<Fruit>) =
@@ -16,4 +17,5 @@ fun possibleLunch2(fruits:List<Fruit>) =
 
 val List<Fruit>.numberOfCombinations get() = 2.0.pow(size).toInt()
 
-fun fruitForDigit(digit:Int, binaryLength:Int, digitValue:Char, fruits:List<Fruit>) = if (digitValue == '1') fruits[fruits.size - binaryLength + digit] else null
+fun fruitForDigit(digit:Int, binaryLength:Int, digitValue:Char, fruits:List<Fruit>) =
+    if (digitValue == '1') fruits[fruits.size - binaryLength + digit] else null
